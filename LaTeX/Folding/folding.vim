@@ -5,7 +5,7 @@
 
 "You should save this file as ftplugin/tex/folding.vim and it should work out of the box.
 
-" If you want to fold other environments add them at Set options and LaTeXBox_FoldText part. (Can't say anything about the next paragraph)
+" If you want to fold other environments add them at Set options and LaTeXBox_FoldText part.
 
 " If you want to fold figures, tables and other environments you should add the functions LabelEnv(), CaptionEnv() and CaptionTable() from LaTeX-Box/ftplugin/latex-box/folding.vim and modify the LatexBox_FoldText() function to include the mentioned functions as its done in Latex-Box folding (but changing the format to the format that suits your needs).
 
