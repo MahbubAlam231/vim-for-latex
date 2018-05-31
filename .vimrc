@@ -183,7 +183,7 @@ setlocal foldmethod=manual
 nnoremap <localleader>f :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method (use it)
-nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzzzozozo
+nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzzzozozozz
 " nnoremap <localleader>lo mf:loadview<cr>zM`f
 nnoremap 'f `fzz
 
