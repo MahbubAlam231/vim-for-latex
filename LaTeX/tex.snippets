@@ -779,6 +779,8 @@ endsnippet
 # Environments{{{
 #-------------------------------------------------------------------
 
+# Centering-gathering{{{
+
 snippet cen
 \begin{center}
 $1
@@ -787,6 +789,25 @@ $1
 $0
 endsnippet
 
+
+snippet gather
+\begin{gather}
+$1
+\end{gather}
+
+$0
+endsnippet
+
+
+snippet ugather
+\begin{gather*}
+$1
+\end{gather*}
+
+$0
+endsnippet
+
+#}}}
 # Main Environments{{{
 
                                                 #Notation
@@ -1533,7 +1554,7 @@ endsnippet
 # Enumeration{{{
 #-------------------------------------------------------------------
 
-snippet enu
+snippet enum
 %Enumerate
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
 	\item $1
@@ -1542,7 +1563,7 @@ snippet enu
 $0
 endsnippet
 
-snippet henu
+snippet henum
 % Change format of top-level list items
 \setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
