@@ -262,127 +262,6 @@ endsnippet
 
 #}}}
 
-# Matrices{{{
-#-------------------------------------------------------------------
-
-snippet bmatn
-%Bmatrix
-\[
-\renewcommand\arraystretch{1}
-\begin{bmatrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{bmatrix}
-\]
-$0
-endsnippet
-
-
-snippet pmatn
-%Pmatrix
-\[
-\renewcommand\arraystretch{1}
-\begin{pmatrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{pmatrix}
-\]
-$0
-endsnippet
-
-
-snippet matn
-%Bmatrix
-\[
-\renewcommand\arraystretch{1}
-\begin{bmatrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{bmatrix}
-\]
-$0
-endsnippet
-
-
-# snippet matn
-# %Pmatrix
-# \[
-# \renewcommand\arraystretch{1}
-# \begin{pmatrix}
-#     ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
-#     ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-#     \vdots & \vdots & \ddots & \vdots \\\
-#     ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-# \end{pmatrix}
-# \]
-# $0
-# endsnippet
-
-
-snippet mat
-\begin{matrix}
-    $1 & $2  \\\
-    $3 & $4
-\end{matrix}
-$0
-endsnippet
-
-
-snippet pmat
-\begin{pmatrix}
-    $1 & $2  \\\
-    $3 & $4
-\end{pmatrix}
-$0
-endsnippet
-
-
-snippet bmat
-\begin{bmatrix}
-    $1 & $2  \\\
-    $3 & $4
-\end{bmatrix}
-$0
-endsnippet
-
-
-snippet cmatn
-\begin{bmatrix}
-    $1 \\\
-    $2 \\\
-    \\vdots \\\
-    $3
-\end{bmatrix}
-$0
-endsnippet
-
-
-snippet cpmat
-\begin{pmatrix}
-    $1 \\\
-    $2
-\end{pmatrix}
-$0
-endsnippet
-
-
-snippet cmat
-\begin{bmatrix}
-    $1 \\\
-    $2
-\end{bmatrix}
-$0
-endsnippet
-
-
-#}}}
-
 # MatrixGroups{{{
 #-------------------------------------------------------------------
 
@@ -785,25 +664,22 @@ snippet cen
 \begin{center}
 $1
 \end{center}
-
 $0
 endsnippet
 
 
-snippet gather
+snippet gath
 \begin{gather}
 $1
 \end{gather}
-
 $0
 endsnippet
 
 
-snippet ugather
+snippet ugath
 \begin{gather*}
 $1
 \end{gather*}
-
 $0
 endsnippet
 
@@ -1072,6 +948,118 @@ snippet itemize
 \end{itemize}
 $0
 endsnippet
+
+#}}}
+# Matrices{{{
+#-------------------------------------------------------------------
+
+snippet bmatn
+%Bmatrix
+\renewcommand\arraystretch{1}
+\begin{bmatrix}
+    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
+    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
+    \vdots & \vdots & \ddots & \vdots \\\
+    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
+\end{bmatrix}
+$0
+endsnippet
+
+
+snippet pmatn
+%Pmatrix
+\renewcommand\arraystretch{1}
+\begin{pmatrix}
+    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
+    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
+    \vdots & \vdots & \ddots & \vdots \\\
+    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
+\end{pmatrix}
+$0
+endsnippet
+
+
+snippet matn
+%Bmatrix
+\renewcommand\arraystretch{1}
+\begin{bmatrix}
+    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
+    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
+    \vdots & \vdots & \ddots & \vdots \\\
+    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
+\end{bmatrix}
+$0
+endsnippet
+
+
+# snippet matn
+# %Pmatrix
+# \renewcommand\arraystretch{1}
+# \begin{pmatrix}
+#     ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ %add[2em]toIncreaseSpacing
+#     ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
+#     \vdots & \vdots & \ddots & \vdots \\\
+#     ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
+# \end{pmatrix}
+# $0
+# endsnippet
+
+
+snippet mat
+\begin{matrix}
+    $1 & $2  \\\
+    $3 & $4
+\end{matrix}
+$0
+endsnippet
+
+
+snippet pmat
+\begin{pmatrix}
+    $1 & $2  \\\
+    $3 & $4
+\end{pmatrix}
+$0
+endsnippet
+
+
+snippet bmat
+\begin{bmatrix}
+    $1 & $2  \\\
+    $3 & $4
+\end{bmatrix}
+$0
+endsnippet
+
+
+snippet cmatn
+\begin{bmatrix}
+    $1 \\\
+    $2 \\\
+    \\vdots \\\
+    $3
+\end{bmatrix}
+$0
+endsnippet
+
+
+snippet cpmat
+\begin{pmatrix}
+    $1 \\\
+    $2
+\end{pmatrix}
+$0
+endsnippet
+
+
+snippet cmat
+\begin{bmatrix}
+    $1 \\\
+    $2
+\end{bmatrix}
+$0
+endsnippet
+
 
 #}}}
 # Other Environments (SES, Commutative Diagram etc){{{
