@@ -832,4 +832,3 @@ let m = matchadd("asterisk",'\*')
 "-------------------------------------------------------------------
 
 " Use ; before a letter for specific use of that letter
-" Arrows are taken care of in Ultisnips
