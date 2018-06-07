@@ -20,9 +20,10 @@ iabbr ssu \supseteq
 iabbr ssun \supset
 iabbr sus \supseteq
 iabbr susn \supset
-iabbr thereex \exists
-iabbr therex \exists
-iabbr theree \exists
+iabbr uu \cup
+iabbr nn \cap
+iabbr UU \bigcup
+iabbr NN \bigcap
 
 "}}}
 
@@ -36,10 +37,6 @@ iabbr cot \cot
 iabbr sec \sec
 iabbr cosec \cosec
 iabbr csc \csc
-
-
-iabbr log \log
-iabbr ln \ln
 
 "}}}
 

@@ -7,16 +7,28 @@
 " Abbreviations
 "--------------------------------------------------------------------
 
+"L{{{
+
+iabbr LEmma Lemma
+iabbr LEt Let
+
+"}}}
 "M{{{
 
 iabbr mvt mean value theorem
 iabbr Mvt Mean Value Theorem
 
 "}}}
+"T{{{
+
+iabbr THeorem Theorem
+
+"}}}
 "W{{{
 
 iabbr wrt with respect to
 iabbr Wrt With respect to
+iabbr WE We
 
 "}}}
 
@@ -93,8 +105,6 @@ Abolish int{n,e,te,ble} integra{tion,te,te,ble}
 "}}}
 "L{{{
 
-Abolish LEmma Lemma
-Abolish LEt Let
 Abolish lem{,s} lemma{,s}
 Abolish linealy linearly
 
@@ -141,7 +151,6 @@ Abolish sp space
 "}}}
 "T{{{
 
-Abolish THeorem Theorem
 Abolish taht that
 Abolish teh the
 Abolish tehn then
@@ -154,7 +163,7 @@ Abolish topsp topological space
 "}}}
 "W{{{
 
-Abolish WE We
+" Abolish WE We
 
 "}}}
 

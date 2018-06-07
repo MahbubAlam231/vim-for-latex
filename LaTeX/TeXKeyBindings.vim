@@ -71,17 +71,12 @@ inoremap <buffer> <localleader>ne \notin
 inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>0 \varnothing
 inoremap <buffer> <localleader>cap \cap 
-inoremap <buffer> <localleader>cap \cap 
 inoremap <buffer> <localleader>cup \cup 
-inoremap <buffer> <localleader>A \bigcap 
-inoremap <buffer> <localleader>N \bigcap 
-inoremap <buffer> <localleader>U \bigcup 
-inoremap <buffer> <localleader>A<space> \bigcap 
-inoremap <buffer> <localleader>N<space> \bigcap 
-inoremap <buffer> <localleader>U<space> \bigcup 
-inoremap <buffer> <localleader>ba \bigcap 
-inoremap <buffer> <localleader>bn \bigcap 
-inoremap <buffer> <localleader>bu \bigcup 
+inoremap <buffer> <localleader>bcap \bigcap 
+inoremap <buffer> <localleader>bcup \bigcup 
+inoremap <buffer> <localleader>CAp \bigcap 
+inoremap <buffer> <localleader>Cap \bigcap 
+inoremap <buffer> <localleader>Cup \bigcup 
 
 "}}}
 " Math one letter symbols{{{
@@ -468,13 +463,36 @@ inoremap <buffer> == \neq
 " Arrows"{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <localleader><C-J> \downarrow
-inoremap <buffer> <localleader><C-P> \uparrow
-inoremap <buffer> <localleader><Up> \uparrow
-inoremap <buffer> <localleader><C-N> \downarrow
-inoremap <buffer> <localleader><Down> \downarrow
-inoremap <buffer> <localleader><C-F> \to
+inoremap <buffer> <localleader>ra \rightarrow
+inoremap <buffer> <localleader>la \leftarrow
+inoremap <buffer> <localleader>rra \rightrightarrow
+inoremap <buffer> <localleader>lla \leftleftarrow
+inoremap <buffer> <localleader>xra \xrightarrow
+inoremap <buffer> <localleader>xla \xleftarrow
+inoremap <buffer> <localleader>thra \twoheadrightarrow
+inoremap <buffer> <localleader>thla \twoheadleftarrow
+inoremap <buffer> <localleader>rat \rightarrowtail
+inoremap <buffer> <localleader>lat \leftarrowtail
+inoremap <buffer> <localleader>rsa \rightsquigarrow
+inoremap <buffer> <localleader>lsa \leftsquigarrow
+inoremap <buffer> <localleader>da \downarrow
+inoremap <buffer> <localleader>ua \uparrow
+inoremap <buffer> <localleader>dda \downdownarrow
+inoremap <buffer> <localleader>uua \upuparrow
 inoremap <buffer> <localleader>hra \hookrightarrow
+inoremap <buffer> <localleader>hla \hookleftarrow
+inoremap <buffer> <localleader>car \curvearrowright
+inoremap <buffer> <localleader>cal \curvearrowleft
+inoremap <buffer> <localleader>ciar \circlearrowright
+inoremap <buffer> <localleader>cial \circlearrowleft
+inoremap <buffer> <localleader>lciar \lcirclearrowright
+inoremap <buffer> <localleader>rciar \rcirclearrowright
+inoremap <buffer> <localleader>rcial \rcirclearrowleft
+inoremap <buffer> <localleader>lcial \lcirclearrowleft
+inoremap <buffer> <localleader>to \to
+inoremap <buffer> <localleader>lto \leadsto
+inoremap <buffer> <localleader>mto \mapsto
+inoremap <buffer> <localleader>lmto \longmapsto
 
 "}}}
 " Misc{{{
