@@ -65,18 +65,26 @@ autocmd FileType tex inoremap <buffer> "" ``"<esc>i
 
 inoremap <buffer> <localleader>fa \forall
 inoremap <buffer> <localleader>E \exists
-inoremap <buffer> <localleader>Eu \exists!
 inoremap <buffer> <localleader>e \in
 inoremap <buffer> <localleader>ne \notin
 inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>0 \varnothing
-inoremap <buffer> <localleader>cap \cap 
-inoremap <buffer> <localleader>cup \cup 
-inoremap <buffer> <localleader>bcap \bigcap 
-inoremap <buffer> <localleader>bcup \bigcup 
-inoremap <buffer> <localleader>CAp \bigcap 
-inoremap <buffer> <localleader>Cap \bigcap 
-inoremap <buffer> <localleader>Cup \bigcup 
+inoremap <buffer> ;uu \cup_{}<esc>i
+inoremap <buffer> <localleader>uu \cup_{}^{}<esc>F}i
+inoremap <buffer> ;nn \cap_{}<esc>i
+inoremap <buffer> <localleader>nn \cap_{}^{}<esc>F}i
+inoremap <buffer> ;uul \cup\limits_{}<esc>i
+inoremap <buffer> <localleader>uul \cup\limits_{}^{}<esc>F}i
+inoremap <buffer> ;nnl \cap\limits_{}<esc>i
+inoremap <buffer> <localleader>nnl \cap\limits_{}^{}<esc>F}i
+inoremap <buffer> ;UUl \bigcup\limits_{}<esc>i
+inoremap <buffer> <localleader>UUl \bigcup\limits_{}^{}<esc>F}i
+inoremap <buffer> ;UUL \bigcup\limits_{}<esc>i
+inoremap <buffer> <localleader>UUL \bigcup\limits_{}^{}<esc>F}i
+inoremap <buffer> ;NNl \bigcap\limits_{}<esc>i
+inoremap <buffer> <localleader>NNl \bigcap\limits_{}^{}<esc>F}i
+inoremap <buffer> ;NNL \bigcap\limits_{}<esc>i
+inoremap <buffer> <localleader>NNL \bigcap\limits_{}^{}<esc>F}i
 
 "}}}
 " Math one letter symbols{{{
@@ -413,16 +421,16 @@ inoremap <buffer> <localleader>lsl \limsup\limits_{ \to }<esc>F{a
 inoremap <buffer> ;I \int
 inoremap <buffer> :I \int
 inoremap <buffer> <localleader>I \int
-inoremap <buffer> ;i \int_{}<esc>i
-inoremap <buffer> <localleader>i \int_{}^{}<esc>F}i
-inoremap <buffer> ;il \int\limits_{}<esc>i
-inoremap <buffer> <localleader>il \int\limits_{}^{}<esc>F}i
 inoremap <buffer> ;dI \displaystyle\int
 inoremap <buffer> :dI \displaystyle\int
 inoremap <buffer> ;DI \displaystyle\int
 inoremap <buffer> :DI \displaystyle\int
 inoremap <buffer> <localleader>dI \displaystyle\int
 inoremap <buffer> <localleader>DI \displaystyle\int
+inoremap <buffer> ;i \int_{}<esc>i
+inoremap <buffer> <localleader>i \int_{}^{}<esc>F}i
+inoremap <buffer> ;il \int\limits_{}<esc>i
+inoremap <buffer> <localleader>il \int\limits_{}^{}<esc>F}i
 inoremap <buffer> ;di \displaystyle\int_{}<esc>i
 inoremap <buffer> <localleader>di \displaystyle\int_{}^{}<esc>F}i
 inoremap <buffer> ;dil \displaystyle\int\limits_{}<esc>i
