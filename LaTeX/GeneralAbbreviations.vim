@@ -38,7 +38,6 @@ iabbr WE We
 
 "A{{{
 
-Abolish adn and
 Abolish alg{,ic} algebra{,ic}
 Abolish arb arbitrary
 
@@ -106,7 +105,6 @@ Abolish int{n,e,te,ble} integra{tion,te,te,ble}
 "L{{{
 
 Abolish lem{,s} lemma{,s}
-Abolish linealy linearly
 
 "}}}
 "M{{{
