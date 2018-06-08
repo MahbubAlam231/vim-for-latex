@@ -103,8 +103,8 @@ inoremap <buffer> <localleader>mi \mathit{}<esc>i
 
 
 
-inoremap <buffer> <localleader>rg \mathbb{R}_{\ge 0}
-inoremap <buffer> <localleader>rl \mathbb{R}_{\le 0}
+inoremap <buffer> <localleader>rg \mathbb{R}_{\geq 0}
+inoremap <buffer> <localleader>rl \mathbb{R}_{\leq 0}
 inoremap <buffer> <localleader>r> \mathbb{R}_{>0}
 inoremap <buffer> <localleader>r< \mathbb{R}_{<0}
 inoremap <buffer> <localleader>r \mathbb{R}
@@ -122,41 +122,44 @@ inoremap <buffer> <localleader>n \mathbb{N}
 inoremap <buffer> <localleader>nn \mathbb{N}^2
 inoremap <buffer> <localleader>nm \mathbb{N}^{}<esc>i
 
-inoremap <buffer> <localleader>pz \mathbb{Z}_+
-inoremap <buffer> <localleader>mz \mathbb{Z}_-
+inoremap <buffer> <localleader>zg \mathbb{Z}_{\geq 0}
+inoremap <buffer> <localleader>zl \mathbb{Z}_{\leq 0}
 inoremap <buffer> <localleader>z> \mathbb{Z}_{>0}
 inoremap <buffer> <localleader>z< \mathbb{Z}_{<0}
-inoremap <buffer> <localleader>zg \mathbb{Z}_{\ge 0}
+inoremap <buffer> <localleader>pz \mathbb{Z}_+
+inoremap <buffer> <localleader>mz \mathbb{Z}_-
 inoremap <buffer> <localleader>z \mathbb{Z}
 inoremap <buffer> <localleader>zz \mathbb{Z}^2
 inoremap <buffer> <localleader>zn \mathbb{Z}^{n}
 inoremap <buffer> <localleader>zm \mathbb{Z}^{m}
 inoremap <buffer> <localleader>zd \mathbb{Z}^{d}
 
-inoremap <buffer> <localleader>c \mathbb{C}
-inoremap <buffer> <localleader>cc \mathbb{C}^2
-inoremap <buffer> <localleader>cn \mathbb{C}^{n}
-inoremap <buffer> <localleader>cm \mathbb{C}^{m}
-
-inoremap <buffer> <localleader>a \mathbb{A}
-inoremap <buffer> <localleader>aa \mathbb{A}^2
-inoremap <buffer> <localleader>an \mathbb{A}^{n}
-inoremap <buffer> <localleader>am \mathbb{A}^{m}
-
 inoremap <buffer> <localleader>q \mathbb{Q}
 inoremap <buffer> <localleader>qq \mathbb{Q}^2
 inoremap <buffer> <localleader>qn \mathbb{Q}^{n}
 inoremap <buffer> <localleader>qm \mathbb{Q}^{m}
 
+inoremap <buffer> <localleader>c \mathbb{C}
+inoremap <buffer> <localleader>cc \mathbb{C}^2
+inoremap <buffer> <localleader>cn \mathbb{C}^{n}
+inoremap <buffer> <localleader>cm \mathbb{C}^{m}
+
 inoremap <buffer> <localleader>qp \mathbb{Q}_p
 inoremap <buffer> <localleader>qqp {\mathbb{Q}_p}^2
+inoremap <buffer> <localleader>qpqp {\mathbb{Q}_p}^2
 inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
 inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
 
 inoremap <buffer> <localleader>zp \mathbb{Z}_p
 inoremap <buffer> <localleader>zzp {\mathbb{Z}_p}^2
+inoremap <buffer> <localleader>zpzp {\mathbb{Z}_p}^2
 inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
 inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
+
+inoremap <buffer> <localleader>a \mathbb{A}
+inoremap <buffer> <localleader>aa \mathbb{A}^2
+inoremap <buffer> <localleader>an \mathbb{A}^{n}
+inoremap <buffer> <localleader>am \mathbb{A}^{m}
 
 inoremap <buffer> <localleader>t \mathbb{T}
 inoremap <buffer> <localleader>tt \mathbb{T}^2
@@ -166,69 +169,19 @@ inoremap <buffer> <localleader>tm \mathbb{T}^{m}
 "}}}
 " Outside math mode{{{
 
-inoremap <buffer> mr<Space><Space> $\mathrm{}$<esc>hi
-inoremap <buffer> mb<Space><Space> $\mathbb{}$<esc>hi
-inoremap <buffer> mc<Space><Space> $\mathcal{}$<esc>hi
-inoremap <buffer> mrsf<Space><Space> $\mathrsf{}$<esc>hi
-inoremap <buffer> mi<Space><Space> $\mathit{}$<esc>hi
-
-
-
-inoremap <buffer> rg<Space><Space> $\mathbb{R}_{\ge 0}$
-inoremap <buffer> rl<Space><Space> $\mathbb{R}_{\le 0}$
-inoremap <buffer> pr<Space><Space> $\mathbb{R}_{>0}$
-inoremap <buffer> nr<Space><Space> $\mathbb{R}_{<0}$
 inoremap <buffer> r<Space><Space> $\mathbb{R}$
-inoremap <buffer> rr<Space><Space> $\mathbb{R}^2$
-inoremap <buffer> rn<Space><Space> $\mathbb{R}^{n}$
-inoremap <buffer> rm<Space><Space> $\mathbb{R}^{m}$
-inoremap <buffer> rnk<Space><Space> $\mathbb{R}^{nk}$
-inoremap <buffer> rnl<Space><Space> $\mathbb{R}^{n\ell}$
-inoremap <buffer> rnm<Space><Space> $\mathbb{R}^{nm}$
-inoremap <buffer> rnn<Space><Space> $\mathbb{R}^{n^2}$
-inoremap <buffer> rd<Space><Space> $\mathbb{R}^{d}$
 
 inoremap <buffer> n<Space><Space> $\mathbb{N}$
-inoremap <buffer> nn<Space><Space> $\mathbb{N}^2$
-inoremap <buffer> nm<Space><Space> $\mathbb{N}^{}$<esc>hi
 
-inoremap <buffer> pz<Space><Space> $\mathbb{Z}_+$
-inoremap <buffer> mz<Space><Space> $\mathbb{Z}_-$
 inoremap <buffer> z<Space><Space> $\mathbb{Z}$
-inoremap <buffer> zz<Space><Space> $\mathbb{Z}^2$
-inoremap <buffer> zn<Space><Space> $\mathbb{Z}^{n}$
-inoremap <buffer> zm<Space><Space> $\mathbb{Z}^{m}$
-inoremap <buffer> zd<Space><Space> $\mathbb{Z}^{d}$
 
 inoremap <buffer> c<Space><Space> $\mathbb{C}$
-inoremap <buffer> cc<Space><Space> $\mathbb{C}^2$
-inoremap <buffer> cn<Space><Space> $\mathbb{C}^{n}$
-inoremap <buffer> cm<Space><Space> $\mathbb{C}^{m}$
 
 inoremap <buffer> a<Space><Space> $\mathbb{A}$
-inoremap <buffer> aa<Space><Space> $\mathbb{A}^2$
-inoremap <buffer> an<Space><Space> $\mathbb{A}^{n}$
-inoremap <buffer> am<Space><Space> $\mathbb{A}^{m}$
 
 inoremap <buffer> q<Space><Space> $\mathbb{Q}$
-inoremap <buffer> qq<Space><Space> $\mathbb{Q}^2$
-inoremap <buffer> qn<Space><Space> $\mathbb{Q}^{n}$
-inoremap <buffer> qm<Space><Space> $\mathbb{Q}^{m}$
-
-inoremap <buffer> qp<Space><Space> $\mathbb{Q}_p$
-inoremap <buffer> qqp<Space><Space> ${\mathbb{Q}_p}^2$
-inoremap <buffer> qpn<Space><Space> ${\mathbb{Q}_p}^{n}$
-inoremap <buffer> qpm<Space><Space> ${\mathbb{Q}_p}^{m}$
-
-inoremap <buffer> zp<Space><Space> $\mathbb{Z}_p$
-inoremap <buffer> zzp<Space><Space> ${\mathbb{Z}_p}^2$
-inoremap <buffer> zpn<Space><Space> ${\mathbb{Z}_p}^{n}$
-inoremap <buffer> zpm<Space><Space> ${\mathbb{Z}_p}^{m}$
 
 inoremap <buffer> t<Space><Space> $\mathbb{T}$
-inoremap <buffer> tt<Space><Space> $\mathbb{T}^2$
-inoremap <buffer> tn<Space><Space> $\mathbb{T}^{n}$
-inoremap <buffer> tm<Space><Space> $\mathbb{T}^{m}$
 
 "}}}
 
@@ -461,7 +414,6 @@ inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
 inoremap <buffer> <localleader>8 \infty
-inoremap <buffer> <localleader>\| \big\|
 inoremap <buffer> <localleader>= \equiv
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
