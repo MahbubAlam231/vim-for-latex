@@ -30,7 +30,10 @@ endsnippet
 
 #}}}
 
-# Math one letter symbols{{{
+# Math Symbols{{{
+#-------------------------------------------------------------------
+
+# Math set symbols{{{
 #-------------------------------------------------------------------
 
 # \math__{}{{{
@@ -43,12 +46,20 @@ snippet mb
 $\mathbb{$1}$$0
 endsnippet
 
+snippet mbf
+$\mathbf{$1}$$0
+endsnippet
+
 snippet mc
 $\mathcal{$1}$$0
 endsnippet
 
 snippet mrsf
 $\mathrsf{$1}$$0
+endsnippet
+
+snippet mscr
+$\mathscr{$1}$$0
 endsnippet
 
 snippet mi
@@ -184,21 +195,6 @@ $\mathbb{C}^{m}$$0
 endsnippet
 
 #}}}
-# Adele{{{
-
-snippet aa
-$\mathbb{A}^2$$0
-endsnippet
-
-snippet an
-$\mathbb{A}^{n}$$0
-endsnippet
-
-snippet am
-$\mathbb{A}^{m}$$0
-endsnippet
-
-#}}}
 # Rationals{{{
 
 snippet qq
@@ -260,6 +256,21 @@ ${\mathbb{Z}_p}^{m}$$0
 endsnippet
 
 #}}}
+# Adele{{{
+
+snippet aa
+$\mathbb{A}^2$$0
+endsnippet
+
+snippet an
+$\mathbb{A}^{n}$$0
+endsnippet
+
+snippet am
+$\mathbb{A}^{m}$$0
+endsnippet
+
+#}}}
 # Tori{{{
 
 snippet tt
@@ -277,7 +288,6 @@ endsnippet
 #}}}
 
 #}}}
-
 # MatrixGroups{{{
 #-------------------------------------------------------------------
 
@@ -670,36 +680,112 @@ endsnippet
 #}}}
 
 #}}}
+# SomeShortcuts{{{
+#-------------------------------------------------------------------
+
+snippet ge
+$\varepsilon > 0$
+endsnippet
+
+snippet inv
+^{-1}
+endsnippet
+
+snippet -n
+^{-n}
+endsnippet
+
+snippet -m
+^{-m}
+endsnippet
+
+snippet o
+\varnothing
+endsnippet
+
+#}}}
+# SymbolsOfDer Math Symbolsivatives{{{
+#-------------------------------------------------------------------
+
+                                                #PartialSymbol
+snippet pd
+\partial$0
+endsnippet
+
+                                         #PartialDerivativebyfrac
+snippet par
+\frac{\partial $1}{\partial $2}$0
+endsnippet
+
+snippet dpar
+\dfrac{\partial $1}{\partial $2}$0
+endsnippet
+
+                                               #CovariantDerivative
+snippet cdv
+\frac{D$1}{d$2}$0
+endsnippet
+
+                                               #PartialCovariantDer
+snippet pcdv
+\frac{D$1}{\partial $2}$0
+endsnippet
+
+                                               #PartialCovDerwrtx
+snippet pcdvx
+\frac{D}{\partial x}$0
+endsnippet
+
+                                               #PartialCovDerwrty
+snippet pcdvy
+\frac{D}{\partial y}$0
+endsnippet
+
+                                               #PartialCovDerwrtt
+snippet cdvt
+\frac{D}{\partial t}$0
+endsnippet
+
+#snippet dv
+#\dv{$1}{$2}$0
+#endsnippet
+
+#snippet dvn
+#\dv[$1]{$2}{$3}$0
+#endsnippet
+
+                                              #Derivative
+snippet dv
+\frac{d $1}{d $2}$0
+endsnippet
+
+                                              #nthDerivative
+snippet dvn
+\frac{d^$1 $2}{d $3^$1}$0
+endsnippet
+
+                                              #PartialDerivative
+snippet pdv
+\pdv{$1}{$2}$0
+endsnippet
+
+                                              #nthPartialDer
+snippet pdvn
+\pdv[$1]{$2}{$3}$0
+endsnippet
+
+                                              #WigglyDerivative
+snippet fdv
+\fdv{$1}{$2}$0
+endsnippet
+
+#}}}
+
+#}}}
 
 # Environments{{{
 #-------------------------------------------------------------------
 
-# Centering-gathering{{{
-
-snippet cen
-\begin{center}
-$1
-\end{center}
-$0
-endsnippet
-
-
-snippet gath
-\begin{gather}
-$1
-\end{gather}
-$0
-endsnippet
-
-
-snippet ugath
-\begin{gather*}
-$1
-\end{gather*}
-$0
-endsnippet
-
-#}}}
 # Main Environments{{{
 
                                                 #Notation
@@ -945,6 +1031,24 @@ snippet ualigneq
 $0
 endsnippet
 
+                                             #GatheringEquations
+snippet gath
+%Gather
+\begin{gather}
+$1
+\end{gather}
+$0
+endsnippet
+
+                                      #UnnumberedGatheringEquations
+snippet ugath
+%UnnumberedGather 
+\begin{gather*}
+$1
+\end{gather*}
+$0
+endsnippet
+
                                                      #Array
 snippet array
 %Array
@@ -953,6 +1057,14 @@ snippet array
 	$1
 \end{array}
 \]
+$0
+endsnippet
+
+                                                     #Centering
+snippet cen
+\begin{center}
+$1
+\end{center}
 $0
 endsnippet
 
@@ -1078,9 +1190,7 @@ endsnippet
 
 
 #}}}
-# Other Environments (SES, Commutative Diagram etc){{{
-
-# MathtoolsNeededForCasedefn{{{
+# Math tools needed for case-defn{{{
 #-------------------------------------------------------------------
 
 snippet case
@@ -1125,6 +1235,36 @@ $0
 endsnippet
 
 #}}}
+# Enumeration{{{
+#-------------------------------------------------------------------
+
+snippet enum
+%Enumerate
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
+	\item $1
+\end{enumerate}
+
+$0
+endsnippet
+
+snippet henum
+% Change format of top-level list items
+\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries}
+% Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
+\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont}
+\setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
+
+
+%Enumerate
+\begin{enumerate}
+	\item{$1}
+\end{enumerate}
+
+$0
+endsnippet
+
+#}}}
+# Other Environments (SES, Commutative Diagram etc){{{
 
 # snippet claim
 # %claim
@@ -1312,68 +1452,22 @@ endsnippet
 
 #}}}
 
-# Arrows, Limits and Function{{{
+# Are these useful?{{{
 #-------------------------------------------------------------------
 
-snippet to
-\to$0
-endsnippet
+# SomeAbbreviation{{{
+#-------------------------------------------------------------------
 
-snippet mto
-\mapsto$0
-endsnippet
-
-snippet mt
-\mapsto$0
+snippet st
+such that
 endsnippet
 
 
-snippet ra
-\rightarrow$0
-endsnippet
-
-
-snippet lea
-\leftarrow$0
-endsnippet
-
-
-snippet xra
-\xrightarrow{$1}$0
-endsnippet
-
-snippet xlea
-\xleftarrow{$1}$0
-endsnippet
-
-                                              #Hookrightarrow
-snippet hra
-\hookrightarrow$0
-endsnippet
-
-
-snippet lim
-\limits
-endsnippet
-
-snippet fn
-$f: $1 \to $2$$0
-endsnippet
-
-snippet gn
-$g: $1 \to $2$$0
-endsnippet
-
-snippet phn
-$\phi : $1 \to $2$$0
-endsnippet
-
-snippet vphn
-$\varphi : $1 \to $2$$0
+snippet tg
+To get to the
 endsnippet
 
 #}}}
-
 # NewCommandsandStuff{{{
 #-------------------------------------------------------------------
 
@@ -1448,156 +1542,64 @@ snippet lr
 endsnippet
 
 #}}}
-
-# SomeShortcuts{{{
+# Arrows, Limits and Function{{{
 #-------------------------------------------------------------------
 
-snippet ge
-$\varepsilon > 0$
+snippet to
+\to$0
 endsnippet
 
-snippet inv
-^{-1}
+snippet mto
+\mapsto$0
 endsnippet
 
-snippet -n
-^{-n}
-endsnippet
-
-snippet -m
-^{-m}
-endsnippet
-
-snippet o
-\circ
-endsnippet
-
-snippet oo
-\varnothing
-endsnippet
-
-#}}}
-
-# SymbolsOfDerivatives{{{
-#-------------------------------------------------------------------
-
-                                                #PartialSymbol
-snippet pd
-\partial$0
-endsnippet
-
-                                         #PartialDerivativebyfrac
-snippet par
-\frac{\partial $1}{\partial $2}$0
-endsnippet
-
-snippet dpar
-\dfrac{\partial $1}{\partial $2}$0
-endsnippet
-
-                                               #CovariantDerivative
-snippet cdv
-\frac{D$1}{d$2}$0
-endsnippet
-
-                                               #PartialCovariantDer
-snippet pcdv
-\frac{D$1}{\partial $2}$0
-endsnippet
-
-                                               #PartialCovDerwrtx
-snippet pcdvx
-\frac{D}{\partial x}$0
-endsnippet
-
-                                               #PartialCovDerwrty
-snippet pcdvy
-\frac{D}{\partial y}$0
-endsnippet
-
-                                               #PartialCovDerwrtt
-snippet cdvt
-\frac{D}{\partial t}$0
-endsnippet
-
-#snippet dv
-#\dv{$1}{$2}$0
-#endsnippet
-
-#snippet dvn
-#\dv[$1]{$2}{$3}$0
-#endsnippet
-
-                                              #Derivative
-snippet dv
-\frac{d $1}{d $2}$0
-endsnippet
-
-                                              #nthDerivative
-snippet dvn
-\frac{d^$1 $2}{d $3^$1}$0
-endsnippet
-
-                                              #PartialDerivative
-snippet pdv
-\pdv{$1}{$2}$0
-endsnippet
-
-                                              #nthPartialDer
-snippet pdvn
-\pdv[$1]{$2}{$3}$0
-endsnippet
-
-                                              #WigglyDerivative
-snippet fdv
-\fdv{$1}{$2}$0
-endsnippet
-
-#}}}
-
-# Enumeration{{{
-#-------------------------------------------------------------------
-
-snippet enum
-%Enumerate
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
-	\item $1
-\end{enumerate}
-
-$0
-endsnippet
-
-snippet henum
-% Change format of top-level list items
-\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries}
-% Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
-\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont}
-\setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
-
-
-%Enumerate
-\begin{enumerate}
-	\item{$1}
-\end{enumerate}
-
-$0
-endsnippet
-
-#}}}
-
-# Misc{{{
-#-------------------------------------------------------------------
-
-# SomeAbbreviation{{{
-#-------------------------------------------------------------------
-
-snippet st
-such that
+snippet mt
+\mapsto$0
 endsnippet
 
 
-snippet tg
-To get to the
+snippet ra
+\rightarrow$0
+endsnippet
+
+
+snippet lea
+\leftarrow$0
+endsnippet
+
+
+snippet xra
+\xrightarrow{$1}$0
+endsnippet
+
+snippet xlea
+\xleftarrow{$1}$0
+endsnippet
+
+                                              #Hookrightarrow
+snippet hra
+\hookrightarrow$0
+endsnippet
+
+
+snippet lim
+\limits
+endsnippet
+
+snippet fn
+$f: $1 \to $2$$0
+endsnippet
+
+snippet gn
+$g: $1 \to $2$$0
+endsnippet
+
+snippet phn
+$\phi : $1 \to $2$$0
+endsnippet
+
+snippet vphn
+$\varphi : $1 \to $2$$0
 endsnippet
 
 #}}}

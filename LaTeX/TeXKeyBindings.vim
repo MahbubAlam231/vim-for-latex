@@ -87,21 +87,25 @@ inoremap <buffer> ;NNL \bigcap\limits_{}<esc>i
 inoremap <buffer> <localleader>NNL \bigcap\limits_{}^{}<esc>F}i
 
 "}}}
-" Math one letter symbols{{{
+" Math set symbols{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> ;l \ell
 
 " In math mode{{{
 
+" \math__{}{{{
+
 inoremap <buffer> <localleader>mr \mathrm{}<esc>i
 inoremap <buffer> <localleader>mb \mathbb{}<esc>i
 inoremap <buffer> <localleader>mbf \mathbf{}<esc>i
 inoremap <buffer> <localleader>mc \mathcal{}<esc>i
 inoremap <buffer> <localleader>mrsf \mathrsf{}<esc>i
+inoremap <buffer> <localleader>mscr \mathscr{}<esc>i
 inoremap <buffer> <localleader>mi \mathit{}<esc>i
 
-
+"}}}
+" Real numbers{{{
 
 inoremap <buffer> <localleader>rg \mathbb{R}_{\geq 0}
 inoremap <buffer> <localleader>rl \mathbb{R}_{\leq 0}
@@ -118,9 +122,15 @@ inoremap <buffer> <localleader>rnm \mathbb{R}^{nm}
 inoremap <buffer> <localleader>rnn \mathbb{R}^{n^2}
 inoremap <buffer> <localleader>rd \mathbb{R}^{d}
 
+"}}}
+" Natural numbers{{{
+
 inoremap <buffer> <localleader>n \mathbb{N}
 inoremap <buffer> <localleader>nn \mathbb{N}^2
 inoremap <buffer> <localleader>nm \mathbb{N}^{}<esc>i
+
+"}}}
+" Integers{{{
 
 inoremap <buffer> <localleader>zg \mathbb{Z}_{\geq 0}
 inoremap <buffer> <localleader>zl \mathbb{Z}_{\leq 0}
@@ -134,15 +144,24 @@ inoremap <buffer> <localleader>zn \mathbb{Z}^{n}
 inoremap <buffer> <localleader>zm \mathbb{Z}^{m}
 inoremap <buffer> <localleader>zd \mathbb{Z}^{d}
 
+"}}}
+" Rational numbers{{{
+
 inoremap <buffer> <localleader>q \mathbb{Q}
 inoremap <buffer> <localleader>qq \mathbb{Q}^2
 inoremap <buffer> <localleader>qn \mathbb{Q}^{n}
 inoremap <buffer> <localleader>qm \mathbb{Q}^{m}
 
+"}}}
+" Complex numbers{{{
+
 inoremap <buffer> <localleader>c \mathbb{C}
 inoremap <buffer> <localleader>cc \mathbb{C}^2
 inoremap <buffer> <localleader>cn \mathbb{C}^{n}
 inoremap <buffer> <localleader>cm \mathbb{C}^{m}
+
+"}}}
+" p-adic numbers{{{
 
 inoremap <buffer> <localleader>qp \mathbb{Q}_p
 inoremap <buffer> <localleader>qqp {\mathbb{Q}_p}^2
@@ -150,21 +169,32 @@ inoremap <buffer> <localleader>qpqp {\mathbb{Q}_p}^2
 inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
 inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
 
+"}}}
+" p-adic Integers{{{
+
 inoremap <buffer> <localleader>zp \mathbb{Z}_p
 inoremap <buffer> <localleader>zzp {\mathbb{Z}_p}^2
 inoremap <buffer> <localleader>zpzp {\mathbb{Z}_p}^2
 inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
 inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
 
+"}}}
+" Adele{{{
+
 inoremap <buffer> <localleader>a \mathbb{A}
 inoremap <buffer> <localleader>aa \mathbb{A}^2
 inoremap <buffer> <localleader>an \mathbb{A}^{n}
 inoremap <buffer> <localleader>am \mathbb{A}^{m}
 
+"}}}
+" Tori{{{
+
 inoremap <buffer> <localleader>t \mathbb{T}
 inoremap <buffer> <localleader>tt \mathbb{T}^2
 inoremap <buffer> <localleader>tn \mathbb{T}^{n}
 inoremap <buffer> <localleader>tm \mathbb{T}^{m}
+
+"}}}
 
 "}}}
 " Outside math mode{{{
@@ -329,13 +359,16 @@ inoremap <buffer> <localleader>sumc \mathrm{SU}(m,\mathbb{C})
 "}}}
 
 "}}}
-" tilde, hat, accent, bar, over/uline, times, power"{{{
+" times, tilde, hat, accent, bar, over/uline, power"{{{
 "-------------------------------------------------------------------
 
+inoremap <buffer> <localleader>x \times
 inoremap <buffer> <localleader>o \circ
+inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
+" inoremap <buffer> <localleader>% \frac{}{}<esc>F}i
+
 inoremap <buffer> <localleader>n \norm{}<esc>i
 inoremap <buffer> <localleader>p \partial
-inoremap <buffer> <localleader>x \times
 
 inoremap <buffer> <localleader>wt \widetilde{}<esc>i
 inoremap <buffer> <localleader>~ \widetilde{}<esc>i
@@ -361,7 +394,7 @@ inoremap <buffer> <localleader>_ {}_{}<esc>hF}i
 inoremap <buffer> _^ {}_{}^{}<esc>F};i
 
 "}}}
-" lim, int, sum, frac"{{{
+" lim, int, sum"{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>l \lim_{ \to }<esc>F{a
@@ -402,9 +435,6 @@ inoremap <buffer> ;ds \displaystyle\sum_{}<esc>i
 inoremap <buffer> <localleader>sl \sum\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>ds \displaystyle\sum_{}^{}<esc>F}i
 
-inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
-" inoremap <buffer> <localleader>% \frac{}{}<esc>F}i
-
 "}}}
 " Big bracket, less/greater than"{{{
 "-------------------------------------------------------------------
@@ -414,10 +444,12 @@ inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
 inoremap <buffer> <localleader>8 \infty
-inoremap <buffer> <localleader>= \equiv
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
-inoremap <buffer> == \neq 
+inoremap <buffer> n= \neq 
+inoremap <buffer> == \equiv
+
+inoremap <buffer> <localleader>on \operatorname{}<esc>i
 
 "}}}
 " Arrows"{{{
@@ -469,8 +501,6 @@ inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
 
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
-inoremap <buffer> <localleader><C-I> \in
-inoremap <buffer> <localleader><C-L> \log
 
 "-------------------------------------------------------------------
 " Referencing Theorem, Citation etc.
