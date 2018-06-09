@@ -101,7 +101,10 @@ nnoremap <localleader>n :set norelativenumber<cr>
 
 "}}}
 
-" Plugins{{{
+" Plugins and Plugin mappings{{{
+"-------------------------------------------------------------------
+
+" Plugins{{{2
 "-------------------------------------------------------------------
 
 " Set the runtime path to include Vundle and initialize
@@ -151,20 +154,19 @@ Plugin 'w0ng/vim-hybrid'
 call vundle#end()             "required
 filetype plugin indent on     "required
 
-"}}}
-
-" Plugin mappings{{{1
+"2}}}
+" Plugin mappings{{{2
 "-------------------------------------------------------------------
 
-" YouCompleteMe{{{2
+" YouCompleteMe{{{3
 "-------------------------------------------------------------------
 " Plugin 'valloric/youcompleteme'
 "-------------------------------------------------------------------
 
 let g:loaded_youcompleteme = 1
 
-"2}}}
-" LaTeX-Box and Folding{{{2
+"3}}}
+" LaTeX-Box and Folding{{{3
 "-------------------------------------------------------------------
 " Plugin 'LaTeX-Box-Team/LaTeX-Box'
 "-------------------------------------------------------------------
@@ -201,24 +203,24 @@ nnoremap zM zMzz
 nnoremap <space> zazz
 nnoremap <localleader><space> zazt
 
-"2}}}
-" CtrlP Settings{{{2
+"3}}}
+" CtrlP Settings{{{3
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
-"2}}}
-" NERDtree{{{2
+"3}}}
+" NERDtree{{{3
 "-------------------------------------------------------------------
 " Plugin 'scrooloose/nerdtree'
 "-------------------------------------------------------------------
 
 nnoremap <localleader>nerd :NERDTree<cr>
 
-"2}}}
-" Text Object Entire{{{
+"3}}}
+" Text Object Entire{{{3
 "-------------------------------------------------------------------
 " Text Object Entire
 "-------------------------------------------------------------------
@@ -230,8 +232,8 @@ nnoremap <localleader>nerd :NERDTree<cr>
 "             \   }
 "             \ })
 
-"}}}
-" Titlecase and Uppercase first letter of a line{{{2
+"3}}}
+" Titlecase and Uppercase first letter of a line{{{3
 "-------------------------------------------------------------------
 " Plugin 'christoomey/vim-titlecase'
 "-------------------------------------------------------------------
@@ -260,8 +262,8 @@ nnoremap <localleader><localleader>c mm^vU`m
 nnoremap <C-T> gUiw
 inoremap <C-T> <esc>gUliwea
 
-"2}}}
-"Templates and Selecting Template{{{2
+"3}}}
+"Templates and Selecting Template{{{3
 "-------------------------------------------------------------------
 " Plugin 'tibabit/vim-templates'
 "-------------------------------------------------------------------
@@ -299,17 +301,34 @@ nnoremap <localleader>art :call Template()<cr>art<cr>
 nnoremap <localleader>ams :call Template()<cr>ams<cr>
 nnoremap <localleader>rep :call Template()<cr>rep<cr>
 
-"2}}}
-" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{2
+"3}}}
+" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{3
 "-------------------------------------------------------------------
 
 nnoremap <C-j> /<+<cr>cf>
 inoremap <C-j> <esc>/<+<cr>cf>
 
+"3}}}
+
 "2}}}
 
-"1}}}
+"}}}
 
+" Misc{{{
+"-------------------------------------------------------------------
+
+" Align text{{{2
+"-------------------------------------------------------------------
+
+nnoremap <localleader>al :left<cr>
+nnoremap <localleader>ac :center<cr>
+nnoremap <localleader>ar :right<cr>
+
+vnoremap <localleader>al :left<cr>
+vnoremap <localleader>ac :center<cr>
+vnoremap <localleader>ar :right<cr>
+
+"2}}}
 " Basic navigation, searching remaps{{{
 "-------------------------------------------------------------------
 
@@ -397,22 +416,6 @@ nnoremap <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 " vnoremap / /\v
 
 "}}}
-
-" Misc{{{
-"-------------------------------------------------------------------
-
-" Align text{{{2
-"-------------------------------------------------------------------
-
-nnoremap <localleader>al :left<cr>
-nnoremap <localleader>ac :center<cr>
-nnoremap <localleader>ar :right<cr>
-
-vnoremap <localleader>al :left<cr>
-vnoremap <localleader>ac :center<cr>
-vnoremap <localleader>ar :right<cr>
-
-"2}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
@@ -658,7 +661,7 @@ nnoremap <localleader><localleader>v :vsplit $MYVIMRC<cr>
 "-------------------------------------------------------------------
 
 nnoremap <localleader>w :w!<cr>:redraw!<cr>
-inoremap ;; <esc>:w!<cr>:redraw!<cr>a
+inoremap ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup auto_write_buffer
   autocmd!
