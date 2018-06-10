@@ -93,6 +93,7 @@ inoremap <buffer> <localleader>NNL \bigcap\limits_{}^{}<esc>F}i
 inoremap <buffer> ;l \ell
 
 " In math mode{{{
+"-------------------------------------------------------------------
 
 " \math__{}{{{
 
@@ -198,6 +199,7 @@ inoremap <buffer> <localleader>tm \mathbb{T}^{m}
 
 "}}}
 " Outside math mode{{{
+"-------------------------------------------------------------------
 
 inoremap <buffer> r<Space><Space> $\mathbb{R}$
 
