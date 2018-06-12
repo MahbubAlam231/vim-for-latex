@@ -599,9 +599,9 @@ function! KeyBindings()
 		source ~/.vim/KeyBindings/MarkdownKeyBindings.vim
 	endif
 
-	"unmap keys to enter numbers peacefully
-	if(a:code=="u")
-		source ~/.vim/KeyBindings/UnmapKeyBindings.vim
+	"to enter numbers peacefully
+	if(a:code=="np")
+		source ~/.vim/KeyBindings/NumbersPeacefully.vim
 	endif
 
 endfunction
@@ -646,8 +646,10 @@ nnoremap  <localleader>e :source ~/.vimrc<cr>:call Abbreviations()<cr>gen<cr>:ca
 nnoremap <F4> :call KeyBindings()<cr>tex<cr>
 inoremap <F4> <Esc>:call KeyBindings()<cr>tex<cr>a
 
-"Sourcing UnmapKeyBindings
-nnoremap <localleader>u :call KeyBindings()<cr>u<cr>
+"Sourcing NumbersPeacefully
+nnoremap <localleader>np :call KeyBindings()<cr>np<cr>
+inoremap <localleader>np <esc>:call KeyBindings()<cr>np<cr>a
+inoremap <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
 
 "Sourcing GeneralAbbreviations
 nnoremap <localleader>g :call Abbreviations()<cr>gen<cr>
@@ -661,6 +663,7 @@ nnoremap <localleader>m :call Abbreviations()<cr>math<cr>
 
 " Opening TeXKeyBindings "t=tex
 nnoremap <localleader><localleader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <localleader><localleader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Inputted File "IO=Inputted Open
 " nnoremap <C-I><C-O> <Esc>0f{lvf.fx"py:new <C-R>p<cr>
