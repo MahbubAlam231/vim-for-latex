@@ -491,12 +491,13 @@ nnoremap <localleader>dtw mm0g_ld$`m
 " Leader Mappings{{{2
 "-------------------------------------------------------------------
 
+let mapleader="-"
 let maplocalleader=","
 
 " To get <> and write <localleader> easily
 inoremap << <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
-inoremap <L <><esc>ilocalleader<esc>la
+inoremap <LL <><esc>ilocalleader<esc>la
 inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
@@ -568,7 +569,7 @@ inoremap <localleader>b <esc>bb
 
 " Yank till the end of the line
 nnoremap Y y$
-nnoremap <localleader>D 0D
+nnoremap <leader>d 0D
 
 " " Remapping ; and :
 " nnoremap : ;
