@@ -80,7 +80,7 @@ nnoremap <localleader>hs :split<cr>
 nnoremap <localleader>vs :vsplit<cr>
 
 " Resize splits when the window is resized
-au VimResized * exe "normal! \<C-w>="
+au VimResized <buffer> exe "normal! \<C-w>="
 
 "2}}}
 " Set relative number{{{2
@@ -89,9 +89,9 @@ au VimResized * exe "normal! \<C-w>="
 set number relativenumber
 
 augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * :set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * :set norelativenumber
 augroup end
 
 "EscapeRelativeNumber
@@ -189,9 +189,12 @@ nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzzzozozozz
 " nnoremap <localleader>lo mf:loadview<cr>zM`f
 nnoremap 'f `fzz
 
-" Auto-fold-save (not actually useful) and auto-saved-fold-reload
-" au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+" Auto-fold-save and auto-saved-fold-reload
+augroup AutoLoadview
+    autocmd!
+    " autocmd QuitPre * :execute ":normal! ggzMzM:mkview\<cr>"
+    autocmd BufNewFile,BufRead * silent loadview
+augroup end
 
 " Opening/closing folding
 nnoremap zo zozt
@@ -329,7 +332,7 @@ vnoremap <localleader>ac :center<cr>
 vnoremap <localleader>ar :right<cr>
 
 "2}}}
-" Basic navigation, searching remaps{{{
+" Basic navigation, searching remaps{{{2
 "-------------------------------------------------------------------
 
 " " Get off my lawn - helpful when learning Vim :)
@@ -339,15 +342,25 @@ vnoremap <localleader>ar :right<cr>
 " nnoremap <Down> :echoe "Use j"<cr>
 
 " Moving on the screen
-nnoremap H ^
-nnoremap J L
-nnoremap K H
-nnoremap L g_
+nnoremap H mh^
+nnoremap J mjL
+nnoremap K mkH
+nnoremap L mlg_
 
-vnoremap H ^
-vnoremap J L
-vnoremap K H
-vnoremap L g_
+vnoremap H mh^
+vnoremap J mjL
+vnoremap K mkH
+vnoremap L mlg_
+
+nnoremap 'h `h
+nnoremap 'j `j
+nnoremap 'k `k
+nnoremap 'l `l
+
+vnoremap 'h `h
+vnoremap 'j `j
+vnoremap 'k `k
+vnoremap 'l `l
 
 inoremap <localleader>zz <esc>zza
 inoremap <localleader>zt <esc>zta
@@ -415,14 +428,14 @@ nnoremap <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 " nnoremap / /\v
 " vnoremap / /\v
 
-"}}}
+"2}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
 inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
 "2}}}
-" Colorschemes{{{
+" Colorschemes{{{2
 "-------------------------------------------------------------------
 
 syntax on
@@ -448,8 +461,8 @@ set background=dark
 " Showcase comments in italics
 highlight Comment cterm=italic gui=italic
 
-"}}}
-" Diagraphs{{{
+"2}}}
+" Diagraphs{{{2
 "-------------------------------------------------------------------
 
 ""Make CTRL-K list diagraphs before each digraph entry
@@ -461,7 +474,7 @@ highlight Comment cterm=italic gui=italic
 "    return "\<C-S>"
 "endfunction
 
-"}}}
+"2}}}
 " Trailing White Space{{{2
 "-------------------------------------------------------------------
 
@@ -475,7 +488,7 @@ inoremap <localleader>dtw <Esc>mm0g_ld$`ma
 nnoremap <localleader>dtw mm0g_ld$`m
 
 "2}}}
-" Leader Mappings{{{
+" Leader Mappings{{{2
 "-------------------------------------------------------------------
 
 let maplocalleader=","
@@ -486,7 +499,7 @@ inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
 inoremap <L <><esc>ilocalleader<esc>la
 inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
-"}}}
+"2}}}
 " Line Breaking{{{2
 "-------------------------------------------------------------------
 
@@ -499,9 +512,9 @@ inoremap <localleader>lb <esc>f.a<cr><esc>
 
 syntax on
 augroup spelling
-  autocmd!
-  autocmd FileType tex setlocal spell spelllang=en_us
-  autocmd FileType txt setlocal spell spelllang=en_us
+    autocmd!
+    autocmd FileType tex :setlocal spell spelllang=en_us
+    autocmd FileType txt :setlocal spell spelllang=en_us
 augroup end
 
 " FixLastSpellingError
@@ -549,9 +562,9 @@ nnoremap vv ^vg_
 " To go back a word in insert mode
 inoremap <localleader>b <esc>bb
 
-" Go to a mark using quotes '
-nnoremap ' `
-nnoremap ` '
+" " Go to a mark using quotes '
+" nnoremap ' `
+" nnoremap ` '
 
 " Yank till the end of the line
 nnoremap Y y$
@@ -618,8 +631,15 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
 
+augroup TexBufEnter
+    autocmd!
+    autocmd BufNewFile,BufRead *.tex :source ~/.vimrc
+    autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
+    autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
+    autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
+augroup end
+
 "Sourcing everything for tex
-" nnoremap  <localleader>e :source ~/.vimrc<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>mm:loadview<cr>zM`m
 nnoremap  <localleader>e :source ~/.vimrc<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
 
 "Sourcing TexKeyBindings
@@ -662,12 +682,22 @@ nnoremap <localleader><localleader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
+augroup TexBuffAutoIndent
+    autocmd!
+    autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
+augroup end
+
+augroup WriteNewBuf
+    autocmd!
+    autocmd BufNewFile * :write
+augroup end
+
 nnoremap <localleader>w :w!<cr>:redraw!<cr>
 inoremap ;w <esc>:w!<cr>:redraw!<cr>a
 
-augroup auto_write_buffer
-  autocmd!
-  autocmd TextChanged,TextChangedI <buffer> silent write
+augroup AutoWriteBuf
+    autocmd!
+    autocmd TextChanged,TextChangedI <buffer> silent write
 augroup end
 
 nnoremap <localleader>q zMgg:wq<cr>
@@ -683,6 +713,11 @@ nnoremap <localleader>sf :w!<cr>:source %<cr>
 " Sourcing visual selection/current line for testing code
 vnoremap <localleader>S y:execute @@<cr>
 nnoremap <localleader>S ^vg_y:execute @@<cr>
+
+augroup AutoSourceMYVIMRC
+    autocmd!
+    autocmd BufNewFile,BufRead * :source ~/.vimrc
+augroup end
 
 " Sourcing .vimrc
 nnoremap  <localleader>v :source $MYVIMRC<cr>
