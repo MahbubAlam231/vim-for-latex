@@ -532,6 +532,60 @@ autocmd FileType tex nnoremap <buffer> toc :LatexTOC<CR>
 
 "}}}
 
+" Greek Alphabets{{{
+"-------------------------------------------------------------------
+
+inoremap ;al \alpha
+inoremap ;be \beta
+inoremap ;ga \gamma
+inoremap ;de \delta
+inoremap ;ep \epsilon
+inoremap ;vep \varepsilon
+inoremap ;ze \zeta
+inoremap ;et \eta
+inoremap ;th \theta
+inoremap ;vth \vartheta
+inoremap ;io \iota
+inoremap ;ka \kappa
+inoremap ;la \lambda
+inoremap ;mu \mu
+inoremap ;nu \nu
+inoremap ;xi \xi
+inoremap ;pi \pi
+inoremap ;rh \rho
+inoremap ;si \sigma
+inoremap ;ta \tau
+inoremap ;ph \phi
+inoremap ;vph \varphi
+inoremap ;ch \chi
+inoremap ;mch \mychi
+inoremap ;ps \psi
+inoremap ;om \omega
+
+
+inoremap ;GA \Gamma
+inoremap ;Ga \Gamma
+inoremap ;DE \Delta
+inoremap ;De \Delta
+inoremap ;TH \Theta
+inoremap ;Th \Theta
+inoremap ;LA \Lambda
+inoremap ;La \Lambda
+inoremap ;Xi \Xi
+inoremap ;XI \Xi
+inoremap ;PI \Pi
+inoremap ;Pi \Pi
+inoremap ;SI \Sigma
+inoremap ;Si \Sigma
+inoremap ;PH \Phi
+inoremap ;Ph \Phi
+inoremap ;PS \Psi
+inoremap ;Ps \Psi
+inoremap ;OM \Omega
+inoremap ;Om \Omega
+
+"}}}
+
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
