@@ -497,8 +497,10 @@ let maplocalleader=","
 " To get <> and write <localleader> easily
 inoremap << <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
+inoremap <L <><esc>ileader<esc>la
 inoremap <LL <><esc>ilocalleader<esc>la
-inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
+inoremap <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
 " Line Breaking{{{2
