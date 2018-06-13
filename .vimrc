@@ -185,20 +185,17 @@ setlocal foldmethod=manual
 nnoremap <localleader>f :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method (use it)
-nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzzzozozozz
-" nnoremap <localleader>lo mf:loadview<cr>zM`f
+nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzozozozz
 nnoremap 'f `fzz
 
-" Auto-fold-save and auto-saved-fold-reload
+" Auto-saved-fold-reload
 augroup AutoLoadview
     autocmd!
-    " autocmd QuitPre * :execute ":normal! ggzMzM:mkview\<cr>"
     autocmd BufNewFile,BufRead * silent loadview
 augroup end
 
 " Opening/closing folding
 nnoremap zo zozt
-" nnoremap zr zrzt
 nnoremap zc zczz
 nnoremap zr zrzz
 nnoremap zm zmzz
@@ -237,20 +234,6 @@ nmap <localleader>tt <Plug>TitlecaseLine
 " <Plug>TitlecaseLine " Titlecase the entire line
 
 vmap <localleader>t <Plug>Titlecase
-
-"-------------------------------------------------------------------
-" Uppercase first letter of a line
-"-------------------------------------------------------------------
-
-inoremap <localleader><localleader>c <Esc>mm^vU`ma
-nnoremap <localleader><localleader>c mm^vU`m
-
-"-------------------------------------------------------------------
-" Change case of a whole word
-"-------------------------------------------------------------------
-
-nnoremap <C-T> gUiw
-inoremap <C-T> <esc>gUliwea
 
 "3}}}
 "Templates and Selecting Template{{{3
@@ -349,13 +332,11 @@ vnoremap 'j `j
 vnoremap 'k `k
 vnoremap 'l `l
 
+nnoremap 'm `mzz
+
 inoremap <leader>zz <esc>zza
 inoremap <leader>zt <esc>zta
 inoremap <leader>zb <esc>zba
-
-vnoremap zz <esc>zzgv
-vnoremap zt <esc>ztgv
-vnoremap zb <esc>zbgv
 
 " Find matching character
 nnoremap <localleader>5 %
@@ -364,7 +345,6 @@ vnoremap <localleader>5 %
 " Mark and then go to the beginning or end of the file
 nnoremap gg mggg
 nnoremap G mgG
-nnoremap 'm `mzz
 nnoremap 'g `gzz
 
 " Creating newline
@@ -478,12 +458,12 @@ nnoremap <localleader>dtw mm0g_ld$`m
 " Leader Mappings{{{2
 "-------------------------------------------------------------------
 
-let mapleader="-"
+let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
 " To get <> and write <localleader> easily
 inoremap << <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
+inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
 inoremap <L <><esc>ileader<esc>la
 inoremap <LL <><esc>ilocalleader<esc>la
 inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
@@ -519,7 +499,7 @@ inoremap <localleader>sp <esc>:call FixLastSpellingError()<cr>a
 nnoremap < [s
 nnoremap > ]s
 nnoremap <localleader>s zg ]s
-nnoremap <localleader><localleader>s zg
+nnoremap <leader>s zg
 
 "2}}}
 " Substitute/change{{{2
@@ -552,17 +532,9 @@ nnoremap vv ^vg_
 " To go back a word in insert mode
 inoremap <localleader>b <esc>bb
 
-" " Go to a mark using quotes '
-" nnoremap ' `
-" nnoremap ` '
-
-" Yank till the end of the line
+" Yank till the end of the line and clearing a line
 nnoremap Y y$
 nnoremap <leader>d 0D
-
-" " Remapping ; and :
-" nnoremap : ;
-" nnoremap ; :
 
 "2}}}
 
@@ -621,7 +593,7 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
 
-augroup TexBufEnter
+augroup AutoSourceAllForTexBuf
     autocmd!
     autocmd BufNewFile,BufRead *.tex :source ~/.vimrc
     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
@@ -644,7 +616,7 @@ inoremap <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
 "Sourcing GeneralAbbreviations
 nnoremap <localleader>g :call Abbreviations()<cr>gen<cr>
 
-"Sourcing MathAbbreviations
+" Sourcing MathAbbreviations
 nnoremap <localleader>m :call Abbreviations()<cr>math<cr>
 
 "2}}}
@@ -652,21 +624,23 @@ nnoremap <localleader>m :call Abbreviations()<cr>math<cr>
 "-------------------------------------------------------------------
 
 " Opening TeXKeyBindings "t=tex
-nnoremap <localleader><localleader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <localleader><localleader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+nnoremap <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Inputted File "IO=Inputted Open
 " nnoremap <C-I><C-O> <Esc>0f{lvf.fx"py:new <C-R>p<cr>
-nnoremap <localleader><localleader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
+nnoremap <leader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
 
 " Opening Ultisnips "u=ultisnips
-nnoremap <localleader><localleader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
-nnoremap <localleader><localleader>a :vnew ~/.vim/Abbreviations<cr>
+nnoremap <leader>a :vnew ~/.vim/Abbreviations<cr>
+nnoremap <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening .vimrc
-nnoremap <localleader><localleader>v :vsplit $MYVIMRC<cr>
+nnoremap <leader>v :vsplit $MYVIMRC<cr>
 
 "2}}}
 
@@ -680,7 +654,7 @@ augroup TexBuffAutoIndent
     autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
 augroup end
 
-augroup WriteNewBuf
+augroup AutoWriteNewBuf
     autocmd!
     autocmd BufNewFile * :write
 augroup end
