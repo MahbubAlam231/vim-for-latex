@@ -20,7 +20,6 @@ inoremap <buffer> 44 4
 inoremap <buffer> <localleader>4 <esc>o\[<cr>\]<esc>O
 inoremap <buffer> 5 <esc>l2f}i
 inoremap <buffer> 55 5
-" inoremap <buffer> <localleader><cr> <esc>jo
 inoremap <buffer> 6 <esc>jo
 inoremap <buffer> 66 6
 inoremap <buffer> 7 <esc>hi
@@ -302,6 +301,9 @@ inoremap <buffer> <localleader>slmrz \mathrm{SL}(m,\mathbb{R})/\mathrm{SL}(m,\ma
 inoremap <buffer> <localleader>sl2rz \mathrm{SL}(2,\mathbb{R})/\mathrm{SL}(2,\mathbb{Z})
 inoremap <buffer> <localleader>sl3rz \mathrm{SL}(3,\mathbb{R})/\mathrm{SL}(3,\mathbb{Z})
 
+"}}}
+" PSL{{{
+
 inoremap <buffer> <localleader>psl \mathrm{PSL}()<esc>i
 inoremap <buffer> <localleader>psln \mathrm{PSL}(n, )<esc>i
 inoremap <buffer> <localleader>pslm \mathrm{PSL}(m, )<esc>i
@@ -367,7 +369,6 @@ inoremap <buffer> <localleader>sumc \mathrm{SU}(m,\mathbb{C})
 inoremap <buffer> <localleader>x \times
 inoremap <buffer> <localleader>o \circ
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
-" inoremap <buffer> <localleader>% \frac{}{}<esc>F}i
 
 inoremap <buffer> <localleader>n \norm{}<esc>i
 inoremap <buffer> <localleader>p \partial
@@ -386,11 +387,9 @@ inoremap <buffer> <localleader>. \dot{}<esc>i
 inoremap <buffer> <localleader>bm \bm{}<esc>i
 
 inoremap <buffer> ^^ ^{}<esc>i
-" inoremap <buffer> ^^^ {}^{}<esc>hF}i
 inoremap <buffer> <localleader>^ {}^{}<esc>hF}i
 
 inoremap <buffer> __ _{}<esc>i
-" inoremap <buffer> ___ {}_{}<esc>hF}i
 inoremap <buffer> <localleader>_ {}_{}<esc>hF}i
 
 inoremap <buffer> ^_ {}^{}_{}<esc>F};i
@@ -505,6 +504,18 @@ inoremap <buffer> <localleader>N \nabla
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
 "-------------------------------------------------------------------
+" Rectifying Double Dollar Wrap
+"-------------------------------------------------------------------
+
+nnoremap <buffer> <F7> /\$\$<CR>xxi\begin{equation*}<esc>nxxa\end{equation*}<esc>
+
+"-------------------------------------------------------------------
+" Environment Completion
+"-------------------------------------------------------------------
+
+inoremap <buffer> <F3> <esc>F{vf}"ay$a<CR><CR>\end<esc>"apka<C-i>
+
+"-------------------------------------------------------------------
 " Referencing Theorem, Citation etc.
 "-------------------------------------------------------------------
 
@@ -516,17 +527,6 @@ inoremap <buffer> <localleader>cit <esc>hmmlx`ma~\cite{}<esc>i
 "-------------------------------------------------------------------
 
 autocmd FileType tex nnoremap <buffer> toc :LatexTOC<CR>
-
-
-" inoremap <buffer> <localleader><C-S> \sin
-" inoremap <buffer> <localleader><M-c> \cos
-" inoremap <buffer> <localleader><C-T> \tan
-" inoremap <buffer> <localleader><M-l> \ell
-" inoremap <buffer> <localleader>2 \right
-" inoremap <buffer> <localleader>6 \partial
-" inoremap <buffer> <localleader>@ \circ
-" inoremap <buffer> <localleader>. \cdot
-" inoremap <buffer> <localleader>: \dots
 
 "}}}
 
@@ -593,8 +593,8 @@ inoremap ;Om \Omega
 " Compilation
 "-------------------------------------------------------------------
 
-" inoremap <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
-" nnoremap <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
+" inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
+" nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
 inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>a
 nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>
 inoremap <buffer> <F8> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>a
@@ -602,19 +602,7 @@ nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>
 inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>a
 nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>
 inoremap <buffer> <F7> <esc>maG0lv$"ry:w<CR>:!pdflatex <C-R>r<CR>'a
-" inoremap <F6> <esc>mcG0lv$"by:w<CR>:!latexmk -pdf -bibtex <C-R>b<CR>'c
-
-"-------------------------------------------------------------------
-" Rectifying Double Dollar Wrap
-"-------------------------------------------------------------------
-
-nnoremap <buffer> <F7> /\$\$<CR>xxi\begin{equation*}<esc>nxxa\end{equation*}<esc>
-
-"-------------------------------------------------------------------
-" Environment Completion
-"-------------------------------------------------------------------
-
-inoremap <buffer> <F3> <esc>F{vf}"ay$a<CR><CR>\end<esc>"apka<C-i>
+" inoremap <buffer> <F6> <esc>mcG0lv$"by:w<CR>:!latexmk -pdf -bibtex <C-R>b<CR>'c
 
 "}}}
 
@@ -690,6 +678,7 @@ let m = matchadd("YellowMarkerGroup",'\\item')
 highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
 
 let m = matchadd("SalmonMarkerGroup",'% Array')
+let m = matchadd("SalmonMarkerGroup",'% Matrix')
 let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
 let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
 

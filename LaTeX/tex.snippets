@@ -541,6 +541,8 @@ snippet sl3rz
 $\mathrm{SL}(3,\mathbb{R})/\mathrm{SL}(3,\mathbb{Z})$$0
 endsnippet
 
+#}}}
+# PSL{{{
 
 snippet psl
 $\mathrm{PSL}($1)$$0
@@ -1082,7 +1084,7 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet matn
-% Bmatrix
+% Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
     ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ % add[2em]toIncreaseSpacing
@@ -1118,19 +1120,6 @@ snippet pmatn
 \end{pmatrix}
 $0
 endsnippet
-
-
-# snippet matn
-# % Pmatrix
-# \renewcommand\arraystretch{1}
-# \begin{pmatrix}
-#     ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-#     ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-#     \vdots & \vdots & \ddots & \vdots \\\
-#     ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-# \end{pmatrix}
-# $0
-# endsnippet
 
 
 snippet mat
@@ -1180,7 +1169,7 @@ $0
 endsnippet
 
 
-snippet cmat
+snippet cbmat
 \begin{bmatrix}
     $1 \\\
     $2
@@ -1443,7 +1432,7 @@ endsnippet
 snippet bib
 % Bibliography
 \bibliographystyle{${1:alpha}}
-\bibliography{mybib}
+\bibliography{bib}
 
 $0
 endsnippet
