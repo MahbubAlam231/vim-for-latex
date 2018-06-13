@@ -174,7 +174,7 @@ let g:loaded_youcompleteme = 1
 let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_Folding=1
 " let g:LatexBox_fold_envs=1
-let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_latexmk_preview_continuously = 1
 
 "-------------------------------------------------------------------
 " Folding
@@ -221,19 +221,6 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 "-------------------------------------------------------------------
 
 nnoremap <localleader>nerd :NERDTree<cr>
-
-"3}}}
-" Text Object Entire{{{3
-"-------------------------------------------------------------------
-" Text Object Entire
-"-------------------------------------------------------------------
-
-" call textobj#user#map('entire',{
-"             \   '-': {
-"             \     'select-a': 'ae',
-"             \     'select-i': 'ie',
-"             \   }
-"             \ })
 
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
@@ -362,13 +349,13 @@ vnoremap 'j `j
 vnoremap 'k `k
 vnoremap 'l `l
 
-inoremap <localleader>zz <esc>zza
-inoremap <localleader>zt <esc>zta
-inoremap <localleader>zb <esc>zba
+inoremap <leader>zz <esc>zza
+inoremap <leader>zt <esc>zta
+inoremap <leader>zb <esc>zba
 
-vnoremap zz <esc>zza
-vnoremap zt <esc>zta
-vnoremap zb <esc>zba
+vnoremap zz <esc>zzgv
+vnoremap zt <esc>ztgv
+vnoremap zb <esc>zbgv
 
 " Find matching character
 nnoremap <localleader>5 %
