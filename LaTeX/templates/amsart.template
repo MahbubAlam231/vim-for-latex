@@ -46,12 +46,21 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{example}{Example}[section]
-\newtheorem{exercise}{Exercise}[section]
-\newtheorem{remark}[theorem]{Remark}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+%-------------------------------------------------------------------
+% Unnumbered Environments
+%-------------------------------------------------------------------
+
+\newtheorem*{uremark}{Remark}
 
 % Newcommands
 %-------------------------------------------------------------------
