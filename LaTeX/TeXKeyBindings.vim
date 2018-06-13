@@ -374,7 +374,7 @@ inoremap <buffer> <localleader>p \partial
 
 inoremap <buffer> <localleader>wt \widetilde{}<esc>i
 inoremap <buffer> <localleader>~ \widetilde{}<esc>i
-inoremap <buffer> <localleader>nt \tilde{}<esc>i
+inoremap <buffer> <localleader>jt \tilde{}<esc>i
 
 inoremap <buffer> <localleader>h \widehat{}<esc>i
 inoremap <buffer> `6 \widehat{}<esc>i
@@ -393,7 +393,7 @@ inoremap <buffer> __ _{}<esc>i
 " inoremap <buffer> ___ {}_{}<esc>hF}i
 inoremap <buffer> <localleader>_ {}_{}<esc>hF}i
 
-inoremap <buffer> _^ {}_{}^{}<esc>F};i
+inoremap <buffer> ^_ {}^{}_{}<esc>F};i
 
 "}}}
 " lim, int, sum"{{{
