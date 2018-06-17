@@ -115,7 +115,6 @@ call vundle#begin()           "Vundle_will_run_the_following_Plugins
 
 
 " Plugin 'coot/atp_vim'
-" Plugin 'easymotion/vim-easymotion'
 " Plugin 'ervandew/supertab'
 " Plugin 'michaeljsmith/vim-indent-object'
 " Plugin 'valloric/youcompleteme'
@@ -128,6 +127,7 @@ Plugin 'christoomey/vim-sort-motion'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'christoomey/vim-titlecase'
 Plugin 'danro/rename.vim'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
@@ -158,18 +158,27 @@ filetype plugin indent on     "required
 " Plugin mappings{{{2
 "-------------------------------------------------------------------
 
-" YouCompleteMe{{{3
-"-------------------------------------------------------------------
-" Plugin 'valloric/youcompleteme'
-"-------------------------------------------------------------------
+" CtrlP Settings{{{3
 
-let g:loaded_youcompleteme = 1
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 "3}}}
+" Easymotion{{{
+
+nmap ;w <Plug>(easymotion-bd-w)
+vmap ;w <Plug>(easymotion-bd-w)
+
+nmap ;e <Plug>(easymotion-bd-e)
+vmap ;e <Plug>(easymotion-bd-e)
+
+nmap ;f <Plug>(easymotion-bd-f)
+vmap ;f <Plug>(easymotion-bd-f)
+
+"}}}
 " LaTeX-Box and Folding{{{3
-"-------------------------------------------------------------------
-" Plugin 'LaTeX-Box-Team/LaTeX-Box'
-"-------------------------------------------------------------------
 
 let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_Folding=1
@@ -204,42 +213,19 @@ nnoremap <space> zazz
 nnoremap <localleader><space> zazt
 
 "3}}}
-" CtrlP Settings{{{3
-
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-"3}}}
 " NERDtree{{{3
-"-------------------------------------------------------------------
-" Plugin 'scrooloose/nerdtree'
-"-------------------------------------------------------------------
 
 nnoremap <localleader>nerd :NERDTree<cr>
 
 "3}}}
-" Titlecase and Uppercase first letter of a line{{{3
-"-------------------------------------------------------------------
-" Plugin 'christoomey/vim-titlecase'
+" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{3
 "-------------------------------------------------------------------
 
-let g:titlecase_map_keys = 0
-
-nmap <localleader>t <Plug>Titlecase
-" <Plug>Titlecase " Titlecase the region defined by a text object or motion
-
-nmap <localleader>tt <Plug>TitlecaseLine
-" <Plug>TitlecaseLine " Titlecase the entire line
-
-vmap <localleader>t <Plug>Titlecase
+nnoremap <C-j> /<+<cr>cf>
+inoremap <C-j> <esc>/<+<cr>cf>
 
 "3}}}
 "Templates and Selecting Template{{{3
-"-------------------------------------------------------------------
-" Plugin 'tibabit/vim-templates'
-"-------------------------------------------------------------------
 
 let g:tmpl_author_name='Mahbub Alam'
 
@@ -275,11 +261,22 @@ nnoremap <localleader>ams :call Template()<cr>ams<cr>
 nnoremap <localleader>rep :call Template()<cr>rep<cr>
 
 "3}}}
-" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{3
-"-------------------------------------------------------------------
+" Titlecase and Uppercase first letter of a line{{{3
 
-nnoremap <C-j> /<+<cr>cf>
-inoremap <C-j> <esc>/<+<cr>cf>
+let g:titlecase_map_keys = 0
+
+nmap <localleader>t <Plug>Titlecase
+" <Plug>Titlecase " Titlecase the region defined by a text object or motion
+
+nmap <localleader>tt <Plug>TitlecaseLine
+" <Plug>TitlecaseLine " Titlecase the entire line
+
+vmap <localleader>t <Plug>Titlecase
+
+"3}}}
+" YouCompleteMe{{{3
+
+let g:loaded_youcompleteme = 1
 
 "3}}}
 
@@ -662,9 +659,9 @@ augroup end
 nnoremap <localleader>w :w!<cr>:redraw!<cr>
 inoremap ;w <esc>:w!<cr>:redraw!<cr>a
 
-augroup AutoWriteBuf
+augroup ContinuouslyAutoWriteBuf
     autocmd!
-    autocmd TextChanged,TextChangedI <buffer> silent write
+    autocmd TextChanged,TextChangedI * silent write
 augroup end
 
 nnoremap <localleader>q zMgg:wq<cr>
