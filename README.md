@@ -15,6 +15,6 @@ My personalization of vim for mainly LaTeX
 
 ### For macOS
 - Put .vimrc in /Users/(your_pc_name)
-- Replace ' ~/.vim' by '/Users/(your_pc_name)/.vim' in the above instructions
-- There are some lines (after the 547th line) inside .vimrc file as well that contains ' ~/.vim', make similar changes there as well.
+- Replace '~/.vim' by '/Users/(your_pc_name)/.vim' in the above instructions
+- There are some lines (after the 547th line) inside .vimrc file as well that contains '~/.vim', make similar changes there as well.
 - folding.vim might make your vim slower
