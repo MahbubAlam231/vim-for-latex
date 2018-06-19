@@ -1,6 +1,6 @@
 
 "-------------------------------------------------------------------
-" Mahbub'sTeXKeyBindings
+" Mahbub's TeXKeyBindings
 "-------------------------------------------------------------------
 
 " Numbers, Braces and Some symbols{{{
