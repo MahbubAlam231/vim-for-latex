@@ -189,7 +189,6 @@ let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_fold_envs=1
 let g:LatexBox_latexmk_preview_continuously = 1
 
-"-------------------------------------------------------------------
 " Folding
 "-------------------------------------------------------------------
 
@@ -229,7 +228,6 @@ nnoremap <localleader>nerd :NERDTree<cr>
 
 let g:tmpl_author_name='Mahbub Alam'
 
-"-------------------------------------------------------------------
 " Selecting template
 "-------------------------------------------------------------------
 
