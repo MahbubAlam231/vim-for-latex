@@ -244,13 +244,13 @@ inoremap <buffer> <localleader>mmqp \mathrm{M}(m,\mathbb{Q}_p)
 inoremap <buffer> <localleader>gl \mathrm{GL}()<esc>i
 inoremap <buffer> <localleader>gln \mathrm{GL}(n, )<esc>i
 inoremap <buffer> <localleader>glm \mathrm{GL}(m, )<esc>i
-inoremap <buffer> <localleader>glnp \mathrm{GL}^+(n, )<esc>i
-inoremap <buffer> <localleader>glmp \mathrm{GL}^+(m, )<esc>i
+inoremap <buffer> <localleader>glpn \mathrm{GL}^+(n, )<esc>i
+inoremap <buffer> <localleader>glpm \mathrm{GL}^+(m, )<esc>i
 
 inoremap <buffer> <localleader>glnr \mathrm{GL}(n,\mathbb{R})
 inoremap <buffer> <localleader>glmr \mathrm{GL}(m,\mathbb{R})
-inoremap <buffer> <localleader>glnpr \mathrm{GL}^+(n,\mathbb{R})
-inoremap <buffer> <localleader>glmpr \mathrm{GL}^+(m,\mathbb{R})
+inoremap <buffer> <localleader>glpnr \mathrm{GL}^+(n,\mathbb{R})
+inoremap <buffer> <localleader>glpmr \mathrm{GL}^+(m,\mathbb{R})
 
 inoremap <buffer> <localleader>glnc \mathrm{GL}(n,\mathbb{C})
 inoremap <buffer> <localleader>glmc \mathrm{GL}(m,\mathbb{C})
