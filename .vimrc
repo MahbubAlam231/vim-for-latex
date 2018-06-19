@@ -1,6 +1,6 @@
 
 "-------------------------------------------------------------------
-" Mahbub's.vimrc
+" Mahbub's .vimrc
 "-------------------------------------------------------------------
 
 " Preamble{{{
@@ -639,8 +639,8 @@ nnoremap <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
 nnoremap <leader>a :vnew ~/.vim/Abbreviations<cr>
-nnoremap <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <leader>g :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <leader>m :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening .vimrc
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
