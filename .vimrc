@@ -81,7 +81,7 @@ nnoremap <localleader>vs :vsplit<cr>
 
 augroup ResizeSplitsWhenTheWindowIsResized
     autocmd!
-    au VimResized <buffer> exe "normal! \<C-w>="
+    autocmd VimResized <buffer> exe "normal! \<C-w>="
 augroup end
 
 "2}}}
