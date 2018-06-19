@@ -450,7 +450,7 @@ inoremap <buffer> <localleader>> \geq
 inoremap <buffer> n= \neq 
 inoremap <buffer> == \equiv
 
-inoremap <buffer> <localleader>on \operatorname{}<esc>i
+inoremap <buffer> <localleader>opn \operatorname{}<esc>i
 
 "}}}
 " Arrows"{{{
@@ -535,54 +535,54 @@ autocmd FileType tex nnoremap <buffer> toc :LatexTOC<CR>
 " Greek Alphabets{{{
 "-------------------------------------------------------------------
 
-inoremap ;al \alpha
-inoremap ;be \beta
-inoremap ;ga \gamma
-inoremap ;de \delta
-inoremap ;ep \epsilon
-inoremap ;vep \varepsilon
-inoremap ;ze \zeta
-inoremap ;et \eta
-inoremap ;th \theta
-inoremap ;vth \vartheta
-inoremap ;io \iota
-inoremap ;ka \kappa
-inoremap ;la \lambda
-inoremap ;mu \mu
-inoremap ;nu \nu
-inoremap ;xi \xi
-inoremap ;pi \pi
-inoremap ;rh \rho
-inoremap ;si \sigma
-inoremap ;ta \tau
-inoremap ;ph \phi
-inoremap ;vph \varphi
-inoremap ;ch \chi
-inoremap ;mch \mychi
-inoremap ;ps \psi
-inoremap ;om \omega
+inoremap <buffer> ;al \alpha
+inoremap <buffer> ;be \beta
+inoremap <buffer> ;ga \gamma
+inoremap <buffer> ;de \delta
+inoremap <buffer> ;ep \epsilon
+inoremap <buffer> ;vep \varepsilon
+inoremap <buffer> ;ze \zeta
+inoremap <buffer> ;et \eta
+inoremap <buffer> ;th \theta
+inoremap <buffer> ;vth \vartheta
+inoremap <buffer> ;io \iota
+inoremap <buffer> ;ka \kappa
+inoremap <buffer> ;la \lambda
+inoremap <buffer> ;mu \mu
+inoremap <buffer> ;nu \nu
+inoremap <buffer> ;xi \xi
+inoremap <buffer> ;pi \pi
+inoremap <buffer> ;rh \rho
+inoremap <buffer> ;si \sigma
+inoremap <buffer> ;ta \tau
+inoremap <buffer> ;ph \phi
+inoremap <buffer> ;vph \varphi
+inoremap <buffer> ;ch \chi
+inoremap <buffer> ;mch \mychi
+inoremap <buffer> ;ps \psi
+inoremap <buffer> ;om \omega
 
 
-inoremap ;GA \Gamma
-inoremap ;Ga \Gamma
-inoremap ;DE \Delta
-inoremap ;De \Delta
-inoremap ;TH \Theta
-inoremap ;Th \Theta
-inoremap ;LA \Lambda
-inoremap ;La \Lambda
-inoremap ;Xi \Xi
-inoremap ;XI \Xi
-inoremap ;PI \Pi
-inoremap ;Pi \Pi
-inoremap ;SI \Sigma
-inoremap ;Si \Sigma
-inoremap ;PH \Phi
-inoremap ;Ph \Phi
-inoremap ;PS \Psi
-inoremap ;Ps \Psi
-inoremap ;OM \Omega
-inoremap ;Om \Omega
+inoremap <buffer> ;GA \Gamma
+inoremap <buffer> ;Ga \Gamma
+inoremap <buffer> ;DE \Delta
+inoremap <buffer> ;De \Delta
+inoremap <buffer> ;TH \Theta
+inoremap <buffer> ;Th \Theta
+inoremap <buffer> ;LA \Lambda
+inoremap <buffer> ;La \Lambda
+inoremap <buffer> ;Xi \Xi
+inoremap <buffer> ;XI \Xi
+inoremap <buffer> ;PI \Pi
+inoremap <buffer> ;Pi \Pi
+inoremap <buffer> ;SI \Sigma
+inoremap <buffer> ;Si \Sigma
+inoremap <buffer> ;PH \Phi
+inoremap <buffer> ;Ph \Phi
+inoremap <buffer> ;PS \Psi
+inoremap <buffer> ;Ps \Psi
+inoremap <buffer> ;OM \Omega
+inoremap <buffer> ;Om \Omega
 
 "}}}
 
