@@ -233,22 +233,22 @@ let g:tmpl_author_name='Mahbub Alam'
 
 " Select Template Type
 function! Template()
-  let a:code=input("Which Template: ")
+    let a:code=input("Which Template: ")
 
-  "art
-  if(a:code=="art")
+    "art
+    if(a:code=="art")
     :TemplateInit article
-  endif
+    endif
 
-  "ams
-  if(a:code=="ams")
+    "ams
+    if(a:code=="ams")
     :TemplateInit amsart
-  endif
+    endif
 
-  "rep
-  if(a:code=="rep")
+    "rep
+    if(a:code=="rep")
     :TemplateInit report
-  endif
+    endif
 
 endfunction
 
@@ -377,14 +377,14 @@ nnoremap <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 " nnoremap N Nzz:call HLNext(1)<cr>
 
 " function! HLNext(blinktime)
-"         let [bufnum, lnum, col, off] = getpos('.')
-"         let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-"         let target_pat = '\c\%#\%('.@/.'\)'
-"         let ring = matchadd('WhiteOnRed', target_pat, 101)
-"         redraw
-"         exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-"         call matchdelete(ring)
-"         redraw
+"     let [bufnum, lnum, col, off] = getpos('.')
+"     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+"     let target_pat = '\c\%#\%('.@/.'\)'
+"     let ring = matchadd('WhiteOnRed', target_pat, 101)
+"     redraw
+"     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+"     call matchdelete(ring)
+"     redraw
 " endfunction
 
 " Vim very magic mode search
@@ -493,7 +493,7 @@ augroup end
 
 " FixLastSpellingError
 function! FixLastSpellingError()
-  :normal! mm[s1z=`m
+    :normal! mm[s1z=`m
 endfunction
 
 nnoremap <localleader>sp :call FixLastSpellingError()<cr>
@@ -578,18 +578,18 @@ endfunction
 
 " Select Abbreviation Type
 function! Abbreviations()
-  let a:code=input("Which Abbreviation: ")
-  "gen
-  if(a:code=="gen")
+    let a:code=input("Which Abbreviation: ")
+    "gen
+    if(a:code=="gen")
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
-		set spellfile=~/.vim/spell/math.utf-8.add
-  endif
+        set spellfile=~/.vim/spell/math.utf-8.add
+    endif
 
-  "math
-  if(a:code=="math")
+    "math
+    if(a:code=="math")
     source ~/.vim/Abbreviations/MathAbbreviations.vim
-		set spellfile=~/.vim/spell/math.utf-8.add
-  endif
+        set spellfile=~/.vim/spell/math.utf-8.add
+    endif
 
 endfunction
 
@@ -652,7 +652,7 @@ nnoremap <leader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-augroup TexBuffAutoIndent
+augroup TexBufAutoIndent
     autocmd!
     autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
 augroup end
