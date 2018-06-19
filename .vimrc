@@ -113,9 +113,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()           "Vundle_will_run_the_following_Plugins
 
 
-
 " Plugin 'coot/atp_vim'
 " Plugin 'ervandew/supertab'
+" Plugin 'justinmk/vim-sneak'
 " Plugin 'michaeljsmith/vim-indent-object'
 " Plugin 'valloric/youcompleteme'
 " Plugin 'vim-scripts/FuzzyFinder'
@@ -129,7 +129,6 @@ Plugin 'christoomey/vim-titlecase'
 Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
@@ -148,7 +147,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'w0ng/vim-hybrid'
-
 
 
 call vundle#end()             "required
@@ -177,6 +175,12 @@ vmap ;e <Plug>(easymotion-bd-e)
 nmap ;f <Plug>(easymotion-bd-f)
 vmap ;f <Plug>(easymotion-bd-f)
 
+nmap ;s <Plug>(easymotion-s2)
+vmap ;s <Plug>(easymotion-s2)
+
+nmap ;t <Plug>(easymotion-t2)
+vmap ;t <Plug>(easymotion-t2)
+
 "}}}
 " LaTeX-Box and Folding{{{3
 
@@ -194,18 +198,19 @@ setlocal foldmethod=manual
 nnoremap <localleader>f :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method (use it)
-nnoremap <localleader>mk mfzMzMgg:w!<cr>:mkview<cr>`fzozozozz
+nnoremap <localleader>mk mf2zMgg:w!<cr>:mkview<cr>`f3zozz
 nnoremap 'f `fzz
 
-" Auto-saved-fold-reload
 augroup AutoLoadview
     autocmd!
     autocmd BufNewFile,BufRead * silent loadview
 augroup end
 
 " Opening/closing folding
-nnoremap zo zozt
-nnoremap zc zczz
+nnoremap zo 2zozt
+nnoremap zc 2zczz
+nnoremap zoo 3zozt
+nnoremap zcc 3zczz
 nnoremap zr zrzz
 nnoremap zm zmzz
 nnoremap zM zMzz
@@ -218,14 +223,9 @@ nnoremap <localleader><space> zazt
 nnoremap <localleader>nerd :NERDTree<cr>
 
 "3}}}
-" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{3
-"-------------------------------------------------------------------
-
-nnoremap <C-j> /<+<cr>cf>
-inoremap <C-j> <esc>/<+<cr>cf>
-
-"3}}}
 "Templates and Selecting Template{{{3
+
+" Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim"
 
 let g:tmpl_author_name='Mahbub Alam'
 
@@ -272,6 +272,7 @@ nmap <localleader>tt <Plug>TitlecaseLine
 " <Plug>TitlecaseLine " Titlecase the entire line
 
 vmap <localleader>t <Plug>Titlecase
+" <Plug>Titlecase " Titlecase the visually selected region
 
 "3}}}
 " YouCompleteMe{{{3
@@ -474,10 +475,18 @@ nnoremap <localleader>lb f.a<cr><esc>
 inoremap <localleader>lb <esc>f.a<cr><esc>
 
 "2}}}
+" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{2
+"-------------------------------------------------------------------
+
+nnoremap <C-j> /<++><cr>cf>
+inoremap <C-j> <esc>/<++><cr>cf>
+
+"2}}}
 " Spelling Check{{{2
 "-------------------------------------------------------------------
 
 syntax on
+
 augroup spelling
     autocmd!
     autocmd FileType tex :setlocal spell spelllang=en_us
