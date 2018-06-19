@@ -79,8 +79,10 @@ set splitbelow                        " Open new splits below
 nnoremap <localleader>hs :split<cr>
 nnoremap <localleader>vs :vsplit<cr>
 
-" Resize splits when the window is resized
-au VimResized <buffer> exe "normal! \<C-w>="
+augroup ResizeSplitsWhenTheWindowIsResized
+    autocmd!
+    au VimResized <buffer> exe "normal! \<C-w>="
+augroup end
 
 "2}}}
 " Set relative number{{{2
@@ -258,6 +260,12 @@ nnoremap <localleader>art :call Template()<cr>art<cr>
 nnoremap <localleader>ams :call Template()<cr>ams<cr>
 nnoremap <localleader>rep :call Template()<cr>rep<cr>
 
+" Placeholders <++>, Ctrl-j jumps to the next match
+"-------------------------------------------------------------------
+
+nnoremap <C-j> /<++><cr>cf>
+inoremap <C-j> <esc>/<++><cr>cf>
+
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
 
@@ -347,6 +355,15 @@ nnoremap 'g `gzz
 nnoremap <localleader>o mmo<esc>`m
 nnoremap <localleader>O mmO<esc>`m
 
+" Marking before searching
+nnoremap / ms/
+
+nnoremap 's `s
+vnoremap 's `s
+
+" Search within visual selection
+vnoremap / <esc>ms/\%V
+
 " Don't move on after */#
 nnoremap * *<c-o>
 nnoremap # #<c-o>
@@ -354,9 +371,6 @@ nnoremap # #<c-o>
 " Keep search matches in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-
-" Search within visual selection
-vnoremap / <esc>/\%V
 
 " Search the visually selected using */# (from Scrooloose)
 function! s:VSerSearch()
@@ -471,13 +485,6 @@ inoremap <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 nnoremap <localleader>lb f.a<cr><esc>
 inoremap <localleader>lb <esc>f.a<cr><esc>
-
-"2}}}
-" Placeholders <++>, Ctrl-j jumps to the next match, careful about <+\infty{{{2
-"-------------------------------------------------------------------
-
-nnoremap <C-j> /<++><cr>cf>
-inoremap <C-j> <esc>/<++><cr>cf>
 
 "2}}}
 " Spelling Check{{{2
