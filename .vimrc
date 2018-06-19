@@ -599,14 +599,14 @@ endfunction
 
 augroup AutoSourceAllForTexBuf
     autocmd!
-    autocmd BufNewFile,BufRead *.tex :source ~/.vimrc
+    autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
     autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
 augroup end
 
 "Sourcing everything for tex
-nnoremap  <localleader>e :source ~/.vimrc<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
+nnoremap  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
 
 "Sourcing TexKeyBindings
 nnoremap <F4> :call KeyBindings()<cr>tex<cr>
@@ -632,7 +632,6 @@ nnoremap <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Inputted File "IO=Inputted Open
-" nnoremap <C-I><C-O> <Esc>0f{lvf.fx"py:new <C-R>p<cr>
 nnoremap <leader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
 
 " Opening Ultisnips "u=ultisnips
@@ -687,7 +686,7 @@ nnoremap <localleader>S ^vg_y:execute @@<cr>
 
 augroup AutoSourceMYVIMRC
     autocmd!
-    autocmd BufNewFile,BufRead * :source ~/.vimrc
+    autocmd BufNewFile,BufRead * :source $MYVIMRC
 augroup end
 
 " Sourcing .vimrc
