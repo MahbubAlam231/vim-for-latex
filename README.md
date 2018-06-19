@@ -10,4 +10,4 @@ My personalization of vim for mainly LaTeX
 - Install the plugin LaTeX-Box (https://github.com/LaTeX-Box-Team/LaTeX-Box), create ~/.vim/bundle/LaTeX-Box/ftplugin/tex, and put folding.vim in that
 - Install the plugin vim-templates (https://github.com/tibabit/vim-templates), and put amsart.template, article.template and report.template in ~/.vim/bundle/vim-templates/templates
 
-For mac OS replace '~/.vim' by '/Users/(yourpc)/.vim'
+For macOS replace '~/.vim' by '/Users/(yourpc)/.vim'
