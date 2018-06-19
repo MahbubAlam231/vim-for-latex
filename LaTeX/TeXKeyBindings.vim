@@ -589,10 +589,6 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-"-------------------------------------------------------------------
-" Compilation
-"-------------------------------------------------------------------
-
 " inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
 " nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
 inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>a
@@ -808,7 +804,6 @@ let m = matchadd("asterisk",'\*')
 " Useful or useless{{{
 "-------------------------------------------------------------------
 
-"-------------------------------------------------------------------
 " Correct Labelling
 "-------------------------------------------------------------------
 
@@ -820,7 +815,6 @@ let m = matchadd("asterisk",'\*')
 
 " nnoremap <C-Right> :call CorrectLabelling()<CR>
 
-"-------------------------------------------------------------------
 " Convert The TeX File To Markdown File Because Pandoc is of No Use
 "-------------------------------------------------------------------
 
