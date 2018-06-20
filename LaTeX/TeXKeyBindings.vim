@@ -491,10 +491,10 @@ inoremap <buffer> <localleader>lmto \longmapsto
 " Misc{{{
 "-------------------------------------------------------------------
 
-autocmd FileType tex inoremap <buffer> /, \,
-autocmd FileType tex inoremap <buffer> /. \,
-autocmd FileType tex inoremap <buffer> /,. \,
-autocmd FileType tex inoremap <buffer> /., \,
+augroup SpaceInMathMode
+    autocmd!
+    autocmd FileType tex inoremap <buffer> /, \,
+augroup end
 
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 
@@ -504,10 +504,10 @@ inoremap <buffer> <localleader>N \nabla
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
 "-------------------------------------------------------------------
-" Rectifying Double Dollar Wrap
+" Dollar to \[\]
 "-------------------------------------------------------------------
 
-nnoremap <buffer> <F7> /\$\$<CR>xxi\begin{equation*}<esc>nxxa\end{equation*}<esc>
+nnoremap <buffer> <localleader>dtb lvt$yhdf$o\[<cr>\]<esc>O<esc>"0p
 
 "-------------------------------------------------------------------
 " Environment Completion
@@ -591,13 +591,13 @@ inoremap <buffer> ;Om \Omega
 
 " inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
 " nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
-inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>a
-nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>
-inoremap <buffer> <F8> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>a
-nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>
-inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>a
-nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>
-inoremap <buffer> <F7> <esc>maG0lv$"ry:w<CR>:!pdflatex <C-R>r<CR>'a
+inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F8> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
+" inoremap <buffer> <F7> <esc>maG0lv$"ry:w<CR>:!pdflatex <C-R>r<CR>'a
 " inoremap <buffer> <F6> <esc>mcG0lv$"by:w<CR>:!latexmk -pdf -bibtex <C-R>b<CR>'c
 
 "}}}

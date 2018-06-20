@@ -804,8 +804,8 @@ endsnippet
                                                  #Definition
 snippet def
 % Definition
-\begin{definition}\label{$1}
-	$2
+\begin{definition}$1\label{$2}
+	$3
 \end{definition}
 
 $0
@@ -814,7 +814,7 @@ endsnippet
                                              #UnnumberedDefinition
 snippet udef
 % UnnumberedDefinition
-\begin{udefinition}
+\begin{udefinition}$1
 	$2
 \end{udefinition}
 
@@ -870,12 +870,12 @@ endsnippet
                                                 #Proposition
 snippet prop
 % Proposition
-\begin{proposition}\label{$1}
-    $2
+\begin{proposition}$1\label{$2}
+    $3
 \end{proposition}
-\begin{${3:proof}}
-	$4\bfseries\textcolor{red}{Write a Proof}
-\end{$3}
+\begin{${4:proof}}
+	$5\bfseries\textcolor{red}{Write a Proof}
+\end{$4}
 
 $0
 endsnippet
@@ -906,12 +906,12 @@ endsnippet
                                                     #Problem
 snippet prob
 % Problem
-\begin{problem}
-	$1
+\begin{problem}$1
+	$2
 \end{problem}
-\begin{${2:proof}}
+\begin{${3:proof}}
 	$4\bfseries\textcolor{red}{Write a Proof}
-\end{$2}
+\end{$3}
 
 $0
 endsnippet
@@ -959,8 +959,8 @@ endsnippet
                                                     #Example
 snippet ex
 % Example
-\begin{example}
-	$1
+\begin{example}$1
+	$2
 \end{example}
 
 $0
@@ -969,8 +969,8 @@ endsnippet
                                                     #Exercise
 snippet xca
 % Exercise
-\begin{exercise}
-	$1
+\begin{exercise}$1
+	$2
 \end{exercise}
 
 $0
@@ -980,7 +980,7 @@ endsnippet
 snippet align
 % Align
 \begin{align}\label{$1}
-  $2
+    $2
 \end{align}
 $0
 endsnippet
@@ -989,7 +989,7 @@ endsnippet
 snippet ualign
 % UnnumberedAlign
 \begin{align*}
-  $1
+    $1
 \end{align*}
 $0
 endsnippet
@@ -998,7 +998,7 @@ endsnippet
 snippet eq
 % Equation
 \begin{equation}\label{$1}
-  $2
+    $2
 \end{equation}
 $0
 endsnippet
@@ -1035,19 +1035,19 @@ $0
 endsnippet
 
                                              #GatheringEquations
-snippet gath
+snippet gather
 % Gather
 \begin{gather}
-$1
+    $1
 \end{gather}
 $0
 endsnippet
 
                                       #UnnumberedGatheringEquations
-snippet ugath
+snippet ugather
 % UnnumberedGather 
 \begin{gather*}
-$1
+    $1
 \end{gather*}
 $0
 endsnippet
@@ -1066,7 +1066,7 @@ endsnippet
                                                      #Centering
 snippet cen
 \begin{center}
-$1
+    $1
 \end{center}
 $0
 endsnippet
@@ -1230,6 +1230,7 @@ endsnippet
 
 snippet enum
 % Enumerate
+\renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
 	\item $1
 \end{enumerate}
@@ -1312,16 +1313,16 @@ snippet asser
 \end{enumerate}
 endsnippet
 
-                                                      #Case
-snippet case
-% Case
-\begin{enumerate}[]
-\label{case $1}
-    \item[] \textsc{Case $2} $3
-\end{enumerate}
+                                                      ##Case
+#snippet case
+#% Case
+#\begin{enumerate}[]
+#\label{case $1}
+    #\item[] \textsc{Case $2} $3
+#\end{enumerate}
 
-$0
-endsnippet
+#$0
+#endsnippet
 
                                                     #Application
 snippet app
