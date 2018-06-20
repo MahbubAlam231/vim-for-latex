@@ -186,10 +186,10 @@ vmap ;t <Plug>(easymotion-t2)
 "}}}
 " LaTeX-Box and Folding{{{3
 
-let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
+" let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_Folding=1
 " let g:LatexBox_fold_envs=1
-let g:LatexBox_latexmk_preview_continuously = 1
+" let g:LatexBox_latexmk_preview_continuously = 1
 
 " Folding
 "-------------------------------------------------------------------
@@ -507,9 +507,9 @@ nnoremap <localleader>sp :call FixLastSpellingError()<cr>
 inoremap <localleader>sp <esc>:call FixLastSpellingError()<cr>a
 
 " Adding new words to dictionary
-nnoremap < [s
-nnoremap > ]s
-nnoremap <localleader>s zg ]s
+nnoremap < [szz
+nnoremap > ]szz
+nnoremap <localleader>s zg ]szz
 nnoremap <leader>s zg
 
 "2}}}
@@ -604,13 +604,13 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
 
-augroup AutoSourceAllForTexBuf
-    autocmd!
-    autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
-    autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
-    autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
-augroup end
+" augroup AutoSourceAllForTexBuf
+"     autocmd!
+"     autocmd BufNewFile,BufRead * :source $MYVIMRC
+"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
+"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
+"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
+" augroup end
 
 "Sourcing everything for tex
 nnoremap  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
@@ -677,7 +677,8 @@ augroup ContinuouslyAutoWriteBuf
     autocmd TextChanged,TextChangedI * silent write
 augroup end
 
-nnoremap <localleader>q zMgg:wq<cr>
+nnoremap <localleader>q mqzMgg:wq<cr>
+nnoremap 'q `q
 
 "}}}
 
