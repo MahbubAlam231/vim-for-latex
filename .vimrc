@@ -492,7 +492,7 @@ inoremap <localleader>lb <esc>f.a<cr><esc>
 
 syntax on
 
-augroup spelling
+augroup Spelling
     autocmd!
     autocmd FileType tex :setlocal spell spelllang=en_us
     autocmd FileType txt :setlocal spell spelllang=en_us
@@ -509,8 +509,7 @@ inoremap <localleader>sp <esc>:call FixLastSpellingError()<cr>a
 " Adding new words to dictionary
 nnoremap < [szz
 nnoremap > ]szz
-nnoremap <localleader>s zg ]szz
-nnoremap <leader>s zg
+nnoremap zgg zg]szz
 
 "2}}}
 " Substitute/change{{{2
