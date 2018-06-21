@@ -1,11 +1,11 @@
-" Folding in LaTeX-Box as in LaTeX-Suite
+" Folding in LaTeX-Box like in LaTeX-Suite
 
 " @petobens (https://tex.stackexchange.com/users/9953/petobens) modification
 " I've (@petobens https://tex.stackexchange.com/users/9953/petobens) modified Latex-Box (excellent) folding in two ways: i) since I only like to fold sections (parts, chapters, etc), the abstract environment and frames (in beamer class) I've added a new variable g:LatexBox_folded_environments that controls which environments are folded ii) I changed the LatexBox_FoldText() to resemble Latex-Suite.
 
 "You should save this file as ftplugin/tex/folding.vim and it should work out of the box.
 
-" If you want to fold other environments add them at Set options and LaTeXBox_FoldText part.
+" If you want to fold other environments add them at Set options and LaTeXBox_FoldText part. (Can't say anything about the next paragraph)
 
 " If you want to fold figures, tables and other environments you should add the functions LabelEnv(), CaptionEnv() and CaptionTable() from LaTeX-Box/ftplugin/latex-box/folding.vim and modify the LatexBox_FoldText() function to include the mentioned functions as its done in Latex-Box folding (but changing the format to the format that suits your needs).
 
@@ -322,3 +322,4 @@ function! LatexBox_FoldText()
 endfunction
 
 " }}}
+
