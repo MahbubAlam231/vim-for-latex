@@ -1,6 +1,6 @@
 # vimforlatex
 My personalization of vim for mainly LaTeX.
-Here uploaded are
+Here uploaded are,
 - My .vimrc
 - My keybindings, snippets and abbreviations for LaTeX
 - My templates for LaTeX
