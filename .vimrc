@@ -47,7 +47,7 @@ set listchars+=precedes:←             " Show arrow if line continues leftwards
 "highlight ColorColumn ctermbg=magenta
 "call matchadd('ColorColumn', '\%72v', 100)
 
-nnoremap <localleader>nw :set nowrap<cr>
+nnoremap <buffer> <localleader>nw :set nowrap<cr>
 
 "2}}}
 " Ignored files/directories from autocomplete (and CtrlP){{{2
@@ -76,8 +76,8 @@ set showmatch
 set splitright                        " Open new splits to the right
 set splitbelow                        " Open new splits below
 
-nnoremap <localleader>hs :split<cr>
-nnoremap <localleader>vs :vsplit<cr>
+nnoremap <buffer> <localleader>hs :split<cr>
+nnoremap <buffer> <localleader>vs :vsplit<cr>
 
 augroup ResizeSplitsWhenTheWindowIsResized
     autocmd!
@@ -97,7 +97,7 @@ augroup numbertoggle
 augroup end
 
 "EscapeRelativeNumber
-nnoremap <localleader>n :set norelativenumber<cr>
+nnoremap <buffer> <localleader>n :set norelativenumber<cr>
 
 "2}}}
 
@@ -196,11 +196,11 @@ vmap ;t <Plug>(easymotion-t2)
 
 set foldlevelstart=0
 setlocal foldmethod=manual
-nnoremap <localleader>f :setlocal foldmethod=marker<cr>
+nnoremap <buffer> <localleader>f :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method (use it)
-nnoremap <localleader>mk mf2zMgg:w!<cr>:mkview<cr>`f3zozz
-nnoremap 'f `fzz
+nnoremap <buffer> <localleader>mk mf2zMgg:w!<cr>:mkview<cr>`f3zozz
+nnoremap <buffer> 'f `fzz
 
 augroup AutoLoadview
     autocmd!
@@ -208,20 +208,20 @@ augroup AutoLoadview
 augroup end
 
 " Opening/closing folding
-nnoremap zo 2zozt
-nnoremap zc 2zczz
-nnoremap zoo 3zozt
-nnoremap zcc 3zczz
-nnoremap zr zrzz
-nnoremap zm zmzz
-nnoremap zM zMzz
-nnoremap <space> zazz
-nnoremap <localleader><space> zazt
+nnoremap <buffer> zo 2zozt
+nnoremap <buffer> zc 2zczz
+nnoremap <buffer> zoo 3zozt
+nnoremap <buffer> zcc 3zczz
+nnoremap <buffer> zr zrzz
+nnoremap <buffer> zm zmzz
+nnoremap <buffer> zM zMzz
+nnoremap <buffer> <space> zazz
+nnoremap <buffer> <localleader><space> zazt
 
 "3}}}
 " NERDtree{{{3
 
-nnoremap <localleader>nerd :NERDTree<cr>
+nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 
 "3}}}
 "Templates and Selecting Template{{{3
@@ -254,17 +254,17 @@ function! Template()
 
 endfunction
 
-nnoremap <localleader>tem :call Template()<cr>
+nnoremap <buffer> <localleader>tem :call Template()<cr>
 
-nnoremap <localleader>art :call Template()<cr>art<cr>
-nnoremap <localleader>ams :call Template()<cr>ams<cr>
-nnoremap <localleader>rep :call Template()<cr>rep<cr>
+nnoremap <buffer> <localleader>art :call Template()<cr>art<cr>
+nnoremap <buffer> <localleader>ams :call Template()<cr>ams<cr>
+nnoremap <buffer> <localleader>rep :call Template()<cr>rep<cr>
 
 " Placeholders <++>, Ctrl-j jumps to the next match
 "-------------------------------------------------------------------
 
-nnoremap <C-j> /<++><cr>cf>
-inoremap <C-j> <esc>/<++><cr>cf>
+nnoremap <buffer> <C-j> /<++><cr>cf>
+inoremap <buffer> <C-j> <esc>/<++><cr>cf>
 
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
@@ -297,80 +297,80 @@ let g:loaded_youcompleteme = 1
 " Align text{{{2
 "-------------------------------------------------------------------
 
-nnoremap <localleader>al :left<cr>
-nnoremap <localleader>ac :center<cr>
-nnoremap <localleader>ar :right<cr>
+nnoremap <buffer> <localleader>al :left<cr>
+nnoremap <buffer> <localleader>ac :center<cr>
+nnoremap <buffer> <localleader>ar :right<cr>
 
-vnoremap <localleader>al :left<cr>
-vnoremap <localleader>ac :center<cr>
-vnoremap <localleader>ar :right<cr>
+vnoremap <buffer> <localleader>al :left<cr>
+vnoremap <buffer> <localleader>ac :center<cr>
+vnoremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
 " Basic navigation, searching remaps{{{2
 "-------------------------------------------------------------------
 
 " " Get off my lawn - helpful when learning Vim :)
-" nnoremap <Left> :echoe "Use h"<cr>
-" nnoremap <Right> :echoe "Use l"<cr>
-" nnoremap <Up> :echoe "Use k"<cr>
-" nnoremap <Down> :echoe "Use j"<cr>
+" nnoremap <buffer> <Left> :echoe "Use h"<cr>
+" nnoremap <buffer> <Right> :echoe "Use l"<cr>
+" nnoremap <buffer> <Up> :echoe "Use k"<cr>
+" nnoremap <buffer> <Down> :echoe "Use j"<cr>
 
 " Moving on the screen
-nnoremap H mh^
-nnoremap J mjL
-nnoremap K mkH
-nnoremap L mlg_
+nnoremap <buffer> H mh^
+nnoremap <buffer> J mjL
+nnoremap <buffer> K mkH
+nnoremap <buffer> L mlg_
 
-vnoremap H mh^
-vnoremap J mjL
-vnoremap K mkH
-vnoremap L mlg_
+vnoremap <buffer> H mh^
+vnoremap <buffer> J mjL
+vnoremap <buffer> K mkH
+vnoremap <buffer> L mlg_
 
-nnoremap 'h `h
-nnoremap 'j `j
-nnoremap 'k `k
-nnoremap 'l `l
+nnoremap <buffer> 'h `h
+nnoremap <buffer> 'j `j
+nnoremap <buffer> 'k `k
+nnoremap <buffer> 'l `l
 
-vnoremap 'h `h
-vnoremap 'j `j
-vnoremap 'k `k
-vnoremap 'l `l
+vnoremap <buffer> 'h `h
+vnoremap <buffer> 'j `j
+vnoremap <buffer> 'k `k
+vnoremap <buffer> 'l `l
 
-nnoremap 'm `mzz
+nnoremap <buffer> 'm `mzz
 
-inoremap <leader>zz <esc>zza
-inoremap <leader>zt <esc>zta
-inoremap <leader>zb <esc>zba
+inoremap <buffer> <leader>zz <esc>zza
+inoremap <buffer> <leader>zt <esc>zta
+inoremap <buffer> <leader>zb <esc>zba
 
 " Find matching character
-nnoremap <localleader>5 %
-vnoremap <localleader>5 %
+nnoremap <buffer> <localleader>5 %
+vnoremap <buffer> <localleader>5 %
 
 " Mark and then go to the beginning or end of the file
-nnoremap gg mggg
-nnoremap G mgG
-nnoremap 'g `gzz
+nnoremap <buffer> gg mggg
+nnoremap <buffer> G mgG
+nnoremap <buffer> 'g `gzz
 
 " Creating newline
-nnoremap <localleader>o mmo<esc>`m
-nnoremap <localleader>O mmO<esc>`m
+nnoremap <buffer> <localleader>o mmo<esc>`m
+nnoremap <buffer> <localleader>O mmO<esc>`m
 
 " Marking before searching
-nnoremap / ms/
+nnoremap <buffer> / ms/
 
-nnoremap 's `s
-vnoremap 's `s
+nnoremap <buffer> 's `s
+vnoremap <buffer> 's `s
 
 " Search within visual selection
-vnoremap / <esc>ms/\%V
+vnoremap <buffer> / <esc>ms/\%V
 
 " Don't move on after */#
-nnoremap * *<c-o>
-nnoremap # #<c-o>
+nnoremap <buffer> * *<c-o>
+nnoremap <buffer> # #<c-o>
 
 " Keep search matches in the middle of the screen
-nnoremap n nzz
-nnoremap N Nzz
+nnoremap <buffer> n nzz
+nnoremap <buffer> N Nzz
 
 " Search the visually selected using */# (from Scrooloose)
 function! s:VSerSearch()
@@ -380,15 +380,15 @@ function! s:VSerSearch()
     let @@ = temp
 endfunction
 
-vnoremap * :<C-u>call <SID>VSerSearch()<cr>//<cr><c-o>
-vnoremap # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
+vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>//<cr><c-o>
+vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
 
 " Clearing highlighted matches
-nnoremap <cr> :noh<cr>
-nnoremap <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
+nnoremap <buffer> <cr> :noh<cr>
+nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 
-" nnoremap n nzz:call HLNext(1)<cr>
-" nnoremap N Nzz:call HLNext(1)<cr>
+" nnoremap <buffer> n nzz:call HLNext(1)<cr>
+" nnoremap <buffer> N Nzz:call HLNext(1)<cr>
 
 " function! HLNext(blinktime)
 "     let [bufnum, lnum, col, off] = getpos('.')
@@ -402,14 +402,14 @@ nnoremap <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 " endfunction
 
 " Vim very magic mode search
-" nnoremap / /\v
-" vnoremap / /\v
+" nnoremap <buffer> / /\v
+" vnoremap <buffer> / /\v
 
 "2}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
-inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
+inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
 "2}}}
 " Colorschemes{{{2
@@ -443,7 +443,7 @@ highlight Comment cterm=italic gui=italic
 "-------------------------------------------------------------------
 
 ""Make CTRL-K list diagraphs before each digraph entry
-"inoremap <expr> <C-S> ShowDigraphs()
+"inoremap <buffer> <expr> <C-S> ShowDigraphs()
 
 "function! ShowDigraphs ()
 "    digraphs
@@ -461,8 +461,8 @@ match BadWhitespace /\s\+$/
 
 " Delete Trailing White Space
 "autocmd BufWritePre * %s/\s\+$//e
-inoremap <localleader>dtw <Esc>mm0g_ld$`ma
-nnoremap <localleader>dtw mm0g_ld$`m
+inoremap <buffer> <localleader>dtw <Esc>mm0g_ld$`ma
+nnoremap <buffer> <localleader>dtw mm0g_ld$`m
 
 "2}}}
 " Leader Mappings{{{2
@@ -472,19 +472,19 @@ let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
 " To get <> and write <localleader> easily
-inoremap << <><esc>i
+inoremap <buffer> << <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
-inoremap <L <><esc>ileader<esc>la
-inoremap <LL <><esc>ilocalleader<esc>la
-inoremap <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
-inoremap <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <L <><esc>ileader<esc>la
+inoremap <buffer> <LL <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
+inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
 " Line Breaking{{{2
 "-------------------------------------------------------------------
 
-nnoremap <localleader>lb f.a<cr><esc>
-inoremap <localleader>lb <esc>f.a<cr><esc>
+nnoremap <buffer> <localleader>lb f.a<cr><esc>
+inoremap <buffer> <localleader>lb <esc>f.a<cr><esc>
 
 "2}}}
 " Spelling Check{{{2
@@ -503,48 +503,59 @@ function! FixLastSpellingError()
     :normal! mm[s1z=`m
 endfunction
 
-nnoremap <localleader>sp :call FixLastSpellingError()<cr>
-inoremap <localleader>sp <esc>:call FixLastSpellingError()<cr>a
+nnoremap <buffer> <localleader>sp :call FixLastSpellingError()<cr>
+inoremap <buffer> <localleader>sp <esc>:call FixLastSpellingError()<cr>a
 
 " Adding new words to dictionary
-nnoremap < [szz
-nnoremap > ]szz
-nnoremap zgg zg]szz
+nnoremap <buffer> < [szz
+nnoremap <buffer> > ]szz
+nnoremap <buffer> zgg zg]szz
 
 "2}}}
 " Substitute/change{{{2
 "-------------------------------------------------------------------
 
-nnoremap <localleader>c :%s/
-vnoremap <localleader>c :s/
+nnoremap <buffer> <localleader>c :%s/
+vnoremap <buffer> <localleader>c :s/
 
 "2}}}
 " Visual selection{{{2
 "-------------------------------------------------------------------
 
 " Visually select current line excluding indentation and white space
-nnoremap vv ^vg_
+nnoremap <buffer> vv ^vg_
 
 ""Swap v and CTRL-V, because Block mode is more useful that Visual mode
-"nnoremap    v   <C-V>
-"nnoremap <C-V>     v
+"nnoremap <buffer>    v   <C-V>
+"nnoremap <buffer> <C-V>     v
 
-"vnoremap    v   <C-V>
-"vnoremap <C-V>     v
+"vnoremap <buffer>    v   <C-V>
+"vnoremap <buffer> <C-V>     v
 
 " " Visually reselect whatever is pasted
-" nnoremap <localleader>V V`]
+" nnoremap <buffer> <localleader>V V`]
 
 "2}}}
 " Some other remaps{{{2
 "-------------------------------------------------------------------
 
 " To go back a word in insert mode
-inoremap <localleader>b <esc>bb
+inoremap <buffer> <localleader>b <esc>bb
 
 " Yank till the end of the line and clearing a line
-nnoremap Y y$
-nnoremap <leader>d 0D
+nnoremap <buffer> Y y$
+nnoremap <buffer> <leader>d 0D
+
+"2}}}
+" Some TeX stuff{{{2
+
+augroup SpaceInMathMode
+    autocmd!
+    autocmd FileType tex inoremap <buffer> /, \,
+    autocmd FileType tex nnoremap <buffer> <localleader>toc :LatexTOC<CR>
+    autocmd FileType tex inoremap <buffer> '' `'<esc>i
+    autocmd FileType tex inoremap <buffer> "" ``"<esc>i
+augroup end
 
 "2}}}
 
@@ -605,51 +616,51 @@ endfunction
 
 " augroup AutoSourceAllForTexBuf
 "     autocmd!
-"     autocmd BufNewFile,BufRead * :source $MYVIMRC
+"     autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
 "     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
 "     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
 "     autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
 " augroup end
 
 "Sourcing everything for tex
-nnoremap  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
+nnoremap <buffer>  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
 
 "Sourcing TexKeyBindings
-nnoremap <F4> :call KeyBindings()<cr>tex<cr>
-inoremap <F4> <Esc>:call KeyBindings()<cr>tex<cr>a
+nnoremap <buffer> <F4> :call KeyBindings()<cr>tex<cr>
+inoremap <buffer> <F4> <Esc>:call KeyBindings()<cr>tex<cr>a
 
 "Sourcing NumbersPeacefully
-nnoremap <localleader>np :call KeyBindings()<cr>np<cr>
-inoremap <localleader>np <esc>:call KeyBindings()<cr>np<cr>a
-inoremap <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
+nnoremap <buffer> <localleader>np :call KeyBindings()<cr>np<cr>
+inoremap <buffer> <localleader>np <esc>:call KeyBindings()<cr>np<cr>a
+inoremap <buffer> <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
 
 "Sourcing GeneralAbbreviations
-nnoremap <localleader>g :call Abbreviations()<cr>gen<cr>
+nnoremap <buffer> <localleader>g :call Abbreviations()<cr>gen<cr>
 
 " Sourcing MathAbbreviations
-nnoremap <localleader>m :call Abbreviations()<cr>math<cr>
+nnoremap <buffer> <localleader>m :call Abbreviations()<cr>math<cr>
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
 "-------------------------------------------------------------------
 
 " Opening TeXKeyBindings "t=tex
-nnoremap <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Inputted File "IO=Inputted Open
-nnoremap <leader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
+nnoremap <buffer> <leader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
 
 " Opening Ultisnips "u=ultisnips
-nnoremap <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
-nnoremap <leader>a :vnew ~/.vim/Abbreviations<cr>
-nnoremap <leader>g :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <leader>m :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
+nnoremap <buffer> <leader>g :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <buffer> <leader>m :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening .vimrc
-nnoremap <leader>v :vsplit $MYVIMRC<cr>
+nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 
 "2}}}
 
@@ -668,16 +679,16 @@ augroup AutoWriteNewBuf
     autocmd BufNewFile * :write
 augroup end
 
-nnoremap <localleader>w :w!<cr>:redraw!<cr>
-inoremap ;w <esc>:w!<cr>:redraw!<cr>a
+nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
+inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup ContinuouslyAutoWriteBuf
     autocmd!
     autocmd TextChanged,TextChangedI * silent write
 augroup end
 
-nnoremap <localleader>q mqzMgg:wq<cr>
-nnoremap 'q `q
+nnoremap <buffer> <localleader>q mqzMgg:wq<cr>
+nnoremap <buffer> 'q `q
 
 "}}}
 
@@ -685,11 +696,11 @@ nnoremap 'q `q
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <localleader>sf :w!<cr>:source %<cr>
+nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>
 
 " Sourcing visual selection/current line for testing code
-vnoremap <localleader>S y:execute @@<cr>
-nnoremap <localleader>S ^vg_y:execute @@<cr>
+vnoremap <buffer> <localleader>S y:execute @@<cr>
+nnoremap <buffer> <localleader>S ^vg_y:execute @@<cr>
 
 augroup AutoSourceMYVIMRC
     autocmd!
@@ -697,7 +708,7 @@ augroup AutoSourceMYVIMRC
 augroup end
 
 " Sourcing .vimrc
-nnoremap  <localleader>v :source $MYVIMRC<cr>
+nnoremap <buffer>  <localleader>v :source $MYVIMRC<cr>
 
 "}}}
 
