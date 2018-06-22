@@ -50,10 +50,6 @@ inoremap <buffer> [[ [
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
-
-autocmd FileType tex inoremap <buffer> '' `'<esc>i
-autocmd FileType tex inoremap <buffer> "" ``"<esc>i
-
 "}}}
 
 " Math Symbols{{{
@@ -393,6 +389,7 @@ inoremap <buffer> __ _{}<esc>i
 inoremap <buffer> <localleader>_ {}_{}<esc>hF}i
 
 inoremap <buffer> ^_ {}^{}_{}<esc>F};i
+inoremap <buffer> _^ {}_{}^{}<esc>F};i
 
 "}}}
 " lim, int, sum"{{{
@@ -491,11 +488,6 @@ inoremap <buffer> <localleader>lmto \longmapsto
 " Misc{{{
 "-------------------------------------------------------------------
 
-augroup SpaceInMathMode
-    autocmd!
-    autocmd FileType tex inoremap <buffer> /, \,
-augroup end
-
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 
 inoremap <buffer> <localleader>w \wedge
@@ -521,12 +513,6 @@ inoremap <buffer> <F3> <esc>F{vf}"ay$a<CR><CR>\end<esc>"apka<C-i>
 
 inoremap <buffer> <localleader>ref <esc>hmmlx`ma~\ref{}<esc>i
 inoremap <buffer> <localleader>cit <esc>hmmlx`ma~\cite{}<esc>i
-
-"-------------------------------------------------------------------
-" Open a Table of Contents Using LatexBOX
-"-------------------------------------------------------------------
-
-autocmd FileType tex nnoremap <buffer> toc :LatexTOC<CR>
 
 "}}}
 
