@@ -229,6 +229,7 @@ nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 " Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim"
 
 let g:tmpl_author_name='Mahbub Alam'
+let g:tmpl_license='Self'
 
 " Selecting template
 "-------------------------------------------------------------------
@@ -547,9 +548,9 @@ nnoremap <buffer> Y y$
 nnoremap <buffer> <leader>d 0D
 
 "2}}}
-" Some TeX stuff{{{2
+" Some TeX Stuff{{{2
 
-augroup SpaceInMathMode
+augroup SomeTexStuff
     autocmd!
     autocmd FileType tex inoremap <buffer> /, \,
     autocmd FileType tex nnoremap <buffer> <localleader>toc :LatexTOC<CR>
@@ -558,6 +559,15 @@ augroup SpaceInMathMode
 augroup end
 
 "2}}}
+" Some Python Stuff{{{
+
+augroup SomePythonStuff
+    autocmd!
+    autocmd FileType py inoremap <buffer> ' ''<esc>i
+    autocmd FileType py inoremap <buffer> " ""<esc>i
+augroup end
+
+"}}}
 
 "}}}
 
@@ -585,6 +595,12 @@ function! KeyBindings()
 	"to enter numbers peacefully
 	if(a:code=="np")
 		source ~/.vim/KeyBindings/NumbersPeacefully.vim
+	endif
+
+	"python
+	if(a:code=="py")
+		source ~/.vim/KeyBindings/PythonKeyBindings.vim
+		set spellfile=~/.vim/spell/math.utf-8.add
 	endif
 
 endfunction
@@ -640,6 +656,15 @@ nnoremap <buffer> <localleader>g :call Abbreviations()<cr>gen<cr>
 " Sourcing MathAbbreviations
 nnoremap <buffer> <localleader>m :call Abbreviations()<cr>math<cr>
 
+"Sourcing PythonKeyBindings
+nnoremap <buffer> <localleader>py :call KeyBindings()<cr>py<cr>
+
+augroup AutoSourceAllForPythonBuf
+    autocmd!
+    autocmd BufNewFile,BufRead *.py :source $MYVIMRC
+    autocmd BufNewFile,BufRead *.py :execute "normal! :call KeyBindings()\<cr>py\<cr>"
+augroup end
+
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
 "-------------------------------------------------------------------
@@ -658,6 +683,9 @@ nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
 nnoremap <buffer> <leader>g :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
 nnoremap <buffer> <leader>m :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+
+" Opening PythonKeyBindings
+nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
 
 " Opening .vimrc
 nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
