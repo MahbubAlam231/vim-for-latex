@@ -90,7 +90,7 @@ augroup end
 
 set number relativenumber
 
-augroup numbertoggle
+augroup NumberToggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * :set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * :set norelativenumber
