@@ -8,10 +8,8 @@
 
 iabbr ss \subseteq
 iabbr ssn \subset
-iabbr ssu \supseteq
-iabbr ssun \supset
-iabbr sus \supseteq
-iabbr susn \supset
+iabbr sps \supseteq
+iabbr spsn \supset
 iabbr uu \cup
 iabbr nn \cap
 iabbr UU \bigcup
