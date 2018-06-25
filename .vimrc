@@ -488,6 +488,37 @@ nnoremap <buffer> <localleader>lb f.a<cr><esc>
 inoremap <buffer> <localleader>lb <esc>f.a<cr><esc>
 
 "2}}}
+" Some other remaps{{{2
+"-------------------------------------------------------------------
+
+" To go back a word in insert mode
+inoremap <buffer> <localleader>b <esc>bb
+
+" Yank till the end of the line and clearing a line
+nnoremap <buffer> Y y$
+nnoremap <buffer> <leader>d 0D
+
+"2}}}
+" Some Python Stuff{{{
+
+augroup SomePythonStuff
+    autocmd!
+    autocmd FileType py inoremap <buffer> ' ''<esc>i
+    autocmd FileType py inoremap <buffer> " ""<esc>i
+augroup end
+
+"}}}
+" Some TeX Stuff{{{2
+
+augroup SomeTexStuff
+    autocmd!
+    autocmd FileType tex inoremap <buffer> /, \,
+    autocmd FileType tex nnoremap <buffer> <localleader>toc :LatexTOC<CR>
+    autocmd FileType tex inoremap <buffer> '' `'<esc>i
+    autocmd FileType tex inoremap <buffer> "" ``"<esc>i
+augroup end
+
+"2}}}
 " Spelling Check{{{2
 "-------------------------------------------------------------------
 
@@ -537,37 +568,6 @@ nnoremap <buffer> vv ^vg_
 " nnoremap <buffer> <localleader>V V`]
 
 "2}}}
-" Some other remaps{{{2
-"-------------------------------------------------------------------
-
-" To go back a word in insert mode
-inoremap <buffer> <localleader>b <esc>bb
-
-" Yank till the end of the line and clearing a line
-nnoremap <buffer> Y y$
-nnoremap <buffer> <leader>d 0D
-
-"2}}}
-" Some TeX Stuff{{{2
-
-augroup SomeTexStuff
-    autocmd!
-    autocmd FileType tex inoremap <buffer> /, \,
-    autocmd FileType tex nnoremap <buffer> <localleader>toc :LatexTOC<CR>
-    autocmd FileType tex inoremap <buffer> '' `'<esc>i
-    autocmd FileType tex inoremap <buffer> "" ``"<esc>i
-augroup end
-
-"2}}}
-" Some Python Stuff{{{
-
-augroup SomePythonStuff
-    autocmd!
-    autocmd FileType py inoremap <buffer> ' ''<esc>i
-    autocmd FileType py inoremap <buffer> " ""<esc>i
-augroup end
-
-"}}}
 
 "}}}
 
