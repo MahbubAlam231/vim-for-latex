@@ -638,6 +638,12 @@ endfunction
 "     autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
 " augroup end
 
+augroup AutoSourceAllForPythonBuf
+    autocmd!
+    autocmd BufNewFile,BufRead *.py :source $MYVIMRC
+    autocmd BufNewFile,BufRead *.py :execute "normal! :call KeyBindings()\<cr>py\<cr>"
+augroup end
+
 "Sourcing everything for tex
 nnoremap <buffer>  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
 
@@ -658,12 +664,6 @@ nnoremap <buffer> <localleader>m :call Abbreviations()<cr>math<cr>
 
 "Sourcing PythonKeyBindings
 nnoremap <buffer> <localleader>py :call KeyBindings()<cr>py<cr>
-
-augroup AutoSourceAllForPythonBuf
-    autocmd!
-    autocmd BufNewFile,BufRead *.py :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.py :execute "normal! :call KeyBindings()\<cr>py\<cr>"
-augroup end
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
