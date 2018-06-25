@@ -1,1 +1,640 @@
 
+%-------------------------------------------------------------------
+% SiegelsMeanValueTheorem.tex
+%-------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+% Usepackages
+%-------------------------------------------------------------------
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbding}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{contour}%for writing sc bf
+\usepackage[dvipsnames]{xcolor}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+%\usepackage[linktoc=all]{hyperref}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}%for writing a underlined text
+\usepackage{physics}
+\usepackage{relsize}
+\usepackage{slantsc}
+%\usepackage{titlesec}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{thmtools}
+\usepackage{tfrupee}
+%\usepackage{titling}
+\usepackage{tikz}
+
+\graphicspath{{Images/}}
+
+% Environments
+%-------------------------------------------------------------------
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}[theorem]{Remark}
+
+% Additional Environments
+\newtheorem{smvt}[theorem]{Siegel's Mean Value Theorem}
+\newtheorem{gsmvt}[theorem]{General Siegel's Mean Value Theorem}
+\newtheorem{smvtp}[theorem]{Mean Value Theorem for primitive matrices}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+%-------------------------------------------------------------------
+% Unnumbered Environments
+%-------------------------------------------------------------------
+
+\newtheorem*{uremark}{Remark}
+
+% Newcommands
+%-------------------------------------------------------------------
+
+\newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
+
+%-------------------------------------------------------------------
+% Numbering of equations
+%-------------------------------------------------------------------
+
+% \numberwithin{equation}{section}
+
+%-------------------------------------------------------------------
+% QED symbol
+%-------------------------------------------------------------------
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\begin{document}
+
+\title{\bfseries Siegel's Mean Value Theorem}
+
+\author{Mahbub Alam}
+
+\date{}
+
+\maketitle
+
+% Abstract
+\begin{abstract}
+    This article is an attempt to understand and rewrite the proof of Siegel's Mean Value Theorem in relatively modern language.
+\end{abstract}
+
+\section{Introduction}
+In 1944, Siegel~\cite{siegel45} proved the following mean value theorem:
+\[
+    \int\limits_{\mathrm{SL}(n,\mathbb{R}) / \mathrm{SL}(n,\mathbb{Z})} \widehat{f}(\Lambda  ) \, \mathrm{d} \mu (\Lambda  ) = \int_{\mathbb{R}^n}f(x) \, \mathrm{d} x
+\]
+where $f\in L^1(\mathbb{R}^n )$, $\widehat{f}$ (called the Siegel transform of $f$) is defined as, $\widehat{f}( \Lambda ) = \displaystyle\sum_{0 \neq v \in \Lambda } f(v)$, $\Lambda$ is any unimodular lattice in $\mathbb{R}^{n}$, $\mathrm{SL}(n, \mathbb{R})/ \mathrm{SL}(n, \mathbb{Z})$ is the space of all unimodular lattices and $\mu$ is a probability measure on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$.
+
+Siegel's paper was simplified by Macbeath and Rogers \cite{macbeathrogers58} in a 1957 paper where they prove a general mean value theorem asserted by Siegel at the end of his paper.
+We will discuss this mean value theorem and some of its implications together with an explicit volume calculation of $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$, i.e., the Minkowski-Siegel formula.
+
+\section{Revisiting Gauss Circle Problem}
+Let, $B \coloneqq B(0, r) \subseteq \mathbb{R}^2$.
+Consider the function $\mychi _B$.
+Define,
+\[
+    {\mychi _B}_*(x) = \sum_{k \in \mathbb{Z}^2} \mychi _B(x-k)
+\]
+Then, ${\mychi _B}_*(x) \sim \pi r^2$ as $r \to \infty\, \forall x \in \mathbb{R}^2$.
+Also we have the following mean value theorem,
+% Align
+\begin{align*}
+    \int_{\mathbb{R}^2} \mychi _B (x)\, \mathrm{d} x &= \displaystyle\sum_{k \in \mathbb{Z}^2} \, \int\limits_{[0,1)^2 - k} \mychi _B (x) \, \mathrm{d} x\\
+    &= \displaystyle\sum_{k \in \mathbb{Z}^2} \int_{[0,1)^2} \mychi _B (x-k) \, \mathrm{d} x\\
+    &= \int_{[0,1)^2} {\mychi _B}_*(x) \, \mathrm{d} x
+\end{align*}
+i.e., the average of the number of points of $\mathbb{Z}^2$ in a ball of radius $r$ centered at $x \in [0,1)^2$ is the volume of the ball.
+
+% Corollary
+\begin{corollary}[Blichfeldt (1914), Steinhaus (1999)]\label{cor1}
+    Let $K$ be a Lebesgue measurable set in $\mathbb{R}^2$ with $ \lambda (K) > 1$, where $\lambda$ is the Lebesgue measure on $\mathbb{R}^2$, then $\exists \, x_1 , x_2 \in K$ such that $x_1 - x_2 \in \mathbb{Z}^2$.
+\end{corollary}
+
+\section{The Minkowski-Siegel measure $\mu$ on $\mathrm{SL}(n,  \mathbb{R})$}
+Let $E \subseteq \mathrm{SL}(n,  \mathbb{R})$ be measurable and $\alpha > 0$.
+Define, $E(\alpha )= \{tg: t \in (0,\alpha ], g \in E\} \subseteq \mathrm{GL}^+(n, \mathbb{R}) \subseteq \mathbb{R}^{n^2}$ (the cone on $E$) and also define $ \mu (E) = \lambda (E(1))$, $\lambda$ being the Lebesgue measure on $\mathbb{R}^{n^2}$.
+
+Let $g\in \mathrm{SL}(n,  \mathbb{R})$, then $\mu (Eg)= \lambda ((Eg)(1))=\lambda (E(1)g)=|g|^n \lambda (E(1))= \mu (E)$, where $|g|$ stands for the determinant of $g$.
+So $\mu$ is right invariant.
+Similarly it is left invariant.
+Therefore, $\mu$ is a Haar measure on $\mathrm{SL}(n,\mathbb{R})$.
+
+% Theorem
+\begin{theorem}[Weil's integration formula]\label{thm}
+    Let $G$ be a locally compact topological group and $H$ be a closed subgroup of $G$.
+    Let $\Delta_G$ and $\Delta _H$ be the modular functions of $G$ and $H$ so that $\Delta _G\big|_H = \Delta _H$.
+    Then $\exists$ a $G$-invariant Borel measure $\nu$ on $G/H$, which can be normalized so that for all integrable functions $f$ on $G$,
+    \[
+        \int_{G} f(g) \, \mathrm{d} g = \int_{G/H}\int_{H} f(gh) \, \mathrm{d} h \, \mathrm{d} \nu (\bar{g})
+    \]
+
+\end{theorem}
+
+Therefore, from Weil's integration formula we see that $\mu$ gives rise to measure on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$, which we will also call $\mu$ as there will be no confusion.
+It is also clear from Weil's integration formula that integration over $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ with respect to $\mu$ can viewed as integration over $F_n$ with respect to $\mu$, i.e., for $\rho $ integrable on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$
+\[
+    \int_{F_n} \rho (g) \, \mathrm{d} \mu (g) = \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \rho (\Lambda ) \, \mathrm{d} \mu (\Lambda )
+\]
+
+\section{Siegel's Mean Value Theorem}
+We know that $\mathrm{SL}(n, \mathbb{Z})$ is a lattice in $\mathrm{SL}(n, \mathbb{R})$ and that $\mathrm{SL}(n, \mathbb{R})/\mathrm{SL}(n, \mathbb{Z})$ can be viewed as the space of all unimodular lattices in $\mathbb{R}^{n}$.
+Let $F_n$ be a fundamental domain of $\mathrm{SL}(n,  \mathbb{Z})$ in $\mathrm{SL}(n,  \mathbb{R})$.
+Then every unimodular lattice in $\mathbb{R}^{n}$ can be written as $g \mathbb{Z}^n$ for exactly one $g \in F_n$.
+
+% Theorem
+\begin{smvt}\label{smvt}
+    If $f \in L^1 (\mathbb{R}^n)$ then,
+    \[
+        \int\limits_{\mathrm{SL}(n,  \mathbb{R}) / \mathrm{SL}(n,  \mathbb{Z})} \widehat{f}(\Lambda  ) \, \mathrm{d} \mu (\Lambda  ) = \mu \big(\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})\big)\int_{\mathbb{R}^n}f(x) \, \mathrm{d} x
+    \]
+    where $\widehat{f}( \Lambda ) = \displaystyle\sum_{0 \neq v \in \Lambda } f(v)$, $\Lambda \in \mathrm{SL}(n, \mathbb{R})/\mathrm{SL}(n, \mathbb{Z})$.
+
+    Equivalently, if $f \in L^1 (\mathbb{R}^n)$ then,
+    \[
+        \int_{F_n} \widehat{f}(g) \, \mathrm{d} \mu (g) = \mu (F_n)\int_{\mathbb{R}^n}f(x) \, \mathrm{d} x
+    \]
+    where $\widehat{f}(g) = \displaystyle\sum_{0 \neq v \in \mathbb{Z}^{n}} f(gv)$, $g \in F_n$.
+\end{smvt}
+
+If $K \subseteq \mathbb{R}^n $ is Borel measurable, then with $f=\mychi _K$ and $\widehat{\mychi _{K}}(g)= \# $ non-zero points of $ g \mathbb{Z}^n$ in $K$, the above says,
+\[
+    \frac{1}{\mu (F_n)}\int_{F_n} \widehat{\mychi _{K}}(g) \, \mathrm{d} \mu (g) = \lambda (K)
+\]
+This is why Siegel's Mean Value Theorem~\ref{smvt} is called a mean value theorem.
+
+Let $1 \le \ell  \le n-1,\, \ell +m=n$ and $LI=$ Set of all $n \times \ell$ integer matrices with linearly independent columns.
+At the end of~\cite{siegel45} Siegel claimed the following.
+
+% Theorem
+\begin{gsmvt}\label{gsmvt}
+    If $f \in L^1 ( \mathbb{R}^{n \ell})$ then,
+    \[
+        \displaystyle \int_{F_n} \displaystyle\sum_{q \in LI} f(gq) \, \mathrm{d} \mu (g) = \mu (F_n) \int_{\mathbb{R}^{n \ell}} f(x) \, \mathrm{d} x
+    \]
+\end{gsmvt}
+
+One might guess that taking $f= \mychi _K$ for $K \subseteq \mathbb{R}^{n \ell}$ Borel measurable, proof of the above theorem might reduce to calculating volume of certain set in two different ways.
+Proceeding in this manner one can prove the slightly different theorem below, from which the above theorem can be deduced.
+
+Define, $P = \{he: h \in \mathrm{SL}(n,  \mathbb{Z})\} \subseteq LI$ where, $e$= first $\ell$ columns of $I_n$ = $
+\begin{pmatrix}
+    I_ \ell \\
+    0
+\end{pmatrix}$.
+That is, $P$ is the set of all $n \times \ell$ integral matrices that appear as the first $\ell$ columns of some matrix in $\mathrm{SL}(n,\mathbb{Z})$.
+
+% Theorem
+\begin{smvtp}\label{smvtp}
+    If $f \in L^1(\mathbb{R}^{n\ell })$ then,
+    \[
+        \int_{F_n} \displaystyle\sum_{p \in P} f(gp) \, \mathrm{d} \mu (g)= \frac{m}{n} \mu (F_m) \int_{\mathbb{R}^{n \ell }}f(x) \, \mathrm{d} x
+    \]
+\end{smvtp}
+
+With $\ell=1$ the above says,
+% Equation
+\begin{equation}\label{eq1.4}
+    \int_{F_n} \displaystyle\sum_{\substack{v \in \mathbb{Z}^n \\ v \,\text{primitive}}} f(gv) \, \mathrm{d} \mu (g) = \frac{n-1}{n} \mu (F_{n-1}) \int_{\mathbb{R}^n} f(x) \, \mathrm{d} x
+\end{equation}
+\section{Proof of Siegel's Mean Value Theorem~\ref{smvt} assuming Mean Value Theorem for primitive matrices~\ref{smvtp}}\label{secn1.5}
+%  Beginning of the proof of Siegel's Mean Value Theorem
+With $f=\mychi _K$ and $\widehat{\mychi _{K}}'(g)=\#$ primitive vectors of $g \mathbb{Z}^n$ in $K$, (\ref{eq1.4}) implies
+% Equation
+\begin{equation}\label{eq1.5}
+    \int_{F_n}\widehat{\mychi _{K}}'(g) \, \mathrm{d} \mu (g) = \frac{n-1}{n} \mu (F_{n-1}) \lambda (K)
+\end{equation}
+
+For any  $x( \neq 0) \in g \mathbb{Z}^n \ \exists! \ \nu \in \mathbb{Z}_+$ such that $\frac{x}{ \nu }$ is primitive.
+Therefore,
+% Equation
+\begin{equation}\label{eq1.6}
+    \widehat{\mychi _{K}} (g) = \displaystyle\sum_{\nu \in \mathbb{Z}_+ } \widehat{\mychi _{\frac{1}{\nu }K}}'(g) \ \forall g \in F_n
+\end{equation}
+Note that $\lambda (\frac{1}{\nu }K) = \nu ^{-n} \lambda (K)$. Therefore, from (\ref{eq1.5}) and (\ref{eq1.6}) we get (using Lebesgue monotone convergence theorem),
+% Equation
+\begin{equation}\label{eq1.7}
+    \int_{F_n} \widehat{\mychi _{K}}(g) \, \mathrm{d} \mu (g) = \frac{n-1}{n} \zeta (n) \mu (F_{n-1}) \lambda (K)
+\end{equation}
+
+\subsection{Minkowski-Siegel Formula}
+Let $\rho >0$ and $C_ \rho = {[-\rho, \rho ]}^n$.
+Then, $\lambda (C_ \rho )= \rho ^n \lambda (C_1)$.
+We also have $\widehat{\mychi _{C_ \rho }}(g) \sim \rho ^n \lambda (C_1)$, i.e., $\rho ^{-n} \widehat{\mychi _{C_ \rho }}(g) \to \lambda (C_1)$ as $\rho \to \infty \ \forall g \in \mathrm{SL}(n, \mathbb{R})$.
+
+From (\ref{eq1.7}) we have,
+\begin{align}\label{eq1.8}
+    \int_{F_n}\rho ^{-n} \widehat{\mychi _{C_ \rho }} (g)\, \mathrm{d} \mu (g) = \frac{n-1}{n} \zeta (n)\mu (F_{n-1}) \lambda (C_1)
+\end{align}
+With $\rho =1$ the above says,
+% Equation
+\begin{equation}\label{eq1.9}
+    \int_{F_n} \widehat{\mychi _{C_1 }} (g)\, \mathrm{d} \mu (g)= \frac{n-1}{n} \zeta (n)\mu (F_{n-1})\lambda (C_1)
+\end{equation}
+
+We know from Minkowski's convex body theorem that $\widehat{\mychi _{C_1}}(g) \ge 2 \ \forall g \in F_n$.
+Therefore, from (\ref{eq1.9}) we have a $L^1$ function on $F_n$ which is bounded away from zero and hence $F_n$ has finite measure.
+% Lemma
+\begin{lemma}\label{lem1.5.1}
+    Let $Q$ be cube with side length unity and faces parallel to coordinate planes, then $\widehat{\mychi _{Q}}(g) \le \widehat{\mychi _{C_1}}(g) \, \forall g \in \mathrm{SL}(n, \mathbb{R})$.
+\end{lemma}
+\begin{proof}
+    By Minkowski's Convex body theorem $\widehat{\mychi _{C_1}}(g) \ge 2$.
+    Therefore, we need only to worry about the case when $\widehat{\mychi _{Q}}(g) \ge 3$.
+    Let, $x_1, x_2, \ldots , x_N \,(N \ge 3)$ be the nonzero elements of $g\mathbb{Z}^n$ in $Q$, then
+    \[	
+        \pm(x_2-x_1), \ldots , \pm(x_N-x_1)
+    \]
+    are nonzero elements of $C_1 \cap g \mathbb{Z}^n$.
+    One can choose $x_1$ in such a way that these elements are all distinct.
+    Therefore,  $N \le 2(N-1) \le \widehat{\mychi _{C_1}}(g)$, as $N \ge 3$.
+\end{proof}
+
+% Lemma
+\begin{lemma}\label{lem1.5.2}
+    Let $\rho \ge 1$.
+    Then, $ \rho ^{-n}\widehat{\mychi _{C_ \rho }}(g) \le 3^n \widehat{\mychi _{C_1}}(g) \, \forall g \in \mathrm{SL}(n, \mathbb{R})$.
+\end{lemma}
+\begin{proof}
+    $C_ \rho $ can be contained inside ${([2 \rho ]+1)}^n$ cubes of side unity and faces parallel to coordinate planes, therefore from Lemma~\ref{lem1.5.1},
+    \[	
+        \frac{\widehat{\mychi _{C_ \rho }}(g)}{\widehat{\mychi _{C_1}}(g)} \le {([2 \rho ]+1)}^n \le {(2 \rho + \rho )}^n=3^n \rho ^n
+    \]
+\end{proof}
+
+Therefore, taking limit as $\rho \to \infty$ in (\ref{eq1.8}), using dominated convergence theorem we get the recursion formula
+% Equation
+\begin{equation}\label{eq1.10}
+    \mu (F_n)= \frac{n-1}{n} \zeta (n) \mu (F_{n-1})
+\end{equation}
+and hence using $ \mu (F_1) = 1$ we get the Minkowski-Siegel formula,
+% Equation
+\begin{equation*}
+    \mu (F_n) = \frac{1}{n}\zeta (2) \zeta (3) \cdots \zeta (n)
+\end{equation*}
+
+\vspace{2em}
+%  Finishing the proof of Siegel's Mean Value Theorem
+From (\ref{eq1.7}) and (\ref{eq1.10}) we have,
+\[
+    \int_{F_n} \widehat{\mychi _{K}} (g) \, \mathrm{d} \mu (g) = \mu(F_n) \int_{\mathbb{R}^n } \mychi _K(x) \, \mathrm{d} x
+\]
+Hence, Siegel's Mean Value Theorem~\ref{smvt} is true for positive simple functions and therefore by taking limits it is true for positive functions and hence for all $L^1 $ functions $f$.
+See~\cite{macbeathrogers58} for a proof of General Siegel's Mean Value Theorem~\ref{gsmvt}.
+
+%  Minkowski-Hlawka Theorem
+In 1944, E. Hlawka proved the following longstanding conjecture of Minkowski.
+The following proof is due to Siegel~\cite{siegel45}.
+% Corollary
+\begin{corollary}[Minkowski-Hlawka Theorem]\label{cor2}
+    If $B$ is a starshaped,  centrally symmetric body with volume less than $2 \zeta (n)$, then there exists a unimodular lattice $g \mathbb{Z}^n$ with no non-zero point of it inside $B$.
+\end{corollary}
+% Proof
+\begin{proof}
+    From (\ref{eq1.5}), after normalizing the measure on $F_n$, we get,
+    % Equation
+    \begin{equation}\label{eq1.11}
+        \zeta (n) \int_{F_n}\widehat{\mychi _{B}}'(g) \, \mathrm{d} \mu (g ) = \lambda (B)
+    \end{equation}
+    If $B$ contains a nonzero point of $g\mathbb{Z}^n \ \forall g \in F_n$, then it contains at least two primitive vectors of $g\mathbb{Z}^n$ (since $B$ is starshaped and centrally symmetric), i.e., $\widehat{\mychi _{B}}'(g) \ge 2 \ \forall g \in F_n$.
+    So,
+    \[	
+        \lambda (B) \ge \zeta(n) \int_{F_n}2 \, \mathrm{d} \mu (g) = 2 \zeta (n)
+    \]
+    Therefore, under the assumption of the theorem there is a positive measure set of unimodular lattices with no nonzero point in $B$.
+\end{proof}
+
+\section{New coordinates on a open subset of $\mathrm{GL}^+(n, \mathbb{R})$}\label{secn1.6}
+To prove Mean Value Theorem for primitive matrices~\ref{smvtp}, we want to show first that if $K \subseteq \mathbb{R}^{n \ell }$ is a Borel measurable set then,
+\[
+    \int_{F_n} \displaystyle\sum_{p \in P} \mychi _K (gp) \, \mathrm{d} \mu  (\bar{g}) = \frac{m}{n} \mu (F_m) \lambda (K)
+\]
+Which we will show by calculating the volume of a certain set in $\mathrm{SL}(n,\mathbb{R}	)$ in two different ways.
+For that reason we need to change coordinates on a open subset of $  \mathrm{GL}^+(n, \mathbb{R})$.
+% \vspace{2em}
+
+Let $a \in  \mathrm{GL}^+(n, \mathbb{R}) $. Then,
+% Align
+\begin{align*}
+    a &=
+    \begin{pmatrix}
+        x_1 & z_1  \\
+        x_2 & z_2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        & z_1  \\
+        \raisebox{.8em}{$x$} & z_2
+    \end{pmatrix}
+    \leftarrow
+    \begin{pmatrix}
+        & \ell \times m  \\
+        \raisebox{1em}{$n \times \ell$} & m \times m
+    \end{pmatrix}\\
+    & \ \ \ \ \ \ \ \ \ \uparrow \\
+    &
+    \begin{pmatrix}
+        \ell \times \ell & \ell \times m  \\
+        m \times \ell    & m \times m
+    \end{pmatrix}
+\end{align*}
+We will say that $a$ and $x =
+\begin{pmatrix}
+    x_1 \\
+    x_2
+\end{pmatrix} \in \mathbb{R}^{n\ell }$ are well-balanced if $|x_1| \neq 0$.
+Let $W= \{a \in \mathrm{GL}^+(n, \mathbb{R}): a\text{ is well-balanced}\}$ and $W(\mathbb{R}^{n\ell }) = \{x \in \mathbb{R}^{n\ell } : x \text{ is well-balanced}\}$.
+Then, $W$ and $W(\mathbb{R}^{n\ell })$ are open and full Lebesgue measure in their respective spaces.
+
+For all $a \in W$, get $\widetilde{x}_1 \in \mathrm{GL}(m, \mathbb{R})$ so that $|x_1| \cdot |\widetilde{x}_1|=1$ and $\widetilde{x}_1$ depends smoothly on $x_1$.
+For example, if $|x_1|= \pm \alpha ^m$, can choose
+% Bmatrix
+\[
+    \widetilde{x}_1=
+    \begin{pmatrix}
+        \alpha ^{-1} &   \\
+        & \alpha ^{-1} \\
+        &              & \ddots \\
+        &              &              & \pm \alpha ^{-1}
+    \end{pmatrix}
+\]
+
+Consider the matrix equation,
+% Equation
+\begin{equation}\label{eq1.12}
+    \begin{pmatrix}
+        x_1 & z_1  \\
+        x_2 & z_2
+    \end{pmatrix}
+    =a=
+    \begin{pmatrix}
+        x_1 & 0  \\
+        x_2 & \widetilde{x}_1
+    \end{pmatrix}
+    \begin{pmatrix}
+        I_\ell & y  \\
+        0      & a'
+    \end{pmatrix}
+\end{equation}
+with $y$ and $a'$ as variables.
+As $\bigg|
+\begin{pmatrix}
+    x_1 & 0  \\
+    x_2 & \widetilde{x}_1
+\end{pmatrix} \bigg| =1$, it has unique smooth solution.
+(See Subsection~\ref{1.9.2}).
+This matrix equation is equivalent to the following equations,
+% Equation
+\begin{equation}\label{eq1.13}
+    \begin{split}
+        z_1 &= x_1y\\
+        z_2 &= x_2y + \widetilde{x}_1 a'
+    \end{split}
+\end{equation}
+Therefore, we can denote $a$ by $[x,y,  a']$.
+Note that $|a|=|a'|$, i.e., $a' \in \mathrm{GL}^+(m, \mathbb{R})$.
+For $X \subseteq W(\mathbb{R}^{n\ell })$, $Y \subseteq \mathbb{R}^{\ell m}$ and $A' \subseteq \mathrm{GL}^+(m, \mathbb{R})$ we define $[X,Y,A']=\{[x,y, a']: x \in X, y \in Y, a' \in A'\} \subseteq W$.
+We also note that,
+% Align
+\begin{align}\label{eq1.14}
+    \dfrac{\partial (x, z_1, z_2)}{\partial (x, y, a')} &= \frac{\partial (x)}{\partial (x)} \frac{\partial (z_1)}{\partial (y)} \frac{\partial (z_2)}{\partial (a')} = 1 \cdot |x_1|^m \cdot |\widetilde{x}_1|^m = 1
+\end{align}
+
+The set we are going to calculate volume of in two different ways is a set of the form $[X,Y,A']$.
+
+\section{Action of $\mathrm{SL}(n, \mathbb{Z})$ on $P$}
+$\mathrm{SL}(n, \mathbb{Z})$ acts transitively on $P$ by left-multiplication.
+The stabilizer of $e$ (= first $\ell$ columns of $I_n $) is, ${\mathrm{SL}(n, \mathbb{Z})}_e := \{h \in \mathrm{SL}(n, \mathbb{Z}): he = e\}$.
+Then, $\mathrm{SL}(n, \mathbb{Z}) / {\mathrm{SL}(n, \mathbb{Z})}_e \cong P $.
+For $p \in P$ define ${\mathrm{SL}(n, \mathbb{Z})}_p := \{h \in \mathrm{SL}(n, \mathbb{Z}): he = p\}$.
+
+If $h \in {\mathrm{SL}(n, \mathbb{Z})}_e$, then $h=
+\begin{pmatrix}
+    I_\ell & \eta   \\
+    0      & h'
+\end{pmatrix}
+$, where $\eta$, $h'$ are integer matrices with $|h'|=|h|=1$, i.e., $h' \in \mathrm{SL}(m,\mathbb{Z})$.
+If $h_1 \in {\mathrm{SL}(n, \mathbb{Z})}_p$, then ${\mathrm{SL}(n,\mathbb{Z})}_p = h_1 {\mathrm{SL}(n, \mathbb{Z})}_e$.
+
+\section{Proof of Mean Value Theorem for primitive matrices~\ref{smvtp}}\label{sec1.8}
+%  2 Lemmas
+% Lemma
+\begin{lemma}\label{lem1.8.1}
+    Let, $f \in L^1(0,1]$ and $G' \subseteq \mathrm{SL}(m, \mathbb{R})$, then
+    \[	
+        \int_{G'(1)} f(|a|) \, \mathrm{d} a = \mu (G') \int_{0}^{1} f( \tau ^{1/m}) \, \mathrm{d} \tau
+    \]
+\end{lemma}
+\begin{proof}
+    Suppose first that $f$ is the characteristic function of the interval $(0,\alpha )$ (or, $(0, \alpha ]$), where $\alpha \leq 1$.
+    Then, $f(|a|)$ is the characteristic function of the set $|a| < \alpha $ (or, $|a| \leq \alpha $), so the left side is the measure of the set of points in $G'(1)$ such that $|a| < \alpha $ (or, $|a| \leq \alpha $), i.e., of $G'(\alpha ^{1/m})= \alpha ^{1/m}G'(1)$ with measure $\lambda(\alpha ^{1/m} G'(1))= \alpha ^m \mu (G')$.
+    The right side is
+    \[	
+        \mu (G') \int_{0 < \tau ^{1/m} \le \alpha } \, \mathrm{d} \tau = \alpha ^m \mu (G')
+    \]
+
+    Suppose next that $f$ is the characteristic function of $(\alpha , \beta )$, where $0 < \alpha < \beta \le 1$.
+    The result follows, since the characteristic function of $(\alpha , \beta )$ is the difference of the characteristic functions of $(0, \beta )$ and $(0, \alpha ]$.
+
+    Therefore, the result is true for all positive simple functions and by taking limits the general result follows.
+\end{proof}
+
+% Lemma
+\begin{lemma}\label{lem1.8.2}
+    Let $G=[X,Y,G']$, where $X, Y$ are as before and $G' \subseteq \mathrm{SL}(m, \mathbb{R})$, then
+    \[	
+        \mu (G)= \frac{m}{n} \lambda (X) \lambda (Y) \mu (G')
+    \]
+\end{lemma}
+\begin{proof}
+    Let $g\in G$, then $g=[x,y,g']$.
+    Then, $tg= [tx, y, t^{n/m}g']$ from (\ref{eq1.13}).
+    Therefore, $G(1)$ consists of all $[x,y, a'] \in \mathrm{GL}^+(n, \mathbb{R})$, where $x \in tX,\, y\in Y,\, a'= t^{n/m}g' \,(g' \in G'),\, 0 < t \le 1$.
+    The range of the values of $a'$ is therefore $G'(1)$ and $t$ is a function of $a'$ given as,
+    \[	
+        |a'|= |t^{n/m}g'|=t^n |g'|=t^n
+    \]
+    So, using (\ref{eq1.14})
+    \begin{align*}
+        \mu (G)&= \int_{G(1)} \, \mathrm{d} x \, \mathrm{d} z_1 \, \mathrm{d} z_2\\
+        &=\int\limits_{\substack{a' = t^{n/m}g', \\ g' \in G', \, 0 < t \le 1}} \mathrm{d} a' \int_{tX} \mathrm{d} x \int_{Y} \mathrm{d} y
+    \end{align*}
+    We have, $\displaystyle\int_{tX} \mathrm{d} x = \lambda (tX) = t^{n \ell} \lambda (X)= |a'|^ \ell \lambda (X)$, therefore using Lemma~\ref{lem1.8.1} we see that,
+    \begin{align*}
+        \mu (G)&= \lambda (X) \lambda (Y) \int_{G'(1)} |a'|^ \ell \, \mathrm{d} a'\\
+        &= \lambda (X) \lambda (Y) \mu (G') \int_{0}^1 \tau ^{\ell/m} \, \mathrm{d} \tau \hfill\\
+        &= \frac{m}{n} \lambda (X) \lambda (Y) \mu (G')
+    \end{align*}
+\end{proof}
+
+%  Beginning of the proof 
+Let $K \subseteq W(\mathbb{R}^{n\ell })$ be Lebesgue measurable, $C= [0, 1)^{\ell m}$ be the unit cube in $\mathbb{R}^{\ell m}$.
+Also let $K'= [K,C,F_m] \subseteq \mathrm{SL}(n, \mathbb{R})$.
+On one hand we know from Lemma~\ref{lem1.8.2} that,
+% Equation
+\begin{equation}\label{eq1.15}
+    \mu (K') = \frac{m}{n} \mu (F_m ) \lambda (C) \lambda (K)= \frac{m}{n}\mu (F_m)\lambda (K)
+\end{equation}
+On the other hand, using right invariance of the Haar measure $\mu$,
+% Align
+\begin{align}\label{eq1.16}
+    \mu (K')&= \int_{\mathrm{SL}(n, \mathbb{R})}\mychi _{K'}(g) \, \mathrm{d} \mu (g) \nonumber \\
+    &= \int_{F_n} \sum_{h \in \mathrm{SL}(n, \mathbb{Z})} \mychi _{K'}(g) \, \mathrm{d} \mu (g) \nonumber\\
+    &= \int_{F_n} \sum_{p \in P} \sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_p} \mychi _{K'}(gh) \, \mathrm{d} \mu (g)
+\end{align}
+%  Another Lemma
+% Lemma
+\begin{lemma}\label{lem1.8.3}
+    (i) $\displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_e} \mychi _{K'}(gh) = \mychi _K(ge) \,\forall g \in \mathrm{SL}(n, \mathbb{R})$
+
+    (ii) Let $p \in P$, then $\displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_p} \mychi _{K'}(gh) = \mychi _K(gp) \, \forall g \in \mathrm{SL}(n, \mathbb{R})$
+\end{lemma}
+\begin{proof}
+    (i) If $g$ isn't well-balanced, then so isn't $ge$ and $gh \ \forall h \in {\mathrm{SL}(n, \mathbb{Z})}_e$, hence the lemma follows trivially.
+
+    If $g$ is well-balanced, let $g= [x,y,g'] =
+    \begin{pmatrix}
+        x_1 & 0  \\
+        x_2 & \widetilde{x}_1
+    \end{pmatrix}
+    \begin{pmatrix}
+        I_\ell & y  \\
+        0      & g'
+    \end{pmatrix}
+    $, also let that $h=
+    \begin{pmatrix}
+        I_ \ell & \eta   \\
+        0       & h'
+    \end{pmatrix}
+    $.
+    Here, $g' \in \mathrm{SL}(m, \mathbb{R}), h' \in \mathrm{SL}(m, \mathbb{Z})$.
+
+    So, $gh=
+    \begin{pmatrix}
+        x_1 & 0  \\
+        x_2 & \widetilde{x}_1
+    \end{pmatrix}
+    \begin{pmatrix}
+        I_ \ell  & \eta + yh'  \\
+        0        & g'h'
+    \end{pmatrix}
+    = [x, \eta + yh', g'h']
+    $.
+    Therefore,
+    % Equation
+    \begin{equation}\label{eq1.17}
+        \displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_e} \mychi _{K'} (gh) = \displaystyle\sum_{\eta , h'} \mychi _K(x) \mychi _C(\eta +yh')\mychi _{F_m}(g'h')
+    \end{equation}
+    Note that $\exists!\, h'_0 \in \mathrm{SL}(m, \mathbb{Z})$ such that $g'h'_0 \in F_m$, also $\exists!\, \eta _0$ such that $\eta _0 + yh'_0 \in C$.
+    Therefore, ignoring the terms which are zero on the right side of (\ref{eq1.17}), we have
+    \begin{align*}
+        \displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_e} \mychi _{K'} (gh) &= \mychi_K (x) \mychi _C(\eta _0 + yh'_0) \mychi _{F_m} (g' h'_0) \\
+        &= \mychi _K(x)\\
+        &= \mychi _K(ge)
+    \end{align*}
+
+    (ii) Fix $h_1 \in {\mathrm{SL}(n, \mathbb{Z})}_p$.
+    Then all $h_2 \in {\mathrm{SL}(n, \mathbb{Z})}_p$ can be uniquely expressed as $h_1h$ with $h \in {\mathrm{SL}(n, \mathbb{Z})}_e$.
+    So,
+    \begin{align*}
+        \displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_p} \mychi _{K'} (gh) &= \displaystyle\sum_{h \in {\mathrm{SL}(n, \mathbb{Z})}_e} \mychi _{K'}(gh_1h)\\
+        &= \mychi _K (ghe)\\
+        &= \mychi _K (gp)
+    \end{align*}
+
+\end{proof}
+%  Finishing the proof
+Therefore, using Lemma~\ref{lem1.8.3} from (\ref{eq1.15}) and (\ref{eq1.16}) we get, if $K \subseteq W(\mathbb{R}^{n \ell})$ then,
+\[
+    \int_{F_n} \displaystyle\sum_{p \in P} \mychi_{K} (gp) \, \mathrm{d} \mu (g) = \frac{m}{n} \mu (F_m) \lambda (K)
+\]
+
+Let $K \subseteq \mathbb{R}^{n \ell }$ is arbitrary and $K_0 = K \cap W(\mathbb{R}^{n\ell })$.
+Then, $\lambda (K)= \lambda (K_0)$.
+
+For $p \in P$, let  $E_p=\{g \in F_n : gp \in K-K_0\}$, and $\mathcal{E}_p= \{g \in \mathrm{M}(n, \mathbb{R}): gp \text{ isn't well-balanced}\}$.
+Then $\lambda ( \mathcal{E}_p)=0$, since $\mathcal{E}_p$ is the zero set of a polynomial.
+Also $\mathcal{E}_p(1) =\mathcal{E}_p$ and $E_p \subseteq \mathcal{E}_p$.
+Hence, $\mu (E_p) = 0$.
+Therefore, $\Big\{g \in F_n : \displaystyle\sum_{p \in P} \mychi _K(gp) \neq \displaystyle\sum_{p \in P}\mychi _{K_0} (gp)\Big\} = \bigcup _{p \in P}E_p$ is a set of $\mu$-measure zero (as $P$ is countable).
+Hence,
+% Align
+\begin{align*}
+    \int_{F_n} \displaystyle\sum_{p \in P} \mychi _K (gp) \, \mathrm{d} \mu (g)
+    &=\int_{F_n} \displaystyle\sum_{p \in P} \mychi _{K_0} (gp) \, \mathrm{d} \mu (g) \\
+    &= \frac{m}{n} \mu (F_m) \lambda (K_0) \\
+    &= \frac{m}{n} \mu (F_m) \lambda (K)
+\end{align*}
+So, we have proved Mean Value Theorem for primitive matrices~\ref{smvtp} for $f= \mychi _K, K \subseteq \mathbb{R}^{n \ell }$ measurable.
+Now, considering positive simple functions and then taking limits of them we get Mean Value Theorem for primitive matrices~\ref{smvtp} for all functions.
+
+\section{Remarks}
+\subsection{Macbeath and Rogers' proof of $\mathrm{SL}(n, \mathbb{Z})$ being a lattice in $\mathrm{SL}(n, \mathbb{R})$}
+Let $G$ be a locally compact topological group with a Haar measure $\mu$ and $\Gamma$ be a subgroup of $G$.
+A Borel set $F \subseteq G$ is called a fundamental domain for $\Gamma$ if,
+% Align
+\begin{align*}\label{eq1.18}
+    (i)& \ F \gamma _1 \cap F \gamma _2 = \varnothing, \ \text{if} \ \gamma _1 \neq \gamma _2 \in \Gamma \\
+    (ii)& \ \bigcup_{\gamma \in \Gamma } F \gamma = G \\
+\end{align*}
+$\Gamma$ is called a lattice in $G$ if $\Gamma$ is discrete and there is a finite volume fundamental domain for $\Gamma$.
+
+In~\cite{macbeathrogers58}, Macbeath and Rogers first constructed a fundamental domain for $\mathrm{SL}(n,\mathbb{Z})$ in $\mathrm{SL}(n,\mathbb{R})$ (which they call $F_n$).
+Note that the proof of Mean Value Theorem for primitive matrices~\ref{smvtp} (Section~\ref{sec1.8}) do not require the assumption that $ \mu (F_n) < \infty$.
+Then giving the same arguments as in Section~\ref{secn1.5}, they also showed that $\mathrm{SL}(n,\mathbb{Z})$ is a lattice in $\mathrm{SL}(n,\mathbb{R})$.
+
+\subsection{Remarks on Section~\ref{secn1.6}}\label{1.9.2}
+We want to view the first $\ell$ columns of $\mathrm{SL}(n,\mathbb{R})$ and $\mathrm{GL}^+(n,\mathbb{R})$ matrices as $\mathbb{R}^{n \ell }$.
+But all elements in $\mathbb{R}^{n \ell }$ cannot occur as the first $\ell$ columns of some matrix in $\mathrm{GL}^+(n,\mathbb{R})$ (as those $\ell$ column vectors can be linearly dependent).
+
+Let $P(\mathbb{R}^{n\ell }) = \{ae : a \in \mathrm{GL}^+(n, \mathbb{R})\} \subseteq \mathbb{R}^{n \ell }$.
+Then, $W(\mathbb{R}^{n\ell}) \subseteq P(\mathbb{R}^{n\ell})$ and $\mathrm{GL}^+(n,\mathbb{R})$ acts transitively on $P(\mathbb{R}^{n\ell })$ by left-multiplication.
+The stabilizer of $e$ is
+\[
+    {\mathrm{GL}^+(n, \mathbb{R})}_e = \{a \in \mathrm{GL}^+(n, \mathbb{R}) : ae = e\} = \bigg\{
+    \begin{pmatrix}
+        I_ \ell  & y  \\
+        0        & a'
+    \end{pmatrix}
+    : y \in \mathbb{R}^{ \ell m}, a' \in \mathrm{GL}^+(m, \mathbb{R})\bigg\}
+\]
+Then $\mathrm{GL}^+(n, \mathbb{R})/{\mathrm{GL}^+(n, \mathbb{R})}_e \cong P(\mathbb{R}^{n\ell })$.
+For $x \in P(\mathbb{R}^{n\ell })$ and $a_x \in {\mathrm{GL}^+(n, \mathbb{R})}_x := \{a \in \mathrm{GL}^+(n, \mathbb{R}) : ae = x\}$, we have ${\mathrm{GL}^+(n, \mathbb{R})}_x = a_x {\mathrm{GL}^+(n, \mathbb{R})}_e$.
+For $x \in W(\mathbb{R}^{n\ell })$ we have a smooth choice $a_x =
+\begin{pmatrix}
+    x_1 & 0	\\
+    x_2 & \widetilde{x}_1
+\end{pmatrix}
+\in {\mathrm{GL}^+(n, \mathbb{R})}_x$, as shown in Section~\ref{secn1.6}.
+
+% Bibliography
+\bibliographystyle{alpha}
+\bibliography{bib}
+
+\end{document}
+
+%-------------------------------------------------------------------
+% End of SiegelsMeanValueTheorem.tex
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+% Comments on the document
+%-------------------------------------------------------------------
+
+% Section 5 and 8 are folded differently.
+

@@ -1,0 +1,1330 @@
+
+%------------------------------------------------------------------
+% Roger'sMeanValueTheoremsandMomentsofSiegeltransform.tex
+%------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+
+% Usepackages
+%-------------------------------------------------------------------
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbding}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{contour}%for writing sc bf
+\usepackage[dvipsnames]{xcolor}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{graphicx}
+%\usepackage[linktoc=all]{hyperref}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage[normalem]{ulem}%for writing a underlined text
+\usepackage{physics}
+\usepackage{relsize}
+\usepackage{slantsc}
+%\usepackage{titlesec}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{thmtools}
+\usepackage{tfrupee}
+%\usepackage{titling}
+\usepackage{tikz}
+
+\graphicspath{{Images/}}
+
+% Environments
+%-------------------------------------------------------------------
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{proof}
+\newtheorem*{rmvtproof}{Proof of Theorem 4.1}
+
+% Newcommands
+%-------------------------------------------------------------------
+
+\newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
+\newcommand{\myrho}{\raisebox{2pt}{$\rho$}}
+
+%-------------------------------------------------------------------
+% Numbering of equations
+%-------------------------------------------------------------------
+
+% \numberwithin{equation}{section}
+
+%-------------------------------------------------------------------
+% QED symbol
+%-------------------------------------------------------------------
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+\begin{document}
+
+\title{\bfseries Rogers' Mean Value Theorems and Moments of Siegel Transform}
+
+\author{Mahbub Alam}
+\date{}
+
+\maketitle
+
+% Abstract
+\begin{abstract}
+    This article is an attempt to understand and rewrite C. A. Rogers' 1955 paper~\cite{rogers55b} in relatively modern language.
+    We will also apply it to get theorems about moments of Siegel transform of a function.
+    We will be mainly following~\cite{rogers55b} and~\cite{schmidt58}.
+\end{abstract}
+
+\section{Introduction}
+From Siegel's mean value theorem we know that
+\[
+    \int\limits_{\mathrm{SL}(n,\mathbb{R}) / \mathrm{SL}(n,\mathbb{Z})} \widehat{f}(\Lambda  ) \, \mathrm{d} \mu (\Lambda  ) = \int_{\mathbb{R}^n}f(x) \, \mathrm{d} x
+\]
+where $f\in L^1(\mathbb{R}^n )$, $\widehat{f}$ (called the Siegel transform of $f$) is defined as $\widehat{f}( \Lambda ) = \displaystyle\sum_{X \in \Lambda - \{0\}} f(X)$, $\Lambda$ is any unimodular lattice in $\mathbb{R}^{n}$, $\mathrm{SL}(n, \mathbb{R})/ \mathrm{SL}(n, \mathbb{Z})$ is the space of all unimodular lattices and $\mu$ is a $\mathrm{SL}(n,\mathbb{R})$-invariant probability measure on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$.
+
+In 1955, Rogers proved theorems about higher moments of $\widehat{f}$, such as: if $f : \mathbb{R}^{n} \to [0, \infty]$ is a Borel measurable function for $n > 2$ then
+\[
+    \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} |\widehat{f}(\Lambda )|^2 \, \mathrm{d} \mu(\Lambda ) = \bigg|\int_{\mathbb{R}^{n}}f(x) \, \mathrm{d} x\bigg|^2 + \displaystyle\sum_{(p,q)=1}\int_{\mathbb{R}^{n}}f(px)f(qx) \, \mathrm{d} x
+\]
+In this lecture we will prove a general form of the above theorem.
+
+\subsection{Introduction from Rogers'~\cite{rogers55b}}
+Various methods have been used for calculating the mean value of a function, defined for all lattices of determinant 1, over some or all the lattices of determinant 1.
+It is accepted that the most natural way of calculating such an average is in terms of the invariant measure used by Siegel~\cite{siegel45}.
+However, the averaging methods used by Rogers~\cite{rogers47},~\cite{rogers55a} and by Cassels~\cite{cassels53} are more convenient to use, while the methods used by Mahler~\cite{mahler46}, by Davenport and Rogers~\cite{davenportrogers47} and by Macbeath and Rogers~\cite{macbeathrogers55} are more appropriate for the special problems considered.
+The method used recently by Rogers~\cite{rogers55a} has proved to be particularly convenient.
+The first object of this paper is to establish a close connection between this averaging method and Siegel's method, but while we will confine our attention to the relationship between this particular averaging method and Siegel's method, it will be clear from the nature of our proofs that the averaging methods mentioned above, except those used by Mahler and by Davenport and Rogers, will stand in a similar relationship to Siegel's method.
+
+\section{Haar measure $\mu$ on $\mathrm{SL}(n,  \mathbb{R})$ and a measure on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$}
+We know that $\mathrm{SL}(n,\mathbb{Z})$ is a lattice is $\mathrm{SL}(n,\mathbb{R})$.
+Let $F_n$ be a fundamental domain of $\mathrm{SL}(n,\mathbb{Z})$ in $\mathrm{SL}(n,\mathbb{R})$.
+Let $\mu$ be the Haar measure on $\mathrm{SL}(n,\mathbb{R})$ normalized so that $\mu (F_n)=1$.
+
+% Theorem
+\begin{theorem}[Weil's integration formula]\label{thm}
+    Let $G$ be a locally compact topological group and $H$ be a closed subgroup of $G$.
+    Let $\Delta_G$ and $\Delta _H$ be the modular functions of $G$ and $H$ so that $\Delta _G\big|_H = \Delta _H$.
+    Then $\exists$ a $G$-invariant Borel measure $\nu$ on $G/H$, which can be normalized so that for all integrable functions $f$ on $G$,
+    \[
+        \int_{G}f(g) \, \mathrm{d} g = \int_{G/H}\int_{H}f(gh) \, \mathrm{d} h \, \mathrm{d} \nu (\bar{g})
+    \]
+\end{theorem}
+
+Therefore, from Weil's integration formula we see that $\mu$ gives rise to a $\mathrm{SL}(n,\mathbb{R})$-invariant probability measure on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$, which we will also call $\mu$ as there will be no confusion.
+It is also clear from Weil's integration formula that integration over $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ with respect to $\mu$ can be viewed as integration over $F_n$ with respect to $\mu$.
+
+\section{Rogers Mean Value over the space of lattices}
+Let $\omega > 0$ and $\theta _2, \ldots, \theta _n$ be real numbers.
+Say, $\vartheta = (\theta _2, \ldots, \theta _n)$.
+Define,
+\[
+    v_1(\vartheta , \omega ) = 
+    \begin{bmatrix}
+        \omega ^{-n+1} \\
+        0 \\
+        \vdots \\
+        0
+    \end{bmatrix}
+    ,
+    v_2(\vartheta , \omega ) = 
+    \begin{bmatrix}
+        \theta _2 \omega ^{-n+1} \\
+        \omega  \\
+        0 \\
+        \vdots \\
+        0
+    \end{bmatrix}
+    , \ldots,
+    v_n(\vartheta , \omega ) = 
+    \begin{bmatrix}
+        \theta _n \omega ^{-n+1} \\
+        0 \\
+        \vdots \\
+        \omega 
+    \end{bmatrix}
+\]
+Let $\Lambda (\vartheta , \omega )$ denote the unimodular lattice generated by $v_1(\vartheta , \omega ), \ldots , v_n(\vartheta , \omega )$.
+For a fixed $\omega$ let
+% AlignedEquation
+\begin{equation}
+    \begin{split}
+        \Theta = \Theta (\vartheta , \omega ) &=
+        % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            \omega ^{-n+1} & \theta _2 \omega ^{-n+1} & \cdots & \theta _n \omega ^{-n+1} \\
+            0              & \omega                   & \cdots & 0 \\
+            \vdots         & \vdots                   & \ddots & \vdots \\
+            0              & 0                        & \cdots & \omega 
+        \end{bmatrix} \\
+        &= % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            \omega ^{-n+1} & 0       & \cdots  & 0 \\
+            0              & \omega  & \cdots  & 0 \\
+            \vdots         & \vdots  & \ddots  & \vdots \\
+            0              & 0       & \cdots  & \omega 
+        \end{bmatrix}
+        % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            1      & \theta _2 & \cdots  & \theta _n \\
+            0      & 1         & \cdots  & 0 \\
+            \vdots & \vdots    & \ddots  & \vdots \\
+            0      & 0         & \cdots  & 1
+        \end{bmatrix} \\
+        &= A(\omega ) N(\vartheta )
+    \end{split}
+\end{equation}
+Then $\Lambda (\vartheta , \omega ) = \Theta (\vartheta , \omega )\mathbb{Z}^{n}$.
+
+Let $\rho : \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \to \mathbb{C} \cup \{\infty\}$ be a Borel measurable function.
+The maps
+% UnnumberedAlign
+\begin{align*}
+    \iota : C \to & \, \mathrm{SL}(n,\mathbb{R}) \times C \\
+    \vartheta \mapsto & \, (\mathrm{Id}, \Theta (\vartheta, \omega )) \\
+    \newline \\
+    m : \mathrm{SL}(n,\mathbb{R}) &\times C \to  \mathrm{SL}(n,\mathbb{R}) \\
+    (g&, \vartheta ) \mapsto g \Theta \\
+    \newline \\
+    \pi : \mathrm{SL}(n,\mathbb{R}) \to & \, \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \\
+    &g \mapsto g\mathbb{Z}^{n}
+\end{align*}
+are all continuous.
+Therefore, from the following diagram
+\[
+    C \xrightarrow{\iota } \mathrm{SL}(n,\mathbb{R}) \times C \xrightarrow{m} \mathrm{SL}(n,\mathbb{R}) \xrightarrow{ \pi } \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \xrightarrow{\rho } \mathbb{C} \cup \{\infty\}
+\]
+we see that $\mathrm{SL}(n,\mathbb{R}) \times C \to \mathbb{C} \cup \{\infty\}$, $(g,\vartheta ) \mapsto \rho (g \Theta (\vartheta , \omega ))$ is a Borel measurable function and so is the function $C \to \mathbb{C} \cup \{\infty\}$, $\vartheta \mapsto \rho (\Lambda (\vartheta , \omega ))$ $\forall \omega > 0$.
+
+Then \uline{Rogers Mean Value} of the function $\rho$ is defined to be the limit (if it exists)
+% AlignedEquation
+\begin{equation}\label{rmv}
+    \begin{split}
+        M(\rho ) &= \lim_{\omega \to 0+} \int_{C} \rho (\Lambda (\vartheta , \omega )) \, \mathrm{d} \vartheta \\
+        &= \lim_{\omega \to 0+} \int_{C} \rho \big(A(\omega ) N(\vartheta ) \mathbb{Z}^{n}\big) \, \mathrm{d} \vartheta 
+    \end{split}
+\end{equation}
+where $C$ is the $n-1$-dimensional unit cube.
+
+Where as the \uline{Siegel Mean Value} of such a function is defined as
+% AlignedEquation
+\begin{equation}\label{smv}
+    \begin{split}
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \rho (\Lambda ) \, \mathrm{d} \mu (\Lambda )
+    \end{split}
+\end{equation}
+
+\section{Main Theorems}
+% Theorem
+\begin{theorem}[Rogers' Mean Value Theorem]\label{rmvt}
+    Let $\rho : \mathbb{R}^{nk} \to [0, \infty]$ be a Borel measurable function, where $1 \leq k \leq n-1$.
+    Then,
+    % AlignedEquation
+    \begin{equation}\label{rmvteq}
+        \begin{split}
+            \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} & \sum_{X \in \Lambda ^k - \{0\}} \rho (X) \, \mathrm{d} \mu (\Lambda ) = \int_{\mathbb{R}^{nk}} \rho (x) \,  \mathrm{d} x \\
+            & + \sum_{(\sigma ; \tau )} \sum_{q=1}^{\infty}\sum_{D} {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_m}{q} \bigg)}^n \int \cdots \int \rho \bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q} x_i, \ldots , \sum_{i=1}^{m}\frac{d_{ik}}{q} x_i \bigg) \, \mathrm{d} x_1 \cdots \, \mathrm{d} x_m
+        \end{split}
+    \end{equation}
+    both sides perhaps having the value $+\infty$, where on the right the outer sum is over all divisions $(\sigma ; \tau ) = (\sigma _1, \ldots, \sigma _m; \tau _1, \ldots, \tau _{k-m})$ of $\{1, 2, \ldots , k\}$ into two sequences $\sigma _1, \ldots , \sigma _m$ and $\tau _1, \ldots , \tau _{k-m}$, with $1\leq m \leq k-1$ such that
+    % Align
+    \begin{equation}\label{sigmatau}
+        \begin{split}
+            & 1 \leq \sigma _1 < \sigma _2 < \cdots < \sigma _m \leq  k, \\
+            & 1 \leq  \tau _1 < \tau _2 < \cdots < \tau _{k-m} \leq  k, \\
+            & \sigma _i \neq \tau _j, \ \text{for} \  1\leq  i \leq  m, 1\leq  j\leq  k-m,
+        \end{split}
+    \end{equation}
+    where the inner sum is over all $m \times k$ matrices $D$, with integral elements, having highest common factor relatively prime to $q$ and with
+    % AlignedEquation
+    \begin{equation}\label{D}
+        \begin{split}
+            & d_{i \sigma _j} = q \delta _{ij}, \,  1 \leq  i, j \leq  m,\\
+            & d_{i \tau _j} = 0, \ \text{if} \ \tau _j < \sigma _i, 1 \leq  i \leq m , 1\leq  j \leq  k-m,
+        \end{split}
+    \end{equation}
+    and where
+    % UnnumberedAlign
+    \begin{align*}
+        e_i = \gcd (\varepsilon _i, q), \, 1 \leq  i \leq  m,
+    \end{align*}
+    $\varepsilon _1, \ldots , \varepsilon _m$ being the elementary divisors of the matrix $D$.
+
+    If in addition $\rho$ is bounded and have compact support and if also $n \geq  \big[\frac{1}{4} k ^2\big] + 2$, then both sides of (\ref{rmvteq}) are finite.
+\end{theorem}
+
+% Theorem
+\begin{theorem}[Rogers]\label{mst}
+    Let $ \rho : \mathbb{R}^{n} \to [0, \infty]$ be a Borel measurable function.
+    $\widehat{\rho } : \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \to [0, \infty]$, defined as $\widehat{\rho } (\Lambda ) = \displaystyle\sum_{X \in \Lambda - \{0\}} \rho (X)$ be its Siegel transform and $1 \leq  k \leq n-1$.
+    Then,
+    % AlignedEquation
+    \begin{equation}\label{msteq}
+        \begin{split}
+            \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} {\big(\widehat{\rho }(\Lambda )\big)}^k \,&  \mathrm{d} \mu (\Lambda ) = \bigg(\int_{\mathbb{R}^{n}} \rho (x) \,  \mathrm{d} x\bigg)^k \\
+            & + \sum_{(\sigma ; \tau )} \sum_{q=1}^{\infty}\sum_{D} {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_m}{q} \bigg)}^n \int \cdots \int \prod_{j=1}^{k}\rho \bigg(\sum_{i=1}^{m}\frac{d_{ij}}{q} x_i\bigg) \, \mathrm{d} x_1 \cdots \, \mathrm{d} x_m
+        \end{split}
+    \end{equation}
+    both sides perhaps having the value $+\infty$, where on the right the outer sum is over all divisions $(\sigma ; \tau ) = (\sigma _1, \ldots, \sigma _m; \tau _1, \ldots, \tau _{k-m})$ of $\{1, 2, \ldots , k\}$ into two sequences $\sigma _1, \ldots , \sigma _m$ and $\tau _1, \ldots , \tau _{k-m}$, with $1\leq m \leq k-1$ such that
+    % UnnumberedAlign
+    \begin{align*}
+        & 1 \leq \sigma _1 < \sigma _2 < \cdots < \sigma _m \leq  k, \\
+        & 1 \leq  \tau _1 < \tau _2 < \cdots < \tau _{k-m} \leq  k, \\
+        & \sigma _i \neq \tau _j, \ \text{for} \ 1 \leq  i \leq  m, 1\leq  j\leq  k-m,
+    \end{align*}
+    where the inner sum is over all $m \times k$ matrices $D$, with integral elements, having highest common factor relatively prime to $q$ and with
+    % AlignedEquation
+    \begin{equation}\label{mstD}
+        \begin{split}
+            & d_{i \sigma _j} = q \delta _{ij}, \, 1 \leq  i, j \leq  m,\\
+            & d_{i \tau _j} = 0, \ \text{if} \ \sigma _j < \tau _i, 1 \leq  i \leq m , 1\leq  j \leq  k-m,
+        \end{split}
+    \end{equation}
+    and where
+    % UnnumberedAlign
+    \begin{align*}
+        e_i = \gcd (\varepsilon _i, q), \, 1 \leq  i \leq  m,
+    \end{align*}
+    $\varepsilon _1, \ldots , \varepsilon _m$ being the elementary divisors of the matrix $D$.
+
+    If in addition $\rho$ is bounded and have compact support and if also $n \geq  \big[\frac{1}{4} k ^2\big] + 2$, then both sides of (\ref{msteq}) are finite.
+\end{theorem}
+
+These theorems were later modified by Schmidt~\cite{schmidt58}.
+
+We write $(\alpha; \beta ) \prec (\sigma ; \tau )$ if $(\alpha ; \beta ) = ( \alpha _1, \ldots, \alpha _m; \beta _1, \ldots, \beta _{k-m})$, $(\sigma ; \tau ) = (\sigma _1, \ldots, \sigma _m; \tau _1, \ldots, \tau _{k-m})$ and $\alpha _1 = \sigma _1, \alpha _2 = \sigma _2, \ldots , \alpha _{\ell - 1} = \sigma _{\ell - 1}, \alpha _\ell < \sigma _\ell  $ for some $\ell \leq m$.
+If $m<k$ and $D$ is a $m \times k$ matrix, we denote by $D(\sigma ; \tau )$ the square submatrix with columns $\sigma _1, \sigma _2, \ldots , \sigma _m$ and let be $\det D(\sigma ; \tau )$ the absolute value of the determinant of $D(\sigma; \tau )$.
+
+% Theorem
+\begin{theorem}[Schmidt]\label{schmvt}
+    Theorem~\ref{rmvt} remains true, if (\ref{D}) is replaced by
+    % AlignedEquation
+    \begin{equation}\label{nD}
+        \begin{split}
+            & D(\sigma ; \tau ) = qI, \\
+            & \det D(\alpha ; \beta ) \leq  \det D (\sigma ; \tau ) \ \forall (\alpha ; \beta ) = (\alpha _1, \ldots, \alpha _m ; \beta _1, \ldots, \beta _{k-m}), \\
+            & \det D(\alpha; \beta ) < \det D(\sigma; \tau ) \ \text{if} \ (\alpha; \beta ) \prec (\sigma ; \tau ).
+        \end{split}
+    \end{equation}
+
+    Further, if $\rho$ is bounded and have compact support, then both sides of (\ref{rmvteq}) are finite.
+\end{theorem}
+
+Same modifications can be the done to Theorem~\ref{mst}.
+Theorem~\ref{schmvt} provides better estimates for the sum in (\ref{rmvteq}), since (\ref{nD}) permits only matrices $D$ with $|d_{ij}| \leq q$.
+
+\section{Relation between Rogers' and Siegel's Mean Values}
+% Theorem
+\begin{theorem}\label{rmveqsmv}
+    Let $\rho : \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \to [0, \infty]$ be a Borel measurable function.
+    Suppose that the mean values $M(\rho \circ \ell_g)$ exists (i.e., are finite) and are equal for all $g \in \mathrm{SL}(n,\mathbb{R})$, where $\ell_g$ is the left multiplication by $g$.
+    Then,
+    \[
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \rho (\Lambda )\, \mathrm{d} \mu (\Lambda ) = M(\rho )
+    \]
+\end{theorem}
+\begin{proof}
+    By assumption,
+    % Align
+    \begin{align}\label{eqassumption}
+        M(\rho )  = \lim_{\omega \to 0+}\int_{C}\rho (g \Theta ) \, \mathrm{d} \vartheta \, , \forall g \in \mathrm{SL}(n,\mathbb{R})
+    \end{align}
+
+    Using Weil's integration formula and the projection map $\pi : \mathrm{SL}(n,\mathbb{R}) \to \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ one can see that,
+    % Align
+    \begin{align}\label{intrho}
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \rho (\Lambda ) \, \mathrm{d} \mu (\Lambda ) = \int_{F_n} \rho (g) \, \mathrm{d} \mu (g)
+    \end{align}
+
+    Define functions $\rho _h$ on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ as $\rho _h(\Lambda ) = \text{min} \{\rho (\Lambda ), h\}$, $\forall h \in \mathbb{Z}_+$.
+
+    For any non-negative function $f$ on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ using Fubini's theorem and $\mathrm{SL}(n,\mathbb{R})$-invariance of $\mu$ we have
+    % Align
+    \begin{align*}
+        \int\limits_{F_n \times C} f (g \Theta ) \, \mathrm{d} \mu (g) \, \mathrm{d} \vartheta = \int_{F_n}\int_{C} f(g \Theta ) \, \mathrm{d} \vartheta \, \mathrm{d} \mu (g) &= \int_{C} \int_{F_n}f (g \Theta ) \, \mathrm{d} \mu (g) \, \mathrm{d} \vartheta \\
+        &= \int_{C} \int_{F_n} f(g) \, \mathrm{d} \mu (g) \, \mathrm{d} \vartheta \\
+        &= \int_{F_n} f(g) \, \mathrm{d} \mu (g) \, \mathrm{d} \vartheta 
+    \end{align*}
+
+    Therefore,
+    % Align
+    \begin{align}
+        \label{eq3}
+        \int_{F_n} \rho (g) \, \mathrm{d} \mu (g) &= \int_{F_n}\int_{C} \rho (g \Theta ) \, \mathrm{d} \vartheta \, \mathrm{d} \mu (g)\\
+        \label{eq4}
+        \int_{F_n} \rho _h(g) \, \mathrm{d} \mu (g) &= \int_{F_n}\int_{C} \rho _h(g \Theta ) \, \mathrm{d} \vartheta \, \mathrm{d} \mu (g)
+    \end{align}
+    Since $\rho _h = \text{min}\{\rho , h\}$, we have
+    \[
+        \int_{C} \rho _h(g \Theta ) \,  \mathrm{d} \vartheta \leq \text{min}\bigg\{\int_{C} \rho (g \Theta )\, \mathrm{d} \vartheta , h\bigg\} =: {\bigg[\int_{C}\rho (g \Theta )\, \mathrm{d} \vartheta \bigg]}_h
+    \]
+    Therefore, from (\ref{eq4}) we have
+    % AlignedEquation
+    \begin{equation}\label{eq5}
+        \begin{split}
+            \int_{F_n}  \rho _h(g) \, \mathrm{d} \mu (g) \leq \int_{F_n}{\bigg[\int_{C} \rho (g \Theta ) \, \mathrm{d} \vartheta \bigg]}_h \, \mathrm{d} \mu (g)
+        \end{split}
+    \end{equation}
+
+    From (\ref{eqassumption}), for $h > M(\rho )$ as $\omega \to 0+$ we have
+    \[
+        {\bigg[\int_{C}\rho (g \Theta ) \, \mathrm{d} \vartheta \bigg]}_h  \to  M(\rho )
+    \]
+    And hence by dominated convergence theorem as $\omega \to 0+$
+    % Align
+    \begin{align*}
+        \int_{F_n}{\bigg[\int_{C}\rho (g \Theta ) \, \mathrm{d} \vartheta \bigg]}_h \, \mathrm{d} \mu (g)  &\to \int_{F_n} M(\rho ) \, \mathrm{d} \mu (g) \\
+        &= M(\rho )
+    \end{align*}
+    Therefore, it follows from (\ref{eq5}) that
+    % Align
+    \begin{align}\label{rmvlesmv}
+        \int_{F_n} \rho (g) \, \mathrm{d} \mu (g) \leq M(\rho )
+    \end{align}
+
+    Again using (\ref{eqassumption}), (\ref{eq3}) and Fatou's lemma we have
+    % Align
+    \begin{align}\label{rmvgesmv}
+        M(\rho ) &= \int_{F_n} M(\rho ) \, \mathrm{d} \mu (g) \nonumber \\
+        & \leq \liminf_{\omega \to 0+} \int_{F_n} \int_{C} \rho (g \Theta ) \, \mathrm{d} \vartheta \, \mathrm{d} \mu (g) \nonumber \\
+        &= \int_{F_n} \rho (g) \, \mathrm{d} \mu (g)
+    \end{align}
+
+    Combining the results of (\ref{rmvlesmv}) and (\ref{rmvgesmv}) and using (\ref{intrho}) we have
+    \[
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \rho (\Lambda ) \,  \mathrm{d} \mu (\Lambda ) = M(\rho )
+    \]
+\end{proof}
+
+The mean value (\ref{rmv}) is often easier to evaluate than the integral (\ref{smv}), thus Theorem~\ref{rmveqsmv} is useful for evaluating the integral (\ref{smv}).
+We use this method to evaluate the integral (\ref{smv}) when $\rho (\Lambda )$ is taken to be a sum of the form
+\[
+    \sum_{X_1, \ldots, X_m} \rho (X_1, \ldots, X_m) 
+\]
+where $\rho \in L^1(\mathbb{R}^{nm})$, $1\leq  m \leq n-1$ and $X_1, \ldots, X_m$ are restricted to be linearly independent points of $\Lambda$, perhaps also restricted so that certain rational linear combination of $X_1, \ldots, X_m$ are also points of $\Lambda$.
+In the special case, when the only restriction on $X_1, \ldots, X_m$ is that they should be linearly independent points of $\Lambda$, the result reduces to the formula
+\[
+    \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \sum_{\substack{X_1, \ldots, X_m \in \Lambda \\ \dim (X_1, \ldots, X_m) = m}} \rho (X_1, \ldots, X_m) \, \mathrm{d} \mu (\Lambda ) = \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+\]
+stated by Siegel~\cite{siegel45} without proof.
+It seems likely that the general result could also be proved by Siegel's methods.
+
+\section{Few Basic Theorems and Lemmas}
+In this section we investigate the mean value $M(\bar{\rho })$ in the case when $\bar{\rho} (\Lambda ) = \displaystyle\sum_{X_1, \ldots, X_m} \rho (X_1, \ldots, X_m)$ and $X_1, \ldots, X_m$ are restricted to be linearly independent points of $\Lambda$, perhaps satisfying certain auxiliary conditions.
+
+% Theorem
+\begin{theorem}\label{thmi}
+    Let $\rho : \mathbb{R}^{nm} \to [0, \infty]$ be a Riemann integrable function, where $1 \leq  m \leq n-1$.
+    Let $q \in \mathbb{Z}_+$ and $D = (d_{ij}) \in M_{m \times h} (\mathbb{Z})$ where $h \geq 0$.
+    Let $C_1 \equiv C_1(\Lambda )$ denote the set of conditions that
+    % AlignedEquation
+    \begin{equation}
+        \begin{split}\label{C1}
+            & X_1, \ldots, X_m \in \Lambda \\
+            & \dim (X_1, \ldots, X_m) = m \\
+            & \sum_{i=1}^{m} \frac{d_{ij}}{q}X_i \in \Lambda \ \text{for} \ j=1, \ldots, h
+        \end{split}    
+    \end{equation}
+    Define, $\bar{\rho } : \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \to [0, \infty]$ as
+    % AlignedEquation
+    \begin{equation}\label{rierhobar}
+        \begin{split}
+            \bar{\rho } (\Lambda ) = \sum_{C_1} \rho (X_1, \ldots,X_m)
+        \end{split}
+    \end{equation}
+    Then $M(\bar{\rho })$ exists and has the value
+    % Align
+    \begin{align}
+        M(\bar{\rho }) = {\bigg(\frac{N(D,q)}{q^m}\bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \,  \mathrm{d} x
+    \end{align}
+    where $N(D, q)$ is the number of $m$-tuples of integers $(a_1, \ldots, a_m)$ with
+    % UnnumberedAlign
+    \begin{align*}
+        & 0 \leq a_1 < q, \ldots, 0 \leq  a_m < q \\
+        & \sum_{i=1}^{m} d_{ij} a_i \equiv 0 \mod q \ \text{for} \ j=1, \ldots, h
+    \end{align*}
+    Here $N(D, q)$  is to be given the value $q^m$ in the case when $h = 0$.
+\end{theorem}
+\begin{proof}
+    We will divide this long proof in several parts.
+
+    % Part 1: Simplification
+    $\blacktriangleright$ \textbf{\uline{Simpler expression for $\int_{C}\bar{\rho }(\Lambda (\vartheta ,\omega )) \, \mathrm{d} \vartheta $}:}
+
+    The condition that $\rho$ is Riemann integrable function implies that $\exists R >0$ such that $\rho (x) = 0$ unless $|x^i_j| < R , \, i = 1, \ldots, n, \, j = 1, \ldots, m$.
+    We investigate the integral
+    \[
+        \int_{C} \bar{\rho} (\Lambda (\vartheta , \omega )) \,  \mathrm{d} \vartheta 
+    \]
+    on the assumption that $\omega$ is sufficiently small compared to $R$.
+
+    A general point of the lattice $\Lambda (\vartheta , \omega )$ has coordinates $
+    \begin{bmatrix}
+        \omega ^{-n+1} (u^1 + \vartheta \cdot \bm{u}) \\
+        \omega u^2 \\
+        \vdots \\
+        \omega u^n
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \omega ^{-n+1} (u^1 + \vartheta \cdot \bm{u}) \\
+        \omega \bm{u} 
+    \end{bmatrix}
+    $, where $u^1, \ldots , u^n \in \mathbb{Z}$, $\bm{u} =
+    \begin{bmatrix}
+        u^2 \\
+        u^3 \\
+        \vdots \\
+        u^n
+    \end{bmatrix}
+    \in \mathbb{Z}^{n-1}$ and $\vartheta \cdot \bm{u} = \displaystyle\sum_{i=2}^{n} \theta _i u^i$.
+
+    Therefore, if $X_1, \ldots , X_m \in \Lambda (\vartheta , \omega )$ and $X_j = 
+    \begin{bmatrix}
+        \omega ^{-n+1} (u_j^1 + \vartheta \cdot \bm{u}_j) \\
+        \omega u_j^2 \\
+        \vdots \\
+        \omega u_j^n
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \omega ^{-n+1} (u_j^1 + \vartheta \cdot \bm{u}_j) \\
+        \omega \bm{u}_j 
+    \end{bmatrix}
+    $, where $u_j^1, \ldots , u_j^n \in \mathbb{Z}$, $\bm{u}_j =
+    \begin{bmatrix}
+        u_j^2 \\
+        u_j^3 \\
+        \vdots \\
+        u_j^n
+    \end{bmatrix}
+    \in \mathbb{Z}^{n-1}$ and $\vartheta \cdot \bm{u}_j = \displaystyle\sum_{i=2}^{n} \theta _i u_j^i$, we have
+    % Equation
+    \begin{equation}\label{xs}
+        (X_1, \ldots, X_m) = 
+        % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            \omega ^{-n+1}(u^1_1 + \vartheta \cdot \bm{u}_1) & \cdots  & \omega ^{-n+1} ( u^1_m+ \vartheta \cdot \bm{u}_m) \\
+            \omega u^2_1                                            & \cdots  & \omega u^2_m \\
+            \vdots                                                  & \ddots  & \vdots \\
+            \omega u^n_1                                            & \cdots  & \omega u^n_m
+        \end{bmatrix}
+    \end{equation}
+
+    With this notation the conditions $C_1 \, (\ref{C1})$ can be split up into two categories: the linearly independent points $X_1, \ldots , X_m$ such that the corresponding points $\bm{u}_1, \ldots, \bm{u}_m$ are linearly independent and the points $X_1, \ldots, X_m$, which are linearly independent although $\bm{u}_1, \ldots, \bm{u}_m$ are linearly dependent.
+    Our first object is to prove that there are  no nonzero contributions of the second type in the sum (\ref{rierhobar}).
+
+    Suppose that $X_1, \ldots, X_m$ are points of the lattice $\Lambda (\vartheta , \omega )$ such that $\rho (X_1, \ldots, X_m) \neq 0$ and the corresponding $\bm{u}_1, \ldots, \bm{u}_m$ are linearly dependent.
+    We proceed to prove that $X_1, \ldots, X_m$ are linearly dependent.
+    If the rank of the matrix
+    % Align
+    \begin{align}\label{us}
+        % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            u^2_1  & \cdots  & u^2_{m} \\
+            \vdots & \ddots  & \vdots \\
+            u^n_1  & \cdots  & u^n_{m}
+        \end{bmatrix}
+    \end{align}
+    were less than $m-1$, then the rank of the matrix in (\ref{xs}) would be less than $m$ and the points $X_1, \ldots, X_m$ would be linearly dependent as required.
+    So we may suppose that the rank of the matrix in (\ref{us}) is $m-1$.
+    We may suppose, without loss of generality, that
+    % UnnumberedAlign
+    \begin{align*}
+        \det % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            u^2_1  & \cdots  & u^2_{m-1} \\
+            \vdots & \ddots  & \vdots \\
+            u^m_1  & \cdots  & u^m_{m-1}
+        \end{bmatrix}
+        \neq 0
+    \end{align*}
+    Let $b_1, \ldots, b_m$ be the cofactors of the elements $u^i_1, \ldots, u^i_m$ in the matrix
+    % UnnumberedAlign
+    \begin{align*}
+        % Bmatrix
+        \renewcommand\arraystretch{1}
+        \begin{bmatrix}
+            u^2_1  & \cdots  & u^2_{m-1} & u^2_m \\
+            \vdots & \ddots  & \vdots    & \vdots \\
+            u^m_1  & \cdots  & u^m_{m-1} & u^m_m \\
+            u^i_1  & \cdots  & u^i_{m-1} & u^i_m
+        \end{bmatrix}
+    \end{align*}
+    Then, as $b_1, \ldots, b_m$ are independent of $i$, while this matrix is singular for $i = 2, \ldots, n$, it follows that $\displaystyle\sum_{j=1}^m b_j u^i_j = 0 \text{ for } i = 2, \ldots, n$.
+    Thus
+    % Equation
+    \begin{equation}\label{ldu}
+        \sum_{j=1}^{m} b_j \bm{u}_j = 0
+    \end{equation}
+    Further $b_1, \ldots, b_m$ are integers with $b_m \neq 0$ and using Hadamard's inequality
+    \[
+        |b_j| \leq {(m-1)}^{(m-1)/2} {\Big[\max_{\substack{2 \leq i\leq n \\ 1 \leq  j \leq m}}|u^i_j|\Big]}^{m-1}
+    \]
+    Since we are supposing that $\rho (X_1, \ldots, X_m) \neq 0$ it follows that $|X^i_j| = |\omega u^i_j| < R$ for $i = 2, \ldots, n, \, j = 1, \ldots, m$.
+    Thus
+    \[
+        |b_j| < {(m-1)}^{(m-1)/2} R^{m-1} \omega ^{-m+1}, 1 \leq j \leq m 
+    \]
+    Further the integers $u^1_1, \ldots, u^1_m$ must be such that $|\omega ^{-n+1} (u^1_j + \vartheta \cdot \bm{u}_j)| < R$ for $j = 1, \ldots, m$.
+    Consequently, using (\ref{ldu})
+    % Align
+    \begin{align*}
+        \bigg|\sum_{j=1}^{m} b_j u^1_j\bigg| &= \bigg|\sum_{j=1}^{m}b_j (u^1_j + \vartheta \cdot \bm{u}_j)\bigg| \\
+        &< \sum_{j=1}^{m} |b_j|R \omega ^{n-1} \\
+        &< m{(m-1)}^{(m-1)/2} R^m \omega ^{n-m} \\
+        &< 1
+    \end{align*}
+    provided $m<n$ and $\omega$ is sufficiently small.
+    Hence $\displaystyle\sum_{j=1}^{m} b_j u^1_j$, being an integer, is zero.
+    This, together with (\ref{ldu}), implies that the points $X_1, \ldots, X_m$ are linearly dependent.
+
+    Part of the condition $C_1$ (\ref{C1}) that $\sum\limits_{i=1}^{m} \frac{d_{ij}}{q} X_i \in \Lambda $ for $j = 1, \ldots, h$ is equivalent to the conditions that $\sum\limits_{i=1}^{m}d_{ij}u_i^r \equiv 0 \mod q$ for $r=1, \ldots, n$ and $j=1, \ldots, h$.
+    So if $C_2 \equiv C_2(\Lambda )$ denote the set of conditions that
+    % AlignedEquation
+    \begin{equation}\label{C2}
+        \begin{split}
+            & \bm{u}_1, \ldots, \bm{u}_m \in \mathbb{Z}^{n-1} \\
+            & \dim (\bm{u}_1, \ldots, \bm{u}_m) = m \\
+            & \displaystyle\sum_{i=1}^{m} \frac{d_{ij}}{q}\bm{u}_i \in \mathbb{Z}^{n-1} \ \text{for} \ j=1, \ldots, h
+        \end{split}
+    \end{equation}
+    then $C_1 \iff C_2 \ \text{and} \ \sum\limits_{i=1}^{m} d_{ij}u_i^1 \equiv 0 \mod q \ \text{for} \ j=1, \ldots, h$.
+
+    It is convenient to use $\rho _{_{1 \leq j\leq m}}(X_j)$ to denote $\rho (X_1, \ldots, X_m)$.
+
+    Then, using what we have shown so far, for $\omega$ sufficiently small
+    % Align
+    \begin{align}\label{nrhobar}
+        \bar{\rho} (\Lambda (\vartheta, \omega )) = \sum\limits_{\substack{C_2 \\ u_1^1, \ldots, u_m^1 \in \mathbb{Z} \\ \sum\limits_{i=1}^{m}d_{ij}u_i^1 \equiv 0 \mod q \ \forall j}} \rho _{_{1\leq j\leq m}} \bigg(
+        \begin{bmatrix}
+            \omega ^{-n+1}(u_j^1 + \vartheta \cdot \bm{u}_j) \\
+            \omega \bm{u}_j
+        \end{bmatrix}
+        \bigg)
+    \end{align}
+    Provided $\omega$ is sufficiently small with respect to $R$, $\rho _{_{1\leq j\leq m}} \bigg(
+    \begin{bmatrix}
+        \omega ^{-n+1}(u_j^1 + \vartheta \cdot \bm{u}_j) \\
+        \omega \bm{u}_j
+    \end{bmatrix}
+    \bigg)$ will be zero, unless $u_1^1, \ldots, u_m^1$ are so chosen that $-1/2 < u_j^1 + \vartheta \cdot \bm{u}_j \leq 1/2$.
+    And for so chosen $u_1^1, \ldots, u_m^1$, using $\norm{x}$ to denote the unique real number in $\big(-\frac{1}{2}, \frac{1}{2}\big]$ so that $x-\norm{x} \in \mathbb{Z}$, we get $u_j^1+ \vartheta \cdot \bm{u}_j = \norm{\vartheta \cdot \bm{u}_j}$.
+    Consequently,
+    % UnnumberedAlign
+    \begin{align*}
+        \bar{\rho} (\Lambda (\vartheta, \omega )) &= \sum\limits_{\substack{C_2 \\ \sum\limits_{i=1}^{m}d_{ij}(\norm{\vartheta \cdot \bm{u}_i}- \vartheta \cdot \bm{u}_i) \equiv 0 \mod q \ \forall j}} \rho _{_{1\leq j\leq m}} \bigg(
+        \begin{bmatrix}
+            \omega ^{-n+1}\norm{\vartheta \cdot \bm{u}_j} \\
+            \omega \bm{u}_j
+        \end{bmatrix}
+        \bigg)
+    \end{align*}
+    Therefore,
+    % Align
+    \begin{align}\label{irhobar}
+        \int_{C} \bar{\rho} (\Lambda (\vartheta, \omega )) \, \mathrm{d} \vartheta = \sum\limits_{C_2} I(\bm{u}_1, \ldots, \bm{u}_m)
+    \end{align}
+    where
+    % Align
+    \begin{align}\label{IeqiF}
+        I(\bm{u}_1, \ldots, \bm{u}_m) = \int_{C} F(\vartheta ) \, \mathrm{d} \vartheta 
+    \end{align}
+    and for $\widetilde{\bm{u}} = (\bm{u}_1, \ldots, \bm{u}_m)$
+    % UnnumberedAlign
+    \begin{align*}
+        F(\vartheta ) &= F(\theta _2, \ldots, \theta _n) \\
+        &= F_{\widetilde{\bm{u}}}(\theta _2, \ldots, \theta _n) \\
+        &=
+        \begin{cases}
+            \rho _{_{1\leq j\leq m}} \Bigg(
+            \begin{bmatrix}
+                \omega ^{-n+1}\norm{\vartheta \cdot \bm{u}_j} \\
+                \omega \bm{u}_j
+            \end{bmatrix}
+            \Bigg)   & \text{if} \ \sum\limits_{i=1}^{m}d_{ij}(\norm{\vartheta \cdot \bm{u}_i}- \vartheta \cdot \bm{u}_i) \equiv 0 \mod q \ \forall j = 1, \ldots, h \\
+            \ \ \ 0  & \text{otherwise} 
+        \end{cases}
+    \end{align*}
+
+    % Part 2: I
+    $\blacktriangleright$ \textbf{\uline{Concentrating on $I(\bm{u}_1, \ldots, \bm{u}_m)$}:}
+
+    We will now prove that, provided $\omega$ is sufficiently small,
+    \[
+        I(\bm{u}_1, \ldots, \bm{u}_m) = \omega ^{(n-1)m} \frac{N(D, q)}{q^m} \int\limits_{-\infty}^{\infty} \cdots \int\limits_{-\infty}^{\infty} \rho _{_{1 \leq j \leq m}}
+        \begin{pmatrix}
+            \xi _j \\
+            \omega \bm{u}_j
+        \end{pmatrix}
+        \, \mathrm{d} \xi _1 \cdots \, \mathrm{d} \xi _m
+    \]
+
+    If $\vartheta = (\theta _2, \ldots, \theta _n)$ and $\vartheta '= (\theta '_2, \ldots, \theta '_n)$ differ by integers in each coordinate, it is clear that $\norm{\vartheta ' \cdot \bm{u}_i} = \norm{\vartheta \cdot \bm{u}_i}$ for $i=1, \ldots, m$ and also
+    % UnnumberedAlign
+    \begin{align*}
+        & \sum\limits_{i=1}^{m} d_{ij} (\norm{\vartheta ' \cdot \bm{u}_i} - \vartheta ' \bm{u}_i) \\
+        &= \sum\limits_{i=1}^{m} d_{ij} (\norm{\vartheta \cdot \bm{u}_i} - \vartheta \bm{u}_i) + (\vartheta - \vartheta ') \cdot \bigg(\sum\limits_{i=1}^{m} d_{ij} \bm{u}_i \bigg) \\
+        &\equiv \sum\limits_{i=1}^{m} d_{ij} (\norm{\vartheta \cdot \bm{u}_i} - \vartheta \bm{u}_i) \mod q
+    \end{align*}
+    as $\sum\limits_{i=1}^{m} d_{ij} \bm{u}_i \equiv 0 \mod q$.
+    Thus $F(\vartheta ' ) = F(\vartheta )$, i.e., $F(\vartheta )$ is periodic in $\theta _2, \ldots, \theta _{n}$ with period 1.
+    It follows that $I(\bm{u}_1, \ldots, \bm{u}_m)$ is the limit of the mean value of $F(\vartheta )$ taken over any suitable region in $\mathbb{R}^{n-1}$, which becomes large in an appropriate way.
+
+    Since $\bm{u}_1, \ldots, \bm{u}_m$ are linearly independent, we may suppose that the determinant of the matrix
+    % Bmatrix
+    \[
+        \begin{bmatrix}
+            u_1^2     & \cdots & u_m^2 \\
+            \vdots    & \ddots & \vdots \\
+            u_1^{m+1} & \cdots & u_m^{m+1}
+        \end{bmatrix}
+    \]
+    does not vanish.
+    Consider the matrix
+    \[
+        U = \begin{bmatrix}
+            \begin{matrix}
+                u_1^2     & \cdots & u_m^2 \\
+                \vdots    & \ddots & \vdots \\
+                u_1^{m+1} & \cdots & u_m^{m+1}
+            \end{matrix}
+            & \text{\Huge{o}} \\
+            \begin{matrix}
+                \vdots & \ddots & \vdots \\
+                u_1^n  & \cdots & u_m^n
+            \end{matrix}
+            & I_{n-1-m}
+        \end{bmatrix}
+    \]
+    and the non-singular transformation $(\phi _1, \ldots, \phi _{n-1}) = (\theta _2, \ldots, \theta _{n})U$, i.e.,
+    % UnnumberedAlign
+    \begin{align*}
+        & \phi _j = \vartheta \cdot \bm{u}_j \ \text{for} \ j=1, \ldots, m \\
+        & \phi _j = \theta _j \ \text{for} \ j > m
+    \end{align*}
+    So the region defined by the inequalities $|\phi _i| \leq \Phi $, $i = 1, \ldots, n-1$ is a parallelepiped in the $\vartheta$-space, which becomes large as $\Phi$ tends to infinity.
+    Also $F(\theta _2, \ldots, \theta _n) = G(\phi _1, \ldots, \phi _{m})$ where
+    % Align
+    \begin{align}\label{G}
+        G(\phi _1, \ldots, \phi _m) =
+        \begin{cases}
+            \rho _{_{1\leq j\leq m}} \Bigg(
+            \begin{bmatrix}
+                \omega ^{-n+1}\norm{\phi _j} \\
+                \omega \bm{u}_j
+            \end{bmatrix}
+            \Bigg)   & \text{if} \ \sum\limits_{i=1}^{m} d_{ij}(\norm{\phi _i} - \phi _i) \equiv 0 \mod q \ \forall j = 1, \ldots, h \\
+            \ \ \ 0  & \text{otherwise}
+        \end{cases}
+    \end{align}
+
+    Thus,
+    % UnnumberedAlign
+    \begin{align*}
+        I(\bm{u}_1, \ldots, \bm{u}_m) &= \int_{C} F(\vartheta ) \, \mathrm{d} \vartheta \\
+        &= \lim_{\Phi  \to \infty} \frac{\int_{|\phi _i| \leq \Phi } F(\vartheta ) \, \mathrm{d} \vartheta }{\int_{|\phi _i| \Phi } \, \mathrm{d} \vartheta } \\
+        &= \lim_{\Phi  \to \infty} \frac{\int \cdots \int_{|\phi _i| \leq \Phi } G(\phi _1, \ldots, \phi _{m}) \, \mathrm{d} \phi _1 \cdots \, \mathrm{d} \phi _{n-1}}{\int \cdots \int_{|\phi _i| \leq \Phi } \, \mathrm{d} \phi _1 \cdots \, \mathrm{d} \phi _{n-1}} \\
+        &= \lim_{\Phi  \to \infty} \frac{\int \cdots \int_{|\phi _i| \leq \Phi } G(\phi _1, \ldots, \phi _{m}) \, \mathrm{d} \phi _1 \cdots \, \mathrm{d} \phi _{m}}{\int \cdots \int_{|\phi _i| \leq \Phi } \, \mathrm{d} \phi _1 \cdots \, \mathrm{d} \phi _{m}}
+    \end{align*}
+    But it is clear from (\ref{G}) that $G(\phi _1, \ldots, \phi _{m})$ is periodic in $\phi _1, \ldots, \phi _{m}$ with period $q$.
+    Hence
+    % Align
+    \begin{align}\label{pI}
+        I(\bm{u}_1, \ldots, \bm{u}_m) = \frac{1}{q^m} \int\limits_{-1/2}^{q-1/2} \cdots \int\limits_{-1/2}^{q-1/2} G(\phi _1, \ldots, \phi _{m}) \, \mathrm{d} \phi _1 \cdots \, \mathrm{d} \phi _{m}
+    \end{align}
+
+    Now, if $a_1, \ldots, a_m$ are integers and $\phi _i = a_i + \alpha _i$ for $i=1, \ldots, m$, where $-1/2 < \alpha _i < 1/2$ for $i = 1, \ldots, m$, then $\norm{\phi _i} = \alpha _i, \, \phi _i - \norm{\phi _i} = a_i$ for $i = 1, \ldots, m$ and
+    \[
+        G(\phi _1, \ldots, \phi _m) =
+        \begin{cases}
+            \rho _{_{1\leq j \leq m}} \Bigg(
+            \begin{bmatrix}
+                \omega ^{-n+1} \alpha _j \\
+                \omega \bm{u}_j
+            \end{bmatrix}
+            \Bigg)   & \text{if} \ \sum\limits_{i=1}^{m} d_{ij}a_i \equiv 0 \mod q \ \forall j = 1, \ldots, h \\
+            \ \ \ 0  & \text{otherwise} 
+        \end{cases}
+    \]
+
+    Hence from (\ref{pI})
+    % UnnumberedAlign
+    \begin{align*}
+        I(\bm{u}_1, \ldots, \bm{u}_m) &= \sum\limits_{\substack{0 \leq a_i < q \\ \sum\limits_{i=1}^{m} d_{ij}a_i \equiv 0 \mod q}} \frac{1}{q^m} \int\limits_{-1/2}^{1/2} \cdots \int\limits_{-1/2}^{1/2} \rho _{_{1 \leq j \leq m}} \bigg(
+        \begin{bmatrix}
+            \omega ^{-n+1} \alpha _j \\
+            \omega \bm{u}_j
+        \end{bmatrix}
+        \bigg) \, \mathrm{d} \alpha _1 \cdots \, \mathrm{d} \alpha _m \\
+        &= \omega ^{(n-1)m}\frac{N(D, q)}{q^m} \int\limits_{-1/(2 \omega ^{n-1})}^{1/(2 \omega ^{n-1})} \cdots \int\limits_{-1/(2 \omega ^{n-1})}^{1/(2 \omega ^{n-1})} \rho _{_{1 \leq j \leq m}}
+        \begin{pmatrix}
+            \xi _j \\
+            \omega \bm{u}_j
+        \end{pmatrix}
+        \, \mathrm{d} \xi _1 \cdots \, \mathrm{d} \xi _m
+    \end{align*}
+    where the number $N(D, q)$ is as in the statement of this theorem.
+    Since $\rho _{_{1 \leq j \leq m}}
+    \begin{pmatrix}
+        \xi _j \\
+        \omega \bm{u}_j
+    \end{pmatrix}
+    = 0 $ unless $|\xi _j| < R$ for $j = 1, \ldots, m$, it follows that for sufficiently small $\omega$
+    % Align
+    \begin{align}\label{I}
+        I(\bm{u}_1, \ldots, \bm{u}_m) = \omega ^{(n-1)m} \frac{N(D, q)}{q^m} \int\limits_{-\infty}^{\infty} \cdots \int\limits_{-\infty}^{\infty} \rho _{_{1 \leq j \leq m}}
+        \begin{pmatrix}
+            \xi _j \\
+            \omega \bm{u}_j
+        \end{pmatrix}
+        \, \mathrm{d} \xi _1 \cdots \, \mathrm{d} \xi _m
+    \end{align}
+
+    % Part 3: Finishing the proof
+    $\blacktriangleright$ \textbf{\uline{Finishing the proof}:}
+
+    Now we will prove that as $\omega \to 0+$
+    \[
+        \displaystyle\int_{C} \bar{\rho} (\Lambda (\vartheta, \omega )) \, \mathrm{d} \vartheta = \sum\limits_{C_2} I(\bm{u}_1, \ldots, \bm{u}_m) \to \displaystyle{\bigg(\frac{N(D, q)}{q^m} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x 
+    \]
+    We will first show that the sum $\displaystyle\sum_{C_2} I(\bm{u}_1, \ldots, \bm{u}_m)$ can be completed to the sum $\displaystyle\sum\limits_{C_2'} I(\bm{u}_1, \ldots, \bm{u}_m)$ with an error of $O(\omega ^{n-m})$, where $C_2 '$ denote the set of conditions that
+    % AlignedEquation
+    \begin{equation}\label{C2'}
+        \begin{split}
+            & \bm{u}_1, \ldots, \bm{u}_m \in \mathbb{Z}^{n-1} \\
+            & \displaystyle\sum_{i=1}^{m} \frac{d_{ij}}{q}\bm{u}_i \in \mathbb{Z}^{n-1} \ \text{for} \ j=1, \ldots, h
+        \end{split}
+    \end{equation}
+
+    % Lemma
+    \begin{lemma}\label{duf}
+        The number of points $(\bm{u}_1, \ldots, \bm{u}_m) \in \mathbb{Z}^{(n-1)m}$ satisfying the conditions that $|\bm{u}_j| \leq R/ \omega $ for $j = 1, \ldots, m$ and that $\bm{u}_1, \ldots, \bm{u}_m$ are linearly dependent, is at most $\displaystyle m {\bigg[1 + \frac{2R}{\omega }\bigg]}^{n(m-1)}$.
+    \end{lemma}
+    \begin{proof}
+        If $\bm{u}_1, \ldots, \bm{u}_m$ are linearly dependent, then one of these points is linearly dependent on the other points.
+        So the total number of points satisfying the conditions is at most $mN$, where $N$ is the number of such sets in which $\bm{u}_m$ is linearly dependent on $\bm{u}_1, \ldots, \bm{u}_{m-1}$.
+
+        Suppose now that $\bm{u}_1, \ldots, \bm{u}_{m-1}$ are fixed and that $\bm{u}_m$ is linearly dependent on $\bm{u}_1, \ldots, \bm{u}_{m-1}$.
+        We may choose $r_1, \ldots, r_{m-1}$ so that the matrix ${\big(u_j^{r_i} \big)}_{1 \leq i , j \leq m-1}$ has the same rank as the matrix ${\big(u_j^i\big)}_{\substack{2 \leq i \leq n \\ 1 \leq j \leq m-1}}$.
+        Then once the coordinates $u_m^{r_i}$, $i = 1, \ldots, m-1$ have been fixed, the point $\bm{u}_m$ will be determined by the condition that it is linearly dependent on $\bm{u}_1, \ldots, \bm{u}_{m-1}$.
+
+        So the number of possible points $\bm{u}_m$, when $\bm{u}_1, \ldots, \bm{u}_{m-1}$ are fixed, is at most $\displaystyle{\bigg[1+\frac{2R}{\omega }\bigg]}^{m-1}$.
+        Hence $\displaystyle N \leq {\bigg[1 + \frac{2R}{\omega }\bigg]}^{(n-1)(m-1)} {\bigg[1+ \frac{2R}{\omega }\bigg]}^{m-1} = {\bigg[1+ \frac{2R}{\omega }\bigg]}^{n(m-1)}$.
+        This gives the required result.
+    \end{proof}
+
+    Let
+    % Align
+    \begin{align}\label{f}
+        f(\bm{x}_1, \ldots, \bm{x}_m) = \frac{N(D, q)}{q^m} \int\limits_{-\infty}^{\infty} \cdots \int\limits_{-\infty}^{\infty} {\rho }_{_{1 \leq j \leq m}}
+        \begin{pmatrix}
+            \xi _j \\
+            \bm{x}_j
+        \end{pmatrix}
+        \, \mathrm{d} \xi _1 \cdots \, \mathrm{d} \xi _m
+    \end{align}
+    Then $f$ is a bounded Riemann integrable function in $\bm{x}_1, \ldots, \bm{x}_m$ and from (\ref{irhobar}), (\ref{I}) and (\ref{f}),
+    % Align
+    \begin{align}\label{irhobarf}
+        \int_{C} \bar{\rho} (\Lambda (\vartheta , \omega )) \, \mathrm{d} \vartheta = \sum\limits_{C_2} {\omega }^{(n-1)m} f(\omega \bm{u}_1, \ldots, \omega \bm{u}_m)
+    \end{align}
+    By Lemma~\ref{duf}, provided $\omega$ is sufficiently small, we have
+    % UnnumberedAlign
+    \begin{align*}
+        \sum_{\substack{\dim(\bm{u}_1, \ldots, \bm{u}_m) < m \\ \sum\limits_{i=1}^{m} \frac{d_{ij}}{q} \bm{u}_i \in \mathbb{Z}^{n-1}}} I(\bm{u}_1, \ldots, \bm{u}_m) &= \sum_{\substack{\dim(\bm{u}_1, \ldots, \bm{u}_m) < m \\ \sum\limits_{i=1}^{m} \frac{d_{ij}}{q} \bm{u}_i \in \mathbb{Z}^{n-1}}} \omega ^{(n-1)m} f(\omega \bm{u}_1, \ldots, \omega \bm{u}_m) \\
+        &= O \Bigg(\sum_{\substack{\dim(\bm{u}_1, \ldots, \bm{u}_m) < m \\ |\bm{u}_1| \leq R/\omega , \ldots, |\bm{u}_m| \leq R/\omega }} \omega ^{(n-1)m}\Bigg) \\
+        &= O\Big(\omega ^{-n(m-1) + (n-1)m}\Big) \\
+        &= O(\omega ^{n-m})
+    \end{align*}
+
+    Therefore, from (\ref{irhobarf})
+    % Align
+    \begin{align}\label{irhobarfapprox}
+        \int_{C} \bar{\rho }(\Lambda (\vartheta , \omega )) \, \mathrm{d} \vartheta = o(1) + \sum\limits_{C_2 '}{\omega }^{(n-1)m} f(\omega \bm{u}_1, \ldots, \omega \bm{u}_m)
+    \end{align}
+    as $\omega \to 0+$.
+
+    The conditions $C_2 '$ (\ref{C2'}) restrict the point $(\bm{u}_1, \ldots, \bm{u}_m)$ to lie on a sublattice $L$ of $\mathbb{Z}^{(n-1)m}$.
+    Let $\det(L)$ be the determinant of this sublattice.
+    Since $f$ is Riemann integrable over $\mathbb{R}^{(n-1)m}$, by theory of Riemann integration,
+    % Align
+    \begin{align}\label{rieintf}
+        \sum_{C_2 '} \omega ^{(n-1)m} f(\omega \bm{u}_1, \ldots, \omega \bm{u}_m) \to \frac{1}{\det(L)} \int\limits_{\mathbb{R}^{(n-1)m}} f(\bm{x}_1, \ldots, \bm{x}_m) \, \mathrm{d} \bm{x}_1 \cdots \, \mathrm{d} \bm{x}_m
+    \end{align}
+    as $\omega \to 0+$.
+
+    Now the conditions $C_2 '$ (\ref{C2'}) can be split up into the equivalent system of conditions that for $r= 2, \ldots, n$,
+    % AlignedEquation
+    \begin{equation}\label{C2''}
+        \begin{split}
+            & u_1^r, \ldots, u_m^r \in \mathbb{Z}^{n-1} \\
+            & \displaystyle\sum_{i=1}^{m} \frac{d_{ij}}{q} u_i^r \in \mathbb{Z}^{n-1} \ \text{for} \ j=1, \ldots, h
+        \end{split}
+    \end{equation}
+    Thus $L$ is the Cartesian product of $(n-1)$ sublattices of $\mathbb{Z}^{m}$, each having determinant $q^m/N$, where $N$ is the number of $m$-tuples of integers $(a_1, \ldots, a_m)$ with
+    % UnnumberedAlign
+    \begin{align*}
+        & 0 \leq a_1 < q, \ldots, 0 \leq  a_m < q \\
+        & \sum_{i=1}^{m} \frac{d_{ij}}{q} a_i \in \mathbb{Z} \ \text{for} \ j=1, \ldots, h
+    \end{align*}
+    Hence, $N = N(D, q)$ and
+    % Align
+    \begin{align}\label{N}
+        \displaystyle\det (L) = {\bigg(\frac{q^m}{N(D, q)} \bigg)}^{n-1}
+    \end{align}
+
+    From (\ref{irhobarfapprox}), (\ref{rieintf}) and (\ref{N}) the Theorem~\ref{thmi} follows.
+
+\end{proof}
+
+% Lemma
+\begin{lemma}\label{N(D, q)}
+    Let q be a positive integer and let $D = (d_{ij}) \in M_{m \times h}(\mathbb{Z})$ where $h>0$.
+    Then the number $N(D, q)$ of $m$-tuples of integers $(a_1, \ldots, a_m)$ with
+    % UnnumberedAlign
+    \begin{align*}
+        & 0 \leq a_1 < q, \ldots, 0 \leq  a_m < q \\
+        & \sum_{i=1}^{m} d_{ij} a_i \equiv 0 \mod q
+    \end{align*}
+    is given by
+    \[
+        N(D, q) = e_1 \cdots e_r q^{m-r}
+    \]
+    where $r = \min (m, h)$ and
+    \[
+        e_i = \gcd (\varepsilon _i, q), \ i = 1, \ldots, r,
+    \]
+    $\varepsilon_1, \ldots, \varepsilon _r$ being the elementary divisors of $D$. 
+\end{lemma}
+\begin{proof}
+    By the theory of elementary divisors, there are $m \times m$ and $h \times h$ integral unimodular matrices $S$ and $T$ such that $SDT = E$, where $E$ is a diagonal matrix (not in general square) with diagonal elements $\varepsilon _1, \ldots, \varepsilon _r$ so that $\varepsilon _i | \varepsilon _{i+1}$, and $r= \min (m, h)$.
+    These diagonal elements are called the elementary divisors of $D$.
+
+    Since $T$ is an integral unimodular matrix, the $m$-tuple of integers $(a_1, \ldots, a_m)$ satisfies the congruences $\sum\limits_{i=1}^{m} d_{ij}a_i \equiv 0 \mod q, \, j= 1, \ldots, h$ if and only if it satisfies the congruences $\sum\limits_{i=1}^{m}\Big(\sum\limits_{j=1}^{h}d_{ij}t_{jk}\Big)a_i \equiv 0 \mod q, \, k=1, \ldots, h$.
+    Again since $S$ is an integral unimodular matrix, the system of congruences $a_i \equiv \sum\limits_{\ell=1}^{m}s_{\ell i}b_\ell \mod q, \, i=1, \ldots, m$ establishes a one-one correspondence between the sets $\big\{(a_1, \ldots, a_m) \in \mathbb{Z}^{m} : 0 \leq a_i < q, \, i = 1, \ldots, m\big\}$ and $\big\{(b_1, \ldots, b_m) \in \mathbb{Z}^{m} : 0 \leq b_i < q, \, i = 1, \ldots, m\big\}$.
+
+    Thus $N(D, q)$ is the number of $m$-tuples of integers $(b_1, \ldots, b_m)$ with
+    % UnnumberedAlign
+    \begin{align*}
+        & 0 \leq b_1 < q, \ldots, 0 \leq b_m < q, \\
+        & \sum_{\ell=1}^{m}\bigg(\sum_{i=1}^{m}\sum_{j=1}^{m} s_{\ell i}d_{ij} t_{jk} \bigg) b_\ell \equiv 0 \mod q, \ k=1, \ldots, h
+    \end{align*}
+    But, using $SDT=E$, the above system of congruences reduces to the system
+    \[
+        \varepsilon _\ell b_\ell \equiv 0 \mod q, \ \ell = 1, \ldots, r.
+    \]
+    It is now clear that $N(D, q)$ is given by $N(D, q) = e_1 e_2 \cdots e_r q^{m-r}$ where $e_i= (\varepsilon _i, q)$, $i=1, \ldots, r$.
+\end{proof}
+
+% Lemma
+\begin{lemma}\label{fandcharbyposcont}
+    % Enumerate
+    \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
+    \begin{enumerate}
+        \item Let $f : \mathbb{R}^{n} \to [0, \infty]$ be a bounded Borel measurable function with compact support.
+            More explicitly, suppose that $M$ is a constant such that $0 \leq f(x) \leq M \ \forall x$ and $\text{supp} (f) \subseteq \overline{B(0, R)}$ for some $R > 0$.
+            Then $\forall \varepsilon > 0$ it is possible to choose a set $E_\varepsilon \subseteq \overline{B(0, 2R)}$ and a continuous function $f_ \varepsilon $ vanishing outside $B(0, 2R)$ such that
+            % UnnumberedAlignedEquation
+            \begin{equation*}
+                \begin{split}
+                    &\emph{(a)} \ |f(x) - f_ \varepsilon (x)| < \varepsilon , \ \text{if} \ x \notin E_ \varepsilon \\
+                    &\emph{(b)} \ \lambda (E_ \varepsilon ) < \varepsilon \ \text{and} \\
+                    &\emph{(c)} \ 0 \leq f_ \varepsilon (x) \leq M \ \forall x \in \mathbb{R}^{n}
+                \end{split}
+            \end{equation*}
+        \item Let $E$ be a bounded measurable subset of $\mathbb{R}^{n}$.
+            Then $\forall \varepsilon > 0 \ \exists$ a compactly supported continuous function $g_{\varepsilon } : \mathbb{R}^{n} \to \mathbb{R}_{\ge 0}$ such that
+            \[
+                \mychi _E \leq g_{\varepsilon } \ \text{and} \ \int_{\mathbb{R}^{n}} g_{\varepsilon }(x) \, \mathrm{d} x < \lambda (E) + \varepsilon 
+            \]
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    I\@. There exists a compactly supported continuous function $g$ on $\mathbb{R}^{n}$ so that $\norm{f - g}_1 < \varepsilon ^2$.
+    Let $\varphi$ be a function so that
+    % Itemize
+    \begin{itemize}[]
+        \item $0 \leq \varphi (x) \leq 1$
+        \item $\varphi (x) = 1 \ \forall x \in \overline{B(0, R)} \ \text{and} \ \varphi (x) = 0 \ \forall x \notin B(0, 2R)$
+    \end{itemize}
+    and let $\bar{\iota } : [0, \infty] \to [0, \infty]$ be defined as
+    \[
+        \bar{\iota } (x) =
+        \begin{cases}
+            x & \text{if} \ x \leq M \\
+            M & \text{if} \ x \geq M
+        \end{cases}
+    \]
+    Then $f_ \varepsilon = \bar{\iota } \circ (\varphi \cdot g)$ satisfies $f_ \varepsilon (x) = 0 \ \forall x \notin B(0, 2R)$, $\norm{f-f_ \varepsilon }_1 < \varepsilon ^2$ and $0 \leq f_ \varepsilon (x) \leq M \ \forall x \in \mathbb{R}^{n}$.
+    Let $E_ \varepsilon = \{x \in \mathbb{R}^{n} : |f(x) - f_ \varepsilon (x)| \geq \varepsilon \}$ \big($\subseteq \overline{B(0, 2R)}$\big).
+    Then,
+    \[
+        \varepsilon \cdot \lambda (E_ \varepsilon ) \leq \norm{f - f_ \varepsilon }_1 \implies \lambda (E_ \varepsilon ) < \varepsilon 
+    \]
+    This finishes the proof.
+
+    II\@. The assumptions imply that $E$ has finite measure.
+    We also know that we can cover $E$ by countable many open cubes $\{C_n\}_{n \in \mathbb{N}}$ of side length $< 1/2$ so that $\sum\limits_{n \in \mathbb{N}} \lambda (C_n) < \lambda (E) + \varepsilon /2$.
+    For all $n \in \mathbb{N}$ we can get a open cube $C_n '$ so that $\overline{C_n} \subseteq C_n '$ and $\sum\limits_{n \in \mathbb{N}} \lambda (C_n ') < \sum\limits_{n \in \mathbb{N}} \lambda (C_n) + \varepsilon /2$.
+    Also for all $n \in \mathbb{N}$ choose function $g_ \varepsilon ^n$ so that
+    % Itemize
+    \begin{itemize}[]
+        \item $0 \leq g_ \varepsilon ^n(x) \leq 1$
+        \item $g_ \varepsilon ^n(x) = 1 \ \forall x \in \overline{C_n} \ \text{and} \ g_ \varepsilon ^n(x) = 0 \ \forall x \notin C_n '$
+    \end{itemize}
+    Therefore, we can take $g_ \varepsilon = \sum\limits_{n \in \mathbb{N}} g_ \varepsilon ^n$.
+\end{proof}
+
+% Theorem
+\begin{theorem}\label{thmii}
+    Let $\rho : \mathbb{R}^{nm} \to \mathbb{C}$ be a Lebesgue integrable function.
+    Let $q$ be a positive integer and let $D = (d_{ij}) \in M_{m \times h}(\mathbb{Z})$ where $h \geq 0$.
+    Then the function $\bar{\rho } : \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \to \mathbb{C} \cup \{\infty\}$ defined as
+    % Equation
+    \begin{equation}\label{lebrhobar}
+        \bar{\rho} (\Lambda )  = \sum_{C_1} \rho (X_1, \ldots, X_m)
+    \end{equation}
+    is Borel measurable on $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$ and
+    % Align
+    \begin{align}\label{halfrogers}
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho } (\Lambda ) \, \mathrm{d} \mu (\Lambda ) = {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+    \end{align}
+    where $r = \min (m, h)$ and
+    \[
+        e_i = \gcd (\varepsilon _i, q), \ i = 1, \ldots, r,
+    \]
+    $\varepsilon _1, \ldots, \varepsilon _r$ being the elementary divisors of $D$.
+\end{theorem}
+\begin{proof}
+    We first show that for a non-negative, bounded and Borel measurable function $\rho$ on $\mathbb{R}^{nm}$, the function $\bar{\rho }$ is Borel measurable over $\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$.
+    We have to show that the function
+    % UnnumberedAlign
+    \begin{align*}
+        \widetilde{\rho }(g) \coloneqq \bar{\rho }(g \mathbb{Z}^{n}) &= \sum\limits_{C_1(g \mathbb{Z}^{n})} \rho (X_1, \ldots, X_m) \\
+        &= \sum\limits_{C_1(\mathbb{Z}^{n})} \rho (g X_1, \ldots, g X_m)
+    \end{align*}
+    is Borel measurable over $\mathrm{SL}(n,\mathbb{R})$.
+    It clearly suffices to prove that, for every linearly independent set of points $X_1, \ldots, X_m$ the function $g \mapsto \rho (g X_1, \ldots, g X_m)$ is Borel measurable over $\mathrm{SL}(n,\mathbb{R})$, which is indeed true.
+
+    If $\rho$ is Riemann integrable function, then so is $\rho \circ \ell_g \ \forall g \in \mathrm{SL}(n,\mathbb{R})$.
+    Then using Theorem~\ref{thmi} and Lemma~\ref{N(D, q)},
+    % UnnumberedAlign
+    \begin{align*}
+        M(\bar{\rho }\circ \ell_g) &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho \circ \ell_g (x) \, \mathrm{d} x \\
+        &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x 
+    \end{align*}
+    Therefore, using Theorem~\ref{rmveqsmv}
+    \[
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho } (\Lambda ) \, \mathrm{d} (\Lambda ) = {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+    \]
+
+    Now, let $\rho : \mathbb{R}^{nm} \to [0, \infty]$ be a bounded Borel measurable function with compact support.
+    More explicitly, suppose that $M$ is a constant such that $0 \leq \rho (x) \leq M \ \forall x$ and $\text{supp} (\rho ) \subseteq \overline{B(0, R)}$ for some $R > 0$.
+    Let $\sigma$ be the characteristic function of ${B(0, 2R)}$.
+    Then for each positive integer $k$, using Lemma~\ref{fandcharbyposcont} (I), it is possible to choose a set $E_k \subseteq \overline{B(0, 2R)}$ and a continuous function $\rho _k$ vanishing outside $B(0, 2R)$ such that
+    % AlignedEquation
+    \begin{equation}\label{rhobycont}
+        \begin{split}
+            &\text{(a)} \ |\rho (x) - \rho _k (x)| < k^{-1}, \ \text{if} \ x \notin E_k \\
+            &\text{(b)} \ \lambda (E_k) < k^{-1} \ \text{and} \\
+            &\text{(c)} \ 0 \leq \rho _k (x) \leq M \ \forall x \in \mathbb{R}^{nm}
+        \end{split}
+    \end{equation}
+    Let $\mychi _{E_k}$ be the characteristic function of the set $E_k$.
+    Then for each positive integer $k$
+    % Align
+    \begin{align}\label{ineqrhoi}
+        |\rho (x) - \rho _k (x)| \leq k^{-1} \sigma (x) + 2 M \mychi _{E_k} (x) \ \forall x \in \mathbb{R}^{nm}
+    \end{align}
+    Now using Lemma~\ref{fandcharbyposcont} (II) and (\ref{rhobycont}) choose non-negative continuous functions with compact support $g_k$, so that
+    % Align
+    \begin{align}\label{g_k}
+        \mychi _{E_k}(x) \leq g_k(x) \ \forall x \in \mathbb{R}^{nm} \ \text{and} \ \int_{\mathbb{R}^{nm}} g_k(x) \, \mathrm{d} x < \lambda (E_k) + k^{-1} \leq 2 k^{-1}
+    \end{align}
+    Then from (\ref{ineqrhoi})
+    % Align
+    \begin{align}\label{ineqrhoii}
+        |\rho (x) - \rho _k (x)| \leq k^{-1} \sigma (x) + 2M g_k(x) \ \forall x \in \mathbb{R}^{nm}
+    \end{align}
+    The functions $\rho _k, \sigma, g_k$ are all non-negative Riemann integrable functions which are also Borel measurable.
+    So by the special result we have already proved,
+    % AlignedEquation
+    \begin{equation}\label{integrations}
+        \begin{split}
+            \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }_k (\Lambda ) \, \mathrm{d} \mu (\Lambda ) &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho _k (x) \, \mathrm{d} x \\
+            \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\sigma }(\Lambda ) \, \mathrm{d} \mu (\Lambda ) &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \sigma (x) \, \mathrm{d} x \\
+            \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{g}_k (\Lambda ) \, \mathrm{d} \mu (\Lambda ) &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} g_k(x) \, \mathrm{d} x
+        \end{split}
+    \end{equation}
+    From (\ref{integrations}) we can see that $\bar{\rho }_k(\Lambda ) < \infty$ for a.e. $\Lambda \in \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})$.
+    Subsequently, from (\ref{ineqrhoii})
+    % Align
+    \begin{align}\label{ineqrholai}
+        & |\bar{\rho } (\Lambda) - \bar{\rho }_k (\Lambda)| \leq k^{-1} \bar{\sigma }(\Lambda) + 2M \bar{g}_k(\Lambda) \ \text{for a.e.} \ \Lambda \in \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}) \\
+        \label{ineqrholaii}
+        0 & \leq \bar{\rho }(\Lambda ) \leq \bar{\rho }_k (\Lambda ) + k^{-1} \bar{\sigma }(\Lambda ) +2M \bar{g}_k (\Lambda ) \ \text{for a.e.} \ \Lambda \in \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})
+    \end{align}
+    It follows from (\ref{integrations}) that the function $\bar{\rho }_k + k^{-1} \bar{\sigma }+2M \bar{g}_k $ is integrable with respect to $\mu$.
+    It then follows from (\ref{ineqrholaii}) that $\bar{\rho }$ is integrable with respect to $\mu$.
+    Further, using (\ref{g_k}), (\ref{ineqrhoii}), (\ref{integrations}) and (\ref{ineqrholai}),
+    % UnnumberedAlignedEquation
+    \begin{equation*}
+        \begin{split}
+            & \ \ \ \ \Bigg|\int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }(\Lambda ) \, \mathrm{d} \mu (\Lambda ) - {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x \Bigg| \\
+            & \leq \Bigg|\int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho } (\Lambda ) \, \mathrm{d} \mu (\Lambda ) - {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho _k (x) \, \mathrm{d} x \Bigg| \\
+            & \ \ \ \ \ \ + {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \Bigg|\int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x - \int_{\mathbb{R}^{nm}} \rho _k (x) \, \mathrm{d} x \Bigg| \\
+            & \leq \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} |\bar{\rho } (\Lambda ) - \bar{\rho }_k (\Lambda )| \, \mathrm{d} \mu (\Lambda ) + {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} |\rho (x) - \rho _k(x)| \, \mathrm{d} x \\
+            & \leq \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \big\{k^{-1} \bar{\sigma }(\Lambda ) + 2M \bar{g}_k (\Lambda ) \big\} \, \mathrm{d} \mu (\Lambda ) + {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \big\{k^{-1} \sigma (x) + 2M g_k (x) \big\} \, \mathrm{d} x \\
+            &= 2{\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \Bigg\{k^{-1} \int_{\mathbb{R}^{nm}} \sigma (x) \, \mathrm{d} x + 2M \int_{\mathbb{R}^{nm}} g_k(x) \, \mathrm{d} x \Bigg\} \\
+            &= \frac{2}{k} {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \Bigg\{\int_{\mathbb{R}^{nm}} \sigma (x) \, \mathrm{d} x + 4M \Bigg\}
+        \end{split}
+    \end{equation*}
+    Since this holds for all positive integers $k$, it follows that
+    \[
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho } (\Lambda ) \, \mathrm{d} \mu (\Lambda ) = {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+    \]
+
+    Finially consider a general Lebesgue integrable function $\rho$.
+    It is then possible to express $\rho$ as,
+    \[
+        \rho = \sum_{\ell = 1}^{\infty} \rho _\ell = \sum_{\ell=1}^{\infty} \big\{\big({\tau }_{\ell}^{1} - {\tau }_{\ell}^{2}\big) + i \big({\tau }_{\ell}^{3} - {\tau }_{\ell}^{4}\big)\big\}
+    \]
+    where $\rho _\ell = \big({\tau }_{\ell}^{1} - {\tau }_{\ell}^{2}\big) + i \big({\tau }_{\ell}^{3} - {\tau }_{\ell}^{4}\big)$, and each ${\tau }_{\ell}^{k}$ are non-negative, bounded, Borel measurable and Lebesgue integrable functions with compact support, and where the sums $\sum\limits_{\ell=1}^{\infty} \displaystyle\int_{\mathbb{R}^{nm}}{\tau }_{\ell}^{k}(x) \, \mathrm{d} x$ are convergent for all $k$.
+    Therefore, $\forall \ell, k, \ {\bar{\tau }}_{\ell}^{k}$ is Lebesgue integrable and
+    % Align
+    \begin{align}\label{taulk}
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})}{\bar{\tau }}_{\ell}^{k} (\Lambda ) \, \mathrm{d} \mu (\Lambda ) = {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} {\tau }_{\ell}^{k}(x) \, \mathrm{d} x
+    \end{align}
+    It follows from (\ref{taulk}) that for a.e. $\Lambda \in \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z}), \, {\bar{\tau }}_{\ell}^{k}(\Lambda ) < \infty \ \forall k$ and that
+    \[
+        \displaystyle\sum\limits_{\ell = 1}^{\infty} \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} | \bar{\rho }_\ell (\Lambda )| \, \mathrm{d} \mu (\Lambda ) < \infty
+    \]
+    Hence, the sum (\ref{lebrhobar}) is absolutely convergent for a.e. $\Lambda$, $\bar{\rho }$ is Borel measurable and Lebesgue integrable with respect to $\mu$ and using (\ref{taulk}) we get,
+    % UnnumberedAlign
+    \begin{align*}\label{halfrogersend}
+        & \ \ \ \ \ \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }(\Lambda ) \, \mathrm{d} \mu (\Lambda ) \\
+        &= \Bigg(\sum_{\ell=1}^{\infty} \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})}{\bar{\tau }}_{\ell}^{1}(\Lambda ) \, \mathrm{d} \mu (\Lambda ) - \sum_{\ell=1}^{\infty}\int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} {\bar{\tau }}_{\ell}^{2} (\Lambda ) \, \mathrm{d} \mu (\Lambda ) \Bigg) \\
+        & \ \ \ \ \ \ + i \Bigg(\sum_{\ell=1}^{\infty} \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})}{\bar{\tau }}_{\ell}^{3}(\Lambda ) \, \mathrm{d} \mu (\Lambda ) - \sum_{\ell=1}^{\infty}\int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} {\bar{\tau }}_{\ell}^{4} (\Lambda ) \, \mathrm{d} \mu (\Lambda ) \Bigg) \\
+        &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \Bigg\{\Bigg(\sum_{\ell=1}^{\infty} \int_{\mathbb{R}^{nm}}{\bar{\tau }}_{\ell}^{1}(x) \, \mathrm{d} (x) - \sum_{\ell=1}^{\infty}\int_{\mathbb{R}^{nm}} {\bar{\tau }}_{\ell}^{2} (x) \, \mathrm{d} x) \Bigg) \\
+        & \ \ \ \ \ \ + \Bigg(\sum_{\ell=1}^{\infty} \int_{\mathbb{R}^{nm}}{\bar{\tau }}_{\ell}^{3}(x) \, \mathrm{d} (x) - \sum_{\ell=1}^{\infty}\int_{\mathbb{R}^{nm}} {\bar{\tau }}_{\ell}^{4} (x) \, \mathrm{d} x) \Bigg) \Bigg\} \\
+        &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+    \end{align*}
+    This completes the proof.
+\end{proof}
+
+% Corollary
+\begin{corollary}\label{cori}
+    If $ \rho : \mathbb{R}^{nm} \to [0, \infty]$ is a Borel measurable function which is not Lebesgue integrable, then
+    \[
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})}  \bar{\rho }(\Lambda ) \, \mathrm{d} \mu (\Lambda ) = \infty
+    \]
+\end{corollary}
+\begin{proof}
+    Under the assumptions, it is possible to find Lebesgue integrable functions $\rho _k: \mathbb{R}^{nm} \to [0, \infty]$ $\forall k \geq 1$ with
+    % Align
+    \begin{align*}
+        0 \leq \rho _k(x) \leq &\rho (x) \ \forall x \in \mathbb{R}^{nm} \ \text{and}\\
+        \int_{\mathbb{R}^{nm}} &\rho _k(x) \, \mathrm{d} x > k
+    \end{align*}
+    Therefore, $\forall k \geq 1$
+    % UnnumberedAlign
+    \begin{align*}
+        \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }(\Lambda ) \, \mathrm{d} \mu (\Lambda ) &\geq \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }_k (\Lambda ) \, \mathrm{d} \mu (\Lambda ) \\
+        &= {\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n \int_{\mathbb{R}^{nm}} \bar{\rho }_k(x) \, \mathrm{d} x \\
+        &= k{\bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_r}{q} \bigg)}^n
+    \end{align*}
+    Hence the result follows.
+\end{proof}
+
+\section{Proof of Theorem~\ref{rmvt}}\label{proofrmvt}
+In this section we show how results of the type given by Theorem~\ref{thmii} can be combined to give a proof of Theorem~\ref{rmvt}.
+
+We first prove that for any unimodular lattice $\Lambda$, the terms in the sum
+% Align
+\begin{align}\label{awfulsumlhsi}
+    \sum_{X \in \Lambda ^k - \{0\}} \rho(X_1, \ldots, X_k)
+\end{align}
+can be rearranged in the form
+% Align
+\begin{align}\label{awfulsumrhsi}
+    \sum_{\substack{X_1, \ldots, X_k \in \Lambda \\ \dim (X_1, \ldots, X_k) = k}} \rho(X_1, \ldots, X_k) + \sum_{(\sigma ; \tau )}\sum_{q = 1}^{\infty} \sum_{D} \sum_{C_1} \rho\bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+\end{align}
+where $(\sigma; \tau )$ and $D$ satisfies the conditions (\ref{sigmatau}) and (\ref{D}) respectively.
+
+Corresponding to each points $(X_1, \ldots, X_k)$ of $\Lambda ^k -\{0\}$ there is just one term $\rho(X_1, \ldots, X_k)$ in the sum (\ref{awfulsumlhsi}).
+If $X_1, \ldots, X_k$ are linearly independent, the term $\rho(X_1, \ldots, X_k)$ will occur just once in the sum
+% Align
+\begin{align}\label{Xsindep}
+    \sum_{\substack{X_1, \ldots, X_k \in \Lambda  \\ \dim (X_1, \ldots, X_k) = k}} \rho(X_1, \ldots, X_k)
+\end{align}
+and will not occur elsewhere in the sum (\ref{awfulsumrhsi}).
+If $X_1, \ldots, X_k$ are linearly dependent but not all zero, there will be unique division $(\sigma ; \tau ) = (\sigma _1, \ldots, \sigma _m; \tau _1, \ldots, \tau _{k-m})$ of the set $\{1, \ldots, k\}$ into two sequences $\sigma _1, \ldots, \sigma _m$ and $\mu _1, \ldots, \mu _{k-m}$ with $1\leq m \leq k-1$ satisfying the conditions (\ref{sigmatau}) such that the points $X_{\sigma _1}, \ldots, X_{\sigma _m}$ are linearly independent, while for each $j$, $X_{\tau _j}$ is linearly dependent on $X_{\sigma _1}, \ldots, X_{\sigma _i}$ where $i$ is chosen so that $\sigma _i < \tau _j < \sigma _{i+1}$.
+So for each $j$, $X_{\tau _j}$ can be expressed uniquely in the form
+\[
+    X_{\tau _j} = \sum_{i=1}^{m}c_{ij}X_{\sigma _i}
+\]
+where $c_{ij}$ are uniquely determined rational numbers with $c_{ij}= 0$ if $\sigma _i > \tau _j$.
+Let $q$ be the lowest common denominator of these rational numbers.
+Define integers $d_{ij}$ for $i = 1, \ldots, m, \, j = 1, \ldots, k$ by the equations
+% UnnumberedAlign
+\begin{align*}
+    d_{i \sigma _j} &= q \delta _{ij}, \ i=1, \ldots, m, \ j = 1, \ldots, m \\
+    d_{i \tau _j} &= q c_{ij}, \ i=1, \ldots, m, \ j=1, \ldots, k-m
+\end{align*}
+Then the matrix $D=(d_{ij})$ has integral elements having highest common factor relatively prime to $q$ and satisfying (\ref{D}).
+Further, if we take $Y_1 = X_{\sigma _1}, \ldots, Y_m=X_{\sigma _m}$, we see that $Y_1, \ldots, Y_m$ are linearly independent points of $\Lambda$ and that the points
+% Align
+\begin{align}\label{Xs}
+    X_1= \sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, X_k= \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i
+\end{align}
+are points of $\Lambda$.
+Thus, there is a term
+% Align
+\begin{align}\label{Xsdep}
+    \rho\bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_1, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i\bigg) = \rho(X_1, \ldots, X_k)
+\end{align}
+in the sum (\ref{awfulsumrhsi}) corresponding in this way to the points $X_1, \ldots, X_k$.
+Further, it is clear that the points $X_1, \ldots, X_k$ and the equations (\ref{Xs}), together with the conditions (\ref{sigmatau}) on the division $(\sigma ; \tau )$, the matrix $D$ and the point $Y_1, \ldots, Y_m$, determine uniquely the division $(\sigma ; \tau )$, the positive integer $q$, the matrix $D$ and the points $Y_1, \ldots, Y_m$.
+So, corresponding to each linearly dependent $k$-tuple $(X_1, \ldots, X_k) \in \Lambda ^k - \{0\}$, there will be just one term of the form (\ref{Xsdep}) in (\ref{awfulsumrhsi}).
+This shows that each term in the sum (\ref{awfulsumlhsi}) occurs just once in the sum (\ref{awfulsumrhsi}).
+
+We now have to show that each term in (\ref{awfulsumrhsi}) corresponds to just one term in the sum (\ref{awfulsumlhsi}).
+This is clear for the terms of the sum (\ref{Xsindep}).
+Consider a term
+% Align
+\begin{align}\label{depterm}
+    \rho \bigg(\sum\limits_{i=1}^{m}\frac{d_{i1}}{q}Y_1, \ldots, \sum\limits_{i=1}^{m}\frac{d_{ik}}{q}Y_i\bigg)
+\end{align}
+from the sum
+% UnnumberedAlign
+\begin{align*}
+    \sum_{(\sigma ; \tau )}\sum_{q = 1}^{\infty} \sum_{D} \sum_{C_1} \rho \bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+\end{align*}
+The condition that the points $\sum\limits_{i=1}^{m}\frac{d_{ij}}{q}Y_i, \ j=1, \ldots, k$ should be points of $\Lambda$ ensures that this term (\ref{depterm}) corresponds to the unique term in (\ref{awfulsumlhsi}), where $X_1, \ldots, X_k$ are defined by the equations (\ref{Xs}).
+
+This establishes the required one-one correspondence between the terms of (\ref{awfulsumlhsi}) and (\ref{awfulsumrhsi}).
+Since $\rho$ is non-negative, it follows that
+% AlignedEquation
+\begin{equation}\label{awfulsumi}
+    \begin{split}
+        \sum_{X \in \Lambda ^k - \{0\}} \rho(X_1, \ldots, X_k) &= \sum_{\substack{X_1, \ldots, X_k \in \Lambda \\ \dim (X_1, \ldots, X_k) = k}} \rho(X_1, \ldots, X_k) \\
+        &+ \sum_{(\sigma ; \tau )}\sum_{q = 1}^{\infty} \sum_{D} \sum_{C_1} \rho\bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+    \end{split}
+\end{equation}
+
+Now for any division $(\sigma; \tau )$, positive integer $q$ and matrix $D$ we consider the sum
+\[
+    \bar{\rho }(\sigma; \tau; q; D; \Lambda )= \sum_{C_1} \rho \bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+\]
+From Theorem~\ref{thmii} and Corollary~\ref{cori} it follows that,
+% Align
+\begin{align}\label{deprmvteq}
+    \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \bar{\rho }(\sigma; \tau; q; D; \Lambda ) \, \mathrm{d} \mu (\Lambda ) = \bigg(\frac{e_1}{q} \cdot \frac{e_2}{q} \cdots \frac{e_m}{q}\bigg)^n \int \cdots \int \rho \bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}x_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}x_i\bigg) \, \mathrm{d} x_1 \cdots \, \mathrm{d} x_m
+\end{align}
+with the convention that both sides may have the value $+\infty$, where $e_i=(\varepsilon _i, q) \ i=1, \ldots, m$ and $\varepsilon _1, \ldots, \varepsilon _m$ are the elementary divisors of the matrix $D$.
+Similarly,
+% Align
+\begin{align}\label{indeprmvteq}
+    \int\limits_{\mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})} \sum_{C_1} \rho (X_1, \ldots, X_k) \, \mathrm{d} \mu (\Lambda ) = \int_{\mathbb{R}^{nm}} \rho (x) \, \mathrm{d} x
+\end{align}
+Therefore, using (\ref{awfulsumi}), (\ref{deprmvteq}) and (\ref{indeprmvteq}), Theorem~\ref{rmvt} follows.
+
+We are not going to prove the finiteness part of Theorem~\ref{rmvt}, we will prove it for Theorem~\ref{schmvt}, from which the finiteness part of Theorem~\ref{rmvt} follows.
+
+\section{Proof of Theorem~\ref{schmvt}}
+This proof follows the same route as the proof of Theorem~\ref{rmvt}.
+
+We first prove that for any unimodular lattice $\Lambda$, the terms in the sum
+% Align
+\begin{align}\label{awfulsumlhsii}
+    \sum_{X \in \Lambda ^k - \{0\}} \rho(X_1, \ldots, X_k)
+\end{align}
+can be rearranged in the form
+% Align
+\begin{align}\label{awfulsumrhsii}
+    \sum_{\substack{X_1, \ldots, X_k \in \Lambda \\ \dim (X_1, \ldots, X_k) = k}} \rho(X_1, \ldots, X_k) + \sum_{(\sigma ; \tau )}\sum_{q = 1}^{\infty} \sum_{D} \sum_{C_1} \rho\bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+\end{align}
+where $(\sigma; \tau )$ and $D$ satisfies the conditions (\ref{sigmatau}) and (\ref{nD}) respectively.
+
+If $X_1, \ldots, X_k$ are linearly independent, the term $\rho (X_1, \ldots, X_k)$ will occur just once in the sum
+\[
+    \sum_{\substack{X_1, \ldots, X_k \in \Lambda  \\ \dim (X_1, \ldots, X_k) = k}} \rho (X_1, \ldots, X_k)
+\]
+If $0 < \dim (X_1, \ldots, X_k) = m < k$, then the $\mathbb{R}$-span $X_1, \ldots, X_k$ is an $m$-dimensional space.
+For any division of $(\alpha; \beta ) = (\alpha _1, \ldots, \alpha _m; \beta _1, \ldots, \beta _{k-m})$ of $\{1, \ldots, k\}$, let $d(\alpha; \beta; X_1, \ldots, X_k)$ be the volume of the $m$-dimensional parallelepiped spanned by $X_{\alpha _1}, \ldots, X_{\alpha _m}$.
+There exists a uniquely determined $(\sigma; \tau )$ so that
+% UnnumberedAlign
+\begin{align*}
+    & d(\alpha; \beta; X_1, \ldots, X_k) \leq d(\sigma; \tau; X_1, \ldots, X_k) \ \text{for any} \ (\alpha; \beta ) \ \text{and} \\
+    & d(\alpha; \beta; X_1, \ldots, X_k) < d(\sigma; \tau; X_1, \ldots, X_k) \ \text{if} \ (\alpha; \beta ) \prec (\sigma; \tau )
+\end{align*}
+Every point $X_j$ can be expressed uniquely in the form
+\[
+    X_j = \sum_{i=1}^{m}c_{ij}X_{\sigma _i} = \sum_{i=1}^{m} \frac{d_{ij}}{q} X_{\sigma _i}
+\]
+where $c_{ij}$ are rationals and $d_{ij}, \, q > 0$ are integers so that the highest common factor of $d_{ij}$'s is relatively prime to $q$.
+Clearly, $D=(d_{ij})$ and $q$ satisfy (\ref{nD}).
+Further, if we take $Y_i = X_{\sigma _i}$ then $Y_1, \ldots, Y_m$ are linearly independent points of $\Lambda$, and the points $X_j = \sum\limits_{i=1}^{m} \frac{d_{ij}}{q} Y_i$ are points of $\Lambda$.
+Consequently, there is a term
+\[
+    \rho \bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg) = \rho (X_1, \ldots, X_k)
+\]
+in the sum (\ref{awfulsumrhsii}), corresponding in this way to the points $X_1, \ldots, X_k$.
+It is clear that $(\sigma; \tau ), \, q$ and $D$ are uniquely determined by the points $X_1, \ldots, X_k$.
+So corresponding to each point $(X_1, \ldots, X_k)$ of $\Lambda ^k - \{0\}$ there will be just one term in the sum (\ref{awfulsumrhsii}).
+
+Conversely, it is easy to see that each term in (\ref{awfulsumrhsii}) corresponds to just one term in (\ref{awfulsumlhsii}).
+Since $\rho$ is non-negative, it follows that
+% AlignedEquation
+\begin{equation}\label{awfulsumii}
+    \begin{split}
+        \sum_{X \in \Lambda ^k - \{0\}} \rho(X_1, \ldots, X_k) &= \sum_{\substack{X_1, \ldots, X_k \in \Lambda \\ \dim (X_1, \ldots, X_k) = k}} \rho(X_1, \ldots, X_k) \\
+        &+ \sum_{(\sigma ; \tau )}\sum_{q = 1}^{\infty} \sum_{D} \sum_{C_1} \rho\bigg(\sum_{i=1}^{m}\frac{d_{i1}}{q}Y_i, \ldots, \sum_{i=1}^{m}\frac{d_{ik}}{q}Y_i \bigg)
+    \end{split}
+\end{equation}
+
+Then, using the same arguments as in Section~\ref{proofrmvt}, Theorem~\ref{schmvt} follows.
+
+See Schimdt~\cite{schmidt58} for a proof of finiteness when $\rho$ is bounded and has compact support.
+
+\section{Proof of Theorem~\ref{mst}}
+Redefine $\rho$ to have $\rho (0) = 0$.
+Then the result follows from Theorem~\ref{rmvt}/Theorem~\ref{schmvt} and Fubini's theorem, since
+\[
+    {\big(\widehat{\rho }(\Lambda )\big)}^{k} = \sum\limits_{\substack{X_1, \ldots, X_k \in {\Lambda } \\ (X_1, \ldots, X_k) \neq 0}} \rho (X_1) \cdots \rho (X_k)
+\]
+
+
+
+% Bibliography
+\bibliographystyle{alpha}
+\bibliography{bib}
+
+\end{document}
+
+%------------------------------------------------------------------
+% End of Roger'sMeanValueTheoremsandMomentsofSiegeltransform.tex
+%------------------------------------------------------------------
+
+%------------------------------------------------------------------
+% Comments on the document
+%------------------------------------------------------------------
+
