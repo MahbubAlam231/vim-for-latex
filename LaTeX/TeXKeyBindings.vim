@@ -446,8 +446,7 @@ inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
 inoremap <buffer> n= \neq 
 inoremap <buffer> == \equiv
-
-inoremap <buffer> <localleader>opn \operatorname{}<esc>i
+inoremap <buffer> `= \cong
 
 "}}}
 " Arrows"{{{
@@ -489,6 +488,8 @@ inoremap <buffer> <localleader>lmto \longmapsto
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
+inoremap <buffer> <localleader>opn \operatorname{}<esc>i
+
 
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla

@@ -50,9 +50,15 @@ inoremap <buffer> [[ [
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
+"}}}
+
+" Python symbols{{{
+
 inoremap <buffer> <localleader>pr print("")<esc>hi
-inoremap <buffer> <localleader>fl float
-inoremap <buffer> <localleader>cx complex
+inoremap <buffer> <localleader>int int()<esc>i
+inoremap <buffer> <localleader>fl float()<esc>i
+inoremap <buffer> <localleader>cx complex()<esc>i
+inoremap <buffer> n= !=
 
 "}}}
 
