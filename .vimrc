@@ -474,7 +474,7 @@ let maplocalleader=","
 
 " To get <> and write <localleader> easily
 inoremap <buffer> << <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
+inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
 inoremap <buffer> <L <><esc>ileader<esc>la
 inoremap <buffer> <LL <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
