@@ -60,7 +60,7 @@ set wildignore+=*/vendor/bundle/*
 set wildignore+=*/node_modules/
 
 "2}}}
-" Searching and movement{{{2
+" Searching{{{2
 "-------------------------------------------------------------------
 
 set ignorecase                        " Search queries intelligently set case
@@ -318,20 +318,6 @@ inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
 syntax on
 
-" colorscheme apprentice
-" colorscheme desert
-" colorscheme elflord
-" colorscheme evening
-" colorscheme hybrid
-" colorscheme molokai
-" colorscheme molokai_dark
-" colorscheme nightsky
-" colorscheme solarized
-" colorscheme textmate16
-" colorscheme woju
-" colorscheme wombat
-" colorscheme wombat256
-" colorscheme wombat256mod
 colorscheme wombat256i
 
 set background=dark
@@ -379,13 +365,6 @@ inoremap <buffer> <L <><esc>ileader<esc>la
 inoremap <buffer> <LL <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
 inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
-
-"2}}}
-" Line Breaking{{{2
-"-------------------------------------------------------------------
-
-nnoremap <buffer> <localleader>lb f.a<cr><esc>
-inoremap <buffer> <localleader>lb <esc>f.a<cr><esc>
 
 "2}}}
 " Navigation{{{2
@@ -590,11 +569,6 @@ function! KeyBindings()
 		set spellfile=~/.vim/spell/math.utf-8.add
 	endif
 
-	"markdown
-	if(a:code=="md")
-		source ~/.vim/KeyBindings/MarkdownKeyBindings.vim
-	endif
-
 	"to enter numbers peacefully
 	if(a:code=="np")
 		source ~/.vim/KeyBindings/NumbersPeacefully.vim
@@ -615,6 +589,7 @@ endfunction
 " Select Abbreviation Type
 function! Abbreviations()
     let a:code=input("Which Abbreviation: ")
+
     "gen
     if(a:code=="gen")
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
@@ -632,14 +607,6 @@ endfunction
 "2}}}
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
-
-" augroup AutoSourceAllForTexBuf
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
-"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>gen\<cr>"
-"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call Abbreviations()\<cr>math\<cr>"
-"     autocmd BufNewFile,BufRead *.tex :execute "normal! :call KeyBindings()\<cr>tex\<cr>"
-" augroup end
 
 augroup AutoSourceAllForPythonBuf
     autocmd!
@@ -675,9 +642,6 @@ nnoremap <buffer> <localleader>py :call KeyBindings()<cr>py<cr>
 " Opening TeXKeyBindings "t=tex
 nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
-
-" Opening Inputted File "IO=Inputted Open
-nnoremap <buffer> <leader>io <Esc>0f{lvf.fx"py:new <C-R>p<cr>
 
 " Opening Ultisnips "u=ultisnips
 nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
