@@ -307,106 +307,6 @@ vnoremap <buffer> <localleader>ac :center<cr>
 vnoremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
-" Basic navigation, searching remaps{{{2
-"-------------------------------------------------------------------
-
-" " Get off my lawn - helpful when learning Vim :)
-" nnoremap <buffer> <Left> :echoe "Use h"<cr>
-" nnoremap <buffer> <Right> :echoe "Use l"<cr>
-" nnoremap <buffer> <Up> :echoe "Use k"<cr>
-" nnoremap <buffer> <Down> :echoe "Use j"<cr>
-
-" Moving on the screen
-nnoremap <buffer> H mh^
-nnoremap <buffer> J mjL
-nnoremap <buffer> K mkH
-nnoremap <buffer> L mlg_
-
-vnoremap <buffer> H mh^
-vnoremap <buffer> J mjL
-vnoremap <buffer> K mkH
-vnoremap <buffer> L mlg_
-
-nnoremap <buffer> 'h `h
-nnoremap <buffer> 'j `j
-nnoremap <buffer> 'k `k
-nnoremap <buffer> 'l `l
-
-vnoremap <buffer> 'h `h
-vnoremap <buffer> 'j `j
-vnoremap <buffer> 'k `k
-vnoremap <buffer> 'l `l
-
-nnoremap <buffer> 'm `mzz
-
-inoremap <buffer> <leader>zz <esc>zza
-inoremap <buffer> <leader>zt <esc>zta
-inoremap <buffer> <leader>zb <esc>zba
-
-" Find matching character
-nnoremap <buffer> <localleader>5 %
-vnoremap <buffer> <localleader>5 %
-
-" Mark and then go to the beginning or end of the file
-nnoremap <buffer> gg mggg
-nnoremap <buffer> G mgG
-nnoremap <buffer> 'g `gzz
-
-" Creating newline
-nnoremap <buffer> <localleader>o mmo<esc>`m
-nnoremap <buffer> <localleader>O mmO<esc>`m
-
-" Marking before searching
-nnoremap <buffer> / ms/
-
-nnoremap <buffer> 's `s
-vnoremap <buffer> 's `s
-
-" Search within visual selection
-vnoremap <buffer> / <esc>ms/\%V
-
-" Don't move on after */#
-nnoremap <buffer> * *<c-o>
-nnoremap <buffer> # #<c-o>
-
-" Keep search matches in the middle of the screen
-nnoremap <buffer> n nzz
-nnoremap <buffer> N Nzz
-
-" Search the visually selected using */# (from Scrooloose)
-function! s:VSerSearch()
-    let temp = @@
-    norm! gvy
-    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-    let @@ = temp
-endfunction
-
-vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>//<cr><c-o>
-vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
-
-" Clearing highlighted matches
-nnoremap <buffer> <cr> :noh<cr>
-nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
-
-" nnoremap <buffer> n nzz:call HLNext(1)<cr>
-" nnoremap <buffer> N Nzz:call HLNext(1)<cr>
-
-" function! HLNext(blinktime)
-"     let [bufnum, lnum, col, off] = getpos('.')
-"     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-"     let target_pat = '\c\%#\%('.@/.'\)'
-"     let ring = matchadd('WhiteOnRed', target_pat, 101)
-"     redraw
-"     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-"     call matchdelete(ring)
-"     redraw
-" endfunction
-
-" Vim very magic mode search
-" nnoremap <buffer> / /\v
-" vnoremap <buffer> / /\v
-
-"2}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
@@ -486,6 +386,109 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 
 nnoremap <buffer> <localleader>lb f.a<cr><esc>
 inoremap <buffer> <localleader>lb <esc>f.a<cr><esc>
+
+"2}}}
+" Navigation{{{2
+"-------------------------------------------------------------------
+
+" " Get off my lawn - helpful when learning Vim :)
+" nnoremap <buffer> <Left> :echoe "Use h"<cr>
+" nnoremap <buffer> <Right> :echoe "Use l"<cr>
+" nnoremap <buffer> <Up> :echoe "Use k"<cr>
+" nnoremap <buffer> <Down> :echoe "Use j"<cr>
+
+" Moving on the screen
+nnoremap <buffer> H mh^
+nnoremap <buffer> J mjL
+nnoremap <buffer> K mkH
+nnoremap <buffer> L mlg_
+
+vnoremap <buffer> H mh^
+vnoremap <buffer> J mjL
+vnoremap <buffer> K mkH
+vnoremap <buffer> L mlg_
+
+nnoremap <buffer> 'h `h
+nnoremap <buffer> 'j `j
+nnoremap <buffer> 'k `k
+nnoremap <buffer> 'l `l
+
+vnoremap <buffer> 'h `h
+vnoremap <buffer> 'j `j
+vnoremap <buffer> 'k `k
+vnoremap <buffer> 'l `l
+
+nnoremap <buffer> 'm `mzz
+
+inoremap <buffer> <leader>zz <esc>zza
+inoremap <buffer> <leader>zt <esc>zta
+inoremap <buffer> <leader>zb <esc>zba
+
+" Go to matching character
+nnoremap <buffer> <localleader>5 %
+vnoremap <buffer> <localleader>5 %
+
+" Mark and then go to the beginning or end of the file
+nnoremap <buffer> gg mggg
+nnoremap <buffer> G mgG
+nnoremap <buffer> 'g `gzz
+
+" Creating newline
+nnoremap <buffer> <localleader>o mmo<esc>`m
+nnoremap <buffer> <localleader>O mmO<esc>`m
+
+" }}}
+" Searching remaps{{{
+
+" Marking before searching
+nnoremap <buffer> / ms/
+
+" Search within visual selection
+vnoremap <buffer> / <esc>ms/\%V
+
+nnoremap <buffer> 's `s
+vnoremap <buffer> 's `s
+
+" Don't move on after */#
+nnoremap <buffer> * *<c-o>
+nnoremap <buffer> # #<c-o>
+
+" Keep search matches in the middle of the screen
+nnoremap <buffer> n nzz
+nnoremap <buffer> N Nzz
+
+" Search the visually selected using */# (from Scrooloose)
+function! s:VSerSearch()
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@ = temp
+endfunction
+
+vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>//<cr><c-o>
+vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
+
+" Clearing highlighted matches
+nnoremap <buffer> <cr> :noh<cr>
+nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
+
+" nnoremap <buffer> n nzz:call HLNext(1)<cr>
+" nnoremap <buffer> N Nzz:call HLNext(1)<cr>
+
+" function! HLNext(blinktime)
+"     let [bufnum, lnum, col, off] = getpos('.')
+"     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+"     let target_pat = '\c\%#\%('.@/.'\)'
+"     let ring = matchadd('WhiteOnRed', target_pat, 101)
+"     redraw
+"     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+"     call matchdelete(ring)
+"     redraw
+" endfunction
+
+" Vim very magic mode search
+" nnoremap <buffer> / /\v
+" vnoremap <buffer> / /\v
 
 "2}}}
 " Some other remaps{{{2
