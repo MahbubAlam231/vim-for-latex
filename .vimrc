@@ -166,7 +166,7 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 "3}}}
-" Easymotion{{{
+" Easymotion{{{3
 
 nmap ;w <Plug>(easymotion-bd-w)
 vmap ;w <Plug>(easymotion-bd-w)
@@ -183,7 +183,7 @@ vmap ;s <Plug>(easymotion-s2)
 nmap ;t <Plug>(easymotion-t2)
 vmap ;t <Plug>(easymotion-t2)
 
-"}}}
+"3}}}
 " LaTeX-Box and Folding{{{3
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
@@ -416,8 +416,8 @@ nnoremap <buffer> 'g `gzz
 nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
-" }}}
-" Searching remaps{{{
+"2}}}
+" Searching remaps{{{2
 
 " Marking before searching
 nnoremap <buffer> / ms/
@@ -481,7 +481,7 @@ nnoremap <buffer> Y y$
 nnoremap <buffer> <leader>d 0D
 
 "2}}}
-" Some Python Stuff{{{
+" Some Python Stuff{{{2
 
 augroup SomePythonStuff
     autocmd!
@@ -489,7 +489,7 @@ augroup SomePythonStuff
     autocmd FileType py inoremap <buffer> " ""<esc>i
 augroup end
 
-"}}}
+"2}}}
 " Some TeX Stuff{{{2
 
 augroup SomeTexStuff
