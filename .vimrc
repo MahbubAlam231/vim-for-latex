@@ -553,6 +553,8 @@ vnoremap <buffer> <localleader>c :s/
 nnoremap <buffer> vv ^vg_
 
 " Drag a visual block
+" Download dragvisuals.vim from https://is.gd/IBV2013 or https://github.com/shinokada/dragvisuals.vim
+" Put dragvisuals.vim in ~/.vim/bundle/dragvisuals/plugin/
 runtime bundle/dragvisuals/plugin/dragvisuals.vim
 
 vmap <expr> <S-LEFT>   DVB_Drag('left')
