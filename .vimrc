@@ -328,6 +328,12 @@ set background=dark
 highlight Comment cterm=italic gui=italic
 
 "2}}}
+" Command line mapping{{{
+
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+
+"}}}
 " Diagraphs{{{2
 "-------------------------------------------------------------------
 
@@ -561,8 +567,8 @@ let g:DVB_TrimWS = 1
 "vnoremap <buffer>    v   <C-V>
 "vnoremap <buffer> <C-V>     v
 
-" " Visually reselect whatever is pasted
-" nnoremap <buffer> <localleader>V V`]
+" Visually reselect whatever is pasted
+nnoremap <buffer> <localleader>V V`
 
 "2}}}
 
