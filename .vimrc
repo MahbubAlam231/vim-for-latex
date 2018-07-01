@@ -22,7 +22,8 @@ set nopaste
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
 set nobackup nowritebackup noswapfile " Turn off backup files
-set noerrorbells novisualbell         " Turn off visual and audible bells
+set noerrorbells                      " Turn off audible bells
+set visualbell
 " set mouse=a                           " Mouse could work on vim too
 set history=1000
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
@@ -420,8 +421,9 @@ nnoremap <buffer> G mgG
 nnoremap <buffer> 'g `gzz
 
 " Revisit changelog
-nnoremap <buffer> g; g;zz
-nnoremap <buffer> g, g,zz
+nnoremap <buffer> g; mcg;zz
+nnoremap <buffer> g, mcg,zz
+nnoremap <buffer> 'c `czz
 
 "2}}}
 " Searching remaps{{{2
@@ -436,8 +438,8 @@ nnoremap <buffer> 's `s
 vnoremap <buffer> 's `s
 
 " Don't move on after */#
-nnoremap <buffer> * *<c-o>
-nnoremap <buffer> # #<c-o>
+nnoremap <buffer> * ms*<c-o>
+nnoremap <buffer> # ms#<c-o>
 
 " Keep search matches in the middle of the screen
 nnoremap <buffer> n nzz
@@ -451,8 +453,8 @@ function! s:VSerSearch()
     let @@ = temp
 endfunction
 
-vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>//<cr><c-o>
-vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
+vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>
+vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
 " Clearing highlighted matches
 nnoremap <buffer> <cr> :noh<cr>
@@ -474,8 +476,8 @@ nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 " endfunction
 
 " Vim very magic mode search
-" nnoremap <buffer> / /\v
-" vnoremap <buffer> / /\v
+" nnoremap <buffer> / ms/\v
+" vnoremap <buffer> / ms/\v
 
 "2}}}
 " Some other remaps{{{2
@@ -532,7 +534,10 @@ inoremap <buffer> <localleader>sp <esc>:call FixLastSpellingError()<cr>a
 " Adding new words to dictionary
 nnoremap <buffer> < [szz
 nnoremap <buffer> > ]szz
-nnoremap <buffer> zgg zg]szz
+nnoremap <buffer> zgN zg[szz
+nnoremap <buffer> zgn zg]szz
+nnoremap <buffer> zwN zg[szz
+nnoremap <buffer> zwn zg]szz
 
 "2}}}
 " Substitute/change{{{2
@@ -559,13 +564,6 @@ vmap <expr> D        DVB_Duplicate()
                                                             
 " Remove any introduced trailing whitespace after moving... 
 let g:DVB_TrimWS = 1                                        
-
-""Swap v and CTRL-V, because Block mode is more useful that Visual mode
-"nnoremap <buffer>    v   <C-V>
-"nnoremap <buffer> <C-V>     v
-
-"vnoremap <buffer>    v   <C-V>
-"vnoremap <buffer> <C-V>     v
 
 " Visually reselect whatever is pasted
 nnoremap <buffer> <localleader>V V`
