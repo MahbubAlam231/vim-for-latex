@@ -421,9 +421,8 @@ nnoremap <buffer> G mgG
 nnoremap <buffer> 'g `gzz
 
 " Revisit changelog
-nnoremap <buffer> g; mcg;zz
-nnoremap <buffer> g, mcg,zz
-nnoremap <buffer> 'c `czz
+nnoremap <buffer> g; g;zz
+nnoremap <buffer> g, g,zz
 
 "2}}}
 " Searching remaps{{{2
