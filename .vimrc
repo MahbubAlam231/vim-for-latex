@@ -379,6 +379,9 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 " nnoremap <buffer> <Up> :echoe "Use k"<cr>
 " nnoremap <buffer> <Down> :echoe "Use j"<cr>
 
+" To go back a word in insert mode
+inoremap <buffer> <localleader>b <esc>bb
+
 " Moving on the screen
 nnoremap <buffer> H mh^
 nnoremap <buffer> J mjL
@@ -477,9 +480,6 @@ nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 "2}}}
 " Some other remaps{{{2
 "-------------------------------------------------------------------
-
-" To go back a word in insert mode
-inoremap <buffer> <localleader>b <esc>bb
 
 " Yank till the end of the line and clearing a line
 nnoremap <buffer> Y y$
