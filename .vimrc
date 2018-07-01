@@ -84,6 +84,10 @@ augroup ResizeSplitsWhenTheWindowIsResized
     autocmd VimResized <buffer> exe "normal! \<C-w>="
 augroup end
 
+" Window resizing
+nnoremap <buffer> <c-h> 5<c-w>>
+nnoremap <buffer> <c-l> 5<c-w><
+
 "2}}}
 " Set relative number{{{2
 "-------------------------------------------------------------------
@@ -199,7 +203,7 @@ setlocal foldmethod=manual
 nnoremap <buffer> <localleader>f :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method (use it)
-nnoremap <buffer> <localleader>mk mf2zMgg:w!<cr>:mkview<cr>`f3zozz
+nnoremap <buffer> <localleader>mk mfzMgg:w!<cr>:mkview<cr>`fzvzz
 nnoremap <buffer> 'f `fzz
 
 augroup AutoLoadview
@@ -208,13 +212,11 @@ augroup AutoLoadview
 augroup end
 
 " Opening/closing folding
-nnoremap <buffer> zo 2zozt
-nnoremap <buffer> zc 2zczz
-nnoremap <buffer> zoo 3zozt
-nnoremap <buffer> zcc 3zczz
+nnoremap <buffer> zv zvzz
 nnoremap <buffer> zr zrzz
 nnoremap <buffer> zm zmzz
 nnoremap <buffer> zM zMzz
+nnoremap <buffer> <localleader>z zMzvzz
 nnoremap <buffer> <space> zazz
 nnoremap <buffer> <localleader><space> zazt
 
@@ -330,13 +332,8 @@ highlight Comment cterm=italic gui=italic
 "-------------------------------------------------------------------
 
 ""Make CTRL-K list diagraphs before each digraph entry
-"inoremap <buffer> <expr> <C-S> ShowDigraphs()
-
-"function! ShowDigraphs ()
-"    digraphs
-"    call getchar()
-"    return "\<C-S>"
-"endfunction
+"runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
+"inoremap <expr> <C-K> BDG_GetDigraph()
 
 "2}}}
 " Trailing White Space{{{2
@@ -399,6 +396,7 @@ vnoremap <buffer> 'l `l
 
 nnoremap <buffer> 'm `mzz
 
+inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
@@ -412,9 +410,9 @@ nnoremap <buffer> gg mggg
 nnoremap <buffer> G mgG
 nnoremap <buffer> 'g `gzz
 
-" Creating newline
-nnoremap <buffer> <localleader>o mmo<esc>`m
-nnoremap <buffer> <localleader>O mmO<esc>`m
+" Revisit changelog
+nnoremap <buffer> g; g;zz
+nnoremap <buffer> g, g,zz
 
 "2}}}
 " Searching remaps{{{2
@@ -451,14 +449,15 @@ vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>??<cr><c-o>
 nnoremap <buffer> <cr> :noh<cr>
 nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
 
-" nnoremap <buffer> n nzz:call HLNext(1)<cr>
-" nnoremap <buffer> N Nzz:call HLNext(1)<cr>
+" nnoremap <buffer> n nzz:call HLNext(0.3)<cr>
+" nnoremap <buffer> N Nzz:call HLNext(0.3)<cr>
 
 " function! HLNext(blinktime)
+"     highlight BlackOnRed ctermfg=black ctermbg=red
 "     let [bufnum, lnum, col, off] = getpos('.')
 "     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
 "     let target_pat = '\c\%#\%('.@/.'\)'
-"     let ring = matchadd('WhiteOnRed', target_pat, 101)
+"     let ring = matchadd('BlackOnRed', target_pat, 101)
 "     redraw
 "     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
 "     call matchdelete(ring)
@@ -479,6 +478,10 @@ inoremap <buffer> <localleader>b <esc>bb
 " Yank till the end of the line and clearing a line
 nnoremap <buffer> Y y$
 nnoremap <buffer> <leader>d 0D
+
+" Creating newline
+nnoremap <buffer> <localleader>o mmo<esc>`m
+nnoremap <buffer> <localleader>O mmO<esc>`m
 
 "2}}}
 " Some Python Stuff{{{2
@@ -533,11 +536,23 @@ nnoremap <buffer> <localleader>c :%s/
 vnoremap <buffer> <localleader>c :s/
 
 "2}}}
-" Visual selection{{{2
+" Visual selection and dragging{{{2
 "-------------------------------------------------------------------
 
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
+
+" Drag a visual block
+runtime bundle/dragvisuals/plugin/dragvisuals.vim
+
+vmap <expr> <S-LEFT>   DVB_Drag('left')
+vmap <expr> <S-RIGHT>  DVB_Drag('right')
+vmap <expr> <S-DOWN>   DVB_Drag('down')
+vmap <expr> <S-UP>     DVB_Drag('up')
+vmap <expr> D        DVB_Duplicate()
+                                                            
+" Remove any introduced trailing whitespace after moving... 
+let g:DVB_TrimWS = 1                                        
 
 ""Swap v and CTRL-V, because Block mode is more useful that Visual mode
 "nnoremap <buffer>    v   <C-V>
@@ -691,7 +706,7 @@ nnoremap <buffer> 'q `q
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>
+nnoremap <buffer> <localleader>sf mfzMgg:w!<cr>:mkview<cr>`fzvzz:source %<cr>
 
 " Sourcing visual selection/current line for testing code
 vnoremap <buffer> <localleader>S y:execute @@<cr>
