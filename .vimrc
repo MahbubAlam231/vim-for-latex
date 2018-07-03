@@ -130,6 +130,8 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'christoomey/vim-quicklink'
 Plugin 'christoomey/vim-sort-motion'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'christoomey/vim-titlecase'
@@ -140,8 +142,9 @@ Plugin 'kana/vim-textobj-datetime'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-line'
-Plugin 'kana/vim-textobj-user' 
+Plugin 'kana/vim-textobj-user'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'thameera/vimv'
@@ -152,8 +155,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/ReplaceWithRegister'
+Plugin 'vim-scripts/ZoomWin'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'w0ng/vim-hybrid'
+Plugin 'vim-scripts/matchit.zip'
 
 
 call vundle#end()             "required
@@ -214,9 +218,8 @@ augroup end
 
 " Opening/closing folding
 nnoremap <buffer> zv zvzz
-nnoremap <buffer> zr zrzz
-nnoremap <buffer> zm zmzz
-nnoremap <buffer> zM zMzz
+nnoremap <buffer> zr zRzz
+nnoremap <buffer> zm zMzz
 nnoremap <buffer> <localleader>z zMzvzz
 nnoremap <buffer> <space> zazz
 nnoremap <buffer> <localleader><space> zazt
@@ -346,10 +349,6 @@ cnoremap <c-e> <end>
 " Trailing White Space{{{2
 "-------------------------------------------------------------------
 
-" Highlighting Bad White Space
-highlight BadWhitespace ctermbg=Red ctermfg=Black
-match BadWhitespace /\s\+$/
-
 " Delete Trailing White Space
 "autocmd BufWritePre * %s/\s\+$//e
 inoremap <buffer> <localleader>dtw <Esc>mm0g_ld$`ma
@@ -365,10 +364,10 @@ let maplocalleader=","
 " To get <> and write <localleader> easily
 inoremap <buffer> << <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
-inoremap <buffer> <L <><esc>ileader<esc>la
-inoremap <buffer> <LL <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <L <><esc>ileader<esc>la 
+inoremap <buffer> <LL <><esc>ilocalleader<esc>la 
+inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la 
+inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la 
 
 "2}}}
 " Navigation{{{2
@@ -535,8 +534,8 @@ nnoremap <buffer> < [szz
 nnoremap <buffer> > ]szz
 nnoremap <buffer> zgN zg[szz
 nnoremap <buffer> zgn zg]szz
-nnoremap <buffer> zwN zg[szz
-nnoremap <buffer> zwn zg]szz
+nnoremap <buffer> zwN zw[szz
+nnoremap <buffer> zwn zw]szz
 
 "2}}}
 " Substitute/change{{{2
@@ -562,9 +561,9 @@ vmap <expr> <S-RIGHT>  DVB_Drag('right')
 vmap <expr> <S-DOWN>   DVB_Drag('down')
 vmap <expr> <S-UP>     DVB_Drag('up')
 vmap <expr> D        DVB_Duplicate()
-                                                            
-" Remove any introduced trailing whitespace after moving... 
-let g:DVB_TrimWS = 1                                        
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
 
 " Visually reselect whatever is pasted
 nnoremap <buffer> <localleader>V V`
