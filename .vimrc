@@ -619,7 +619,11 @@ augroup AutoSourceAllForPythonBuf
 augroup end
 
 "Sourcing everything for tex
-nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
+function! SourceEverythingForTeX()
+    :execute ":normal! :call Abbreviations()\<cr>gen\<cr>:call Abbreviations()\<cr>math\<cr>:call KeyBindings()\<cr>tex\<cr>"
+endfunction
+
+nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings()<cr>tex<cr>
