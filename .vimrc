@@ -345,7 +345,7 @@ cnoremap <buffer> <c-e> <end>
 
 " Delete Trailing White Space
 function! DeleteTrailingWhiteSpace()
-    :normal! mm0g_ld$`m
+    :normal! mm0g_lD`m
 endfunction
 
 "autocmd BufWritePre * %s/\s\+$//e
