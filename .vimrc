@@ -378,7 +378,7 @@ noremap <buffer> k gk
 noremap <buffer> H mhg^
 noremap <buffer> J mjL
 noremap <buffer> K mkH
-noremap <buffer> L mlg_
+noremap <buffer> L mlg$
 
 noremap <buffer> 'h `h
 noremap <buffer> 'j `j
