@@ -122,8 +122,6 @@ call vundle#begin()           "Vundle_will_run_the_following_Plugins
 
 " Plugin 'coot/atp_vim'
 " Plugin 'ervandew/supertab'
-" Plugin 'justinmk/vim-sneak'
-" Plugin 'michaeljsmith/vim-indent-object'
 " Plugin 'valloric/youcompleteme'
 " Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
@@ -138,6 +136,7 @@ Plugin 'christoomey/vim-titlecase'
 Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
@@ -175,22 +174,18 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 "3}}}
-" Easymotion{{{3
+" Easymotion and Sneak{{{3
 
-nmap ;w <Plug>(easymotion-bd-w)
-vmap ;w <Plug>(easymotion-bd-w)
+map <leader>w <Plug>(easymotion-bd-w)
+map <leader>e <Plug>(easymotion-bd-e)
+map <leader>f <Plug>(easymotion-bd-f)
+map <leader>s <Plug>(easymotion-s2)
+" nmap <leader>t <Plug>(easymotion-t2)
 
-nmap ;e <Plug>(easymotion-bd-e)
-vmap ;e <Plug>(easymotion-bd-e)
-
-nmap ;f <Plug>(easymotion-bd-f)
-vmap ;f <Plug>(easymotion-bd-f)
-
-nmap ;s <Plug>(easymotion-s2)
-vmap ;s <Plug>(easymotion-s2)
-
-nmap ;t <Plug>(easymotion-t2)
-vmap ;t <Plug>(easymotion-t2)
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 "3}}}
 " LaTeX-Box and Folding{{{3
@@ -278,14 +273,14 @@ inoremap <buffer> <C-j> <esc>/<++><cr>cf>
 
 let g:titlecase_map_keys = 0
 
-nmap <localleader>t <Plug>Titlecase
 " <Plug>Titlecase " Titlecase the region defined by a text object or motion
+nmap <localleader>t <Plug>Titlecase
 
-nmap <localleader>tt <Plug>TitlecaseLine
 " <Plug>TitlecaseLine " Titlecase the entire line
+nmap <localleader>tt <Plug>TitlecaseLine
 
-vmap <localleader>t <Plug>Titlecase
 " <Plug>Titlecase " Titlecase the visually selected region
+vmap <localleader>t <Plug>Titlecase
 
 "3}}}
 " YouCompleteMe{{{3
@@ -304,13 +299,9 @@ let g:loaded_youcompleteme = 1
 " Align text{{{2
 "-------------------------------------------------------------------
 
-nnoremap <buffer> <localleader>al :left<cr>
-nnoremap <buffer> <localleader>ac :center<cr>
-nnoremap <buffer> <localleader>ar :right<cr>
-
-vnoremap <buffer> <localleader>al :left<cr>
-vnoremap <buffer> <localleader>ac :center<cr>
-vnoremap <buffer> <localleader>ar :right<cr>
+noremap <buffer> <localleader>al :left<cr>
+noremap <buffer> <localleader>ac :center<cr>
+noremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
 " Calculator{{{2
@@ -328,11 +319,8 @@ colorscheme wombat256i
 
 set background=dark
 
-" Showcase comments in italics
-highlight Comment cterm=italic gui=italic
-
 "2}}}
-" Command line mapping{{{
+" Command line mappings{{{
 
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
@@ -383,25 +371,15 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 inoremap <buffer> <localleader>b <esc>bb
 
 " Moving on the screen
-nnoremap <buffer> H mh^
-nnoremap <buffer> J mjL
-nnoremap <buffer> K mkH
-nnoremap <buffer> L mlg_
+noremap <buffer> H mh^
+noremap <buffer> J mjL
+noremap <buffer> K mkH
+noremap <buffer> L mlg_
 
-vnoremap <buffer> H mh^
-vnoremap <buffer> J mjL
-vnoremap <buffer> K mkH
-vnoremap <buffer> L mlg_
-
-nnoremap <buffer> 'h `h
-nnoremap <buffer> 'j `j
-nnoremap <buffer> 'k `k
-nnoremap <buffer> 'l `l
-
-vnoremap <buffer> 'h `h
-vnoremap <buffer> 'j `j
-vnoremap <buffer> 'k `k
-vnoremap <buffer> 'l `l
+noremap <buffer> 'h `h
+noremap <buffer> 'j `j
+noremap <buffer> 'k `k
+noremap <buffer> 'l `l
 
 nnoremap <buffer> 'm `mzz
 
@@ -411,13 +389,12 @@ inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
 " Go to matching character
-nnoremap <buffer> <localleader>5 %
-vnoremap <buffer> <localleader>5 %
+noremap <buffer> <localleader>5 %
 
 " Mark and then go to the beginning or end of the file
-nnoremap <buffer> gg mggg
-nnoremap <buffer> G mgG
-nnoremap <buffer> 'g `gzz
+noremap <buffer> gg mggg
+noremap <buffer> G mgG
+noremap <buffer> 'g `gzz
 
 " Revisit changelog
 nnoremap <buffer> g; g;zz
@@ -432,8 +409,7 @@ nnoremap <buffer> / ms/
 " Search within visual selection
 vnoremap <buffer> / <esc>ms/\%V
 
-nnoremap <buffer> 's `s
-vnoremap <buffer> 's `s
+noremap <buffer> 's `s
 
 " Don't move on after */#
 nnoremap <buffer> * ms*<c-o>
@@ -562,11 +538,14 @@ vmap <expr> <S-DOWN>   DVB_Drag('down')
 vmap <expr> <S-UP>     DVB_Drag('up')
 vmap <expr> D        DVB_Duplicate()
 
+" visually reselect whatever is pasted
+nnoremap <buffer> <localleader>v v`
+
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
-" Visually reselect whatever is pasted
-nnoremap <buffer> <localleader>V V`
+" visually reselect whatever is pasted
+nnoremap <buffer> <localleader>v v`
 
 "2}}}
 
@@ -646,10 +625,10 @@ inoremap <buffer> <localleader>np <esc>:call KeyBindings()<cr>np<cr>a
 inoremap <buffer> <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
 
 "Sourcing GeneralAbbreviations
-nnoremap <buffer> <localleader>g :call Abbreviations()<cr>gen<cr>
+nnoremap <buffer> <localleader>ag :call Abbreviations()<cr>gen<cr>
 
 " Sourcing MathAbbreviations
-nnoremap <buffer> <localleader>m :call Abbreviations()<cr>math<cr>
+nnoremap <buffer> <localleader>am :call Abbreviations()<cr>math<cr>
 
 "Sourcing PythonKeyBindings
 nnoremap <buffer> <localleader>py :call KeyBindings()<cr>py<cr>
@@ -667,8 +646,8 @@ nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
 nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
-nnoremap <buffer> <leader>g :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <buffer> <leader>m :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <buffer> <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening PythonKeyBindings
 nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
