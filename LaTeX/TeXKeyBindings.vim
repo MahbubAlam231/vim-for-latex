@@ -593,21 +593,21 @@ nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>
 " Chapter, Section, Subsection, Subsubsection, label"{{{2
 
 highlight ChapterGroup ctermbg=092 ctermfg=yellow
-let m = matchadd("ChapterGroup",'\\chapter{.\{-}}')
+let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
 
 
 highlight SectionGroup ctermbg=39 ctermfg=Black
-let m = matchadd("SectionGroup",'\\section{.\{-}}')
+let m = matchadd("SectionGroup",'\\section{.\{}}')
 
 highlight SubsectionGroup ctermbg=198 ctermfg=Black
-let m = matchadd("SubsectionGroup",'\\subsection{.\{-}}')
+let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
 
 highlight SubsubsectionGroup ctermbg=143 ctermfg=Black
-let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{-}}')
+let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 
 
 highlight Label ctermbg=Red ctermfg=black
-let m = matchadd("Label",'\\label{.\{-}}')
+let m = matchadd("Label",'\\label{.\{}}')
 
 "2}}}
 " MarkerGroup, BoldGroup"{{{2
