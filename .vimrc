@@ -180,7 +180,7 @@ map <leader>w <Plug>(easymotion-bd-w)
 map <leader>e <Plug>(easymotion-bd-e)
 map <leader>f <Plug>(easymotion-bd-f)
 map <leader>s <Plug>(easymotion-s2)
-" nmap <leader>t <Plug>(easymotion-t2)
+" map <leader>t <Plug>(easymotion-t2)
 
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
@@ -196,14 +196,16 @@ map T <Plug>Sneak_T
 " let g:LatexBox_latexmk_preview_continuously = 1
 
 " Folding
-"-------------------------------------------------------------------
-
 set foldlevelstart=0
 setlocal foldmethod=manual
 nnoremap <buffer> <localleader>f :setlocal foldmethod=marker<cr>
 
-" Saving and reloading folds set in manual fold method (use it)
-nnoremap <buffer> <localleader>mk mfzMgg:w!<cr>:mkview<cr>`fzvzz
+" Saving and reloading folds set in manual fold method
+function! MakeView()
+    :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
+endfunction
+
+nnoremap <buffer> <localleader>mk :call MakeView()<cr>
 nnoremap <buffer> 'f `fzz
 
 augroup AutoLoadview
@@ -212,14 +214,20 @@ augroup AutoLoadview
 augroup end
 
 " Opening/closing folding
-noremap <buffer> zo zozz
-noremap <buffer> zc zczz
-noremap <buffer> zv zvzz
-noremap <buffer> zr zRzz
-noremap <buffer> zm zMzz
+noremap <buffer> zo mozozz
+noremap <buffer> zc mczCzz
+noremap <buffer> zv mvzvzz
+noremap <buffer> zr mrzRzz
+noremap <buffer> zm mmzMzz
 noremap <buffer> <localleader>z zMzvzz
 noremap <buffer> <space> zazz
 noremap <buffer> <localleader><space> zazt
+
+nnoremap <buffer> 'o `ozz
+nnoremap <buffer> 'c `czz
+nnoremap <buffer> 'v `vzz
+nnoremap <buffer> 'r `rzz
+nnoremap <buffer> 'm `mzz
 
 "3}}}
 " NERDtree{{{3
@@ -235,9 +243,6 @@ let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
 
 " Selecting template
-"-------------------------------------------------------------------
-
-" Select Template Type
 function! Template()
     let a:code=input("Which Template: ")
 
@@ -265,10 +270,8 @@ nnoremap <buffer> <localleader>ams :call Template()<cr>ams<cr>
 nnoremap <buffer> <localleader>rep :call Template()<cr>rep<cr>
 
 " Placeholders <++>, Ctrl-j jumps to the next match
-"-------------------------------------------------------------------
-
-nnoremap <buffer> <C-j> /<++><cr>cf>
-inoremap <buffer> <C-j> <esc>/<++><cr>cf>
+nnoremap <buffer> <C-j> /<++><cr>:noh<cr>cf>
+inoremap <buffer> <C-j> <esc>/<++><cr>:noh<cr>cf>
 
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
@@ -323,9 +326,10 @@ set background=dark
 
 "2}}}
 " Command line mappings{{{
+"-------------------------------------------------------------------
 
-cnoremap <c-a> <home>
-cnoremap <c-e> <end>
+cnoremap <buffer> <c-h> <home>
+cnoremap <buffer> <c-e> <end>
 
 "}}}
 " Diagraphs{{{2
@@ -340,9 +344,13 @@ cnoremap <c-e> <end>
 "-------------------------------------------------------------------
 
 " Delete Trailing White Space
+function! DeleteTrailingWhiteSpace()
+    :normal! mm0g_ld$`m
+endfunction
+
 "autocmd BufWritePre * %s/\s\+$//e
-inoremap <buffer> <localleader>dtw <Esc>mm0g_ld$`ma
-nnoremap <buffer> <localleader>dtw mm0g_ld$`m
+inoremap <buffer> <localleader>dtw <Esc>:call DeleteTrailingWhiteSpace()<cr>a
+nnoremap <buffer> <localleader>dtw :call DeleteTrailingWhiteSpace()<cr>
 
 "2}}}
 " Leader Mappings{{{2
@@ -354,10 +362,10 @@ let maplocalleader=","
 " To get <> and write <localleader> easily
 inoremap <buffer> << <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
-inoremap <buffer> <L <><esc>ileader<esc>la 
-inoremap <buffer> <LL <><esc>ilocalleader<esc>la 
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la 
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la 
+inoremap <buffer> <L <><esc>ileader<esc>la
+inoremap <buffer> <LL <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
+inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
 " Navigation{{{2
@@ -386,8 +394,6 @@ noremap <buffer> 'h `h
 noremap <buffer> 'j `j
 noremap <buffer> 'k `k
 noremap <buffer> 'l `l
-
-nnoremap <buffer> 'm `mzz
 
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
@@ -421,10 +427,6 @@ noremap <buffer> 's `s
 nnoremap <buffer> * ms*<c-o>
 nnoremap <buffer> # ms#<c-o>
 
-" Keep search matches in the middle of the screen
-nnoremap <buffer> n nzz
-nnoremap <buffer> N Nzz
-
 " Search the visually selected using */# (from Scrooloose)
 function! s:VSerSearch()
     let temp = @@
@@ -436,28 +438,29 @@ endfunction
 vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>
 vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
-" Clearing highlighted matches
-nnoremap <buffer> <cr> :noh<cr>
-nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>:noh<cr>`mzz
+" Blink search pattern when cursor goes there
+function! HLNext(blinktime)
+    highlight BlackOnRed ctermfg=black ctermbg=red
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    let target_pat = '\c\%#\%('.@/.'\)'
+    let ring = matchadd('BlackOnRed', target_pat, 101)
+    redraw
+    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+    call matchdelete(ring)
+    redraw
+endfunction
 
-" nnoremap <buffer> n nzz:call HLNext(0.3)<cr>
-" nnoremap <buffer> N Nzz:call HLNext(0.3)<cr>
-
-" function! HLNext(blinktime)
-"     highlight BlackOnRed ctermfg=black ctermbg=red
-"     let [bufnum, lnum, col, off] = getpos('.')
-"     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-"     let target_pat = '\c\%#\%('.@/.'\)'
-"     let ring = matchadd('BlackOnRed', target_pat, 101)
-"     redraw
-"     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-"     call matchdelete(ring)
-"     redraw
-" endfunction
+nnoremap <buffer> n nzz:call HLNext(0.1)<cr>
+nnoremap <buffer> N Nzz:call HLNext(0.1)<cr>
 
 " Vim very magic mode search
 " nnoremap <buffer> / ms/\v
 " vnoremap <buffer> / ms/\v
+
+" Clearing highlighted matches
+nnoremap <buffer> <cr> :noh<cr>
+nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>`mzz
 
 "2}}}
 " Some other remaps{{{2
@@ -538,17 +541,17 @@ nnoremap <buffer> vv ^vg_
 " Put dragvisuals.vim in ~/.vim/bundle/dragvisuals/plugin/
 runtime bundle/dragvisuals/plugin/dragvisuals.vim
 
-vmap <expr> <S-LEFT>   DVB_Drag('left')
-vmap <expr> <S-RIGHT>  DVB_Drag('right')
-vmap <expr> <S-DOWN>   DVB_Drag('down')
-vmap <expr> <S-UP>     DVB_Drag('up')
-vmap <expr> D        DVB_Duplicate()
+vmap <expr> <S-LEFT>  DVB_Drag('left')
+vmap <expr> <S-RIGHT> DVB_Drag('right')
+vmap <expr> <S-DOWN>  DVB_Drag('down')
+vmap <expr> <S-UP>    DVB_Drag('up')
+vmap <expr> D         DVB_Duplicate()
 
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
 " Visually reselect whatever is pasted
-nnoremap <buffer> <localleader>V V`
+nnoremap <buffer> <localleader>V V`]
 
 "2}}}
 
@@ -616,7 +619,7 @@ augroup AutoSourceAllForPythonBuf
 augroup end
 
 "Sourcing everything for tex
-nnoremap <buffer>  <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
+nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call Abbreviations()<cr>gen<cr>:call Abbreviations()<cr>math<cr>:call KeyBindings()<cr>tex<cr>
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings()<cr>tex<cr>
@@ -683,7 +686,7 @@ augroup ContinuouslyAutoWriteBuf
     autocmd TextChanged,TextChangedI * silent write
 augroup end
 
-nnoremap <buffer> <localleader>q mqzMgg:wq<cr>
+nnoremap <buffer> <localleader>q mqzMgg:wq!<cr>
 nnoremap <buffer> 'q `q
 
 "}}}
@@ -692,7 +695,7 @@ nnoremap <buffer> 'q `q
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <buffer> <localleader>sf mfzMgg:w!<cr>:mkview<cr>`fzvzz:source %<cr>
+nnoremap <buffer> <localleader>sf :call MakeView()<cr>:source %<cr>:noh<cr>
 
 " Sourcing visual selection/current line for testing code
 vnoremap <buffer> <localleader>S y:execute @@<cr>
@@ -704,7 +707,7 @@ augroup AutoSourceMYVIMRC
 augroup end
 
 " Sourcing .vimrc
-nnoremap <buffer>  <localleader>v :source $MYVIMRC<cr>
+nnoremap <buffer> <localleader>v :source $MYVIMRC<cr>
 
 "}}}
 
