@@ -309,6 +309,19 @@ noremap <buffer> <localleader>ac :center<cr>
 noremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
+" Braces{{{
+"-------------------------------------------------------------------
+
+inoremap <buffer> ( ()<esc>i
+inoremap <buffer> (( (
+inoremap <buffer> { {}<esc>i
+inoremap <buffer> P{ {
+inoremap <buffer> [ []<esc>i
+inoremap <buffer> [[ [
+inoremap <buffer> \| \|\|<esc>i
+inoremap <buffer> \|\| \|
+
+"}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
