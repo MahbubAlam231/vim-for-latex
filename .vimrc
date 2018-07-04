@@ -381,7 +381,7 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 inoremap <buffer> <localleader>b <esc>bb
 
 " Remap j and k to act as expected when used on long, wrapped lines
-noremap <buffer> j gj
+nnoremap <buffer> j gj
 noremap <buffer> k gk
 
 " Moving on the screen
