@@ -387,6 +387,7 @@ noremap <buffer> 'l `l
 
 nnoremap <buffer> 'm `mzz
 
+nnoremap <buffer> <leader>z <esc>zMzvzz
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
