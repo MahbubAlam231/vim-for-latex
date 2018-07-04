@@ -212,12 +212,12 @@ augroup AutoLoadview
 augroup end
 
 " Opening/closing folding
-nnoremap <buffer> zv zvzz
-nnoremap <buffer> zr zRzz
-nnoremap <buffer> zm zMzz
-nnoremap <buffer> <localleader>z zMzvzz
-nnoremap <buffer> <space> zazz
-nnoremap <buffer> <localleader><space> zazt
+noremap <buffer> zv zvzz
+noremap <buffer> zr zRzz
+noremap <buffer> zm zMzz
+noremap <buffer> <localleader>z zMzvzz
+noremap <buffer> <space> zazz
+noremap <buffer> <localleader><space> zazt
 
 "3}}}
 " NERDtree{{{3
@@ -370,8 +370,12 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 " To go back a word in insert mode
 inoremap <buffer> <localleader>b <esc>bb
 
+" Remap j and k to act as expected when used on long, wrapped lines
+noremap <buffer> j gj
+noremap <buffer> k gk
+
 " Moving on the screen
-noremap <buffer> H mh^
+noremap <buffer> H mhg^
 noremap <buffer> J mjL
 noremap <buffer> K mkH
 noremap <buffer> L mlg_
