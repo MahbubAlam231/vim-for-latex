@@ -212,6 +212,8 @@ augroup AutoLoadview
 augroup end
 
 " Opening/closing folding
+noremap <buffer> zo zozz
+noremap <buffer> zc zczz
 noremap <buffer> zv zvzz
 noremap <buffer> zr zRzz
 noremap <buffer> zm zMzz
@@ -387,7 +389,6 @@ noremap <buffer> 'l `l
 
 nnoremap <buffer> 'm `mzz
 
-nnoremap <buffer> <leader>z <esc>zMzvzz
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
