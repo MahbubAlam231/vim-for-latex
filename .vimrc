@@ -538,14 +538,11 @@ vmap <expr> <S-DOWN>   DVB_Drag('down')
 vmap <expr> <S-UP>     DVB_Drag('up')
 vmap <expr> D        DVB_Duplicate()
 
-" visually reselect whatever is pasted
-nnoremap <buffer> <localleader>v v`
-
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
-" visually reselect whatever is pasted
-nnoremap <buffer> <localleader>v v`
+" Visually reselect whatever is pasted
+nnoremap <buffer> <localleader>V V`
 
 "2}}}
 
