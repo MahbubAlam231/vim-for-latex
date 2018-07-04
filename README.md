@@ -22,6 +22,6 @@ Here uploaded are,
 ### For macOS
 - Put `.vimrc` in `/Users/(your_pc_name)`
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions
-- There are some lines (after the 575th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well.
+- There are some lines (after the 555th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well.
 - Download `dragvisuals.vim` from https://is.gd/IBV2013 or https://github.com/shinokada/dragvisuals.vim. Put `dragvisuals.vim` in `/Users/(your_pc_name)/.vim/bundle/dragvisuals/plugin/`
 - `folding.vim` might make your vim slower
