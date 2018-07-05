@@ -8,6 +8,8 @@ Here uploaded are,
 
 # Guide:
 
+Download `MahbubAlam231/vimforlatex` form https://github.com.
+
 ### For Ubuntu
 
 - Put `.vimrc` in your home directory
