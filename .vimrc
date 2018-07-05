@@ -93,8 +93,6 @@ nnoremap <buffer> <c-l> 5<c-w><
 " Set relative number{{{2
 "-------------------------------------------------------------------
 
-set number relativenumber
-
 augroup NumberToggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * :set relativenumber
