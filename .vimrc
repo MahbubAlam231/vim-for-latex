@@ -393,6 +393,12 @@ inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
 inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
+" Macros{{{
+"-------------------------------------------------------------------
+
+nnoremap <buffer> Q @q
+
+"}}}
 " Navigation{{{2
 "-------------------------------------------------------------------
 
