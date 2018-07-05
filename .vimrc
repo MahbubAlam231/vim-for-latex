@@ -102,7 +102,7 @@ augroup NumberToggle
 augroup end
 
 "EscapeRelativeNumber
-nnoremap <buffer> <localleader>n :set norelativenumber<cr>
+nnoremap <buffer> <localleader>nt :set norelativenumber<cr>
 
 "2}}}
 
@@ -243,31 +243,40 @@ let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
 
 " Selecting template
-function! Template()
-    let a:code=input("Which Template: ")
+function! Template(code)
+    if a:code != 'art' && a:code != 'ams' && a:code != 'rep'
+        let l:code = input("Which Template: ")
+    else
+        let l:code = a:code
+    endif
 
     "art
-    if(a:code=="art")
-    :TemplateInit article
+    if l:code == "art"
+        :TemplateInit article
     endif
 
     "ams
-    if(a:code=="ams")
-    :TemplateInit amsart
+    if l:code == "ams"
+        :TemplateInit amsart
     endif
 
     "rep
-    if(a:code=="rep")
-    :TemplateInit report
+    if l:code == "rep"
+        :TemplateInit report
+    endif
+
+    "invalid template
+    if l:code != 'art' && a:code != 'ams' && a:code != 'rep'
+        echom " <-- Not a valid template"
     endif
 
 endfunction
 
-nnoremap <buffer> <localleader>tem :call Template()<cr>
+nnoremap <buffer> <localleader>tem :call Template("")<cr>
 
-nnoremap <buffer> <localleader>art :call Template()<cr>art<cr>
-nnoremap <buffer> <localleader>ams :call Template()<cr>ams<cr>
-nnoremap <buffer> <localleader>rep :call Template()<cr>rep<cr>
+nnoremap <buffer> <localleader>art :call Template("art")<cr>
+nnoremap <buffer> <localleader>ams :call Template("ams")<cr>
+nnoremap <buffer> <localleader>rep :call Template("rep")<cr>
 
 " Placeholders <++>, Ctrl-j jumps to the next match
 nnoremap <buffer> <C-j> /<++><cr>:noh<cr>cf>
@@ -309,7 +318,7 @@ noremap <buffer> <localleader>ac :center<cr>
 noremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
-" Braces{{{
+" Braces and stuff{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> ( ()<esc>i
@@ -392,10 +401,6 @@ inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc
 
 " To go back a word in insert mode
 inoremap <buffer> <localleader>b <esc>bb
-
-" Remap j and k to act as expected when used on long, wrapped lines
-nnoremap <buffer> j gj
-noremap <buffer> k gk
 
 " Moving on the screen
 noremap <buffer> H mhg^
@@ -488,26 +493,6 @@ nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
 "2}}}
-" Some Python Stuff{{{2
-
-augroup SomePythonStuff
-    autocmd!
-    autocmd FileType py inoremap <buffer> ' ''<esc>i
-    autocmd FileType py inoremap <buffer> " ""<esc>i
-augroup end
-
-"2}}}
-" Some TeX Stuff{{{2
-
-augroup SomeTexStuff
-    autocmd!
-    autocmd FileType tex inoremap <buffer> /, \,
-    autocmd FileType tex nnoremap <buffer> <localleader>toc :LatexTOC<CR>
-    autocmd FileType tex inoremap <buffer> '' `'<esc>i
-    autocmd FileType tex inoremap <buffer> "" ``"<esc>i
-augroup end
-
-"2}}}
 " Spelling Check{{{2
 "-------------------------------------------------------------------
 
@@ -577,25 +562,34 @@ nnoremap <buffer> <localleader>V V`]
 "-------------------------------------------------------------------
 
 " Select KeyBinding Scheme
-function! KeyBindings()
-	let a:code=input("Enter File Extension: ")
+function! KeyBindings(code)
+    if a:code != 'tex' && a:code != 'np' && a:code != 'py'
+        let l:code = input("Enter File Extension: ")
+    else
+        let l:code = a:code
+    endif
 
 	"tex
-	if(a:code=="tex")
+	if l:code == "tex"
 		source ~/.vim/KeyBindings/TeXKeyBindings.vim
 		set spellfile=~/.vim/spell/math.utf-8.add
 	endif
 
 	"to enter numbers peacefully
-	if(a:code=="np")
+	if l:code == "np"
 		source ~/.vim/KeyBindings/NumbersPeacefully.vim
 	endif
 
 	"python
-	if(a:code=="py")
+	if l:code == "py"
 		source ~/.vim/KeyBindings/PythonKeyBindings.vim
 		set spellfile=~/.vim/spell/math.utf-8.add
 	endif
+
+    "invalid KeyBindings
+    if l:code != 'tex' && a:code != 'np' && a:code != 'py'
+        echom " <-- Not a valid KeyBinding"
+    endif
 
 endfunction
 
@@ -604,19 +598,28 @@ endfunction
 "-------------------------------------------------------------------
 
 " Select Abbreviation Type
-function! Abbreviations()
-    let a:code=input("Which Abbreviation: ")
+function! Abbreviations(code)
+    if a:code != 'gen' && a:code != 'math'
+        let l:code = input("Which Abbreviation: ")
+    else
+        let l:code = a:code
+    endif
 
     "gen
-    if(a:code=="gen")
+    if l:code == "gen"
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
         set spellfile=~/.vim/spell/math.utf-8.add
     endif
 
     "math
-    if(a:code=="math")
+    if l:code == "math"
     source ~/.vim/Abbreviations/MathAbbreviations.vim
         set spellfile=~/.vim/spell/math.utf-8.add
+    endif
+
+    "invalid Abbreviations
+    if l:code != 'gen' && a:code != 'math'
+        echom " <-- Not a valid Abbreviation"
     endif
 
 endfunction
@@ -628,35 +631,35 @@ endfunction
 augroup SourceAllForPythonBuf
     autocmd!
     autocmd BufNewFile,BufRead *.py :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.py :execute "normal! :call KeyBindings()\<cr>py\<cr>"
+    autocmd BufNewFile,BufRead *.py :call KeyBindings("py")
 augroup end
 
 "Sourcing everything for tex
 function! SourceEverythingForTeX()
-    :execute ":normal! :call Abbreviations()\<cr>gen\<cr>"
-    :execute ":normal! :call Abbreviations()\<cr>math\<cr>"
-    :execute ":normal! :call KeyBindings()\<cr>tex\<cr>"
+    :call Abbreviations("gen")
+    :call Abbreviations("math")
+    :call KeyBindings("tex")
 endfunction
 
 nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
 
 "Sourcing TexKeyBindings
-nnoremap <buffer> <F4> :call KeyBindings()<cr>tex<cr>
-inoremap <buffer> <F4> <Esc>:call KeyBindings()<cr>tex<cr>a
+nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>
+inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>
 
 "Sourcing NumbersPeacefully
-nnoremap <buffer> <localleader>np :call KeyBindings()<cr>np<cr>
-inoremap <buffer> <localleader>np <esc>:call KeyBindings()<cr>np<cr>a
-inoremap <buffer> <localleader>nd <esc>:call KeyBindings()<cr>tex<cr>a
+nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
+inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>
+inoremap <buffer> <localleader>nd <esc>:call KeyBindings("np")<cr>
 
 "Sourcing GeneralAbbreviations
-nnoremap <buffer> <localleader>ag :call Abbreviations()<cr>gen<cr>
+nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
 
 " Sourcing MathAbbreviations
-nnoremap <buffer> <localleader>am :call Abbreviations()<cr>math<cr>
+nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
 
 "Sourcing PythonKeyBindings
-nnoremap <buffer> <localleader>py :call KeyBindings()<cr>py<cr>
+nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
@@ -720,7 +723,7 @@ nnoremap <buffer> <localleader>sf :call MakeView()<cr>:source %<cr>:noh<cr>
 vnoremap <buffer> <localleader>S y:execute @@<cr>
 nnoremap <buffer> <localleader>S ^vg_y:execute @@<cr>
 
-augroup SourceMYVIMRC
+augroup Source$MYVIMRC
     autocmd!
     autocmd BufNewFile,BufRead * :source $MYVIMRC
 augroup end
