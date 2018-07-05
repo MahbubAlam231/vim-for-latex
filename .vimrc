@@ -101,8 +101,16 @@ augroup NumberToggle
     autocmd BufLeave,FocusLost,InsertEnter   * :set norelativenumber
 augroup end
 
+function! NumberToggle()
+    if (&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunction
+
 "EscapeRelativeNumber
-nnoremap <buffer> <localleader>nt :set norelativenumber<cr>
+nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>
 
 "2}}}
 
@@ -253,20 +261,17 @@ function! Template(code)
     "art
     if l:code == "art"
         :TemplateInit article
-    endif
 
     "ams
-    if l:code == "ams"
+    elseif l:code == "ams"
         :TemplateInit amsart
-    endif
 
     "rep
-    if l:code == "rep"
+    elseif l:code == "rep"
         :TemplateInit report
-    endif
 
     "invalid template
-    if l:code != 'art' && a:code != 'ams' && a:code != 'rep'
+    elseif l:code != 'art' && a:code != 'ams' && a:code != 'rep'
         echom " <-- Not a valid template"
     endif
 
@@ -563,7 +568,7 @@ nnoremap <buffer> <localleader>V V`]
 
 " Select KeyBinding Scheme
 function! KeyBindings(code)
-    if a:code != 'tex' && a:code != 'np' && a:code != 'py'
+    if a:code != 'tex' && a:code != 'np' && a:code != 'py' && a:code != 'unmaptex'
         let l:code = input("Enter File Extension: ")
     else
         let l:code = a:code
@@ -573,21 +578,22 @@ function! KeyBindings(code)
 	if l:code == "tex"
 		source ~/.vim/KeyBindings/TeXKeyBindings.vim
 		set spellfile=~/.vim/spell/math.utf-8.add
-	endif
 
 	"to enter numbers peacefully
-	if l:code == "np"
+    elseif l:code == "np"
 		source ~/.vim/KeyBindings/NumbersPeacefully.vim
-	endif
 
 	"python
-	if l:code == "py"
+    elseif l:code == "py"
 		source ~/.vim/KeyBindings/PythonKeyBindings.vim
 		set spellfile=~/.vim/spell/math.utf-8.add
-	endif
+
+    "UnmapTeXKeyBindings
+    elseif l:code == "unmaptex"
+        source ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
 
     "invalid KeyBindings
-    if l:code != 'tex' && a:code != 'np' && a:code != 'py'
+    elseif l:code != 'tex' && a:code != 'np' && a:code != 'py'
         echom " <-- Not a valid KeyBinding"
     endif
 
@@ -609,16 +615,14 @@ function! Abbreviations(code)
     if l:code == "gen"
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
         set spellfile=~/.vim/spell/math.utf-8.add
-    endif
 
     "math
-    if l:code == "math"
+    elseif l:code == "math"
     source ~/.vim/Abbreviations/MathAbbreviations.vim
         set spellfile=~/.vim/spell/math.utf-8.add
-    endif
 
     "invalid Abbreviations
-    if l:code != 'gen' && a:code != 'math'
+    elseif l:code != 'gen' && a:code != 'math'
         echom " <-- Not a valid Abbreviation"
     endif
 
@@ -645,7 +649,7 @@ nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTe
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>
-inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>
+inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>a
 
 "Sourcing NumbersPeacefully
 nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
@@ -660,6 +664,10 @@ nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
 
 "Sourcing PythonKeyBindings
 nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>
+
+"Sourcing UnmapTexKeyBindings
+nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>
+inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>a
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
@@ -679,6 +687,9 @@ nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr
 
 " Opening PythonKeyBindings
 nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+
+" Opening UnmapTeXKeyBindings
+nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening .vimrc
 nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
