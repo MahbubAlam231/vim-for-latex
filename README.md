@@ -10,7 +10,7 @@ Here uploaded are,
 
 Download `MahbubAlam231/vimforlatex` form https://github.com.
 
-### For Ubuntu
+### For Linux
 
 - Put `.vimrc` in your home directory;
 - Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
