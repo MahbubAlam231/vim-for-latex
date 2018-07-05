@@ -50,6 +50,9 @@ inoremap <buffer> [[ [
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
+inoremap <buffer> ' `'<esc>i
+inoremap <buffer> " ``"<esc>i
+
 "}}}
 
 " Math Symbols{{{
@@ -484,36 +487,27 @@ inoremap <buffer> <localleader>mto \mapsto
 inoremap <buffer> <localleader>lmto \longmapsto
 
 "}}}
-" Misc{{{
+" Others{{{
 "-------------------------------------------------------------------
 
+inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 inoremap <buffer> <localleader>opn \operatorname{}<esc>i
-
 
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
 
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
-"-------------------------------------------------------------------
 " Dollar to \[\]
-"-------------------------------------------------------------------
-
 nnoremap <buffer> <localleader>dtb lvt$yhdf$o\[<cr>\]<esc>O<esc>"0p
 
-"-------------------------------------------------------------------
-" Environment Completion
-"-------------------------------------------------------------------
-
-inoremap <buffer> <F3> <esc>F{vf}"ay$a<CR><CR>\end<esc>"apka<C-i>
-
-"-------------------------------------------------------------------
 " Referencing Theorem, Citation etc.
-"-------------------------------------------------------------------
-
 inoremap <buffer> <localleader>ref <esc>hmmlx`ma~\ref{}<esc>i
 inoremap <buffer> <localleader>cit <esc>hmmlx`ma~\cite{}<esc>i
+
+" LaTeX table of contents
+nnoremap <buffer> <localleader>toc :LatexTOX<cr>
 
 "}}}
 

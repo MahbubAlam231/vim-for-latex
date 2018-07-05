@@ -50,6 +50,9 @@ inoremap <buffer> [[ [
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
+inoremap <buffer> ' ''<esc>i
+inoremap <buffer> " ""<esc>i
+
 "}}}
 
 " Python symbols{{{
