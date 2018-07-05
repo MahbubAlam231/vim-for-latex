@@ -208,7 +208,7 @@ endfunction
 nnoremap <buffer> <localleader>mk :call MakeView()<cr>
 nnoremap <buffer> 'f `fzz
 
-augroup AutoLoadview
+augroup Loadview
     autocmd!
     autocmd BufNewFile,BufRead * silent loadview
 augroup end
@@ -625,7 +625,7 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
 
-augroup AutoSourceAllForPythonBuf
+augroup SourceAllForPythonBuf
     autocmd!
     autocmd BufNewFile,BufRead *.py :source $MYVIMRC
     autocmd BufNewFile,BufRead *.py :execute "normal! :call KeyBindings()\<cr>py\<cr>"
@@ -633,7 +633,9 @@ augroup end
 
 "Sourcing everything for tex
 function! SourceEverythingForTeX()
-    :execute ":normal! :call Abbreviations()\<cr>gen\<cr>:call Abbreviations()\<cr>math\<cr>:call KeyBindings()\<cr>tex\<cr>"
+    :execute ":normal! :call Abbreviations()\<cr>gen\<cr>"
+    :execute ":normal! :call Abbreviations()\<cr>math\<cr>"
+    :execute ":normal! :call KeyBindings()\<cr>tex\<cr>"
 endfunction
 
 nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
@@ -685,12 +687,12 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-augroup TexBufAutoIndent
+augroup IndentTexBuf
     autocmd!
     autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
 augroup end
 
-augroup AutoWriteNewBuf
+augroup WriteNewBuf
     autocmd!
     autocmd BufNewFile * :write
 augroup end
@@ -698,7 +700,7 @@ augroup end
 nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
 inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
-augroup ContinuouslyAutoWriteBuf
+augroup ContinuouslyWriteBuf
     autocmd!
     autocmd TextChanged,TextChangedI * silent write
 augroup end
@@ -718,7 +720,7 @@ nnoremap <buffer> <localleader>sf :call MakeView()<cr>:source %<cr>:noh<cr>
 vnoremap <buffer> <localleader>S y:execute @@<cr>
 nnoremap <buffer> <localleader>S ^vg_y:execute @@<cr>
 
-augroup AutoSourceMYVIMRC
+augroup SourceMYVIMRC
     autocmd!
     autocmd BufNewFile,BufRead * :source $MYVIMRC
 augroup end
