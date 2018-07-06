@@ -69,6 +69,7 @@
 
     " OR ELSE just highlight the match in red...
     function! HLNext (blinktime)
+        highlight BlackOnRed ctermfg=black ctermbg=red
         let [bufnum, lnum, col, off] = getpos('.')
         let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
         let target_pat = '\c\%#\%('.@/.'\)'
