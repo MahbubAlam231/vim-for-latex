@@ -525,6 +525,12 @@ nnoremap <buffer> <localleader>bue
 " \[\] to Equation
 nnoremap <buffer> <localleader>be
 
+" \[\] to Unnumbered Align
+nnoremap <buffer> <localleader>bual
+
+" \[\] to Align
+nnoremap <buffer> <localleader>bal
+
 " Referencing Theorem, Citation etc.
 inoremap <buffer> <localleader>ref
 inoremap <buffer> <localleader>cit

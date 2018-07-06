@@ -537,7 +537,7 @@ endfunction
 
 nnoremap <buffer> <localleader>bual :call BracketToUnnumAlign()<cr>
 
-" \[\] to Unnumbered Align
+" \[\] to Align
 function! BracketToAlign()
     :execute ":normal! 0kV2jdO% Align\<cr>\\begin{align}\<cr>\\end{align}\<esc>kpddjddk$"
 
