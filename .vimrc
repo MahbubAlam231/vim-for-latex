@@ -93,6 +93,8 @@ nnoremap <buffer> <c-l> 5<c-w><
 " Set relative number{{{2
 "-------------------------------------------------------------------
 
+set number relativenumber
+
 augroup NumberToggle
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * :set relativenumber
@@ -486,8 +488,8 @@ nnoremap <buffer> N Nzz:call HLNext(0.1)<cr>
 " vnoremap <buffer> / ms/\v
 
 " Clearing highlighted matches
-nnoremap <buffer> <cr> :noh<cr>
-nnoremap <buffer> <cr><cr> mm/qwqkqx<cr>:noh<cr>`mzz
+nnoremap <buffer> <esc> :noh<esc>
+nnoremap <buffer> <esc><esc> mm/qwqkqx<cr>:noh<cr>`mzz<esc>
 
 "2}}}
 " Some other remaps{{{2
@@ -712,7 +714,7 @@ augroup end
 
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile * :write
+    autocmd BufNewFile,BufRead * :write
 augroup end
 
 nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
