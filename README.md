@@ -18,12 +18,12 @@ Download `MahbubAlam231/vimforlatex` form [GitHub](https://github.com).
 - Create `~/.vim/Ultisnips`, and put `tex.snippets` in that;
 - Download the `spell` folder, and put it in `~/.vim`;
 - Install the plugin [`LaTeX-Box`](https://github.com/LaTeX-Box-Team/LaTeX-Box), create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that;
-- Install the plugin `vim-templates` (https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`;
-- Create `~/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go to https://is.gd/IBV2013 or https://github.com/shinokada/dragvisuals.vim to get `dragvisuals.vim`.
+- Install the plugin [`vim-templates`](https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`;
+- Create `~/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to [GitHub](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim`.
 
 ### For macOS
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
 - There are some lines (after the 555th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well;
-- Create `~/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go to https://is.gd/IBV2013 or https://github.com/shinokada/dragvisuals.vim to get `dragvisuals.vim`;
-- `folding.vim` might make your vim slower, you might want to not add this file to your system.
+- Create `/Users/(your_pc_name)/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to [GitHub](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim`;
+- *`folding.vim` might make your vim slower, you might want to not add this file to your system.*
