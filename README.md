@@ -26,4 +26,4 @@ Download `MahbubAlam231/vimforlatex` form [GitHub repository MahbubAlam231/vimfo
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
 - There are some lines (after the 555th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well;
 - Create `/Users/(your_pc_name)/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to [GitHub repository shinokada/dragvisuals.vim](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim`;
-- `folding.vim` *might make your vim slower, you might want to not add this file to your system.*
+- `folding.vim` *might make your vim slower, you might not want to add this file to your system.*
