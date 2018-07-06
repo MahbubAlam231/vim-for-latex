@@ -513,6 +513,26 @@ nunmap <buffer> <localleader>toc :LatexTOX<cr>
 
 "}}}
 
+" Changing environments, referencing and table of contents{{{
+"-------------------------------------------------------------------
+
+" Dollar to \[\]
+nnoremap <buffer> <localleader>db
+
+" \[\] to Unnumbered Equation
+nnoremap <buffer> <localleader>bue
+
+" \[\] to Equation
+nnoremap <buffer> <localleader>be
+
+" Referencing Theorem, Citation etc.
+inoremap <buffer> <localleader>ref
+inoremap <buffer> <localleader>cit
+
+" LaTeX table of contents
+nnoremap <buffer> <localleader>toc
+"}}}
+
 " Greek Alphabets{{{
 "-------------------------------------------------------------------
 

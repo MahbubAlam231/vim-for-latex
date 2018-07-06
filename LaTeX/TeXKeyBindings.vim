@@ -499,18 +499,67 @@ inoremap <buffer> <localleader>N \nabla
 
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
-" Dollar to \[\]
-nnoremap <buffer> <localleader>dtb lvt$yhdf$o\[<cr>\]<esc>O<esc>"0p
-
-" Referencing Theorem, Citation etc.
-inoremap <buffer> <localleader>ref <esc>hmmlx`ma~\ref{}<esc>i
-inoremap <buffer> <localleader>cit <esc>hmmlx`ma~\cite{}<esc>i
-
-" LaTeX table of contents
-nnoremap <buffer> <localleader>toc :LatexTOX<cr>
+"}}}
 
 "}}}
 
+" Changing environments, referencing and table of contents{{{
+"-------------------------------------------------------------------
+
+" Dollar to \[\]
+function! DollarToBracket()
+    :execute ":normal! F$hxdf$o\\[\<cr>\\]\<esc>O\<C-R>\"\<esc>^xg_x"
+endfunction
+
+nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
+
+" \[\] to Unnumbered Equation
+function! BracketToUnnumEq()
+    :execute ":normal! 0kV2jdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
+
+" \[\] to Equation
+function! BracketToEq()
+    :execute ":normal! 0kV2jdO% Equation\<cr>\\begin{equation}\<cr>\\end{equation}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>
+
+" \[\] to Unnumbered Align
+function! BracketToUnnumAlign()
+    :execute ":normal! 0kV2jdO% UnnumberedAlign\<cr>\\begin{align*}\<cr>\\end{align*}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bual :call BracketToUnnumAlign()<cr>
+
+" \[\] to Unnumbered Align
+function! BracketToAlign()
+    :execute ":normal! 0kV2jdO% Align\<cr>\\begin{align}\<cr>\\end{align}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>
+
+" Referencing Theorem, Citation etc.
+function! ReferencingAndCiting(code)
+    if a:code == "ref"
+        :execute ":normal! hmmlx`ma~\\ref{}\<esc>"
+    elseif a:code == "cit"
+        :execute ":normal! hmmlx`ma~\\cite{}\<esc>"
+    endif
+
+endfunction
+
+inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>i
+inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>i
+
+" LaTeX table of contents
+nnoremap <buffer> <localleader>toc :LatexTOC<cr>
 "}}}
 
 " Greek Alphabets{{{
