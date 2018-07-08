@@ -513,21 +513,13 @@ endfunction
 
 nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
 
-" \[\] to Unnumbered Equation
-function! BracketToUnnumEq()
-    :execute ":normal! 0kV2jdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>kpddjddk$"
+" \[\] to Align
+function! BracketToAlign()
+    :execute ":normal! 0kV2jdO% Align\<cr>\\begin{align}\\label{}\<cr>\\end{align}\<esc>kpddjdd?label\<cr>$"
 
 endfunction
 
-nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
-
-" \[\] to Equation
-function! BracketToEq()
-    :execute ":normal! 0kV2jdO% Equation\<cr>\\begin{equation}\<cr>\\end{equation}\<esc>kpddjddk$"
-
-endfunction
-
-nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>
+nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>
 
 " \[\] to Unnumbered Align
 function! BracketToUnnumAlign()
@@ -537,13 +529,37 @@ endfunction
 
 nnoremap <buffer> <localleader>bual :call BracketToUnnumAlign()<cr>
 
-" \[\] to Align
-function! BracketToAlign()
-    :execute ":normal! 0kV2jdO% Align\<cr>\\begin{align}\<cr>\\end{align}\<esc>kpddjddk$"
+" \[\] to Equation
+function! BracketToEq()
+    :execute ":normal! 0kV2jdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\end{equation}\<esc>kpddjdd?label\<cr>$"
 
 endfunction
 
-nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>
+nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>
+
+" \[\] to Unnumbered Equation
+function! BracketToUnnumEq()
+    :execute ":normal! 0kV2jdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
+
+" \[\] to Aligned Equation
+function! BracketToAlignedEq()
+    :execute ":normal! 0kV2jdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>2kpddjdd?label\<cr>$"
+
+endfunction
+
+nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>
+
+" \[\] to Unnumbered Aligned Equation
+function! BracketToUnnumAlignedEq()
+    :execute ":normal! 0kV2jdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>2kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
 
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)

@@ -519,17 +519,23 @@ nunmap <buffer> <localleader>toc :LatexTOX<cr>
 " Dollar to \[\]
 nnoremap <buffer> <localleader>db
 
-" \[\] to Unnumbered Equation
-nnoremap <buffer> <localleader>bue
-
-" \[\] to Equation
-nnoremap <buffer> <localleader>be
+" \[\] to Align
+nnoremap <buffer> <localleader>bal
 
 " \[\] to Unnumbered Align
 nnoremap <buffer> <localleader>bual
 
-" \[\] to Align
-nnoremap <buffer> <localleader>bal
+" \[\] to Equation
+nnoremap <buffer> <localleader>beq
+
+" \[\] to Unnumbered Equation
+nnoremap <buffer> <localleader>bueq
+
+" \[\] to Aligned Equation
+nnoremap <buffer> <localleader>baleq
+
+" \[\] to Unnumbered Aligned Equation
+nnoremap <buffer> <localleader>bualeq
 
 " Referencing Theorem, Citation etc.
 inoremap <buffer> <localleader>ref
