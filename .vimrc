@@ -131,7 +131,6 @@ call vundle#begin()           "Vundle_will_run_the_following_Plugins
 " Plugin 'coot/atp_vim'
 " Plugin 'ervandew/supertab'
 " Plugin 'valloric/youcompleteme'
-" Plugin 'vim-scripts/FuzzyFinder'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
@@ -150,7 +149,6 @@ Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
-Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -206,13 +204,20 @@ set foldlevelstart=0
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
 nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
-" Saving and reloading folds set in manual fold method
+" Saving folds set in manual fold method
 function! MakeView()
     :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction
 
 nnoremap <buffer> <localleader>mk :call MakeView()<cr>
-nnoremap <buffer> 'f `fzz
+nnoremap <buffer> 'f `fzvzz
+
+function! FoldingTeXPreamble()
+    :execute ":normal! mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`dzMgg:mkview\<cr>`fzvzz"
+
+endfunction
+
+nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>
 
 augroup Loadview
     autocmd!
@@ -230,10 +235,10 @@ noremap <buffer> <space> zazz
 noremap <buffer> <localleader><space> zazt
 
 nnoremap <buffer> 'o `ozz
-nnoremap <buffer> 'c `czz
+nnoremap <buffer> 'c `czvzz
 nnoremap <buffer> 'v `vzz
 nnoremap <buffer> 'r `rzz
-nnoremap <buffer> 'm `mzz
+nnoremap <buffer> 'm `mzvzz
 
 "3}}}
 " NERDtree{{{3
@@ -433,11 +438,11 @@ noremap <buffer> <localleader>5 %
 " Mark and then go to the beginning or end of the file
 noremap <buffer> gg mggg
 noremap <buffer> G mgG
-noremap <buffer> 'g `gzz
+noremap <buffer> 'g `gzvzz
 
 " Revisit changelog
-nnoremap <buffer> g; g;zz
-nnoremap <buffer> g, g,zz
+nnoremap <buffer> g; g;zvzz
+nnoremap <buffer> g, g,zvzz
 
 "2}}}
 " Searching remaps{{{2
@@ -728,7 +733,7 @@ inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged,TextChangedI * silent write
+    autocmd TextChanged * nested silent write
 augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:wq!<cr>
