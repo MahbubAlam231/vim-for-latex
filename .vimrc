@@ -199,14 +199,12 @@ map T <Plug>Sneak_T
 " LaTeX-Box and Folding{{{3
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
-" let g:LatexBox_Folding=1
-" let g:LatexBox_fold_envs=1
 " let g:LatexBox_latexmk_preview_continuously = 1
 
 " Folding
 set foldlevelstart=0
-setlocal foldmethod=manual
-nnoremap <buffer> <localleader>f :setlocal foldmethod=marker<cr>
+nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
+nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 " Saving and reloading folds set in manual fold method
 function! MakeView()
@@ -404,11 +402,11 @@ nnoremap <buffer> Q @q
 " Navigation{{{2
 "-------------------------------------------------------------------
 
-" " Get off my lawn - helpful when learning Vim :)
-" nnoremap <buffer> <Left> :echoe "Use h"<cr>
-" nnoremap <buffer> <Right> :echoe "Use l"<cr>
-" nnoremap <buffer> <Up> :echoe "Use k"<cr>
-" nnoremap <buffer> <Down> :echoe "Use j"<cr>
+" Get off my lawn - helpful when learning Vim :)
+nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
+nnoremap <buffer> <Down>  :echoe "Use 'j'. Navigate smartly!"<cr>
+nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
+nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 " To go back a word in insert mode
 inoremap <buffer> <localleader>b <esc>bb
@@ -644,6 +642,14 @@ augroup SourceAllForPythonBuf
     autocmd BufNewFile,BufRead *.py :call KeyBindings("py")
 augroup end
 
+augroup SourceAllForTeXBuf
+    autocmd!
+    autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
+    autocmd BufNewFile,BufRead *.tex :call Abbreviations("gen")
+    autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
+    autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
+augroup end
+
 "Sourcing everything for tex
 function! SourceEverythingForTeX()
     :call Abbreviations("gen")
@@ -714,7 +720,7 @@ augroup end
 
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile,BufRead * :write
+    autocmd BufNewFile * :write
 augroup end
 
 nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
@@ -734,7 +740,8 @@ nnoremap <buffer> 'q `q
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <buffer> <localleader>sf :call MakeView()<cr>:source %<cr>:noh<cr>
+nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
+nnoremap <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>
 
 " Sourcing visual selection/current line for testing code
 vnoremap <buffer> <localleader>S y:execute @@<cr>
