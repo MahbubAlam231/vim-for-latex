@@ -268,7 +268,7 @@ function! Template(code)
 
     "invalid template
     elseif l:code != 'art' && a:code != 'ams' && a:code != 'rep'
-        echoe " <-- Not a valid template"
+        echom " <-- Not a valid template"
     endif
 
 endfunction
@@ -594,7 +594,7 @@ function! KeyBindings(code)
 
     "invalid KeyBindings
     elseif l:code != 'tex' && a:code != 'np' && a:code != 'py'
-        echoe " <-- Not a valid KeyBinding"
+        echom " <-- Not a valid KeyBinding"
     endif
 
 endfunction
@@ -623,7 +623,7 @@ function! Abbreviations(code)
 
     "invalid Abbreviations
     elseif l:code != 'gen' && a:code != 'math'
-        echoe " <-- Not a valid Abbreviation"
+        echom " <-- Not a valid Abbreviation"
     endif
 
 endfunction
