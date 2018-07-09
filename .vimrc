@@ -49,7 +49,15 @@ set listchars+=precedes:←             " Show arrow if line continues leftwards
 "highlight ColorColumn ctermbg=magenta
 "call matchadd('ColorColumn', '\%72v', 100)
 
-nnoremap <buffer> <localleader>nw :set nowrap<cr>
+function! WrapToggle()
+    if (&wrap == 1)
+        set nowrap
+    else
+        set wrap
+    endif
+endfunction
+
+nnoremap <buffer> <localleader>wt :call WrapToggle()<cr>
 
 "2}}}
 " Ignored files/directories from autocomplete (and CtrlP){{{2
