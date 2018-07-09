@@ -733,7 +733,7 @@ inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged * nested silent write
+    autocmd TextChanged,TextChangedI * silent write
 augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:wq!<cr>
