@@ -538,10 +538,10 @@ nnoremap <buffer> <localleader>baleq
 nnoremap <buffer> <localleader>bualeq
 
 " \[\] to Gather
-nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>
+nnoremap <buffer> <localleader>bga
 
 " \[\] to Unnumbered Gather
-nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
+nnoremap <buffer> <localleader>buga
 
 " Referencing Theorem, Citation etc.
 inoremap <buffer> <localleader>ref
