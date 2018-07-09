@@ -503,8 +503,6 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 " Spelling Check{{{2
 "-------------------------------------------------------------------
 
-syntax on
-
 augroup Spelling
     autocmd!
     autocmd FileType tex :setlocal spell spelllang=en_us
