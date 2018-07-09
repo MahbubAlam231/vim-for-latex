@@ -173,14 +173,6 @@ filetype plugin indent on     "required
 " Plugin mappings{{{2
 "-------------------------------------------------------------------
 
-" CtrlP Settings{{{3
-
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-"3}}}
 " Easymotion and Sneak{{{3
 
 map <leader>w <Plug>(easymotion-bd-w)
