@@ -537,6 +537,12 @@ nnoremap <buffer> <localleader>baleq
 " \[\] to Unnumbered Aligned Equation
 nnoremap <buffer> <localleader>bualeq
 
+" \[\] to Gather
+nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>
+
+" \[\] to Unnumbered Gather
+nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
+
 " Referencing Theorem, Citation etc.
 inoremap <buffer> <localleader>ref
 inoremap <buffer> <localleader>cit

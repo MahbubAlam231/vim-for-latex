@@ -99,7 +99,7 @@ Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 Abolish ind{,ly} independent{,ly}
 Abolish indep{,ly} independent{,ly}
-Abolish int{n,e,te,ble} integra{tion,te,te,ble}
+Abolish int{n,e,te,ble,y} integra{tion,te,te,ble,bility}
 
 "}}}
 "L{{{

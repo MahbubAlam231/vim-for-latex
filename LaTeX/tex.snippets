@@ -828,7 +828,7 @@ snippet thm
     $3
 \end{theorem}
 \begin{proof}
-    $4\bfseries\textcolor{red}{Write a Proof}
+    ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -851,7 +851,7 @@ snippet lem
     $3
 \end{lemma}
 \begin{proof}
-    $4\bfseries\textcolor{red}{Write a Proof}
+    ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -874,7 +874,7 @@ snippet prop
     $3
 \end{proposition}
 \begin{proof}
-    $4\bfseries\textcolor{red}{Write a Proof}
+    ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -887,7 +887,7 @@ snippet cor
     $3
 \end{corollary}
 \begin{proof}
-    $4\bfseries\textcolor{red}{Write a Proof}
+    ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -910,7 +910,7 @@ snippet prob
     $2
 \end{problem}
 \begin{proof}
-    $3\bfseries\textcolor{red}{Write a Proof}
+    ${3:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -920,7 +920,7 @@ endsnippet
 snippet prf
 % Proof
 \begin{${1:prf}}
-    $2\bfseries\textcolor{red}{Write a Proof}
+    ${2:\bfseries\textcolor{red}{Write a Proof}}
 \end{$1}
 
 $0
@@ -930,7 +930,7 @@ endsnippet
 snippet proof
 % Proof
 \begin{proof}
-    $1\bfseries\textcolor{red}{Write a Proof}
+    ${1:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -1037,8 +1037,8 @@ endsnippet
                                              #GatheringEquations
 snippet gather
 % Gather
-\begin{gather}
-    $1
+\begin{gather}\label{$1}
+    $2
 \end{gather}
 $0
 endsnippet
@@ -1231,7 +1231,7 @@ endsnippet
 snippet enum
 % Enumerate
 \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-\begin{enumerate}[$1label=\arabic*.,font=\normalfont,before=\normalfont]
+\begin{enumerate}%[label=\arabic*.,font=\normalfont,before=\normalfont]
     \item $2
 \end{enumerate}
 
@@ -1248,7 +1248,7 @@ snippet henum
 
 % Enumerate
 \begin{enumerate}
-    \item{$1}
+    \item $1
 \end{enumerate}
 
 $0
@@ -1285,7 +1285,7 @@ snippet \grey
 \end{theorem}
 \end{greybox}
 \begin{proof}
-    $2\textcolor{red} Write a Proof
+    ${2:\textcolor{red} Write a Proof}
 \end{proof}
 
 $0

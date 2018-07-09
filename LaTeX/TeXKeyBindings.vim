@@ -11,7 +11,7 @@
 
 inoremap <buffer> 1 <esc>A
 inoremap <buffer> 11 1
-inoremap <buffer> 2 <esc>f$i
+inoremap <buffer> 2 <esc>lf$i
 inoremap <buffer> 22 2
 inoremap <buffer> 3 <esc>lf}i
 inoremap <buffer> 33 3
@@ -457,6 +457,10 @@ inoremap <buffer> `= \cong
 
 inoremap <buffer> <localleader>ra \rightarrow
 inoremap <buffer> <localleader>la \leftarrow
+inoremap <buffer> <localleader>Ra \Rightarrow
+inoremap <buffer> <localleader>La \Leftarrow
+inoremap <buffer> <localleader>Lra \Longrightarrow
+inoremap <buffer> <localleader>Lla \Longleftarrow
 inoremap <buffer> <localleader>rra \rightrightarrow
 inoremap <buffer> <localleader>lla \leftleftarrow
 inoremap <buffer> <localleader>xra \xrightarrow
@@ -560,6 +564,22 @@ function! BracketToUnnumAlignedEq()
 endfunction
 
 nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
+
+" \[\] to Gather
+function! BracketToGather()
+    :execute ":normal! 0kV2jdO% Gather\<cr>\\begin{gather}\\label{}\<cr>\\end{gather}\<esc>kpddjdd?label\<cr>$"
+
+endfunction
+
+nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>
+
+" \[\] to Unnumbered Gather
+function! BracketToUnnumGather()
+    :execute ":normal! 0kV2jdO% UnnumberedGather\<cr>\\begin{gather*}\<cr>\\end{gather*}\<esc>kpddjddk$"
+
+endfunction
+
+nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
 
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)
@@ -721,6 +741,11 @@ let m = matchadd("SalmonMarkerGroup",'% Array')
 let m = matchadd("SalmonMarkerGroup",'% Matrix')
 let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
 let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+
+highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+
+let m = matchadd("ImpliesMarkerGroup",'($\\Longrightarrow$)')
+let m = matchadd("ImpliesMarkerGroup",'($\\Longleftarrow$)')
 
 highlight BoldGroup ctermfg=154 cterm=bold
 
