@@ -11,6 +11,7 @@
 
 inoremap <buffer> 1 <esc>A
 inoremap <buffer> 11 1
+inoremap <buffer> <localleader>1 <c-x><c-o>
 inoremap <buffer> 2 <esc>lf$i
 inoremap <buffer> 22 2
 inoremap <buffer> 3 <esc>lf}i
@@ -584,18 +585,19 @@ nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)
     if a:code == "ref"
-        :execute ":normal! hmmlx`ma~\\ref{}\<esc>"
+        :execute ":normal! hmmlx`ma~\\ref{\<esc>"
     elseif a:code == "cit"
-        :execute ":normal! hmmlx`ma~\\cite{}\<esc>"
+        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     endif
 
 endfunction
 
-inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>i
-inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>i
+inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
+inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
+
 "}}}
 
 " Greek Alphabets{{{
