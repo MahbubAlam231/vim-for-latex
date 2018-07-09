@@ -97,8 +97,7 @@ Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 "I{{{
 
 Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
-Abolish ind{,ly} independent{,ly}
-Abolish indep{,ly} independent{,ly}
+Abolish ind{ep,ly,eply} independent{,ly,ly}
 Abolish int{n,e,te,ble,y} integra{tion,te,te,ble,bility}
 
 "}}}
@@ -126,7 +125,6 @@ Abolish obs observation
 "P{{{
 
 Abolish poly{,s} polynomial{,s}
-Abolish pol{,s} polynomial{,s}
 Abolish prop{,s} proposition{,s}
 
 "}}}
