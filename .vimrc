@@ -213,7 +213,7 @@ nnoremap <buffer> <localleader>mk :call MakeView()<cr>
 nnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
-    :execute ":normal! mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d:delm a-d\<cr>zMgg:mkview\<cr>`fzvzz"
+    :execute ":normal! :setlocal foldmethod=manual\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d:delm a-d\<cr>zMgg:mkview\<cr>`fzvzz"
 
 endfunction
 
@@ -578,7 +578,7 @@ nnoremap <buffer> <localleader>V V`]
 " Select KeyBinding Scheme
 function! KeyBindings(code)
     if a:code != 'tex' && a:code != 'np' && a:code != 'py' && a:code != 'unmaptex'
-        let l:code = input("Enter File Extension: ")
+        let l:code = input("Which KeyBindings: ")
     else
         let l:code = a:code
     endif
