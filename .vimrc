@@ -13,7 +13,6 @@ set nocompatible                      " be improved, required
 filetype off                          " required
 
 set autoread                          " Auto reload changed files
-set autoindent                        " Auto Indent
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set clipboard=unnamed                 " Clipboard support (OSX)
@@ -37,10 +36,12 @@ set cursorline
 "-------------------------------------------------------------------
 
 set tabstop=4
+set expandtab                         " Two spaces for tabs everywhere
 set shiftwidth=4
+set autoindent                        " Auto Indent
+set smartindent                       " Does the right this (mostly) in programs
 set wrap
 set textwidth=1000
-set expandtab                         " Two spaces for tabs everywhere
 set listchars=extends:→               " Show arrow if line continues rightwards
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 
