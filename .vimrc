@@ -213,7 +213,7 @@ nnoremap <buffer> <localleader>mk :call MakeView()<cr>
 nnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
-    :execute ":normal! mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`dzMgg:mkview\<cr>`fzvzz"
+    :execute ":normal! mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d:delm a-d\<cr>zMgg:mkview\<cr>`fzvzz"
 
 endfunction
 
@@ -433,7 +433,7 @@ inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
 " Go to matching character
-noremap <buffer> <localleader>5 %
+noremap <buffer> <cr> %
 
 " Mark and then go to the beginning or end of the file
 noremap <buffer> gg mggg
