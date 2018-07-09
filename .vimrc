@@ -719,8 +719,8 @@ augroup WriteNewBuf
     autocmd BufNewFile * :write
 augroup end
 
-nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
-inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
+nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>zz
+inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>zza
 
 augroup ContinuouslyWriteBuf
     autocmd!
