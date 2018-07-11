@@ -5,7 +5,7 @@ Here uploaded are,
 - My keybindings, snippets and abbreviations for LaTeX;
   - KeyBindings for writing math sets, greek alphabets, math notations easily and fast;
   - Snippets for math sets, greek alphabets, math environments;
-  - General word abbreviations (using [tpope/vim-abolish](https://github.com/tpope/vim-abolish)) and math abbreviations.
+  - General word abbreviations (using [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
   - A universal type template (`tex.template`) for LaTeX.
 - A folding method similar to  [`vim-latex/vim-latex`](https://github.com/vim-latex/vim-latex), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
