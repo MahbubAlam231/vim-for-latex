@@ -31,3 +31,6 @@ Download [`MahbubAlam231/vimforlatex`](https://github.com/MahbubAlam231/vimforla
 - There are some lines (after the 555th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well;
 - Create `/Users/(your_pc_name)/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to GitHub repository [`shinokada/dragvisuals.vim`](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim` and
 - `folding.vim` *might make your vim slower, you might not want to add this file to your system.*
+
+Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.vim`, `GeneralAbbreviations.vim`, `MathAbbreviations.vim` and `tex.snippets`.
+For any query in vimscripts go to `:help` from inside vim, you can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
