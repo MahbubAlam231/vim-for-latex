@@ -137,9 +137,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()           "Vundle_will_run_the_following_Plugins
 
 
-" Plugin 'coot/atp_vim'
-" Plugin 'ervandew/supertab'
-" Plugin 'valloric/youcompleteme'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
@@ -151,6 +149,7 @@ Plugin 'christoomey/vim-system-copy'
 Plugin 'christoomey/vim-titlecase'
 Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'ervandew/supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
@@ -308,7 +307,7 @@ vmap <localleader>t <Plug>Titlecase
 "3}}}
 " YouCompleteMe{{{3
 
-let g:loaded_youcompleteme = 1
+" let g:loaded_youcompleteme = 0
 
 "3}}}
 
