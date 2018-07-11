@@ -3,6 +3,7 @@ My personalization of vim for mainly LaTeX.
 Here uploaded are,
 - My `.vimrc`;
 - My keybindings, snippets and abbreviations for LaTeX;
+--kdjfk
 - My templates for LaTeX;
 - A folding method similar to  [LaTeX-Suite](https://github.com/vim-scripts/LaTeX-Suite-aka-Vim-LaTeX), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
 
