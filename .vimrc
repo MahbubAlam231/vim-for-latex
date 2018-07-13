@@ -40,7 +40,7 @@ set tabstop=4                         " Redefine tab as four spaces
 set shiftwidth=4                      " To change the number of space characters inserted for indentation
 set expandtab                         " Four spaces for tabs everywhere
 set autoindent                        " Auto indent
-set smartindent                       " Does the right this (mostly) in programs
+set smartindent                       " Does the right thing (mostly) in programs
 set textwidth=1000                    " Line length in vim
 
 ""Make the 71th column stand out
