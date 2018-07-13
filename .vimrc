@@ -9,45 +9,55 @@
 " Basic options{{{2
 "-------------------------------------------------------------------
 
-set nocompatible                      " be improved, required
-filetype off                          " required
+set nocompatible                      " be iMproved, required (must be before everything)
+filetype off                          " required, disables filetype detection
 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set clipboard=unnamed                 " Clipboard support (OSX)
-set laststatus=2                      " Show status line on startup
-set nopaste
+set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
 set nobackup nowritebackup noswapfile " Turn off backup files
 set noerrorbells                      " Turn off audible bells
-set visualbell
-" set mouse=a                           " Mouse could work on vim too
-set history=1000
+set visualbell                        " Flash the screen when an error message is displayed
+set history=10000                     " Command line history for vim
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
-set showcmd                           " Show size of visual selection
-set statusline=%f\ %l,%c              " Showing number of lines in visual selection
-set complete=.,w,b,u,t,i,kspell       " complete using Ctrl-p
-set cursorline
+set showcmd                           " Show partial commands in the line of the screen
+set laststatus=2                      " Always display statusline
+set statusline=%f                     " Customizing statusline
+set statusline+=\ -\                  " Customizing statusline
+set statusline+=%y                    " Customizing statusline
+set statusline+=%=                    " Customizing statusline
+set statusline+=%l                    " Customizing statusline
+set statusline+=/                     " Customizing statusline
+set statusline+=%L                    " Customizing statusline
+set statusline+=:                     " Customizing statusline
+set statusline+=%c                    " Customizing statusline
+set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p
+set cursorline                        " Highlighting the line containing the cursor
+" set cursorcolumn                      " Highlighting the column containing the cursor
+" set mouse=a                           " Mouse could work on vim too
 
 "2}}}
-" Tabs, spaces, wrapping, textwidth{{{2
+" Tabs, indentation and wrapping{{{2
 "-------------------------------------------------------------------
 
-set tabstop=4
-set expandtab                         " Two spaces for tabs everywhere
-set shiftwidth=4
-set autoindent                        " Auto Indent
+set tabstop=4                         " Redefine tab as four spaces
+set shiftwidth=4                      " To change the number of space characters inserted for indentation
+set expandtab                         " Four spaces for tabs everywhere
+set autoindent                        " Auto indent
 set smartindent                       " Does the right this (mostly) in programs
-set wrap
-set textwidth=1000
-set listchars=extends:→               " Show arrow if line continues rightwards
-set listchars+=precedes:←             " Show arrow if line continues leftwards
+set textwidth=1000                    " Line length in vim
 
 ""Make the 71th column stand out
 "highlight ColorColumn ctermbg=magenta
 "call matchadd('ColorColumn', '\%72v', 100)
+
+set wrap                              " Wrap longlines by default
+set listchars=extends:→               " Show arrow if line continues rightwards
+set listchars+=precedes:←             " Show arrow if line continues leftwards
 
 function! WrapToggle()
     if (&wrap == 1)
@@ -74,10 +84,10 @@ set wildignore+=*/node_modules/
 "-------------------------------------------------------------------
 
 set ignorecase                        " Search queries intelligently set case
-set smartcase
+set smartcase                         " Override 'ignorecase' option if search pattern contains uppercase letters
 set incsearch                         " Show search results as you type
-set hlsearch
-set showmatch
+set hlsearch                          " Highlight all search patterns
+set showmatch                         " Briefly jump to the match if a bracket is inserted, 'matchtime' to be used to set the time to show the match
 
 "2}}}
 " Split{{{2
@@ -102,7 +112,7 @@ nnoremap <buffer> <c-l> 5<c-w><
 " Set relative number{{{2
 "-------------------------------------------------------------------
 
-set number relativenumber
+set number relativenumber             " 'Hybrid' line numbers
 
 augroup NumberToggle
     autocmd!
@@ -134,7 +144,7 @@ nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>
 " Set the runtime path to include Vundle and initialize
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()           "Vundle_will_run_the_following_Plugins
+call vundle#begin()                   " Vundle_will_run_the_following_Plugins
 
 
 " Plugin 'Valloric/YouCompleteMe'
@@ -173,8 +183,8 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/matchit.zip'
 
 
-call vundle#end()             "required
-filetype plugin indent on     "required
+call vundle#end()                     " required
+filetype plugin indent on             " required, enables filetype detection
 
 "2}}}
 " Plugin mappings{{{2
@@ -188,10 +198,10 @@ map <leader>f <Plug>(easymotion-bd-f)
 map <leader>s <Plug>(easymotion-s2)
 " map <leader>t <Plug>(easymotion-t2)
 
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
 
 "3}}}
 " LaTeX-Box and Folding{{{3
@@ -373,7 +383,6 @@ cnoremap <buffer> <c-e> <end>
 " Trailing White Space{{{2
 "-------------------------------------------------------------------
 
-" Delete Trailing White Space
 function! DeleteTrailingWhiteSpace()
     :normal! mm0g_lD`m
 endfunction
@@ -491,8 +500,8 @@ nnoremap <buffer> N Nzz:call HLNext(0.1)<cr>
 " vnoremap <buffer> / ms/\v
 
 " Clearing highlighted matches
-nnoremap <buffer> <esc> :noh<esc>
-nnoremap <buffer> <esc><esc> mm/qwqkqx<cr>:noh<cr>`mzz<esc>
+nnoremap <buffer> <esc> :noh<cr>:echo<cr>
+nnoremap <buffer> <esc><esc> mm/qwqkqx<cr>:noh<cr>:echo<cr>`mzz
 
 "2}}}
 " Some other remaps{{{2
@@ -581,19 +590,19 @@ function! KeyBindings(code)
         let l:code = a:code
     endif
 
-	"tex
-	if l:code == "tex"
-		source ~/.vim/KeyBindings/TeXKeyBindings.vim
-		set spellfile=~/.vim/spell/math.utf-8.add
+    "tex
+    if l:code == "tex"
+        source ~/.vim/KeyBindings/TeXKeyBindings.vim
+        set spellfile=~/.vim/spell/math.utf-8.add
 
-	"to enter numbers peacefully
+    "to enter numbers peacefully
     elseif l:code == "np"
-		source ~/.vim/KeyBindings/NumbersPeacefully.vim
+        source ~/.vim/KeyBindings/NumbersPeacefully.vim
 
-	"python
+    "python
     elseif l:code == "py"
-		source ~/.vim/KeyBindings/PythonKeyBindings.vim
-		set spellfile=~/.vim/spell/math.utf-8.add
+        source ~/.vim/KeyBindings/PythonKeyBindings.vim
+        set spellfile=~/.vim/spell/math.utf-8.add
 
     "UnmapTeXKeyBindings
     elseif l:code == "unmaptex"
