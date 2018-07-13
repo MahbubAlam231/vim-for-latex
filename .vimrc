@@ -26,15 +26,7 @@ set history=10000                     " Command line history for vim
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show partial commands in the line of the screen
 set laststatus=2                      " Always display statusline
-set statusline=%f                     " Customizing statusline
-set statusline+=\ -\                  " Customizing statusline
-set statusline+=%y                    " Customizing statusline
-set statusline+=%=                    " Customizing statusline
-set statusline+=%l                    " Customizing statusline
-set statusline+=/                     " Customizing statusline
-set statusline+=%L                    " Customizing statusline
-set statusline+=:                     " Customizing statusline
-set statusline+=%c                    " Customizing statusline
+set statusline=%f\ %y\ %l,%c          " Customizing statusline
 set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p
 set cursorline                        " Highlighting the line containing the cursor
 " set cursorcolumn                      " Highlighting the column containing the cursor
