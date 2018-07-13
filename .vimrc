@@ -120,7 +120,6 @@ function! NumberToggle()
     endif
 endfunction
 
-"EscapeRelativeNumber
 nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>
 
 "2}}}
