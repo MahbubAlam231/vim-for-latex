@@ -1,4 +1,4 @@
-# vimforlatex
+# vim-for-latex
 My personalization of vim for mainly LaTeX.
 Here uploaded are,
 - My `.vimrc`;
@@ -12,7 +12,7 @@ Here uploaded are,
 
 ## Guide:
 
-Download [`MahbubAlam231/vimforlatex`](https://github.com/MahbubAlam231/vimforlatex) form GitHub.
+Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
 
 ### For Linux
 
