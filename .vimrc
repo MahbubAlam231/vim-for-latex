@@ -51,15 +51,7 @@ set wrap                              " Wrap longlines by default
 set listchars=extends:→               " Show arrow if line continues rightwards
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 
-function! WrapToggle()
-    if (&wrap == 1)
-        set nowrap
-    else
-        set wrap
-    endif
-endfunction
-
-nnoremap <buffer> <localleader>wt :call WrapToggle()<cr>
+nnoremap <buffer> <localleader>wt :set wrap!<cr>
 
 "2}}}
 " Ignored files/directories from autocomplete (and CtrlP){{{2
@@ -101,28 +93,11 @@ nnoremap <buffer> <c-h> 5<c-w>>
 nnoremap <buffer> <c-l> 5<c-w><
 
 "2}}}
-" Set relative number{{{2
-"-------------------------------------------------------------------
+" Line number{{{
 
-set number relativenumber             " 'Hybrid' line numbers
+nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 
-augroup NumberToggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * :set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * :set norelativenumber
-augroup end
-
-function! NumberToggle()
-    if (&relativenumber == 1)
-        set norelativenumber
-    else
-        set relativenumber
-    endif
-endfunction
-
-nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>
-
-"2}}}
+"}}}
 
 "}}}
 
@@ -140,6 +115,9 @@ call vundle#begin()                   " Vundle_will_run_the_following_Plugins
 
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'MahbubAlam231/dragvisuals'
+Plugin 'MahbubAlam231/hybrid-line-numbers'
+Plugin 'MahbubAlam231/searching-with-blinking'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
@@ -210,7 +188,7 @@ function! MakeView()
     :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction
 
-nnoremap <buffer> <localleader>mk :call MakeView()<cr>
+nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
 nnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
@@ -218,7 +196,7 @@ function! FoldingTeXPreamble()
 
 endfunction
 
-nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>
+nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>:echo<cr>
 
 augroup Loadview
     autocmd!
@@ -281,11 +259,11 @@ function! Template(code)
 
 endfunction
 
-nnoremap <buffer> <localleader>tem :call Template("")<cr>
+nnoremap <buffer> <localleader>tem :call Template("")<cr>:echo<cr>
 
-nnoremap <buffer> <localleader>art :call Template("art")<cr>
-nnoremap <buffer> <localleader>ams :call Template("ams")<cr>
-nnoremap <buffer> <localleader>rep :call Template("rep")<cr>
+nnoremap <buffer> <localleader>art :call Template("art")<cr>:echo<cr>
+nnoremap <buffer> <localleader>ams :call Template("ams")<cr>:echo<cr>
+nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 
 " Placeholders <++>, Ctrl-j jumps to the next match
 nnoremap <buffer> <C-j> zM/<++><cr>zv:noh<cr>cf>
@@ -379,8 +357,8 @@ function! DeleteTrailingWhiteSpace()
 endfunction
 
 "autocmd BufWritePre * %s/\s\+$//e
-inoremap <buffer> <localleader>dtw <Esc>:call DeleteTrailingWhiteSpace()<cr>a
-nnoremap <buffer> <localleader>dtw :call DeleteTrailingWhiteSpace()<cr>
+inoremap <buffer> <localleader>dtw <Esc>:call DeleteTrailingWhiteSpace()<cr>:echo<cr>a
+nnoremap <buffer> <localleader>dtw :call DeleteTrailingWhiteSpace()<cr>:echo<cr>
 
 "2}}}
 " Leader Mappings{{{2
@@ -414,7 +392,7 @@ nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
 nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 " To go back a word in insert mode
-inoremap <buffer> <localleader>b <esc>bb
+inoremap <buffer> <localleader>b <esc>bba
 
 " Moving on the screen
 noremap <buffer> H mhg^
@@ -470,21 +448,7 @@ endfunction
 vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>
 vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
-" Blink search pattern when cursor goes there
-function! HLNext(blinktime)
-    highlight BlackOnRed ctermfg=black ctermbg=red
-    let [bufnum, lnum, col, off] = getpos('.')
-    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-    let target_pat = '\c\%#\%('.@/.'\)'
-    let ring = matchadd('BlackOnRed', target_pat, 101)
-    redraw
-    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-    call matchdelete(ring)
-    redraw
-endfunction
-
-nnoremap <buffer> n nzz:call HLNext(0.1)<cr>
-nnoremap <buffer> N Nzz:call HLNext(0.1)<cr>
+nnoremap <buffer> <localleader>n :call NextMatchToggle()<cr>:echo<cr>
 
 " Vim very magic mode search
 " nnoremap <buffer> / ms/\v
@@ -512,8 +476,7 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex :setlocal spell spelllang=en_us
-    autocmd FileType txt :setlocal spell spelllang=en_us
+    autocmd FileType tex,text :setlocal spell spelllang=en_us
 augroup end
 
 " FixLastSpellingError
@@ -521,8 +484,8 @@ function! FixLastSpellingError()
     :normal! mm[s1z=`m
 endfunction
 
-nnoremap <buffer> <localleader>sp :call FixLastSpellingError()<cr>
-inoremap <buffer> <localleader>sp <esc>:call FixLastSpellingError()<cr>a
+nnoremap <buffer> <localleader>sp :call FixLastSpellingError()<cr>:echo<cr>
+inoremap <buffer> <localleader>sp <esc>:call FixLastSpellingError()<cr>:echo<cr>a
 
 " Adding new words to dictionary
 nnoremap <buffer> < [szz
@@ -546,11 +509,7 @@ vnoremap <buffer> <localleader>c :s/
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
 
-" Drag a visual block
-" Download dragvisuals.vim from https://is.gd/IBV2013 or https://github.com/shinokada/dragvisuals.vim
-" Put dragvisuals.vim in ~/.vim/bundle/dragvisuals/plugin/
-runtime bundle/dragvisuals/plugin/dragvisuals.vim
-
+" Dragging visual blocks
 vmap <expr> <S-LEFT>  DVB_Drag('left')
 vmap <expr> <S-RIGHT> DVB_Drag('right')
 vmap <expr> <S-DOWN>  DVB_Drag('down')
@@ -660,29 +619,29 @@ function! SourceEverythingForTeX()
     :call KeyBindings("tex")
 endfunction
 
-nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
+nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
 
 "Sourcing TexKeyBindings
-nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>
-inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>a
+nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>:echo<cr>
+inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>:echo<cr>a
 
 "Sourcing NumbersPeacefully
-nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
-inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>
-inoremap <buffer> <localleader>nd <esc>:call KeyBindings("np")<cr>
+nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>:echo<cr>
+inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>:echo<cr>a
+inoremap <buffer> <localleader>nd <esc>:call KeyBindings("np")<cr>:echo<cr>a
 
 "Sourcing GeneralAbbreviations
-nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
+nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>:echo<cr>
 
 " Sourcing MathAbbreviations
-nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
+nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>:echo<cr>
 
 "Sourcing PythonKeyBindings
-nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>
+nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>:echo<cr>
 
 "Sourcing UnmapTexKeyBindings
-nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>
-inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>a
+nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>:echo<cr>
+inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>:echo<cr>a
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
@@ -726,8 +685,8 @@ augroup WriteNewBuf
     autocmd BufNewFile * :write
 augroup end
 
-nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>zz
-inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>zza
+nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
+inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup ContinuouslyWriteBuf
     autocmd!
@@ -743,8 +702,8 @@ nnoremap <buffer> 'q `q
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
-nnoremap <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>
+nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>:echo<cr>
+nnoremap <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>:echo<cr>
 
 " Sourcing visual selection/current line for testing code
 vnoremap <buffer> <localleader>S y:execute @@<cr>
