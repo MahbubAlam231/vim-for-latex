@@ -10,7 +10,7 @@ Here uploaded are,
   - A 'universal' latex template (`tex.template`).
 - A folding method similar to  [`vim-latex/vim-latex`](https://github.com/vim-latex/vim-latex), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
 
-# Guide:
+## Guide:
 
 Download [`MahbubAlam231/vimforlatex`](https://github.com/MahbubAlam231/vimforlatex) form GitHub.
 
