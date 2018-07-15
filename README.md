@@ -14,7 +14,7 @@ Here uploaded are,
 
 Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
 
-### For Linux
+#### For Linux
 
 - Put `.vimrc` in your home directory;
 - Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
@@ -25,7 +25,7 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 - Install the plugin [`vim-templates`](https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates` and
 - Create `~/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to GitHub repository [`shinokada/dragvisuals.vim`](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim`.
 
-### For macOS
+#### For macOS
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well;
