@@ -253,7 +253,7 @@ function! Template(code)
         :TemplateInit report
 
     "invalid template
-    elseif l:code != 'art' && a:code != 'ams' && a:code != 'rep'
+    elseif l:code != 'art' && l:code != 'ams' && l:code != 'rep'
         echom " <-- Not a valid template"
     endif
 
@@ -559,7 +559,7 @@ function! KeyBindings(code)
         source ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
 
     "invalid KeyBindings
-    elseif l:code != 'tex' && a:code != 'np' && a:code != 'py'
+    elseif l:code != 'tex' && l:code != 'np' && l:code != 'py' && l:code != 'unmaptex'
         echom " <-- Not a valid KeyBinding"
     endif
 
@@ -588,7 +588,7 @@ function! Abbreviations(code)
         set spellfile=~/.vim/spell/math.utf-8.add
 
     "invalid Abbreviations
-    elseif l:code != 'gen' && a:code != 'math'
+    elseif l:code != 'gen' && l:code != 'math'
         echom " <-- Not a valid Abbreviation"
     endif
 
@@ -628,7 +628,7 @@ inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>:echo<cr>a
 "Sourcing NumbersPeacefully
 nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>:echo<cr>
 inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>:echo<cr>a
-inoremap <buffer> <localleader>nd <esc>:call KeyBindings("np")<cr>:echo<cr>a
+inoremap <buffer> <localleader>nd <esc>:call KeyBindings("tex")<cr>:echo<cr>a
 
 "Sourcing GeneralAbbreviations
 nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>:echo<cr>
