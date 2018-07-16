@@ -9,7 +9,7 @@
 " Basic options{{{2
 "-------------------------------------------------------------------
 
-set nocompatible                      " be iMproved, required (must be before everything)
+set nocompatible                      " be improved, required (must be before everything)
 filetype off                          " required, disables filetype detection
 
 set autoread                          " Auto reload changed files
