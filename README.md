@@ -21,16 +21,14 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 - Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
 - Create `~/.vim/Ultisnips`, and put `tex.snippets` in that;
 - Download the `spell` folder, and put it in `~/.vim`;
-- Install the plugin [`LaTeX-Box`](https://github.com/LaTeX-Box-Team/LaTeX-Box), create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that;
-- Install the plugin [`vim-templates`](https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates` and
-- Create `~/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to GitHub repository [`shinokada/dragvisuals.vim`](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim`.
+- Install the plugin [`LaTeX-Box`](https://github.com/LaTeX-Box-Team/LaTeX-Box), create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
+- Install the plugin [`vim-templates`](https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
 
 #### For macOS
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
-- There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well;
-- Create `/Users/(your_pc_name)/.vim/bundle/dragvisuals/plugin`, and put `dragvisuals.vim` in that. You can also go [here](https://is.gd/IBV2013) or to GitHub repository [`shinokada/dragvisuals.vim`](https://github.com/shinokada/dragvisuals.vim) to get `dragvisuals.vim` and
-- `folding.vim` *might make your vim slower, you might not want to add this file to your system.*
+- There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well and
+- `folding.vim` _might make your vim slower, you might not want to add this file to your system._
 
 Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.vim`, `GeneralAbbreviations.vim`, `MathAbbreviations.vim` and `tex.snippets` to learn about the mappings.
 The mappings are designed to be easy to remember just like vim commands.
