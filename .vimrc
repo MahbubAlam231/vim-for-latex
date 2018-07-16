@@ -51,6 +51,7 @@ set wrap                              " Wrap longlines by default
 set listchars=extends:→               " Show arrow if line continues rightwards
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 
+" Wrap toggle
 nnoremap <buffer> <localleader>wt :set wrap!<cr>
 
 "2}}}
