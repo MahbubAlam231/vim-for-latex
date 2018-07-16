@@ -370,7 +370,6 @@ inoremap <buffer> <localleader>o \circ
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
 
 inoremap <buffer> <localleader>n \norm{}<esc>i
-inoremap <buffer> <localleader>p \partial
 
 inoremap <buffer> <localleader>wt \widetilde{}<esc>i
 inoremap <buffer> <localleader>~ \widetilde{}<esc>i
@@ -427,14 +426,20 @@ inoremap <buffer> ;d \, \mathrm{d}
 inoremap <buffer> <localleader>d \displaystyle
 
 inoremap <buffer> ;S \sum
-inoremap <buffer> :S \sum
-inoremap <buffer> <localleader>S \sum
 inoremap <buffer> ;s \sum_{}<esc>i
 inoremap <buffer> <localleader>s \sum_{}^{}<esc>F}i
 inoremap <buffer> ;sl \sum\limits_{}<esc>i
 inoremap <buffer> ;ds \displaystyle\sum_{}<esc>i
 inoremap <buffer> <localleader>sl \sum\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>ds \displaystyle\sum_{}^{}<esc>F}i
+
+inoremap <buffer> ;P \prod
+inoremap <buffer> ;p \prod_{}<esc>i
+inoremap <buffer> <localleader>p \prod_{}^{}<esc>F}i
+inoremap <buffer> ;pl \prod\limits_{}<esc>i
+inoremap <buffer> ;dp \displaystyle\prod_{}<esc>i
+inoremap <buffer> <localleader>pl \prod\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>dp \displaystyle\prod_{}^{}<esc>F}i
 
 "}}}
 " Big bracket, less/greater than"{{{
