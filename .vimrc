@@ -505,8 +505,10 @@ nnoremap <buffer> zwn zw]szz
 " Substitute/change{{{2
 "-------------------------------------------------------------------
 
-nnoremap <buffer> <localleader>c :%s/
-vnoremap <buffer> <localleader>c :s/
+nnoremap <buffer> <localleader>s :%s/
+vnoremap <buffer> <localleader>s :s/
+nnoremap <buffer> <localleader>S :%S/
+vnoremap <buffer> <localleader>S :S/
 
 "2}}}
 " Visual selection and dragging{{{2
@@ -712,8 +714,8 @@ nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>:echo<cr>
 nnoremap <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>:echo<cr>
 
 " Sourcing visual selection/current line for testing code
-vnoremap <buffer> <localleader>S y:execute @@<cr>
-nnoremap <buffer> <localleader>S ^vg_y:execute @@<cr>
+vnoremap <buffer> <localleader>E y:execute @@<cr>
+nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 augroup Source$MYVIMRC
     autocmd!
