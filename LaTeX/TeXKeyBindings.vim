@@ -394,7 +394,7 @@ inoremap <buffer> ^_ {}^{}_{}<esc>F};i
 inoremap <buffer> _^ {}_{}^{}<esc>F};i
 
 "}}}
-" lim, int, sum"{{{
+" lim, int, sum, operators{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>l \lim_{ \to }<esc>F{a
@@ -440,6 +440,16 @@ inoremap <buffer> ;pl \prod\limits_{}<esc>i
 inoremap <buffer> ;dp \displaystyle\prod_{}<esc>i
 inoremap <buffer> <localleader>pl \prod\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>dp \displaystyle\prod_{}^{}<esc>F}i
+
+inoremap <buffer> ;mn \min_{}
+inoremap <buffer> ;mnl \min\limits_{}
+inoremap <buffer> ;mx \max_{}
+inoremap <buffer> ;mxl \max\limits_{}
+
+inoremap <buffer> ;in \inf_{}
+inoremap <buffer> ;inl \inf\limits_{}
+inoremap <buffer> ;sp \sup_{}
+inoremap <buffer> ;spl \sup\limits_{}
 
 "}}}
 " Big bracket, less/greater than"{{{
