@@ -25,12 +25,12 @@ set visualbell                        " Flash the screen when an error message i
 set history=10000                     " Command line history for vim
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show partial commands in the line of the screen
-set laststatus=2                      " Always display statusline
-set statusline=%f\ %y\ %l,%c          " Customizing statusline
 set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p
 set cursorline                        " Highlighting the line containing the cursor
 " set cursorcolumn                      " Highlighting the column containing the cursor
 " set mouse=a                           " Mouse could work on vim too
+" set laststatus=2                      " Always display statusline
+" set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
 "2}}}
 " Tabs, indentation and wrapping{{{2
@@ -121,7 +121,6 @@ Plugin 'MahbubAlam231/hybrid-line-numbers'
 Plugin 'MahbubAlam231/searching-with-blinking'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'christoomey/vim-quicklink'
 Plugin 'christoomey/vim-sort-motion'
@@ -139,7 +138,6 @@ Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
 Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'thameera/vimv'
 Plugin 'tibabit/vim-templates'
 Plugin 'tpope/vim-abolish'
@@ -147,10 +145,13 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/ReplaceWithRegister'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-syntastic/syntastic'
 
 
 call vundle#end()                     " required
@@ -160,6 +161,22 @@ filetype plugin indent on             " required, enables filetype detection
 " Plugin mappings{{{2
 "-------------------------------------------------------------------
 
+" Airline{{{3
+
+let g:airline_theme = 'simple'
+
+" function! AirlinePrep()
+"     let g:airline_section_a = airline#section#create(['mode'])
+"     let g:airline_section_b = airline#section#create_left(['%f','\','filetype'])
+"     " let g:airline_section_c = airline#section#create_right(['filetype'])
+" endfunction
+
+" augroup AirlinePrep
+"     autocmd!
+"     autocmd BufNewFile,BufRead * :call AirlinePrep()
+" augroup end
+
+"3}}}
 " Easymotion and Sneak{{{3
 
 map <leader>w <Plug>(easymotion-bd-w)
@@ -306,7 +323,7 @@ noremap <buffer> <localleader>ac :center<cr>
 noremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
-" Braces and stuff{{{
+" Braces and stuff{{{2
 "-------------------------------------------------------------------
 
 inoremap <buffer> ( ()<esc>i
@@ -318,7 +335,7 @@ inoremap <buffer> [[ [
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
-"}}}
+"2}}}
 " Calculator{{{2
 "-------------------------------------------------------------------
 
@@ -335,13 +352,13 @@ colorscheme wombat256i
 set background=dark
 
 "2}}}
-" Command line mappings{{{
+" Command line mappings{{{2
 "-------------------------------------------------------------------
 
 cnoremap <buffer> <c-h> <home>
 cnoremap <buffer> <c-e> <end>
 
-"}}}
+"2}}}
 " Diagraphs{{{2
 "-------------------------------------------------------------------
 
@@ -377,12 +394,12 @@ inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
 inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "2}}}
-" Macros{{{
+" Macros{{{2
 "-------------------------------------------------------------------
 
 nnoremap <buffer> Q @q
 
-"}}}
+"2}}}
 " Navigation{{{2
 "-------------------------------------------------------------------
 
