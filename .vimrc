@@ -680,7 +680,7 @@ nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Ultisnips "u=ultisnips
-nnoremap <buffer> <leader>u :vnew ~/.vim/Ultisnips/tex.snippets<cr>
+nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
 nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
