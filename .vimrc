@@ -90,8 +90,8 @@ augroup ResizeSplitsWhenTheWindowIsResized
 augroup end
 
 " Window resizing
-nnoremap <buffer> <c-h> 5<c-w>>
-nnoremap <buffer> <c-l> 5<c-w><
+nnoremap <buffer> <S-LEFT>  5<c-w>>
+nnoremap <buffer> <S-RIGHT> 5<c-w><
 
 "2}}}
 " Line number{{{
