@@ -28,7 +28,7 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 
 #### For macOS
 
-- Install [Vundle](https://github.com/VundleVim/Vundle.vim);
+- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well and
