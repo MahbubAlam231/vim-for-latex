@@ -394,7 +394,7 @@ inoremap <buffer> ^_ {}^{}_{}<esc>F};i
 inoremap <buffer> _^ {}_{}^{}<esc>F};i
 
 "}}}
-" lim, int, sum, operators{{{
+" lim, int, sum, product, operators{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>l \lim_{ \to }<esc>F{a
@@ -938,4 +938,5 @@ let m = matchadd("asterisk",'\*')
 "-------------------------------------------------------------------
 
 " Use ; before a letter for specific use of that letter
+
 
