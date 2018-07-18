@@ -10,21 +10,25 @@ Here uploaded are,
   - A 'universal' latex template (`tex.template`).
 - A folding method similar to  [`vim-latex/vim-latex`](https://github.com/vim-latex/vim-latex), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
 
-## Guide:
+## Guide to install VIM and [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex):
 
 Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
 
 #### For Linux
 
+- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
 - Put `.vimrc` in your home directory;
 - Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
 - Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
 - Create `~/.vim/UltiSnips`, and put `tex.snippets` in that;
 - Download the `spell` folder, and put it in `~/.vim`;
-- Install the plugin [`LaTeX-Box`](https://github.com/LaTeX-Box-Team/LaTeX-Box), create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
-- Install the plugin [`vim-templates`](https://github.com/tibabit/vim-templates), and put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
+- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
+- Create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
+- Put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
 
 #### For macOS
+
+- Install [Vundle](https://github.com/VundleVim/Vundle.vim);
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well and
