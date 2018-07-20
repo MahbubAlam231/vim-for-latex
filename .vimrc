@@ -460,9 +460,6 @@ nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<c
 
 "3}}}
 
-" To go back a word in insert mode
-inoremap <buffer> <localleader>b <esc>bba
-
 " Go to matching character
 noremap <buffer> <cr> %
 
