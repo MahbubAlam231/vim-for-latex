@@ -1,6 +1,6 @@
 
 "-------------------------------------------------------------------
-" Jill's .vimrc
+" Mahbub's .vimrc
 "-------------------------------------------------------------------
 
 " Preamble{{{
@@ -26,6 +26,7 @@ set history=10000                     " Command line history for vim
 set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show partial commands in the line of the screen
 set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p
+set textwidth=1000                    " Line length in vim
 set cursorline                        " Highlighting the line containing the cursor
 " set cursorcolumn                      " Highlighting the column containing the cursor
 " set mouse=a                           " Mouse could work on vim too
@@ -41,7 +42,7 @@ set shiftwidth=4                      " To change the number of space characters
 set expandtab                         " Four spaces for tabs everywhere
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
-set textwidth=1000                    " Line length in vim
+set showmatch                         " Briefly jump to the match if a bracket is inserted, 'matchtime' to be used to set the time to show the match
 
 ""Make the 71th column stand out
 "highlight ColorColumn ctermbg=magenta
@@ -72,7 +73,6 @@ set ignorecase                        " Search queries intelligently set case
 set smartcase                         " Override 'ignorecase' option if search pattern contains uppercase letters
 set incsearch                         " Show search results as you type
 set hlsearch                          " Highlight all search patterns
-set showmatch                         " Briefly jump to the match if a bracket is inserted, 'matchtime' to be used to set the time to show the match
 
 "2}}}
 " Split{{{2
@@ -221,7 +221,7 @@ augroup Loadview
     autocmd BufNewFile,BufRead * silent loadview
 augroup end
 
-" Opening/closing folding
+" Opening/closing folding{{{4
 noremap <buffer> zo mozozz
 noremap <buffer> zc mczCzz
 noremap <buffer> zv mvzvzz
@@ -237,6 +237,8 @@ nnoremap <buffer> 'v `vzz
 nnoremap <buffer> 'r `rzz
 nnoremap <buffer> 'm `mzvzz
 
+"4}}}
+
 "3}}}
 " NERDtree{{{3
 
@@ -250,7 +252,7 @@ nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
 
-" Selecting template
+" Selecting template{{{4
 function! Template(code)
     if a:code != 'art' && a:code != 'ams' && a:code != 'rep'
         let l:code = input("Which Template: ")
@@ -282,6 +284,8 @@ nnoremap <buffer> <localleader>tem :call Template("")<cr>:echo<cr>
 nnoremap <buffer> <localleader>art :call Template("art")<cr>:echo<cr>
 nnoremap <buffer> <localleader>ams :call Template("ams")<cr>:echo<cr>
 nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
+
+"4}}}
 
 " Placeholders <++>, Ctrl-j jumps to the next match
 nnoremap <buffer> <C-j> zM/<++><cr>zv:noh<cr>cf>
@@ -403,20 +407,18 @@ nnoremap <buffer> Q @q
 " Navigation{{{2
 "-------------------------------------------------------------------
 
-" Get off my lawn - helpful when learning Vim :)
+" Get off my lawn - helpful when learning Vim :){{{3
 nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
 nnoremap <buffer> <Down>  :echoe "Use 'j'. Navigate smartly!"<cr>
 nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
 nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
-" To go back a word in insert mode
-inoremap <buffer> <localleader>b <esc>bba
-
-" Moving on the screen
-noremap <buffer> H mhg^
+"3}}}
+" Moving on the screen{{{3
+noremap <buffer> H mh^
 noremap <buffer> J mjL
 noremap <buffer> K mkH
-noremap <buffer> L mlg$
+noremap <buffer> L mlg_
 
 noremap <buffer> 'h `h
 noremap <buffer> 'j `j
@@ -428,6 +430,39 @@ inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
+"3}}}
+" Toggle VIM lines and visual lines navigation{{{3
+let s:navigation_toggle = 0
+
+function! NavigationToggleInWrapMode()
+    if s:navigation_toggle
+        " Using VIM lines
+        unmap <buffer> j
+        unmap <buffer> k
+        noremap <buffer> H mh^
+        noremap <buffer> J mjL
+        noremap <buffer> K mkH
+        noremap <buffer> L mlg_
+        let s:navigation_toggle = 0
+    else
+        " Using visual lines
+        noremap <buffer> j gj
+        noremap <buffer> k gk
+        noremap <buffer> H mhg^
+        noremap <buffer> J mjL
+        noremap <buffer> K mkH
+        noremap <buffer> L mlg$
+        let s:navigation_toggle = 1
+    endif
+endfunction
+
+nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<cr>
+
+"3}}}
+
+" To go back a word in insert mode
+inoremap <buffer> <localleader>b <esc>bba
+
 " Go to matching character
 noremap <buffer> <cr> %
 
@@ -436,11 +471,13 @@ noremap <buffer> gg mggg
 noremap <buffer> G mgG
 noremap <buffer> 'g `gzvzz
 
-" Easy splits navigation
+" Easy splits navigation{{{3
 nnoremap <buffer> <c-h> <c-w>h
 nnoremap <buffer> <c-j> <c-w>j
 nnoremap <buffer> <c-k> <c-w>k
 nnoremap <buffer> <c-l> <c-w>l
+
+"3}}}
 
 " Revisit changelog
 nnoremap <buffer> g; g;zvzz
@@ -461,7 +498,7 @@ noremap <buffer> 's `s
 nnoremap <buffer> * ms*<c-o>
 nnoremap <buffer> # ms#<c-o>
 
-" Search the visually selected using */# (from Scrooloose)
+" Search the visually selected using */# (from Scrooloose){{{3
 function! s:VSerSearch()
     let temp = @@
     norm! gvy
@@ -471,6 +508,8 @@ endfunction
 
 vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>
 vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
+
+"3}}}
 
 nnoremap <buffer> n nzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> N Nzz:call HLNext(0.05)<cr>:echo<cr>
