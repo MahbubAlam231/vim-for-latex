@@ -518,7 +518,7 @@ nnoremap <buffer> <localleader>n :call NextMatchToggle()<cr>:echo<cr>
 
 " Clearing highlighted matches
 nnoremap <buffer> <esc> :noh<cr>:echo<cr>
-nnoremap <buffer> <esc><esc> mm/qwqkqx<cr>:noh<cr>:echo<cr>`mzz
+nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`mzz
 
 "2}}}
 " Some other remaps{{{2
