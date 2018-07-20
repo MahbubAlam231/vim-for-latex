@@ -444,6 +444,16 @@ iunmap <buffer> ;dp
 iunmap <buffer> <localleader>pl
 iunmap <buffer> <localleader>dp
 
+iunmap <buffer> ;mn
+iunmap <buffer> ;mnl
+iunmap <buffer> ;mx
+iunmap <buffer> ;mxl
+
+iunmap <buffer> ;in
+iunmap <buffer> ;inl
+iunmap <buffer> ;sp
+iunmap <buffer> ;spl
+
 "}}}
 " Big bracket, less/greater than"{{{
 "-------------------------------------------------------------------
