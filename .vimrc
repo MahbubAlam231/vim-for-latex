@@ -757,7 +757,8 @@ augroup ContinuouslyWriteBuf
     autocmd TextChanged,TextChangedI * silent write
 augroup end
 
-nnoremap <buffer> <localleader>q mqzMgg:wq!<cr>
+nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
+nnoremap <buffer> <localleader>wq mqzMgg:wq!<cr>
 nnoremap <buffer> 'q `q
 
 "}}}
