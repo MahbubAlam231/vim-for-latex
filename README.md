@@ -16,7 +16,8 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 
 #### For Linux
 
-- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
+- Install VIM from command line using `sudo apt install vim`;
+- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide; first install `git` from command line using `sudo apt install git`, then run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
 - Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
 - Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
@@ -28,6 +29,7 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 
 #### For macOS
 
+- Install VIM using `homebrew`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
 - Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions;
