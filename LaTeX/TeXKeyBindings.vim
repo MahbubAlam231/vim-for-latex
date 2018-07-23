@@ -65,6 +65,7 @@ inoremap <buffer> "" ``"<esc>i
 inoremap <buffer> <localleader>fa \forall
 inoremap <buffer> <localleader>E \exists
 inoremap <buffer> <localleader>e \in
+inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>ne \notin
 inoremap <buffer> <localleader>0 \varnothing
 inoremap <buffer> ;uu \cup_{}<esc>i

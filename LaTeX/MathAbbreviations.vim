@@ -14,7 +14,6 @@ iabbr uu \cup
 iabbr nn \cap
 iabbr UU \bigcup
 iabbr NN \bigcap
-iabbr e, \ni
 
 "}}}
 
