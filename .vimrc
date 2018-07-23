@@ -53,7 +53,7 @@ set listchars=extends:→               " Show arrow if line continues rightward
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 
 " Wrap toggle
-nnoremap <buffer> <localleader>wt :set wrap!<cr>
+nnoremap <buffer> <localleader>wt :set wrap!<cr>:echo<cr>
 
 "2}}}
 " Ignored files/directories from autocomplete (and CtrlP){{{2
