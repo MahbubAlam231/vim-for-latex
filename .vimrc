@@ -223,7 +223,8 @@ augroup end
 
 " Opening/closing folding{{{4
 noremap <buffer> zo mozozz
-noremap <buffer> zc mczCzz
+noremap <buffer> zc mczczz
+noremap <buffer> zC mczCzz
 noremap <buffer> zv mvzvzz
 noremap <buffer> zr mrzRzz
 noremap <buffer> zm mmzMzz
@@ -415,10 +416,10 @@ nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 "3}}}
 " Moving on the screen{{{3
-noremap <buffer> H mh^
-noremap <buffer> J mjL
-noremap <buffer> K mkH
-noremap <buffer> L mlg_
+noremap <buffer> H ^
+noremap <buffer> J L
+noremap <buffer> K H
+noremap <buffer> L g_
 
 noremap <buffer> 'h `h
 noremap <buffer> 'j `j
