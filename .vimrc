@@ -288,9 +288,9 @@ nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 
 "4}}}
 
-" Placeholders <++>, Ctrl-j jumps to the next match
-nnoremap <buffer> <C-j> zM/<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <C-j> <esc>zM/<++><cr>zv:noh<cr>cf>
+" Placeholders <++>
+nnoremap <buffer> <localleader>ph zM/<++><cr>zv:noh<cr>cf>
+inoremap <buffer> <localleader>ph <esc>zM/<++><cr>zv:noh<cr>cf>
 
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
