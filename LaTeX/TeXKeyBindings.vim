@@ -442,15 +442,15 @@ inoremap <buffer> ;dp \displaystyle\prod_{}<esc>i
 inoremap <buffer> <localleader>pl \prod\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>dp \displaystyle\prod_{}^{}<esc>F}i
 
-inoremap <buffer> ;mn \min_{}
-inoremap <buffer> ;mnl \min\limits_{}
-inoremap <buffer> ;mx \max_{}
-inoremap <buffer> ;mxl \max\limits_{}
+inoremap <buffer> ;mn \min_{}<esc>i
+inoremap <buffer> ;mnl \min\limits_{}<esc>i
+inoremap <buffer> ;mx \max_{}<esc>i
+inoremap <buffer> ;mxl \max\limits_{}<esc>i
 
-inoremap <buffer> ;in \inf_{}
-inoremap <buffer> ;inl \inf\limits_{}
-inoremap <buffer> ;sp \sup_{}
-inoremap <buffer> ;spl \sup\limits_{}
+inoremap <buffer> ;in \inf_{}<esc>i
+inoremap <buffer> ;inl \inf\limits_{}<esc>i
+inoremap <buffer> ;sp \sup_{}<esc>i
+inoremap <buffer> ;spl \sup\limits_{}<esc>i
 
 "}}}
 " Big bracket, less/greater than"{{{
