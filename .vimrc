@@ -416,10 +416,10 @@ nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 "3}}}
 " Moving on the screen{{{3
-noremap <buffer> H ^
-noremap <buffer> J L
-noremap <buffer> K H
-noremap <buffer> L g_
+noremap <buffer> H mh^
+noremap <buffer> J mjL
+noremap <buffer> K mkH
+noremap <buffer> L mlg_
 
 noremap <buffer> 'h `h
 noremap <buffer> 'j `j
