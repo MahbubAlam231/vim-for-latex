@@ -748,6 +748,7 @@ augroup IndentTexBuf
     autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
 augroup end
 
+" Doesn't seem to work when template is enabled
 augroup WriteNewBuf
     autocmd!
     autocmd BufNewFile *.* :write
