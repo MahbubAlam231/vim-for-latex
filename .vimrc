@@ -610,21 +610,21 @@ function! KeyBindings(code)
 
     "tex
     if l:code == "tex"
-        source ~/.vim/KeyBindings/TeXKeyBindings.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+        source ~/vim-for-latex/KeyBindings/TeXKeyBindings.vim
+        set spellfile=~/vim-for-latex/spell/math.utf-8.add
 
     "to enter numbers peacefully
     elseif l:code == "np"
-        source ~/.vim/KeyBindings/NumbersPeacefully.vim
+        source ~/vim-for-latex/KeyBindings/NumbersPeacefully.vim
 
     "python
     elseif l:code == "py"
-        source ~/.vim/KeyBindings/PythonKeyBindings.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+        source ~/vim-for-latex/KeyBindings/PythonKeyBindings.vim
+        set spellfile=~/vim-for-latex/spell/math.utf-8.add
 
     "UnmapTeXKeyBindings
     elseif l:code == "unmaptex"
-        source ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
+        source ~/vim-for-latex/KeyBindings/UnmapTeXKeyBindings.vim
 
     "invalid KeyBindings
     elseif l:code != 'tex' && l:code != 'np' && l:code != 'py' && l:code != 'unmaptex'
@@ -647,13 +647,13 @@ function! Abbreviations(code)
 
     "gen
     if l:code == "gen"
-    source ~/.vim/Abbreviations/GeneralAbbreviations.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+    source ~/vim-for-latex/Abbreviations/GeneralAbbreviations.vim
+        set spellfile=~/vim-for-latex/spell/math.utf-8.add
 
     "math
     elseif l:code == "math"
-    source ~/.vim/Abbreviations/MathAbbreviations.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+    source ~/vim-for-latex/Abbreviations/MathAbbreviations.vim
+        set spellfile=~/vim-for-latex/spell/math.utf-8.add
 
     "invalid Abbreviations
     elseif l:code != 'gen' && l:code != 'math'
@@ -716,22 +716,22 @@ inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>:echo<cr
 "-------------------------------------------------------------------
 
 " Opening TeXKeyBindings "t=tex
-nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+nnoremap <buffer> <leader>t :vnew ~/vim-for-latex/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>np :vnew ~/vim-for-latex/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Ultisnips "u=ultisnips
-nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>u :vnew ~/vim-for-latex/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
-nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
-nnoremap <buffer> <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <buffer> <leader>a :vnew ~/vim-for-latex/Abbreviations<cr>
+nnoremap <buffer> <leader>ag :vnew ~/vim-for-latex/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <buffer> <leader>am :vnew ~/vim-for-latex/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening PythonKeyBindings
-nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+nnoremap <buffer> <leader>py :vnew ~/vim-for-latex/KeyBindings/PythonKeyBindings.vim<cr>
 
 " Opening UnmapTeXKeyBindings
-nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>ut :vnew ~/vim-for-latex/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening .vimrc
 nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
