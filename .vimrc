@@ -173,7 +173,7 @@ let g:airline_theme = 'simple'
 
 " augroup AirlinePrep
 "     autocmd!
-"     autocmd BufNewFile,BufRead * :call AirlinePrep()
+"     autocmd BufNewFile,BufRead *.* :call AirlinePrep()
 " augroup end
 
 "3}}}
@@ -218,7 +218,7 @@ nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>:echo<cr>
 
 augroup Loadview
     autocmd!
-    autocmd BufNewFile,BufRead * silent loadview
+    autocmd BufNewFile,BufRead *.* silent loadview
 augroup end
 
 " Opening/closing folding{{{4
@@ -248,7 +248,7 @@ nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 "3}}}
 "Templates and Selecting Template{{{3
 
-" Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim"
+" Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim" and add autocmd for writing BufNewFile event
 
 let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
@@ -750,7 +750,7 @@ augroup end
 
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile * :write
+    autocmd BufNewFile *.* :write
 augroup end
 
 nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
@@ -758,7 +758,7 @@ inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged,TextChangedI * silent write
+    autocmd TextChanged,TextChangedI *.* silent write
 augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
@@ -780,7 +780,7 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 augroup Source$MYVIMRC
     autocmd!
-    autocmd BufNewFile,BufRead * :source $MYVIMRC
+    autocmd BufNewFile,BufRead *.* :source $MYVIMRC
 augroup end
 
 " Sourcing .vimrc
