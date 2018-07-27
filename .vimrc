@@ -533,9 +533,6 @@ nnoremap <buffer> <leader>d 0D
 nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
-" Using Backspace in normal mode
-nnoremap <buffer> <BS> mmi<BS><esc>`mh
-
 "2}}}
 " Spelling Check{{{2
 "-------------------------------------------------------------------
