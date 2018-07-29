@@ -25,7 +25,6 @@ inoremap <buffer> 6 <esc>jo
 inoremap <buffer> 66 6
 inoremap <buffer> 7 <esc>hi
 inoremap <buffer> 77 7
-" inoremap 8 <C-x><C-n>
 inoremap <buffer> 8 <esc>i
 inoremap <buffer> 88 8
 inoremap <buffer> 9 <esc>la

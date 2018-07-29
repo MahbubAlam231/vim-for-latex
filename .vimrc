@@ -337,8 +337,12 @@ inoremap <buffer> { {}<esc>i
 inoremap <buffer> P{ {
 inoremap <buffer> [ []<esc>i
 inoremap <buffer> [[ [
+
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
+
+inoremap <buffer> '' ''<esc>i
+inoremap <buffer> "" ""<esc>i
 
 "2}}}
 " Calculator{{{2
