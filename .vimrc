@@ -12,6 +12,7 @@
 set nocompatible                      " be improved, required (must be before everything)
 filetype off                          " required, disables filetype detection
 
+set title                             " Terminal title reflects buffer name
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
