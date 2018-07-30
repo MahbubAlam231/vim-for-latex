@@ -534,38 +534,40 @@ nunmap <buffer> <localleader>toc :LatexTOX<cr>
 "-------------------------------------------------------------------
 
 " Dollar to \[\]
-nnoremap <buffer> <localleader>db
+unmap <buffer> <localleader>db
 
 " \[\] to Align
-nnoremap <buffer> <localleader>bal
+unmap <buffer> <localleader>bal
 
 " \[\] to Unnumbered Align
-nnoremap <buffer> <localleader>bual
+unmap <buffer> <localleader>bual
 
 " \[\] to Equation
-nnoremap <buffer> <localleader>beq
+unmap <buffer> <localleader>beq
 
 " \[\] to Unnumbered Equation
-nnoremap <buffer> <localleader>bueq
+unmap <buffer> <localleader>bueq
 
 " \[\] to Aligned Equation
-nnoremap <buffer> <localleader>baleq
+unmap <buffer> <localleader>baleq
 
 " \[\] to Unnumbered Aligned Equation
-nnoremap <buffer> <localleader>bualeq
+unmap <buffer> <localleader>bualeq
 
 " \[\] to Gather
-nnoremap <buffer> <localleader>bga
+unmap <buffer> <localleader>bga
 
 " \[\] to Unnumbered Gather
-nnoremap <buffer> <localleader>buga
+unmap <buffer> <localleader>buga
 
 " Referencing Theorem, Citation etc.
-inoremap <buffer> <localleader>ref
-inoremap <buffer> <localleader>cit
+iunmap <buffer> <localleader>jref
+iunmap <buffer> <localleader>jcit
+iunmap <buffer> <localleader>ref
+iunmap <buffer> <localleader>cit
 
 " LaTeX table of contents
-nnoremap <buffer> <localleader>toc
+unmap <buffer> <localleader>toc
 "}}}
 
 " Greek Alphabets{{{
