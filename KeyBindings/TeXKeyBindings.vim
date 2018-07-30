@@ -602,10 +602,16 @@ function! ReferencingAndCiting(code)
         :execute ":normal! hmmlx`ma~\\ref{\<esc>"
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
+    elseif a:code == "jref"
+        :execute ":normal! a\\ref{\<esc>"
+    elseif a:code == "jcit"
+        :execute ":normal! a\\cite{\<esc>"
     endif
 
 endfunction
 
+inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 
