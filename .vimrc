@@ -290,8 +290,8 @@ nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 "4}}}
 
 " Placeholders <++>
-nnoremap <buffer> <localleader>ph zM/<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <localleader>ph <esc>zM/<++><cr>zv:noh<cr>cf>
+nnoremap <buffer> <c-j> zM/<++><cr>zv:noh<cr>cf>
+inoremap <buffer> <c-j> <esc>zM/<++><cr>zv:noh<cr>cf>
 
 "3}}}
 " Titlecase and Uppercase first letter of a line{{{3
@@ -475,10 +475,10 @@ noremap <buffer> G mgG
 noremap <buffer> 'g `gzvzz
 
 " Easy splits navigation{{{3
-nnoremap <buffer> <c-h> <c-w>h
-nnoremap <buffer> <c-j> <c-w>j
-nnoremap <buffer> <c-k> <c-w>k
-nnoremap <buffer> <c-l> <c-w>l
+nnoremap <buffer> ;h <c-w>h
+nnoremap <buffer> ;j <c-w>j
+nnoremap <buffer> ;k <c-w>k
+nnoremap <buffer> ;l <c-w>l
 
 "3}}}
 
