@@ -475,10 +475,10 @@ noremap <buffer> G mgG
 noremap <buffer> 'g `gzvzz
 
 " Easy splits navigation{{{3
-nnoremap <buffer> ;h <c-w>h
-nnoremap <buffer> ;j <c-w>j
-nnoremap <buffer> ;k <c-w>k
-nnoremap <buffer> ;l <c-w>l
+nnoremap <buffer> <localleader><localleader>h <c-w>h
+nnoremap <buffer> <localleader><localleader>j <c-w>j
+nnoremap <buffer> <localleader><localleader>k <c-w>k
+nnoremap <buffer> <localleader><localleader>l <c-w>l
 
 "3}}}
 
