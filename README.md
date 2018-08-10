@@ -20,10 +20,7 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 - Install VIM from command line using `sudo apt install vim`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide; first install `git` from command line using `sudo apt install git`, then run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
-- Put `KeyBindings` in `~/.vim`;
-- Put `Abbreviations` in `~/.vim`;
-- Put `UltiSnips` in `~/.vim`;
-- Put `spell` in `~/.vim`;
+- Put `Abbreviations`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
