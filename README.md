@@ -3,7 +3,7 @@
 My personalization of vim for mainly LaTeX.
 Here uploaded are,
 - My `.vimrc`;
-- My keybindings, snippets and abbreviations for LaTeX;
+- My Keybindings, Snippets and Abbreviations for LaTeX;
   - KeyBindings for writing math sets, greek alphabets, math notations easily and fast;
   - Snippets for math sets, greek alphabets, math environments;
   - General word abbreviations (using [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
@@ -20,10 +20,10 @@ Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-fo
 - Install VIM from command line using `sudo apt install vim`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide; first install `git` from command line using `sudo apt install git`, then run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
-- Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
-- Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
-- Create `~/.vim/UltiSnips`, and put `tex.snippets` in that;
-- Download the `spell` folder, and put it in `~/.vim`;
+- Put `KeyBindings` in `~/.vim`;
+- Put `Abbreviations` in `~/.vim`;
+- Put `UltiSnips` in `~/.vim`;
+- Put `spell` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
