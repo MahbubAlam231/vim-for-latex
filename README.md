@@ -23,7 +23,7 @@ You should consider swapping `escape` and `caps` key on your device, it makes it
 - Install VIM from command line using `sudo apt install vim`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide; first install `git` from command line using `sudo apt install git`, then run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
-- Install the fuzzyfinder [junegunn/fzf](https://github.com/junegunn/fzf#upgrading-fzf) using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf` and then `~/.fzf/install` from terminal (enable auto-completion and key bindings, and update shell configuration files while running `~/.fzf/install`), and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`;
+- Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf) using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf` and then `~/.fzf/install` from terminal (enable auto-completion and key bindings, and update shell configuration files while running `~/.fzf/install`), and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`;
 - Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
 - Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
 - Create `~/.vim/UltiSnips`, and put `tex.snippets` in that;
@@ -37,7 +37,7 @@ You should consider swapping `escape` and `caps` key on your device, it makes it
 - Install VIM using `homebrew`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
 - Put `.vimrc` in `/Users/(your_pc_name)`;
-- Install the fuzzyfinder [junegunn/fzf](https://github.com/junegunn/fzf#upgrading-fzf) using `git` as in the above instructions for Linux, and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc` or `zshrc`;
+- Install the fuzzyfinder `[junegunn/fzf]`(https://github.com/junegunn/fzf#upgrading-fzf) using `git` as in the above instructions for Linux, and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc` or `zshrc`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions for Linux;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well and
 - `folding.vim` _might make your vim slower, you might not want to add this file to your system._
