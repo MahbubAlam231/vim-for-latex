@@ -109,7 +109,9 @@ nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 " Plugins{{{2
 "-------------------------------------------------------------------
 
-" Set the runtime path to include Vundle and initialize
+" Set the runtime path to include fzf and Vundle, and initialize
+
+set rtp+=~/.fzf
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()                   " Vundle_will_run_the_following_Plugins
