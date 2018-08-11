@@ -37,7 +37,7 @@ You should consider swapping `escape` and `caps` key on your device, it makes it
 - Install VIM using `homebrew`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
 - Put `.vimrc` in `/Users/(your_pc_name)`;
-- Install the fuzzyfinder `[junegunn/fzf]`(https://github.com/junegunn/fzf#upgrading-fzf) using `git` as in the above instructions for Linux, and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc` or `zshrc`;
+- Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf) using `git` as in the above instructions for Linux, and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc` or `zshrc`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions for Linux;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`, make similar changes there as well and
 - `folding.vim` _might make your vim slower, you might not want to add this file to your system._
