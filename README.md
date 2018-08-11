@@ -16,7 +16,7 @@ Here uploaded are,
 
 Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
 
-You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key. For Linux this you can do by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you turn on your device.
+You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key. For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you turn on your device.
 
 #### For Linux
 
@@ -24,15 +24,12 @@ You should consider swapping `escape` and `caps` key on your device, it makes it
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide; first install `git` from command line using `sudo apt install git`, then run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
 - Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf) using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf` and then `~/.fzf/install` from terminal (enable auto-completion and key bindings, and update shell configuration files while running `~/.fzf/install`), and add the line `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`;
-- Create `~/.vim/KeyBindings/TeXKeyBindings`, and put `TeXKeyBindings.vim`, `NumbersPeacefully.vim` and `UnmapTeXKeyBindings.vim` in that;
-- Create `~/.vim/Abbreviations`, and put `GeneralAbbreviations.vim` and `MathAbbreviations.vim` in that;
-- Create `~/.vim/UltiSnips`, and put `tex.snippets` in that;
-- Download the `spell` folder, and put it in `~/.vim`;
+- Put `Abbreviations`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Create `~/.vim/bundle/LaTeX-Box/ftplugin/tex`, and put `folding.vim` in that and
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template` in `~/.vim/bundle/vim-templates/templates`.
 
-#### For macOS
+#### For macOS (not very sure about it btw)
 
 - Install VIM using `homebrew`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
