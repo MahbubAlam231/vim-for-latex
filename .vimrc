@@ -133,6 +133,7 @@ Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'junegunn/fzf.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
 Plugin 'kana/vim-textobj-entire'
@@ -194,6 +195,11 @@ map <leader>s <Plug>(easymotion-s2)
 " map T <Plug>Sneak_T
 
 "3}}}
+" FuzzyFinder{{{
+
+nnoremap <buffer> <localleader>fz :FZF 
+
+"}}}
 " LaTeX-Box and Folding{{{3
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
@@ -210,7 +216,7 @@ function! MakeView()
 endfunction
 
 nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
-nnoremap <buffer> 'f `fzvzz
+noremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
     :execute ":normal! :setlocal foldmethod=manual\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d:delm a-d\<cr>zMgg:mkview\<cr>`fzvzz"
@@ -235,11 +241,11 @@ noremap <buffer> <localleader>z zMzvzz
 noremap <buffer> <space> zazz
 noremap <buffer> <localleader><space> zazt
 
-nnoremap <buffer> 'o `ozz
-nnoremap <buffer> 'c `czvzz
-nnoremap <buffer> 'v `vzz
-nnoremap <buffer> 'r `rzz
-nnoremap <buffer> 'm `mzvzz
+noremap <buffer> 'o `ozz
+noremap <buffer> 'c `czvzz
+noremap <buffer> 'v `vzz
+noremap <buffer> 'r `rzz
+noremap <buffer> 'm `mzvzz
 
 "4}}}
 
@@ -768,7 +774,7 @@ augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
 nnoremap <buffer> <localleader>wq mqzMgg:wq!<cr>
-nnoremap <buffer> 'q `q
+noremap <buffer> 'q `q
 
 "}}}
 
