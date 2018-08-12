@@ -9,7 +9,7 @@ Here uploaded are,
   - General word abbreviations (using [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
   - A 'universal' latex template (`tex.template`).
-- A folding method similar to  [`vim-latex/vim-latex`](https://github.com/vim-latex/vim-latex), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
+- A folding method similar to  `[vim-latex/vim-latex](https://github.com/vim-latex/vim-latex)`, made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex):
 
