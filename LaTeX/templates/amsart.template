@@ -25,6 +25,7 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{lscape}
 %\usepackage[linktoc=all]{hyperref}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
