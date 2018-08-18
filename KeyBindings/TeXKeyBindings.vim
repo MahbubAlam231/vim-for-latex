@@ -870,6 +870,8 @@ let m = matchadd("EquationGroup",'\\begin{enumerate}')
 let m = matchadd("EquationGroup",'\\end{enumerate}')
 let m = matchadd("EquationGroup",'\\begin{itemize}')
 let m = matchadd("EquationGroup",'\\end{itemize}')
+let m = matchadd("EquationGroup",'\\begin{landscape}')
+let m = matchadd("EquationGroup",'\\end{landscape}')
 let m = matchadd("EquationGroup",'\\begin{thebibliography}')
 let m = matchadd("EquationGroup",'\\end{thebibliography}')
 
