@@ -124,7 +124,9 @@ if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
 
+# Swap caps and escape key
 setxkbmap -option "caps:swapescape"
 
+# fzf configurations
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
