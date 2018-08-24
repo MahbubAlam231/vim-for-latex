@@ -426,6 +426,7 @@ iunmap <buffer> ;d
 iunmap <buffer> <localleader>d
 
 iunmap <buffer> ;S
+iunmap <buffer> ;dS
 iunmap <buffer> :S
 iunmap <buffer> <localleader>S
 iunmap <buffer> ;s
@@ -436,6 +437,7 @@ iunmap <buffer> <localleader>sl
 iunmap <buffer> <localleader>ds
 
 iunmap <buffer> ;P
+iunmap <buffer> ;dP
 iunmap <buffer> ;p
 iunmap <buffer> <localleader>p
 iunmap <buffer> ;pl
