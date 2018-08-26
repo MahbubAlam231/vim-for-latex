@@ -377,6 +377,7 @@ iunmap <buffer> <localleader>~
 iunmap <buffer> <localleader>jt
 
 iunmap <buffer> <localleader>h
+iunmap <buffer> <localleader>wh
 iunmap <buffer> `6
 iunmap <buffer> <localleader>-
 iunmap <buffer> <localleader>bar
