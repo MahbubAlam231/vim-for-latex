@@ -376,7 +376,7 @@ inoremap <buffer> <localleader>wt \widetilde{}<esc>i
 inoremap <buffer> <localleader>~ \widetilde{}<esc>i
 inoremap <buffer> <localleader>jt \tilde{}<esc>i
 
-inoremap <buffer> <localleader>h \widehat{}<esc>i
+inoremap <buffer> <localleader>wh \widehat{}<esc>i
 inoremap <buffer> `6 \widehat{}<esc>i
 inoremap <buffer> <localleader>- \bar{}<esc>i
 inoremap <buffer> <localleader>bar \bar{}<esc>i
