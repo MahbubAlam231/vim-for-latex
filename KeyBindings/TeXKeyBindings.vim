@@ -126,7 +126,8 @@ inoremap <buffer> <localleader>rd \mathbb{R}^{d}
 
 inoremap <buffer> <localleader>n \mathbb{N}
 inoremap <buffer> <localleader>nn \mathbb{N}^2
-inoremap <buffer> <localleader>nm \mathbb{N}^{}<esc>i
+inoremap <buffer> <localleader>n. \mathbb{N}^{n}<esc>i
+inoremap <buffer> <localleader>nm \mathbb{N}^{m}<esc>i
 
 "}}}
 " Integers{{{
@@ -369,7 +370,7 @@ inoremap <buffer> <localleader>x \times
 inoremap <buffer> <localleader>o \circ
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
 
-inoremap <buffer> <localleader>n \norm{}<esc>i
+inoremap <buffer> <localleader>no \norm{}<esc>i
 
 inoremap <buffer> <localleader>wt \widetilde{}<esc>i
 inoremap <buffer> <localleader>~ \widetilde{}<esc>i

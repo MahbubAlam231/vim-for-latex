@@ -125,6 +125,7 @@ iunmap <buffer> <localleader>rd
 
 iunmap <buffer> <localleader>n
 iunmap <buffer> <localleader>nn
+iunmap <buffer> <localleader>n.
 iunmap <buffer> <localleader>nm
 
 "}}}
@@ -369,7 +370,7 @@ iunmap <buffer> <localleader>o
 iunmap <buffer> <localleader>/
 
 iunmap <buffer> <localleader>n
-iunmap <buffer> <localleader>p
+iunmap <buffer> <localleader>no
 
 iunmap <buffer> <localleader>wt
 iunmap <buffer> <localleader>~
