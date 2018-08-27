@@ -524,7 +524,7 @@ vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
 nnoremap <buffer> n nzvzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> N Nzvzz:call HLNext(0.05)<cr>:echo<cr>
-nnoremap <buffer> <localleader>n :call NextMatchToggle()<cr>:echo<cr>
+nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
 
 " Vim very magic mode search
 " nnoremap <buffer> / ms/\v
