@@ -197,7 +197,9 @@ map <leader>s <Plug>(easymotion-s2)
 "3}}}
 " FuzzyFinder{{{
 
-nnoremap <buffer> <localleader>fz :FZF 
+nnoremap <buffer> <localleader>fzf :FZF ~/
+nnoremap <buffer> <localleader>fzd :FZF<cr>
+nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 
 "}}}
 " LaTeX-Box and Folding{{{3
