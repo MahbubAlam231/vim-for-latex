@@ -410,13 +410,13 @@ inoremap <buffer> <localleader>psl3r \mathrm{PSL}(3,\mathbb{R})
 
 
 
-inoremap <buffer> <localleader>psln \mathrm{PSL}_{n}()<esc>i
-inoremap <buffer> <localleader>pslm \mathrm{PSL}_{m}()<esc>i
+inoremap <buffer> <localleader><localleader>psln \mathrm{PSL}_{n}()<esc>i
+inoremap <buffer> <localleader><localleader>pslm \mathrm{PSL}_{m}()<esc>i
 
-inoremap <buffer> <localleader>pslnr \mathrm{PSL}_{n}(\mathbb{R})
-inoremap <buffer> <localleader>pslmr \mathrm{PSL}_{m}(\mathbb{R})
-inoremap <buffer> <localleader>psl2r \mathrm{PSL}_{2}(\mathbb{R})
-inoremap <buffer> <localleader>psl3r \mathrm{PSL}_{3}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>pslnr \mathrm{PSL}_{n}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>pslmr \mathrm{PSL}_{m}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>psl2r \mathrm{PSL}_{2}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>psl3r \mathrm{PSL}_{3}(\mathbb{R})
 
 "}}}
 " O{{{
@@ -439,14 +439,14 @@ inoremap <buffer> <localleader>omc \mathrm{O}(m,\mathbb{C})
 
 
 
-inoremap <buffer> <localleader>on \mathrm{O}_{n}()<esc>i
-inoremap <buffer> <localleader>om \mathrm{O}_{m}()<esc>i
+inoremap <buffer> <localleader><localleader>on \mathrm{O}_{n}()<esc>i
+inoremap <buffer> <localleader><localleader>om \mathrm{O}_{m}()<esc>i
 
-inoremap <buffer> <localleader>onr \mathrm{O}_{n}(\mathbb{R})
-inoremap <buffer> <localleader>omr \mathrm{O}_{m}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>onr \mathrm{O}_{n}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>omr \mathrm{O}_{m}(\mathbb{R})
 
-inoremap <buffer> <localleader>onc \mathrm{O}_{n}(\mathbb{C})
-inoremap <buffer> <localleader>omc \mathrm{O}_{m}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>onc \mathrm{O}_{n}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>omc \mathrm{O}_{m}(\mathbb{C})
 
 "}}}
 " SO{{{
@@ -469,14 +469,14 @@ inoremap <buffer> <localleader>somc \mathrm{SO}(m,\mathbb{C})
 
 
 
-inoremap <buffer> <localleader>son \mathrm{SO}_{n}()<esc>i
-inoremap <buffer> <localleader>som \mathrm{SO}_{m}()<esc>i
+inoremap <buffer> <localleader><localleader>son \mathrm{SO}_{n}()<esc>i
+inoremap <buffer> <localleader><localleader>som \mathrm{SO}_{m}()<esc>i
 
-inoremap <buffer> <localleader>sonr \mathrm{SO}_{n}(\mathbb{R})
-inoremap <buffer> <localleader>somr \mathrm{SO}_{m}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>sonr \mathrm{SO}_{n}(\mathbb{R})
+inoremap <buffer> <localleader><localleader>somr \mathrm{SO}_{m}(\mathbb{R})
 
-inoremap <buffer> <localleader>sonc \mathrm{SO}_{n}(\mathbb{C})
-inoremap <buffer> <localleader>somc \mathrm{SO}_{m}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>sonc \mathrm{SO}_{n}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>somc \mathrm{SO}_{m}(\mathbb{C})
 
 "}}}
 " U{{{
@@ -496,8 +496,8 @@ inoremap <buffer> <localleader>umc \mathrm{U}(m,\mathbb{C})
 
 
 
-inoremap <buffer> <localleader>unc \mathrm{U}_{n}(\mathbb{C})
-inoremap <buffer> <localleader>umc \mathrm{U}_{m}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>unc \mathrm{U}_{n}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>umc \mathrm{U}_{m}(\mathbb{C})
 
 "}}}
 " SU{{{
@@ -517,8 +517,8 @@ inoremap <buffer> <localleader>sumc \mathrm{SU}(m,\mathbb{C})
 
 
 
-inoremap <buffer> <localleader>sunc \mathrm{SU}_{n}(\mathbb{C})
-inoremap <buffer> <localleader>sumc \mathrm{SU}_{m}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>sunc \mathrm{SU}_{n}(\mathbb{C})
+inoremap <buffer> <localleader><localleader>sumc \mathrm{SU}_{m}(\mathbb{C})
 
 "}}}
 
