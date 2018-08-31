@@ -297,16 +297,31 @@ endsnippet
 
 # M{{{
 
+snippet mmn-
+$\mathrm{M}_{m \times n}$$0
+endsnippet
+
+snippet mn-
+$\mathrm{M}_{n}$$0
+endsnippet
+
+snippet mm-
+$\mathrm{M}_{m}$$0
+endsnippet
+
+
+
+snippet mmn
+$\mathrm{M}_{m \times n}($1)$$0
+endsnippet
+
+
 snippet mn
 $\mathrm{M}(n, $1)$$0
 endsnippet
 
 snippet mm
 $\mathrm{M}(m, $1)$$0
-endsnippet
-
-snippet mmn
-$\mathrm{M}_{m \times n}($1)$$0
 endsnippet
 
 
@@ -340,12 +355,69 @@ snippet mnqp
 $\mathrm{M}(n,\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mmr
+snippet mmqp
 $\mathrm{M}(m,\mathbb{Q}_p)$$0
+endsnippet
+
+
+
+
+snippet mn,
+$\mathrm{M}_{n}($1)$$0
+endsnippet
+
+snippet mm,
+$\mathrm{M}_{m}($1)$$0
+endsnippet
+
+
+snippet mnr,
+$\mathrm{M}_{n}(\mathbb{R})$$0
+endsnippet
+
+snippet mmr,
+$\mathrm{M}_{m}(\mathbb{R})$$0
+endsnippet
+
+
+snippet mnc,
+$\mathrm{M}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet mmc,
+$\mathrm{M}_{m}(\mathbb{C})$$0
+endsnippet
+
+snippet mmnc,
+$\mathrm{M}_{m \times n}(\mathbb{C})$$0
+endsnippet
+
+
+snippet mnqp,
+$\mathrm{M}_{n}(\mathbb{Q}_p)$$0
+endsnippet
+
+snippet mmqp,
+$\mathrm{M}_{m}(\mathbb{Q}_p)$$0
 endsnippet
 
 #}}}
 # GL{{{
+
+snippet gl-
+$\mathrm{GL}$$0
+endsnippet
+
+snippet gln-
+$\mathrm{GL}_{n}$$0
+endsnippet
+
+snippet glm-
+$\mathrm{GL}_{m}$$0
+endsnippet
+
+
+
 
 snippet gl
 $\mathrm{GL}($1)$$0
@@ -429,8 +501,104 @@ snippet glma
 $\mathrm{GL}(m,\mathbb{A})$$0
 endsnippet
 
+
+
+
+snippet gln,
+$\mathrm{GL}_{n}($1)$$0
+endsnippet
+
+snippet glm,
+$\mathrm{GL}_{m}($1)$$0
+endsnippet
+
+snippet glnp,
+$\mathrm{GL}_{n}^+($1)$$0
+endsnippet
+
+snippet glmp,
+$\mathrm{GL}_{m}^+($1)$$0
+endsnippet
+
+
+snippet glnr,
+$\mathrm{GL}_{n}(\mathbb{R})$$0
+endsnippet
+
+snippet glmr,
+$\mathrm{GL}_{m}(\mathbb{R})$$0
+endsnippet
+
+snippet glnpr,
+$\mathrm{GL}_{n}^+(\mathbb{R})$$0
+endsnippet
+
+snippet glmpr,
+$\mathrm{GL}_{m}^+(\mathbb{R})$$0
+endsnippet
+
+
+snippet glnc,
+$\mathrm{GL}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet glmc,
+$\mathrm{GL}_{m}(\mathbb{C})$$0
+endsnippet
+
+
+snippet glnz,
+$\mathrm{GL}_{n}(\mathbb{Z})$$0
+endsnippet
+
+snippet glmz,
+$\mathrm{GL}_{m}(\mathbb{Z})$$0
+endsnippet
+
+
+snippet glnqp,
+$\mathrm{GL}_{n}(\mathbb{Q}_p)$$0
+endsnippet
+
+snippet glmqp,
+$\mathrm{GL}_{m}(\mathbb{Q}_p)$$0
+endsnippet
+
+
+snippet glnzp,
+$\mathrm{GL}_{n}(\mathbb{Z}_p)$$0
+endsnippet
+
+snippet glmzp,
+$\mathrm{GL}_{m}(\mathbb{Z}_p)$$0
+endsnippet
+
+
+snippet glna,
+$\mathrm{GL}_{n}(\mathbb{A})$$0
+endsnippet
+
+snippet glma,
+$\mathrm{GL}_{m}(\mathbb{A})$$0
+endsnippet
+
 #}}}
 # SL{{{
+
+snippet sl-
+$\mathrm{SL}$$0
+endsnippet
+
+snippet sln-
+$\mathrm{SL}_{n}$$0
+endsnippet
+
+snippet slm-
+$\mathrm{SL}_{m}$$0
+endsnippet
+
+
+
 
 snippet sl
 $\mathrm{SL}($1)$$0
@@ -545,8 +713,135 @@ snippet sl3rz
 $\mathrm{SL}(3,\mathbb{R})/\mathrm{SL}(3,\mathbb{Z})$$0
 endsnippet
 
+
+
+
+snippet sln,
+$\mathrm{SL}_{n}($1)$$0
+endsnippet
+
+snippet slm,
+$\mathrm{SL}_{m}($1)$$0
+endsnippet
+
+
+snippet slnq,
+$\mathrm{SL}_{n}(\mathbb{Q})$$1
+endsnippet
+
+snippet slmq,
+$\mathrm{SL}_{m}(\mathbb{Q})$$0
+endsnippet
+
+
+snippet slnr,
+$\mathrm{SL}_{n}(\mathbb{R})$$0
+endsnippet
+
+
+snippet slmr,
+$\mathrm{SL}_{m}(\mathbb{R})$$0
+endsnippet
+
+
+snippet sl2r,
+$\mathrm{SL}_{2}(\mathbb{R})$$0
+endsnippet
+
+
+snippet sl3r,
+$\mathrm{SL}_{3}(\mathbb{R})$$0
+endsnippet
+
+
+snippet slnc,
+$\mathrm{SL}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet slmc,
+$\mathrm{SL}_{m}(\mathbb{C})$$0
+endsnippet
+
+
+snippet slnz,
+$\mathrm{SL}_{n}(\mathbb{Z})$$0
+endsnippet
+
+
+snippet slmz,
+$\mathrm{SL}_{m}(\mathbb{Z})$$0
+endsnippet
+
+
+snippet sl2z,
+$\mathrm{SL}_{2}(\mathbb{Z})$$0
+endsnippet
+
+
+snippet sl3z,
+$\mathrm{SL}_{3}(\mathbb{Z})$$0
+endsnippet
+
+
+snippet slnqp,
+$\mathrm{SL}_{n}(\mathbb{Q}_p)$$0
+endsnippet
+
+snippet slmqp,
+$\mathrm{SL}_{m}(\mathbb{Q}_p)$$0
+endsnippet
+
+
+snippet slnzp,
+$\mathrm{SL}_{n}(\mathbb{Z}_p)$$0
+endsnippet
+
+snippet slmzp,
+$\mathrm{SL}_{m}(\mathbb{Z}_p)$$0
+endsnippet
+
+
+snippet slna,
+$\mathrm{SL}_{n}(\mathbb{A})$$0
+endsnippet
+
+snippet slma,
+$\mathrm{SL}_{m}(\mathbb{A})$$0
+endsnippet
+
+snippet slnrz,
+$\mathrm{SL}_{n}(\mathbb{R})/\mathrm{SL}_{n}(\mathbb{Z})$$0
+endsnippet
+
+snippet slmrz,
+$\mathrm{SL}_{m}(\mathbb{R})/\mathrm{SL}_{m}(\mathbb{Z})$$0
+endsnippet
+
+snippet sl2rz,
+$\mathrm{SL}_{2}(\mathbb{R})/\mathrm{SL}_{2}(\mathbb{Z})$$0
+endsnippet
+
+snippet sl3rz,
+$\mathrm{SL}_{3}(\mathbb{R})/\mathrm{SL}_{3}(\mathbb{Z})$$0
+endsnippet
+
 #}}}
 # PSL{{{
+
+snippet psl-
+$\mathrm{PSL}$$0
+endsnippet
+
+snippet psln-
+$\mathrm{PSL}_{n}$$0
+endsnippet
+
+snippet pslm-
+$\mathrm{PSL}_{m}$$0
+endsnippet
+
+
+
 
 snippet psl
 $\mathrm{PSL}($1)$$0
@@ -577,8 +872,51 @@ snippet psl3r
 $\mathrm{PSL}(3,\mathbb{R})$$0
 endsnippet
 
+
+
+
+snippet psln,
+$\mathrm{PSL}_{n}($1)$$0
+endsnippet
+
+snippet pslm,
+$\mathrm{PSL}_{m}($1)$$0
+endsnippet
+
+
+snippet pslnr,
+$\mathrm{PSL}_{n}(\mathbb{R})$$0
+endsnippet
+
+snippet pslmr,
+$\mathrm{PSL}_{m}(\mathbb{R})$$0
+endsnippet
+
+snippet psl2r,
+$\mathrm{PSL}_{2}(\mathbb{R})$$0
+endsnippet
+
+snippet psl3r,
+$\mathrm{PSL}_{3}(\mathbb{R})$$0
+endsnippet
+
 #}}}
 # O{{{
+
+snippet o-
+$\mathrm{O}$$0
+endsnippet
+
+snippet on-
+$\mathrm{O}_{n}$$0
+endsnippet
+
+snippet om-
+$\mathrm{O}_{m}$$0
+endsnippet
+
+
+
 
 snippet on
 $\mathrm{O}(n, $1)$$0
@@ -606,8 +944,52 @@ snippet omc
 $\mathrm{O}(m,\mathbb{C})$$0
 endsnippet
 
+
+
+
+snippet on,
+$\mathrm{O}_{n}($1)$$0
+endsnippet
+
+# snippet om,
+# $\mathrm{O}_{m}($1)$$0
+# endsnippet
+
+
+snippet onr,
+$\mathrm{O}_{n}(\mathbb{R})$$0
+endsnippet
+
+snippet omr,
+$\mathrm{O}_{m}(\mathbb{R})$$0
+endsnippet
+
+
+snippet onc,
+$\mathrm{O}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet omc,
+$\mathrm{O}_{m}(\mathbb{C})$$0
+endsnippet
+
 #}}}
 # SO{{{
+
+snippet so-
+$\mathrm{SO}$$0
+endsnippet
+
+snippet son-
+$\mathrm{SO}_{n}$$0
+endsnippet
+
+snippet som-
+$\mathrm{SO}_{m}$$0
+endsnippet
+
+
+
 
 snippet so
 $\mathrm{SO}($1)$$0
@@ -639,8 +1021,52 @@ snippet somc
 $\mathrm{SO}(m,\mathbb{C})$$0
 endsnippet
 
+
+
+
+snippet son,
+$\mathrm{SO}_{n}($1)$$0
+endsnippet
+
+snippet som,
+$\mathrm{SO}_{m}($1)$$0
+endsnippet
+
+
+snippet sonr,
+$\mathrm{SO}_{n}(\mathbb{R})$$0
+endsnippet
+
+snippet somr,
+$\mathrm{SO}_{m}(\mathbb{R})$$0
+endsnippet
+
+
+snippet sonc,
+$\mathrm{SO}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet somc,
+$\mathrm{SO}_{m}(\mathbb{C})$$0
+endsnippet
+
 #}}}
 # U{{{
+
+snippet u-
+$\mathrm{U}$$0
+endsnippet
+
+snippet un-
+$\mathrm{U}_{n}$$0
+endsnippet
+
+snippet um-
+$\mathrm{U}_{m}$$0
+endsnippet
+
+
+
 
 snippet un
 $\mathrm{U}(n)$$0
@@ -659,8 +1085,34 @@ snippet umc
 $\mathrm{U}(m,\mathbb{C})$$0
 endsnippet
 
+
+
+
+snippet unc,
+$\mathrm{U}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet umc,
+$\mathrm{U}_{m}(\mathbb{C})$$0
+endsnippet
+
 #}}}
 # SU{{{
+
+snippet su-
+$\mathrm{SU}$$0
+endsnippet
+
+snippet sun-
+$\mathrm{SU}_{n}$$0
+endsnippet
+
+snippet sum-
+$\mathrm{SU}_{m}$$0
+endsnippet
+
+
+
 
 snippet su
 $\mathrm{SU}($1)$$0
@@ -681,6 +1133,17 @@ endsnippet
 
 snippet sumc
 $\mathrm{SU}(m,\mathbb{C})$$0
+endsnippet
+
+
+
+
+snippet sunc,
+$\mathrm{SU}_{n}(\mathbb{C})$$0
+endsnippet
+
+snippet sumc,
+$\mathrm{SU}_{m}(\mathbb{C})$$0
 endsnippet
 
 #}}}

@@ -223,6 +223,8 @@ inoremap <buffer> t<Space><Space> $\mathbb{T}$
 " M{{{
 
 inoremap <buffer> <leader>mmn \mathrm{M}_{m \times n}
+inoremap <buffer> <leader>mn \mathrm{M}_{n}
+inoremap <buffer> <leader>mm \mathrm{M}_{m}
 
 inoremap <buffer> <localleader>mmn \mathrm{M}_{m \times n}()<esc>i
 
@@ -292,13 +294,13 @@ inoremap <buffer> <localleader>glm \mathrm{GL}(m,\mathbb{A})
 
 inoremap <buffer> <localleader><localleader>gln \mathrm{GL}_{n}()<esc>i
 inoremap <buffer> <localleader><localleader>glm \mathrm{GL}_{m}()<esc>i
-inoremap <buffer> <localleader><localleader>glpn \mathrm{GL}_{n}^+()<esc>i
-inoremap <buffer> <localleader><localleader>glpm \mathrm{GL}_{m}^+()<esc>i
+inoremap <buffer> <localleader><localleader>glnp \mathrm{GL}_{n}^+()<esc>i
+inoremap <buffer> <localleader><localleader>glmp \mathrm{GL}_{m}^+()<esc>i
 
 inoremap <buffer> <localleader><localleader>glnr \mathrm{GL}_{n}(\mathbb{R})
 inoremap <buffer> <localleader><localleader>glmr \mathrm{GL}_{m}(\mathbb{R})
-inoremap <buffer> <localleader><localleader>glpnr \mathrm{GL}_{n}^+(\mathbb{R})
-inoremap <buffer> <localleader><localleader>glpmr \mathrm{GL}_{m}^+(\mathbb{R})
+inoremap <buffer> <localleader><localleader>glnpr \mathrm{GL}_{n}^+(\mathbb{R})
+inoremap <buffer> <localleader><localleader>glmpr \mathrm{GL}_{m}^+(\mathbb{R})
 
 inoremap <buffer> <localleader><localleader>glnc \mathrm{GL}_{n}(\mathbb{C})
 inoremap <buffer> <localleader><localleader>glmc \mathrm{GL}_{m}(\mathbb{C})
