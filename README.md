@@ -41,7 +41,7 @@ To make this change permanent you can put the same line at the end of your `~/.p
 - `folding.vim` _might make your vim slower, you might not want to add this file to your system._
 
 Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.vim`, `GeneralAbbreviations.vim`, `MathAbbreviations.vim` and `tex.snippets` to learn about the mappings.
-The mappings are designed to be easy to remember just like vim commands.
+The mappings are designed to be easy to remember, just like vim commands.
 
 For basic vim tips you can watch the following videos-
 - [Vim Navigation Commands](https://www.youtube.com/watch?v=Qem8cpbJeYc&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=7&t=0s)
