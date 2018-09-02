@@ -56,5 +56,5 @@ For basic vim tips you can watch the following videos-
 - [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=13&t=0s)
 - [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=3&t=0s)
 
-For any query about vimscripts go to `:help` from inside vim, you can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
+For any query about vimscripts go to `:help` from inside vim; you can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
 
