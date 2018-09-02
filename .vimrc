@@ -548,6 +548,10 @@ nnoremap <buffer> <leader>d 0D
 nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
+" Uppercasing
+nnoremap <buffer> <c-u> mmgUiw`m
+inoremap <buffer> <c-u> <esc>mmgUiw`ma
+
 "2}}}
 " Spelling Check{{{2
 "-------------------------------------------------------------------
