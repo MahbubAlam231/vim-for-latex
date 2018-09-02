@@ -304,7 +304,7 @@ nnoremap <buffer> <c-j> zM/<++><cr>zv:noh<cr>cf>
 inoremap <buffer> <c-j> <esc>zM/<++><cr>zv:noh<cr>cf>
 
 "3}}}
-" Titlecase and Uppercase first letter of a line{{{3
+" Titlecase{{{3
 
 let g:titlecase_map_keys = 0
 
