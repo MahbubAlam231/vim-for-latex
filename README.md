@@ -46,7 +46,7 @@ Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.
 `NumbersPeacefully.vim` and `UnmapKeyBindings.vim` are there to disable certain parts of `TeXKeyBindings.vim`.
 
 The mappings are designed to be easy to remember, just like vim commands.
-As you go over the mappings I hope you will find these are time-saving and easy-to-perform mappings.
+As you go over these mappings I hope you will find that these are time-saving and easy-to-perform mappings.
 
 These mappings simplify writing not only `.tex` files, but also many other types of files as well.
 
