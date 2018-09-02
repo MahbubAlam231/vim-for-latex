@@ -11,11 +11,13 @@ Here uploaded are,
   - A 'universal' latex template (`tex.template`).
 - A folding method similar to  [`vim-latex/vim-latex`](https://github.com/vim-latex/vim-latex), made by petobens (see [here](https://tex.stackexchange.com/a/130826/154271) and [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)).
 
-## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex):
+## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
 Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
 
-You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key. For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you open VIM. To make this change permanent you can put the same line at the end of your `~/.profile` file, this will swap `escape` and `caps` key every time you turn on your computer.
+You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key.
+For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you open VIM.
+To make this change permanent you can put the same line at the end of your `~/.profile` file, this will swap `escape` and `caps` key every time you turn on your computer.
 
 #### For Linux
 
@@ -40,4 +42,12 @@ You should consider swapping `escape` and `caps` key on your device, it makes it
 
 Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.vim`, `GeneralAbbreviations.vim`, `MathAbbreviations.vim` and `tex.snippets` to learn about the mappings.
 The mappings are designed to be easy to remember just like vim commands.
+
+For basic vim tips you can watch the following videos-
+- [Vim Navigation Commands](https://www.youtube.com/watch?v=Qem8cpbJeYc&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=7&t=0s)
+- [Mastering the Vim Language](https://www.youtube.com/watch?v=wlR5gYd6um0&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=4&t=0s)
+- [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=13&t=0s)
+- [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=3&t=0s)
+
 For any query about vimscripts go to `:help` from inside vim, you can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
+
