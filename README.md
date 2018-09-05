@@ -16,7 +16,7 @@ Here uploaded are,
 Download `MahbubAlam231/vim-for-latex` form GitHub.
 
 You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key.
-For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you open VIM.
+For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key on your computer once you open VIM.
 To make this change permanent you can put the same line at the end of your `~/.profile` file, this will swap `escape` and `caps` key every time you turn on your computer.
 
 #### For Linux
