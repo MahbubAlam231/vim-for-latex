@@ -13,7 +13,7 @@ Here uploaded are,
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
-Download [`MahbubAlam231/vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex) form GitHub.
+Download `MahbubAlam231/vim-for-latex` form GitHub.
 
 You should consider swapping `escape` and `caps` key on your device, it makes it more convenient to press `escape` key.
 For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and `caps` key every time you open VIM.
