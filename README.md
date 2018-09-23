@@ -48,13 +48,13 @@ Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.
 The mappings are designed to be easy to remember, just like vim commands.
 As you go over these mappings I hope you will find that these are time-saving and easy-to-perform mappings.
 
-These mappings simplify writing not only `.tex` files, but also many other types of files as well.
+For me these mappings simplify writing not only `.tex` files, but also many other types of files as well.
 
 For basic vim tips you can watch the following videos-
-- [Vim Navigation Commands](https://www.youtube.com/watch?v=Qem8cpbJeYc&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=7&t=0s)
-- [Mastering the Vim Language](https://www.youtube.com/watch?v=wlR5gYd6um0&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=4&t=0s)
-- [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=13&t=0s)
-- [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk&list=PLbG6BEIoK7v3L1mEewGrVnTV7arJDOWGj&index=3&t=0s)
+- [Vim Navigation Commands](https://www.youtube.com/watch?v=Qem8cpbJeYc)
+- [Mastering the Vim Language](https://www.youtube.com/watch?v=wlR5gYd6um0)
+- [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA)
+- [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk)
 
 For any query about vimscripts go to `:help` from inside vim; you can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
 
