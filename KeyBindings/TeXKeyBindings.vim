@@ -245,7 +245,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnc \mathrm{M}(n,\mathbb{C})
         inoremap <buffer> <localleader>mmc \mathrm{M}(m,\mathbb{C})
 
-        inoremap <buffer> <localleader>mmnc \mathrm{M}_{m \times n}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>mmnqp \mathrm{M}_{m \times n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mnqp \mathrm{M}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>mmqp \mathrm{M}(m,\mathbb{Q}_p)
 
@@ -420,12 +420,15 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mn \mathrm{M}_{n}()<esc>i
         inoremap <buffer> <localleader>mm \mathrm{M}_{m}()<esc>i
 
+        inoremap <buffer> <localleader>mmnr \mathrm{M}_{m \times n}(\mathbb{R})
         inoremap <buffer> <localleader>mnr \mathrm{M}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>mmr \mathrm{M}_{m}(\mathbb{R})
 
+        inoremap <buffer> <localleader>mmnc \mathrm{M}_{m \times n}(\mathbb{C})
         inoremap <buffer> <localleader>mnc \mathrm{M}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>mmc \mathrm{M}_{m}(\mathbb{C})
 
+        inoremap <buffer> <localleader>mmnqp \mathrm{M}_{m \times n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mnqp \mathrm{M}_{n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mmqp \mathrm{M}_{m}(\mathbb{Q}_p)
 
