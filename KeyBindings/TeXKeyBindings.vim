@@ -11,7 +11,9 @@
 
 inoremap <buffer> 1 <esc>A
 inoremap <buffer> 11 1
+" Open all references for tex
 inoremap <buffer> <localleader>1 <c-x><c-o>
+
 inoremap <buffer> 2 <esc>lf$i
 inoremap <buffer> 22 2
 inoremap <buffer> 3 <esc>lf}i
