@@ -219,6 +219,8 @@ iunmap <buffer> t<Space><Space>
 " Matrix Groups{{{
 "-------------------------------------------------------------------
 
+" Parenthesis and Underscore style
+
 " M{{{
 
 iunmap <buffer> <leader>mmn
@@ -238,7 +240,7 @@ iunmap <buffer> <localleader>mmnc
 iunmap <buffer> <localleader>mnc
 iunmap <buffer> <localleader>mmc
 
-iunmap <buffer> <localleader>mmnc
+iunmap <buffer> <localleader>mmnqp
 iunmap <buffer> <localleader>mnqp
 iunmap <buffer> <localleader>mmqp
 
@@ -397,6 +399,17 @@ iunmap <buffer> <localleader>sum
 
 iunmap <buffer> <localleader>sunc
 iunmap <buffer> <localleader>sumc
+
+"}}}
+
+" Underscore style
+
+"GL{{{
+
+iunmap <buffer> <localleader>glnp
+iunmap <buffer> <localleader>glmp
+iunmap <buffer> <localleader>glnpr
+iunmap <buffer> <localleader>glmpr
 
 "}}}
 
