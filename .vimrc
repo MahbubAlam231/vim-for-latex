@@ -197,6 +197,7 @@ map <leader>s <Plug>(easymotion-s2)
 "3}}}
 " Fugitive{{{
 
+
 nnoremap <buffer> <localleader>gp :Gw<cr>:Gcommit -m "Add updated files"<cr><cr>:Gpush origin master<cr>
 
 "}}}
