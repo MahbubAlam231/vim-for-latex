@@ -6,7 +6,7 @@
 # TheBeginning{{{
 #-------------------------------------------------------------------
 
-snippet title
+snippet title "Title" b
 \title{$1}
 \author{Mahbub Alam}
 \date{$2}
@@ -18,8 +18,7 @@ endsnippet
 
 
 
-                                                  #Abstract
-snippet abs
+snippet abs "Abstract" b
 % Abstract
 \begin{abstract}
     $1
@@ -1176,13 +1175,11 @@ endsnippet
 # SymbolsOfDer Math Symbolsivatives{{{
 #-------------------------------------------------------------------
 
-                                                #PartialSymbol
-snippet pd
+snippet pd "Partial symbol"
 \partial$0
 endsnippet
 
-                                         #PartialDerivativebyfrac
-snippet par
+snippet par "Partial derivative by frac"
 \frac{\partial $1}{\partial $2}$0
 endsnippet
 
@@ -1190,28 +1187,23 @@ snippet dpar
 \dfrac{\partial $1}{\partial $2}$0
 endsnippet
 
-                                               #CovariantDerivative
-snippet cdv
+snippet cdv "Covariant derivative"
 \frac{D$1}{d$2}$0
 endsnippet
 
-                                               #PartialCovariantDer
-snippet pcdv
+snippet pcdv "Partial covariant derivative"
 \frac{D$1}{\partial $2}$0
 endsnippet
 
-                                               #PartialCovDerwrtx
-snippet pcdvx
+snippet pcdvx "Partial covariant derivative wrt x"
 \frac{D}{\partial x}$0
 endsnippet
 
-                                               #PartialCovDerwrty
-snippet pcdvy
+snippet pcdvy "Partial covariant derivative wrt y"
 \frac{D}{\partial y}$0
 endsnippet
 
-                                               #PartialCovDerwrtt
-snippet cdvt
+snippet cdvt "Partial covariant derivative wrt t"
 \frac{D}{\partial t}$0
 endsnippet
 
@@ -1223,28 +1215,23 @@ endsnippet
 #\dv[$1]{$2}{$3}$0
 #endsnippet
 
-                                              #Derivative
-snippet dv
+snippet dv "Derivative"
 \frac{d $1}{d $2}$0
 endsnippet
 
-                                              #nthDerivative
-snippet dvn
+snippet dvn "nth derivative"
 \frac{d^$1 $2}{d $3^$1}$0
 endsnippet
 
-                                              #PartialDerivative
-snippet pdv
+snippet pdv "Partial derivative"
 \pdv{$1}{$2}$0
 endsnippet
 
-                                              #nthPartialDer
-snippet pdvn
+snippet pdvn "nth partial derivative"
 \pdv[$1]{$2}{$3}$0
 endsnippet
 
-                                              #WigglyDerivative
-snippet fdv
+snippet fdv "Wiggly derivative"
 \fdv{$1}{$2}$0
 endsnippet
 
@@ -1258,32 +1245,27 @@ endsnippet
 # Main Environments{{{
 #-------------------------------------------------------------------
 
-                                                 # Chapter
-snippet chap
+snippet chap "Chapter" b
 \section{$1}
 $0
 endsnippet
 
-                                                 # Section
-snippet sec
+snippet sec "Section" b
 \section{$1}
 $0
 endsnippet
 
-                                                 # Subsection
-snippet ssec
+snippet ssec "Subsection" b
 \subsection{$1}
 $0
 endsnippet
 
-                                                 # Subsubsection
-snippet sssec
+snippet sssec "Subsubsection" b
 \subsubsection{$1}
 $0
 endsnippet
 
-                                                 #Notation
-snippet not
+snippet not "Notation" b
 % Notation
 \begin{notation}
     $1
@@ -1292,8 +1274,7 @@ snippet not
 $0
 endsnippet
 
-                                                 #Definition
-snippet def
+snippet def "Definition" b
 % Definition
 \begin{definition}$1\label{$2}
     $3
@@ -1302,8 +1283,7 @@ snippet def
 $0
 endsnippet
 
-                                             #UnnumberedDefinition
-snippet udef
+snippet udef "Unnumbered Definition" b
 % UnnumberedDefinition
 \begin{udefinition}$1
     $2
@@ -1312,8 +1292,7 @@ snippet udef
 $0
 endsnippet
 
-                                                 #Theorem
-snippet thm
+snippet thm "Theorem" b
 % Theorem
 \begin{theorem}$1\label{$2}
     $3
@@ -1325,8 +1304,7 @@ snippet thm
 $0
 endsnippet
 
-                                            #UnnumberedTheorem
-snippet uthm
+snippet uthm "Unnumbered Theorem" b
 % UnnumberedTheorem
 \begin{utheorem}$1
     $2
@@ -1335,8 +1313,7 @@ snippet uthm
 $0
 endsnippet
 
-                                                  #Lemma
-snippet lem
+snippet lem "Lemma" b
 % Lemma
 \begin{lemma}$1\label{$2}
     $3
@@ -1348,8 +1325,7 @@ snippet lem
 $0
 endsnippet
 
-                                            #UnnumberedLemma
-snippet ulem
+snippet ulem "Unnumbered Lemma" b
 % UnnumberedLemma
 \begin{ulemma}$1
     $2
@@ -1358,8 +1334,7 @@ snippet ulem
 $0
 endsnippet
 
-                                                #Proposition
-snippet prop
+snippet prop "Proposition" b
 % Proposition
 \begin{proposition}$1\label{$2}
     $3
@@ -1371,8 +1346,7 @@ snippet prop
 $0
 endsnippet
 
-                                                   #Corollary
-snippet cor
+snippet cor "Corollary" b
 % Corollary
 \begin{corollary}$1\label{$2}
     $3
@@ -1384,8 +1358,7 @@ snippet cor
 $0
 endsnippet
 
-                                              #UnnumberedCorollary
-snippet ucor
+snippet ucor "Unnumbered Corollary" b
 % UnnumberedCorollary
 \begin{ucorollary}$1
     $2
@@ -1394,8 +1367,7 @@ snippet ucor
 $0
 endsnippet
 
-                                                    #Problem
-snippet prob
+snippet prob "Problem" b
 % Problem
 \begin{problem}$1
     $2
@@ -1407,8 +1379,7 @@ snippet prob
 $0
 endsnippet
 
-                                                     #Prf
-snippet prf
+snippet prf "Prf" b
 % Proof
 \begin{${1:prf}}
     ${2:\bfseries\textcolor{red}{Write a Proof}}
@@ -1417,8 +1388,7 @@ snippet prf
 $0
 endsnippet
 
-                                                     # Proof
-snippet proof
+snippet proof "Proof" b
 % Proof
 \begin{proof}
     ${1:\bfseries\textcolor{red}{Write a Proof}}
@@ -1427,8 +1397,7 @@ snippet proof
 $0
 endsnippet
 
-                                                     #Remark
-snippet rem
+snippet rem "Remark" b
 % Remark
 \begin{remark}\label{$1}
     $2
@@ -1437,8 +1406,7 @@ snippet rem
 $0
 endsnippet
 
-                                                 #UnnumberedRemark
-snippet urem
+snippet urem "Unnumbered Remark" b
 % UnnumberedRemark
 \begin{uremark}
     $1
@@ -1447,8 +1415,7 @@ snippet urem
 $0
 endsnippet
 
-                                                    #Example
-snippet ex
+snippet ex "Example" b
 % Example
 \begin{example}$1
     $2
@@ -1457,8 +1424,7 @@ snippet ex
 $0
 endsnippet
 
-                                                    #Exercise
-snippet xca
+snippet xca "Exercise" b
 % Exercise
 \begin{exercise}$1
     $2
@@ -1467,8 +1433,7 @@ snippet xca
 $0
 endsnippet
 
-                                                        #Align
-snippet align
+snippet align "Align" b
 % Align
 \begin{align}\label{$1}
     $2
@@ -1476,8 +1441,7 @@ snippet align
 $0
 endsnippet
 
-                                                   #UnnumberedAlign
-snippet ualign
+snippet ualign "Unnumbered Align" b
 % UnnumberedAlign
 \begin{align*}
     $1
@@ -1485,8 +1449,7 @@ snippet ualign
 $0
 endsnippet
 
-                                                       #Equation
-snippet eq
+snippet eq "Equation" b
 % Equation
 \begin{equation}\label{$1}
     $2
@@ -1494,8 +1457,7 @@ snippet eq
 $0
 endsnippet
 
-                                                #UnnumberedEquation
-snippet ueq
+snippet ueq "Unnumbered Equation" b
 % UnnumberedEquation
 \begin{equation*}
     $2
@@ -1503,8 +1465,7 @@ snippet ueq
 $0
 endsnippet
 
-                                                 #AlignedEquation
-snippet aligneq
+snippet aligneq "Aligned Equation" b
 % AlignedEquation
 \begin{equation}\label{$1}
 \begin{split}
@@ -1514,8 +1475,7 @@ snippet aligneq
 $0
 endsnippet
 
-                                          #UnnumberedAlignedEquation
-snippet ualigneq
+snippet ualigneq "Unnumbered Aligned Equation" b
 % UnnumberedAlignedEquation
 \begin{equation*}
 \begin{split}
@@ -1525,8 +1485,7 @@ snippet ualigneq
 $0
 endsnippet
 
-                                             #GatheringEquations
-snippet gather
+snippet gather "Gather" b
 % Gather
 \begin{gather}\label{$1}
     $2
@@ -1534,8 +1493,7 @@ snippet gather
 $0
 endsnippet
 
-                                      #UnnumberedGatheringEquations
-snippet ugather
+snippet ugather "Unnumbered Gather" b
 % UnnumberedGather
 \begin{gather*}
     $1
@@ -1543,8 +1501,7 @@ snippet ugather
 $0
 endsnippet
 
-                                                     #Array
-snippet array
+snippet array "Array" b
 % Array
 \[
 \begin{array}{rcl}
@@ -1554,16 +1511,14 @@ snippet array
 $0
 endsnippet
 
-                                                     #Centering
-snippet cen
+snippet cen "Centering" b
 \begin{center}
     $1
 \end{center}
 $0
 endsnippet
 
-                                                     #Itemize
-snippet itemize
+snippet itemize "Itemize" b
 % Itemize
 \begin{itemize}[$1]
     \item $2
@@ -1575,7 +1530,7 @@ endsnippet
 # Matrices{{{
 #-------------------------------------------------------------------
 
-snippet matn
+snippet matn "Matrix m x n"
 % Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
@@ -1588,7 +1543,7 @@ $0
 endsnippet
 
 
-snippet bmatn
+snippet bmatn "Bracket matrix m x n"
 % Bmatrix
 \renewcommand\arraystretch{1}
 \begin{bmatrix}
@@ -1601,7 +1556,7 @@ $0
 endsnippet
 
 
-snippet pmatn
+snippet pmatn "Parenthesis matrix m x n"
 % Pmatrix
 \renewcommand\arraystretch{1}
 \begin{pmatrix}
@@ -1614,7 +1569,7 @@ $0
 endsnippet
 
 
-snippet mat
+snippet mat "Matrix"
 \begin{matrix}
     $1 & $2  \\\
     $3 & $4
@@ -1623,7 +1578,7 @@ $0
 endsnippet
 
 
-snippet pmat
+snippet pmat "Parenthesis matrix"
 \begin{pmatrix}
     $1 & $2  \\\
     $3 & $4
@@ -1632,7 +1587,7 @@ $0
 endsnippet
 
 
-snippet bmat
+snippet bmat "Bracket matrix"
 \begin{bmatrix}
     $1 & $2  \\\
     $3 & $4
@@ -1641,7 +1596,7 @@ $0
 endsnippet
 
 
-snippet cmatn
+snippet cmatn "Colomn bracket matrix n x 1"
 \begin{bmatrix}
     $1 \\\
     $2 \\\
@@ -1652,7 +1607,7 @@ $0
 endsnippet
 
 
-snippet cpmat
+snippet cpmat "Colomn parenthesis matrix"
 \begin{pmatrix}
     $1 \\\
     $2
@@ -1661,7 +1616,7 @@ $0
 endsnippet
 
 
-snippet cbmat
+snippet cbmat "Colomn bracket matrix"
 \begin{bmatrix}
     $1 \\\
     $2
@@ -1674,7 +1629,7 @@ endsnippet
 # Math tools needed for case-defn{{{
 #-------------------------------------------------------------------
 
-snippet case
+snippet case "Case"
 \begin{cases}
     $1
 \end{cases}
@@ -1682,7 +1637,7 @@ $0
 endsnippet
 
 
-snippet cases
+snippet cases "Cases"
 \begin{cases}
     $1
 \end{cases}
@@ -1690,7 +1645,7 @@ $0
 endsnippet
 
 
-snippet casedefn
+snippet casedefn "Case Definition"
 \[
     $1
 \begin{cases}
@@ -1703,7 +1658,7 @@ $0
 endsnippet
 
 
-snippet dcasedefn
+snippet dcasedefn "dcase Definition"
 \[
     $1
 \begin{dcases}
@@ -1719,7 +1674,7 @@ endsnippet
 # Enumeration{{{
 #-------------------------------------------------------------------
 
-snippet enum
+snippet enum "Enumeration" b
 % Enumerate
 \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 \begin{enumerate}%[label=\arabic*.,font=\normalfont,before=\normalfont]
@@ -1729,7 +1684,7 @@ snippet enum
 $0
 endsnippet
 
-snippet henum
+snippet henum "Hyper-Enumeration" b
 % Change format of top-level list items
 \setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
@@ -1756,8 +1711,7 @@ endsnippet
 # \end{claimproof}
 # endsnippet
 
-                                                       #Claim
-snippet claim
+snippet claim "Claim" b
 % Claim
 \begin{enumerate}[]\label{claim $1}
     \item[] \textbf{Claim $2} $3
@@ -1795,8 +1749,7 @@ snippet \thmbox
 \end{boxprf}
 endsnippet
 
-                                                   #Assertion
-snippet asser
+snippet asser "Assertion" b
 % Assertion
 \begin{enumerate}[]\label{asser $1}
     \item[] \textsc{Assertion $2} $3
@@ -1804,8 +1757,7 @@ snippet asser
 \end{enumerate}
 endsnippet
 
-                                                      ##Case
-#snippet case
+#snippet case "Case"
 #% Case
 #\begin{enumerate}[]
 #\label{case $1}
@@ -1815,8 +1767,7 @@ endsnippet
 #$0
 #endsnippet
 
-                                                    #Application
-snippet app
+snippet app "Application" b
 % Application
 \begin{enumerate}[]\label{app $1}
     \item[] \textsc{Application $2} $3
@@ -1914,7 +1865,7 @@ snippet scope
 \end{scope}
 endsnippet
 
-snippet gra
+snippet gra "Graphics"
 \begin{center}
     \includegraphics{$1}
 \end{center}
@@ -1923,7 +1874,7 @@ $0
 endsnippet
 
 
-snippet bib
+snippet bib "Bibliography" b
 % Bibliography
 \bibliographystyle{${1:alpha}}
 \bibliography{bib}
@@ -1941,7 +1892,7 @@ endsnippet
 # SomeAbbreviation{{{
 #-------------------------------------------------------------------
 
-snippet st
+snippet st "such that"
 such that
 endsnippet
 
@@ -1959,42 +1910,42 @@ snippet in
 endsnippet
 
 
-snippet ld
+snippet ld "Lateral dot"
 \ldot$0
 endsnippet
 
 
-snippet lds
+snippet lds "Lateral dots"
 \ldots$0
 endsnippet
 
 
-snippet cd
+snippet cd "Central dot"
 \cdot$0
 endsnippet
 
 
-snippet cds
+snippet cds "Central dots"
 \cdots$0
 endsnippet
 
 
-snippet vd
+snippet vd "Vertical dot"
 \vdot$0
 endsnippet
 
 
-snippet vds
+snippet vds "Vertical dots"
 \vdots$0
 endsnippet
 
 
-snippet dds
+snippet dds "Diagonal dots"
 \ddots$0
 endsnippet
 
 
-snippet ul
+snippet ul "Underline for latex"
 \uline{$1}$0
 endsnippet
 
@@ -2003,24 +1954,22 @@ snippet fr
 \frac{$1}{$2}$0
 endsnippet
 
-snippet \
+snippet \ "Backslash"
 \backslash $0
 endsnippet
 
 
 
 
-                                                #WritingVector
-snippet vv
+snippet vv "Vector"
 \vv{$1}$0
 endsnippet
 
-                                                #WritingVector
-snippet ve
+snippet ve "Vector"
 \vec{$1}$0
 endsnippet
 
-snippet lr
+snippet lr "Left-right angle bracket"
 \left \langle $1 \right \rangle $0
 endsnippet
 
@@ -2059,29 +2008,28 @@ snippet xlea
 \xleftarrow{$1}$0
 endsnippet
 
-                                              #Hookrightarrow
-snippet hra
+snippet hra "Hookrightarrow"
 \hookrightarrow$0
 endsnippet
 
 
-snippet lim
+snippet lim "\limits"
 \limits
 endsnippet
 
-snippet fn
+snippet fn "Function f with domain-range"
 $f: $1 \to $2$$0
 endsnippet
 
-snippet gn
+snippet gn "Function g with domain-range"
 $g: $1 \to $2$$0
 endsnippet
 
-snippet phn
+snippet phn "Function \phi with domain-range"
 $\phi : $1 \to $2$$0
 endsnippet
 
-snippet vphn
+snippet vphn "Function \varphi with domain-range"
 $\varphi : $1 \to $2$$0
 endsnippet
 
@@ -2101,41 +2049,39 @@ endsnippet
 # TextInMathMode{{{
 #-------------------------------------------------------------------
 
-snippet text
+snippet text "Text"
 \text{$1}$0
 endsnippet
 
-snippet te
+snippet te "Text"
 \text{$1}$0
 endsnippet
 
-snippet tb
+snippet tb "Text boldfont"
 \textbf{$1}$0
 endsnippet
 
-snippet ti
+snippet ti "Text italic"
 \textit{$1}$0
 endsnippet
 
-snippet tt
+snippet tt "Text typewriter"
 \texttt{$1}$0
 endsnippet
 
-snippet ts
+snippet ts "Text sc"
 \textsc{$1}$0
 endsnippet
 
-                                              # Emphasize visually selected text
-
-snippet em
+snippet em "Emphasize visually selected text"
 \emph{${VISUAL}}$0
 endsnippet
 
-snippet emp
+snippet emp "Emphasize"
 \emph{$1}$0
 endsnippet
 
-snippet tc
+snippet tc "Text color"
 \textcolor{$1}{$2}$0
 endsnippet
 
