@@ -571,8 +571,8 @@ function! FixLastSpellingError()
     :normal! mm[s1z=`m
 endfunction
 
-nnoremap <buffer> <localleader>sp :call FixLastSpellingError()<cr>:echo<cr>
-inoremap <buffer> <localleader>sp <esc>:call FixLastSpellingError()<cr>:echo<cr>a
+nnoremap <buffer> <localleader>fs :call FixLastSpellingError()<cr>:echo<cr>
+inoremap <buffer> <localleader>fs <esc>:call FixLastSpellingError()<cr>:echo<cr>a
 
 " Adding new words to dictionary
 nnoremap <buffer> < [szz
@@ -699,6 +699,7 @@ augroup SourceAllForTeXBuf
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
+    autocmd BufNewFile,BufRead *.tex :call MatrixGroupToggle()
 augroup end
 
 "Sourcing everything for tex
