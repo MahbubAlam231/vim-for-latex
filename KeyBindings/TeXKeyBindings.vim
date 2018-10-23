@@ -250,6 +250,13 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2 \mathrm{M}(2,)<esc>i
         inoremap <buffer> <localleader>m3 \mathrm{M}(3,)<esc>i
 
+        inoremap <buffer> <localleader>mmnq \mathrm{M}_{m \times n}(\mathbb{Q})
+        inoremap <buffer> <localleader>mnq \mathrm{M}(n,\mathbb{Q})
+        inoremap <buffer> <localleader>mmq \mathrm{M}(m,\mathbb{Q})
+        inoremap <buffer> <localleader>mdq \mathrm{M}(d,\mathbb{Q})
+        inoremap <buffer> <localleader>m2q \mathrm{M}(2,\mathbb{Q})
+        inoremap <buffer> <localleader>m3q \mathrm{M}(3,\mathbb{Q})
+
         inoremap <buffer> <localleader>mmnr \mathrm{M}_{m \times n}(\mathbb{R})
         inoremap <buffer> <localleader>mnr \mathrm{M}(n,\mathbb{R})
         inoremap <buffer> <localleader>mmr \mathrm{M}(m,\mathbb{R})
@@ -293,6 +300,17 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glpd \mathrm{GL}^+(d,)<esc>i
         inoremap <buffer> <localleader>glp2 \mathrm{GL}^+(2,)<esc>i
         inoremap <buffer> <localleader>glp3 \mathrm{GL}^+(3,)<esc>i
+
+        inoremap <buffer> <localleader>glnq \mathrm{GL}(n,\mathbb{Q})
+        inoremap <buffer> <localleader>glmq \mathrm{GL}(m,\mathbb{Q})
+        inoremap <buffer> <localleader>gldq \mathrm{GL}(d,\mathbb{Q})
+        inoremap <buffer> <localleader>gl2q \mathrm{GL}(2,\mathbb{Q})
+        inoremap <buffer> <localleader>gl3q \mathrm{GL}(3,\mathbb{Q})
+        inoremap <buffer> <localleader>glpnq \mathrm{GL}^+(n,\mathbb{Q})
+        inoremap <buffer> <localleader>glpmq \mathrm{GL}^+(m,\mathbb{Q})
+        inoremap <buffer> <localleader>glpdq \mathrm{GL}^+(d,\mathbb{Q})
+        inoremap <buffer> <localleader>glp2q \mathrm{GL}^+(2,\mathbb{Q})
+        inoremap <buffer> <localleader>glp3q \mathrm{GL}^+(3,\mathbb{Q})
 
         inoremap <buffer> <localleader>glnr \mathrm{GL}(n,\mathbb{R})
         inoremap <buffer> <localleader>glmr \mathrm{GL}(m,\mathbb{R})
@@ -555,6 +573,13 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2 \mathrm{M}_{2}()<esc>i
         inoremap <buffer> <localleader>m3 \mathrm{M}_{3}()<esc>i
 
+        inoremap <buffer> <localleader>mmnq \mathrm{M}_{m \times n}(\mathbb{Q})
+        inoremap <buffer> <localleader>mnq \mathrm{M}_{n}(\mathbb{Q})
+        inoremap <buffer> <localleader>mmq \mathrm{M}_{m}(\mathbb{Q})
+        inoremap <buffer> <localleader>mdq \mathrm{M}_{d}(\mathbb{Q})
+        inoremap <buffer> <localleader>m2q \mathrm{M}_{2}(\mathbb{Q})
+        inoremap <buffer> <localleader>m3q \mathrm{M}_{3}(\mathbb{Q})
+
         inoremap <buffer> <localleader>mmnr \mathrm{M}_{m \times n}(\mathbb{R})
         inoremap <buffer> <localleader>mnr \mathrm{M}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>mmr \mathrm{M}_{m}(\mathbb{R})
@@ -591,15 +616,30 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gln \mathrm{GL}_{n}()<esc>i
         inoremap <buffer> <localleader>glm \mathrm{GL}_{m}()<esc>i
         inoremap <buffer> <localleader>gld \mathrm{GL}_{d}()<esc>i
+        inoremap <buffer> <localleader>gl2 \mathrm{GL}_{2}()<esc>i
+        inoremap <buffer> <localleader>gl3 \mathrm{GL}_{3}()<esc>i
         inoremap <buffer> <localleader>glnp \mathrm{GL}_{n}^+()<esc>i
         inoremap <buffer> <localleader>glmp \mathrm{GL}_{m}^+()<esc>i
         inoremap <buffer> <localleader>gldp \mathrm{GL}_{d}^+()<esc>i
         inoremap <buffer> <localleader>gl2p \mathrm{GL}_{2}^+()<esc>i
         inoremap <buffer> <localleader>gl3p \mathrm{GL}_{3}^+()<esc>i
 
+        inoremap <buffer> <localleader>glnq \mathrm{GL}_{n}(\mathbb{Q})
+        inoremap <buffer> <localleader>glmq \mathrm{GL}_{m}(\mathbb{Q})
+        inoremap <buffer> <localleader>gldq \mathrm{GL}_{d}(\mathbb{Q})
+        inoremap <buffer> <localleader>gl2q \mathrm{GL}_{2}(\mathbb{Q})
+        inoremap <buffer> <localleader>gl3q \mathrm{GL}_{3}(\mathbb{Q})
+        inoremap <buffer> <localleader>glnpq \mathrm{GL}_{n}^+(\mathbb{Q})
+        inoremap <buffer> <localleader>glmpq \mathrm{GL}_{m}^+(\mathbb{Q})
+        inoremap <buffer> <localleader>gldpq \mathrm{GL}_{d}^+(\mathbb{Q})
+        inoremap <buffer> <localleader>gl2pq \mathrm{GL}_{2}^+(\mathbb{Q})
+        inoremap <buffer> <localleader>gl3pq \mathrm{GL}_{3}^+(\mathbb{Q})
+
         inoremap <buffer> <localleader>glnr \mathrm{GL}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>glmr \mathrm{GL}_{m}(\mathbb{R})
         inoremap <buffer> <localleader>gldr \mathrm{GL}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>gl2r \mathrm{GL}_{2}(\mathbb{R})
+        inoremap <buffer> <localleader>gl3r \mathrm{GL}_{3}(\mathbb{R})
         inoremap <buffer> <localleader>glnpr \mathrm{GL}_{n}^+(\mathbb{R})
         inoremap <buffer> <localleader>glmpr \mathrm{GL}_{m}^+(\mathbb{R})
         inoremap <buffer> <localleader>gldpr \mathrm{GL}_{d}^+(\mathbb{R})

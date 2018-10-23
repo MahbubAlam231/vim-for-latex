@@ -239,6 +239,13 @@ iunmap <buffer> <localleader>md
 iunmap <buffer> <localleader>m2
 iunmap <buffer> <localleader>m3
 
+iunmap <buffer> <localleader>mmnq
+iunmap <buffer> <localleader>mnq
+iunmap <buffer> <localleader>mmq
+iunmap <buffer> <localleader>mdq
+iunmap <buffer> <localleader>m2q
+iunmap <buffer> <localleader>m3q
+
 iunmap <buffer> <localleader>mmnr
 iunmap <buffer> <localleader>mnr
 iunmap <buffer> <localleader>mmr
@@ -282,6 +289,17 @@ iunmap <buffer> <localleader>glpm
 iunmap <buffer> <localleader>glpd
 iunmap <buffer> <localleader>glp2
 iunmap <buffer> <localleader>glp3
+
+iunmap <buffer> <localleader>glnq
+iunmap <buffer> <localleader>glmq
+iunmap <buffer> <localleader>gldq
+iunmap <buffer> <localleader>gl2q
+iunmap <buffer> <localleader>gl3q
+iunmap <buffer> <localleader>glpnq
+iunmap <buffer> <localleader>glpmq
+iunmap <buffer> <localleader>glpdq
+iunmap <buffer> <localleader>glp2q
+iunmap <buffer> <localleader>glp3q
 
 iunmap <buffer> <localleader>glnr
 iunmap <buffer> <localleader>glmr
@@ -533,6 +551,13 @@ iunmap <buffer> <localleader>glmp
 iunmap <buffer> <localleader>gldp
 iunmap <buffer> <localleader>gl2p
 iunmap <buffer> <localleader>gl3p
+
+iunmap <buffer> <localleader>glnpq
+iunmap <buffer> <localleader>glmpq
+iunmap <buffer> <localleader>gldpq
+iunmap <buffer> <localleader>gl2pq
+iunmap <buffer> <localleader>gl3pq
+
 iunmap <buffer> <localleader>glnpr
 iunmap <buffer> <localleader>glmpr
 iunmap <buffer> <localleader>gldpr
