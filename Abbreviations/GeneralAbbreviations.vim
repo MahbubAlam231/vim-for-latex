@@ -68,6 +68,7 @@ Abolish diff{,ly} different{,ly}
 Abolish diff{ble,l,tion,tn} differentia{ble,l,tion,tion}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish dep dependent
+Abolish diag{,l,ble} diagonal{,,izable}
 
 "}}}
 "E{{{
