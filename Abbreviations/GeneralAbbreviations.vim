@@ -54,7 +54,7 @@ Abolish btw by the way
 
 Abolish char{,stic} character{,istic}
 Abolish coll{n,ns} collectio{n,ns}
-Abolish cont{,y} continu{ous,ity}
+Abolish cont{,y,ly} continu{ous,ity,ously}
 Abolish corr{,s,g,ing,ce,ence} correspond{,s,ing,ing,ence,ence}
 Abolish cor{,s} corollar{y,ies}
 Abolish cpt{,fication,ficatn,fy} compact{,ification,ification,ify}

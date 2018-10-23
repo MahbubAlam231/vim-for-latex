@@ -23,7 +23,7 @@ inoremap <buffer> 44 4
 inoremap <buffer> <localleader>4 <esc>o\[<cr>\]<esc>O
 inoremap <buffer> 5 <esc>l2f}i
 inoremap <buffer> 55 5
-inoremap <buffer> 6 <esc>jo
+inoremap <buffer> 6 <esc>/\\]<cr>o
 inoremap <buffer> 66 6
 inoremap <buffer> 7 <esc>hi
 inoremap <buffer> 77 7
