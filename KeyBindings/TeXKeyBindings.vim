@@ -250,6 +250,13 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2 \mathrm{M}(2,)<esc>i
         inoremap <buffer> <localleader>m3 \mathrm{M}(3,)<esc>i
 
+        inoremap <buffer> <localleader>mmnz \mathrm{M}_{m \times n}(\mathbb{Z})
+        inoremap <buffer> <localleader>mnz \mathrm{M}(n,\mathbb{Z})
+        inoremap <buffer> <localleader>mmz \mathrm{M}(m,\mathbb{Z})
+        inoremap <buffer> <localleader>mdz \mathrm{M}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>m2z \mathrm{M}(2,\mathbb{Z})
+        inoremap <buffer> <localleader>m3z \mathrm{M}(3,\mathbb{Z})
+
         inoremap <buffer> <localleader>mmnq \mathrm{M}_{m \times n}(\mathbb{Q})
         inoremap <buffer> <localleader>mnq \mathrm{M}(n,\mathbb{Q})
         inoremap <buffer> <localleader>mmq \mathrm{M}(m,\mathbb{Q})
@@ -271,12 +278,47 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2c \mathrm{M}(2,\mathbb{C})
         inoremap <buffer> <localleader>m3c \mathrm{M}(3,\mathbb{C})
 
+        inoremap <buffer> <localleader>mmnzp \mathrm{M}_{m \times n}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mnzp \mathrm{M}(n,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mmzp \mathrm{M}(m,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mdzp \mathrm{M}(d,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>m2zp \mathrm{M}(2,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>m3zp \mathrm{M}(3,\mathbb{Z}_p)
+
         inoremap <buffer> <localleader>mmnqp \mathrm{M}_{m \times n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mnqp \mathrm{M}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>mmqp \mathrm{M}(m,\mathbb{Q}_p)
         inoremap <buffer> <localleader>mdqp \mathrm{M}(d,\mathbb{Q}_p)
         inoremap <buffer> <localleader>m2qp \mathrm{M}(2,\mathbb{Q}_p)
         inoremap <buffer> <localleader>m3qp \mathrm{M}(3,\mathbb{Q}_p)
+
+        inoremap <buffer> <localleader>mmna \mathrm{M}_{m \times n}(\mathbb{A})
+        inoremap <buffer> <localleader>mna \mathrm{M}(n,\mathbb{A})
+        inoremap <buffer> <localleader>mma \mathrm{M}(m,\mathbb{A})
+        inoremap <buffer> <localleader>mda \mathrm{M}(d,\mathbb{A})
+        inoremap <buffer> <localleader>m2a \mathrm{M}(2,\mathbb{A})
+        inoremap <buffer> <localleader>m3a \mathrm{M}(3,\mathbb{A})
+
+        inoremap <buffer> <localleader>mmnok \mathrm{M}_{m \times n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>mnok \mathrm{M}(n,\mathcal{O}_K)
+        inoremap <buffer> <localleader>mmok \mathrm{M}(m,\mathcal{O}_K)
+        inoremap <buffer> <localleader>mdok \mathrm{M}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>m2ok \mathrm{M}(2,\mathcal{O}_K)
+        inoremap <buffer> <localleader>m3ok \mathrm{M}(3,\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>mmnk \mathrm{M}_{m \times n}(K)
+        inoremap <buffer> <localleader>mnk \mathrm{M}(n,K)
+        inoremap <buffer> <localleader>mmk \mathrm{M}(m,K)
+        inoremap <buffer> <localleader>mdk \mathrm{M}(d,K)
+        inoremap <buffer> <localleader>m2k \mathrm{M}(2,K)
+        inoremap <buffer> <localleader>m3k \mathrm{M}(3,K)
+
+        inoremap <buffer> <localleader>mmnks \mathrm{M}_{m \times n}(K_S)
+        inoremap <buffer> <localleader>mnks \mathrm{M}(n,K_S)
+        inoremap <buffer> <localleader>mmks \mathrm{M}(m,K_S)
+        inoremap <buffer> <localleader>mdks \mathrm{M}(d,K_S)
+        inoremap <buffer> <localleader>m2ks \mathrm{M}(2,K_S)
+        inoremap <buffer> <localleader>m3ks \mathrm{M}(3,K_S)
 
         "}}}
         " GL{{{
@@ -300,6 +342,17 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glpd \mathrm{GL}^+(d,)<esc>i
         inoremap <buffer> <localleader>glp2 \mathrm{GL}^+(2,)<esc>i
         inoremap <buffer> <localleader>glp3 \mathrm{GL}^+(3,)<esc>i
+
+        inoremap <buffer> <localleader>glnz \mathrm{GL}(n,\mathbb{Z})
+        inoremap <buffer> <localleader>glmz \mathrm{GL}(m,\mathbb{Z})
+        inoremap <buffer> <localleader>gldz \mathrm{GL}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>gl2z \mathrm{GL}(2,\mathbb{Z})
+        inoremap <buffer> <localleader>gl3z \mathrm{GL}(3,\mathbb{Z})
+        inoremap <buffer> <localleader>glpnz \mathrm{GL}^+(n,\mathbb{Z})
+        inoremap <buffer> <localleader>glpmz \mathrm{GL}^+(m,\mathbb{Z})
+        inoremap <buffer> <localleader>glpdz \mathrm{GL}^+(d,\mathbb{Z})
+        inoremap <buffer> <localleader>glp2z \mathrm{GL}^+(2,\mathbb{Z})
+        inoremap <buffer> <localleader>glp3z \mathrm{GL}^+(3,\mathbb{Z})
 
         inoremap <buffer> <localleader>glnq \mathrm{GL}(n,\mathbb{Q})
         inoremap <buffer> <localleader>glmq \mathrm{GL}(m,\mathbb{Q})
@@ -329,23 +382,41 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl2c \mathrm{GL}(2,\mathbb{C})
         inoremap <buffer> <localleader>gl3c \mathrm{GL}(3,\mathbb{C})
 
-        inoremap <buffer> <localleader>glnqp \mathrm{GL}(n,\mathbb{Q}_p)
-        inoremap <buffer> <localleader>glmqp \mathrm{GL}(m,\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gldqp \mathrm{GL}(d,\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gl2qp \mathrm{GL}(2,\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gl3qp \mathrm{GL}(3,\mathbb{Q}_p)
-
         inoremap <buffer> <localleader>glnzp \mathrm{GL}(n,\mathbb{Z}_p)
         inoremap <buffer> <localleader>glmzp \mathrm{GL}(m,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gldzp \mathrm{GL}(d,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl2zp \mathrm{GL}(2,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl3zp \mathrm{GL}(3,\mathbb{Z}_p)
 
+        inoremap <buffer> <localleader>glnqp \mathrm{GL}(n,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>glmqp \mathrm{GL}(m,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gldqp \mathrm{GL}(d,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gl2qp \mathrm{GL}(2,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gl3qp \mathrm{GL}(3,\mathbb{Q}_p)
+
         inoremap <buffer> <localleader>glna \mathrm{GL}(n,\mathbb{A})
         inoremap <buffer> <localleader>glma \mathrm{GL}(m,\mathbb{A})
         inoremap <buffer> <localleader>glda \mathrm{GL}(d,\mathbb{A})
         inoremap <buffer> <localleader>gl2a \mathrm{GL}(2,\mathbb{A})
         inoremap <buffer> <localleader>gl3a \mathrm{GL}(3,\mathbb{A})
+
+        inoremap <buffer> <localleader>glnok \mathrm{GL}(n,\mathcal{O}_K)
+        inoremap <buffer> <localleader>glmok \mathrm{GL}(m,\mathcal{O}_K)
+        inoremap <buffer> <localleader>gldok \mathrm{GL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>gl2ok \mathrm{GL}(2,\mathcal{O}_K)
+        inoremap <buffer> <localleader>gl3ok \mathrm{GL}(3,\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>glnk \mathrm{GL}(n,K)
+        inoremap <buffer> <localleader>glmk \mathrm{GL}(m,K)
+        inoremap <buffer> <localleader>gldk \mathrm{GL}(d,K)
+        inoremap <buffer> <localleader>gl2k \mathrm{GL}(2,K)
+        inoremap <buffer> <localleader>gl3k \mathrm{GL}(3,K)
+
+        inoremap <buffer> <localleader>glnks \mathrm{GL}(n,K_S)
+        inoremap <buffer> <localleader>glmks \mathrm{GL}(m,K_S)
+        inoremap <buffer> <localleader>gldks \mathrm{GL}(d,K_S)
+        inoremap <buffer> <localleader>gl2ks \mathrm{GL}(2,K_S)
+        inoremap <buffer> <localleader>gl3ks \mathrm{GL}(3,K_S)
 
         "}}}
         " SL{{{
@@ -365,6 +436,12 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2 \mathrm{SL}(2,)<esc>i
         inoremap <buffer> <localleader>sl3 \mathrm{SL}(3,)<esc>i
 
+        inoremap <buffer> <localleader>slnz \mathrm{SL}(n,\mathbb{Z})
+        inoremap <buffer> <localleader>slmz \mathrm{SL}(m,\mathbb{Z})
+        inoremap <buffer> <localleader>sldz \mathrm{SL}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>sl2z \mathrm{SL}(2,\mathbb{Z})
+        inoremap <buffer> <localleader>sl3z \mathrm{SL}(3,\mathbb{Z})
+
         inoremap <buffer> <localleader>slnq \mathrm{SL}(n,\mathbb{Q})
         inoremap <buffer> <localleader>slmq \mathrm{SL}(m,\mathbb{Q})
         inoremap <buffer> <localleader>sldq \mathrm{SL}(d,\mathbb{Q})
@@ -383,11 +460,11 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2c \mathrm{SL}(2,\mathbb{C})
         inoremap <buffer> <localleader>sl3c \mathrm{SL}(3,\mathbb{C})
 
-        inoremap <buffer> <localleader>slnz \mathrm{SL}(n,\mathbb{Z})
-        inoremap <buffer> <localleader>slmz \mathrm{SL}(m,\mathbb{Z})
-        inoremap <buffer> <localleader>sldz \mathrm{SL}(d,\mathbb{Z})
-        inoremap <buffer> <localleader>sl2z \mathrm{SL}(2,\mathbb{Z})
-        inoremap <buffer> <localleader>sl3z \mathrm{SL}(3,\mathbb{Z})
+        inoremap <buffer> <localleader>slnzp \mathrm{SL}(n,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>slmzp \mathrm{SL}(m,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sldzp \mathrm{SL}(d,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sl2zp \mathrm{SL}(2,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sl3zp \mathrm{SL}(3,\mathbb{Z}_p)
 
         inoremap <buffer> <localleader>slnqp \mathrm{SL}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>slmqp \mathrm{SL}(m,\mathbb{Q}_p)
@@ -395,17 +472,29 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2qp \mathrm{SL}(2,\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl3qp \mathrm{SL}(3,\mathbb{Q}_p)
 
-        inoremap <buffer> <localleader>slnzp \mathrm{SL}(n,\mathbb{Z}_p)
-        inoremap <buffer> <localleader>slmzp \mathrm{SL}(m,\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sldzp \mathrm{SL}(d,\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sl2zp \mathrm{SL}(2,\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sl3zp \mathrm{SL}(3,\mathbb{Z}_p)
-
         inoremap <buffer> <localleader>slna \mathrm{SL}(n,\mathbb{A})
         inoremap <buffer> <localleader>slma \mathrm{SL}(m,\mathbb{A})
         inoremap <buffer> <localleader>slda \mathrm{SL}(d,\mathbb{A})
         inoremap <buffer> <localleader>sl2a \mathrm{SL}(2,\mathbb{A})
         inoremap <buffer> <localleader>sl3a \mathrm{SL}(3,\mathbb{A})
+
+        inoremap <buffer> <localleader>slnok \mathrm{SL}(n,\mathcal{O}_K)
+        inoremap <buffer> <localleader>slmok \mathrm{SL}(m,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sldok \mathrm{SL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl2ok \mathrm{SL}(2,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl3ok \mathrm{SL}(3,\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>slnk \mathrm{SL}(n,K)
+        inoremap <buffer> <localleader>slmk \mathrm{SL}(m,K)
+        inoremap <buffer> <localleader>sldk \mathrm{SL}(d,K)
+        inoremap <buffer> <localleader>sl2k \mathrm{SL}(2,K)
+        inoremap <buffer> <localleader>sl3k \mathrm{SL}(3,K)
+
+        inoremap <buffer> <localleader>slnks \mathrm{SL}(n,K_S)
+        inoremap <buffer> <localleader>slmks \mathrm{SL}(m,K_S)
+        inoremap <buffer> <localleader>sldks \mathrm{SL}(d,K_S)
+        inoremap <buffer> <localleader>sl2ks \mathrm{SL}(2,K_S)
+        inoremap <buffer> <localleader>sl3ks \mathrm{SL}(3,K_S)
 
         inoremap <buffer> <localleader>slnrz \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})
         inoremap <buffer> <localleader>slmrz \mathrm{SL}(m,\mathbb{R})/\mathrm{SL}(m,\mathbb{Z})
@@ -418,6 +507,18 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sldzr \mathrm{SL}(d,\mathbb{Z}) \backslash \mathrm{SL}(d,\mathbb{R})
         inoremap <buffer> <localleader>sl2zr \mathrm{SL}(2,\mathbb{Z}) \backslash \mathrm{SL}(2,\mathbb{R})
         inoremap <buffer> <localleader>sl3zr \mathrm{SL}(3,\mathbb{Z}) \backslash \mathrm{SL}(3,\mathbb{R})
+
+        inoremap <buffer> <localleader>slnksok \mathrm{SL}(n,K_S)/\mathrm{SL}(n,\mathcal{O}_K)
+        inoremap <buffer> <localleader>slmksok \mathrm{SL}(m,K_S)/\mathrm{SL}(m,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sldksok \mathrm{SL}(d,K_S)/\mathrm{SL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl2ksok \mathrm{SL}(2,K_S)/\mathrm{SL}(2,\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl3ksok \mathrm{SL}(3,K_S)/\mathrm{SL}(3,\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>slnokks \mathrm{SL}(n,\mathcal{O}_K) \backslash \mathrm{SL}(n,K_S)
+        inoremap <buffer> <localleader>slmokks \mathrm{SL}(m,\mathcal{O}_K) \backslash \mathrm{SL}(m,K_S)
+        inoremap <buffer> <localleader>sldokks \mathrm{SL}(d,\mathcal{O}_K) \backslash \mathrm{SL}(d,K_S)
+        inoremap <buffer> <localleader>sl2okks \mathrm{SL}(2,\mathcal{O}_K) \backslash \mathrm{SL}(2,K_S)
+        inoremap <buffer> <localleader>sl3okks \mathrm{SL}(3,\mathcal{O}_K) \backslash \mathrm{SL}(3,K_S)
 
         "}}}
         " PSL{{{
@@ -573,6 +674,13 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2 \mathrm{M}_{2}()<esc>i
         inoremap <buffer> <localleader>m3 \mathrm{M}_{3}()<esc>i
 
+        inoremap <buffer> <localleader>mmnz \mathrm{M}_{m \times n}(\mathbb{Z})
+        inoremap <buffer> <localleader>mnz \mathrm{M}_{n}(\mathbb{Z})
+        inoremap <buffer> <localleader>mmz \mathrm{M}_{m}(\mathbb{Z})
+        inoremap <buffer> <localleader>mdz \mathrm{M}_{d}(\mathbb{Z})
+        inoremap <buffer> <localleader>m2z \mathrm{M}_{2}(\mathbb{Z})
+        inoremap <buffer> <localleader>m3z \mathrm{M}_{3}(\mathbb{Z})
+
         inoremap <buffer> <localleader>mmnq \mathrm{M}_{m \times n}(\mathbb{Q})
         inoremap <buffer> <localleader>mnq \mathrm{M}_{n}(\mathbb{Q})
         inoremap <buffer> <localleader>mmq \mathrm{M}_{m}(\mathbb{Q})
@@ -594,12 +702,47 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2c \mathrm{M}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>m3c \mathrm{M}_{3}(\mathbb{C})
 
+        inoremap <buffer> <localleader>mmnzp \mathrm{M}_{m \times n}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mnzp \mathrm{M}_{n}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mmzp \mathrm{M}_{m}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mdzp \mathrm{M}_{d}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>m2zp \mathrm{M}_{2}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>m3zp \mathrm{M}_{3}(\mathbb{Z}_p)
+
         inoremap <buffer> <localleader>mmnqp \mathrm{M}_{m \times n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mnqp \mathrm{M}_{n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mmqp \mathrm{M}_{m}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>mdqp \mathrm{M}_{d}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>m2qp \mathrm{M}_{2}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>m3qp \mathrm{M}_{3}(\mathbb{Q}_p)
+
+        inoremap <buffer> <localleader>mmna \mathrm{M}_{m \times n}(\mathbb{A})
+        inoremap <buffer> <localleader>mna \mathrm{M}_{n}(\mathbb{A})
+        inoremap <buffer> <localleader>mma \mathrm{M}_{m}(\mathbb{A})
+        inoremap <buffer> <localleader>mda \mathrm{M}_{d}(\mathbb{A})
+        inoremap <buffer> <localleader>m2a \mathrm{M}_{2}(\mathbb{A})
+        inoremap <buffer> <localleader>m3a \mathrm{M}_{3}(\mathbb{A})
+
+        inoremap <buffer> <localleader>mmnok \mathrm{M}_{m \times n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>mnok \mathrm{M}_{n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>mmok \mathrm{M}_{m}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>mdok \mathrm{M}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>m2ok \mathrm{M}_{2}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>m3ok \mathrm{M}_{3}(\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>mmnk \mathrm{M}_{m \times n}(K)
+        inoremap <buffer> <localleader>mnk \mathrm{M}_{n}(K)
+        inoremap <buffer> <localleader>mmk \mathrm{M}_{m}(K)
+        inoremap <buffer> <localleader>mdk \mathrm{M}_{d}(K)
+        inoremap <buffer> <localleader>m2k \mathrm{M}_{2}(K)
+        inoremap <buffer> <localleader>m3k \mathrm{M}_{3}(K)
+
+        inoremap <buffer> <localleader>mmnks \mathrm{M}_{m \times n}(K_S)
+        inoremap <buffer> <localleader>mnks \mathrm{M}_{n}(K_S)
+        inoremap <buffer> <localleader>mmks \mathrm{M}_{m}(K_S)
+        inoremap <buffer> <localleader>mdks \mathrm{M}_{d}(K_S)
+        inoremap <buffer> <localleader>m2ks \mathrm{M}_{2}(K_S)
+        inoremap <buffer> <localleader>m3ks \mathrm{M}_{3}(K_S)
 
         "}}}
         " GL{{{
@@ -623,6 +766,17 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gldp \mathrm{GL}_{d}^+()<esc>i
         inoremap <buffer> <localleader>gl2p \mathrm{GL}_{2}^+()<esc>i
         inoremap <buffer> <localleader>gl3p \mathrm{GL}_{3}^+()<esc>i
+
+        inoremap <buffer> <localleader>glnz \mathrm{GL}_{n}(\mathbb{Z})
+        inoremap <buffer> <localleader>glmz \mathrm{GL}_{m}(\mathbb{Z})
+        inoremap <buffer> <localleader>gldz \mathrm{GL}_{d}(\mathbb{Z})
+        inoremap <buffer> <localleader>gl2z \mathrm{GL}_{2}(\mathbb{Z})
+        inoremap <buffer> <localleader>gl3z \mathrm{GL}_{3}(\mathbb{Z})
+        inoremap <buffer> <localleader>glnpz \mathrm{GL}_{n}^+(\mathbb{Z})
+        inoremap <buffer> <localleader>glmpz \mathrm{GL}_{m}^+(\mathbb{Z})
+        inoremap <buffer> <localleader>gldpz \mathrm{GL}_{d}^+(\mathbb{Z})
+        inoremap <buffer> <localleader>gl2pz \mathrm{GL}_{2}^+(\mathbb{Z})
+        inoremap <buffer> <localleader>gl3pz \mathrm{GL}_{3}^+(\mathbb{Z})
 
         inoremap <buffer> <localleader>glnq \mathrm{GL}_{n}(\mathbb{Q})
         inoremap <buffer> <localleader>glmq \mathrm{GL}_{m}(\mathbb{Q})
@@ -652,23 +806,41 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl2c \mathrm{GL}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>gl3c \mathrm{GL}_{3}(\mathbb{C})
 
-        inoremap <buffer> <localleader>glnqp \mathrm{GL}_{n}(\mathbb{Q}_p)
-        inoremap <buffer> <localleader>glmqp \mathrm{GL}_{m}(\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gldqp \mathrm{GL}_{d}(\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gl2qp \mathrm{GL}_{2}(\mathbb{Q}_p)
-        inoremap <buffer> <localleader>gl3qp \mathrm{GL}_{3}(\mathbb{Q}_p)
-
         inoremap <buffer> <localleader>glnzp \mathrm{GL}_{n}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>glmzp \mathrm{GL}_{m}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>gldzp \mathrm{GL}_{d}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl2zp \mathrm{GL}_{2}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl3zp \mathrm{GL}_{3}(\mathbb{Z}_p)
 
+        inoremap <buffer> <localleader>glnqp \mathrm{GL}_{n}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>glmqp \mathrm{GL}_{m}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gldqp \mathrm{GL}_{d}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gl2qp \mathrm{GL}_{2}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>gl3qp \mathrm{GL}_{3}(\mathbb{Q}_p)
+
         inoremap <buffer> <localleader>glna \mathrm{GL}_{n}(\mathbb{A})
         inoremap <buffer> <localleader>glma \mathrm{GL}_{m}(\mathbb{A})
         inoremap <buffer> <localleader>glda \mathrm{GL}_{d}(\mathbb{A})
         inoremap <buffer> <localleader>gl2a \mathrm{GL}_{2}(\mathbb{A})
         inoremap <buffer> <localleader>gl3a \mathrm{GL}_{3}(\mathbb{A})
+
+        inoremap <buffer> <localleader>glnok \mathrm{GL}_{n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>glmok \mathrm{GL}_{m}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>gldok \mathrm{GL}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>gl2ok \mathrm{GL}_{2}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>gl3ok \mathrm{GL}_{3}(\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>glnk \mathrm{GL}_{n}(K)
+        inoremap <buffer> <localleader>glmk \mathrm{GL}_{m}(K)
+        inoremap <buffer> <localleader>gldk \mathrm{GL}_{d}(K)
+        inoremap <buffer> <localleader>gl2k \mathrm{GL}_{2}(K)
+        inoremap <buffer> <localleader>gl3k \mathrm{GL}_{3}(K)
+
+        inoremap <buffer> <localleader>glnks \mathrm{GL}_{n}(K_S)
+        inoremap <buffer> <localleader>glmks \mathrm{GL}_{m}(K_S)
+        inoremap <buffer> <localleader>gldks \mathrm{GL}_{d}(K_S)
+        inoremap <buffer> <localleader>gl2ks \mathrm{GL}_{2}(K_S)
+        inoremap <buffer> <localleader>gl3ks \mathrm{GL}_{3}(K_S)
 
         "}}}
         " SL{{{
@@ -688,6 +860,12 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2 \mathrm{SL}_{2}()<esc>i
         inoremap <buffer> <localleader>sl3 \mathrm{SL}_{3}()<esc>i
 
+        inoremap <buffer> <localleader>slnz \mathrm{SL}_{n}(\mathbb{Z})
+        inoremap <buffer> <localleader>slmz \mathrm{SL}_{m}(\mathbb{Z})
+        inoremap <buffer> <localleader>sldz \mathrm{SL}_{d}(\mathbb{Z})
+        inoremap <buffer> <localleader>sl2z \mathrm{SL}_{2}(\mathbb{Z})
+        inoremap <buffer> <localleader>sl3z \mathrm{SL}_{3}(\mathbb{Z})
+
         inoremap <buffer> <localleader>slnq \mathrm{SL}_{n}(\mathbb{Q})
         inoremap <buffer> <localleader>slmq \mathrm{SL}_{m}(\mathbb{Q})
         inoremap <buffer> <localleader>sldq \mathrm{SL}_{d}(\mathbb{Q})
@@ -706,11 +884,11 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2c \mathrm{SL}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>sl3c \mathrm{SL}_{3}(\mathbb{C})
 
-        inoremap <buffer> <localleader>slnz \mathrm{SL}_{n}(\mathbb{Z})
-        inoremap <buffer> <localleader>slmz \mathrm{SL}_{m}(\mathbb{Z})
-        inoremap <buffer> <localleader>sldz \mathrm{SL}_{d}(\mathbb{Z})
-        inoremap <buffer> <localleader>sl2z \mathrm{SL}_{2}(\mathbb{Z})
-        inoremap <buffer> <localleader>sl3z \mathrm{SL}_{3}(\mathbb{Z})
+        inoremap <buffer> <localleader>slnzp \mathrm{SL}_{n}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>slmzp \mathrm{SL}_{m}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sldzp \mathrm{SL}_{d}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sl2zp \mathrm{SL}_{2}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>sl3zp \mathrm{SL}_{3}(\mathbb{Z}_p)
 
         inoremap <buffer> <localleader>slnqp \mathrm{SL}_{n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>slmqp \mathrm{SL}_{m}(\mathbb{Q}_p)
@@ -718,17 +896,29 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2qp \mathrm{SL}_{2}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl3qp \mathrm{SL}_{3}(\mathbb{Q}_p)
 
-        inoremap <buffer> <localleader>slnzp \mathrm{SL}_{n}(\mathbb{Z}_p)
-        inoremap <buffer> <localleader>slmzp \mathrm{SL}_{m}(\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sldzp \mathrm{SL}_{d}(\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sl2zp \mathrm{SL}_{2}(\mathbb{Z}_p)
-        inoremap <buffer> <localleader>sl3zp \mathrm{SL}_{3}(\mathbb{Z}_p)
-
         inoremap <buffer> <localleader>slna \mathrm{SL}_{n}(\mathbb{A})
         inoremap <buffer> <localleader>slma \mathrm{SL}_{m}(\mathbb{A})
         inoremap <buffer> <localleader>slda \mathrm{SL}_{d}(\mathbb{A})
         inoremap <buffer> <localleader>sl2a \mathrm{SL}_{2}(\mathbb{A})
         inoremap <buffer> <localleader>sl3a \mathrm{SL}_{3}(\mathbb{A})
+
+        inoremap <buffer> <localleader>slnok \mathrm{SL}_{n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>slmok \mathrm{SL}_{m}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sldok \mathrm{SL}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl2ok \mathrm{SL}_{2}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl3ok \mathrm{SL}_{3}(\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>slnk \mathrm{SL}_{n}(K)
+        inoremap <buffer> <localleader>slmk \mathrm{SL}_{m}(K)
+        inoremap <buffer> <localleader>sldk \mathrm{SL}_{d}(K)
+        inoremap <buffer> <localleader>sl2k \mathrm{SL}_{2}(K)
+        inoremap <buffer> <localleader>sl3k \mathrm{SL}_{3}(K)
+
+        inoremap <buffer> <localleader>slnks \mathrm{SL}_{n}(K_S)
+        inoremap <buffer> <localleader>slmks \mathrm{SL}_{m}(K_S)
+        inoremap <buffer> <localleader>sldks \mathrm{SL}_{d}(K_S)
+        inoremap <buffer> <localleader>sl2ks \mathrm{SL}_{2}(K_S)
+        inoremap <buffer> <localleader>sl3ks \mathrm{SL}_{3}(K_S)
 
         inoremap <buffer> <localleader>slnrz \mathrm{SL}_{n}(\mathbb{R})/\mathrm{SL}_{n}(\mathbb{Z})
         inoremap <buffer> <localleader>slmrz \mathrm{SL}_{m}(\mathbb{R})/\mathrm{SL}_{m}(\mathbb{Z})
@@ -741,6 +931,18 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sldzr \mathrm{SL}_{d}(\mathbb{Z}) \backslash \mathrm{SL}_{d}(\mathbb{R})
         inoremap <buffer> <localleader>sl2zr \mathrm{SL}_{2}(\mathbb{Z}) \backslash \mathrm{SL}_{2}(\mathbb{R})
         inoremap <buffer> <localleader>sl3zr \mathrm{SL}_{3}(\mathbb{Z}) \backslash \mathrm{SL}_{3}(\mathbb{R})
+
+        inoremap <buffer> <localleader>slnksok \mathrm{SL}_{n}(K_S)/\mathrm{SL}_{n}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>slmksok \mathrm{SL}_{m}(K_S)/\mathrm{SL}_{m}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sldksok \mathrm{SL}_{d}(K_S)/\mathrm{SL}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl2ksok \mathrm{SL}_{2}(K_S)/\mathrm{SL}_{2}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>sl3ksok \mathrm{SL}_{3}(K_S)/\mathrm{SL}_{3}(\mathcal{O}_K)
+
+        inoremap <buffer> <localleader>slnokks \mathrm{SL}_{n}(\mathcal{O}_K) \backslash \mathrm{SL}_{n}(K_S)
+        inoremap <buffer> <localleader>slmokks \mathrm{SL}_{m}(\mathcal{O}_K) \backslash \mathrm{SL}_{m}(K_S)
+        inoremap <buffer> <localleader>sldokks \mathrm{SL}_{d}(\mathcal{O}_K) \backslash \mathrm{SL}_{d}(K_S)
+        inoremap <buffer> <localleader>sl2okks \mathrm{SL}_{2}(\mathcal{O}_K) \backslash \mathrm{SL}_{2}(K_S)
+        inoremap <buffer> <localleader>sl3okks \mathrm{SL}_{3}(\mathcal{O}_K) \backslash \mathrm{SL}_{3}(K_S)
 
         "}}}
         " PSL{{{

@@ -350,6 +350,7 @@ noremap <buffer> <localleader>ar :right<cr>
 inoremap <buffer> ( ()<esc>i
 inoremap <buffer> (( (
 inoremap <buffer> { {}<esc>i
+inoremap <buffer> p{ {
 inoremap <buffer> P{ {
 inoremap <buffer> [ []<esc>i
 inoremap <buffer> [[ [
