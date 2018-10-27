@@ -242,7 +242,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>m3 \mathrm{M}_{3}
 
         inoremap <buffer> <localleader>mmn \mathrm{M}_{m \times n}()<esc>i
-        inoremap <buffer> <localleader>m \mathrm{M}()<esc>F}i
+        inoremap <buffer> <localleader>m \mathrm{M}()<esc>i
 
         inoremap <buffer> <localleader>mn \mathrm{M}(n,)<esc>i
         inoremap <buffer> <localleader>mm \mathrm{M}(m,)<esc>i
