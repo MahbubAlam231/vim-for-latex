@@ -11,6 +11,9 @@
 
 iunmap <buffer> 1
 iunmap <buffer> 11
+" Open all references for tex
+iunmap <buffer> <localleader>1
+
 iunmap <buffer> 2
 iunmap <buffer> 22
 iunmap <buffer> 3
@@ -74,6 +77,10 @@ iunmap <buffer> ;uul
 iunmap <buffer> ;nnl
 iunmap <buffer> <localleader>uul
 iunmap <buffer> <localleader>nnl
+iunmap <buffer> ;UU
+iunmap <buffer> ;NN
+iunmap <buffer> <localleader>UU
+iunmap <buffer> <localleader>NN
 iunmap <buffer> ;UUl
 iunmap <buffer> ;UUL
 iunmap <buffer> ;NNl
@@ -107,18 +114,20 @@ iunmap <buffer> <localleader>mi
 
 iunmap <buffer> <localleader>rg
 iunmap <buffer> <localleader>rl
+iunmap <buffer> <localleader>rge
+iunmap <buffer> <localleader>rle
 iunmap <buffer> <localleader>r>
 iunmap <buffer> <localleader>r<
 iunmap <buffer> <localleader>r
 iunmap <buffer> <localleader>rr
 iunmap <buffer> <localleader>rn
 iunmap <buffer> <localleader>rm
+iunmap <buffer> <localleader>rd
 iunmap <buffer> <localleader>rnk
 iunmap <buffer> <localleader>rnl
 iunmap <buffer> <localleader>rmn
 iunmap <buffer> <localleader>rnm
 iunmap <buffer> <localleader>rnn
-iunmap <buffer> <localleader>rd
 
 "}}}
 " Natural numbers{{{
@@ -127,12 +136,15 @@ iunmap <buffer> <localleader>n
 iunmap <buffer> <localleader>nn
 iunmap <buffer> <localleader>n.
 iunmap <buffer> <localleader>nm
+iunmap <buffer> <localleader>nd
 
 "}}}
 " Integers{{{
 
 iunmap <buffer> <localleader>zg
 iunmap <buffer> <localleader>zl
+iunmap <buffer> <localleader>zge
+iunmap <buffer> <localleader>zle
 iunmap <buffer> <localleader>z>
 iunmap <buffer> <localleader>z<
 iunmap <buffer> <localleader>pz
@@ -146,10 +158,17 @@ iunmap <buffer> <localleader>zd
 "}}}
 " Rational numbers{{{
 
+iunmap <buffer> <localleader>qg
+iunmap <buffer> <localleader>ql
+iunmap <buffer> <localleader>qge
+iunmap <buffer> <localleader>qle
+iunmap <buffer> <localleader>q>
+iunmap <buffer> <localleader>q<
 iunmap <buffer> <localleader>q
 iunmap <buffer> <localleader>qq
 iunmap <buffer> <localleader>qn
 iunmap <buffer> <localleader>qm
+iunmap <buffer> <localleader>qd
 
 "}}}
 " Complex numbers{{{
@@ -158,24 +177,51 @@ iunmap <buffer> <localleader>c
 iunmap <buffer> <localleader>cc
 iunmap <buffer> <localleader>cn
 iunmap <buffer> <localleader>cm
+iunmap <buffer> <localleader>cd
 
 "}}}
 " p-adic numbers{{{
 
 iunmap <buffer> <localleader>qp
-iunmap <buffer> <localleader>qqp
+iunmap <buffer> <localleader>qpp
 iunmap <buffer> <localleader>qpqp
 iunmap <buffer> <localleader>qpn
 iunmap <buffer> <localleader>qpm
+iunmap <buffer> <localleader>qpd
 
 "}}}
 " p-adic Integers{{{
 
 iunmap <buffer> <localleader>zp
-iunmap <buffer> <localleader>zzp
+iunmap <buffer> <localleader>zpp
 iunmap <buffer> <localleader>zpzp
 iunmap <buffer> <localleader>zpn
 iunmap <buffer> <localleader>zpm
+iunmap <buffer> <localleader>zpd
+
+"}}}
+" Other fields{{{
+
+iunmap <buffer> <localleader>k
+iunmap <buffer> <localleader>kk
+iunmap <buffer> <localleader>kn
+iunmap <buffer> <localleader>km
+iunmap <buffer> <localleader>kd
+
+iunmap <buffer> <localleader>ks
+iunmap <buffer> <localleader>kss
+iunmap <buffer> <localleader>ksn
+iunmap <buffer> <localleader>ksm
+iunmap <buffer> <localleader>ksd
+
+"}}}
+" Ring of integers{{{
+
+iunmap <buffer> <localleader>ok
+iunmap <buffer> <localleader>okk
+iunmap <buffer> <localleader>okn
+iunmap <buffer> <localleader>okm
+iunmap <buffer> <localleader>okd
 
 "}}}
 " Adele{{{
@@ -184,6 +230,7 @@ iunmap <buffer> <localleader>a
 iunmap <buffer> <localleader>aa
 iunmap <buffer> <localleader>an
 iunmap <buffer> <localleader>am
+iunmap <buffer> <localleader>ad
 
 "}}}
 " Tori{{{
@@ -192,6 +239,7 @@ iunmap <buffer> <localleader>t
 iunmap <buffer> <localleader>tt
 iunmap <buffer> <localleader>tn
 iunmap <buffer> <localleader>tm
+iunmap <buffer> <localleader>td
 
 "}}}
 
@@ -205,11 +253,13 @@ iunmap <buffer> n<Space><Space>
 
 iunmap <buffer> z<Space><Space>
 
+iunmap <buffer> q<Space><Space>
+
 iunmap <buffer> c<Space><Space>
 
-iunmap <buffer> a<Space><Space>
+iunmap <buffer> k<Space><Space>
 
-iunmap <buffer> q<Space><Space>
+iunmap <buffer> a<Space><Space>
 
 iunmap <buffer> t<Space><Space>
 
@@ -700,14 +750,12 @@ iunmap <buffer> <localleader>x
 iunmap <buffer> <localleader>o
 iunmap <buffer> <localleader>/
 
-iunmap <buffer> <localleader>n
 iunmap <buffer> <localleader>no
 
 iunmap <buffer> <localleader>wt
 iunmap <buffer> <localleader>~
 iunmap <buffer> <localleader>jt
 
-iunmap <buffer> <localleader>h
 iunmap <buffer> <localleader>wh
 iunmap <buffer> `6
 iunmap <buffer> <localleader>-
@@ -727,7 +775,7 @@ iunmap <buffer> ^_
 iunmap <buffer> _^
 
 "}}}
-" lim, int, sum, operators"{{{
+" lim, int, sum, operators{{{
 "-------------------------------------------------------------------
 
 iunmap <buffer> <localleader>l
@@ -738,14 +786,7 @@ iunmap <buffer> <localleader>lil
 iunmap <buffer> <localleader>lsl
 
 iunmap <buffer> ;I
-iunmap <buffer> :I
-iunmap <buffer> <localleader>I
 iunmap <buffer> ;dI
-iunmap <buffer> :dI
-iunmap <buffer> ;DI
-iunmap <buffer> :DI
-iunmap <buffer> <localleader>dI
-iunmap <buffer> <localleader>DI
 iunmap <buffer> ;i
 iunmap <buffer> <localleader>i
 iunmap <buffer> ;il
@@ -760,13 +801,11 @@ iunmap <buffer> <localleader>d
 
 iunmap <buffer> ;S
 iunmap <buffer> ;dS
-iunmap <buffer> :S
-iunmap <buffer> <localleader>S
 iunmap <buffer> ;s
 iunmap <buffer> <localleader>s
 iunmap <buffer> ;sl
 iunmap <buffer> ;ds
-iunmap <buffer> <localleader>sl
+iunmap <buffer> <localleader>slim
 iunmap <buffer> <localleader>ds
 
 iunmap <buffer> ;P
@@ -811,6 +850,10 @@ iunmap <buffer> <localleader>=
 
 iunmap <buffer> <localleader>ra
 iunmap <buffer> <localleader>la
+iunmap <buffer> <localleader>Ra
+iunmap <buffer> <localleader>La
+iunmap <buffer> <localleader>Lra
+iunmap <buffer> <localleader>Lla
 iunmap <buffer> <localleader>rra
 iunmap <buffer> <localleader>lla
 iunmap <buffer> <localleader>xra
@@ -846,22 +889,12 @@ iunmap <buffer> <localleader>lmto
 
 iunmap <buffer> /,
 iunmap <buffer> <localleader>st
-iunmap <buffer> <localleader>opn
+iunmap <buffer> <localleader>op
 
 iunmap <buffer> <localleader>w
 iunmap <buffer> <localleader>N
 
 iunmap <buffer> <localleader><C-E>
-
-" Dollar to \[\]
-nunmap <buffer> <localleader>dtb lvt$yhdf$o\[<cr>\]<esc>O<esc>"0p
-
-" Referencing Theorem, Citation etc.
-iunmap <buffer> <localleader>ref
-iunmap <buffer> <localleader>cit
-
-" LaTeX table of contents
-nunmap <buffer> <localleader>toc :LatexTOX<cr>
 
 "}}}
 

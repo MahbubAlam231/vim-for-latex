@@ -68,19 +68,28 @@ endsnippet
 #}}}
 # Real numbers{{{
 
+
 snippet rg
-$\mathbb{R}_{\geq 0}$$0
+$\mathbb{R}_{\g 0}$$0
 endsnippet
 
 snippet rl
+$\mathbb{R}_{\l 0}$$0
+endsnippet
+
+snippet rge
+$\mathbb{R}_{\geq 0}$$0
+endsnippet
+
+snippet rle
 $\mathbb{R}_{\leq 0}$$0
 endsnippet
 
-snippet r>
+snippet >
 $\mathbb{R}_{>0}$$0
 endsnippet
 
-snippet r<
+snippet <
 $\mathbb{R}_{<0}$$0
 endsnippet
 
@@ -94,6 +103,10 @@ endsnippet
 
 snippet rm
 $\mathbb{R}^{m}$$0
+endsnippet
+
+snippet rd
+$\mathbb{R}^{d}$$0
 endsnippet
 
 snippet rnk
@@ -116,10 +129,6 @@ snippet rnn
 $\mathbb{R}^{n^2}$$0
 endsnippet
 
-snippet rd
-$\mathbb{R}^{d}$$0
-endsnippet
-
 #}}}
 # Natural numbers{{{
 
@@ -127,30 +136,42 @@ snippet nn
 $\mathbb{N}^2$$0
 endsnippet
 
-snippet n.
-$\mathbb{N}^{n}$$0
+snippet nn
+$\mathbb{N}^{n}<esc>i$$0
 endsnippet
 
 snippet nm
-$\mathbb{N}^{m}$$0
+$\mathbb{N}^{m}<esc>i$$0
+endsnippet
+
+snippet nd
+$\mathbb{N}^{d}<esc>i$$0
 endsnippet
 
 #}}}
 # Integers{{{
 
 snippet zg
-$\mathbb{Z}_{\geq 0}$$0
+$\mathbb{Z}_{\g 0}$$0
 endsnippet
 
 snippet zl
+$\mathbb{Z}_{\l 0}$$0
+endsnippet
+
+snippet zge
+$\mathbb{Z}_{\geq 0}$$0
+endsnippet
+
+snippet zle
 $\mathbb{Z}_{\leq 0}$$0
 endsnippet
 
-snippet z>
+snippet >
 $\mathbb{Z}_{>0}$$0
 endsnippet
 
-snippet z<
+snippet <
 $\mathbb{Z}_{<0}$$0
 endsnippet
 
@@ -179,26 +200,31 @@ $\mathbb{Z}^{d}$$0
 endsnippet
 
 #}}}
-# Complex numbers{{{
-
-snippet cx
-$\mathbb{C}$$0
-endsnippet
-
-snippet cc
-$\mathbb{C}^2$$0
-endsnippet
-
-snippet cn
-$\mathbb{C}^{n}$$0
-endsnippet
-
-snippet cm
-$\mathbb{C}^{m}$$0
-endsnippet
-
-#}}}
 # Rationals{{{
+
+snippet qg
+$\mathbb{Q}_{\g 0}$$0
+endsnippet
+
+snippet ql
+$\mathbb{Q}_{\l 0}$$0
+endsnippet
+
+snippet qge
+$\mathbb{Q}_{\geq 0}$$0
+endsnippet
+
+snippet qle
+$\mathbb{Q}_{\leq 0}$$0
+endsnippet
+
+snippet >
+$\mathbb{Q}_{>0}$$0
+endsnippet
+
+snippet <
+$\mathbb{Q}_{<0}$$0
+endsnippet
 
 snippet qq
 $\mathbb{Q}^2$$0
@@ -212,6 +238,29 @@ snippet qm
 $\mathbb{Q}^{m}$$0
 endsnippet
 
+snippet qd
+$\mathbb{Q}^{d}$$0
+endsnippet
+
+#}}}
+# Complex numbers{{{
+
+snippet cc
+$\mathbb{C}^2$$0
+endsnippet
+
+snippet cn
+$\mathbb{C}^{n}$$0
+endsnippet
+
+snippet cm
+$\mathbb{C}^{m}$$0
+endsnippet
+
+snippet cd
+$\mathbb{C}^{d}$$0
+endsnippet
+
 #}}}
 # p-adic numbers{{{
 
@@ -219,7 +268,7 @@ snippet qp
 $\mathbb{Q}_p$$0
 endsnippet
 
-snippet qqp
+snippet qpp
 ${\mathbb{Q}_p}^2$$0
 endsnippet
 
@@ -235,6 +284,10 @@ snippet qpm
 ${\mathbb{Q}_p}^{m}$$0
 endsnippet
 
+snippet qpd
+${\mathbb{Q}_p}^{d}$$0
+endsnippet
+
 #}}}
 # p-adic Integers{{{
 
@@ -242,7 +295,7 @@ snippet zp
 $\mathbb{Z}_p$$0
 endsnippet
 
-snippet zzp
+snippet zpp
 ${\mathbb{Z}_p}^2$$0
 endsnippet
 
@@ -256,6 +309,73 @@ endsnippet
 
 snippet zpm
 ${\mathbb{Z}_p}^{m}$$0
+endsnippet
+
+snippet zpd
+${\mathbb{Z}_p}^{d}$$0
+endsnippet
+
+#}}}
+# Other fields{{{
+
+snippet kk
+$\mathbb{K}^2$$0
+endsnippet
+
+snippet kn
+$\mathbb{K}^{n}$$0
+endsnippet
+
+snippet km
+$\mathbb{K}^{m}$$0
+endsnippet
+
+snippet kd
+$\mathbb{K}^{d}$$0
+endsnippet
+
+
+snippet ks
+$K_S$$0
+endsnippet
+
+snippet kss
+${K_S}^2$$0
+endsnippet
+
+snippet ksn
+${K_S}^{n}$$0
+endsnippet
+
+snippet ksm
+${K_S}^{m}$$0
+endsnippet
+
+snippet ksd
+${K_S}^{d}$$0
+endsnippet
+
+#}}}
+# Ring of integers{{{
+
+snippet ok
+$\mathcal{O}$$0
+endsnippet
+
+snippet okk
+${\mathcal{O}_K}^2$$0
+endsnippet
+
+snippet okn
+${\mathcal{O}_K}^{n}$$0
+endsnippet
+
+snippet okm
+${\mathcal{O}_K}^{m}$$0
+endsnippet
+
+snippet okd
+${\mathcal{O}_K}^{d}$$0
 endsnippet
 
 #}}}
@@ -273,6 +393,10 @@ snippet am
 $\mathbb{A}^{m}$$0
 endsnippet
 
+snippet ad
+$\mathbb{A}^{d}$$0
+endsnippet
+
 #}}}
 # Tori{{{
 
@@ -286,6 +410,10 @@ endsnippet
 
 snippet tm
 $\mathbb{T}^{m}$$0
+endsnippet
+
+snippet td
+$\mathbb{T}^{d}$$0
 endsnippet
 
 #}}}
