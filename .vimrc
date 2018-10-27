@@ -412,7 +412,7 @@ let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
 " To get <> and write <localleader> easily
-inoremap <buffer> << <><esc>i
+inoremap <buffer> <> <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
 inoremap <buffer> <L <><esc>ileader<esc>la
 inoremap <buffer> <LL <><esc>ilocalleader<esc>la

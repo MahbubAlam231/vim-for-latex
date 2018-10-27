@@ -1206,6 +1206,8 @@ inoremap <buffer> ;4 \Bigg
 inoremap <buffer> <localleader>8 \infty
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
+inoremap <buffer> <localleader><< \ll
+inoremap <buffer> <localleader>>> \gg
 inoremap <buffer> n= \neq
 inoremap <buffer> == \equiv
 inoremap <buffer> <localleader>= \cong
