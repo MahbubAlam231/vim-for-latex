@@ -799,8 +799,8 @@ iunmap <buffer> ;4
 iunmap <buffer> <localleader>8
 iunmap <buffer> <localleader><
 iunmap <buffer> <localleader>>
-iunmap <buffer> <localleader><<
-iunmap <buffer> <localleader>>>
+iunmap <buffer> <<
+iunmap <buffer> >>
 iunmap <buffer> n=
 iunmap <buffer> ==
 iunmap <buffer> <localleader>=
