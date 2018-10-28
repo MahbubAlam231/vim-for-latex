@@ -177,7 +177,7 @@ iunmap <buffer> <localleader>qk
 " Complex numbers{{{
 
 iunmap <buffer> <localleader>c
-iunmap <buffer> <localleader>cc
+iunmap <buffer> <localleader>c.
 iunmap <buffer> <localleader>cn
 iunmap <buffer> <localleader>cm
 iunmap <buffer> <localleader>cd
