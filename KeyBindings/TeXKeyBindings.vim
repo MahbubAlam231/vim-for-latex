@@ -29,6 +29,7 @@ inoremap <buffer> 7 <esc>hi
 inoremap <buffer> 77 7
 inoremap <buffer> 8 <esc>i
 inoremap <buffer> 88 8
+inoremap <buffer> <localleader>8 \infty
 inoremap <buffer> 9 <esc>la
 inoremap <buffer> 99 9
 inoremap <buffer> 0 <esc>lla
@@ -93,8 +94,6 @@ inoremap <buffer> <localleader>NNL \bigcap\limits_{}^{}<esc>F}i
 "}}}
 " Math set symbols{{{
 "-------------------------------------------------------------------
-
-inoremap <buffer> ;l \ell
 
 " In math mode{{{
 "-------------------------------------------------------------------
@@ -178,7 +177,7 @@ inoremap <buffer> <localleader>qk \mathbb{Q}^{k}
 " Complex numbers{{{
 
 inoremap <buffer> <localleader>c \mathbb{C}
-inoremap <buffer> <localleader>cc \mathbb{C}^2
+inoremap <buffer> <localleader>c. \mathbb{C}^2
 inoremap <buffer> <localleader>cn \mathbb{C}^{n}
 inoremap <buffer> <localleader>cm \mathbb{C}^{m}
 inoremap <buffer> <localleader>cd \mathbb{C}^{d}
@@ -276,6 +275,11 @@ inoremap <buffer> a<Space><Space> $\mathbb{A}$
 inoremap <buffer> t<Space><Space> $\mathbb{T}$
 
 "}}}
+
+inoremap <buffer> <localleader>cc C_c()<esc>i
+inoremap <buffer> <localleader>ccx C_c(X)
+inoremap <buffer> <localleader>cci C_c^{\infty}()<esc>i
+inoremap <buffer> <localleader>ccix C_c^{\infty}(X)
 
 "}}}
 " Matrix Groups{{{
@@ -1258,7 +1262,6 @@ inoremap <buffer> ;1 \big
 inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
-inoremap <buffer> <localleader>8 \infty
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
 inoremap <buffer> << \ll
@@ -1309,6 +1312,8 @@ inoremap <buffer> <localleader>lmto \longmapsto
 "}}}
 " Others{{{
 "-------------------------------------------------------------------
+
+inoremap <buffer> ;l \ell
 
 inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a

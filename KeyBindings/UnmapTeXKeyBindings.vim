@@ -29,6 +29,7 @@ iunmap <buffer> 7
 iunmap <buffer> 77
 iunmap <buffer> 8
 iunmap <buffer> 88
+iunmap <buffer> <localleader>8
 iunmap <buffer> 9
 iunmap <buffer> 99
 iunmap <buffer> 0
@@ -93,8 +94,6 @@ iunmap <buffer> <localleader>NNL
 "}}}
 " Math set symbols{{{
 "-------------------------------------------------------------------
-
-iunmap <buffer> ;l
 
 " In math mode{{{
 "-------------------------------------------------------------------
@@ -276,6 +275,11 @@ iunmap <buffer> a<Space><Space>
 iunmap <buffer> t<Space><Space>
 
 "}}}
+
+iunmap <buffer> <localleader>cc
+iunmap <buffer> <localleader>ccx
+iunmap <buffer> <localleader>cci
+iunmap <buffer> <localleader>ccix
 
 "}}}
 " Matrix Groups{{{
@@ -847,7 +851,6 @@ iunmap <buffer> ;1
 iunmap <buffer> ;2
 iunmap <buffer> ;3
 iunmap <buffer> ;4
-iunmap <buffer> <localleader>8
 iunmap <buffer> <localleader><
 iunmap <buffer> <localleader>>
 iunmap <buffer> <<
@@ -898,6 +901,8 @@ iunmap <buffer> <localleader>lmto
 "}}}
 " Others{{{
 "-------------------------------------------------------------------
+
+iunmap <buffer> ;l
 
 iunmap <buffer> /,
 iunmap <buffer> <localleader>st
