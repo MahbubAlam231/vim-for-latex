@@ -123,6 +123,7 @@ inoremap <buffer> <localleader>rr \mathbb{R}^2
 inoremap <buffer> <localleader>rn \mathbb{R}^{n}
 inoremap <buffer> <localleader>rm \mathbb{R}^{m}
 inoremap <buffer> <localleader>rd \mathbb{R}^{d}
+inoremap <buffer> <localleader>rk \mathbb{R}^{k}
 inoremap <buffer> <localleader>rnk \mathbb{R}^{nk}
 inoremap <buffer> <localleader>rnl \mathbb{R}^{n\ell}
 inoremap <buffer> <localleader>rmn \mathbb{R}^{mn}
@@ -134,9 +135,10 @@ inoremap <buffer> <localleader>rnn \mathbb{R}^{n^2}
 
 inoremap <buffer> <localleader>n \mathbb{N}
 inoremap <buffer> <localleader>nn \mathbb{N}^2
-inoremap <buffer> <localleader>n. \mathbb{N}^{n}<esc>i
-inoremap <buffer> <localleader>nm \mathbb{N}^{m}<esc>i
-inoremap <buffer> <localleader>nd \mathbb{N}^{d}<esc>i
+inoremap <buffer> <localleader>n. \mathbb{N}^{n}
+inoremap <buffer> <localleader>nm \mathbb{N}^{m}
+inoremap <buffer> <localleader>nd \mathbb{N}^{d}
+inoremap <buffer> <localleader>nk \mathbb{N}^{k}
 
 "}}}
 " Integers{{{
@@ -154,6 +156,7 @@ inoremap <buffer> <localleader>zz \mathbb{Z}^2
 inoremap <buffer> <localleader>zn \mathbb{Z}^{n}
 inoremap <buffer> <localleader>zm \mathbb{Z}^{m}
 inoremap <buffer> <localleader>zd \mathbb{Z}^{d}
+inoremap <buffer> <localleader>zk \mathbb{Z}^{k}
 
 "}}}
 " Rational numbers{{{
@@ -169,6 +172,7 @@ inoremap <buffer> <localleader>qq \mathbb{Q}^2
 inoremap <buffer> <localleader>qn \mathbb{Q}^{n}
 inoremap <buffer> <localleader>qm \mathbb{Q}^{m}
 inoremap <buffer> <localleader>qd \mathbb{Q}^{d}
+inoremap <buffer> <localleader>qk \mathbb{Q}^{k}
 
 "}}}
 " Complex numbers{{{
@@ -178,6 +182,7 @@ inoremap <buffer> <localleader>cc \mathbb{C}^2
 inoremap <buffer> <localleader>cn \mathbb{C}^{n}
 inoremap <buffer> <localleader>cm \mathbb{C}^{m}
 inoremap <buffer> <localleader>cd \mathbb{C}^{d}
+inoremap <buffer> <localleader>ck \mathbb{C}^{k}
 
 "}}}
 " p-adic numbers{{{
@@ -188,6 +193,7 @@ inoremap <buffer> <localleader>qpqp {\mathbb{Q}_p}^2
 inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
 inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
 inoremap <buffer> <localleader>qpd {\mathbb{Q}_p}^{d}
+inoremap <buffer> <localleader>qpk {\mathbb{Q}_p}^{k}
 
 "}}}
 " p-adic Integers{{{
@@ -198,6 +204,7 @@ inoremap <buffer> <localleader>zpzp {\mathbb{Z}_p}^2
 inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
 inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
 inoremap <buffer> <localleader>zpd {\mathbb{Z}_p}^{d}
+inoremap <buffer> <localleader>zpk {\mathbb{Z}_p}^{k}
 
 "}}}
 " Other fields{{{
@@ -207,12 +214,14 @@ inoremap <buffer> <localleader>kk \mathbb{K}^2
 inoremap <buffer> <localleader>kn \mathbb{K}^{n}
 inoremap <buffer> <localleader>km \mathbb{K}^{m}
 inoremap <buffer> <localleader>kd \mathbb{K}^{d}
+inoremap <buffer> <localleader>k. \mathbb{K}^{k}
 
 inoremap <buffer> <localleader>ks K_S
 inoremap <buffer> <localleader>kss {K_S}^2
 inoremap <buffer> <localleader>ksn {K_S}^{n}
 inoremap <buffer> <localleader>ksm {K_S}^{m}
 inoremap <buffer> <localleader>ksd {K_S}^{d}
+inoremap <buffer> <localleader>ksk {K_S}^{k}
 
 "}}}
 " Ring of integers{{{
@@ -222,6 +231,7 @@ inoremap <buffer> <localleader>okk {\mathcal{O}_K}^2
 inoremap <buffer> <localleader>okn {\mathcal{O}_K}^{n}
 inoremap <buffer> <localleader>okm {\mathcal{O}_K}^{m}
 inoremap <buffer> <localleader>okd {\mathcal{O}_K}^{d}
+inoremap <buffer> <localleader>ok. {\mathcal{O}_K}^{k}
 
 "}}}
 " Adele{{{
@@ -231,6 +241,7 @@ inoremap <buffer> <localleader>aa \mathbb{A}^2
 inoremap <buffer> <localleader>an \mathbb{A}^{n}
 inoremap <buffer> <localleader>am \mathbb{A}^{m}
 inoremap <buffer> <localleader>ad \mathbb{A}^{d}
+inoremap <buffer> <localleader>ak \mathbb{A}^{k}
 
 "}}}
 " Tori{{{
@@ -240,6 +251,7 @@ inoremap <buffer> <localleader>tt \mathbb{T}^2
 inoremap <buffer> <localleader>tn \mathbb{T}^{n}
 inoremap <buffer> <localleader>tm \mathbb{T}^{m}
 inoremap <buffer> <localleader>td \mathbb{T}^{d}
+inoremap <buffer> <localleader>tk \mathbb{T}^{k}
 
 "}}}
 
