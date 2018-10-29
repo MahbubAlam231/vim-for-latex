@@ -5,9 +5,9 @@
 % Description   : {{CURSOR}}
 %-------------------------------------------------------------------
 
-\documentclass[11pt]{article}
+\documentclass[11pt]{article}%{{{
 
-% Usepackages
+% Usepackages%{{{
 %-------------------------------------------------------------------
 
 \usepackage{amsmath}
@@ -43,7 +43,8 @@
 
 \graphicspath{{Images/}}
 
-% Environments
+%}}}
+% Environments%{{{
 %-------------------------------------------------------------------
 
 \newtheorem{theorem}{Theorem}[section]
@@ -63,9 +64,17 @@
 % Unnumbered Environments
 %-------------------------------------------------------------------
 
+\theoremstyle{theorem}
+\newtheorem*{utheorem}{Theorem}
+\newtheorem*{ulemma}{Lemma}
+\newtheorem*{uproposition}{Proposition}
+\newtheorem*{ucorollary}{Corollary}
+
+\theoremstyle{remark}
 \newtheorem*{uremark}{Remark}
 
-% Newcommands
+%}}}
+% Newcommands%{{{
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
@@ -81,6 +90,8 @@
 %-------------------------------------------------------------------
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
+%}}}
+%}}}
 
 \begin{document}
 
@@ -92,10 +103,10 @@
 
 \maketitle
 
-% Abstract
+% Abstract%{{{
 \begin{abstract}
     <++>
-\end{abstract}
+\end{abstract}%}}}
 
 <++>
 

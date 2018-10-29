@@ -226,7 +226,7 @@ nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
 noremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
-    :execute ":normal! :setlocal foldmethod=manual\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d:delm a-d\<cr>zMgg:mkview\<cr>`fzvzz"
+    :execute ":normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
 
 endfunction
 
@@ -701,6 +701,7 @@ augroup SourceAllForTeXBuf
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
     autocmd BufNewFile,BufRead *.tex :call MatrixGroupToggle()
+    :setlocal foldmethod=marker
 augroup end
 
 "Sourcing everything for tex
@@ -708,6 +709,7 @@ function! SourceEverythingForTeX()
     :call Abbreviations("gen")
     :call Abbreviations("math")
     :call KeyBindings("tex")
+    :setlocal foldmethod=marker
 endfunction
 
 nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>

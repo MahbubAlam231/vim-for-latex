@@ -3363,216 +3363,241 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet chap "Chapter" b
-\chapter{$1}
+\chapter{$1}%{{{
+$2
+
+%}}}
+
 $0
 endsnippet
 
 snippet sec "Section" b
-\section{$1}
+\section{$1}%{{{
+$2
+
+%}}}
+
 $0
 endsnippet
 
 snippet ssec "Subsection" b
-\subsection{$1}
+\subsection{$1}%{{{
+$2
+
+%}}}
+
 $0
 endsnippet
 
 snippet sssec "Subsubsection" b
-\subsubsection{$1}
+\subsubsection{$1}%{{{
+$2
+
+%}}}
+
 $0
 endsnippet
 
 snippet not "Notation" b
-% Notation
+% Notation%{{{
 \begin{notation}
     $1
-\end{notation}
+\end{notation}%}}}
 
 $0
 endsnippet
 
 snippet def "Definition" b
-% Definition
+% Definition%{{{
 \begin{definition}$1\label{$2}
     $3
-\end{definition}
+\end{definition}%}}}
 
 $0
 endsnippet
 
 snippet udef "Unnumbered Definition" b
-% UnnumberedDefinition
+% UnnumberedDefinition%{{{
 \begin{udefinition}$1
     $2
-\end{udefinition}
+\end{udefinition}%}}}
 
 $0
 endsnippet
 
 snippet thm "Theorem" b
-% Theorem
+% Theorem%{{{
 \begin{theorem}$1\label{$2}
     $3
-\end{theorem}
-\begin{proof}
+\end{theorem}%}}}
+\begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet jthm "Just Theorem" b
-% Theorem
+% Theorem%{{{
 \begin{theorem}$1\label{$2}
     $3
-\end{theorem}
+\end{theorem}%}}}
 
 $0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
-% UnnumberedTheorem
+% UnnumberedTheorem%{{{
 \begin{utheorem}$1
     $2
-\end{utheorem}
+\end{utheorem}%}}}
 
 $0
 endsnippet
 
 snippet lem "Lemma" b
-% Lemma
+% Lemma%{{{
 \begin{lemma}$1\label{$2}
     $3
-\end{lemma}
-\begin{proof}
+\end{lemma}%}}}
+\begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet jlem "Just Lemma" b
-% Lemma
+% Lemma%{{{
 \begin{lemma}$1\label{$2}
     $3
-\end{lemma}
+\end{lemma}%}}}
 
 $0
 endsnippet
 
 snippet ulem "Unnumbered Lemma" b
-% UnnumberedLemma
+% UnnumberedLemma%{{{
 \begin{ulemma}$1
     $2
-\end{ulemma}
+\end{ulemma}%}}}
 
 $0
 endsnippet
 
 snippet prop "Proposition" b
-% Proposition
+% Proposition%{{{
 \begin{proposition}$1\label{$2}
     $3
-\end{proposition}
-\begin{proof}
+\end{proposition}%}}}
+\begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet jprop "Just Proposition" b
-% Proposition
+% Proposition%{{{
 \begin{proposition}$1\label{$2}
     $3
-\end{proposition}
+\end{proposition}%}}}
+
+$0
+endsnippet
+
+snippet uprop "Unnumbered Proposition" b
+% UnnumberedProposition%{{{
+\begin{uproposition}$1\label{$2}
+    $3
+\end{uproposition}%}}}
 
 $0
 endsnippet
 
 snippet cor "Corollary" b
-% Corollary
+% Corollary%{{{
 \begin{corollary}$1\label{$2}
     $3
-\end{corollary}
-\begin{proof}
+\end{corollary}%}}}
+\begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet jcor "Just Corollary" b
-% Corollary
+% Corollary%{{{
 \begin{corollary}$1\label{$2}
     $3
-\end{corollary}
+\end{corollary}%}}}
 
 $0
 endsnippet
 
 snippet ucor "Unnumbered Corollary" b
-% UnnumberedCorollary
+% UnnumberedCorollary%{{{
 \begin{ucorollary}$1
     $2
-\end{ucorollary}
+\end{ucorollary}%}}}
 
 $0
 endsnippet
 
 snippet prob "Problem" b
-% Problem
+% Problem%{{{
 \begin{problem}$1
     $2
-\end{problem}
-\begin{proof}
+\end{problem}%}}}
+\begin{proof}%{{{
     ${3:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet jprob "Just Problem" b
-% Problem
+% Problem%{{{
 \begin{problem}$1
     $2
-\end{problem}
+\end{problem}%}}}
 
 $0
 endsnippet
 
 snippet prf "Prf" b
-% Proof
+% Proof%{{{
 \begin{${1:prf}}
     ${2:\bfseries\textcolor{red}{Write a Proof}}
-\end{$1}
+\end{$1}%}}}
 
 $0
 endsnippet
 
 snippet proof "Proof" b
-% Proof
+% Proof%{{{
 \begin{proof}
     ${1:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}
+\end{proof}%}}}
 
 $0
 endsnippet
 
 snippet rem "Remark" b
-% Remark
+% Remark%{{{
 \begin{remark}\label{$1}
     $2
-\end{remark}
+\end{remark}%}}}
 
 $0
 endsnippet
 
 snippet urem "Unnumbered Remark" b
-% UnnumberedRemark
+% UnnumberedRemark%{{{
 \begin{uremark}
     $1
-\end{uremark}
+\end{uremark}%}}}
 
 $0
 endsnippet
@@ -4212,11 +4237,11 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet text "Text"
-\text{$1}$0
+\ \text{$1} \ $0
 endsnippet
 
 snippet te "Text"
-\text{$1}$0
+\ \text{$1} \ $0
 endsnippet
 
 snippet tb "Text boldfont"

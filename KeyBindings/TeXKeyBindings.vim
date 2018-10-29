@@ -1315,6 +1315,8 @@ inoremap <buffer> <localleader>lmto \longmapsto
 
 inoremap <buffer> ;l \ell
 
+inoremap <buffer> <localleader>em \emph{}<esc>i
+
 inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 inoremap <buffer> <localleader>op \operatorname{}<esc>i
@@ -1532,6 +1534,7 @@ let m = matchadd("MarkerGroup",'% Theorem')
 let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
 let m = matchadd("MarkerGroup",'% Lemma')
 let m = matchadd("MarkerGroup",'% Proposition')
+let m = matchadd("MarkerGroup",'% UnnumberedProposition')
 let m = matchadd("MarkerGroup",'% Corollary')
 let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
 let m = matchadd("MarkerGroup",'% Problem')
