@@ -18,18 +18,19 @@ Download `MahbubAlam231/vim-for-latex` form GitHub.
 
 You should consider swapping `escape` and `caps` key on your device, it makes
 it more convenient to press `escape` key.
-For Linux this you can do this by adding the line `setxkbmap -option "caps:swapescape"`
-at the end of your `.bashrc`, this will swap `escape` and `caps` key on your computer
-once you open VIM.
-To make this change permanent you can put the same line at the end of your `~/.profile`
-file, this will swap `escape` and `caps` key every time you turn on your computer.
+For Linux this you can do this by adding the line `setxkbmap -option
+"caps:swapescape"` at the end of your `.bashrc`, this will swap `escape` and
+`caps` key on your computer once you open VIM.
+To make this change permanent you can put the same line at the end of your
+`~/.profile` file, this will swap `escape` and `caps` key every time you turn
+on your computer.
 
 #### For Linux
 
 - Install VIM from command line using `sudo apt install vim`;
-- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
-first install `git` from command line using `sudo apt install git`, then run
-`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
+- Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation
+guide; first install `git` from command line using `sudo apt install git`, then
+run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
 - Put `.vimrc` in your home directory;
 - Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf)
 using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
