@@ -10,6 +10,7 @@ Here uploaded are,
   [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
   - A 'universal' latex template (`tex.template`).
+- A folding technique using `foldmethod=marker`.
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
@@ -36,7 +37,7 @@ and then `~/.fzf/install` from terminal (enable auto-completion and key bindings
 update shell configuration files while running `~/.fzf/install`), and add the line
 `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`;
 - Put `Abbreviations`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
-- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`; and
+- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template`
 in `~/.vim/bundle/vim-templates/templates`.
 
