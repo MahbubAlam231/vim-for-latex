@@ -177,7 +177,7 @@ iunmap <buffer> <localleader>qk
 " Complex numbers{{{
 
 iunmap <buffer> <localleader>c
-iunmap <buffer> <localleader>c.
+iunmap <buffer> <localleader>cc
 iunmap <buffer> <localleader>cn
 iunmap <buffer> <localleader>cm
 iunmap <buffer> <localleader>cd
@@ -276,10 +276,10 @@ iunmap <buffer> t<Space><Space>
 
 "}}}
 
-iunmap <buffer> <localleader>cc
-iunmap <buffer> <localleader>ccx
-iunmap <buffer> <localleader>cci
-iunmap <buffer> <localleader>ccix
+iunmap <buffer> <localleader>Cc
+iunmap <buffer> <localleader>Ccx
+iunmap <buffer> <localleader>Cci
+iunmap <buffer> <localleader>Ccix
 
 "}}}
 " Matrix Groups{{{
@@ -295,8 +295,10 @@ iunmap <buffer> <leader>mm
 iunmap <buffer> <leader>md
 iunmap <buffer> <leader>m2
 iunmap <buffer> <leader>m3
+iunmap <buffer> <leader>m.
 
 iunmap <buffer> <localleader>mmn
+iunmap <buffer> <localleader>m..
 iunmap <buffer> <localleader>m
 
 iunmap <buffer> <localleader>mn
@@ -304,83 +306,106 @@ iunmap <buffer> <localleader>mm
 iunmap <buffer> <localleader>md
 iunmap <buffer> <localleader>m2
 iunmap <buffer> <localleader>m3
+iunmap <buffer> <localleader>m.
 
 iunmap <buffer> <localleader>mmnz
+iunmap <buffer> <localleader>m..z
 iunmap <buffer> <localleader>mnz
 iunmap <buffer> <localleader>mmz
 iunmap <buffer> <localleader>mdz
 iunmap <buffer> <localleader>m2z
 iunmap <buffer> <localleader>m3z
+iunmap <buffer> <localleader>m.z
 
 iunmap <buffer> <localleader>mmnq
+iunmap <buffer> <localleader>m..q
 iunmap <buffer> <localleader>mnq
 iunmap <buffer> <localleader>mmq
 iunmap <buffer> <localleader>mdq
 iunmap <buffer> <localleader>m2q
 iunmap <buffer> <localleader>m3q
+iunmap <buffer> <localleader>m.q
 
 iunmap <buffer> <localleader>mmnr
+iunmap <buffer> <localleader>m..r
 iunmap <buffer> <localleader>mnr
 iunmap <buffer> <localleader>mmr
 iunmap <buffer> <localleader>mdr
 iunmap <buffer> <localleader>m2r
 iunmap <buffer> <localleader>m3r
+iunmap <buffer> <localleader>m.r
 
 iunmap <buffer> <localleader>mmnc
+iunmap <buffer> <localleader>m..c
 iunmap <buffer> <localleader>mnc
 iunmap <buffer> <localleader>mmc
 iunmap <buffer> <localleader>mdc
 iunmap <buffer> <localleader>m2c
 iunmap <buffer> <localleader>m3c
+iunmap <buffer> <localleader>m.c
 
 iunmap <buffer> <localleader>mmnzp
+iunmap <buffer> <localleader>m..zp
 iunmap <buffer> <localleader>mnzp
 iunmap <buffer> <localleader>mmzp
 iunmap <buffer> <localleader>mdzp
 iunmap <buffer> <localleader>m2zp
 iunmap <buffer> <localleader>m3zp
+iunmap <buffer> <localleader>m.zp
 
 iunmap <buffer> <localleader>mmnqp
+iunmap <buffer> <localleader>m..qp
 iunmap <buffer> <localleader>mnqp
 iunmap <buffer> <localleader>mmqp
 iunmap <buffer> <localleader>mdqp
 iunmap <buffer> <localleader>m2qp
 iunmap <buffer> <localleader>m3qp
+iunmap <buffer> <localleader>m.qp
 
 iunmap <buffer> <localleader>mmnk
+iunmap <buffer> <localleader>m..k
 iunmap <buffer> <localleader>mnk
 iunmap <buffer> <localleader>mmk
 iunmap <buffer> <localleader>mdk
 iunmap <buffer> <localleader>m2k
 iunmap <buffer> <localleader>m3k
+iunmap <buffer> <localleader>m.k
 
 iunmap <buffer> <localleader>mmna
+iunmap <buffer> <localleader>m..a
 iunmap <buffer> <localleader>mna
 iunmap <buffer> <localleader>mma
 iunmap <buffer> <localleader>mda
 iunmap <buffer> <localleader>m2a
 iunmap <buffer> <localleader>m3a
+iunmap <buffer> <localleader>m.a
 
 iunmap <buffer> <localleader>mmnok
+iunmap <buffer> <localleader>m..ok
 iunmap <buffer> <localleader>mnok
 iunmap <buffer> <localleader>mmok
 iunmap <buffer> <localleader>mdok
 iunmap <buffer> <localleader>m2ok
 iunmap <buffer> <localleader>m3ok
+iunmap <buffer> <localleader>m.ok
 
 iunmap <buffer> <localleader>mmnjk
+iunmap <buffer> <localleader>m..jk
 iunmap <buffer> <localleader>mnjk
 iunmap <buffer> <localleader>mmjk
 iunmap <buffer> <localleader>mdjk
 iunmap <buffer> <localleader>m2jk
 iunmap <buffer> <localleader>m3jk
+iunmap <buffer> <localleader>m.jk
 
 iunmap <buffer> <localleader>mmnks
+iunmap <buffer> <localleader>m..ks
 iunmap <buffer> <localleader>mnks
 iunmap <buffer> <localleader>mmks
 iunmap <buffer> <localleader>mdks
 iunmap <buffer> <localleader>m2ks
 iunmap <buffer> <localleader>m3ks
+iunmap <buffer> <localleader>m.ks
 
 "}}}
 " GL{{{
@@ -391,6 +416,7 @@ iunmap <buffer> <leader>glm
 iunmap <buffer> <leader>gld
 iunmap <buffer> <leader>gl2
 iunmap <buffer> <leader>gl3
+iunmap <buffer> <leader>gl.
 
 iunmap <buffer> <localleader>gl
 
@@ -399,92 +425,108 @@ iunmap <buffer> <localleader>glm
 iunmap <buffer> <localleader>gld
 iunmap <buffer> <localleader>gl2
 iunmap <buffer> <localleader>gl3
+iunmap <buffer> <localleader>gl.
 iunmap <buffer> <localleader>glpn
 iunmap <buffer> <localleader>glpm
 iunmap <buffer> <localleader>glpd
 iunmap <buffer> <localleader>glp2
 iunmap <buffer> <localleader>glp3
+iunmap <buffer> <localleader>glp.
 
 iunmap <buffer> <localleader>glnz
 iunmap <buffer> <localleader>glmz
 iunmap <buffer> <localleader>gldz
 iunmap <buffer> <localleader>gl2z
 iunmap <buffer> <localleader>gl3z
+iunmap <buffer> <localleader>gl.z
 iunmap <buffer> <localleader>glpnz
 iunmap <buffer> <localleader>glpmz
 iunmap <buffer> <localleader>glpdz
 iunmap <buffer> <localleader>glp2z
 iunmap <buffer> <localleader>glp3z
+iunmap <buffer> <localleader>glp.z
 
 iunmap <buffer> <localleader>glnq
 iunmap <buffer> <localleader>glmq
 iunmap <buffer> <localleader>gldq
 iunmap <buffer> <localleader>gl2q
 iunmap <buffer> <localleader>gl3q
+iunmap <buffer> <localleader>gl.q
 iunmap <buffer> <localleader>glpnq
 iunmap <buffer> <localleader>glpmq
 iunmap <buffer> <localleader>glpdq
 iunmap <buffer> <localleader>glp2q
 iunmap <buffer> <localleader>glp3q
+iunmap <buffer> <localleader>glp.q
 
 iunmap <buffer> <localleader>glnr
 iunmap <buffer> <localleader>glmr
 iunmap <buffer> <localleader>gldr
 iunmap <buffer> <localleader>gl2r
 iunmap <buffer> <localleader>gl3r
+iunmap <buffer> <localleader>gl.r
 iunmap <buffer> <localleader>glpnr
 iunmap <buffer> <localleader>glpmr
 iunmap <buffer> <localleader>glpdr
 iunmap <buffer> <localleader>glp2r
 iunmap <buffer> <localleader>glp3r
+iunmap <buffer> <localleader>glp.r
 
 iunmap <buffer> <localleader>glnc
 iunmap <buffer> <localleader>glmc
 iunmap <buffer> <localleader>gldc
 iunmap <buffer> <localleader>gl2c
 iunmap <buffer> <localleader>gl3c
+iunmap <buffer> <localleader>gl.c
 
 iunmap <buffer> <localleader>glnzp
 iunmap <buffer> <localleader>glmzp
 iunmap <buffer> <localleader>gldzp
 iunmap <buffer> <localleader>gl2zp
 iunmap <buffer> <localleader>gl3zp
+iunmap <buffer> <localleader>gl.zp
 
 iunmap <buffer> <localleader>glnqp
 iunmap <buffer> <localleader>glmqp
 iunmap <buffer> <localleader>gldqp
 iunmap <buffer> <localleader>gl2qp
 iunmap <buffer> <localleader>gl3qp
+iunmap <buffer> <localleader>gl.qp
 
 iunmap <buffer> <localleader>glnk
 iunmap <buffer> <localleader>glmk
 iunmap <buffer> <localleader>gldk
 iunmap <buffer> <localleader>gl2k
 iunmap <buffer> <localleader>gl3k
+iunmap <buffer> <localleader>gl.k
 
 iunmap <buffer> <localleader>glna
 iunmap <buffer> <localleader>glma
 iunmap <buffer> <localleader>glda
 iunmap <buffer> <localleader>gl2a
 iunmap <buffer> <localleader>gl3a
+iunmap <buffer> <localleader>gl.a
 
 iunmap <buffer> <localleader>glnok
 iunmap <buffer> <localleader>glmok
 iunmap <buffer> <localleader>gldok
 iunmap <buffer> <localleader>gl2ok
 iunmap <buffer> <localleader>gl3ok
+iunmap <buffer> <localleader>gl.ok
 
 iunmap <buffer> <localleader>glnjk
 iunmap <buffer> <localleader>glmjk
 iunmap <buffer> <localleader>gldjk
 iunmap <buffer> <localleader>gl2jk
 iunmap <buffer> <localleader>gl3jk
+iunmap <buffer> <localleader>gl.jk
 
 iunmap <buffer> <localleader>glnks
 iunmap <buffer> <localleader>glmks
 iunmap <buffer> <localleader>gldks
 iunmap <buffer> <localleader>gl2ks
 iunmap <buffer> <localleader>gl3ks
+iunmap <buffer> <localleader>gl.ks
 
 "}}}
 " SL{{{
@@ -495,6 +537,7 @@ iunmap <buffer> <leader>slm
 iunmap <buffer> <leader>sld
 iunmap <buffer> <leader>sl2
 iunmap <buffer> <leader>sl3
+iunmap <buffer> <leader>sl.
 
 iunmap <buffer> <localleader>sl
 
@@ -503,96 +546,112 @@ iunmap <buffer> <localleader>slm
 iunmap <buffer> <localleader>sld
 iunmap <buffer> <localleader>sl2
 iunmap <buffer> <localleader>sl3
+iunmap <buffer> <localleader>sl.
 
 iunmap <buffer> <localleader>slnz
 iunmap <buffer> <localleader>slmz
 iunmap <buffer> <localleader>sldz
 iunmap <buffer> <localleader>sl2z
 iunmap <buffer> <localleader>sl3z
+iunmap <buffer> <localleader>sl.z
 
 iunmap <buffer> <localleader>slnq
 iunmap <buffer> <localleader>slmq
 iunmap <buffer> <localleader>sldq
 iunmap <buffer> <localleader>sl2q
 iunmap <buffer> <localleader>sl3q
+iunmap <buffer> <localleader>sl.q
 
 iunmap <buffer> <localleader>slnr
 iunmap <buffer> <localleader>slmr
 iunmap <buffer> <localleader>sldr
 iunmap <buffer> <localleader>sl2r
 iunmap <buffer> <localleader>sl3r
+iunmap <buffer> <localleader>sl.r
 
 iunmap <buffer> <localleader>slnc
 iunmap <buffer> <localleader>slmc
 iunmap <buffer> <localleader>sldc
 iunmap <buffer> <localleader>sl2c
 iunmap <buffer> <localleader>sl3c
+iunmap <buffer> <localleader>sl.c
 
 iunmap <buffer> <localleader>slnzp
 iunmap <buffer> <localleader>slmzp
 iunmap <buffer> <localleader>sldzp
 iunmap <buffer> <localleader>sl2zp
 iunmap <buffer> <localleader>sl3zp
+iunmap <buffer> <localleader>sl.zp
 
 iunmap <buffer> <localleader>slnqp
 iunmap <buffer> <localleader>slmqp
 iunmap <buffer> <localleader>sldqp
 iunmap <buffer> <localleader>sl2qp
 iunmap <buffer> <localleader>sl3qp
+iunmap <buffer> <localleader>sl.qp
 
 iunmap <buffer> <localleader>slnk
 iunmap <buffer> <localleader>slmk
 iunmap <buffer> <localleader>sldk
 iunmap <buffer> <localleader>sl2k
 iunmap <buffer> <localleader>sl3k
+iunmap <buffer> <localleader>sl.k
 
 iunmap <buffer> <localleader>slna
 iunmap <buffer> <localleader>slma
 iunmap <buffer> <localleader>slda
 iunmap <buffer> <localleader>sl2a
 iunmap <buffer> <localleader>sl3a
+iunmap <buffer> <localleader>sl.a
 
 iunmap <buffer> <localleader>slnok
 iunmap <buffer> <localleader>slmok
 iunmap <buffer> <localleader>sldok
 iunmap <buffer> <localleader>sl2ok
 iunmap <buffer> <localleader>sl3ok
+iunmap <buffer> <localleader>sl.ok
 
 iunmap <buffer> <localleader>slnjk
 iunmap <buffer> <localleader>slmjk
 iunmap <buffer> <localleader>sldjk
 iunmap <buffer> <localleader>sl2jk
 iunmap <buffer> <localleader>sl3jk
+iunmap <buffer> <localleader>sl.jk
 
 iunmap <buffer> <localleader>slnks
 iunmap <buffer> <localleader>slmks
 iunmap <buffer> <localleader>sldks
 iunmap <buffer> <localleader>sl2ks
 iunmap <buffer> <localleader>sl3ks
+iunmap <buffer> <localleader>sl.ks
 
 iunmap <buffer> <localleader>slnrz
 iunmap <buffer> <localleader>slmrz
 iunmap <buffer> <localleader>sldrz
 iunmap <buffer> <localleader>sl2rz
 iunmap <buffer> <localleader>sl3rz
+iunmap <buffer> <localleader>sl.rz
 
 iunmap <buffer> <localleader>slnzr
 iunmap <buffer> <localleader>slmzr
 iunmap <buffer> <localleader>sldzr
 iunmap <buffer> <localleader>sl2zr
 iunmap <buffer> <localleader>sl3zr
+iunmap <buffer> <localleader>sl.zr
 
 iunmap <buffer> <localleader>slnksok
 iunmap <buffer> <localleader>slmksok
 iunmap <buffer> <localleader>sldksok
 iunmap <buffer> <localleader>sl2ksok
 iunmap <buffer> <localleader>sl3ksok
+iunmap <buffer> <localleader>sl.ksok
 
 iunmap <buffer> <localleader>slnokks
 iunmap <buffer> <localleader>slmokks
 iunmap <buffer> <localleader>sldokks
 iunmap <buffer> <localleader>sl2okks
 iunmap <buffer> <localleader>sl3okks
+iunmap <buffer> <localleader>sl.okks
 
 "}}}
 " PSL{{{
@@ -603,6 +662,7 @@ iunmap <buffer> <leader>pslm
 iunmap <buffer> <leader>psld
 iunmap <buffer> <leader>psl2
 iunmap <buffer> <leader>psl3
+iunmap <buffer> <leader>psl.
 
 iunmap <buffer> <localleader>psl
 
@@ -611,12 +671,14 @@ iunmap <buffer> <localleader>pslm
 iunmap <buffer> <localleader>psld
 iunmap <buffer> <localleader>psl2
 iunmap <buffer> <localleader>psl3
+iunmap <buffer> <localleader>psl.
 
 iunmap <buffer> <localleader>pslnr
 iunmap <buffer> <localleader>pslmr
 iunmap <buffer> <localleader>psldr
 iunmap <buffer> <localleader>psl2r
 iunmap <buffer> <localleader>psl3r
+iunmap <buffer> <localleader>psl.r
 
 "}}}
 " O{{{
@@ -627,6 +689,7 @@ iunmap <buffer> <leader>om
 iunmap <buffer> <leader>od
 iunmap <buffer> <leader>o2
 iunmap <buffer> <leader>o3
+iunmap <buffer> <leader>o.
 
 iunmap <buffer> <localleader>o
 
@@ -635,18 +698,21 @@ iunmap <buffer> <localleader>om
 iunmap <buffer> <localleader>od
 iunmap <buffer> <localleader>o2
 iunmap <buffer> <localleader>o3
+iunmap <buffer> <localleader>o.
 
 iunmap <buffer> <localleader>onr
 iunmap <buffer> <localleader>omr
 iunmap <buffer> <localleader>odr
 iunmap <buffer> <localleader>o2r
 iunmap <buffer> <localleader>o3r
+iunmap <buffer> <localleader>o.r
 
 iunmap <buffer> <localleader>onc
 iunmap <buffer> <localleader>omc
 iunmap <buffer> <localleader>odc
 iunmap <buffer> <localleader>o2c
 iunmap <buffer> <localleader>o3c
+iunmap <buffer> <localleader>o.c
 
 "}}}
 " SO{{{
@@ -657,6 +723,7 @@ iunmap <buffer> <leader>som
 iunmap <buffer> <leader>sod
 iunmap <buffer> <leader>so2
 iunmap <buffer> <leader>so3
+iunmap <buffer> <leader>so.
 
 iunmap <buffer> <localleader>so
 
@@ -665,18 +732,21 @@ iunmap <buffer> <localleader>som
 iunmap <buffer> <localleader>sod
 iunmap <buffer> <localleader>so2
 iunmap <buffer> <localleader>so3
+iunmap <buffer> <localleader>so.
 
 iunmap <buffer> <localleader>sonr
 iunmap <buffer> <localleader>somr
 iunmap <buffer> <localleader>sodr
 iunmap <buffer> <localleader>so2r
 iunmap <buffer> <localleader>so3r
+iunmap <buffer> <localleader>so.r
 
 iunmap <buffer> <localleader>sonc
 iunmap <buffer> <localleader>somc
 iunmap <buffer> <localleader>sodc
 iunmap <buffer> <localleader>so2c
 iunmap <buffer> <localleader>so3c
+iunmap <buffer> <localleader>so.c
 
 "}}}
 " U{{{
@@ -687,6 +757,7 @@ iunmap <buffer> <leader>um
 iunmap <buffer> <leader>ud
 iunmap <buffer> <leader>u2
 iunmap <buffer> <leader>u3
+iunmap <buffer> <leader>u.
 
 iunmap <buffer> <localleader>u
 
@@ -695,12 +766,14 @@ iunmap <buffer> <localleader>um
 iunmap <buffer> <localleader>ud
 iunmap <buffer> <localleader>u2
 iunmap <buffer> <localleader>u3
+iunmap <buffer> <localleader>u.
 
 iunmap <buffer> <localleader>unc
 iunmap <buffer> <localleader>umc
 iunmap <buffer> <localleader>udc
 iunmap <buffer> <localleader>u2c
 iunmap <buffer> <localleader>u3c
+iunmap <buffer> <localleader>u.c
 
 "}}}
 " SU{{{
@@ -711,6 +784,7 @@ iunmap <buffer> <leader>sum
 iunmap <buffer> <leader>sud
 iunmap <buffer> <leader>su2
 iunmap <buffer> <leader>su3
+iunmap <buffer> <leader>su.
 
 iunmap <buffer> <localleader>su
 
@@ -719,12 +793,14 @@ iunmap <buffer> <localleader>sum
 iunmap <buffer> <localleader>sud
 iunmap <buffer> <localleader>su2
 iunmap <buffer> <localleader>su3
+iunmap <buffer> <localleader>su.
 
 iunmap <buffer> <localleader>sunc
 iunmap <buffer> <localleader>sumc
 iunmap <buffer> <localleader>sudc
 iunmap <buffer> <localleader>su2c
 iunmap <buffer> <localleader>su3c
+iunmap <buffer> <localleader>su.c
 
 "}}}
 
@@ -737,24 +813,28 @@ iunmap <buffer> <localleader>glmp
 iunmap <buffer> <localleader>gldp
 iunmap <buffer> <localleader>gl2p
 iunmap <buffer> <localleader>gl3p
+iunmap <buffer> <localleader>gl.p
 
 iunmap <buffer> <localleader>glnpz
 iunmap <buffer> <localleader>glmpz
 iunmap <buffer> <localleader>gldpz
 iunmap <buffer> <localleader>gl2pz
 iunmap <buffer> <localleader>gl3pz
+iunmap <buffer> <localleader>gl.pz
 
 iunmap <buffer> <localleader>glnpq
 iunmap <buffer> <localleader>glmpq
 iunmap <buffer> <localleader>gldpq
 iunmap <buffer> <localleader>gl2pq
 iunmap <buffer> <localleader>gl3pq
+iunmap <buffer> <localleader>gl.pq
 
 iunmap <buffer> <localleader>glnpr
 iunmap <buffer> <localleader>glmpr
 iunmap <buffer> <localleader>gldpr
 iunmap <buffer> <localleader>gl2pr
 iunmap <buffer> <localleader>gl3pr
+iunmap <buffer> <localleader>gl.pr
 
 "}}}
 
@@ -789,6 +869,8 @@ iunmap <buffer> <localleader>_
 
 iunmap <buffer> ^_
 iunmap <buffer> _^
+iunmap <buffer> ^__
+iunmap <buffer> _^^
 
 "}}}
 " lim, int, sum, operators{{{
