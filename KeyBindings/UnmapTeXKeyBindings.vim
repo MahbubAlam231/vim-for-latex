@@ -111,8 +111,6 @@ iunmap <buffer> <localleader>mi
 "}}}
 " Real numbers{{{
 
-iunmap <buffer> <localleader>rg
-iunmap <buffer> <localleader>rl
 iunmap <buffer> <localleader>rge
 iunmap <buffer> <localleader>rle
 iunmap <buffer> <localleader>r>
@@ -128,6 +126,7 @@ iunmap <buffer> <localleader>rnl
 iunmap <buffer> <localleader>rmn
 iunmap <buffer> <localleader>rnm
 iunmap <buffer> <localleader>rnn
+iunmap <buffer> <localleader>rx
 
 "}}}
 " Natural numbers{{{
@@ -142,8 +141,6 @@ iunmap <buffer> <localleader>nk
 "}}}
 " Integers{{{
 
-iunmap <buffer> <localleader>zg
-iunmap <buffer> <localleader>zl
 iunmap <buffer> <localleader>zge
 iunmap <buffer> <localleader>zle
 iunmap <buffer> <localleader>z>
@@ -156,12 +153,11 @@ iunmap <buffer> <localleader>zn
 iunmap <buffer> <localleader>zm
 iunmap <buffer> <localleader>zd
 iunmap <buffer> <localleader>zk
+iunmap <buffer> <localleader>zx
 
 "}}}
 " Rational numbers{{{
 
-iunmap <buffer> <localleader>qg
-iunmap <buffer> <localleader>ql
 iunmap <buffer> <localleader>qge
 iunmap <buffer> <localleader>qle
 iunmap <buffer> <localleader>q>
@@ -172,6 +168,7 @@ iunmap <buffer> <localleader>qn
 iunmap <buffer> <localleader>qm
 iunmap <buffer> <localleader>qd
 iunmap <buffer> <localleader>qk
+iunmap <buffer> <localleader>qx
 
 "}}}
 " Complex numbers{{{
@@ -182,6 +179,7 @@ iunmap <buffer> <localleader>cn
 iunmap <buffer> <localleader>cm
 iunmap <buffer> <localleader>cd
 iunmap <buffer> <localleader>ck
+iunmap <buffer> <localleader>cx
 
 "}}}
 " p-adic numbers{{{
@@ -193,6 +191,7 @@ iunmap <buffer> <localleader>qpn
 iunmap <buffer> <localleader>qpm
 iunmap <buffer> <localleader>qpd
 iunmap <buffer> <localleader>qpk
+iunmap <buffer> <localleader>qpx
 
 "}}}
 " p-adic Integers{{{
@@ -204,6 +203,7 @@ iunmap <buffer> <localleader>zpn
 iunmap <buffer> <localleader>zpm
 iunmap <buffer> <localleader>zpd
 iunmap <buffer> <localleader>zpk
+iunmap <buffer> <localleader>zpx
 
 "}}}
 " Other fields{{{
@@ -214,6 +214,7 @@ iunmap <buffer> <localleader>kn
 iunmap <buffer> <localleader>km
 iunmap <buffer> <localleader>kd
 iunmap <buffer> <localleader>k.
+iunmap <buffer> <localleader>kx
 
 iunmap <buffer> <localleader>ks
 iunmap <buffer> <localleader>kss
@@ -221,6 +222,7 @@ iunmap <buffer> <localleader>ksn
 iunmap <buffer> <localleader>ksm
 iunmap <buffer> <localleader>ksd
 iunmap <buffer> <localleader>ksk
+iunmap <buffer> <localleader>ksx
 
 "}}}
 " Ring of integers{{{
@@ -231,6 +233,7 @@ iunmap <buffer> <localleader>okn
 iunmap <buffer> <localleader>okm
 iunmap <buffer> <localleader>okd
 iunmap <buffer> <localleader>ok.
+iunmap <buffer> <localleader>okx
 
 "}}}
 " Adele{{{

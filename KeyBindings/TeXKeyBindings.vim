@@ -111,8 +111,6 @@ inoremap <buffer> <localleader>mi \mathit{}<esc>i
 "}}}
 " Real numbers{{{
 
-inoremap <buffer> <localleader>rg \mathbb{R}_{\g 0}
-inoremap <buffer> <localleader>rl \mathbb{R}_{\l 0}
 inoremap <buffer> <localleader>rge \mathbb{R}_{\geq 0}
 inoremap <buffer> <localleader>rle \mathbb{R}_{\leq 0}
 inoremap <buffer> <localleader>r> \mathbb{R}_{>0}
@@ -128,6 +126,7 @@ inoremap <buffer> <localleader>rnl \mathbb{R}^{n\ell}
 inoremap <buffer> <localleader>rmn \mathbb{R}^{mn}
 inoremap <buffer> <localleader>rnm \mathbb{R}^{nm}
 inoremap <buffer> <localleader>rnn \mathbb{R}^{n^2}
+inoremap <buffer> <localleader>rx \mathbb{R}^{\times}
 
 "}}}
 " Natural numbers{{{
@@ -142,8 +141,6 @@ inoremap <buffer> <localleader>nk \mathbb{N}^{k}
 "}}}
 " Integers{{{
 
-inoremap <buffer> <localleader>zg \mathbb{Z}_{\g 0}
-inoremap <buffer> <localleader>zl \mathbb{Z}_{\l 0}
 inoremap <buffer> <localleader>zge \mathbb{Z}_{\geq 0}
 inoremap <buffer> <localleader>zle \mathbb{Z}_{\leq 0}
 inoremap <buffer> <localleader>z> \mathbb{Z}_{>0}
@@ -156,12 +153,11 @@ inoremap <buffer> <localleader>zn \mathbb{Z}^{n}
 inoremap <buffer> <localleader>zm \mathbb{Z}^{m}
 inoremap <buffer> <localleader>zd \mathbb{Z}^{d}
 inoremap <buffer> <localleader>zk \mathbb{Z}^{k}
+inoremap <buffer> <localleader>zx \mathbb{Z}^{\times}
 
 "}}}
 " Rational numbers{{{
 
-inoremap <buffer> <localleader>qg \mathbb{Q}_{\g 0}
-inoremap <buffer> <localleader>ql \mathbb{Q}_{\l 0}
 inoremap <buffer> <localleader>qge \mathbb{Q}_{\geq 0}
 inoremap <buffer> <localleader>qle \mathbb{Q}_{\leq 0}
 inoremap <buffer> <localleader>q> \mathbb{Q}_{>0}
@@ -172,6 +168,7 @@ inoremap <buffer> <localleader>qn \mathbb{Q}^{n}
 inoremap <buffer> <localleader>qm \mathbb{Q}^{m}
 inoremap <buffer> <localleader>qd \mathbb{Q}^{d}
 inoremap <buffer> <localleader>qk \mathbb{Q}^{k}
+inoremap <buffer> <localleader>qx \mathbb{Q}^{\times}
 
 "}}}
 " Complex numbers{{{
@@ -182,6 +179,7 @@ inoremap <buffer> <localleader>cn \mathbb{C}^{n}
 inoremap <buffer> <localleader>cm \mathbb{C}^{m}
 inoremap <buffer> <localleader>cd \mathbb{C}^{d}
 inoremap <buffer> <localleader>ck \mathbb{C}^{k}
+inoremap <buffer> <localleader>cx \mathbb{C}^{\times}
 
 "}}}
 " p-adic numbers{{{
@@ -193,6 +191,7 @@ inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
 inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
 inoremap <buffer> <localleader>qpd {\mathbb{Q}_p}^{d}
 inoremap <buffer> <localleader>qpk {\mathbb{Q}_p}^{k}
+inoremap <buffer> <localleader>qpx {\mathbb{Q}_p}^{\times}
 
 "}}}
 " p-adic Integers{{{
@@ -204,6 +203,7 @@ inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
 inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
 inoremap <buffer> <localleader>zpd {\mathbb{Z}_p}^{d}
 inoremap <buffer> <localleader>zpk {\mathbb{Z}_p}^{k}
+inoremap <buffer> <localleader>zpx {\mathbb{Z}_p}^{\times}
 
 "}}}
 " Other fields{{{
@@ -214,6 +214,7 @@ inoremap <buffer> <localleader>kn \mathbb{K}^{n}
 inoremap <buffer> <localleader>km \mathbb{K}^{m}
 inoremap <buffer> <localleader>kd \mathbb{K}^{d}
 inoremap <buffer> <localleader>k. \mathbb{K}^{k}
+inoremap <buffer> <localleader>kx \mathbb{K}^{\times}
 
 inoremap <buffer> <localleader>ks K_S
 inoremap <buffer> <localleader>kss {K_S}^2
@@ -221,16 +222,18 @@ inoremap <buffer> <localleader>ksn {K_S}^{n}
 inoremap <buffer> <localleader>ksm {K_S}^{m}
 inoremap <buffer> <localleader>ksd {K_S}^{d}
 inoremap <buffer> <localleader>ksk {K_S}^{k}
+inoremap <buffer> <localleader>ksx {K_S}^{\times}
 
 "}}}
 " Ring of integers{{{
 
-inoremap <buffer> <localleader>ok \mathcal{O}
+inoremap <buffer> <localleader>ok \mathcal{O}_K
 inoremap <buffer> <localleader>okk {\mathcal{O}_K}^2
 inoremap <buffer> <localleader>okn {\mathcal{O}_K}^{n}
 inoremap <buffer> <localleader>okm {\mathcal{O}_K}^{m}
 inoremap <buffer> <localleader>okd {\mathcal{O}_K}^{d}
 inoremap <buffer> <localleader>ok. {\mathcal{O}_K}^{k}
+inoremap <buffer> <localleader>okx {\mathcal{O}_K}^{\times}
 
 "}}}
 " Adele{{{
@@ -1559,21 +1562,21 @@ nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)
     if a:code == "ref"
-        :execute ":normal! hmmlx`ma~\\ref{\<esc>"
+        :execute ":normal! hmmlx`ma~\\ref{}\<esc>"
     elseif a:code == "cit"
-        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
+        :execute ":normal! hmmlx`ma~\\cite{}\<esc>"
     elseif a:code == "jref"
-        :execute ":normal! a\\ref{\<esc>"
+        :execute ":normal! a\\ref{}\<esc>"
     elseif a:code == "jcit"
-        :execute ":normal! a\\cite{\<esc>"
+        :execute ":normal! a\\cite{}\<esc>"
     endif
 
 endfunction
 
-inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
-inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
-inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
-inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
+inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>i
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>i
+inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>i
+inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>i
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
