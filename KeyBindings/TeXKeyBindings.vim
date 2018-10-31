@@ -127,16 +127,17 @@ inoremap <buffer> <localleader>rmn \mathbb{R}^{mn}
 inoremap <buffer> <localleader>rnm \mathbb{R}^{nm}
 inoremap <buffer> <localleader>rnn \mathbb{R}^{n^2}
 inoremap <buffer> <localleader>rx \mathbb{R}^{\times}
+inoremap <buffer> <localleader>r. \mathbb{R}^{}<esc>i
 
 "}}}
 " Natural numbers{{{
 
 inoremap <buffer> <localleader>n \mathbb{N}
 inoremap <buffer> <localleader>nn \mathbb{N}^2
-inoremap <buffer> <localleader>n. \mathbb{N}^{n}
 inoremap <buffer> <localleader>nm \mathbb{N}^{m}
 inoremap <buffer> <localleader>nd \mathbb{N}^{d}
 inoremap <buffer> <localleader>nk \mathbb{N}^{k}
+inoremap <buffer> <localleader>n. \mathbb{N}^{}<esc>i
 
 "}}}
 " Integers{{{
@@ -154,6 +155,7 @@ inoremap <buffer> <localleader>zm \mathbb{Z}^{m}
 inoremap <buffer> <localleader>zd \mathbb{Z}^{d}
 inoremap <buffer> <localleader>zk \mathbb{Z}^{k}
 inoremap <buffer> <localleader>zx \mathbb{Z}^{\times}
+inoremap <buffer> <localleader>z. \mathbb{Z}^{}<esc>i
 
 "}}}
 " Rational numbers{{{
@@ -169,6 +171,7 @@ inoremap <buffer> <localleader>qm \mathbb{Q}^{m}
 inoremap <buffer> <localleader>qd \mathbb{Q}^{d}
 inoremap <buffer> <localleader>qk \mathbb{Q}^{k}
 inoremap <buffer> <localleader>qx \mathbb{Q}^{\times}
+inoremap <buffer> <localleader>q. \mathbb{Q}^{}<esc>i
 
 "}}}
 " Complex numbers{{{
@@ -180,30 +183,31 @@ inoremap <buffer> <localleader>cm \mathbb{C}^{m}
 inoremap <buffer> <localleader>cd \mathbb{C}^{d}
 inoremap <buffer> <localleader>ck \mathbb{C}^{k}
 inoremap <buffer> <localleader>cx \mathbb{C}^{\times}
+inoremap <buffer> <localleader>c. \mathbb{C}^{}<esc>i
 
 "}}}
 " p-adic numbers{{{
 
 inoremap <buffer> <localleader>qp \mathbb{Q}_p
 inoremap <buffer> <localleader>qpp {\mathbb{Q}_p}^2
-inoremap <buffer> <localleader>qpqp {\mathbb{Q}_p}^2
 inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
 inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
 inoremap <buffer> <localleader>qpd {\mathbb{Q}_p}^{d}
 inoremap <buffer> <localleader>qpk {\mathbb{Q}_p}^{k}
 inoremap <buffer> <localleader>qpx {\mathbb{Q}_p}^{\times}
+inoremap <buffer> <localleader>qp. {\mathbb{Q}_p}^{}<esc>i
 
 "}}}
 " p-adic Integers{{{
 
 inoremap <buffer> <localleader>zp \mathbb{Z}_p
 inoremap <buffer> <localleader>zpp {\mathbb{Z}_p}^2
-inoremap <buffer> <localleader>zpzp {\mathbb{Z}_p}^2
 inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
 inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
 inoremap <buffer> <localleader>zpd {\mathbb{Z}_p}^{d}
 inoremap <buffer> <localleader>zpk {\mathbb{Z}_p}^{k}
 inoremap <buffer> <localleader>zpx {\mathbb{Z}_p}^{\times}
+inoremap <buffer> <localleader>zp. {\mathbb{Z}_p}^{}<esc>i
 
 "}}}
 " Other fields{{{
@@ -213,8 +217,8 @@ inoremap <buffer> <localleader>kk \mathbb{K}^2
 inoremap <buffer> <localleader>kn \mathbb{K}^{n}
 inoremap <buffer> <localleader>km \mathbb{K}^{m}
 inoremap <buffer> <localleader>kd \mathbb{K}^{d}
-inoremap <buffer> <localleader>k. \mathbb{K}^{k}
 inoremap <buffer> <localleader>kx \mathbb{K}^{\times}
+inoremap <buffer> <localleader>k. \mathbb{K}^{}<esc>i
 
 inoremap <buffer> <localleader>ks K_S
 inoremap <buffer> <localleader>kss {K_S}^2
@@ -223,6 +227,7 @@ inoremap <buffer> <localleader>ksm {K_S}^{m}
 inoremap <buffer> <localleader>ksd {K_S}^{d}
 inoremap <buffer> <localleader>ksk {K_S}^{k}
 inoremap <buffer> <localleader>ksx {K_S}^{\times}
+inoremap <buffer> <localleader>ks. {K_S}^{}<esc>i
 
 "}}}
 " Ring of integers{{{
@@ -232,8 +237,8 @@ inoremap <buffer> <localleader>okk {\mathcal{O}_K}^2
 inoremap <buffer> <localleader>okn {\mathcal{O}_K}^{n}
 inoremap <buffer> <localleader>okm {\mathcal{O}_K}^{m}
 inoremap <buffer> <localleader>okd {\mathcal{O}_K}^{d}
-inoremap <buffer> <localleader>ok. {\mathcal{O}_K}^{k}
 inoremap <buffer> <localleader>okx {\mathcal{O}_K}^{\times}
+inoremap <buffer> <localleader>ok. {\mathcal{O}_K}^{}<esc>i
 
 "}}}
 " Adele{{{
@@ -244,6 +249,7 @@ inoremap <buffer> <localleader>an \mathbb{A}^{n}
 inoremap <buffer> <localleader>am \mathbb{A}^{m}
 inoremap <buffer> <localleader>ad \mathbb{A}^{d}
 inoremap <buffer> <localleader>ak \mathbb{A}^{k}
+inoremap <buffer> <localleader>a. \mathbb{A}^{}<esc>i
 
 "}}}
 " Tori{{{
@@ -254,6 +260,7 @@ inoremap <buffer> <localleader>tn \mathbb{T}^{n}
 inoremap <buffer> <localleader>tm \mathbb{T}^{m}
 inoremap <buffer> <localleader>td \mathbb{T}^{d}
 inoremap <buffer> <localleader>tk \mathbb{T}^{k}
+inoremap <buffer> <localleader>t. \mathbb{T}^{}<esc>i
 
 "}}}
 
@@ -1562,21 +1569,21 @@ nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)
     if a:code == "ref"
-        :execute ":normal! hmmlx`ma~\\ref{}\<esc>"
+        :execute ":normal! hmmlx`ma~\\ref{\<esc>"
     elseif a:code == "cit"
-        :execute ":normal! hmmlx`ma~\\cite{}\<esc>"
+        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jref"
-        :execute ":normal! a\\ref{}\<esc>"
+        :execute ":normal! a\\ref{\<esc>"
     elseif a:code == "jcit"
-        :execute ":normal! a\\cite{}\<esc>"
+        :execute ":normal! a\\cite{\<esc>"
     endif
 
 endfunction
 
-inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>i
-inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>i
-inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>i
-inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>i
+inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
+inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
+inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
