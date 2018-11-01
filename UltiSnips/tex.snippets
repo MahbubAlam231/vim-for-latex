@@ -8,8 +8,8 @@
 
 snippet title "Title" b
 \title{$1}
-\author{Mahbub Alam}
-\date{$2}
+\author{Mahbub Alam$2}
+\date{$3}
 
 \maketitle
 
@@ -19,10 +19,10 @@ endsnippet
 
 
 snippet abs "Abstract" b
-% Abstract
+% Abstract%{{{
 \begin{abstract}
     $1
-\end{abstract}
+\end{abstract}%}}}
 
 $0
 endsnippet
@@ -4245,7 +4245,6 @@ snippet ssec "Subsection" b
 $2
 
 %}}}
-
 $0
 endsnippet
 
@@ -4254,7 +4253,6 @@ snippet sssec "Subsubsection" b
 $2
 
 %}}}
-
 $0
 endsnippet
 
