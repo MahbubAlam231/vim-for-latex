@@ -97,7 +97,7 @@
 
 \title{\bfseries <++>}
 
-\author{{{NAME}}}
+\author{{{NAME}}<++>}
 
 \date{<++>}
 
