@@ -263,6 +263,17 @@ iunmap <buffer> <localleader>tk
 iunmap <buffer> <localleader>t.
 
 "}}}
+"Hyperbolic space{{{
+
+iunmap <buffer> <localleader>h
+iunmap <buffer> <localleader>hh
+iunmap <buffer> <localleader>hn
+iunmap <buffer> <localleader>hm
+iunmap <buffer> <localleader>hd
+iunmap <buffer> <localleader>hk
+iunmap <buffer> <localleader>h.
+
+"}}}
 
 "}}}
 " Outside math mode{{{
@@ -283,6 +294,8 @@ iunmap <buffer> k<Space><Space>
 iunmap <buffer> a<Space><Space>
 
 iunmap <buffer> t<Space><Space>
+
+iunmap <buffer> h<Space><Space>
 
 "}}}
 

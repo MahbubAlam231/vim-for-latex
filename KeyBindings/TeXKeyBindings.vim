@@ -263,6 +263,17 @@ inoremap <buffer> <localleader>tk \mathbb{T}^{k}
 inoremap <buffer> <localleader>t. \mathbb{T}^{}<esc>i
 
 "}}}
+"Hyperbolic space{{{
+
+inoremap <buffer> <localleader>h \mathbb{H}
+inoremap <buffer> <localleader>hh \mathbb{H}^2
+inoremap <buffer> <localleader>hn \mathbb{H}^{n}
+inoremap <buffer> <localleader>hm \mathbb{H}^{m}
+inoremap <buffer> <localleader>hd \mathbb{H}^{d}
+inoremap <buffer> <localleader>hk \mathbb{H}^{k}
+inoremap <buffer> <localleader>h. \mathbb{H}^{}<esc>i
+
+"}}}
 
 "}}}
 " Outside math mode{{{
@@ -283,6 +294,8 @@ inoremap <buffer> k<Space><Space> $\mathbb{K}$
 inoremap <buffer> a<Space><Space> $\mathbb{A}$
 
 inoremap <buffer> t<Space><Space> $\mathbb{T}$
+
+inoremap <buffer> h<Space><Space> $\mathbb{H}$
 
 "}}}
 
