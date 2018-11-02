@@ -906,8 +906,6 @@ iunmap <buffer> <localleader>ll
 iunmap <buffer> <localleader>lil
 iunmap <buffer> <localleader>lsl
 
-iunmap <buffer> ;I
-iunmap <buffer> ;dI
 iunmap <buffer> ;i
 iunmap <buffer> <localleader>i
 iunmap <buffer> ;il
@@ -920,8 +918,6 @@ iunmap <buffer> <localleader>dil
 iunmap <buffer> ;d
 iunmap <buffer> <localleader>d
 
-iunmap <buffer> ;S
-iunmap <buffer> ;dS
 iunmap <buffer> ;s
 iunmap <buffer> <localleader>s
 iunmap <buffer> ;sl
@@ -929,8 +925,6 @@ iunmap <buffer> ;ds
 iunmap <buffer> <localleader>slim
 iunmap <buffer> <localleader>ds
 
-iunmap <buffer> ;P
-iunmap <buffer> ;dP
 iunmap <buffer> ;p
 iunmap <buffer> <localleader>p
 iunmap <buffer> ;pl
