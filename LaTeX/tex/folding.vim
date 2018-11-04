@@ -279,26 +279,34 @@ function! LatexBox_FoldText()
     elseif line =~ '\\appendix'
         let title = "Appendix"
     elseif line =~ secpat1 . '.*}'
-        let primarytitle =  matchstr(line, secpat1 . '\zs.\{-}\ze}\')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
-        " let aligntitle = repeat(' ', 5)
-        let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-        let title = primarytitle . aligntitle . label
+        let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
+        let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
+        let aligntitle1 = '     ' . repeat(' ', 085-len(primarytitle1))
+        let aligntitle2 = '     ' . repeat(' ', 085-len(primarytitle2))
+        let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+
+        if labelcheck == 'label'
+            let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+            let title = primarytitle1 . aligntitle1 . label
+        else 
+            let title = primarytitle2 . aligntitle2 . '\'
+        endif
+
     elseif line =~ secpat1
         let primarytitle = matchstr(line, secpat1 . '\zs.*')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let aligntitle = '     ' . repeat(' ', 085-len(primarytitle))
         let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
     elseif line =~ secpat2 . '.*\]'
         let primarytitle = matchstr(line, secpat2 . '\zs.\{-}\ze}\')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let aligntitle = '     ' . repeat(' ', 085-len(primarytitle))
         let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
     elseif line =~ secpat2
         let primarytitle = matchstr(line, secpat2 . '\zs.*')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let aligntitle = '     ' . repeat(' ', 085-len(primarytitle))
         let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
