@@ -56,7 +56,7 @@ using `git` as in the above instructions for Linux, and add the line `export FZF
 at the end of your `.bashrc` or `zshrc`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions for Linux;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`,
-make similar changes there as well and
+make similar changes there as well.
 
 ## Learning the mappings
 

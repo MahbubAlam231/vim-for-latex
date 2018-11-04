@@ -158,6 +158,7 @@ Abolish topcal{,ly} topological{,ly}
 Abolish topo topology
 Abolish topsp topological space
 Abolish tx there exist
+Abolish txs there exists
 
 "}}}
 "W{{{
