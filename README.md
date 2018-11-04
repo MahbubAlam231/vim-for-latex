@@ -12,8 +12,8 @@ Here uploaded are,
   - A 'universal' latex template (`tex.template`).
 - A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex)
 folding method and [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) folding method.
-This a modification of [petobens](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
-folding technique which can also be found [here](https://tex.stackexchange.com/users/9953/petobens).
+This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
+folding technique which can also be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim) and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
