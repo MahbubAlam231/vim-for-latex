@@ -54,7 +54,7 @@ inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
 inoremap <buffer> '' `'<esc>i
-inoremap <buffer> "" ``"<esc>i
+inoremap <buffer> "" ``''<esc>hi
 
 "}}}
 
@@ -1702,6 +1702,7 @@ let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
 let m = matchadd("MarkerGroup",'% Theorem')
 let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
 let m = matchadd("MarkerGroup",'% Lemma')
+let m = matchadd("MarkerGroup",'% UnnumberedLemma')
 let m = matchadd("MarkerGroup",'% Proposition')
 let m = matchadd("MarkerGroup",'% UnnumberedProposition')
 let m = matchadd("MarkerGroup",'% Corollary')
@@ -1810,6 +1811,10 @@ highlight uTheoremGroup ctermbg=brown ctermfg=Black
 
 let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
 let m = matchadd("uTheoremGroup",'\\end{utheorem}')
+let m = matchadd("uTheoremGroup",'\\begin{ulemma}')
+let m = matchadd("uTheoremGroup",'\\end{ulemma}')
+let m = matchadd("uTheoremGroup",'\\begin{uproposition}')
+let m = matchadd("uTheoremGroup",'\\end{uproposition}')
 let m = matchadd("uTheoremGroup",'\\begin{ucorollary}')
 let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
 let m = matchadd("uTheoremGroup",'\\begin{uremark}')

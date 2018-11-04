@@ -8,7 +8,9 @@
 
 snippet title "Title" b
 \title{$1}
+
 \author{Mahbub Alam$2}
+
 \date{$3}
 
 \maketitle
@@ -19,8 +21,8 @@ endsnippet
 
 
 snippet abs "Abstract" b
-% Abstract%{{{
-\begin{abstract}
+% Abstract
+\begin{abstract}%{{{
     $1
 \end{abstract}%}}}
 
@@ -4223,8 +4225,8 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet chap "Chapter" b
-\chapter{$1}%{{{
-$2
+\chapter{$1}\label{$2}%{{{
+$3
 
 %}}}
 
@@ -4232,8 +4234,8 @@ $0
 endsnippet
 
 snippet sec "Section" b
-\section{$1}%{{{
-$2
+\section{$1}\label{$2}%{{{
+$3
 
 %}}}
 
@@ -4241,33 +4243,33 @@ $0
 endsnippet
 
 snippet ssec "Subsection" b
-\subsection{$1}%{{{
-$2
+\subsection{$1}\label{$2}%{{{
+$3
 
 %}}}
 $0
 endsnippet
 
 snippet sssec "Subsubsection" b
-\subsubsection{$1}%{{{
-$2
+\subsubsection{$1}\label{$2}%{{{
+$3
 
 %}}}
 $0
 endsnippet
 
 snippet not "Notation" b
-% Notation%{{{
-\begin{notation}
-    $1
+% Notation
+\begin{notation}$1\label{$2}%{{{
+    $3
 \end{notation}%}}}
 
 $0
 endsnippet
 
 snippet def "Definition" b
-% Definition%{{{
-\begin{definition}$1\label{$2}
+% Definition
+\begin{definition}$1\label{$2}%{{{
     $3
 \end{definition}%}}}
 
@@ -4275,8 +4277,8 @@ $0
 endsnippet
 
 snippet udef "Unnumbered Definition" b
-% UnnumberedDefinition%{{{
-\begin{udefinition}$1
+% UnnumberedDefinition
+\begin{udefinition}$1%{{{
     $2
 \end{udefinition}%}}}
 
@@ -4284,10 +4286,11 @@ $0
 endsnippet
 
 snippet thm "Theorem" b
-% Theorem%{{{
-\begin{theorem}$1\label{$2}
+% Theorem
+\begin{theorem}$1\label{$2}%{{{
     $3
 \end{theorem}%}}}
+% Proof
 \begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
@@ -4296,8 +4299,8 @@ $0
 endsnippet
 
 snippet jthm "Just Theorem" b
-% Theorem%{{{
-\begin{theorem}$1\label{$2}
+% Theorem
+\begin{theorem}$1\label{$2}%{{{
     $3
 \end{theorem}%}}}
 
@@ -4305,8 +4308,8 @@ $0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
-% UnnumberedTheorem%{{{
-\begin{utheorem}$1
+% UnnumberedTheorem
+\begin{utheorem}$1%{{{
     $2
 \end{utheorem}%}}}
 
@@ -4314,10 +4317,11 @@ $0
 endsnippet
 
 snippet lem "Lemma" b
-% Lemma%{{{
-\begin{lemma}$1\label{$2}
+% Lemma
+\begin{lemma}$1\label{$2}%{{{
     $3
 \end{lemma}%}}}
+% Proof
 \begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
@@ -4326,8 +4330,8 @@ $0
 endsnippet
 
 snippet jlem "Just Lemma" b
-% Lemma%{{{
-\begin{lemma}$1\label{$2}
+% Lemma
+\begin{lemma}$1\label{$2}%{{{
     $3
 \end{lemma}%}}}
 
@@ -4335,8 +4339,8 @@ $0
 endsnippet
 
 snippet ulem "Unnumbered Lemma" b
-% UnnumberedLemma%{{{
-\begin{ulemma}$1
+% UnnumberedLemma
+\begin{ulemma}$1%{{{
     $2
 \end{ulemma}%}}}
 
@@ -4344,10 +4348,11 @@ $0
 endsnippet
 
 snippet prop "Proposition" b
-% Proposition%{{{
-\begin{proposition}$1\label{$2}
+% Proposition
+\begin{proposition}$1\label{$2}%{{{
     $3
 \end{proposition}%}}}
+% Proof
 \begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
@@ -4356,8 +4361,8 @@ $0
 endsnippet
 
 snippet jprop "Just Proposition" b
-% Proposition%{{{
-\begin{proposition}$1\label{$2}
+% Proposition
+\begin{proposition}$1\label{$2}%{{{
     $3
 \end{proposition}%}}}
 
@@ -4365,8 +4370,8 @@ $0
 endsnippet
 
 snippet uprop "Unnumbered Proposition" b
-% UnnumberedProposition%{{{
-\begin{uproposition}$1\label{$2}
+% UnnumberedProposition
+\begin{uproposition}$1%{{{
     $3
 \end{uproposition}%}}}
 
@@ -4374,10 +4379,11 @@ $0
 endsnippet
 
 snippet cor "Corollary" b
-% Corollary%{{{
-\begin{corollary}$1\label{$2}
+% Corollary
+\begin{corollary}$1\label{$2}%{{{
     $3
 \end{corollary}%}}}
+% Proof
 \begin{proof}%{{{
     ${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
@@ -4386,8 +4392,8 @@ $0
 endsnippet
 
 snippet jcor "Just Corollary" b
-% Corollary%{{{
-\begin{corollary}$1\label{$2}
+% Corollary
+\begin{corollary}$1\label{$2}%{{{
     $3
 \end{corollary}%}}}
 
@@ -4395,8 +4401,8 @@ $0
 endsnippet
 
 snippet ucor "Unnumbered Corollary" b
-% UnnumberedCorollary%{{{
-\begin{ucorollary}$1
+% UnnumberedCorollary
+\begin{ucorollary}$1%{{{
     $2
 \end{ucorollary}%}}}
 
@@ -4404,10 +4410,11 @@ $0
 endsnippet
 
 snippet prob "Problem" b
-% Problem%{{{
-\begin{problem}$1
+% Problem
+\begin{problem}$1%{{{
     $2
 \end{problem}%}}}
+% Proof
 \begin{proof}%{{{
     ${3:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
@@ -4416,8 +4423,8 @@ $0
 endsnippet
 
 snippet jprob "Just Problem" b
-% Problem%{{{
-\begin{problem}$1
+% Problem
+\begin{problem}$1%{{{
     $2
 \end{problem}%}}}
 
@@ -4425,8 +4432,8 @@ $0
 endsnippet
 
 snippet prf "Prf" b
-% Proof%{{{
-\begin{${1:prf}}
+% Proof
+\begin{${1:prf}}%{{{
     ${2:\bfseries\textcolor{red}{Write a Proof}}
 \end{$1}%}}}
 
@@ -4434,8 +4441,8 @@ $0
 endsnippet
 
 snippet proof "Proof" b
-% Proof%{{{
-\begin{proof}
+% Proof
+\begin{proof}%{{{
     ${1:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}%}}}
 
@@ -4443,8 +4450,8 @@ $0
 endsnippet
 
 snippet rem "Remark" b
-% Remark%{{{
-\begin{remark}\label{$1}
+% Remark
+\begin{remark}\label{$1}%{{{
     $2
 \end{remark}%}}}
 
@@ -4452,8 +4459,8 @@ $0
 endsnippet
 
 snippet urem "Unnumbered Remark" b
-% UnnumberedRemark%{{{
-\begin{uremark}
+% UnnumberedRemark
+\begin{uremark}%{{{
     $1
 \end{uremark}%}}}
 
@@ -5095,11 +5102,11 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet text "Text"
-\ \text{$1} \ $0
+\ \text{$1}$0
 endsnippet
 
 snippet te "Text"
-\ \text{$1} \ $0
+\ \text{$1}$0
 endsnippet
 
 snippet tb "Text boldfont"

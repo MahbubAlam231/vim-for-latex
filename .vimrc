@@ -211,6 +211,7 @@ nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_latexmk_preview_continuously = 1
+" let g:LatexBox_Folding=1
 
 " Folding
 set foldlevelstart=0

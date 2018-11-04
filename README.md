@@ -10,7 +10,10 @@ Here uploaded are,
   [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
   - A 'universal' latex template (`tex.template`).
-- A folding technique using `foldmethod=marker`.
+- A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex)
+folding method and [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) folding method.
+This a modification of [petobens](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
+folding technique which can also be found [here](https://tex.stackexchange.com/users/9953/petobens).
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
@@ -40,7 +43,8 @@ update shell configuration files while running `~/.fzf/install`), and add the li
 - Put `Abbreviations`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template`
-in `~/.vim/bundle/vim-templates/templates`.
+in `~/.vim/bundle/vim-templates/templates`;
+- Put `tex` in `~/.vim/bundle/Latex-Box/ftplugin`.
 
 #### For macOS (not very sure about it btw)
 

@@ -90,7 +90,9 @@
 %-------------------------------------------------------------------
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
+
 %}}}
+
 %}}}
 
 \begin{document}
@@ -103,8 +105,8 @@
 
 \maketitle
 
-% Abstract%{{{
-\begin{abstract}
+% Abstract
+\begin{abstract}%{{{
     <++>
 \end{abstract}%}}}
 
