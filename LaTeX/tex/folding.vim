@@ -252,7 +252,7 @@ function! LatexBox_FoldText()
 
     let level = '+' . repeat('--', v:foldlevel-1) . ' ' . fln . th . ' '
     let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
-    let lineinfo = nlines . ' lines:     '
+    " let lineinfo = nlines . ' lines:     '
 
     " Preamble
     " if line =~ '\s*\\documentclass'
@@ -279,35 +279,58 @@ function! LatexBox_FoldText()
     elseif line =~ '\\appendix'
         let title = "Appendix"
     elseif line =~ secpat1 . '.*}'
+        let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
         let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
         let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
-        let aligntitle1 = '     ' . repeat(' ', 090-len(primarytitle1))
-        let aligntitle2 = '     ' . repeat(' ', 090-len(primarytitle2))
         let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
 
         if labelcheck == 'label'
-            let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-            let title = primarytitle1 . aligntitle1 . label
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+            if len(primarytitle1) > 87
+                let secondarytitle1 = printf('%.087s', primarytitle1) . '...' . label
+            else
+                let aligntitle1 = repeat(' ', 090-len(primarytitle1))
+                let secondarytitle1 = primarytitle1 . aligntitle1 . label
+            endif
         else 
-            let title = primarytitle2 . aligntitle2 . '\'
+            let label = '    \'
+            if len(primarytitle2) > 87
+                let secondarytitle1 = printf('%.087s', primarytitle2) . '...' . label
+            else
+                let aligntitle2 = repeat(' ', 090-len(primarytitle2))
+                let secondarytitle1 = primarytitle2 . aligntitle2 . label
+            endif
         endif
 
+        if type == 'chapter'
+            let title = '* C   ' . secondarytitle1
+        elseif type == 'section'
+            let title = '* S   ' . secondarytitle1
+        elseif type == 'subsection'
+            let title = '* Ss  ' . secondarytitle1
+        elseif type == 'subsubsection'
+            let title = '* Sss ' . secondarytitle1
+        else
+            let title = '      ' . secondarytitle1
+        endif
+
+"{{{
     elseif line =~ secpat1
         let primarytitle = matchstr(line, secpat1 . '\zs.*')
-        let aligntitle = '     ' . repeat(' ', 090-len(primarytitle))
-        let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
     elseif line =~ secpat2 . '.*\]'
         let primarytitle = matchstr(line, secpat2 . '\zs.\{-}\ze}\')
-        let aligntitle = '     ' . repeat(' ', 090-len(primarytitle))
-        let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
     elseif line =~ secpat2
         let primarytitle = matchstr(line, secpat2 . '\zs.*')
-        let aligntitle = '     ' . repeat(' ', 090-len(primarytitle))
-        let label = '\' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        let aligntitle = repeat(' ', 090-len(primarytitle))
+        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
         let title = primarytitle . aligntitle . label
         " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
     elseif line =~ 'Fake' . sections . ':'
@@ -315,6 +338,8 @@ function! LatexBox_FoldText()
     elseif line =~ 'Fake' . sections
         let title =  matchstr(line, 'Fake' . sections)
     endif
+
+"}}}
 
     " Environments
 
@@ -330,8 +355,15 @@ function! LatexBox_FoldText()
 
         " For theorem, lemma etc.
         else
-            let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+            let primarytitle1 = matchstr(line, '^\s*\zs.\{-}\ze%')
+            if len(primarytitle1) > 130
+                let secondarytitle1 = printf('%.130s', primarytitle1) . '...'
+                let title = secondarytitle1
+            else
+                let title = primarytitle1
+            endif
 
+" Other environments{{{
         " elseif env == 'lemma'
         "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
         "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
@@ -365,11 +397,15 @@ function! LatexBox_FoldText()
         " elseif env == 'proof'
         "     let title = 'Proof'
         "     let title = matchstr(line, '\\label\*\?\s*{\zs.\{-}\ze}')
+"}}}
+
         endif
     endif
 
-    return printf('%-15s %-138s %4d lines', level, title, lineinfo)
-    " return level . alignlnr . title . ' ' . repeat(' ', 10) . lineinfo 
+    return printf('%-15s %-138s %4d lines', level, title, nlines)
+    " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)
+    " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines 
+
 endfunction
 
 " }}}
