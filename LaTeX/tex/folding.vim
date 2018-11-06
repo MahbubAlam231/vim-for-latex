@@ -280,13 +280,12 @@ function! LatexBox_FoldText()
         let title = "Appendix"
     elseif line =~ secpat1 . '.*}'
         let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
-        let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
-        let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
         let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
 
         if labelcheck == 'label'
             let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-            if len(primarytitle1) > 87
+            let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
+            if len(primarytitle1) > 90
                 let secondarytitle1 = printf('%.087s', primarytitle1) . '...' . label
             else
                 let aligntitle1 = repeat(' ', 090-len(primarytitle1))
@@ -294,7 +293,8 @@ function! LatexBox_FoldText()
             endif
         else 
             let label = '    \'
-            if len(primarytitle2) > 87
+            let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
+            if len(primarytitle2) > 90
                 let secondarytitle1 = printf('%.087s', primarytitle2) . '...' . label
             else
                 let aligntitle2 = repeat(' ', 090-len(primarytitle2))
@@ -355,12 +355,11 @@ function! LatexBox_FoldText()
 
         " For theorem, lemma etc.
         else
-            let primarytitle1 = matchstr(line, '^\s*\zs.\{-}\ze%')
-            if len(primarytitle1) > 130
-                let secondarytitle1 = printf('%.130s', primarytitle1) . '...'
-                let title = secondarytitle1
+            let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze%')
+            if len(primarytitle) > 130
+                let title = printf('%.127s', primarytitle) . '...'
             else
-                let title = primarytitle1
+                let title = primarytitle
             endif
 
 " Other environments{{{
