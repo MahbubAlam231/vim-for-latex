@@ -1366,10 +1366,10 @@ inoremap <buffer> <localleader>. \dot{}<esc>i
 inoremap <buffer> <localleader>bm \bm{}<esc>i
 
 inoremap <buffer> ^^ ^{}<esc>i
-inoremap <buffer> <localleader>^ {}^{}<esc>hF}i
+inoremap <buffer> ;^ {}^{}<esc>hF}i
 
 inoremap <buffer> __ _{}<esc>i
-inoremap <buffer> <localleader>_ {}_{}<esc>hF}i
+inoremap <buffer> ;_ {}_{}<esc>hF}i
 
 inoremap <buffer> ^_ ^{}_{}<esc>F^i
 inoremap <buffer> _^ _{}^{}<esc>F_i

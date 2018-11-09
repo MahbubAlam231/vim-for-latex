@@ -555,9 +555,9 @@ nnoremap <buffer> <leader>d 0D
 nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
-" Uppercasing
-nnoremap <buffer> <c-u> mmgUiw`m
-inoremap <buffer> <c-u> <esc>mmgUiw`ma
+" " Uppercasing
+" nnoremap <buffer> <c-u> mmgUiw`m
+" inoremap <buffer> <c-u> <esc>mmgUiw`ma
 
 "2}}}
 " Spelling Check{{{2
@@ -780,8 +780,8 @@ augroup WriteNewBuf
     autocmd BufNewFile *.* :write
 augroup end
 
-nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>
-inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>a
+nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>zz
+inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>zza
 
 augroup ContinuouslyWriteBuf
     autocmd!

@@ -885,10 +885,10 @@ iunmap <buffer> <localleader>.
 iunmap <buffer> <localleader>bm
 
 iunmap <buffer> ^^
-iunmap <buffer> <localleader>^
+iunmap <buffer> ;^
 
 iunmap <buffer> __
-iunmap <buffer> <localleader>_
+iunmap <buffer> ;_
 
 iunmap <buffer> ^_
 iunmap <buffer> _^
