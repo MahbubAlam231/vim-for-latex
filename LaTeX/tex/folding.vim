@@ -251,7 +251,7 @@ function! LatexBox_FoldText()
     endif
 
     let level = '+' . repeat('--', v:foldlevel-1) . ' ' . fln . th . ' '
-    let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
+    " let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
     " let lineinfo = nlines . ' lines:     '
 
     " Preamble
@@ -278,6 +278,7 @@ function! LatexBox_FoldText()
         let title = "Backmatter"
     elseif line =~ '\\appendix'
         let title = "Appendix"
+
     elseif line =~ secpat1 . '.*}'
         let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
         let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
@@ -402,6 +403,7 @@ function! LatexBox_FoldText()
     endif
 
     return printf('%-15s %-138s %4d lines', level, title, nlines)
+    " return printf('%-15s %-138s', level, title)
     " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)
     " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines 
 
