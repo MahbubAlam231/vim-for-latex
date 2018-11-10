@@ -710,7 +710,6 @@ function! MatrixGroupToggle()
         "}}}
         " O{{{
 
-        inoremap <buffer> <leader>o \mathrm{O}
         inoremap <buffer> <leader>on \mathrm{O}_{n}
         inoremap <buffer> <leader>om \mathrm{O}_{m}
         inoremap <buffer> <leader>od \mathrm{O}_{d}
@@ -778,7 +777,6 @@ function! MatrixGroupToggle()
         "}}}
         " U{{{
 
-        inoremap <buffer> <leader>u \mathrm{U}
         inoremap <buffer> <leader>un \mathrm{U}_{n}
         inoremap <buffer> <leader>um \mathrm{U}_{m}
         inoremap <buffer> <leader>ud \mathrm{U}_{d}
@@ -1229,7 +1227,6 @@ function! MatrixGroupToggle()
         "}}}
         " O{{{
 
-        inoremap <buffer> <leader>o \mathrm{O}
         inoremap <buffer> <leader>on \mathrm{O}_{n}
         inoremap <buffer> <leader>om \mathrm{O}_{m}
         inoremap <buffer> <leader>od \mathrm{O}_{d}
@@ -1297,7 +1294,6 @@ function! MatrixGroupToggle()
         "}}}
         " U{{{
 
-        inoremap <buffer> <leader>u \mathrm{U}
         inoremap <buffer> <leader>un \mathrm{U}_{n}
         inoremap <buffer> <leader>um \mathrm{U}_{m}
         inoremap <buffer> <leader>ud \mathrm{U}_{d}
@@ -1363,7 +1359,8 @@ inoremap <buffer> <localleader>bar \bar{}<esc>i
 inoremap <buffer> <localleader>ol \overline{}<esc>i
 inoremap <buffer> <localleader>ul \uline{}<esc>i
 inoremap <buffer> <localleader>. \dot{}<esc>i
-inoremap <buffer> <localleader>bm \bm{}<esc>i
+
+inoremap <buffer> ;-1 ^{-1}
 
 inoremap <buffer> ^^ ^{}<esc>i
 inoremap <buffer> ;^ {}^{}<esc>hF}i
@@ -1620,6 +1617,65 @@ nnoremap <buffer> <localleader>ft :call FoldTexfile()<cr>
 
 "}}}
 
+" Alphabets{{{
+
+" Bold english alphabets{{{
+
+inoremap <buffer> ;ba  \bm{a}
+inoremap <buffer> ;bb  \bm{b}
+inoremap <buffer> ;bc  \bm{c}
+inoremap <buffer> ;bd  \bm{d}
+inoremap <buffer> ;bee \bm{e}
+inoremap <buffer> ;bf  \bm{f}
+inoremap <buffer> ;bg  \bm{g}
+inoremap <buffer> ;bh  \bm{h}
+inoremap <buffer> ;bi  \bm{i}
+inoremap <buffer> ;bj  \bm{j}
+inoremap <buffer> ;bk  \bm{k}
+inoremap <buffer> ;bl  \bm{l}
+inoremap <buffer> ;bm  \bm{m}
+inoremap <buffer> ;bn  \bm{n}
+inoremap <buffer> ;bo  \bm{o}
+inoremap <buffer> ;bp  \bm{p}
+inoremap <buffer> ;bq  \bm{q}
+inoremap <buffer> ;br  \bm{r}
+inoremap <buffer> ;bs  \bm{s}
+inoremap <buffer> ;bt  \bm{t}
+inoremap <buffer> ;bu  \bm{u}
+inoremap <buffer> ;bv  \bm{v}
+inoremap <buffer> ;bw  \bm{w}
+inoremap <buffer> ;bx  \bm{x}
+inoremap <buffer> ;by  \bm{y}
+inoremap <buffer> ;bz  \bm{z}
+                      
+inoremap <buffer> ;bA  \bm{A}
+inoremap <buffer> ;bB  \bm{B}
+inoremap <buffer> ;bC  \bm{C}
+inoremap <buffer> ;bD  \bm{D}
+inoremap <buffer> ;bE  \bm{E}
+inoremap <buffer> ;bF  \bm{F}
+inoremap <buffer> ;bG  \bm{G}
+inoremap <buffer> ;bH  \bm{H}
+inoremap <buffer> ;bI  \bm{I}
+inoremap <buffer> ;bJ  \bm{J}
+inoremap <buffer> ;bK  \bm{K}
+inoremap <buffer> ;bL  \bm{L}
+inoremap <buffer> ;bM  \bm{M}
+inoremap <buffer> ;bN  \bm{N}
+inoremap <buffer> ;bO  \bm{O}
+inoremap <buffer> ;bP  \bm{P}
+inoremap <buffer> ;bQ  \bm{Q}
+inoremap <buffer> ;bR  \bm{R}
+inoremap <buffer> ;bS  \bm{S}
+inoremap <buffer> ;bT  \bm{T}
+inoremap <buffer> ;bU  \bm{U}
+inoremap <buffer> ;bV  \bm{V}
+inoremap <buffer> ;bW  \bm{W}
+inoremap <buffer> ;bX  \bm{X}
+inoremap <buffer> ;bY  \bm{Y}
+inoremap <buffer> ;bZ  \bm{Z}
+
+"}}}
 " Greek Alphabets{{{
 "-------------------------------------------------------------------
 
@@ -1671,6 +1727,8 @@ inoremap <buffer> ;PS \Psi
 inoremap <buffer> ;Ps \Psi
 inoremap <buffer> ;OM \Omega
 inoremap <buffer> ;Om \Omega
+
+"}}}
 
 "}}}
 

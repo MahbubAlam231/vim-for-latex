@@ -706,7 +706,6 @@ iunmap <buffer> <localleader>psl.r
 "}}}
 " O{{{
 
-iunmap <buffer> <leader>o
 iunmap <buffer> <leader>on
 iunmap <buffer> <leader>om
 iunmap <buffer> <leader>od
@@ -774,7 +773,6 @@ iunmap <buffer> <localleader>so.c
 "}}}
 " U{{{
 
-iunmap <buffer> <leader>u
 iunmap <buffer> <leader>un
 iunmap <buffer> <leader>um
 iunmap <buffer> <leader>ud
@@ -882,7 +880,8 @@ iunmap <buffer> <localleader>bar
 iunmap <buffer> <localleader>ol
 iunmap <buffer> <localleader>ul
 iunmap <buffer> <localleader>.
-iunmap <buffer> <localleader>bm
+
+iunmap <buffer> ;-1
 
 iunmap <buffer> ^^
 iunmap <buffer> ;^
@@ -1058,6 +1057,65 @@ iunmap <buffer> <localleader>cit
 unmap <buffer> <localleader>toc
 "}}}
 
+" Alphabets{{{
+
+" Bold english alphabets{{{
+
+iunmap <buffer> ;ba
+iunmap <buffer> ;bb
+iunmap <buffer> ;bc
+iunmap <buffer> ;bd
+iunmap <buffer> ;bee
+iunmap <buffer> ;bf
+iunmap <buffer> ;bg
+iunmap <buffer> ;bh
+iunmap <buffer> ;bi
+iunmap <buffer> ;bj
+iunmap <buffer> ;bk
+iunmap <buffer> ;bl
+iunmap <buffer> ;bm
+iunmap <buffer> ;bn
+iunmap <buffer> ;bo
+iunmap <buffer> ;bp
+iunmap <buffer> ;bq
+iunmap <buffer> ;br
+iunmap <buffer> ;bs
+iunmap <buffer> ;bt
+iunmap <buffer> ;bu
+iunmap <buffer> ;bv
+iunmap <buffer> ;bw
+iunmap <buffer> ;bx
+iunmap <buffer> ;by
+iunmap <buffer> ;bz
+
+iunmap <buffer> ;bA
+iunmap <buffer> ;bB
+iunmap <buffer> ;bC
+iunmap <buffer> ;bD
+iunmap <buffer> ;bE
+iunmap <buffer> ;bF
+iunmap <buffer> ;bG
+iunmap <buffer> ;bH
+iunmap <buffer> ;bI
+iunmap <buffer> ;bJ
+iunmap <buffer> ;bK
+iunmap <buffer> ;bL
+iunmap <buffer> ;bM
+iunmap <buffer> ;bN
+iunmap <buffer> ;bO
+iunmap <buffer> ;bP
+iunmap <buffer> ;bQ
+iunmap <buffer> ;bR
+iunmap <buffer> ;bS
+iunmap <buffer> ;bT
+iunmap <buffer> ;bU
+iunmap <buffer> ;bV
+iunmap <buffer> ;bW
+iunmap <buffer> ;bX
+iunmap <buffer> ;bY
+iunmap <buffer> ;bZ
+
+"}}}
 " Greek Alphabets{{{
 "-------------------------------------------------------------------
 
@@ -1109,6 +1167,8 @@ iunmap <buffer> ;PS
 iunmap <buffer> ;Ps
 iunmap <buffer> ;OM
 iunmap <buffer> ;Om
+
+"}}}
 
 "}}}
 
