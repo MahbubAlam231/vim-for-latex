@@ -39,6 +39,7 @@ iabbr WE We
 "A{{{
 
 Abolish alg{,ic} algebra{,ic}
+Abolish approx{n,e} approximat{ion,e}
 Abolish arb arbitrary
 
 "}}}
@@ -57,7 +58,7 @@ Abolish coll{n,ns} collectio{n,ns}
 Abolish cont{,y,ly} continu{ous,ity,ously}
 Abolish corr{,s,g,ing,ce,ence} correspond{,s,ing,ing,ence,ence}
 Abolish cor{,s} corollar{y,ies}
-Abolish cpt{,fication,ficatn,fy} compact{,ification,ification,ify}
+Abolish cpt{,fication,ficatn,fy,ly} compact{,ification,ification,ify,ly}
 Abolish cx complex
 
 "}}}
@@ -74,6 +75,8 @@ Abolish diag{,l,ble} diagonal{,,izable}
 "E{{{
 
 Abolish el{,s} element{,s}
+Abolish equicont{,y,ly} equicontinu{ous,ity,ously}
+Abolish equidist{,n,d} equidistribut{e,ion,ed}
 Abolish eq{,n,s,ns} equation{,,s,s}
 
 "}}}
@@ -94,6 +97,7 @@ Abolish gph{,s} graph{,s}
 
 Abolish homeo{,s,c,cally} homeomorphi{sm,sms,c,cally}
 Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
+Abolish homog{,ly} homogeneous{,ly}
 
 "}}}
 "I{{{
@@ -159,6 +163,11 @@ Abolish topo topology
 Abolish topsp topological space
 Abolish tx there exist
 Abolish txs there exists
+
+"}}}
+"U{{{
+
+Abolish unbdd unbounded
 
 "}}}
 "W{{{

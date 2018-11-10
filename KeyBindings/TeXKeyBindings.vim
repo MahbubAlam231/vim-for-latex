@@ -1499,7 +1499,7 @@ inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
 "}}}
 
-" Changing environments, referencing and table of contents{{{
+" Changing environments, referencing, TOC and folding tex files{{{
 "-------------------------------------------------------------------
 
 " Dollar to \[\]
@@ -1543,7 +1543,7 @@ nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
 
 " \[\] to Aligned Equation
 function! BracketToAlignedEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
+    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
 
 endfunction
 
@@ -1551,7 +1551,7 @@ nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>
 
 " \[\] to Unnumbered Aligned Equation
 function! BracketToUnnumAlignedEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kddk$"
+    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedAlignedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kddk$"
 
 endfunction
 
@@ -1594,6 +1594,29 @@ inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
+
+" Folding in foldmethod marker (Incomplete)
+function! FoldTexfile()
+    :execute ":normal! /\\documentclass\<cr>ma"
+    let line = getline()
+    if line =~ '^\s*\zs.\{-}\ze%{{'
+        :execute ":normal! zC"
+    else
+        :execute ":normal! /\\begin{document}\<cr>O\<cr>\<cr>mb`azf`b"
+    endif
+
+    :execute ":normal! /\\section\<cr>ma"
+    let line = getline()
+    if line =~ '^\s*\zs.\{-}\ze%{{'
+        :execute ":normal! zC"
+    else
+        :execute ":normal! /\\section\<cr>O\<cr>\<cr>mb`azf`b"
+    endif
+
+endfunction
+
+nnoremap <buffer> <localleader>ft :call FoldTexfile()<cr>
+
 
 "}}}
 
@@ -1878,53 +1901,6 @@ highlight asterisk ctermbg=164 ctermfg=black
 let m = matchadd("asterisk",'\*')
 
 "2}}}
-
-"}}}
-
-" Useful or useless{{{
-"-------------------------------------------------------------------
-
-" Correct Labelling
-"-------------------------------------------------------------------
-
-" function! CorrectLabelling()
-" 	call search('\<\|\u', 'W')
-" 	normal i 
-" 	normal l
-" endfunction
-
-" nnoremap <C-Right> :call CorrectLabelling()<CR>
-
-" Convert The TeX File To Markdown File Because Pandoc is of No Use
-"-------------------------------------------------------------------
-
-" function! ConvertTeXToMarkdown()
-" 	source ~/Desktop/Blog/TeXToMarkdownPackage.tex
-" 	call DegradeEnv()
-" 	call DegradeLabelsAndRefs()
-" 	call FixInequalities()
-" 	call FixAsterisks()
-" 	call FixDefineMacro()
-" 	call NumberingEnvironments()
-" 	call Referencing()
-" 	w
-" 	silent !pandoc -s %:r.tex -o %:r.markdown
-" 	redraw!
-" 	new %:r.markdown
-" 	call FixLaTeXEnv()
-" 	call ReplaceThisWithThat('\\<', '<')
-" 	call ReplaceThisWithThat('\\>', '>')
-" endfunction
-
-
-
-
-" highlight BoldGroup ctermfg=grey cterm=bold
-" let m = matchadd("BoldGroup",'\\begin{.\{-}}')
-" let m = matchadd("BoldGroup",'\\end{.\{-}}')
-
-" highlight IndexGroup ctermbg=Gray ctermfg=Black
-" let m = matchadd("IndexGroup",'\\index{.\{-}}')
 
 "}}}
 

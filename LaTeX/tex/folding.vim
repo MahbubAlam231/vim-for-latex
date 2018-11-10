@@ -315,7 +315,7 @@ function! LatexBox_FoldText()
             let title = '      ' . secondarytitle1
         endif
 
-"{{{
+" Other types of section patterns{{{
     elseif line =~ secpat1
         let primarytitle = matchstr(line, secpat1 . '\zs.*')
         let aligntitle = repeat(' ', 090-len(primarytitle))
@@ -343,7 +343,6 @@ function! LatexBox_FoldText()
 "}}}
 
     " Environments
-
     if line =~ '\\begin'
         " Capture environment name
         let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
@@ -399,6 +398,18 @@ function! LatexBox_FoldText()
         "     let title = matchstr(line, '\\label\*\?\s*{\zs.\{-}\ze}')
 "}}}
 
+        endif
+    endif
+
+    " Helper folds
+    if line =~ '^\s*%'
+        let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%')
+        if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
+            if len(primarytitle) > 124
+                let title = '[H]   ' . printf('%.121s', primarytitle) . '...'
+            else
+                let title = '[H]   ' . primarytitle
+            endif
         endif
     endif
 
