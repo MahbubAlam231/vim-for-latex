@@ -882,6 +882,7 @@ iunmap <buffer> <localleader>ul
 iunmap <buffer> <localleader>.
 
 iunmap <buffer> ;-1
+iunmap <buffer> ;-.
 
 iunmap <buffer> ^^
 iunmap <buffer> ;^

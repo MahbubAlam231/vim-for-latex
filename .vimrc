@@ -671,12 +671,12 @@ function! Abbreviations(code)
     "gen
     if l:code == "gen"
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+    set spellfile=~/.vim/spell/math.utf-8.add
 
     "math
     elseif l:code == "math"
     source ~/.vim/Abbreviations/MathAbbreviations.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
+    set spellfile=~/.vim/spell/math.utf-8.add
 
     "invalid Abbreviations
     elseif l:code != 'gen' && l:code != 'math'
@@ -711,6 +711,7 @@ function! SourceEverythingForTeX()
     :call Abbreviations("math")
     :call KeyBindings("tex")
     :setlocal foldmethod=marker
+augroup end
 endfunction
 
 nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>

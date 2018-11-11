@@ -1361,6 +1361,7 @@ inoremap <buffer> <localleader>ul \uline{}<esc>i
 inoremap <buffer> <localleader>. \dot{}<esc>i
 
 inoremap <buffer> ;-1 ^{-1}
+inoremap <buffer> ;-. ^{-}<esc>i
 
 inoremap <buffer> ^^ ^{}<esc>i
 inoremap <buffer> ;^ {}^{}<esc>hF}i
