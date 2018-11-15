@@ -1458,30 +1458,35 @@ inoremap <buffer> ;1( {\big( \big)}<esc>F(a
 inoremap <buffer> ;2( {\Big( \Big)}<esc>F(a
 inoremap <buffer> ;3( {\bigg( \bigg)}<esc>F(a
 inoremap <buffer> ;4( {\Bigg( \Bigg)}<esc>F(a
+inoremap <buffer> ;5( {\left( \right)}<esc>F(a
 
 inoremap <buffer> ;1{ {\big\{ \big\}}<esc>F{a
 inoremap <buffer> ;2{ {\Big\{ \Big\}}<esc>F{a
 inoremap <buffer> ;3{ {\bigg\{ \bigg\}}<esc>F{a
 inoremap <buffer> ;4{ {\Bigg\{ \Bigg\}}<esc>F{a
+inoremap <buffer> ;5{ {\left\{ \right\}}<esc>F{a
 
 inoremap <buffer> ;1[ {\big[ \big]}<esc>F[a
 inoremap <buffer> ;2[ {\Big[ \Big]}<esc>F[a
 inoremap <buffer> ;3[ {\bigg[ \bigg]}<esc>F[a
 inoremap <buffer> ;4[ {\Bigg[ \Bigg]}<esc>F[a
+inoremap <buffer> ;5[ {\left[ \right]}<esc>F[a
 
 inoremap <buffer> <localleader>fl \fl{}<esc>i
 inoremap <buffer> ;1fl \bigfl{}<esc>i
 inoremap <buffer> ;2fl \Bigfl{}<esc>i
 inoremap <buffer> ;3fl \biggfl{}<esc>i
 inoremap <buffer> ;4fl \Biggfl{}<esc>i
+inoremap <buffer> ;5fl \lrfl{}<esc>i
 
 inoremap <buffer> <localleader>ce \ce{}<esc>i
 inoremap <buffer> ;1ce \bigce{}<esc>i
 inoremap <buffer> ;2ce \Bigce{}<esc>i
 inoremap <buffer> ;3ce \biggce{}<esc>i
 inoremap <buffer> ;4ce \Biggce{}<esc>i
+inoremap <buffer> ;5ce \lrce{}<esc>i
 
-inoremap <buffer> <localleader>lrab {\langle ,  \rangle}<esc>F,i
+inoremap <buffer> <localleader>lrab {left\langle ,  \right\rangle}<esc>F,i
 
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
