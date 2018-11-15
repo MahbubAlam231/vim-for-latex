@@ -56,6 +56,8 @@ inoremap <buffer> \|\| \|
 inoremap <buffer> '' `'<esc>i
 inoremap <buffer> "" ``''<esc>hi
 
+inoremap <buffer> ;b1 \mathbbm{1}
+
 "}}}
 
 " Math Symbols{{{
@@ -70,6 +72,7 @@ inoremap <buffer> <localleader>e \in
 inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>ne \notin
 inoremap <buffer> <localleader>0 \varnothing
+
 inoremap <buffer> ;uu \cup_{}<esc>i
 inoremap <buffer> ;nn \cap_{}<esc>i
 inoremap <buffer> <localleader>uu \cup_{}^{}<esc>F}i
@@ -78,6 +81,7 @@ inoremap <buffer> ;uul \cup\limits_{}<esc>i
 inoremap <buffer> ;nnl \cap\limits_{}<esc>i
 inoremap <buffer> <localleader>uul \cup\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>nnl \cap\limits_{}^{}<esc>F}i
+
 inoremap <buffer> ;UU \bigcup_{}<esc>i
 inoremap <buffer> ;NN \bigcap_{}<esc>i
 inoremap <buffer> <localleader>UU \bigcup_{}^{}<esc>F}i
@@ -90,6 +94,18 @@ inoremap <buffer> <localleader>UUl \bigcup\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>UUL \bigcup\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>NNl \bigcap\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>NNL \bigcap\limits_{}^{}<esc>F}i
+
+inoremap <buffer> ;squu \sqcup_{}<esc>i
+inoremap <buffer> <localleader>squu \sqcup_{}^{}<esc>F}i
+inoremap <buffer> ;squul \sqcup\limits_{}<esc>i
+inoremap <buffer> <localleader>squul \sqcup\limits_{}^{}<esc>F}i
+
+inoremap <buffer> ;sqUU \bigsqcup_{}<esc>i
+inoremap <buffer> <localleader>sqUU \bigsqcup_{}^{}<esc>F}i
+inoremap <buffer> ;sqUUl \bigsqcup\limits_{}<esc>i
+inoremap <buffer> ;sqUUL \bigsqcup\limits_{}<esc>i
+inoremap <buffer> <localleader>sqUUl \bigsqcup\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>sqUUL \bigsqcup\limits_{}^{}<esc>F}i
 
 "}}}
 " Math set symbols{{{
@@ -107,6 +123,7 @@ inoremap <buffer> <localleader>mc \mathcal{}<esc>i
 inoremap <buffer> <localleader>mrsf \mathrsf{}<esc>i
 inoremap <buffer> <localleader>mscr \mathscr{}<esc>i
 inoremap <buffer> <localleader>mi \mathit{}<esc>i
+inoremap <buffer> <localleader>mf \mathfrak{}<esc>i
 
 "}}}
 " Real numbers{{{
@@ -1411,6 +1428,13 @@ inoremap <buffer> ;dp \displaystyle\prod_{}<esc>i
 inoremap <buffer> <localleader>pl \prod\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>dp \displaystyle\prod_{}^{}<esc>F}i
 
+inoremap <buffer> ;cp \coprod_{}<esc>i
+inoremap <buffer> <localleader>cp \coprod_{}^{}<esc>F}i
+inoremap <buffer> ;cpl \coprod\limits_{}<esc>i
+inoremap <buffer> ;dcp \displaystyle\coprod_{}<esc>i
+inoremap <buffer> <localleader>cpl \coprod\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>dcp \displaystyle\coprod_{}^{}<esc>F}i
+
 inoremap <buffer> ;mn \min_{}<esc>i
 inoremap <buffer> ;mnl \min\limits_{}<esc>i
 inoremap <buffer> ;mx \max_{}<esc>i
@@ -1429,6 +1453,36 @@ inoremap <buffer> ;1 \big
 inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
+
+inoremap <buffer> ;1( {\big( \big)}<esc>F(a
+inoremap <buffer> ;2( {\Big( \Big)}<esc>F(a
+inoremap <buffer> ;3( {\bigg( \bigg)}<esc>F(a
+inoremap <buffer> ;4( {\Bigg( \Bigg)}<esc>F(a
+
+inoremap <buffer> ;1{ {\big\{ \big\}}<esc>F{a
+inoremap <buffer> ;2{ {\Big\{ \Big\}}<esc>F{a
+inoremap <buffer> ;3{ {\bigg\{ \bigg\}}<esc>F{a
+inoremap <buffer> ;4{ {\Bigg\{ \Bigg\}}<esc>F{a
+
+inoremap <buffer> ;1[ {\big[ \big]}<esc>F[a
+inoremap <buffer> ;2[ {\Big[ \Big]}<esc>F[a
+inoremap <buffer> ;3[ {\bigg[ \bigg]}<esc>F[a
+inoremap <buffer> ;4[ {\Bigg[ \Bigg]}<esc>F[a
+
+inoremap <buffer> <localleader>fl \fl{}<esc>i
+inoremap <buffer> ;1fl \bigfl{}<esc>i
+inoremap <buffer> ;2fl \Bigfl{}<esc>i
+inoremap <buffer> ;3fl \biggfl{}<esc>i
+inoremap <buffer> ;4fl \Biggfl{}<esc>i
+
+inoremap <buffer> <localleader>ce \ce{}<esc>i
+inoremap <buffer> ;1ce \bigce{}<esc>i
+inoremap <buffer> ;2ce \Bigce{}<esc>i
+inoremap <buffer> ;3ce \biggce{}<esc>i
+inoremap <buffer> ;4ce \Biggce{}<esc>i
+
+inoremap <buffer> <localleader>lrab {\langle ,  \rangle}<esc>F,i
+
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
 inoremap <buffer> << \ll
@@ -1487,6 +1541,7 @@ inoremap <buffer> <localleader>em \emph{}<esc>i
 inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 inoremap <buffer> <localleader>op \operatorname{}<esc>i
+inoremap <buffer> <localleader>op* \operatorname*{}<esc>i
 
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
@@ -1575,20 +1630,23 @@ nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
 function! ReferencingAndCiting(code)
     if a:code == "ref"
         :execute ":normal! hmmlx`ma~\\ref{\<esc>"
-    elseif a:code == "cit"
-        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jref"
         :execute ":normal! a\\ref{\<esc>"
+    elseif a:code == "eqref"
+        :execute ":normal! hmmlx`ma~\\eqref{\<esc>"
+    elseif a:code == "cit"
+        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
         :execute ":normal! a\\cite{\<esc>"
     endif
 
 endfunction
 
-inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
-inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
+inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
+inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
@@ -1797,6 +1855,7 @@ let m = matchadd("MarkerGroup",'% Problem')
 let m = matchadd("MarkerGroup",'% Proof')
 let m = matchadd("MarkerGroup",'% Remark')
 let m = matchadd("MarkerGroup",'% UnnumberedRemark')
+let m = matchadd("MarkerGroup",'% Conjecture')
 let m = matchadd("MarkerGroup",'% Example')
 let m = matchadd("MarkerGroup",'% Exercise')
 let m = matchadd("MarkerGroup",'% Bibliography')
@@ -1879,6 +1938,8 @@ let m = matchadd("TheoremGroup",'\\begin{problem}')
 let m = matchadd("TheoremGroup",'\\end{problem}')
 let m = matchadd("TheoremGroup",'\\begin{remark}')
 let m = matchadd("TheoremGroup",'\\end{remark}')
+let m = matchadd("TheoremGroup",'\\begin{conjecture}')
+let m = matchadd("TheoremGroup",'\\end{conjecture}')
 let m = matchadd("TheoremGroup",'\\begin{example}')
 let m = matchadd("TheoremGroup",'\\end{example}')
 let m = matchadd("TheoremGroup",'\\begin{exercise}')

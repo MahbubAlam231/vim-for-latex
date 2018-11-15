@@ -14,6 +14,10 @@ iabbr uu \cup
 iabbr nn \cap
 iabbr UU \bigcup
 iabbr NN \bigcap
+iabbr squu \sqcup
+iabbr sqUU \bigsqcup
+iabbr sm \setminus
+iabbr ssm \smallsetminus
 
 "}}}
 
@@ -45,12 +49,15 @@ iabbr vds \vdots
 iabbr II \int
 iabbr SS \sum
 iabbr PP \prod
+iabbr CPP \coprod
 iabbr dII \displaystyle\int
 iabbr dSS \displaystyle\sum
 iabbr dPP \displaystyle\prod
+iabbr dCPP \displaystyle\coprod
 iabbr DII \displaystyle\int
 iabbr DSS \displaystyle\sum
 iabbr DPP \displaystyle\prod
+iabbr DCPP \displaystyle\coprod
 
 "}}}
 

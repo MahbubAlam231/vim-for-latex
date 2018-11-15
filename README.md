@@ -13,7 +13,8 @@ Here uploaded are,
 - A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex)
 folding method and [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) folding method.
 This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
-folding technique which can be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim) and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
+folding technique which can be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
+and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
@@ -34,13 +35,13 @@ on your computer.
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation
 guide; first install `git` from command line using `sudo apt install git`, then
 run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`;
-- Put `.vimrc` in your home directory;
 - Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf)
 using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
 and then `~/.fzf/install` from terminal (enable auto-completion and key bindings, and
 update shell configuration files while running `~/.fzf/install`), and add the line
 `export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`;
-- Put `Abbreviations`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
+- Put `.vimrc` in your home directory;
+- Put `Abbreviations`, `after`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template`
 in `~/.vim/bundle/vim-templates/templates`;
@@ -50,10 +51,10 @@ in `~/.vim/bundle/vim-templates/templates`;
 
 - Install VIM using `homebrew`;
 - Install [Vundle](https://github.com/VundleVim/Vundle.vim) following installation guide;
-- Put `.vimrc` in `/Users/(your_pc_name)`;
 - Install the fuzzyfinder [`junegunn/fzf`](https://github.com/junegunn/fzf#upgrading-fzf)
 using `git` as in the above instructions for Linux, and add the line `export FZF_DEFAULT_OPS="--extended"`
 at the end of your `.bashrc` or `zshrc`;
+- Put `.vimrc` in `/Users/(your_pc_name)`;
 - Replace `~/.vim` by `/Users/(your_pc_name)/.vim` in the above instructions for Linux;
 - There are some lines (after the 530th line) inside `.vimrc` file as well that contains `~/.vim`,
 make similar changes there as well.

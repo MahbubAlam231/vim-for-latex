@@ -67,6 +67,10 @@ snippet mi
 $\mathit{$1}$$0
 endsnippet
 
+snippet mf
+$\mathfrak{$1}$$0
+endsnippet
+
 #}}}
 # Real numbers{{{
 
@@ -4467,6 +4471,15 @@ snippet urem "Unnumbered Remark" b
 $0
 endsnippet
 
+snippet conj "Conjecture" b
+% Conjecture
+\begin{conjecture}$1\label{$2}%{{{
+    $3
+\end{conjecture}%}}}
+
+$0
+endsnippet
+
 snippet ex "Example" b
 % Example
 \begin{example}$1
@@ -4681,44 +4694,70 @@ endsnippet
 # Math tools needed for case-defn{{{
 #-------------------------------------------------------------------
 
-snippet case "Case"
-\begin{cases}
-    $1
-\end{cases}
-$0
-endsnippet
-
-
-snippet cases "Cases"
-\begin{cases}
-    $1
-\end{cases}
-$0
-endsnippet
-
-
-snippet casedefn "Case Definition"
+snippet case "case"
 \[
-    $1
 \begin{cases}
-    $2 & \text{$3} $4\\\
-    $5 & \text{$6} $7
+    $1 \\\
+    $2
 \end{cases}
 \]
-
 $0
 endsnippet
 
 
-snippet dcasedefn "dcase Definition"
+snippet cases "cases"
 \[
-    $1
+\begin{cases}
+    $1 \\\
+    $2
+\end{cases}
+\]
+$0
+endsnippet
+
+
+snippet dcase "dcase"
+\[
 \begin{dcases}
-    $2 & \text{$3} $4\\\
-    $5 & \text{$6} $7
+    $1 \\\
+    $2
 \end{dcases}
 \]
+$0
+endsnippet
 
+
+snippet dcases "dcases"
+\[
+\begin{dcases}
+    $1 \\\
+    $2
+\end{dcases}
+\]
+$0
+endsnippet
+
+
+snippet casedefn "case definition"
+\[
+    $1 =
+\begin{cases}
+    $2 & \text{$3} \\ $4 \\\
+    $5 & \text{$6} \\ $7
+\end{cases}
+\]
+$0
+endsnippet
+
+
+snippet dcasedefn "dcase definition"
+\[
+    $1 =
+\begin{dcases}
+    $2 & \text{$3} \\ $4 \\\
+    $5 & \text{$6} \\ $7
+\end{dcases}
+\]
 $0
 endsnippet
 

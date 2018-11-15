@@ -56,6 +56,8 @@ iunmap <buffer> \|\|
 iunmap <buffer> ''
 iunmap <buffer> ""
 
+iunmap <buffer> ;b1
+
 "}}}
 
 " Math Symbols{{{
@@ -70,6 +72,7 @@ iunmap <buffer> <localleader>e
 iunmap <buffer> <localleader>ne
 iunmap <buffer> <localleader>e,
 iunmap <buffer> <localleader>0
+
 iunmap <buffer> ;uu
 iunmap <buffer> ;nn
 iunmap <buffer> <localleader>uu
@@ -78,6 +81,7 @@ iunmap <buffer> ;uul
 iunmap <buffer> ;nnl
 iunmap <buffer> <localleader>uul
 iunmap <buffer> <localleader>nnl
+
 iunmap <buffer> ;UU
 iunmap <buffer> ;NN
 iunmap <buffer> <localleader>UU
@@ -90,6 +94,18 @@ iunmap <buffer> <localleader>UUl
 iunmap <buffer> <localleader>UUL
 iunmap <buffer> <localleader>NNl
 iunmap <buffer> <localleader>NNL
+
+iunmap <buffer> ;squu
+iunmap <buffer> <localleader>squu
+iunmap <buffer> ;squul
+iunmap <buffer> <localleader>squul
+
+iunmap <buffer> ;sqUU
+iunmap <buffer> <localleader>sqUU
+iunmap <buffer> ;sqUUl
+iunmap <buffer> ;sqUUL
+iunmap <buffer> <localleader>sqUUl
+iunmap <buffer> <localleader>sqUUL
 
 "}}}
 " Math set symbols{{{
@@ -107,6 +123,7 @@ iunmap <buffer> <localleader>mc
 iunmap <buffer> <localleader>mrsf
 iunmap <buffer> <localleader>mscr
 iunmap <buffer> <localleader>mi
+iunmap <buffer> <localleader>mf
 
 "}}}
 " Real numbers{{{
@@ -932,6 +949,13 @@ iunmap <buffer> ;dp
 iunmap <buffer> <localleader>pl
 iunmap <buffer> <localleader>dp
 
+iunmap <buffer> ;cp
+iunmap <buffer> <localleader>cp
+iunmap <buffer> ;cpl
+iunmap <buffer> ;dcp
+iunmap <buffer> <localleader>cpl
+iunmap <buffer> <localleader>dcp
+
 iunmap <buffer> ;mn
 iunmap <buffer> ;mnl
 iunmap <buffer> ;mx
@@ -950,6 +974,36 @@ iunmap <buffer> ;1
 iunmap <buffer> ;2
 iunmap <buffer> ;3
 iunmap <buffer> ;4
+
+iunmap <buffer> ;1(
+iunmap <buffer> ;2(
+iunmap <buffer> ;3(
+iunmap <buffer> ;4(
+
+iunmap <buffer> ;1{
+iunmap <buffer> ;2{
+iunmap <buffer> ;3{
+iunmap <buffer> ;4{
+
+iunmap <buffer> ;1[
+iunmap <buffer> ;2[
+iunmap <buffer> ;3[
+iunmap <buffer> ;4[
+
+iunmap <buffer> <localleader>fl
+iunmap <buffer> ;1fl
+iunmap <buffer> ;2fl
+iunmap <buffer> ;3fl
+iunmap <buffer> ;4fl
+
+iunmap <buffer> <localleader>ce
+iunmap <buffer> ;1ce
+iunmap <buffer> ;2ce
+iunmap <buffer> ;3ce
+iunmap <buffer> ;4ce
+
+iunmap <buffer> <localleader>lrab
+
 iunmap <buffer> <localleader><
 iunmap <buffer> <localleader>>
 iunmap <buffer> <<
@@ -1008,6 +1062,7 @@ iunmap <buffer> <localleader>em
 iunmap <buffer> /,
 iunmap <buffer> <localleader>st
 iunmap <buffer> <localleader>op
+iunmap <buffer> <localleader>op*
 
 iunmap <buffer> <localleader>w
 iunmap <buffer> <localleader>N
@@ -1049,10 +1104,11 @@ unmap <buffer> <localleader>bga
 unmap <buffer> <localleader>buga
 
 " Referencing Theorem, Citation etc.
-iunmap <buffer> <localleader>jref
-iunmap <buffer> <localleader>jcit
 iunmap <buffer> <localleader>ref
+iunmap <buffer> <localleader>jref
+iunmap <buffer> <localleader>eqref
 iunmap <buffer> <localleader>cit
+iunmap <buffer> <localleader>jcit
 
 " LaTeX table of contents
 unmap <buffer> <localleader>toc

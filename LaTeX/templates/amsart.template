@@ -5,41 +5,43 @@
 % Description   : {{CURSOR}}
 %-------------------------------------------------------------------
 
-\documentclass[11pt]{amsart}%{{{
+\documentclass[11pt,reqno]{amsart}%{{{
 
 % Usepackages%{{{
 %-------------------------------------------------------------------
 
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsfonts}
 \usepackage{afterpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{bbding}
+\usepackage{bbm}
 \usepackage{bm}
 \usepackage{caption}
 \usepackage{contour}%for writing sc bf
-\usepackage[dvipsnames]{xcolor}
-\usepackage{esvect}
+\usepackage{dsfont}
 \usepackage{enumerate}
 \usepackage{enumitem}
+\usepackage{esvect}
 \usepackage{float}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
+% \usepackage[linktoc=all]{hyperref}
 \usepackage{lscape}
-%\usepackage[linktoc=all]{hyperref}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
-\usepackage[normalem]{ulem}%for writing a underlined text
 \usepackage{physics}
 \usepackage{relsize}
 \usepackage{slantsc}
-%\usepackage{titlesec}
-\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
-\usepackage{thmtools}
 \usepackage{tfrupee}
-%\usepackage{titling}
+\usepackage{thmtools}
 \usepackage{tikz}
+% \usepackage{titlesec}
+% \usepackage{titling}
+\usepackage[normalem]{ulem}%for writing a underlined text
 \usepackage{xcolor}
+% \usepackage[dvipsnames]{xcolor}
 
 \graphicspath{{Images/}}
 
@@ -51,6 +53,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}{Conjecture}[section]
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -78,6 +81,21 @@
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
+
+\newcommand{\fl}[1]{\lfloor#1 \rfloor}
+\newcommand{\bigfl}[1]{\big\lfloor#1 \big\rfloor}
+\newcommand{\Bigfl}[1]{\Big\lfloor#1 \Big\rfloor}
+\newcommand{\biggfl}[1]{\bigg\lfloor#1 \bigg\rfloor}
+\newcommand{\Biggfl}[1]{\Bigg\lfloor#1 \Bigg\rfloor}
+
+\newcommand{\ce}[1]{\lceil#1 \rceil}
+\newcommand{\bigce}[1]{\big\lceil#1 \big\rceil}
+\newcommand{\Bigce}[1]{\Big\lceil#1 \Big\rceil}
+\newcommand{\biggce}[1]{\bigg\lceil#1 \bigg\rceil}
+\newcommand{\Biggce}[1]{\Bigg\lceil#1 \Bigg\rceil}
+
+\DeclareMathOperator*{\vol}{vol}
+\DeclareMathOperator*{\supp}{supp}
 
 %-------------------------------------------------------------------
 % Numbering of equations

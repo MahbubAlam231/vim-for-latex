@@ -15,8 +15,8 @@ iabbr LEt Let
 "}}}
 "M{{{
 
-iabbr mvt mean value theorem
 iabbr Mvt Mean Value Theorem
+iabbr mvt mean value theorem
 
 "}}}
 "T{{{
@@ -26,9 +26,9 @@ iabbr THeorem Theorem
 "}}}
 "W{{{
 
-iabbr wrt with respect to
-iabbr Wrt With respect to
 iabbr WE We
+iabbr Wrt With respect to
+iabbr wrt with respect to
 
 "}}}
 
@@ -53,10 +53,10 @@ Abolish btw by the way
 "}}}
 "C{{{
 
-Abolish char{,stic} character{,istic}
+Abolish char{,c,tic,stic,n,izatn} character{,istic,istic,istic,ization,ization}
 Abolish coll{n,ns} collectio{n,ns}
-Abolish cont{,y,ly} continu{ous,ity,ously}
-Abolish corr{,s,g,ing,ce,ence} correspond{,s,ing,ing,ence,ence}
+Abolish cont{,y,ies,ly} continu{ous,ity,ities,ously}
+Abolish corr{,s,es,g,ing,ce,ence} correspond{,s,s,ing,ing,ence,ence}
 Abolish cor{,s} corollar{y,ies}
 Abolish cpt{,fication,ficatn,fy,ly} compact{,ification,ification,ify,ly}
 Abolish cx complex
@@ -65,11 +65,12 @@ Abolish cx complex
 "D{{{
 
 Abolish def{,n,s,ns,d} defin{ition,ition,itions,itions,ed}
-Abolish diff{,ly} different{,ly}
-Abolish diff{ble,l,tion,tn} differentia{ble,l,tion,tion}
-Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish dep dependent
 Abolish diag{,l,ble} diagonal{,,izable}
+Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
+Abolish diff{,ly} different{,ly}
+Abolish diff{ble,l,tion,tn} differentia{ble,l,tion,tion}
+Abolish discont{,y,ies,ly} discontinu{ous,ity,ities,ously}
 
 "}}}
 "E{{{
@@ -89,22 +90,22 @@ Abolish fs for some
 "}}}
 "G{{{
 
-Abolish gp{,s} group{,s}
 Abolish gph{,s} graph{,s}
+Abolish gp{,s} group{,s}
 
 "}}}
 "H{{{
 
 Abolish homeo{,s,c,cally} homeomorphi{sm,sms,c,cally}
-Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 Abolish homog{,ly} homogeneous{,ly}
+Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 
 "}}}
 "I{{{
 
-Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 Abolish ind{ep,ly,eply} independent{,ly,ly}
-Abolish int{n,e,te,ble,y} integra{tion,te,te,ble,bility}
+Abolish int{n,l,e,te,ble,y} integra{tion,l,te,te,ble,bility}
+Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 
 "}}}
 "L{{{
@@ -144,11 +145,11 @@ Abolish resp respectively
 Abolish seq{,s} sequence{,s}
 Abolish simul{,y} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
+Abolish sp space
 Abolish st such that
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
 Abolish subsp{,s} subspace{,s}
-Abolish sp space
 
 "}}}
 "T{{{

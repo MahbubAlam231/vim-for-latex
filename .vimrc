@@ -689,13 +689,13 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{2
 "-------------------------------------------------------------------
 
-augroup SourceAllForPythonBuf
+augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile,BufRead *.py :source $MYVIMRC
     autocmd BufNewFile,BufRead *.py :call KeyBindings("py")
 augroup end
 
-augroup SourceAllForTeXBuf
+augroup SourceEverythingForTeX
     autocmd!
     autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("gen")
@@ -711,10 +711,10 @@ function! SourceEverythingForTeX()
     :call Abbreviations("math")
     :call KeyBindings("tex")
     :setlocal foldmethod=marker
-augroup end
 endfunction
 
-nnoremap <buffer> <localleader>e :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
+nnoremap <buffer> <localleader>ev :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
+inoremap <buffer> <localleader>ev <esc>:source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>a
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>:echo<cr>
@@ -781,8 +781,8 @@ augroup WriteNewBuf
     autocmd BufNewFile *.* :write
 augroup end
 
-nnoremap <buffer> <localleader>w :w!<cr>:redraw!<cr>zz
-inoremap <buffer> ;w <esc>:w!<cr>:redraw!<cr>zza
+nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
+inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
 
 augroup ContinuouslyWriteBuf
     autocmd!
