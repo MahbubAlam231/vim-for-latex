@@ -1454,23 +1454,23 @@ inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
 
-inoremap <buffer> ;1( {\big( \big)}<esc>F(a
-inoremap <buffer> ;2( {\Big( \Big)}<esc>F(a
-inoremap <buffer> ;3( {\bigg( \bigg)}<esc>F(a
-inoremap <buffer> ;4( {\Bigg( \Bigg)}<esc>F(a
-inoremap <buffer> ;5( {\left( \right)}<esc>F(a
+inoremap <buffer> ;1( {\big({}\big)}<esc>F{a
+inoremap <buffer> ;2( {\Big({}\Big)}<esc>F{a
+inoremap <buffer> ;3( {\bigg({}\bigg)}<esc>F{a
+inoremap <buffer> ;4( {\Bigg({}\Bigg)}<esc>F{a
+inoremap <buffer> ;5( {\left({}\right)}<esc>F{a
 
-inoremap <buffer> ;1{ {\big\{ \big\}}<esc>F{a
-inoremap <buffer> ;2{ {\Big\{ \Big\}}<esc>F{a
-inoremap <buffer> ;3{ {\bigg\{ \bigg\}}<esc>F{a
-inoremap <buffer> ;4{ {\Bigg\{ \Bigg\}}<esc>F{a
-inoremap <buffer> ;5{ {\left\{ \right\}}<esc>F{a
+inoremap <buffer> ;1{ {\big\{{}\big\}}<esc>F{a
+inoremap <buffer> ;2{ {\Big\{{}\Big\}}<esc>F{a
+inoremap <buffer> ;3{ {\bigg\{{}\bigg\}}<esc>F{a
+inoremap <buffer> ;4{ {\Bigg\{{}\Bigg\}}<esc>F{a
+inoremap <buffer> ;5{ {\left\{{}\right\}}<esc>F{a
 
-inoremap <buffer> ;1[ {\big[ \big]}<esc>F[a
-inoremap <buffer> ;2[ {\Big[ \Big]}<esc>F[a
-inoremap <buffer> ;3[ {\bigg[ \bigg]}<esc>F[a
-inoremap <buffer> ;4[ {\Bigg[ \Bigg]}<esc>F[a
-inoremap <buffer> ;5[ {\left[ \right]}<esc>F[a
+inoremap <buffer> ;1[ {\big[{}\big]}<esc>F{a
+inoremap <buffer> ;2[ {\Big[{}\Big]}<esc>F{a
+inoremap <buffer> ;3[ {\bigg[{}\bigg]}<esc>F{a
+inoremap <buffer> ;4[ {\Bigg[{}\Bigg]}<esc>F{a
+inoremap <buffer> ;5[ {\left[{}\right]}<esc>F{a
 
 inoremap <buffer> <localleader>fl \fl{}<esc>i
 inoremap <buffer> ;1fl \bigfl{}<esc>i
@@ -1486,7 +1486,7 @@ inoremap <buffer> ;3ce \biggce{}<esc>i
 inoremap <buffer> ;4ce \Biggce{}<esc>i
 inoremap <buffer> ;5ce \lrce{}<esc>i
 
-inoremap <buffer> <localleader>lrab {\left\langle ,  \right\rangle}<esc>F,i
+inoremap <buffer> <localleader>lrab {\left\langle{}\right\rangle}<esc>F{a
 
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
@@ -1863,7 +1863,6 @@ let m = matchadd("MarkerGroup",'% UnnumberedRemark')
 let m = matchadd("MarkerGroup",'% Conjecture')
 let m = matchadd("MarkerGroup",'% Example')
 let m = matchadd("MarkerGroup",'% Exercise')
-let m = matchadd("MarkerGroup",'% Bibliography')
 let m = matchadd("MarkerGroup",'% Frame')
 let m = matchadd("MarkerGroup",'% Claim')
 
@@ -1878,13 +1877,14 @@ let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
 let m = matchadd("YellowMarkerGroup",'% Gather')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
 let m = matchadd("YellowMarkerGroup",'% Center')
+let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
+let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
 let m = matchadd("YellowMarkerGroup",'% Enumerate')
 let m = matchadd("YellowMarkerGroup",'% Itemize')
 let m = matchadd("YellowMarkerGroup",'% figure')
 let m = matchadd("YellowMarkerGroup",'% diary')
-let m = matchadd("YellowMarkerGroup",'\\bibliographystyle')
-let m = matchadd("YellowMarkerGroup",'\\bibitem')
 let m = matchadd("YellowMarkerGroup",'\\item')
+let m = matchadd("YellowMarkerGroup",'\\bibitem')
 
 highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
 
@@ -1892,6 +1892,12 @@ let m = matchadd("SalmonMarkerGroup",'% Array')
 let m = matchadd("SalmonMarkerGroup",'% Matrix')
 let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
 let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+let m = matchadd("SalmonMarkerGroup",'\\bibliographystyle{.\{}}')
+let m = matchadd("SalmonMarkerGroup",'\\bibliography{.\{}}')
+
+highlight Bibliography ctermbg=92 ctermfg=yellow
+
+let m = matchadd("Bibliography",'% Bibliography')
 
 highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
 
@@ -2001,14 +2007,14 @@ let m = matchadd("EquationGroup",'\\begin{gather\*}')
 let m = matchadd("EquationGroup",'\\end{gather\*}')
 let m = matchadd("EquationGroup",'\\begin{cases}')
 let m = matchadd("EquationGroup",'\\end{cases}')
+let m = matchadd("EquationGroup",'\\begin{dcases}')
+let m = matchadd("EquationGroup",'\\end{dcases}')
 let m = matchadd("EquationGroup",'\\begin{enumerate}')
 let m = matchadd("EquationGroup",'\\end{enumerate}')
 let m = matchadd("EquationGroup",'\\begin{itemize}')
 let m = matchadd("EquationGroup",'\\end{itemize}')
 let m = matchadd("EquationGroup",'\\begin{landscape}')
 let m = matchadd("EquationGroup",'\\end{landscape}')
-let m = matchadd("EquationGroup",'\\begin{thebibliography}')
-let m = matchadd("EquationGroup",'\\end{thebibliography}')
 
 highlight ArrayMatrixGroup ctermbg=209 ctermfg=Black
 
@@ -2020,6 +2026,8 @@ let m = matchadd("ArrayMatrixGroup",'\\begin{bmatrix}')
 let m = matchadd("ArrayMatrixGroup",'\\end{bmatrix}')
 let m = matchadd("ArrayMatrixGroup",'\\begin{pmatrix}')
 let m = matchadd("ArrayMatrixGroup",'\\end{pmatrix}')
+let m = matchadd("ArrayMatrixGroup",'\\begin{thebibliography}')
+let m = matchadd("ArrayMatrixGroup",'\\end{thebibliography}')
 
 highlight asterisk ctermbg=164 ctermfg=black
 
