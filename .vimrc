@@ -694,12 +694,19 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex :setlocal foldmethod=marker
 augroup end
 
+" TeXHighlight
+function! TeXHighlight()
+    if (&ft=='tex')
+        source ~/.vim/KeyBindings/TeXHighlight.vim
+    endif
+endfunction
+
 "Sourcing everything for tex
 function! SourceEverythingForTeX()
-    :call Abbreviations("gen")
-    :call Abbreviations("math")
-    :call KeyBindings("tex")
-    :setlocal foldmethod=marker
+    call Abbreviations("gen")
+    call Abbreviations("math")
+    call KeyBindings("tex")
+    setlocal foldmethod=marker
 endfunction
 
 nnoremap <buffer> <localleader>ev :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
@@ -732,25 +739,34 @@ inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>:echo<cr
 "-------------------------------------------------------------------
 
 " Opening TeXKeyBindings "t=tex
-nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+nnoremap <buffer> <leader>th :new ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>tv :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>nph :new ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+nnoremap <buffer> <leader>npv :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening Ultisnips "u=ultisnips
-nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>uh :new ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>uv :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening Abbreviations
-nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
-nnoremap <buffer> <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <buffer> <leader>ah :new ~/.vim/Abbreviations<cr>
+nnoremap <buffer> <leader>av :vnew ~/.vim/Abbreviations<cr>
+nnoremap <buffer> <leader>agh :new ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <buffer> <leader>agv :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
+nnoremap <buffer> <leader>amh :new ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
+nnoremap <buffer> <leader>amv :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening PythonKeyBindings
-nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+nnoremap <buffer> <leader>pyh :new ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+nnoremap <buffer> <leader>pyv :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
 
 " Opening UnmapTeXKeyBindings
-nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>uth :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>utv :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening .vimrc
-nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
+nnoremap <buffer> <leader>vh :hsplit $MYVIMRC<cr>
+nnoremap <buffer> <leader>vv :vsplit $MYVIMRC<cr>
 
 "2}}}
 
@@ -776,11 +792,24 @@ inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
 augroup ContinuouslyWriteBuf
     autocmd!
     autocmd TextChanged,TextChangedI *.* silent write
+    autocmd TextChanged,TextChangedI *.* call TeXHighlight()
 augroup end
+
+" autocmd BufRead,BufNewFile *.* let b:save_time=localtime()
+" autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI *.* call UpdateFile()
+" autocmd BufWritePre *.* let b:save_time=localtime()
+
+" function! UpdateFile()
+"     if ((localtime() - b:save_time) >= 2)
+"         update
+"         call TeXHighlight()
+"         let b:save_time=localtime()
+"     endif
+" endfunction
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
 nnoremap <buffer> <localleader>wq mqzMgg:wq!<cr>
-noremap <buffer> 'q `qzv
+noremap <buffer> 'q `qzvzz
 
 "}}}
 
