@@ -2033,6 +2033,41 @@ highlight asterisk ctermbg=164 ctermfg=black
 
 let m = matchadd("asterisk",'\*')
 
+highlight ParenthesisGroup ctermbg=150 ctermfg=black
+
+let m = matchadd("ParenthesisGroup",'{\\big({')
+let m = matchadd("ParenthesisGroup",'}\\big)}')
+let m = matchadd("ParenthesisGroup",'{\\Big({')
+let m = matchadd("ParenthesisGroup",'}\\Big)}')
+let m = matchadd("ParenthesisGroup",'{\\bigg({')
+let m = matchadd("ParenthesisGroup",'}\\bigg)}')
+let m = matchadd("ParenthesisGroup",'{\\Bigg({')
+let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
+let m = matchadd("ParenthesisGroup",'{\\left({')
+let m = matchadd("ParenthesisGroup",'}\\right)}')
+
+let m = matchadd("ParenthesisGroup",'{\\big\\{{')
+let m = matchadd("ParenthesisGroup",'}\\big\\}}')
+let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
+let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
+let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
+let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
+let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
+let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
+let m = matchadd("ParenthesisGroup",'{\\left\\{{')
+let m = matchadd("ParenthesisGroup",'}\\right\\}}')
+
+let m = matchadd("ParenthesisGroup",'{\\big[{')
+let m = matchadd("ParenthesisGroup",'}\\big]}')
+let m = matchadd("ParenthesisGroup",'{\\Big[{')
+let m = matchadd("ParenthesisGroup",'}\\Big]}')
+let m = matchadd("ParenthesisGroup",'{\\bigg[{')
+let m = matchadd("ParenthesisGroup",'}\\bigg]}')
+let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
+let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
+let m = matchadd("ParenthesisGroup",'{\\left[{')
+let m = matchadd("ParenthesisGroup",'}\\right]}')
+
 "2}}}
 
 "}}}
