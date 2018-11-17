@@ -169,17 +169,6 @@ filetype plugin indent on             " required, enables filetype detection
 
 let g:airline_theme = 'simple'
 
-" function! AirlinePrep()
-"     let g:airline_section_a = airline#section#create(['mode'])
-"     let g:airline_section_b = airline#section#create_left(['%f','\','filetype'])
-"     " let g:airline_section_c = airline#section#create_right(['filetype'])
-" endfunction
-
-" augroup AirlinePrep
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.* :call AirlinePrep()
-" augroup end
-
 "3}}}
 " Easymotion and Sneak{{{3
 
@@ -702,7 +691,7 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
     autocmd BufNewFile,BufRead *.tex :call MatrixGroupToggle()
-    :setlocal foldmethod=marker
+    autocmd BufNewFile,BufRead *.tex :setlocal foldmethod=marker
 augroup end
 
 "Sourcing everything for tex
@@ -791,7 +780,7 @@ augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
 nnoremap <buffer> <localleader>wq mqzMgg:wq!<cr>
-noremap <buffer> 'q `q
+noremap <buffer> 'q `qzv
 
 "}}}
 
@@ -809,6 +798,7 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 augroup Source$MYVIMRC
     autocmd!
     autocmd BufNewFile,BufRead *.* :source $MYVIMRC
+    autocmd BufNewFile,BufRead *.* :setlocal foldmethod=marker
 augroup end
 
 " Sourcing .vimrc

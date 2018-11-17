@@ -1815,18 +1815,34 @@ nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>
 
 " Chapter, Section, Subsection, Subsubsection, label"{{{2
 
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+let m = matchadd("ChapterMarkerGroup",'% Chapter')
+
 highlight ChapterGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
+let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 
+
+highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+let m = matchadd("SectionMarkerGroup",'% Section')
 
 highlight SectionGroup ctermbg=39 ctermfg=Black
 let m = matchadd("SectionGroup",'\\section{.\{}}')
+let m = matchadd("SectionGroup",'\\section\*{.\{}}')
+
+highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+let m = matchadd("SubsectionMarkerGroup",'% Subsection')
 
 highlight SubsectionGroup ctermbg=198 ctermfg=Black
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
+let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
+
+highlight SubsubsectionMarkerGroup ctermbg=143 ctermfg=Black
+let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
 
 highlight SubsubsectionGroup ctermbg=143 ctermfg=Black
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
+let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
 
 highlight Label ctermbg=Red ctermfg=black
@@ -2029,7 +2045,7 @@ let m = matchadd("ArrayMatrixGroup",'\\end{pmatrix}')
 let m = matchadd("ArrayMatrixGroup",'\\begin{thebibliography}')
 let m = matchadd("ArrayMatrixGroup",'\\end{thebibliography}')
 
-highlight asterisk ctermbg=164 ctermfg=black
+highlight asterisk ctermbg=130 ctermfg=yellow
 
 let m = matchadd("asterisk",'\*')
 

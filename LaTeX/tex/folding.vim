@@ -165,260 +165,432 @@ function! LatexBox_FoldLevel(lnum)
             return "0"
         endif
 
-    " " Fold preamble parts
-    " if g:LatexBox_fold_preamble_parts == 1
-    "     if line =~# '% Usepackages'
-    "         return ">1"
-    "     elseif line =~# '% Environments'
-    "         return "0"
-    "     endif
-    " endif
+        " " Fold preamble parts
+        " if g:LatexBox_fold_preamble_parts == 1
+        "     if line =~# '% Usepackages'
+        "         return ">1"
+        "     elseif line =~# '% Environments'
+        "         return "0"
+        "     endif
+        " endif
 
-    " Fold parts (\frontmatter, \mainmatter, \backmatter, and \appendix)
-    if line =~# s:foldparts
-        return ">1"
-    endif
-
-    " Fold chapters and sections
-    for [part, level] in b:LatexBox_FoldSections
-        if line =~# part
-            return ">" . level
+        " Fold parts (\frontmatter, \mainmatter, \backmatter, and \appendix)
+        if line =~# s:foldparts
+            return ">1"
         endif
-    endfor
 
-    " Fold environments
-    if g:LatexBox_fold_envs == 1
-        if line =~# s:envbeginpattern
-            return "a1"
-        elseif line =~# '^\s*\\end{document}'
-            " Never fold \end{document}
-            return 0
-        elseif line =~# s:envendpattern
-            return "s1"
+        " Fold chapters and sections
+        for [part, level] in b:LatexBox_FoldSections
+            if line =~# part
+                return ">" . level
+            endif
+        endfor
+
+        " Fold environments
+        if g:LatexBox_fold_envs == 1
+            if line =~# s:envbeginpattern
+                return "a1"
+            elseif line =~# '^\s*\\end{document}'
+                " Never fold \end{document}
+                return 0
+            elseif line =~# s:envendpattern
+                return "s1"
+            endif
         endif
-    endif
 
-    " Return foldlevel of previous line
-    return "="
-endfunction
+        " Return foldlevel of previous line
+        return "="
+    endfunction
 
-" }}}
-" LatexBox_FoldText helper functions {{{
+    " }}}
+    " LatexBox_FoldText helper functions {{{
 
-function! s:CaptionFrame(line)
-    " Test simple variants first
-    let caption1 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+\ze}')
-    let caption2 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
+    function! s:CaptionFrame(line)
+        " Test simple variants first
+        let caption1 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+\ze}')
+        let caption2 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
 
-    if len(caption1) > 0
-        return caption1
-    elseif len(caption2) > 0
-        return caption2
-    else
-        let i = v:foldstart
-        while i <= v:foldend
-            if getline(i) =~ '^\s*\\frametitle'
-                return matchstr(getline(i),
-                            \ '^\s*\\frametitle\(\[.*\]\)\?{\zs.\+')
-            end
-            let i += 1
-        endwhile
+        if len(caption1) > 0
+            return caption1
+        elseif len(caption2) > 0
+            return caption2
+        else
+            let i = v:foldstart
+            while i <= v:foldend
+                if getline(i) =~ '^\s*\\frametitle'
+                    return matchstr(getline(i),
+                                \ '^\s*\\frametitle\(\[.*\]\)\?{\zs.\+')
+                end
+                let i += 1
+            endwhile
 
-        return ""
-    endif
-endfunction
+            return ""
+        endif
+    endfunction
 
-" }}}
-" LatexBox_FoldText {{{
+    " }}}
+    " LatexBox_FoldText {{{
 
-function! LatexBox_FoldText()
-    " Initialize
-    let line = getline(v:foldstart)
-    let nlines = v:foldend - v:foldstart + 1
-    let level = ''
-    let title = line
+    function! LatexBox_FoldText()
+        " Initialize
+        let line = getline(v:foldstart)
+        let nlines = v:foldend - v:foldstart + 1
+        let level = ''
+        let title = line
 
-    " Fold level and number of lines
-    let fln = v:foldlevel
-    if fln == 1
-        let th = 'st'
-    elseif fln == 2
-        let th = 'nd'
-    elseif fln == 3
-        let th = 'rd'
-    elseif fln > 3
-        let th = 'th'
-    endif
+        " Fold level and number of lines{{{
 
-    let level = '+' . repeat('--', v:foldlevel-1) . ' ' . fln . th . ' '
-    " let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
-    " let lineinfo = nlines . ' lines:     '
+        let fln = v:foldlevel
+        if fln == 1
+            let th = 'st'
+        elseif fln == 2
+            let th = 'nd'
+        elseif fln == 3
+            let th = 'rd'
+        elseif fln > 3
+            let th = 'th'
+        endif
 
-    " Preamble
-    " if line =~ '\s*\\documentclass'
-    if line =~ '\\documentclass'
-        let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%')
-    elseif line =~ '% Usepackages'
-        let title = 'Usepackages'
-    elseif line =~ '% Environments'
-        let title = 'Environments'
-    elseif line =~ '% Newcommands'
-        let title = 'Newcommands'
-    endif
+        let level = '+' . repeat('--', v:foldlevel-1) . ' ' . fln . th . ' '
+        " let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
+        " let lineinfo = nlines . ' lines:     '
 
-    " Parts, sections and fakesections
-    let sections = '\(\(sub\)*section\|part\|chapter\)'
-    let secpat1 = '^\s*\\' . sections . '\*\?\s*{'
-    let secpat2 = '^\s*\\' . sections . '\*\?\s*\['
-    if line =~ '\\frontmatter'
-        let title = "Frontmatter"
-    elseif line =~ '\\mainmatter'
-        let title = "Mainmatter"
-    elseif line =~ '\\backmatter'
-        let title = "Backmatter"
-    elseif line =~ '\\appendix'
-        let title = "Appendix"
+        "}}}
 
-    elseif line =~ secpat1 . '.*}'
-        let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
-        let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+        " Preamble{{{
 
-        if labelcheck == 'label'
+        " if line =~ '\s*\\documentclass'
+        if line =~ '\\documentclass'
+            let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%')
+        elseif line =~ '% Usepackages'
+            let title = 'Usepackages'
+        elseif line =~ '% Environments'
+            let title = 'Environments'
+        elseif line =~ '% Newcommands'
+            let title = 'Newcommands'
+        endif
+
+        "}}}
+
+        " Parts, sections and fakesections{{{
+
+        let sections = '\(\(sub\)*section\|part\|chapter\)'
+        let secpat1 = '^\s*\\' . sections . '\*\?\s*{'
+        let secpat2 = '^\s*\\' . sections . '\*\?\s*\['
+        if line =~ '\\frontmatter'
+            let title = "Frontmatter"
+        elseif line =~ '\\mainmatter'
+            let title = "Mainmatter"
+        elseif line =~ '\\backmatter'
+            let title = "Backmatter"
+        elseif line =~ '\\appendix'
+            let title = "Appendix"
+
+        elseif line =~ secpat1 . '.*}'
+            let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
+            let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+
+            if labelcheck == 'label'
+                let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
+                if len(primarytitle1) > 90
+                    let secondarytitle1 = printf('%.087s', primarytitle1) . '...'
+                else
+                    let aligntitle1 = repeat(' ', 090-len(primarytitle1))
+                    let secondarytitle1 = primarytitle1 . aligntitle1
+                endif
+            else 
+                let label = '    \'
+                let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
+                if len(primarytitle2) > 90
+                    let secondarytitle1 = printf('%.087s', primarytitle2) . '...'
+                else
+                    let aligntitle2 = repeat(' ', 090-len(primarytitle2))
+                    let secondarytitle1 = primarytitle2 . aligntitle2
+                endif
+            endif
+
+            if type == 'chapter'
+                let title = '* C    ' . secondarytitle1 . label
+            elseif type == 'section'
+                let title = '* S    ' . secondarytitle1 . label
+            elseif type == 'subsection'
+                let title = '* Ss   ' . secondarytitle1 . label
+            elseif type == 'subsubsection'
+                let title = '* Sss  ' . secondarytitle1 . label
+            elseif type == 'chapter*'
+                let title = '* C*   ' . secondarytitle1 . label
+            elseif type == 'section*'
+                let title = '* S*   ' . secondarytitle1 . label
+            elseif type == 'subsection*'
+                let title = '* Ss*  ' . secondarytitle1 . label
+            elseif type == 'subsubsection*'
+                let title = '* Sss* ' . secondarytitle1 . label
+            else
+                let title = '~      ' . secondarytitle1 . label
+            endif
+
+            "}}}
+
+            " Other types of section patterns{{{
+
+        elseif line =~ secpat1
+            let primarytitle = matchstr(line, secpat1 . '\zs.*')
+            let aligntitle = repeat(' ', 090-len(primarytitle))
             let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-            let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
-            if len(primarytitle1) > 90
-                let secondarytitle1 = printf('%.087s', primarytitle1) . '...' . label
+            let title = primarytitle . aligntitle . label
+            " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        elseif line =~ secpat2 . '.*\]'
+            let primarytitle = matchstr(line, secpat2 . '\zs.\{-}\ze}\')
+            let aligntitle = repeat(' ', 090-len(primarytitle))
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+            let title = primarytitle . aligntitle . label
+            " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        elseif line =~ secpat2
+            let primarytitle = matchstr(line, secpat2 . '\zs.*')
+            let aligntitle = repeat(' ', 090-len(primarytitle))
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+            let title = primarytitle . aligntitle . label
+            " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+        elseif line =~ 'Fake' . sections . ':'
+            let title =  matchstr(line,'Fake' . sections . ':\s*\zs.*')
+        elseif line =~ 'Fake' . sections
+            let title =  matchstr(line, 'Fake' . sections)
+        endif
+
+        "}}}
+
+        " Environments{{{
+
+        if line =~ '\\begin'
+            " Capture environment name
+            let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
+            let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+
+            if env == 'abstract'
+                let title = 'Abstract'
+
+            elseif env == 'frame'
+                let caption = s:CaptionFrame(line)
+                let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
+
+                " Lemma{{{
+
+            elseif env == 'lemma'
+                if labelcheck == 'label'
+                    let primarytitle = 'Lemma  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'Lemma'
+                endif
+
+            elseif env == 'ulemma'
+                if labelcheck == 'label'
+                    let primarytitle = 'UnnumberedLemma  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'UnnumberedLemma'
+                endif
+
+                "}}}
+
+                " Proposition{{{
+
+            elseif env == 'proposition'
+                if labelcheck == 'label'
+                    let primarytitle = 'Proposition  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'Proposition'
+                endif
+
+            elseif env == 'uproposition'
+                if labelcheck == 'label'
+                    let primarytitle = 'UnnumberedProposition  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'UnnumberedProposition'
+                endif
+
+                "}}}
+
+                " Theorem{{{
+
+            elseif env == 'theorem'
+                if labelcheck == 'label'
+                    let primarytitle = 'Theorem  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'Theorem'
+                endif
+
+            elseif env == 'utheorem'
+                if labelcheck == 'label'
+                    let primarytitle = 'UnnumberedTheorem  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'UnnumberedTheorem'
+                endif
+
+                "}}}
+
+                " Corollary{{{
+
+            elseif env == 'corollary'
+                if labelcheck == 'label'
+                    let primarytitle = 'Corollary  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'Corollary'
+                endif
+
+            elseif env == 'ucorollary'
+                if labelcheck == 'label'
+                    let primarytitle = 'UnnumberedCorollary  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'UnnumberedCorollary'
+                endif
+
+                "}}}
+
+                " Remark{{{
+
+            elseif env == 'remark'
+                if labelcheck == 'label'
+                    let primarytitle = 'Remark  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'Remark'
+                endif
+
+            elseif env == 'uremark'
+                if labelcheck == 'label'
+                    let primarytitle = 'UnnumberedRemark  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                else
+                    let title = 'UnnumberedRemark'
+                endif
+
+                "}}}
+
+            elseif env == 'proof'
+                let title = 'Proof'
+
+
+                " Other environments
             else
-                let aligntitle1 = repeat(' ', 090-len(primarytitle1))
-                let secondarytitle1 = primarytitle1 . aligntitle1 . label
-            endif
-        else 
-            let label = '    \'
-            let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%')
-            if len(primarytitle2) > 90
-                let secondarytitle1 = printf('%.087s', primarytitle2) . '...' . label
-            else
-                let aligntitle2 = repeat(' ', 090-len(primarytitle2))
-                let secondarytitle1 = primarytitle2 . aligntitle2 . label
+                let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze%')
+                if len(primarytitle) > 130
+                    let title = printf('%.127s', primarytitle) . '...'
+                else
+                    let title = primarytitle
+                endif
+
+                " Others{{{
+
+                " elseif env == 'lemma'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'ulemma'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'proposition'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'uproposition'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'theorem'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'utheorem'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'corollary'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'ucorollary'
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                " elseif env == 'remark'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'uremark'
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
+                " elseif env == 'proof'
+                "     let title = 'Proof'
+                "     let title = matchstr(line, '\\label\*\?\s*{\zs.\{-}\ze}')
+
+                "}}}
+
             endif
         endif
 
-        if type == 'chapter'
-            let title = '* C   ' . secondarytitle1
-        elseif type == 'section'
-            let title = '* S   ' . secondarytitle1
-        elseif type == 'subsection'
-            let title = '* Ss  ' . secondarytitle1
-        elseif type == 'subsubsection'
-            let title = '* Sss ' . secondarytitle1
-        else
-            let title = '      ' . secondarytitle1
-        endif
+        "}}}
 
-" Other types of section patterns{{{
-    elseif line =~ secpat1
-        let primarytitle = matchstr(line, secpat1 . '\zs.*')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
-        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-        let title = primarytitle . aligntitle . label
-        " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-    elseif line =~ secpat2 . '.*\]'
-        let primarytitle = matchstr(line, secpat2 . '\zs.\{-}\ze}\')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
-        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-        let title = primarytitle . aligntitle . label
-        " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-    elseif line =~ secpat2
-        let primarytitle = matchstr(line, secpat2 . '\zs.*')
-        let aligntitle = repeat(' ', 090-len(primarytitle))
-        let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-        let title = primarytitle . aligntitle . label
-        " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-    elseif line =~ 'Fake' . sections . ':'
-        let title =  matchstr(line,'Fake' . sections . ':\s*\zs.*')
-    elseif line =~ 'Fake' . sections
-        let title =  matchstr(line, 'Fake' . sections)
-    endif
+        " Helper folds{{{
 
-"}}}
-
-    " Environments
-    if line =~ '\\begin'
-        " Capture environment name
-        let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
-
-        if env == 'abstract'
-            let title = 'Abstract'
-        elseif env == 'frame'
-            let caption = s:CaptionFrame(line)
-            let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
-
-        " For theorem, lemma etc.
-        else
-            let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze%')
-            if len(primarytitle) > 130
-                let title = printf('%.127s', primarytitle) . '...'
-            else
-                let title = primarytitle
-            endif
-
-" Other environments{{{
-        " elseif env == 'lemma'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'ulemma'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'proposition'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'uproposition'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'theorem'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'utheorem'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'corollary'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'ucorollary'
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        " elseif env == 'remark'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'uremark'
-        "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%')
-        "     let title = matchstr(line, '^\s*\zs.\{-}\ze%')
-        " elseif env == 'proof'
-        "     let title = 'Proof'
-        "     let title = matchstr(line, '\\label\*\?\s*{\zs.\{-}\ze}')
-"}}}
-
-        endif
-    endif
-
-    " Helper folds
-    if line =~ '^\s*%'
-        let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%')
-        if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
-            if len(primarytitle) > 124
-                let title = '[H]   ' . printf('%.121s', primarytitle) . '...'
-            else
-                let title = '[H]   ' . primarytitle
+        if line =~ '^\s*%'
+            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%')
+            if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
+                if len(primarytitle) > 124
+                    let title = '[H]    ' . printf('%.121s', primarytitle) . '...'
+                else
+                    let title = '[H]    ' . primarytitle
+                endif
             endif
         endif
-    endif
 
-    return printf('%-15s %-138s %4d lines', level, title, nlines)
-    " return printf('%-15s %-138s', level, title)
-    " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)
-    " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines 
+        "}}}
 
-endfunction
+        return printf('%-15s %-138s %4d lines', level, title, nlines)
+        " return printf('%-15s %-138s', level, title)
+        " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)
+        " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines 
 
-" }}}
+    endfunction
+
+    " }}}
 
