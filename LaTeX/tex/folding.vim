@@ -261,7 +261,7 @@ function! LatexBox_FoldLevel(lnum)
 
         " if line =~ '\s*\\documentclass'
         if line =~ '\\documentclass'
-            let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%')
+            let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%')
         elseif line =~ '% Usepackages'
             let title = 'Usepackages'
         elseif line =~ '% Environments'
