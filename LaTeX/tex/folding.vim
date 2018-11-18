@@ -370,7 +370,7 @@ function! LatexBox_FoldLevel(lnum)
 
             if labelcheck1 == 'label'
                 let primarytitle = '  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
-                if len(primarytitle) > 130
+                if len(primarytitle) > 120
                     let secondarytitle = printf('%.127s', primarytitle) . '...'
                 else
                     let secondarytitle = primarytitle
@@ -378,17 +378,22 @@ function! LatexBox_FoldLevel(lnum)
             elseif labelcheck2 == 'label'
                 let primarytitle1 = ' - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
                 let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
-                if len(primarytitle1) > 68
-                    let primarytitle2 = printf('%.65s', primarytitle2) . '...'
+                let primarytitle3 = primarytitle1 . '  ' . label1
+                if len(primarytitle3) > 120
+                    if len(primarytitle1) > 68
+                        let primarytitle2 = printf('%.65s', primarytitle1) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let secondarytitle = primarytitle2 . '  ' . label2
                 else
-                    let primarytitle2 = primarytitle1
+                    let secondarytitle = primarytitle3
                 endif
-                if len(label1) > 50
-                    let label2 = printf('%.47s', label1) . '...'
-                else
-                    let label2 = label1
-                endif
-                let secondarytitle = primarytitle2 . '  ' . label2
             else
                 let secondarytitle = ''
             endif
