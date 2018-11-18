@@ -371,7 +371,7 @@ function! LatexBox_FoldLevel(lnum)
             if labelcheck1 == 'label'
                 let primarytitle = '  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                 if len(primarytitle) > 120
-                    let secondarytitle = printf('%.127s', primarytitle) . '...'
+                    let secondarytitle = printf('%.117s', primarytitle) . '...'
                 else
                     let secondarytitle = primarytitle
                 endif
