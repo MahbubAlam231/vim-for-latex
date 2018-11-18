@@ -365,7 +365,8 @@ function! LatexBox_FoldLevel(lnum)
         if line =~ '\\begin'
             " Capture environment name
             let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
-            let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+            let labelcheck1 = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
+            let labelcheck2 = matchstr(line, '\*\?\s*\]\\\zs.\{-}\ze{')
 
             if env == 'abstract'
                 let title = 'Abstract'
@@ -377,25 +378,53 @@ function! LatexBox_FoldLevel(lnum)
                 " Lemma{{{
 
             elseif env == 'lemma'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'Lemma  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Lemma - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'Lemma'
                 endif
 
             elseif env == 'ulemma'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'UnnumberedLemma  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedLemma - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'UnnumberedLemma'
                 endif
@@ -405,25 +434,53 @@ function! LatexBox_FoldLevel(lnum)
                 " Proposition{{{
 
             elseif env == 'proposition'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'Proposition  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Proposition - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'Proposition'
                 endif
 
             elseif env == 'uproposition'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'UnnumberedProposition  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedProposition - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'UnnumberedProposition'
                 endif
@@ -433,25 +490,53 @@ function! LatexBox_FoldLevel(lnum)
                 " Theorem{{{
 
             elseif env == 'theorem'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'Theorem  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Theorem - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'Theorem'
                 endif
 
             elseif env == 'utheorem'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'UnnumberedTheorem  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedTheorem - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'UnnumberedTheorem'
                 endif
@@ -461,25 +546,53 @@ function! LatexBox_FoldLevel(lnum)
                 " Corollary{{{
 
             elseif env == 'corollary'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'Corollary  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Corollary - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'Corollary'
                 endif
 
             elseif env == 'ucorollary'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'UnnumberedCorollary  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedCorollary - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'UnnumberedCorollary'
                 endif
@@ -489,27 +602,111 @@ function! LatexBox_FoldLevel(lnum)
                 " Remark{{{
 
             elseif env == 'remark'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'Remark  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Remark - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'Remark'
                 endif
 
             elseif env == 'uremark'
-                if labelcheck == 'label'
+                if labelcheck1 == 'label'
                     let primarytitle = 'UnnumberedRemark  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
                     if len(primarytitle) > 130
                         let title = printf('%.127s', primarytitle) . '...'
                     else
                         let title = primarytitle
                     endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedRemark - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
                 else
                     let title = 'UnnumberedRemark'
+                endif
+
+                "}}}
+
+                " Conjecture{{{
+
+            elseif env == 'conjecture'
+                if labelcheck1 == 'label'
+                    let primarytitle = 'Conjecture  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'Conjecture - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
+                else
+                    let title = 'Conjecture'
+                endif
+
+            elseif env == 'uconjecture'
+                if labelcheck1 == 'label'
+                    let primarytitle = 'UnnumberedConjecture  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%')
+                    if len(primarytitle) > 130
+                        let title = printf('%.127s', primarytitle) . '...'
+                    else
+                        let title = primarytitle
+                    endif
+                elseif labelcheck2 == 'label'
+                    let primarytitle1 = 'UnnumberedConjecture - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
+                    let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%')
+                    if len(primarytitle1) > 78
+                        let primarytitle2 = printf('%.75s', primarytitle2) . '...'
+                    else
+                        let primarytitle2 = primarytitle1
+                    endif
+                    if len(label1) > 50
+                        let label2 = printf('%.47s', label1) . '...'
+                    else
+                        let label2 = label1
+                    endif
+                    let title = primarytitle2 . '  ' . label2
+                else
+                    let title = 'UnnumberedConjecture'
                 endif
 
                 "}}}

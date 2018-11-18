@@ -792,7 +792,6 @@ inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
 augroup ContinuouslyWriteBuf
     autocmd!
     autocmd TextChanged,TextChangedI *.* silent write
-    autocmd TextChanged,TextChangedI *.* call TeXHighlight()
 augroup end
 
 " autocmd BufRead,BufNewFile *.* let b:save_time=localtime()
