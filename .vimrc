@@ -472,9 +472,6 @@ nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<c
 
 "3}}}
 
-" Go to matching character
-noremap <buffer> <cr> %
-
 " Mark and then go to the beginning or end of the file
 noremap <buffer> gg mggg
 noremap <buffer> G mgG
