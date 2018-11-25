@@ -1543,6 +1543,8 @@ inoremap <buffer> ;l \ell
 
 inoremap <buffer> <localleader>em \emph{}<esc>i
 
+inoremap <buffer> <localleader>bm \bm{}<esc>i
+
 inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 inoremap <buffer> <localleader>op \operatorname{}<esc>i

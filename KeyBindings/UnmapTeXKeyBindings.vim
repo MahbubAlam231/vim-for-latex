@@ -1064,6 +1064,8 @@ iunmap <buffer> ;l
 
 iunmap <buffer> <localleader>em
 
+iunmap <buffer> <localleader>bm
+
 iunmap <buffer> /,
 iunmap <buffer> <localleader>st
 iunmap <buffer> <localleader>op
