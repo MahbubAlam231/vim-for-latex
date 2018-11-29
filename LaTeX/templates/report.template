@@ -1,8 +1,9 @@
 
 %-------------------------------------------------------------------
-% Author        : {{NAME}}
-% Created       : {{TODAY}}
-% Description   : {{CURSOR}}
+% Author        : {{NAME}}{{CURSOR}}
+% File          : {{FILE}}
+% Created       : {{TODAY}} {{TIME}}
+% Description   : <++>
 %-------------------------------------------------------------------
 
 \documentclass[11pt]{report}%{{{

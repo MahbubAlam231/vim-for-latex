@@ -122,12 +122,12 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'MahbubAlam231/dragvisuals'
 Plugin 'MahbubAlam231/hybrid-line-numbers'
 Plugin 'MahbubAlam231/searching-with-blinking'
+Plugin 'MahbubAlam231/vim-system-copy'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'christoomey/vim-quicklink'
 Plugin 'christoomey/vim-sort-motion'
-Plugin 'christoomey/vim-system-copy'
 Plugin 'christoomey/vim-titlecase'
 Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
@@ -516,6 +516,8 @@ vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
 "3}}}
 
+nnoremap <buffer> n nzvzz
+nnoremap <buffer> N Nzvzz
 nnoremap <buffer> n nzvzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> N Nzvzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
@@ -550,7 +552,7 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text :setlocal spell spelllang=en_us
+    autocmd FileType tex,text,py setlocal spell spelllang=en_us
 augroup end
 
 " FixLastSpellingError
@@ -619,6 +621,7 @@ function! KeyBindings(code)
     "tex
     if l:code == "tex"
         source ~/.vim/KeyBindings/TeXKeyBindings.vim
+        setlocal spell spelllang=en_us
         set spellfile=~/.vim/spell/math.utf-8.add
 
     "to enter numbers peacefully
@@ -628,6 +631,7 @@ function! KeyBindings(code)
     "python
     elseif l:code == "py"
         source ~/.vim/KeyBindings/PythonKeyBindings.vim
+        setlocal spell spelllang=en_us
         set spellfile=~/.vim/spell/math.utf-8.add
 
     "UnmapTeXKeyBindings
@@ -780,9 +784,9 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-augroup IndentTexBuf
+augroup IndentTexSHBuf
     autocmd!
-    autocmd BufWritePre,BufNewFile,BufRead *.tex :normal! mmgg=G`m
+    autocmd BufWritePre,BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
 augroup end
 
 " Doesn't seem to work when template is enabled
