@@ -385,13 +385,9 @@ cnoremap <buffer> <c-e> <end>
 " Trailing White Space{{{2
 "-------------------------------------------------------------------
 
-function! DeleteTrailingWhiteSpace()
-    :normal! mm0g_lD`m
-endfunction
-
 "autocmd BufWritePre * %s/\s\+$//e
-inoremap <buffer> <localleader>dtw <Esc>:call DeleteTrailingWhiteSpace()<cr>:echo<cr>a
-nnoremap <buffer> <localleader>dtw :call DeleteTrailingWhiteSpace()<cr>:echo<cr>
+inoremap <buffer> <localleader>fws <Esc>mwV:FixWhitespace<cr>:echo<cr>`wa
+nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
 "2}}}
 " Leader Mappings{{{2
@@ -402,7 +398,7 @@ let maplocalleader=","
 
 " To get <> and write <localleader> easily
 inoremap <buffer> <> <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la 
+inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
 inoremap <buffer> <L <><esc>ileader<esc>la
 inoremap <buffer> <LL <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
@@ -516,8 +512,7 @@ vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
 
 "3}}}
 
-nnoremap <buffer> n nzvzz
-nnoremap <buffer> N Nzvzz
+" Highlighting next match
 nnoremap <buffer> n nzvzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> N Nzvzz:call HLNext(0.05)<cr>:echo<cr>
 nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
@@ -786,7 +781,7 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 
 augroup IndentTexSHBuf
     autocmd!
-    autocmd BufWritePre,BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
+    autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
 augroup end
 
 " Doesn't seem to work when template is enabled
@@ -816,7 +811,7 @@ augroup end
 " endfunction
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
-nnoremap <buffer> <localleader>wq mqzMgg:wq!<cr>
+nnoremap <buffer> <localleader>wq mqzMgg:wq<cr>
 noremap <buffer> 'q `qzvzz
 
 "}}}
