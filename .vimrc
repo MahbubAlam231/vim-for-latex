@@ -182,11 +182,11 @@ map <leader>s ms<Plug>(easymotion-s2)
 " map t <Plug>Sneak_t
 " map T <Plug>Sneak_T
 
-nnoremap <buffer> 'w `w
-nnoremap <buffer> 'e `e
-nnoremap <buffer> 'f `f
-nnoremap <buffer> 's `s
-nnoremap <buffer> 't `t
+nnoremap <buffer> 'w `wzvzz
+nnoremap <buffer> 'e `ezvzz
+nnoremap <buffer> 'f `fzvzz
+nnoremap <buffer> 's `szvzz
+nnoremap <buffer> 't `tzvzz
 
 "3}}}
 " Fugitive{{{
@@ -254,16 +254,16 @@ vnoremap <buffer> <localleader>z zMzvzz
 vnoremap <buffer> <space> zazz
 vnoremap <buffer> <localleader><space> zazt
 
-nnoremap <buffer> 'o `ozz
+nnoremap <buffer> 'o `ozvzz
 nnoremap <buffer> 'c `czvzz
-nnoremap <buffer> 'v `vzz
-nnoremap <buffer> 'r `rzz
+nnoremap <buffer> 'v `vzvzz
+nnoremap <buffer> 'r `rzvzz
 nnoremap <buffer> 'm `mzvzz
 
-vnoremap <buffer> 'o `ozz
+vnoremap <buffer> 'o `ozvzz
 vnoremap <buffer> 'c `czvzz
-vnoremap <buffer> 'v `vzz
-vnoremap <buffer> 'r `rzz
+vnoremap <buffer> 'v `vzvzz
+vnoremap <buffer> 'r `rzvzz
 vnoremap <buffer> 'm `mzvzz
 
 "4}}}
@@ -461,15 +461,15 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
-nnoremap <buffer> 'h `h
-nnoremap <buffer> 'j `j
-nnoremap <buffer> 'k `k
-nnoremap <buffer> 'l `l
+nnoremap <buffer> 'h `hzvzz
+nnoremap <buffer> 'j `jzvzz
+nnoremap <buffer> 'k `kzvzz
+nnoremap <buffer> 'l `lzvzz
 
-vnoremap <buffer> 'h `h
-vnoremap <buffer> 'j `j
-vnoremap <buffer> 'k `k
-vnoremap <buffer> 'l `l
+vnoremap <buffer> 'h `hzvzz
+vnoremap <buffer> 'j `jzvzz
+vnoremap <buffer> 'k `kzvzz
+vnoremap <buffer> 'l `lzvzz
 
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
@@ -545,12 +545,12 @@ nnoremap <buffer> g, g,zvzz
 " Marking before searching
 nnoremap <buffer> / ms/
 
-nnoremap <buffer> 's `s
+nnoremap <buffer> 's `szvzz
 
 " Search within visual selection
 vnoremap <buffer> / <esc>ms/\%V
 
-vnoremap <buffer> 's `s
+vnoremap <buffer> 's `szvzz
 
 " Don't move on after */#
 nnoremap <buffer> * ms*<c-o>
