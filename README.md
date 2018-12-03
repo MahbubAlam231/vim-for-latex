@@ -15,8 +15,9 @@ folding method and [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) fold
 This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
 folding technique which can be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
 and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
-This folding technique uses `foldmethod=marker`, so you will have to use `foldmethod=marker`
-to fold your `tex`.
+This folding technique uses `foldmethod=marker` and `foldmarker={T{E{X,}T}E}X`,
+so you will have to use `foldmethod=marker` to fold your `tex`, and keep in
+mind the different `foldmarker`.
 
 ## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
 
