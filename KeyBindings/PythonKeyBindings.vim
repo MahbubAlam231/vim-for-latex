@@ -64,3 +64,5 @@ inoremap <buffer> n= !=
 
 "}}}
 
+nnoremap <buffer> <F5> :w!<cr>:exec '!python' shellescape(@%, 1)<cr>
+

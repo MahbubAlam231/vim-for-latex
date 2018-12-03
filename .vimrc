@@ -171,16 +171,22 @@ let g:airline_theme = 'simple'
 "3}}}
 " Easymotion and Sneak{{{3
 
-map <leader>w <Plug>(easymotion-bd-w)
-map <leader>e <Plug>(easymotion-bd-e)
-map <leader>f <Plug>(easymotion-bd-f)
-map <leader>s <Plug>(easymotion-s2)
-" map <leader>t <Plug>(easymotion-t2)
+map <leader>w mw<Plug>(easymotion-bd-w)
+map <leader>e me<Plug>(easymotion-bd-e)
+map <leader>f mf<Plug>(easymotion-bd-f)
+map <leader>s ms<Plug>(easymotion-s2)
+" map <leader>t mt<Plug>(easymotion-t2)
 
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
 " map t <Plug>Sneak_t
 " map T <Plug>Sneak_T
+
+nnoremap <buffer> 'w `w
+nnoremap <buffer> 'e `e
+nnoremap <buffer> 'f `f
+nnoremap <buffer> 's `s
+nnoremap <buffer> 't `t
 
 "3}}}
 " Fugitive{{{
@@ -212,7 +218,8 @@ function! MakeView()
 endfunction
 
 nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
-noremap <buffer> 'f `fzvzz
+nnoremap <buffer> 'f `fzvzz
+vnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
     :execute ":normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
@@ -227,21 +234,37 @@ augroup Loadview
 augroup end
 
 " Opening/closing folding{{{4
-noremap <buffer> zo mozozz
-noremap <buffer> zc mczczz
-noremap <buffer> zC mczCzz
-noremap <buffer> zv mvzvzz
-noremap <buffer> zr mrzRzz
-noremap <buffer> zm mmzMzz
-noremap <buffer> <localleader>z zMzvzz
-noremap <buffer> <space> zazz
-noremap <buffer> <localleader><space> zazt
+nnoremap <buffer> zo mozozz
+nnoremap <buffer> zc mczczz
+nnoremap <buffer> zC mczCzz
+nnoremap <buffer> zv mvzvzz
+nnoremap <buffer> zr mrzRzz
+nnoremap <buffer> zm mmzMzz
+nnoremap <buffer> <localleader>z zMzvzz
+nnoremap <buffer> <space> zazz
+nnoremap <buffer> <localleader><space> zazt
 
-noremap <buffer> 'o `ozz
-noremap <buffer> 'c `czvzz
-noremap <buffer> 'v `vzz
-noremap <buffer> 'r `rzz
-noremap <buffer> 'm `mzvzz
+vnoremap <buffer> zo mozozz
+vnoremap <buffer> zc mczczz
+vnoremap <buffer> zC mczCzz
+vnoremap <buffer> zv mvzvzz
+vnoremap <buffer> zr mrzRzz
+vnoremap <buffer> zm mmzMzz
+vnoremap <buffer> <localleader>z zMzvzz
+vnoremap <buffer> <space> zazz
+vnoremap <buffer> <localleader><space> zazt
+
+nnoremap <buffer> 'o `ozz
+nnoremap <buffer> 'c `czvzz
+nnoremap <buffer> 'v `vzz
+nnoremap <buffer> 'r `rzz
+nnoremap <buffer> 'm `mzvzz
+
+vnoremap <buffer> 'o `ozz
+vnoremap <buffer> 'c `czvzz
+vnoremap <buffer> 'v `vzz
+vnoremap <buffer> 'r `rzz
+vnoremap <buffer> 'm `mzvzz
 
 "4}}}
 
@@ -296,6 +319,8 @@ nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 " Placeholders <++>
 nnoremap <buffer> <c-j> zM/<++><cr>zv:noh<cr>cf>
 inoremap <buffer> <c-j> <esc>zM/<++><cr>zv:noh<cr>cf>
+nnoremap <buffer> <c-k> zM?<++><cr>zv:noh<cr>cf>
+inoremap <buffer> <c-k> <esc>zM?<++><cr>zv:noh<cr>cf>
 
 "3}}}
 " Titlecase{{{3
@@ -328,9 +353,13 @@ vmap <localleader>t <Plug>Titlecase
 " Align text{{{2
 "-------------------------------------------------------------------
 
-noremap <buffer> <localleader>al :left<cr>
-noremap <buffer> <localleader>ac :center<cr>
-noremap <buffer> <localleader>ar :right<cr>
+nnoremap <buffer> <localleader>al :left<cr>
+nnoremap <buffer> <localleader>ac :center<cr>
+nnoremap <buffer> <localleader>ar :right<cr>
+
+vnoremap <buffer> <localleader>al :left<cr>
+vnoremap <buffer> <localleader>ac :center<cr>
+vnoremap <buffer> <localleader>ar :right<cr>
 
 "2}}}
 " Braces and stuff{{{2
@@ -422,15 +451,25 @@ nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 "3}}}
 " Moving on the screen{{{3
-noremap <buffer> H mh^
-noremap <buffer> J mjL
-noremap <buffer> K mkH
-noremap <buffer> L mlg_
+nnoremap <buffer> H mh^
+nnoremap <buffer> J mjL
+nnoremap <buffer> K mkH
+nnoremap <buffer> L mlg_
 
-noremap <buffer> 'h `h
-noremap <buffer> 'j `j
-noremap <buffer> 'k `k
-noremap <buffer> 'l `l
+vnoremap <buffer> H mh^
+vnoremap <buffer> J mjL
+vnoremap <buffer> K mkH
+vnoremap <buffer> L mlg_
+
+nnoremap <buffer> 'h `h
+nnoremap <buffer> 'j `j
+nnoremap <buffer> 'k `k
+nnoremap <buffer> 'l `l
+
+vnoremap <buffer> 'h `h
+vnoremap <buffer> 'j `j
+vnoremap <buffer> 'k `k
+vnoremap <buffer> 'l `l
 
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
@@ -446,19 +485,31 @@ function! NavigationToggleInWrapMode()
         " Using VIM lines
         unmap <buffer> j
         unmap <buffer> k
-        noremap <buffer> H mh^
-        noremap <buffer> J mjL
-        noremap <buffer> K mkH
-        noremap <buffer> L mlg_
+        nnoremap <buffer> H mh^
+        nnoremap <buffer> J mjL
+        nnoremap <buffer> K mkH
+        nnoremap <buffer> L mlg_
+
+        vnoremap <buffer> H mh^
+        vnoremap <buffer> J mjL
+        vnoremap <buffer> K mkH
+        vnoremap <buffer> L mlg_
         let s:navigation_toggle = 0
     else
         " Using visual lines
-        noremap <buffer> j gj
-        noremap <buffer> k gk
-        noremap <buffer> H mhg^
-        noremap <buffer> J mjL
-        noremap <buffer> K mkH
-        noremap <buffer> L mlg$
+        nnoremap <buffer> j gj
+        nnoremap <buffer> k gk
+        nnoremap <buffer> H mhg^
+        nnoremap <buffer> J mjL
+        nnoremap <buffer> K mkH
+        nnoremap <buffer> L mlg$
+
+        vnoremap <buffer> j gj
+        vnoremap <buffer> k gk
+        vnoremap <buffer> H mhg^
+        vnoremap <buffer> J mjL
+        vnoremap <buffer> K mkH
+        vnoremap <buffer> L mlg$
         let s:navigation_toggle = 1
     endif
 endfunction
@@ -468,15 +519,19 @@ nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<c
 "3}}}
 
 " Mark and then go to the beginning or end of the file
-noremap <buffer> gg mggg
-noremap <buffer> G mgG
-noremap <buffer> 'g `gzvzz
+nnoremap <buffer> gg mggg
+nnoremap <buffer> G mgG
+nnoremap <buffer> 'g `gzvzz
 
-" Easy splits navigation{{{3
-nnoremap <buffer> <localleader><localleader>h <c-w>h
-nnoremap <buffer> <localleader><localleader>j <c-w>j
-nnoremap <buffer> <localleader><localleader>k <c-w>k
-nnoremap <buffer> <localleader><localleader>l <c-w>l
+vnoremap <buffer> gg mggg
+vnoremap <buffer> G mgG
+vnoremap <buffer> 'g `gzvzz
+
+" " Easy splits navigation{{{3
+" nnoremap <buffer> ;h <c-w>h
+" nnoremap <buffer> ;j <c-w>j
+" nnoremap <buffer> ;k <c-w>k
+" nnoremap <buffer> ;l <c-w>l
 
 "3}}}
 
@@ -490,10 +545,12 @@ nnoremap <buffer> g, g,zvzz
 " Marking before searching
 nnoremap <buffer> / ms/
 
+nnoremap <buffer> 's `s
+
 " Search within visual selection
 vnoremap <buffer> / <esc>ms/\%V
 
-noremap <buffer> 's `s
+vnoremap <buffer> 's `s
 
 " Don't move on after */#
 nnoremap <buffer> * ms*<c-o>
@@ -552,15 +609,15 @@ augroup end
 
 " FixLastSpellingError
 function! FixLastSpellingError()
-    :normal! mm[s1z=`m
+    :normal! mf[s1z=`f
 endfunction
 
 nnoremap <buffer> <localleader>fs :call FixLastSpellingError()<cr>:echo<cr>
 inoremap <buffer> <localleader>fs <esc>:call FixLastSpellingError()<cr>:echo<cr>a
 
 " Adding new words to dictionary
-nnoremap <buffer> < [szz
-nnoremap <buffer> > ]szz
+nnoremap <buffer> < ms[szz
+nnoremap <buffer> > ms]szz
 nnoremap <buffer> zgN zg[szz
 nnoremap <buffer> zgn zg]szz
 nnoremap <buffer> zwN zw[szz
@@ -616,7 +673,6 @@ function! KeyBindings(code)
     "tex
     if l:code == "tex"
         source ~/.vim/KeyBindings/TeXKeyBindings.vim
-        setlocal spell spelllang=en_us
         set spellfile=~/.vim/spell/math.utf-8.add
 
     "to enter numbers peacefully
@@ -626,7 +682,6 @@ function! KeyBindings(code)
     "python
     elseif l:code == "py"
         source ~/.vim/KeyBindings/PythonKeyBindings.vim
-        setlocal spell spelllang=en_us
         set spellfile=~/.vim/spell/math.utf-8.add
 
     "UnmapTeXKeyBindings
@@ -655,12 +710,10 @@ function! Abbreviations(code)
     "gen
     if l:code == "gen"
     source ~/.vim/Abbreviations/GeneralAbbreviations.vim
-    set spellfile=~/.vim/spell/math.utf-8.add
 
     "math
     elseif l:code == "math"
     source ~/.vim/Abbreviations/MathAbbreviations.vim
-    set spellfile=~/.vim/spell/math.utf-8.add
 
     "invalid Abbreviations
     elseif l:code != 'gen' && l:code != 'math'
@@ -677,6 +730,7 @@ augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile,BufRead *.py :source $MYVIMRC
     autocmd BufNewFile,BufRead *.py :call KeyBindings("py")
+    autocmd BufNewFile,BufRead *.tex :setlocal spell spelllang=en_us
 augroup end
 
 augroup SourceEverythingForTeX
@@ -686,7 +740,9 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
     autocmd BufNewFile,BufRead *.tex :call MatrixGroupToggle()
+    autocmd BufNewFile,BufRead *.tex :setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex :setlocal foldmethod=marker
+    autocmd BufNewFile,BufRead *.tex :set foldmarker={T{E{X,}T}E}X
 augroup end
 
 " TeXHighlight
@@ -767,6 +823,11 @@ nnoremap <buffer> <leader>uth :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr
 nnoremap <buffer> <leader>utv :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
+" Opening mathspell file
+nnoremap <buffer> <leadEr>msh :new ~/.vim/spell/math.utf-8.add<cr>
+nnoremap <buffer> <leader>msv :vnew ~/.vim/spell/math.utf-8.add<cr>
+nnoremap <buffer> <leader>ms :vnew ~/.vim/spell/math.utf-8.add<cr>
+
 " Opening .vimrc
 nnoremap <buffer> <leader>vh :hsplit $MYVIMRC<cr>
 nnoremap <buffer> <leader>vv :vsplit $MYVIMRC<cr>
@@ -793,10 +854,10 @@ augroup end
 nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
 inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
 
-augroup ContinuouslyWriteBuf
-    autocmd!
-    autocmd TextChanged,TextChangedI *.* silent write
-augroup end
+" augroup ContinuouslyWriteBuf
+"     autocmd!
+"     autocmd TextChanged,TextChangedI *.* silent write
+" augroup end
 
 " autocmd BufRead,BufNewFile *.* let b:save_time=localtime()
 " autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI *.* call UpdateFile()
@@ -812,7 +873,8 @@ augroup end
 
 nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
 nnoremap <buffer> <localleader>wq mqzMgg:wq<cr>
-noremap <buffer> 'q `qzvzz
+nnoremap <buffer> 'q `qzvzz
+vnoremap <buffer> 'q `qzvzz
 
 "}}}
 

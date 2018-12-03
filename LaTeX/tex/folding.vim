@@ -261,7 +261,7 @@ function! LatexBox_FoldLevel(lnum)
 
         " if line =~ '\s*\\documentclass'
         if line =~ '\\documentclass'
-            let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%{{')
+            let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}%{')
         elseif line =~ '% Usepackages'
             let title = 'Usepackages'
         elseif line =~ '% Environments'
@@ -291,7 +291,7 @@ function! LatexBox_FoldLevel(lnum)
             let labelcheck = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
 
             if labelcheck == 'label'
-                let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+                let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
                 let primarytitle1 = matchstr(line, secpat1 . '\zs.\{-}\ze}\')
                 if len(primarytitle1) > 90
                     let secondarytitle1 = printf('%.087s', primarytitle1) . '...'
@@ -301,7 +301,7 @@ function! LatexBox_FoldLevel(lnum)
                 endif
             else 
                 let label = '    \'
-                let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%{{')
+                let primarytitle2 = matchstr(line, secpat1 . '\zs.\{-}\ze}%{')
                 if len(primarytitle2) > 90
                     let secondarytitle1 = printf('%.087s', primarytitle2) . '...'
                 else
@@ -337,21 +337,21 @@ function! LatexBox_FoldLevel(lnum)
         elseif line =~ secpat1
             let primarytitle = matchstr(line, secpat1 . '\zs.*')
             let aligntitle = repeat(' ', 090-len(primarytitle))
-            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
             let title = primarytitle . aligntitle . label
-            " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            " let title = matchstr(line, secpat1 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
         elseif line =~ secpat2 . '.*\]'
             let primarytitle = matchstr(line, secpat2 . '\zs.\{-}\ze}\')
             let aligntitle = repeat(' ', 090-len(primarytitle))
-            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
             let title = primarytitle . aligntitle . label
-            " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            " let title = matchstr(line, secpat2 . '\zs.\{-}\ze}\') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
         elseif line =~ secpat2
             let primarytitle = matchstr(line, secpat2 . '\zs.*')
             let aligntitle = repeat(' ', 090-len(primarytitle))
-            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            let label = '    \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
             let title = primarytitle . aligntitle . label
-            " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+            " let title = matchstr(line, secpat2 . '\zs.*') . '  |  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
         elseif line =~ 'Fake' . sections . ':'
             let title =  matchstr(line,'Fake' . sections . ':\s*\zs.*')
         elseif line =~ 'Fake' . sections
@@ -370,7 +370,7 @@ function! LatexBox_FoldLevel(lnum)
             let envname = matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]')
 
             if labelcheck1 == 'label'
-                let primarytitle = '  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{{')
+                let primarytitle = '  \' . matchstr(line, '\*\?\s*}\\\zs.\{-}\ze%{')
                 if len(primarytitle) > 120
                     let secondarytitle = printf('%.117s', primarytitle) . '...'
                 else
@@ -378,7 +378,7 @@ function! LatexBox_FoldLevel(lnum)
                 endif
             elseif labelcheck2 == 'label'
                 let primarytitle1 = ' - ' . matchstr(line, '\*\?\s*}\[\zs.\{-}\ze\]')
-                let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%{{')
+                let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze%{')
                 let primarytitle3 = primarytitle1 . '  ' . label1
                 if len(primarytitle3) > 120
                     if len(primarytitle1) > 68
@@ -474,7 +474,7 @@ function! LatexBox_FoldLevel(lnum)
 
                 " Other environments
             else
-                let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze%{{')
+                let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze%{')
                 if len(primarytitle) > 120
                     let title = printf('%.117s', primarytitle) . '...'
                 else
@@ -484,8 +484,8 @@ function! LatexBox_FoldLevel(lnum)
                 " Others{{{
 
                 " elseif env == 'lemma'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%{{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%{{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%{')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%{')
                 " elseif env == 'ulemma'
                 "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%{{')
                 "     let title = matchstr(line, '^\s*\zs.\{-}\ze%{{')
@@ -527,7 +527,7 @@ function! LatexBox_FoldLevel(lnum)
         " Helper folds{{{
 
         if line =~ '^\s*% '
-            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{{')
+            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
             if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
                 if len(primarytitle) > 124
                     let title = '[H]    ' . printf('%.121s', primarytitle) . '...'

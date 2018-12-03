@@ -27,8 +27,6 @@ iabbr THeorem Theorem
 "W{{{
 
 iabbr WE We
-iabbr Wrt With respect to
-iabbr wrt with respect to
 
 "}}}
 
@@ -38,6 +36,7 @@ iabbr wrt with respect to
 
 "A{{{
 
+Abolish adn and
 Abolish alg{,ic} algebra{,ic}
 Abolish approx{n,e} approximat{ion,e}
 Abolish arb arbitrary
@@ -104,7 +103,7 @@ Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 "I{{{
 
 Abolish ind{ep,ly,eply} independent{,ly,ly}
-Abolish int{n,l,e,te,ble,y} integra{tion,l,te,te,ble,bility}
+Abolish int{n,l,ls,e,te,ble,y,ing} integra{tion,l,ls,te,te,ble,bility,ting}
 Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 
 "}}}
@@ -173,7 +172,8 @@ Abolish unbdd unbounded
 "}}}
 "W{{{
 
-
+Abolish wrt with respect to
+Abolish wlog without loss of generality
 
 "}}}
 

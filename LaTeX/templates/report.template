@@ -1,14 +1,14 @@
 
 %-------------------------------------------------------------------
 % Author        : {{NAME}}{{CURSOR}}
-% File          : {{FILE}}
+% File          : {{FILE}}.tex
 % Created       : {{TODAY}} {{TIME}}
 % Description   : <++>
 %-------------------------------------------------------------------
 
-\documentclass[11pt]{report}%{{{
+\documentclass[11pt]{report}%{T{E{X
 
-% Usepackages%{{{
+% Usepackages%{T{E{X
 %-------------------------------------------------------------------
 
 \usepackage{afterpage}
@@ -46,9 +46,22 @@
 
 \graphicspath{{Images/}}
 
-%}}}
-% Environments%{{{
+%}T}E}X
+% Environments%{T{E{X
 %-------------------------------------------------------------------
+
+\makeatletter
+\def\th@plain{%
+    \thm@notefont{}% same as heading font
+    \itshape% body font
+}
+\def\th@definition{%
+    \thm@notefont{}% same as heading font
+    \normalfont% body font
+}
+\makeatother
+
+
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -77,8 +90,8 @@
 \theoremstyle{remark}
 \newtheorem*{uremark}{Remark}
 
-%}}}
-% Newcommands%{{{
+%}T}E}X
+% Newcommands%{T{E{X
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
@@ -112,9 +125,9 @@
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-%}}}
+%}T}E}X
 
-%}}}
+%}T}E}X
 
 \begin{document}
 
@@ -127,9 +140,9 @@
 \maketitle
 
 % Abstract
-\begin{abstract}%{{{
+\begin{abstract}%{T{E{X
     <++>
-\end{abstract}%}}}
+\end{abstract}%}T}E}X
 
 
 
@@ -141,4 +154,7 @@
 %-------------------------------------------------------------------
 % Comments on the document
 %-------------------------------------------------------------------
+
+% foldmarker has been changed, if you open it in VIM, be careful.
+% set foldmarker={T{E{X,}T}E}X
 

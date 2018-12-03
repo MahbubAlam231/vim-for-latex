@@ -1104,6 +1104,12 @@ unmap <buffer> <localleader>baleq
 " \[\] to Unnumbered Aligned Equation
 unmap <buffer> <localleader>bualeq
 
+" \[\] to Gathered Equation
+unmap <buffer> <localleader>bgaeq
+
+" \[\] to Unnumbered Gathered Equation
+unmap <buffer> <localleader>bugaeq
+
 " \[\] to Gather
 unmap <buffer> <localleader>bga
 
