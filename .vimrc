@@ -461,15 +461,15 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
-nnoremap <buffer> 'h `hzvzz
-nnoremap <buffer> 'j `jzvzz
-nnoremap <buffer> 'k `kzvzz
-nnoremap <buffer> 'l `lzvzz
+nnoremap <buffer> 'h `h
+nnoremap <buffer> 'j `j
+nnoremap <buffer> 'k `k
+nnoremap <buffer> 'l `l
 
-vnoremap <buffer> 'h `hzvzz
-vnoremap <buffer> 'j `jzvzz
-vnoremap <buffer> 'k `kzvzz
-vnoremap <buffer> 'l `lzvzz
+vnoremap <buffer> 'h `h
+vnoremap <buffer> 'j `j
+vnoremap <buffer> 'k `k
+vnoremap <buffer> 'l `l
 
 inoremap <buffer> <leader>z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
@@ -633,8 +633,16 @@ nnoremap <buffer> <localleader>S :%S/
 vnoremap <buffer> <localleader>S :S/
 
 "2}}}
-" Visual selection and dragging{{{2
+" Pasting, visual selection and dragging{{{2
 "-------------------------------------------------------------------
+
+" Pasting
+nnoremap <buffer> p pmp
+nnoremap <buffer> P Pmp
+
+" Visually reselect whatever is pasted
+nnoremap <buffer> <localleader>V `pV`]
+vnoremap <buffer> <localleader>V <esc>`pV`]
 
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
@@ -648,9 +656,6 @@ vmap <expr> D         DVB_Duplicate()
 
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
-
-" Visually reselect whatever is pasted
-nnoremap <buffer> <localleader>V V`]
 
 "2}}}
 
