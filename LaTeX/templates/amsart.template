@@ -133,7 +133,7 @@
 
 % \pagestyle{plain} % to remove header and footer
 
-\title[<++>]{\bfseries <++>}
+\title[<++>]{<++>}
 
 \author{{{NAME}}<++>}
 

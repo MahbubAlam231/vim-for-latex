@@ -1831,7 +1831,7 @@ nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>
 " Highlighting{{{
 "-------------------------------------------------------------------
 
-" Chapter, Section, Subsection, Subsubsection, label"{{{2
+" Chapter, Section, Subsection, Subsubsection, label"{{{
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
 let m = matchadd("Folds_brackets_comments",'{{{')
@@ -1874,8 +1874,8 @@ let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 highlight Label ctermbg=Red ctermfg=black
 let m = matchadd("Label",'\\label{.\{}}')
 
-"2}}}
-" MarkerGroup, BoldGroup"{{{2
+"}}}
+" MarkerGroup, BoldGroup"{{{
 
 highlight Abstract ctermbg=92 ctermfg=yellow
 
@@ -1956,8 +1956,8 @@ highlight BoldRedGroup ctermfg=red cterm=bold
 
 let m = matchadd("BoldRedGroup",'\\todo')
 
-"2}}}
-" Abstract, Theorem, Equation"{{{2
+"}}}
+" Abstract, Theorem, Equation"{{{
 
 highlight Abstract ctermbg=92 ctermfg=yellow
 
@@ -2181,7 +2181,7 @@ let m = matchadd("ParenthesisGroup",'\\right]}')
 let m = matchadd("ParenthesisGroup",'{\\left[{')
 let m = matchadd("ParenthesisGroup",'}\\right]}')
 
-"2}}}
+"}}}
 
 "}}}
 

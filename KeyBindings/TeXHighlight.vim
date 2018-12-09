@@ -5,6 +5,14 @@
 
 " Chapter, Section, Subsection, Subsubsection, label"{{{
 
+highlight Folds_brackets_comments ctermbg=174 ctermfg=black
+let m = matchadd("Folds_brackets_comments",'{{{')
+let m = matchadd("Folds_brackets_comments",'}}}')
+let m = matchadd("Folds_brackets_comments",'%{{{')
+let m = matchadd("Folds_brackets_comments",'%}}}')
+let m = matchadd("Folds_brackets_comments",'%{T{E{X')
+let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
 
@@ -27,10 +35,10 @@ highlight SubsectionGroup ctermbg=198 ctermfg=Black
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
 let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 
-highlight SubsubsectionMarkerGroup ctermbg=143 ctermfg=Black
+highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
 let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
 
-highlight SubsubsectionGroup ctermbg=143 ctermfg=Black
+highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
@@ -81,6 +89,8 @@ let m = matchadd("YellowMarkerGroup",'% Align')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
 let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
+let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
+let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
 let m = matchadd("YellowMarkerGroup",'% Gather')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
 let m = matchadd("YellowMarkerGroup",'% Center')
@@ -213,6 +223,8 @@ let m = matchadd("EquationGroup",'\\begin{gather}')
 let m = matchadd("EquationGroup",'\\end{gather}')
 let m = matchadd("EquationGroup",'\\begin{gather\*}')
 let m = matchadd("EquationGroup",'\\end{gather\*}')
+let m = matchadd("EquationGroup",'\\begin{gathered}')
+let m = matchadd("EquationGroup",'\\end{gathered}')
 let m = matchadd("EquationGroup",'\\begin{cases}')
 let m = matchadd("EquationGroup",'\\end{cases}')
 let m = matchadd("EquationGroup",'\\begin{dcases}')
@@ -242,6 +254,13 @@ highlight asterisk ctermbg=130 ctermfg=yellow
 let m = matchadd("asterisk",'\*')
 
 highlight ParenthesisGroup ctermbg=182 ctermfg=black
+
+" let m = matchadd("ParenthesisGroup",'\\big')
+" let m = matchadd("ParenthesisGroup",'\\Big')
+" let m = matchadd("ParenthesisGroup",'\\bigg')
+" let m = matchadd("ParenthesisGroup",'\\Bigg')
+" let m = matchadd("ParenthesisGroup",'\\left')
+" let m = matchadd("ParenthesisGroup",'\\right')
 
 let m = matchadd("ParenthesisGroup",'\\big(')
 let m = matchadd("ParenthesisGroup",'\\big)')
@@ -275,35 +294,35 @@ let m = matchadd("ParenthesisGroup",'{\\left({')
 let m = matchadd("ParenthesisGroup",'}\\right)}')
 
 let m = matchadd("ParenthesisGroup",'\\big\\{')
-let m = matchadd("ParenthesisGroup",'\\big\}')
+let m = matchadd("ParenthesisGroup",'\\big\\}')
 let m = matchadd("ParenthesisGroup",'{\\big\\{')
-let m = matchadd("ParenthesisGroup",'\\big\}}')
+let m = matchadd("ParenthesisGroup",'\\big\\}}')
 let m = matchadd("ParenthesisGroup",'{\\big\\{{')
-let m = matchadd("ParenthesisGroup",'}\\big\}}')
+let m = matchadd("ParenthesisGroup",'}\\big\\}}')
 let m = matchadd("ParenthesisGroup",'\\Big\\{')
-let m = matchadd("ParenthesisGroup",'\\Big\}')
+let m = matchadd("ParenthesisGroup",'\\Big\\}')
 let m = matchadd("ParenthesisGroup",'{\\Big\\{')
-let m = matchadd("ParenthesisGroup",'\\Big\}}')
+let m = matchadd("ParenthesisGroup",'\\Big\\}}')
 let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
-let m = matchadd("ParenthesisGroup",'}\\Big\}}')
+let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
 let m = matchadd("ParenthesisGroup",'\\bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\bigg\}')
+let m = matchadd("ParenthesisGroup",'\\bigg\\}')
 let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\bigg\}}')
+let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
 let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
-let m = matchadd("ParenthesisGroup",'}\\bigg\}}')
+let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
 let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\Bigg\}')
+let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
 let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\Bigg\}}')
+let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
 let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
-let m = matchadd("ParenthesisGroup",'}\\Bigg\}}')
+let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
 let m = matchadd("ParenthesisGroup",'\\left\\{')
-let m = matchadd("ParenthesisGroup",'\\right\}')
+let m = matchadd("ParenthesisGroup",'\\right\\}')
 let m = matchadd("ParenthesisGroup",'{\\left\\{')
-let m = matchadd("ParenthesisGroup",'\\right\}}')
+let m = matchadd("ParenthesisGroup",'\\right\\}}')
 let m = matchadd("ParenthesisGroup",'{\\left\\{{')
-let m = matchadd("ParenthesisGroup",'}\\right\}}')
+let m = matchadd("ParenthesisGroup",'}\\right\\}}')
 
 let m = matchadd("ParenthesisGroup",'\\big[')
 let m = matchadd("ParenthesisGroup",'\\big]')

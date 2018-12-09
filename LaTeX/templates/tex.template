@@ -6,7 +6,7 @@
 % Description   : <++>
 %-------------------------------------------------------------------
 
-\documentclass[11pt]{article}%{T{E{X
+\documentclass[12pt,reqno]{amsart}%{T{E{X
 
 % Usepackages%{T{E{X
 %-------------------------------------------------------------------
@@ -131,7 +131,9 @@
 
 \begin{document}
 
-\title{\bfseries <++>}
+% \pagestyle{plain} % to remove header and footer
+
+\title{<++>}
 
 \author{{{NAME}}<++>}
 

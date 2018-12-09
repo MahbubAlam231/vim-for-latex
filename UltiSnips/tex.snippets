@@ -22,9 +22,9 @@ endsnippet
 
 snippet abs "Abstract" b
 % Abstract
-\begin{abstract}%{{{
+\begin{abstract}%{T{E{X
     $1
-\end{abstract}%}}}
+\end{abstract}%}T}E}X
 
 $0
 endsnippet
@@ -4553,12 +4553,12 @@ $0
 endsnippet
 
 snippet gathereq "Gathered Equation" b
-% GatherEquation
+% GatheredEquation
 \begin{equation}\label{$1}
 \begin{gathered}
     $2
-\end{split}
 \end{gathered}
+\end{equation}
 $0
 endsnippet
 
@@ -5197,7 +5197,7 @@ snippet emp "Emphasize"
 endsnippet
 
 snippet tc "Text color"
-\textcolor{$1}{$2}$0
+\textcolor{${1:red}}{$2}$0
 endsnippet
 
 #}}}

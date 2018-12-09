@@ -840,7 +840,7 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-augroup IndentTexSHBuf
+augroup IndentTexPyBuf
     autocmd!
     autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
 augroup end
