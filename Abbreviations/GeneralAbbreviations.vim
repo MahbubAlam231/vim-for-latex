@@ -77,7 +77,7 @@ Abolish discont{,y,ies,ly} discontinu{ous,ity,ities,ously}
 Abolish el{,s} element{,s}
 Abolish equicont{,y,ly} equicontinu{ous,ity,ously}
 Abolish equidist{,n,d} equidistribut{e,ion,ed}
-Abolish eq{,n,s,ns} equation{,,s,s}
+Abolish eq{n,ns} equation{,s}
 
 "}}}
 "F{{{
@@ -136,7 +136,7 @@ Abolish prop{,s} proposition{,s}
 "}}}
 "R{{{
 
-Abolish resp respectively
+Abolish respy respectively
 
 "}}}
 "S{{{

@@ -177,6 +177,12 @@ map <leader>f mf<Plug>(easymotion-bd-f)
 map <leader>s ms<Plug>(easymotion-s2)
 " map <leader>t mt<Plug>(easymotion-t2)
 
+omap <leader>w <Plug>(easymotion-bd-w)
+omap <leader>e <Plug>(easymotion-bd-e)
+omap <leader>f <Plug>(easymotion-bd-f)
+omap <leader>s <Plug>(easymotion-s2)
+" omap <leader>t <Plug>(easymotion-t2)
+
 " map f <Plug>Sneak_f
 " map F <Plug>Sneak_F
 " map t <Plug>Sneak_t
@@ -461,6 +467,11 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
+onoremap <silent> H :normal! mh^<cr>
+onoremap <silent> J :normal! mjL<cr>dd
+onoremap <silent> K :normal! mkH<cr>
+onoremap <silent> L :normal! mlg_<cr>x
+
 nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
 nnoremap <buffer> 'k `k
@@ -553,8 +564,8 @@ vnoremap <buffer> / <esc>ms/\%V
 vnoremap <buffer> 's `szvzz
 
 " Don't move on after */#
-nnoremap <buffer> * ms*<c-o>
-nnoremap <buffer> # ms#<c-o>
+nnoremap <buffer> * ms*<c-o>zz
+nnoremap <buffer> # ms#<c-o>zz
 
 " Search the visually selected using */# (from Scrooloose){{{3
 function! s:VSerSearch()
@@ -564,8 +575,8 @@ function! s:VSerSearch()
     let @@ = temp
 endfunction
 
-vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>
-vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>
+vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>zz
+vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
 
 "3}}}
 
@@ -797,7 +808,6 @@ inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>:echo<cr
 " Opening TeXKeyBindings "t=tex
 nnoremap <buffer> <leader>th :new ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>tv :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>t :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>nph :new ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>npv :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
@@ -859,10 +869,10 @@ augroup end
 nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
 inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
 
-" augroup ContinuouslyWriteBuf
-"     autocmd!
-"     autocmd TextChanged,TextChangedI *.* silent write
-" augroup end
+augroup ContinuouslyWriteBuf
+    autocmd!
+    autocmd TextChanged,TextChangedI *.* silent write
+augroup end
 
 " autocmd BufRead,BufNewFile *.* let b:save_time=localtime()
 " autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI *.* call UpdateFile()

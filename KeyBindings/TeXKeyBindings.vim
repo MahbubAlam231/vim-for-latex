@@ -238,24 +238,24 @@ inoremap <buffer> <localleader>kx \mathbb{K}^{\times}
 inoremap <buffer> <localleader>k. \mathbb{K}^{}<esc>i
 
 inoremap <buffer> <localleader>ks K_S
-inoremap <buffer> <localleader>kss {K_S}^2
-inoremap <buffer> <localleader>ksn {K_S}^{n}
-inoremap <buffer> <localleader>ksm {K_S}^{m}
-inoremap <buffer> <localleader>ksd {K_S}^{d}
-inoremap <buffer> <localleader>ksk {K_S}^{k}
-inoremap <buffer> <localleader>ksx {K_S}^{\times}
-inoremap <buffer> <localleader>ks. {K_S}^{}<esc>i
+inoremap <buffer> <localleader>kss K_S^2
+inoremap <buffer> <localleader>ksn K_S^{n}
+inoremap <buffer> <localleader>ksm K_S^{m}
+inoremap <buffer> <localleader>ksd K_S^{d}
+inoremap <buffer> <localleader>ksk K_S^{k}
+inoremap <buffer> <localleader>ksx K_S^{\times}
+inoremap <buffer> <localleader>ks. K_S^{}<esc>i
 
 "}}}
 " Ring of integers{{{
 
 inoremap <buffer> <localleader>ok \mathcal{O}_K
-inoremap <buffer> <localleader>okk {\mathcal{O}_K}^2
-inoremap <buffer> <localleader>okn {\mathcal{O}_K}^{n}
-inoremap <buffer> <localleader>okm {\mathcal{O}_K}^{m}
-inoremap <buffer> <localleader>okd {\mathcal{O}_K}^{d}
-inoremap <buffer> <localleader>okx {\mathcal{O}_K}^{\times}
-inoremap <buffer> <localleader>ok. {\mathcal{O}_K}^{}<esc>i
+inoremap <buffer> <localleader>okk \mathcal{O}_K^2
+inoremap <buffer> <localleader>okn \mathcal{O}_K^{n}
+inoremap <buffer> <localleader>okm \mathcal{O}_K^{m}
+inoremap <buffer> <localleader>okd \mathcal{O}_K^{d}
+inoremap <buffer> <localleader>okx \mathcal{O}_K^{\times}
+inoremap <buffer> <localleader>ok. \mathcal{O}_K^{}<esc>i
 
 "}}}
 " Adele{{{
@@ -337,6 +337,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>mn \mathrm{M}_{n}
         inoremap <buffer> <leader>mm \mathrm{M}_{m}
         inoremap <buffer> <leader>md \mathrm{M}_{d}
+        inoremap <buffer> <leader>mk \mathrm{M}_{k}
         inoremap <buffer> <leader>m2 \mathrm{M}_{2}
         inoremap <buffer> <leader>m3 \mathrm{M}_{3}
         inoremap <buffer> <leader>m. \mathrm{M}_{}<esc>i
@@ -348,6 +349,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mn \mathrm{M}(n,)<esc>i
         inoremap <buffer> <localleader>mm \mathrm{M}(m,)<esc>i
         inoremap <buffer> <localleader>md \mathrm{M}(d,)<esc>i
+        inoremap <buffer> <localleader>mk \mathrm{M}(k,)<esc>i
         inoremap <buffer> <localleader>m2 \mathrm{M}(2,)<esc>i
         inoremap <buffer> <localleader>m3 \mathrm{M}(3,)<esc>i
         inoremap <buffer> <localleader>m. \mathrm{M}(,)<esc>F,i
@@ -357,6 +359,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnz \mathrm{M}(n,\mathbb{Z})
         inoremap <buffer> <localleader>mmz \mathrm{M}(m,\mathbb{Z})
         inoremap <buffer> <localleader>mdz \mathrm{M}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>mkz \mathrm{M}(k,\mathbb{Z})
         inoremap <buffer> <localleader>m2z \mathrm{M}(2,\mathbb{Z})
         inoremap <buffer> <localleader>m3z \mathrm{M}(3,\mathbb{Z})
         inoremap <buffer> <localleader>m.z \mathrm{M}(,\mathbb{Z})<esc>F,i
@@ -366,6 +369,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnq \mathrm{M}(n,\mathbb{Q})
         inoremap <buffer> <localleader>mmq \mathrm{M}(m,\mathbb{Q})
         inoremap <buffer> <localleader>mdq \mathrm{M}(d,\mathbb{Q})
+        inoremap <buffer> <localleader>mkq \mathrm{M}(k,\mathbb{Q})
         inoremap <buffer> <localleader>m2q \mathrm{M}(2,\mathbb{Q})
         inoremap <buffer> <localleader>m3q \mathrm{M}(3,\mathbb{Q})
         inoremap <buffer> <localleader>m.q \mathrm{M}(,\mathbb{Q})<esc>F,i
@@ -375,6 +379,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnr \mathrm{M}(n,\mathbb{R})
         inoremap <buffer> <localleader>mmr \mathrm{M}(m,\mathbb{R})
         inoremap <buffer> <localleader>mdr \mathrm{M}(d,\mathbb{R})
+        inoremap <buffer> <localleader>mkr \mathrm{M}(k,\mathbb{R})
         inoremap <buffer> <localleader>m2r \mathrm{M}(2,\mathbb{R})
         inoremap <buffer> <localleader>m3r \mathrm{M}(3,\mathbb{R})
         inoremap <buffer> <localleader>m.r \mathrm{M}(,\mathbb{R})<esc>F,i
@@ -384,6 +389,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnc \mathrm{M}(n,\mathbb{C})
         inoremap <buffer> <localleader>mmc \mathrm{M}(m,\mathbb{C})
         inoremap <buffer> <localleader>mdc \mathrm{M}(d,\mathbb{C})
+        inoremap <buffer> <localleader>mkc \mathrm{M}(k,\mathbb{C})
         inoremap <buffer> <localleader>m2c \mathrm{M}(2,\mathbb{C})
         inoremap <buffer> <localleader>m3c \mathrm{M}(3,\mathbb{C})
         inoremap <buffer> <localleader>m.c \mathrm{M}(,\mathbb{C})<esc>F,i
@@ -393,6 +399,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnzp \mathrm{M}(n,\mathbb{Z}_p)
         inoremap <buffer> <localleader>mmzp \mathrm{M}(m,\mathbb{Z}_p)
         inoremap <buffer> <localleader>mdzp \mathrm{M}(d,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>mkzp \mathrm{M}(k,\mathbb{Z}_p)
         inoremap <buffer> <localleader>m2zp \mathrm{M}(2,\mathbb{Z}_p)
         inoremap <buffer> <localleader>m3zp \mathrm{M}(3,\mathbb{Z}_p)
         inoremap <buffer> <localleader>m.zp \mathrm{M}(,\mathbb{Z}_p)<esc>F,i
@@ -402,6 +409,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnqp \mathrm{M}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>mmqp \mathrm{M}(m,\mathbb{Q}_p)
         inoremap <buffer> <localleader>mdqp \mathrm{M}(d,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>mkqp \mathrm{M}(k,\mathbb{Q}_p)
         inoremap <buffer> <localleader>m2qp \mathrm{M}(2,\mathbb{Q}_p)
         inoremap <buffer> <localleader>m3qp \mathrm{M}(3,\mathbb{Q}_p)
         inoremap <buffer> <localleader>m.qp \mathrm{M}(,\mathbb{Q}_p)<esc>F,i
@@ -411,6 +419,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnk \mathrm{M}(n,\mathbb{K})
         inoremap <buffer> <localleader>mmk \mathrm{M}(m,\mathbb{K})
         inoremap <buffer> <localleader>mdk \mathrm{M}(d,\mathbb{K})
+        inoremap <buffer> <localleader>mkk \mathrm{M}(k,\mathbb{K})
         inoremap <buffer> <localleader>m2k \mathrm{M}(2,\mathbb{K})
         inoremap <buffer> <localleader>m3k \mathrm{M}(3,\mathbb{K})
         inoremap <buffer> <localleader>m.k \mathrm{M}(,\mathbb{K})<esc>F,i
@@ -420,6 +429,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mna \mathrm{M}(n,\mathbb{A})
         inoremap <buffer> <localleader>mma \mathrm{M}(m,\mathbb{A})
         inoremap <buffer> <localleader>mda \mathrm{M}(d,\mathbb{A})
+        inoremap <buffer> <localleader>mka \mathrm{M}(k,\mathbb{A})
         inoremap <buffer> <localleader>m2a \mathrm{M}(2,\mathbb{A})
         inoremap <buffer> <localleader>m3a \mathrm{M}(3,\mathbb{A})
         inoremap <buffer> <localleader>m.a \mathrm{M}(,\mathbb{A})<esc>F,i
@@ -429,24 +439,27 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>mnok \mathrm{M}(n,\mathcal{O}_K)
         inoremap <buffer> <localleader>mmok \mathrm{M}(m,\mathcal{O}_K)
         inoremap <buffer> <localleader>mdok \mathrm{M}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>mkok \mathrm{M}(k,\mathcal{O}_K)
         inoremap <buffer> <localleader>m2ok \mathrm{M}(2,\mathcal{O}_K)
         inoremap <buffer> <localleader>m3ok \mathrm{M}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>m.ok \mathrm{M}(,\mathcal{O}_K)<esc>F,i
 
         inoremap <buffer> <localleader>mmnjk \mathrm{M}_{m \times n}(K)
-        inoremap <buffer> <localleader>m..jk \mathrm{M}_{}(K)<esc>F};i
+        inoremap <buffer> <localleader>m..jk \mathrm{M}_{}(K)<esc>F}i
         inoremap <buffer> <localleader>mnjk \mathrm{M}(n,K)
         inoremap <buffer> <localleader>mmjk \mathrm{M}(m,K)
         inoremap <buffer> <localleader>mdjk \mathrm{M}(d,K)
+        inoremap <buffer> <localleader>mkjk \mathrm{M}(k,K)
         inoremap <buffer> <localleader>m2jk \mathrm{M}(2,K)
         inoremap <buffer> <localleader>m3jk \mathrm{M}(3,K)
         inoremap <buffer> <localleader>m.jk \mathrm{M}(,K)<esc>F,i
 
         inoremap <buffer> <localleader>mmnks \mathrm{M}_{m \times n}(K_S)
-        inoremap <buffer> <localleader>m..ks \mathrm{M}_{}(K_S)<esc>F};i
+        inoremap <buffer> <localleader>m..ks \mathrm{M}_{}(K_S)<esc>F}i
         inoremap <buffer> <localleader>mnks \mathrm{M}(n,K_S)
         inoremap <buffer> <localleader>mmks \mathrm{M}(m,K_S)
         inoremap <buffer> <localleader>mdks \mathrm{M}(d,K_S)
+        inoremap <buffer> <localleader>mkks \mathrm{M}(k,K_S)
         inoremap <buffer> <localleader>m2ks \mathrm{M}(2,K_S)
         inoremap <buffer> <localleader>m3ks \mathrm{M}(3,K_S)
         inoremap <buffer> <localleader>m.ks \mathrm{M}(,K_S)<esc>F,i
@@ -458,6 +471,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>gln \mathrm{GL}_{n}
         inoremap <buffer> <leader>glm \mathrm{GL}_{m}
         inoremap <buffer> <leader>gld \mathrm{GL}_{d}
+        inoremap <buffer> <leader>glk \mathrm{GL}_{k}
         inoremap <buffer> <leader>gl2 \mathrm{GL}_{2}
         inoremap <buffer> <leader>gl3 \mathrm{GL}_{3}
         inoremap <buffer> <leader>gl. \mathrm{GL}_{}<esc>i
@@ -467,6 +481,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gln \mathrm{GL}(n,)<esc>i
         inoremap <buffer> <localleader>glm \mathrm{GL}(m,)<esc>i
         inoremap <buffer> <localleader>gld \mathrm{GL}(d,)<esc>i
+        inoremap <buffer> <localleader>glk \mathrm{GL}(k,)<esc>i
         inoremap <buffer> <localleader>gl2 \mathrm{GL}(2,)<esc>i
         inoremap <buffer> <localleader>gl3 \mathrm{GL}(3,)<esc>i
         inoremap <buffer> <localleader>gl. \mathrm{GL}(,)<esc>F,i
@@ -480,6 +495,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnz \mathrm{GL}(n,\mathbb{Z})
         inoremap <buffer> <localleader>glmz \mathrm{GL}(m,\mathbb{Z})
         inoremap <buffer> <localleader>gldz \mathrm{GL}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>glkz \mathrm{GL}(k,\mathbb{Z})
         inoremap <buffer> <localleader>gl2z \mathrm{GL}(2,\mathbb{Z})
         inoremap <buffer> <localleader>gl3z \mathrm{GL}(3,\mathbb{Z})
         inoremap <buffer> <localleader>gl.z \mathrm{GL}(,\mathbb{Z})<esc>F,i
@@ -493,12 +509,14 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnq \mathrm{GL}(n,\mathbb{Q})
         inoremap <buffer> <localleader>glmq \mathrm{GL}(m,\mathbb{Q})
         inoremap <buffer> <localleader>gldq \mathrm{GL}(d,\mathbb{Q})
+        inoremap <buffer> <localleader>glkq \mathrm{GL}(k,\mathbb{Q})
         inoremap <buffer> <localleader>gl2q \mathrm{GL}(2,\mathbb{Q})
         inoremap <buffer> <localleader>gl3q \mathrm{GL}(3,\mathbb{Q})
         inoremap <buffer> <localleader>gl.q \mathrm{GL}(,\mathbb{Q})<esc>F,i
         inoremap <buffer> <localleader>glpnq \mathrm{GL}^+(n,\mathbb{Q})
         inoremap <buffer> <localleader>glpmq \mathrm{GL}^+(m,\mathbb{Q})
         inoremap <buffer> <localleader>glpdq \mathrm{GL}^+(d,\mathbb{Q})
+        inoremap <buffer> <localleader>glpkq \mathrm{GL}^+(k,\mathbb{Q})
         inoremap <buffer> <localleader>glp2q \mathrm{GL}^+(2,\mathbb{Q})
         inoremap <buffer> <localleader>glp3q \mathrm{GL}^+(3,\mathbb{Q})
         inoremap <buffer> <localleader>glp.q \mathrm{GL}^+(,\mathbb{Q})<esc>F,i
@@ -506,12 +524,14 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnr \mathrm{GL}(n,\mathbb{R})
         inoremap <buffer> <localleader>glmr \mathrm{GL}(m,\mathbb{R})
         inoremap <buffer> <localleader>gldr \mathrm{GL}(d,\mathbb{R})
+        inoremap <buffer> <localleader>glkr \mathrm{GL}(k,\mathbb{R})
         inoremap <buffer> <localleader>gl2r \mathrm{GL}(2,\mathbb{R})
         inoremap <buffer> <localleader>gl3r \mathrm{GL}(3,\mathbb{R})
         inoremap <buffer> <localleader>gl.r \mathrm{GL}(,\mathbb{R})<esc>F,i
         inoremap <buffer> <localleader>glpnr \mathrm{GL}^+(n,\mathbb{R})
         inoremap <buffer> <localleader>glpmr \mathrm{GL}^+(m,\mathbb{R})
         inoremap <buffer> <localleader>glpdr \mathrm{GL}^+(d,\mathbb{R})
+        inoremap <buffer> <localleader>glpkr \mathrm{GL}^+(k,\mathbb{R})
         inoremap <buffer> <localleader>glp2r \mathrm{GL}^+(2,\mathbb{R})
         inoremap <buffer> <localleader>glp3r \mathrm{GL}^+(3,\mathbb{R})
         inoremap <buffer> <localleader>glp.r \mathrm{GL}^+(,\mathbb{R})<esc>F,i
@@ -519,6 +539,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnc \mathrm{GL}(n,\mathbb{C})
         inoremap <buffer> <localleader>glmc \mathrm{GL}(m,\mathbb{C})
         inoremap <buffer> <localleader>gldc \mathrm{GL}(d,\mathbb{C})
+        inoremap <buffer> <localleader>glkc \mathrm{GL}(k,\mathbb{C})
         inoremap <buffer> <localleader>gl2c \mathrm{GL}(2,\mathbb{C})
         inoremap <buffer> <localleader>gl3c \mathrm{GL}(3,\mathbb{C})
         inoremap <buffer> <localleader>gl.c \mathrm{GL}(,\mathbb{C})<esc>F,i
@@ -526,6 +547,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnzp \mathrm{GL}(n,\mathbb{Z}_p)
         inoremap <buffer> <localleader>glmzp \mathrm{GL}(m,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gldzp \mathrm{GL}(d,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>glkzp \mathrm{GL}(k,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl2zp \mathrm{GL}(2,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl3zp \mathrm{GL}(3,\mathbb{Z}_p)
         inoremap <buffer> <localleader>gl.zp \mathrm{GL}(,\mathbb{Z}_p)<esc>F,i
@@ -533,6 +555,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnqp \mathrm{GL}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>glmqp \mathrm{GL}(m,\mathbb{Q}_p)
         inoremap <buffer> <localleader>gldqp \mathrm{GL}(d,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>glkqp \mathrm{GL}(k,\mathbb{Q}_p)
         inoremap <buffer> <localleader>gl2qp \mathrm{GL}(2,\mathbb{Q}_p)
         inoremap <buffer> <localleader>gl3qp \mathrm{GL}(3,\mathbb{Q}_p)
         inoremap <buffer> <localleader>gl.qp \mathrm{GL}(,\mathbb{Q}_p)<esc>F,i
@@ -540,6 +563,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnk \mathrm{GL}(n,\mathbb{K})
         inoremap <buffer> <localleader>glmk \mathrm{GL}(m,\mathbb{K})
         inoremap <buffer> <localleader>gldk \mathrm{GL}(d,\mathbb{K})
+        inoremap <buffer> <localleader>glkk \mathrm{GL}(k,\mathbb{K})
         inoremap <buffer> <localleader>gl2k \mathrm{GL}(2,\mathbb{K})
         inoremap <buffer> <localleader>gl3k \mathrm{GL}(3,\mathbb{K})
         inoremap <buffer> <localleader>gl.k \mathrm{GL}(,\mathbb{K})<esc>F,i
@@ -547,6 +571,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glna \mathrm{GL}(n,\mathbb{A})
         inoremap <buffer> <localleader>glma \mathrm{GL}(m,\mathbb{A})
         inoremap <buffer> <localleader>glda \mathrm{GL}(d,\mathbb{A})
+        inoremap <buffer> <localleader>glka \mathrm{GL}(k,\mathbb{A})
         inoremap <buffer> <localleader>gl2a \mathrm{GL}(2,\mathbb{A})
         inoremap <buffer> <localleader>gl3a \mathrm{GL}(3,\mathbb{A})
         inoremap <buffer> <localleader>gl.a \mathrm{GL}(,\mathbb{A})<esc>F,i
@@ -554,6 +579,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnok \mathrm{GL}(n,\mathcal{O}_K)
         inoremap <buffer> <localleader>glmok \mathrm{GL}(m,\mathcal{O}_K)
         inoremap <buffer> <localleader>gldok \mathrm{GL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>glkok \mathrm{GL}(k,\mathcal{O}_K)
         inoremap <buffer> <localleader>gl2ok \mathrm{GL}(2,\mathcal{O}_K)
         inoremap <buffer> <localleader>gl3ok \mathrm{GL}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>gl.ok \mathrm{GL}(,\mathcal{O}_K)<esc>F,i
@@ -561,6 +587,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnjk \mathrm{GL}(n,K)
         inoremap <buffer> <localleader>glmjk \mathrm{GL}(m,K)
         inoremap <buffer> <localleader>gldjk \mathrm{GL}(d,K)
+        inoremap <buffer> <localleader>glkjk \mathrm{GL}(k,K)
         inoremap <buffer> <localleader>gl2jk \mathrm{GL}(2,K)
         inoremap <buffer> <localleader>gl3jk \mathrm{GL}(3,K)
         inoremap <buffer> <localleader>gl.jk \mathrm{GL}(,K)<esc>F,i
@@ -568,6 +595,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>glnks \mathrm{GL}(n,K_S)
         inoremap <buffer> <localleader>glmks \mathrm{GL}(m,K_S)
         inoremap <buffer> <localleader>gldks \mathrm{GL}(d,K_S)
+        inoremap <buffer> <localleader>glkks \mathrm{GL}(k,K_S)
         inoremap <buffer> <localleader>gl2ks \mathrm{GL}(2,K_S)
         inoremap <buffer> <localleader>gl3ks \mathrm{GL}(3,K_S)
         inoremap <buffer> <localleader>gl.ks \mathrm{GL}(,K_S)<esc>F,i
@@ -579,6 +607,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>sln \mathrm{SL}_{n}
         inoremap <buffer> <leader>slm \mathrm{SL}_{m}
         inoremap <buffer> <leader>sld \mathrm{SL}_{d}
+        inoremap <buffer> <leader>slk \mathrm{SL}_{k}
         inoremap <buffer> <leader>sl2 \mathrm{SL}_{2}
         inoremap <buffer> <leader>sl3 \mathrm{SL}_{3}
         inoremap <buffer> <leader>sl. \mathrm{SL}_{}<esc>i
@@ -588,6 +617,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sln \mathrm{SL}(n,)<esc>i
         inoremap <buffer> <localleader>slm \mathrm{SL}(m,)<esc>i
         inoremap <buffer> <localleader>sld \mathrm{SL}(d,)<esc>i
+        inoremap <buffer> <localleader>slk \mathrm{SL}(k,)<esc>i
         inoremap <buffer> <localleader>sl2 \mathrm{SL}(2,)<esc>i
         inoremap <buffer> <localleader>sl3 \mathrm{SL}(3,)<esc>i
         inoremap <buffer> <localleader>sl. \mathrm{SL}(,)<esc>F,i
@@ -595,6 +625,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnz \mathrm{SL}(n,\mathbb{Z})
         inoremap <buffer> <localleader>slmz \mathrm{SL}(m,\mathbb{Z})
         inoremap <buffer> <localleader>sldz \mathrm{SL}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>slkz \mathrm{SL}(k,\mathbb{Z})
         inoremap <buffer> <localleader>sl2z \mathrm{SL}(2,\mathbb{Z})
         inoremap <buffer> <localleader>sl3z \mathrm{SL}(3,\mathbb{Z})
         inoremap <buffer> <localleader>sl.z \mathrm{SL}(,\mathbb{Z})<esc>F,i
@@ -602,6 +633,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnq \mathrm{SL}(n,\mathbb{Q})
         inoremap <buffer> <localleader>slmq \mathrm{SL}(m,\mathbb{Q})
         inoremap <buffer> <localleader>sldq \mathrm{SL}(d,\mathbb{Q})
+        inoremap <buffer> <localleader>slkq \mathrm{SL}(k,\mathbb{Q})
         inoremap <buffer> <localleader>sl2q \mathrm{SL}(2,\mathbb{Q})
         inoremap <buffer> <localleader>sl3q \mathrm{SL}(3,\mathbb{Q})
         inoremap <buffer> <localleader>sl.q \mathrm{SL}(,\mathbb{Q})<esc>F,i
@@ -609,6 +641,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnr \mathrm{SL}(n,\mathbb{R})
         inoremap <buffer> <localleader>slmr \mathrm{SL}(m,\mathbb{R})
         inoremap <buffer> <localleader>sldr \mathrm{SL}(d,\mathbb{R})
+        inoremap <buffer> <localleader>slkr \mathrm{SL}(k,\mathbb{R})
         inoremap <buffer> <localleader>sl2r \mathrm{SL}(2,\mathbb{R})
         inoremap <buffer> <localleader>sl3r \mathrm{SL}(3,\mathbb{R})
         inoremap <buffer> <localleader>sl.r \mathrm{SL}(,\mathbb{R})<esc>F,i
@@ -616,6 +649,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnc \mathrm{SL}(n,\mathbb{C})
         inoremap <buffer> <localleader>slmc \mathrm{SL}(m,\mathbb{C})
         inoremap <buffer> <localleader>sldc \mathrm{SL}(d,\mathbb{C})
+        inoremap <buffer> <localleader>slkc \mathrm{SL}(k,\mathbb{C})
         inoremap <buffer> <localleader>sl2c \mathrm{SL}(2,\mathbb{C})
         inoremap <buffer> <localleader>sl3c \mathrm{SL}(3,\mathbb{C})
         inoremap <buffer> <localleader>sl.c \mathrm{SL}(,\mathbb{C})<esc>F,i
@@ -623,6 +657,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnzp \mathrm{SL}(n,\mathbb{Z}_p)
         inoremap <buffer> <localleader>slmzp \mathrm{SL}(m,\mathbb{Z}_p)
         inoremap <buffer> <localleader>sldzp \mathrm{SL}(d,\mathbb{Z}_p)
+        inoremap <buffer> <localleader>slkzp \mathrm{SL}(k,\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl2zp \mathrm{SL}(2,\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl3zp \mathrm{SL}(3,\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl.zp \mathrm{SL}(,\mathbb{Z}_p)<esc>F,i
@@ -630,6 +665,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnqp \mathrm{SL}(n,\mathbb{Q}_p)
         inoremap <buffer> <localleader>slmqp \mathrm{SL}(m,\mathbb{Q}_p)
         inoremap <buffer> <localleader>sldqp \mathrm{SL}(d,\mathbb{Q}_p)
+        inoremap <buffer> <localleader>slkqp \mathrm{SL}(k,\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl2qp \mathrm{SL}(2,\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl3qp \mathrm{SL}(3,\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl.qp \mathrm{SL}(,\mathbb{Q}_p)<esc>F,i
@@ -637,6 +673,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnk \mathrm{SL}(n,\mathbb{K})
         inoremap <buffer> <localleader>slmk \mathrm{SL}(m,\mathbb{K})
         inoremap <buffer> <localleader>sldk \mathrm{SL}(d,\mathbb{K})
+        inoremap <buffer> <localleader>slkk \mathrm{SL}(k,\mathbb{K})
         inoremap <buffer> <localleader>sl2k \mathrm{SL}(2,\mathbb{K})
         inoremap <buffer> <localleader>sl3k \mathrm{SL}(3,\mathbb{K})
         inoremap <buffer> <localleader>sl.k \mathrm{SL}(,\mathbb{K})<esc>F,i
@@ -644,6 +681,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slna \mathrm{SL}(n,\mathbb{A})
         inoremap <buffer> <localleader>slma \mathrm{SL}(m,\mathbb{A})
         inoremap <buffer> <localleader>slda \mathrm{SL}(d,\mathbb{A})
+        inoremap <buffer> <localleader>slka \mathrm{SL}(k,\mathbb{A})
         inoremap <buffer> <localleader>sl2a \mathrm{SL}(2,\mathbb{A})
         inoremap <buffer> <localleader>sl3a \mathrm{SL}(3,\mathbb{A})
         inoremap <buffer> <localleader>sl.a \mathrm{SL}(,\mathbb{A})<esc>F,i
@@ -651,6 +689,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnok \mathrm{SL}(n,\mathcal{O}_K)
         inoremap <buffer> <localleader>slmok \mathrm{SL}(m,\mathcal{O}_K)
         inoremap <buffer> <localleader>sldok \mathrm{SL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>slkok \mathrm{SL}(k,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl2ok \mathrm{SL}(2,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl3ok \mathrm{SL}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ok \mathrm{SL}(,\mathcal{O}_K)<esc>F,i
@@ -658,6 +697,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnjk \mathrm{SL}(n,K)
         inoremap <buffer> <localleader>slmjk \mathrm{SL}(m,K)
         inoremap <buffer> <localleader>sldjk \mathrm{SL}(d,K)
+        inoremap <buffer> <localleader>slkjk \mathrm{SL}(k,K)
         inoremap <buffer> <localleader>sl2jk \mathrm{SL}(2,K)
         inoremap <buffer> <localleader>sl3jk \mathrm{SL}(3,K)
         inoremap <buffer> <localleader>sl.jk \mathrm{SL}(,K)<esc>F,i
@@ -665,6 +705,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnks \mathrm{SL}(n,K_S)
         inoremap <buffer> <localleader>slmks \mathrm{SL}(m,K_S)
         inoremap <buffer> <localleader>sldks \mathrm{SL}(d,K_S)
+        inoremap <buffer> <localleader>slkks \mathrm{SL}(k,K_S)
         inoremap <buffer> <localleader>sl2ks \mathrm{SL}(2,K_S)
         inoremap <buffer> <localleader>sl3ks \mathrm{SL}(3,K_S)
         inoremap <buffer> <localleader>sl.ks \mathrm{SL}(,K_S)<esc>F,i
@@ -672,6 +713,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnrz \mathrm{SL}(n,\mathbb{R})/\mathrm{SL}(n,\mathbb{Z})
         inoremap <buffer> <localleader>slmrz \mathrm{SL}(m,\mathbb{R})/\mathrm{SL}(m,\mathbb{Z})
         inoremap <buffer> <localleader>sldrz \mathrm{SL}(d,\mathbb{R})/\mathrm{SL}(d,\mathbb{Z})
+        inoremap <buffer> <localleader>slkrz \mathrm{SL}(k,\mathbb{R})/\mathrm{SL}(k,\mathbb{Z})
         inoremap <buffer> <localleader>sl2rz \mathrm{SL}(2,\mathbb{R})/\mathrm{SL}(2,\mathbb{Z})
         inoremap <buffer> <localleader>sl3rz \mathrm{SL}(3,\mathbb{R})/\mathrm{SL}(3,\mathbb{Z})
         inoremap <buffer> <localleader>sl.rz \mathrm{SL}(,\mathbb{R})/\mathrm{SL}(,\mathbb{Z})<esc>F,i
@@ -679,6 +721,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnzr \mathrm{SL}(n,\mathbb{Z}) \backslash \mathrm{SL}(n,\mathbb{R})
         inoremap <buffer> <localleader>slmzr \mathrm{SL}(m,\mathbb{Z}) \backslash \mathrm{SL}(m,\mathbb{R})
         inoremap <buffer> <localleader>sldzr \mathrm{SL}(d,\mathbb{Z}) \backslash \mathrm{SL}(d,\mathbb{R})
+        inoremap <buffer> <localleader>slkzr \mathrm{SL}(k,\mathbb{Z}) \backslash \mathrm{SL}(k,\mathbb{R})
         inoremap <buffer> <localleader>sl2zr \mathrm{SL}(2,\mathbb{Z}) \backslash \mathrm{SL}(2,\mathbb{R})
         inoremap <buffer> <localleader>sl3zr \mathrm{SL}(3,\mathbb{Z}) \backslash \mathrm{SL}(3,\mathbb{R})
         inoremap <buffer> <localleader>sl.zr \mathrm{SL}(,\mathbb{Z}) \backslash \mathrm{SL}(,\mathbb{R})<esc>F,i
@@ -686,6 +729,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnksok \mathrm{SL}(n,K_S)/\mathrm{SL}(n,\mathcal{O}_K)
         inoremap <buffer> <localleader>slmksok \mathrm{SL}(m,K_S)/\mathrm{SL}(m,\mathcal{O}_K)
         inoremap <buffer> <localleader>sldksok \mathrm{SL}(d,K_S)/\mathrm{SL}(d,\mathcal{O}_K)
+        inoremap <buffer> <localleader>slkksok \mathrm{SL}(k,K_S)/\mathrm{SL}(k,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl2ksok \mathrm{SL}(2,K_S)/\mathrm{SL}(2,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl3ksok \mathrm{SL}(3,K_S)/\mathrm{SL}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ksok \mathrm{SL}(,K_S)/\mathrm{SL}(,\mathcal{O}_K)<esc>F,i
@@ -693,6 +737,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnokks \mathrm{SL}(n,\mathcal{O}_K) \backslash \mathrm{SL}(n,K_S)
         inoremap <buffer> <localleader>slmokks \mathrm{SL}(m,\mathcal{O}_K) \backslash \mathrm{SL}(m,K_S)
         inoremap <buffer> <localleader>sldokks \mathrm{SL}(d,\mathcal{O}_K) \backslash \mathrm{SL}(d,K_S)
+        inoremap <buffer> <localleader>slkokks \mathrm{SL}(k,\mathcal{O}_K) \backslash \mathrm{SL}(k,K_S)
         inoremap <buffer> <localleader>sl2okks \mathrm{SL}(2,\mathcal{O}_K) \backslash \mathrm{SL}(2,K_S)
         inoremap <buffer> <localleader>sl3okks \mathrm{SL}(3,\mathcal{O}_K) \backslash \mathrm{SL}(3,K_S)
         inoremap <buffer> <localleader>sl.okks \mathrm{SL}(,\mathcal{O}_K) \backslash \mathrm{SL}(,K_S)<esc>F,i
@@ -704,6 +749,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>psln \mathrm{PSL}_{n}
         inoremap <buffer> <leader>pslm \mathrm{PSL}_{m}
         inoremap <buffer> <leader>psld \mathrm{PSL}_{d}
+        inoremap <buffer> <leader>pslk \mathrm{PSL}_{k}
         inoremap <buffer> <leader>psl2 \mathrm{PSL}_{2}
         inoremap <buffer> <leader>psl3 \mathrm{PSL}_{3}
         inoremap <buffer> <leader>psl. \mathrm{PSL}_{}<esc>i
@@ -713,6 +759,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>psln \mathrm{PSL}(n,)<esc>i
         inoremap <buffer> <localleader>pslm \mathrm{PSL}(m,)<esc>i
         inoremap <buffer> <localleader>psld \mathrm{PSL}(d,)<esc>i
+        inoremap <buffer> <localleader>pslk \mathrm{PSL}(k,)<esc>i
         inoremap <buffer> <localleader>psl2 \mathrm{PSL}(2,)<esc>i
         inoremap <buffer> <localleader>psl3 \mathrm{PSL}(3,)<esc>i
         inoremap <buffer> <localleader>psl. \mathrm{PSL}(,)<esc>F,i
@@ -720,6 +767,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>pslnr \mathrm{PSL}(n,\mathbb{R})
         inoremap <buffer> <localleader>pslmr \mathrm{PSL}(m,\mathbb{R})
         inoremap <buffer> <localleader>psldr \mathrm{PSL}(d,\mathbb{R})
+        inoremap <buffer> <localleader>pslkr \mathrm{PSL}(k,\mathbb{R})
         inoremap <buffer> <localleader>psl2r \mathrm{PSL}(2,\mathbb{R})
         inoremap <buffer> <localleader>psl3r \mathrm{PSL}(3,\mathbb{R})
         inoremap <buffer> <localleader>psl.r \mathrm{PSL}(,\mathbb{R})<esc>F,i
@@ -746,6 +794,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>onr \mathrm{O}(n,\mathbb{R})
         inoremap <buffer> <localleader>omr \mathrm{O}(m,\mathbb{R})
         inoremap <buffer> <localleader>odr \mathrm{O}(d,\mathbb{R})
+        inoremap <buffer> <localleader>okr \mathrm{O}(k,\mathbb{R})
         inoremap <buffer> <localleader>o2r \mathrm{O}(2,\mathbb{R})
         inoremap <buffer> <localleader>o3r \mathrm{O}(3,\mathbb{R})
         inoremap <buffer> <localleader>o.r \mathrm{O}(,\mathbb{R})<esc>F,i
@@ -753,6 +802,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>onc \mathrm{O}(n,\mathbb{C})
         inoremap <buffer> <localleader>omc \mathrm{O}(m,\mathbb{C})
         inoremap <buffer> <localleader>odc \mathrm{O}(d,\mathbb{C})
+        inoremap <buffer> <localleader>okc \mathrm{O}(k,\mathbb{C})
         inoremap <buffer> <localleader>o2c \mathrm{O}(2,\mathbb{C})
         inoremap <buffer> <localleader>o3c \mathrm{O}(3,\mathbb{C})
         inoremap <buffer> <localleader>o.c \mathrm{O}(,\mathbb{C})<esc>F,i
@@ -764,6 +814,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>son \mathrm{SO}_{n}
         inoremap <buffer> <leader>som \mathrm{SO}_{m}
         inoremap <buffer> <leader>sod \mathrm{SO}_{d}
+        inoremap <buffer> <leader>sok \mathrm{SO}_{k}
         inoremap <buffer> <leader>so2 \mathrm{SO}_{2}
         inoremap <buffer> <leader>so3 \mathrm{SO}_{3}
         inoremap <buffer> <leader>so. \mathrm{SO}_{}<esc>i
@@ -773,6 +824,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>son \mathrm{SO}(n,)<esc>i
         inoremap <buffer> <localleader>som \mathrm{SO}(m,)<esc>i
         inoremap <buffer> <localleader>sod \mathrm{SO}(d,)<esc>i
+        inoremap <buffer> <localleader>sok \mathrm{SO}(k,)<esc>i
         inoremap <buffer> <localleader>so2 \mathrm{SO}(2,)<esc>i
         inoremap <buffer> <localleader>so3 \mathrm{SO}(3,)<esc>i
         inoremap <buffer> <localleader>so. \mathrm{SO}(,)<esc>F,i
@@ -780,6 +832,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sonr \mathrm{SO}(n,\mathbb{R})
         inoremap <buffer> <localleader>somr \mathrm{SO}(m,\mathbb{R})
         inoremap <buffer> <localleader>sodr \mathrm{SO}(d,\mathbb{R})
+        inoremap <buffer> <localleader>sokr \mathrm{SO}(k,\mathbb{R})
         inoremap <buffer> <localleader>so2r \mathrm{SO}(2,\mathbb{R})
         inoremap <buffer> <localleader>so3r \mathrm{SO}(3,\mathbb{R})
         inoremap <buffer> <localleader>so.r \mathrm{SO}(,\mathbb{R})<esc>F,i
@@ -787,6 +840,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sonc \mathrm{SO}(n,\mathbb{C})
         inoremap <buffer> <localleader>somc \mathrm{SO}(m,\mathbb{C})
         inoremap <buffer> <localleader>sodc \mathrm{SO}(d,\mathbb{C})
+        inoremap <buffer> <localleader>sokc \mathrm{SO}(k,\mathbb{C})
         inoremap <buffer> <localleader>so2c \mathrm{SO}(2,\mathbb{C})
         inoremap <buffer> <localleader>so3c \mathrm{SO}(3,\mathbb{C})
         inoremap <buffer> <localleader>so.c \mathrm{SO}(,\mathbb{C})<esc>F,i
@@ -797,6 +851,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>un \mathrm{U}_{n}
         inoremap <buffer> <leader>um \mathrm{U}_{m}
         inoremap <buffer> <leader>ud \mathrm{U}_{d}
+        inoremap <buffer> <leader>uk \mathrm{U}_{k}
         inoremap <buffer> <leader>u2 \mathrm{U}_{2}
         inoremap <buffer> <leader>u3 \mathrm{U}_{3}
         inoremap <buffer> <leader>u. \mathrm{U}_{}<esc>i
@@ -806,6 +861,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>un \mathrm{U}(n)
         inoremap <buffer> <localleader>um \mathrm{U}(m)
         inoremap <buffer> <localleader>ud \mathrm{U}(d)
+        inoremap <buffer> <localleader>uk \mathrm{U}(k)
         inoremap <buffer> <localleader>u2 \mathrm{U}(2)
         inoremap <buffer> <localleader>u3 \mathrm{U}(3)
         inoremap <buffer> <localleader>u. \mathrm{U}()<esc>i
@@ -813,6 +869,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>unc \mathrm{U}(n,\mathbb{C})
         inoremap <buffer> <localleader>umc \mathrm{U}(m,\mathbb{C})
         inoremap <buffer> <localleader>udc \mathrm{U}(d,\mathbb{C})
+        inoremap <buffer> <localleader>ukc \mathrm{U}(k,\mathbb{C})
         inoremap <buffer> <localleader>u2c \mathrm{U}(2,\mathbb{C})
         inoremap <buffer> <localleader>u3c \mathrm{U}(3,\mathbb{C})
         inoremap <buffer> <localleader>u.c \mathrm{U}(,\mathbb{C})<esc>F,i
@@ -824,6 +881,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>sun \mathrm{SU}_{n}
         inoremap <buffer> <leader>sum \mathrm{SU}_{m}
         inoremap <buffer> <leader>sud \mathrm{SU}_{d}
+        inoremap <buffer> <leader>suk \mathrm{SU}_{k}
         inoremap <buffer> <leader>su2 \mathrm{SU}_{2}
         inoremap <buffer> <leader>su3 \mathrm{SU}_{3}
         inoremap <buffer> <leader>su. \mathrm{SU}_{}<esc>i
@@ -833,6 +891,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sun \mathrm{SU}(n)
         inoremap <buffer> <localleader>sum \mathrm{SU}(m)
         inoremap <buffer> <localleader>sud \mathrm{SU}(d)
+        inoremap <buffer> <localleader>suk \mathrm{SU}(k)
         inoremap <buffer> <localleader>su2 \mathrm{SU}(2)
         inoremap <buffer> <localleader>su3 \mathrm{SU}(3)
         inoremap <buffer> <localleader>su. \mathrm{SU}()<esc>i
@@ -840,6 +899,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sunc \mathrm{SU}(n,\mathbb{C})
         inoremap <buffer> <localleader>sumc \mathrm{SU}(m,\mathbb{C})
         inoremap <buffer> <localleader>sudc \mathrm{SU}(d,\mathbb{C})
+        inoremap <buffer> <localleader>sukc \mathrm{SU}(k,\mathbb{C})
         inoremap <buffer> <localleader>su2c \mathrm{SU}(2,\mathbb{C})
         inoremap <buffer> <localleader>su3c \mathrm{SU}(3,\mathbb{C})
         inoremap <buffer> <localleader>su.c \mathrm{SU}(,\mathbb{C})<esc>F,i
@@ -1096,6 +1156,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>sln \mathrm{SL}_{n}
         inoremap <buffer> <leader>slm \mathrm{SL}_{m}
         inoremap <buffer> <leader>sld \mathrm{SL}_{d}
+        inoremap <buffer> <leader>slk \mathrm{SL}_{k}
         inoremap <buffer> <leader>sl2 \mathrm{SL}_{2}
         inoremap <buffer> <leader>sl3 \mathrm{SL}_{3}
         inoremap <buffer> <leader>sl. \mathrm{SL}_{}<esc>i
@@ -1105,6 +1166,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sln \mathrm{SL}_{n}()<esc>i
         inoremap <buffer> <localleader>slm \mathrm{SL}_{m}()<esc>i
         inoremap <buffer> <localleader>sld \mathrm{SL}_{d}()<esc>i
+        inoremap <buffer> <localleader>slk \mathrm{SL}_{k}()<esc>i
         inoremap <buffer> <localleader>sl2 \mathrm{SL}_{2}()<esc>i
         inoremap <buffer> <localleader>sl3 \mathrm{SL}_{3}()<esc>i
         inoremap <buffer> <localleader>sl. \mathrm{SL}_{}()<esc>F}i
@@ -1112,6 +1174,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnz \mathrm{SL}_{n}(\mathbb{Z})
         inoremap <buffer> <localleader>slmz \mathrm{SL}_{m}(\mathbb{Z})
         inoremap <buffer> <localleader>sldz \mathrm{SL}_{d}(\mathbb{Z})
+        inoremap <buffer> <localleader>slkz \mathrm{SL}_{k}(\mathbb{Z})
         inoremap <buffer> <localleader>sl2z \mathrm{SL}_{2}(\mathbb{Z})
         inoremap <buffer> <localleader>sl3z \mathrm{SL}_{3}(\mathbb{Z})
         inoremap <buffer> <localleader>sl.z \mathrm{SL}_{}(\mathbb{Z})<esc>F};i
@@ -1119,6 +1182,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnq \mathrm{SL}_{n}(\mathbb{Q})
         inoremap <buffer> <localleader>slmq \mathrm{SL}_{m}(\mathbb{Q})
         inoremap <buffer> <localleader>sldq \mathrm{SL}_{d}(\mathbb{Q})
+        inoremap <buffer> <localleader>slkq \mathrm{SL}_{k}(\mathbb{Q})
         inoremap <buffer> <localleader>sl2q \mathrm{SL}_{2}(\mathbb{Q})
         inoremap <buffer> <localleader>sl3q \mathrm{SL}_{3}(\mathbb{Q})
         inoremap <buffer> <localleader>sl.q \mathrm{SL}_{}(\mathbb{Q})<esc>F};i
@@ -1126,6 +1190,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnr \mathrm{SL}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>slmr \mathrm{SL}_{m}(\mathbb{R})
         inoremap <buffer> <localleader>sldr \mathrm{SL}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>slkr \mathrm{SL}_{k}(\mathbb{R})
         inoremap <buffer> <localleader>sl2r \mathrm{SL}_{2}(\mathbb{R})
         inoremap <buffer> <localleader>sl3r \mathrm{SL}_{3}(\mathbb{R})
         inoremap <buffer> <localleader>sl.r \mathrm{SL}_{}(\mathbb{R})<esc>F};i
@@ -1133,6 +1198,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnc \mathrm{SL}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>slmc \mathrm{SL}_{m}(\mathbb{C})
         inoremap <buffer> <localleader>sldc \mathrm{SL}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>slkc \mathrm{SL}_{k}(\mathbb{C})
         inoremap <buffer> <localleader>sl2c \mathrm{SL}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>sl3c \mathrm{SL}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>sl.c \mathrm{SL}_{}(\mathbb{C})<esc>F};i
@@ -1140,6 +1206,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnzp \mathrm{SL}_{n}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>slmzp \mathrm{SL}_{m}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>sldzp \mathrm{SL}_{d}(\mathbb{Z}_p)
+        inoremap <buffer> <localleader>slkzp \mathrm{SL}_{k}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl2zp \mathrm{SL}_{2}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl3zp \mathrm{SL}_{3}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>sl.zp \mathrm{SL}_{}(\mathbb{Z}_p)<esc>F};i
@@ -1147,6 +1214,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnqp \mathrm{SL}_{n}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>slmqp \mathrm{SL}_{m}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>sldqp \mathrm{SL}_{d}(\mathbb{Q}_p)
+        inoremap <buffer> <localleader>slkqp \mathrm{SL}_{k}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl2qp \mathrm{SL}_{2}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl3qp \mathrm{SL}_{3}(\mathbb{Q}_p)
         inoremap <buffer> <localleader>sl.qp \mathrm{SL}_{}(\mathbb{Q}_p)<esc>F};i
@@ -1154,6 +1222,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnk \mathrm{SL}_{n}(\mathbb{K})
         inoremap <buffer> <localleader>slmk \mathrm{SL}_{m}(\mathbb{K})
         inoremap <buffer> <localleader>sldk \mathrm{SL}_{d}(\mathbb{K})
+        inoremap <buffer> <localleader>slkk \mathrm{SL}_{k}(\mathbb{K})
         inoremap <buffer> <localleader>sl2k \mathrm{SL}_{2}(\mathbb{K})
         inoremap <buffer> <localleader>sl3k \mathrm{SL}_{3}(\mathbb{K})
         inoremap <buffer> <localleader>sl.k \mathrm{SL}_{}(\mathbb{K})<esc>F};i
@@ -1161,6 +1230,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slna \mathrm{SL}_{n}(\mathbb{A})
         inoremap <buffer> <localleader>slma \mathrm{SL}_{m}(\mathbb{A})
         inoremap <buffer> <localleader>slda \mathrm{SL}_{d}(\mathbb{A})
+        inoremap <buffer> <localleader>slka \mathrm{SL}_{k}(\mathbb{A})
         inoremap <buffer> <localleader>sl2a \mathrm{SL}_{2}(\mathbb{A})
         inoremap <buffer> <localleader>sl3a \mathrm{SL}_{3}(\mathbb{A})
         inoremap <buffer> <localleader>sl.a \mathrm{SL}_{}(\mathbb{A})<esc>F};i
@@ -1168,6 +1238,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnok \mathrm{SL}_{n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>slmok \mathrm{SL}_{m}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sldok \mathrm{SL}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>slkok \mathrm{SL}_{k}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl2ok \mathrm{SL}_{2}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl3ok \mathrm{SL}_{3}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ok \mathrm{SL}_{}(\mathcal{O}_K)<esc>F};i
@@ -1175,6 +1246,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnjk \mathrm{SL}_{n}(K)
         inoremap <buffer> <localleader>slmjk \mathrm{SL}_{m}(K)
         inoremap <buffer> <localleader>sldjk \mathrm{SL}_{d}(K)
+        inoremap <buffer> <localleader>slkjk \mathrm{SL}_{k}(K)
         inoremap <buffer> <localleader>sl2jk \mathrm{SL}_{2}(K)
         inoremap <buffer> <localleader>sl3jk \mathrm{SL}_{3}(K)
         inoremap <buffer> <localleader>sl.jk \mathrm{SL}_{}(K)<esc>F}i
@@ -1182,6 +1254,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnks \mathrm{SL}_{n}(K_S)
         inoremap <buffer> <localleader>slmks \mathrm{SL}_{m}(K_S)
         inoremap <buffer> <localleader>sldks \mathrm{SL}_{d}(K_S)
+        inoremap <buffer> <localleader>slkks \mathrm{SL}_{k}(K_S)
         inoremap <buffer> <localleader>sl2ks \mathrm{SL}_{2}(K_S)
         inoremap <buffer> <localleader>sl3ks \mathrm{SL}_{3}(K_S)
         inoremap <buffer> <localleader>sl.ks \mathrm{SL}_{}(K_S)<esc>F}i
@@ -1189,6 +1262,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnrz \mathrm{SL}_{n}(\mathbb{R})/\mathrm{SL}_{n}(\mathbb{Z})
         inoremap <buffer> <localleader>slmrz \mathrm{SL}_{m}(\mathbb{R})/\mathrm{SL}_{m}(\mathbb{Z})
         inoremap <buffer> <localleader>sldrz \mathrm{SL}_{d}(\mathbb{R})/\mathrm{SL}_{d}(\mathbb{Z})
+        inoremap <buffer> <localleader>slkrz \mathrm{SL}_{k}(\mathbb{R})/\mathrm{SL}_{k}(\mathbb{Z})
         inoremap <buffer> <localleader>sl2rz \mathrm{SL}_{2}(\mathbb{R})/\mathrm{SL}_{2}(\mathbb{Z})
         inoremap <buffer> <localleader>sl3rz \mathrm{SL}_{3}(\mathbb{R})/\mathrm{SL}_{3}(\mathbb{Z})
         inoremap <buffer> <localleader>sl.rz \mathrm{SL}_{}(\mathbb{R})/\mathrm{SL}_{}(\mathbb{Z})<esc>F};i
@@ -1196,6 +1270,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnzr \mathrm{SL}_{n}(\mathbb{Z}) \backslash \mathrm{SL}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>slmzr \mathrm{SL}_{m}(\mathbb{Z}) \backslash \mathrm{SL}_{m}(\mathbb{R})
         inoremap <buffer> <localleader>sldzr \mathrm{SL}_{d}(\mathbb{Z}) \backslash \mathrm{SL}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>slkzr \mathrm{SL}_{k}(\mathbb{Z}) \backslash \mathrm{SL}_{k}(\mathbb{R})
         inoremap <buffer> <localleader>sl2zr \mathrm{SL}_{2}(\mathbb{Z}) \backslash \mathrm{SL}_{2}(\mathbb{R})
         inoremap <buffer> <localleader>sl3zr \mathrm{SL}_{3}(\mathbb{Z}) \backslash \mathrm{SL}_{3}(\mathbb{R})
         inoremap <buffer> <localleader>sl.zr \mathrm{SL}_{}(\mathbb{Z}) \backslash \mathrm{SL}_{}(\mathbb{R})<esc>F};i
@@ -1203,6 +1278,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnksok \mathrm{SL}_{n}(K_S)/\mathrm{SL}_{n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>slmksok \mathrm{SL}_{m}(K_S)/\mathrm{SL}_{m}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sldksok \mathrm{SL}_{d}(K_S)/\mathrm{SL}_{d}(\mathcal{O}_K)
+        inoremap <buffer> <localleader>slkksok \mathrm{SL}_{k}(K_S)/\mathrm{SL}_{k}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl2ksok \mathrm{SL}_{2}(K_S)/\mathrm{SL}_{2}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl3ksok \mathrm{SL}_{3}(K_S)/\mathrm{SL}_{3}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ksok \mathrm{SL}_{}(K_S)/\mathrm{SL}_{}(\mathcal{O}_K)<esc>F};i
@@ -1210,6 +1286,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>slnokks \mathrm{SL}_{n}(\mathcal{O}_K) \backslash \mathrm{SL}_{n}(K_S)
         inoremap <buffer> <localleader>slmokks \mathrm{SL}_{m}(\mathcal{O}_K) \backslash \mathrm{SL}_{m}(K_S)
         inoremap <buffer> <localleader>sldokks \mathrm{SL}_{d}(\mathcal{O}_K) \backslash \mathrm{SL}_{d}(K_S)
+        inoremap <buffer> <localleader>slkokks \mathrm{SL}_{k}(\mathcal{O}_K) \backslash \mathrm{SL}_{k}(K_S)
         inoremap <buffer> <localleader>sl2okks \mathrm{SL}_{2}(\mathcal{O}_K) \backslash \mathrm{SL}_{2}(K_S)
         inoremap <buffer> <localleader>sl3okks \mathrm{SL}_{3}(\mathcal{O}_K) \backslash \mathrm{SL}_{3}(K_S)
         inoremap <buffer> <localleader>sl.okks \mathrm{SL}_{}(\mathcal{O}_K) \backslash \mathrm{SL}_{}(K_S)<esc>F};i
@@ -1221,6 +1298,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>psln \mathrm{PSL}_{n}
         inoremap <buffer> <leader>pslm \mathrm{PSL}_{m}
         inoremap <buffer> <leader>psld \mathrm{PSL}_{d}
+        inoremap <buffer> <leader>pslk \mathrm{PSL}_{k}
         inoremap <buffer> <leader>psl2 \mathrm{PSL}_{2}
         inoremap <buffer> <leader>psl3 \mathrm{PSL}_{3}
         inoremap <buffer> <leader>psl. \mathrm{PSL}_{}<esc>i
@@ -1230,6 +1308,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>psln \mathrm{PSL}_{n}()<esc>i
         inoremap <buffer> <localleader>pslm \mathrm{PSL}_{m}()<esc>i
         inoremap <buffer> <localleader>psld \mathrm{PSL}_{d}()<esc>i
+        inoremap <buffer> <localleader>pslk \mathrm{PSL}_{k}()<esc>i
         inoremap <buffer> <localleader>psl2 \mathrm{PSL}_{2}()<esc>i
         inoremap <buffer> <localleader>psl3 \mathrm{PSL}_{3}()<esc>i
         inoremap <buffer> <localleader>psl. \mathrm{PSL}_{}()<esc>F}i
@@ -1263,6 +1342,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>onr \mathrm{O}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>omr \mathrm{O}_{m}(\mathbb{R})
         inoremap <buffer> <localleader>odr \mathrm{O}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>okr \mathrm{O}_{k}(\mathbb{R})
         inoremap <buffer> <localleader>o2r \mathrm{O}_{2}(\mathbb{R})
         inoremap <buffer> <localleader>o3r \mathrm{O}_{3}(\mathbb{R})
         inoremap <buffer> <localleader>o.r \mathrm{O}_{}(\mathbb{R})<esc>F};i
@@ -1270,6 +1350,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>onc \mathrm{O}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>omc \mathrm{O}_{m}(\mathbb{C})
         inoremap <buffer> <localleader>odc \mathrm{O}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>okc \mathrm{O}_{k}(\mathbb{C})
         inoremap <buffer> <localleader>o2c \mathrm{O}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>o3c \mathrm{O}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>o.c \mathrm{O}_{}(\mathbb{C})<esc>F};i
@@ -1281,6 +1362,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>son \mathrm{SO}_{n}
         inoremap <buffer> <leader>som \mathrm{SO}_{m}
         inoremap <buffer> <leader>sod \mathrm{SO}_{d}
+        inoremap <buffer> <leader>sok \mathrm{SO}_{k}
         inoremap <buffer> <leader>so2 \mathrm{SO}_{2}
         inoremap <buffer> <leader>so3 \mathrm{SO}_{3}
         inoremap <buffer> <leader>so. \mathrm{SO}_{}<esc>i
@@ -1290,6 +1372,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>son \mathrm{SO}_{n}()<esc>i
         inoremap <buffer> <localleader>som \mathrm{SO}_{m}()<esc>i
         inoremap <buffer> <localleader>sod \mathrm{SO}_{d}()<esc>i
+        inoremap <buffer> <localleader>sok \mathrm{SO}_{k}()<esc>i
         inoremap <buffer> <localleader>so2 \mathrm{SO}_{2}()<esc>i
         inoremap <buffer> <localleader>so3 \mathrm{SO}_{3}()<esc>i
         inoremap <buffer> <localleader>so. \mathrm{SO}_{}()<esc>F}i
@@ -1297,6 +1380,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sonr \mathrm{SO}_{n}(\mathbb{R})
         inoremap <buffer> <localleader>somr \mathrm{SO}_{m}(\mathbb{R})
         inoremap <buffer> <localleader>sodr \mathrm{SO}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>sokr \mathrm{SO}_{k}(\mathbb{R})
         inoremap <buffer> <localleader>so2r \mathrm{SO}_{2}(\mathbb{R})
         inoremap <buffer> <localleader>so3r \mathrm{SO}_{3}(\mathbb{R})
         inoremap <buffer> <localleader>so.r \mathrm{SO}_{}(\mathbb{R})<esc>F};i
@@ -1304,6 +1388,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sonc \mathrm{SO}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>somc \mathrm{SO}_{m}(\mathbb{C})
         inoremap <buffer> <localleader>sodc \mathrm{SO}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>sokc \mathrm{SO}_{k}(\mathbb{C})
         inoremap <buffer> <localleader>so2c \mathrm{SO}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>so3c \mathrm{SO}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>so.c \mathrm{SO}_{}(\mathbb{C})<esc>F};i
@@ -1314,6 +1399,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>un \mathrm{U}_{n}
         inoremap <buffer> <leader>um \mathrm{U}_{m}
         inoremap <buffer> <leader>ud \mathrm{U}_{d}
+        inoremap <buffer> <leader>uk \mathrm{U}_{k}
         inoremap <buffer> <leader>u2 \mathrm{U}_{2}
         inoremap <buffer> <leader>u3 \mathrm{U}_{3}
         inoremap <buffer> <leader>u. \mathrm{U}_{}<esc>i
@@ -1323,6 +1409,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>unc \mathrm{U}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>umc \mathrm{U}_{m}(\mathbb{C})
         inoremap <buffer> <localleader>udc \mathrm{U}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>ukc \mathrm{U}_{k}(\mathbb{C})
         inoremap <buffer> <localleader>u2c \mathrm{U}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>u3c \mathrm{U}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>u.c \mathrm{U}_{}(\mathbb{C})<esc>F};i
@@ -1334,6 +1421,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>sun \mathrm{SU}_{n}
         inoremap <buffer> <leader>sum \mathrm{SU}_{m}
         inoremap <buffer> <leader>sud \mathrm{SU}_{d}
+        inoremap <buffer> <leader>suk \mathrm{SU}_{k}
         inoremap <buffer> <leader>su2 \mathrm{SU}_{2}
         inoremap <buffer> <leader>su3 \mathrm{SU}_{3}
         inoremap <buffer> <leader>su. \mathrm{SU}_{}<esc>i
@@ -1343,6 +1431,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sunc \mathrm{SU}_{n}(\mathbb{C})
         inoremap <buffer> <localleader>sumc \mathrm{SU}_{m}(\mathbb{C})
         inoremap <buffer> <localleader>sudc \mathrm{SU}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>sukc \mathrm{SU}_{k}(\mathbb{C})
         inoremap <buffer> <localleader>su2c \mathrm{SU}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>su3c \mathrm{SU}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>su.c \mathrm{SU}_{}(\mathbb{C})<esc>F};i
@@ -1497,7 +1586,7 @@ inoremap <buffer> == \equiv
 inoremap <buffer> <localleader>= \cong
 
 "}}}
-" Arrows"{{{
+" Arrows and vectors"{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>ra \rightarrow
@@ -1535,6 +1624,8 @@ inoremap <buffer> <localleader>lto \leadsto
 inoremap <buffer> <localleader>mto \mapsto
 inoremap <buffer> <localleader>lmto \longmapsto
 
+inoremap <buffer> <localleader>vv \vv{}<esc>i
+
 "}}}
 " Others{{{
 "-------------------------------------------------------------------
@@ -1564,14 +1655,14 @@ inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
 " Dollar to \[\]
 function! DollarToBracket()
-    :execute ":normal! F$hxdf$o\\[\<cr>\\]\<esc>O\<C-R>\"\<esc>^xg_x"
+    :execute ":normal! F$hxdf$o\\\[\<cr>\\\]\<esc>O\<C-R>\"\<esc>^xg_x"
 endfunction
 
 nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
 
 " \[\] to Align
 function! BracketToAlign()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% Align\<cr>\\begin{align}\\label{}\<cr>\\end{align}\<esc>mnkpdd`nkdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Align\<cr>\\begin{align}\\label{}\<cr>\\end{align}\<esc>mnkpdd`nkdd?label\<cr>$"
 
 endfunction
 
@@ -1579,7 +1670,7 @@ nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>
 
 " \[\] to Unnumbered Align
 function! BracketToUnnumAlign()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedAlign\<cr>\\begin{align*}\<cr>\\end{align*}\<esc>mnkpdd`nkddk$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedAlign\<cr>\\begin{align*}\<cr>\\end{align*}\<esc>mnkpdd`nkddk$"
 
 endfunction
 
@@ -1587,7 +1678,7 @@ nnoremap <buffer> <localleader>bual :call BracketToUnnumAlign()<cr>
 
 " \[\] to Equation
 function! BracketToEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\end{equation}\<esc>mnkpdd`nkdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\end{equation}\<esc>mnkpdd`nkdd?label\<cr>$"
 
 endfunction
 
@@ -1595,7 +1686,7 @@ nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>
 
 " \[\] to Unnumbered Equation
 function! BracketToUnnumEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>mnkpdd`nkddk$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>mnkpdd`nkddk$"
 
 endfunction
 
@@ -1603,7 +1694,7 @@ nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
 
 " \[\] to Aligned Equation
 function! BracketToAlignedEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
 
 endfunction
 
@@ -1611,7 +1702,7 @@ nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>
 
 " \[\] to Unnumbered Aligned Equation
 function! BracketToUnnumAlignedEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedAlignedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedAlignedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
 
 endfunction
 
@@ -1619,7 +1710,7 @@ nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
 
 " \[\] to Gathered Equation
 function! BracketToGatherEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% GatheredEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% GatheredEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
 
 endfunction
 
@@ -1627,7 +1718,7 @@ nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>
 
 " \[\] to Unnumbered Gathered Equation
 function! BracketToUnnumGatherEq()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedGatheredEquation\<cr>\\begin{equation*}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedGatheredEquation\<cr>\\begin{equation*}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
 
 endfunction
 
@@ -1635,7 +1726,7 @@ nnoremap <buffer> <localleader>bugaeq :call BracketToUnnumGatherEq()<cr>
 
 " \[\] to Gather
 function! BracketToGather()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% Gather\<cr>\\begin{gather}\\label{}\<cr>\\end{gather}\<esc>mnkpdd`nkdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Gather\<cr>\\begin{gather}\\label{}\<cr>\\end{gather}\<esc>mnkpdd`nkdd?label\<cr>$"
 
 endfunction
 
@@ -1643,7 +1734,7 @@ nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>
 
 " \[\] to Unnumbered Gather
 function! BracketToUnnumGather()
-    :execute ":normal! /\\]\<cr>mm?\\[\<cr>V`mdO% UnnumberedGather\<cr>\\begin{gather*}\<cr>\\end{gather*}\<esc>mnkpdd`nkddk$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedGather\<cr>\\begin{gather*}\<cr>\\end{gather*}\<esc>mnkpdd`nkddk$"
 
 endfunction
 
@@ -1656,6 +1747,8 @@ function! ReferencingAndCiting(code)
     elseif a:code == "jref"
         :execute ":normal! a\\ref{\<esc>"
     elseif a:code == "eqref"
+        :execute ":normal! hmmlx`ma~\\eqref{\<esc>"
+    elseif a:code == "jeqref"
         :execute ":normal! a\\eqref{\<esc>"
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
@@ -1668,6 +1761,7 @@ endfunction
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
 inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
 inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
+inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 
