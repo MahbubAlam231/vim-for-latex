@@ -993,6 +993,8 @@ iunmap <buffer> ;3[
 iunmap <buffer> ;4[
 iunmap <buffer> ;5[
 
+iunmap <buffer> ;5\|
+
 iunmap <buffer> <localleader>fl
 iunmap <buffer> ;1fl
 iunmap <buffer> ;2fl

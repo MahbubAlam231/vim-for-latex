@@ -38,7 +38,7 @@ iabbr WE We
 
 Abolish adn and
 Abolish alg{,ic} algebra{,ic}
-Abolish approx{n,e} approximat{ion,e}
+Abolish approx{n,e,ed} approximat{ion,e,ed}
 Abolish arb arbitrary
 
 "}}}
@@ -103,7 +103,7 @@ Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 "I{{{
 
 Abolish ind{ep,ly,eply} independent{,ly,ly}
-Abolish int{n,l,ls,e,te,ble,y,ing} integra{tion,l,ls,te,te,ble,bility,ting}
+Abolish int{n,l,ls,e,te,ble,bility,y,ing} integra{tion,l,ls,te,te,ble,bility,bility,ting}
 Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 
 "}}}

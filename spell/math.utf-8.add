@@ -7,10 +7,12 @@ Alam
 AlignedEquation
 Andreotti
 Anish
+Archimedean
 Athreya
 Barak
 Bhabha
 Bhattacharya
+Bhubhaneswar
 Birkhoff
 Birkhoff's
 Blichfeldt
@@ -47,6 +49,7 @@ Elkies
 Fatou's
 Fubini's
 Ganapathy
+GatheredEquation
 Ghosh
 Gorodnik
 Granville
@@ -77,6 +80,7 @@ JustProposition
 JustTheorem
 Kannan
 Khintchine
+Khintchine's
 Kleinbock
 Kolkata
 LaTeXWrite
@@ -100,6 +104,7 @@ Minkowski's
 Mohammadi
 Moores's
 NBHM
+NISER
 NSFC
 Nagar
 Newcommands
@@ -133,6 +138,7 @@ SiegelsMeanValueTheorem
 Smale
 Smales's
 Steenrod
+Subequations
 Subsubsection
 Takashi
 Tamagawa
@@ -144,13 +150,18 @@ UGC
 Umme
 UnnumberedAlign
 UnnumberedAlignedEquation
+UnnumberedChapter
 UnnumberedCorollary
 UnnumberedDefinition
 UnnumberedEquation
 UnnumberedGather
+UnnumberedGatheredEquation
 UnnumberedLemma
 UnnumberedProposition
 UnnumberedRemark
+UnnumberedSection
+UnnumberedSubsection
+UnnumberedSubsubsection
 UnnumberedTheorem
 Usepackages
 Vandermonde
@@ -169,12 +180,15 @@ adn/!
 affine
 approximable
 arabic
+archimedean
 asymptotics
 athreya
 author
+begin
 bianalytically
 bijection
 boundedness
+cardinality
 cocompact
 cofactors
 command
@@ -196,6 +210,7 @@ differentiable
 differentiably
 differentitably
 dimentional
+diophantine
 dvipsnames
 eigenvector
 eigenvectors
@@ -208,6 +223,8 @@ ergodic
 ergodicity
 externe
 finiteness
+foldmarker
+foliation
 genericity
 ghosh
 homeomorphic
@@ -225,6 +242,7 @@ hypersurface
 hypersurfaces
 iff
 imbedding
+infimum
 inhomogeneous
 injective
 integrability
@@ -248,6 +266,7 @@ normalfont
 normals
 notefont
 numberwithin
+pagestyle
 parallelepiped
 parametrization
 parametrized
@@ -255,6 +274,7 @@ parametrizes
 piecewise
 polytope
 preceeding
+precompact
 preprint
 projective
 renewcommand
@@ -270,6 +290,8 @@ sublattice
 sublattices
 submanifold
 submatrix
+submodule
+submodules
 subsemigroup
 sumit
 summand
@@ -292,10 +314,3 @@ utheorem
 varities
 vspace
 xcolor
-foldmarker
-cardinality
-precompact
-infimum
-foliation
-GatheredEquation
-UnnumberedGatheredEquation

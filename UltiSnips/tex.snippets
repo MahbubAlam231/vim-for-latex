@@ -4685,10 +4685,28 @@ $3
 $0
 endsnippet
 
+snippet chap* "Unnumbered Chapter" b
+% UnnumberedChapter
+\chapter*{$1}%{T{E{X
+$2
+
+%}T}E}X
+$0
+endsnippet
+
 snippet sec "Section" b
 % Section
 \section{$1}\label{$2}%{T{E{X
 $3
+
+%}T}E}X
+$0
+endsnippet
+
+snippet sec* "Unnumbered Section" b
+% UnnumberedSection
+\section*{$1}%{T{E{X
+$2
 
 %}T}E}X
 $0
@@ -4703,10 +4721,28 @@ $3
 $0
 endsnippet
 
+snippet ssec* "Unnumbered Subsection" b
+% UnnumberedSubsection
+\subsection*{$1}%{T{E{X
+$2
+
+%}T}E}X
+$0
+endsnippet
+
 snippet sssec "Subsubsection" b
 % Subsubsection
 \subsubsection{$1}\label{$2}%{T{E{X
 $3
+
+%}T}E}X
+$0
+endsnippet
+
+snippet sssec* "Unnumbered Subsubsection" b
+% UnnumberedSubsubsection
+\subsubsection*{$1}%{T{E{X
+$2
 
 %}T}E}X
 $0
@@ -5020,10 +5056,21 @@ snippet ugathereq "Unnumbered Gathered Equation" b
 $0
 endsnippet
 
+snippet subeq "Sub Equations" b
+% Subequations
+\begin{equation*}
+\begin{gather}
+    $1 \\label{$2} \\
+    $3 \\label{$4}
+\end{gather}
+\end{equation*}
+$0
+endsnippet
+
 snippet gather "Gather" b
 % Gather
-\begin{gather}\label{$1}
-    $2
+\begin{gather}
+    $1 \label{$2}
 \end{gather}
 $0
 endsnippet
