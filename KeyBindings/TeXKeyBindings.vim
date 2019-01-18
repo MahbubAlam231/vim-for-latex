@@ -1749,12 +1749,8 @@ function! ReferencingAndCiting(code)
     elseif a:code == "jref"
         :execute ":normal! a\\ref{\<esc>"
     elseif a:code == "eqref"
-        :execute ":normal! hmmlx`ma~\\eqref{\<esc>"
-    elseif a:code == "jeqref"
         :execute ":normal! a\\eqref{\<esc>"
     elseif a:code == "cit"
-        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
-    elseif a:code == "jcit"
         :execute ":normal! a\\cite{\<esc>"
     endif
 
@@ -1763,9 +1759,7 @@ endfunction
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
 inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
 inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
-inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
-inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>

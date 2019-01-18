@@ -1123,7 +1123,6 @@ iunmap <buffer> <localleader>ref
 iunmap <buffer> <localleader>jref
 iunmap <buffer> <localleader>eqref
 iunmap <buffer> <localleader>cit
-iunmap <buffer> <localleader>jcit
 
 " LaTeX table of contents
 unmap <buffer> <localleader>toc

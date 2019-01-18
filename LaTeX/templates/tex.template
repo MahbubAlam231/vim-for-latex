@@ -139,12 +139,12 @@
 
 \date{<++>}
 
-\maketitle
-
 % Abstract
 \begin{abstract}%{T{E{X
     <++>
 \end{abstract}%}T}E}X
+
+\maketitle
 
 
 

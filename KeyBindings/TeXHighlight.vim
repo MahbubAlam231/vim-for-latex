@@ -15,6 +15,7 @@ let m = matchadd("Folds_brackets_comments",'%}T}E}X')
 
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
+let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 
 highlight ChapterGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
@@ -23,6 +24,7 @@ let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 
 highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
 let m = matchadd("SectionMarkerGroup",'% Section')
+let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 
 highlight SectionGroup ctermbg=39 ctermfg=Black
 let m = matchadd("SectionGroup",'\\section{.\{}}')
@@ -30,6 +32,7 @@ let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 
 highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
 let m = matchadd("SubsectionMarkerGroup",'% Subsection')
+let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 
 highlight SubsectionGroup ctermbg=198 ctermfg=Black
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
@@ -37,6 +40,7 @@ let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 
 highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
 let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
+let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 
 highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
@@ -72,6 +76,7 @@ let m = matchadd("MarkerGroup",'% Corollary')
 let m = matchadd("MarkerGroup",'% JustCorollary')
 let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
 let m = matchadd("MarkerGroup",'% Problem')
+let m = matchadd("MarkerGroup",'% Solution')
 let m = matchadd("MarkerGroup",'% Proof')
 let m = matchadd("MarkerGroup",'% Remark')
 let m = matchadd("MarkerGroup",'% UnnumberedRemark')
@@ -91,6 +96,7 @@ let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
 let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
+let m = matchadd("YellowMarkerGroup",'% Subequations')
 let m = matchadd("YellowMarkerGroup",'% Gather')
 let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
 let m = matchadd("YellowMarkerGroup",'% Center')
@@ -100,8 +106,6 @@ let m = matchadd("YellowMarkerGroup",'% Enumerate')
 let m = matchadd("YellowMarkerGroup",'% Itemize')
 let m = matchadd("YellowMarkerGroup",'% figure')
 let m = matchadd("YellowMarkerGroup",'% diary')
-let m = matchadd("YellowMarkerGroup",'\\item')
-let m = matchadd("YellowMarkerGroup",'\\bibitem')
 
 highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
 
@@ -109,8 +113,6 @@ let m = matchadd("SalmonMarkerGroup",'% Array')
 let m = matchadd("SalmonMarkerGroup",'% Matrix')
 let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
 let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
-let m = matchadd("SalmonMarkerGroup",'\\bibliographystyle{.\{}}')
-let m = matchadd("SalmonMarkerGroup",'\\bibliography{.\{}}')
 
 highlight Bibliography ctermbg=92 ctermfg=yellow
 
@@ -165,6 +167,8 @@ let m = matchadd("TheoremGroup",'\\begin{corollary}')
 let m = matchadd("TheoremGroup",'\\end{corollary}')
 let m = matchadd("TheoremGroup",'\\begin{problem}')
 let m = matchadd("TheoremGroup",'\\end{problem}')
+let m = matchadd("TheoremGroup",'\\begin{solution}')
+let m = matchadd("TheoremGroup",'\\end{solution}')
 let m = matchadd("TheoremGroup",'\\begin{remark}')
 let m = matchadd("TheoremGroup",'\\end{remark}')
 let m = matchadd("TheoremGroup",'\\begin{conjecture}')
@@ -217,6 +221,8 @@ let m = matchadd("EquationGroup",'\\begin{align}')
 let m = matchadd("EquationGroup",'\\end{align}')
 let m = matchadd("EquationGroup",'\\begin{align\*}')
 let m = matchadd("EquationGroup",'\\end{align\*}')
+let m = matchadd("EquationGroup",'\\begin{subequations}')
+let m = matchadd("EquationGroup",'\\end{subequations}')
 let m = matchadd("EquationGroup",'\\begin{center}')
 let m = matchadd("EquationGroup",'\\end{center}')
 let m = matchadd("EquationGroup",'\\begin{gather}')
@@ -236,18 +242,22 @@ let m = matchadd("EquationGroup",'\\end{itemize}')
 let m = matchadd("EquationGroup",'\\begin{landscape}')
 let m = matchadd("EquationGroup",'\\end{landscape}')
 
-highlight ArrayMatrixGroup ctermbg=209 ctermfg=Black
+highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
 
-let m = matchadd("ArrayMatrixGroup",'\\begin{array}')
-let m = matchadd("ArrayMatrixGroup",'\\end{array}')
-let m = matchadd("ArrayMatrixGroup",'\\begin{matrix}')
-let m = matchadd("ArrayMatrixGroup",'\\end{matrix}')
-let m = matchadd("ArrayMatrixGroup",'\\begin{bmatrix}')
-let m = matchadd("ArrayMatrixGroup",'\\end{bmatrix}')
-let m = matchadd("ArrayMatrixGroup",'\\begin{pmatrix}')
-let m = matchadd("ArrayMatrixGroup",'\\end{pmatrix}')
-let m = matchadd("ArrayMatrixGroup",'\\begin{thebibliography}')
-let m = matchadd("ArrayMatrixGroup",'\\end{thebibliography}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\begin{matrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\end{matrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\begin{bmatrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\end{bmatrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\begin{pmatrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\end{pmatrix}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\item')
+let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem')
+let m = matchadd("ArrayMatrixEtcGroup",'\\bibliographystyle{.\{}}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
+let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
 
 highlight asterisk ctermbg=130 ctermfg=yellow
 
@@ -356,5 +366,4 @@ let m = matchadd("ParenthesisGroup",'{\\left[{')
 let m = matchadd("ParenthesisGroup",'}\\right]}')
 
 "}}}
-
 
