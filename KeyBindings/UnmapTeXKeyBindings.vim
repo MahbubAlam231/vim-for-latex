@@ -249,6 +249,17 @@ iunmap <buffer> <localleader>ks.
 "}}}
 " Ring of integers{{{
 
+iunmap <buffer> <localleader>co
+iunmap <buffer> <localleader>coo
+iunmap <buffer> <localleader>con
+iunmap <buffer> <localleader>com
+iunmap <buffer> <localleader>cod
+iunmap <buffer> <localleader>cok
+iunmap <buffer> <localleader>cox
+iunmap <buffer> <localleader>co,
+iunmap <buffer> <localleader>co.
+iunmap <buffer> <localleader>co,.
+
 iunmap <buffer> <localleader>ok
 iunmap <buffer> <localleader>okk
 iunmap <buffer> <localleader>okn
@@ -429,6 +440,15 @@ iunmap <buffer> <localleader>m2ok
 iunmap <buffer> <localleader>m3ok
 iunmap <buffer> <localleader>m.ok
 
+iunmap <buffer> <localleader>mmnco
+iunmap <buffer> <localleader>m..co
+iunmap <buffer> <localleader>mnco
+iunmap <buffer> <localleader>mmco
+iunmap <buffer> <localleader>mdco
+iunmap <buffer> <localleader>m2co
+iunmap <buffer> <localleader>m3co
+iunmap <buffer> <localleader>m.co
+
 iunmap <buffer> <localleader>mmnjk
 iunmap <buffer> <localleader>m..jk
 iunmap <buffer> <localleader>mnjk
@@ -554,6 +574,13 @@ iunmap <buffer> <localleader>gl2ok
 iunmap <buffer> <localleader>gl3ok
 iunmap <buffer> <localleader>gl.ok
 
+iunmap <buffer> <localleader>glnco
+iunmap <buffer> <localleader>glmco
+iunmap <buffer> <localleader>gldco
+iunmap <buffer> <localleader>gl2co
+iunmap <buffer> <localleader>gl3co
+iunmap <buffer> <localleader>gl.co
+
 iunmap <buffer> <localleader>glnjk
 iunmap <buffer> <localleader>glmjk
 iunmap <buffer> <localleader>gldjk
@@ -651,6 +678,13 @@ iunmap <buffer> <localleader>sl2ok
 iunmap <buffer> <localleader>sl3ok
 iunmap <buffer> <localleader>sl.ok
 
+iunmap <buffer> <localleader>slnco
+iunmap <buffer> <localleader>slmco
+iunmap <buffer> <localleader>sldco
+iunmap <buffer> <localleader>sl2co
+iunmap <buffer> <localleader>sl3co
+iunmap <buffer> <localleader>sl.co
+
 iunmap <buffer> <localleader>slnjk
 iunmap <buffer> <localleader>slmjk
 iunmap <buffer> <localleader>sldjk
@@ -692,6 +726,20 @@ iunmap <buffer> <localleader>sldokks
 iunmap <buffer> <localleader>sl2okks
 iunmap <buffer> <localleader>sl3okks
 iunmap <buffer> <localleader>sl.okks
+
+iunmap <buffer> <localleader>slnksco
+iunmap <buffer> <localleader>slmksco
+iunmap <buffer> <localleader>sldksco
+iunmap <buffer> <localleader>sl2ksco
+iunmap <buffer> <localleader>sl3ksco
+iunmap <buffer> <localleader>sl.ksco
+
+iunmap <buffer> <localleader>slncoks
+iunmap <buffer> <localleader>slmcoks
+iunmap <buffer> <localleader>sldcoks
+iunmap <buffer> <localleader>sl2coks
+iunmap <buffer> <localleader>sl3coks
+iunmap <buffer> <localleader>sl.coks
 
 "}}}
 " PSL{{{
@@ -1207,6 +1255,7 @@ iunmap <buffer> ;mu
 iunmap <buffer> ;nu
 iunmap <buffer> ;xi
 iunmap <buffer> ;pi
+iunmap <buffer> ;vpi
 iunmap <buffer> ;rh
 iunmap <buffer> ;si
 iunmap <buffer> ;ta

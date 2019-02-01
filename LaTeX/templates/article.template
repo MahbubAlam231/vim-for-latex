@@ -50,6 +50,7 @@
 % Environments%{T{E{X
 %-------------------------------------------------------------------
 
+% To write names of theorems in bold
 \makeatletter
 \def\th@plain{%
     \thm@notefont{}% same as heading font

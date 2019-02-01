@@ -38,7 +38,7 @@ iabbr WE We
 
 Abolish adn and
 Abolish alg{,ic} algebra{,ic}
-Abolish approx{n,e,ed} approximat{ion,e,ed}
+Abolish approx{n,s,e,ed} approximat{ion,ions,e,ed}
 Abolish arb arbitrary
 
 "}}}

@@ -249,6 +249,17 @@ inoremap <buffer> <localleader>ks. K_S^{}<esc>i
 "}}}
 " Ring of integers{{{
 
+inoremap <buffer> <localleader>co \mathcal{O}
+inoremap <buffer> <localleader>coo \mathcal{O}^2
+inoremap <buffer> <localleader>con \mathcal{O}^{n}
+inoremap <buffer> <localleader>com \mathcal{O}^{m}
+inoremap <buffer> <localleader>cod \mathcal{O}^{d}
+inoremap <buffer> <localleader>cok \mathcal{O}^{k}
+inoremap <buffer> <localleader>cox \mathcal{O}^{\times}
+inoremap <buffer> <localleader>co, \mathcal{O}_{}<esc>i
+inoremap <buffer> <localleader>co. \mathcal{O}^{}<esc>i
+inoremap <buffer> <localleader>co,. \mathcal{O}_{}^{}<esc>F}i
+
 inoremap <buffer> <localleader>ok \mathcal{O}_K
 inoremap <buffer> <localleader>okk \mathcal{O}_K^2
 inoremap <buffer> <localleader>okn \mathcal{O}_K^{n}
@@ -444,6 +455,16 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m3ok \mathrm{M}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>m.ok \mathrm{M}(,\mathcal{O}_K)<esc>F,i
 
+        inoremap <buffer> <localleader>mmnco \mathrm{M}_{m \times n}(\mathcal{O})
+        inoremap <buffer> <localleader>m..co \mathrm{M}_{}(\mathcal{O})<esc>F};i
+        inoremap <buffer> <localleader>mnco \mathrm{M}(n,\mathcal{O})
+        inoremap <buffer> <localleader>mmco \mathrm{M}(m,\mathcal{O})
+        inoremap <buffer> <localleader>mdco \mathrm{M}(d,\mathcal{O})
+        inoremap <buffer> <localleader>mkco \mathrm{M}(k,\mathcal{O})
+        inoremap <buffer> <localleader>m2co \mathrm{M}(2,\mathcal{O})
+        inoremap <buffer> <localleader>m3co \mathrm{M}(3,\mathcal{O})
+        inoremap <buffer> <localleader>m.co \mathrm{M}(,\mathcal{O})<esc>F,i
+
         inoremap <buffer> <localleader>mmnjk \mathrm{M}_{m \times n}(K)
         inoremap <buffer> <localleader>m..jk \mathrm{M}_{}(K)<esc>F}i
         inoremap <buffer> <localleader>mnjk \mathrm{M}(n,K)
@@ -584,6 +605,14 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl3ok \mathrm{GL}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>gl.ok \mathrm{GL}(,\mathcal{O}_K)<esc>F,i
 
+        inoremap <buffer> <localleader>glnco \mathrm{GL}(n,\mathcal{O})
+        inoremap <buffer> <localleader>glmco \mathrm{GL}(m,\mathcal{O})
+        inoremap <buffer> <localleader>gldco \mathrm{GL}(d,\mathcal{O})
+        inoremap <buffer> <localleader>glkco \mathrm{GL}(k,\mathcal{O})
+        inoremap <buffer> <localleader>gl2co \mathrm{GL}(2,\mathcal{O})
+        inoremap <buffer> <localleader>gl3co \mathrm{GL}(3,\mathcal{O})
+        inoremap <buffer> <localleader>gl.co \mathrm{GL}(,\mathcal{O})<esc>F,i
+
         inoremap <buffer> <localleader>glnjk \mathrm{GL}(n,K)
         inoremap <buffer> <localleader>glmjk \mathrm{GL}(m,K)
         inoremap <buffer> <localleader>gldjk \mathrm{GL}(d,K)
@@ -694,6 +723,14 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl3ok \mathrm{SL}(3,\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ok \mathrm{SL}(,\mathcal{O}_K)<esc>F,i
 
+        inoremap <buffer> <localleader>slnco \mathrm{SL}(n,\mathcal{O})
+        inoremap <buffer> <localleader>slmco \mathrm{SL}(m,\mathcal{O})
+        inoremap <buffer> <localleader>sldco \mathrm{SL}(d,\mathcal{O})
+        inoremap <buffer> <localleader>slkco \mathrm{SL}(k,\mathcal{O})
+        inoremap <buffer> <localleader>sl2co \mathrm{SL}(2,\mathcal{O})
+        inoremap <buffer> <localleader>sl3co \mathrm{SL}(3,\mathcal{O})
+        inoremap <buffer> <localleader>sl.co \mathrm{SL}(,\mathcal{O})<esc>F,i
+
         inoremap <buffer> <localleader>slnjk \mathrm{SL}(n,K)
         inoremap <buffer> <localleader>slmjk \mathrm{SL}(m,K)
         inoremap <buffer> <localleader>sldjk \mathrm{SL}(d,K)
@@ -741,6 +778,22 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2okks \mathrm{SL}(2,\mathcal{O}_K) \backslash \mathrm{SL}(2,K_S)
         inoremap <buffer> <localleader>sl3okks \mathrm{SL}(3,\mathcal{O}_K) \backslash \mathrm{SL}(3,K_S)
         inoremap <buffer> <localleader>sl.okks \mathrm{SL}(,\mathcal{O}_K) \backslash \mathrm{SL}(,K_S)<esc>F,i
+
+        inoremap <buffer> <localleader>slnksco \mathrm{SL}(n,K_S)/\mathrm{SL}(n,\mathcal{O})
+        inoremap <buffer> <localleader>slmksco \mathrm{SL}(m,K_S)/\mathrm{SL}(m,\mathcal{O})
+        inoremap <buffer> <localleader>sldksco \mathrm{SL}(d,K_S)/\mathrm{SL}(d,\mathcal{O})
+        inoremap <buffer> <localleader>slkksco \mathrm{SL}(k,K_S)/\mathrm{SL}(k,\mathcal{O})
+        inoremap <buffer> <localleader>sl2ksco \mathrm{SL}(2,K_S)/\mathrm{SL}(2,\mathcal{O})
+        inoremap <buffer> <localleader>sl3ksco \mathrm{SL}(3,K_S)/\mathrm{SL}(3,\mathcal{O})
+        inoremap <buffer> <localleader>sl.ksco \mathrm{SL}(,K_S)/\mathrm{SL}(,\mathcal{O})<esc>F,i
+
+        inoremap <buffer> <localleader>slncoks \mathrm{SL}(n,\mathcal{O}) \backslash \mathrm{SL}(n,K_S)
+        inoremap <buffer> <localleader>slmcoks \mathrm{SL}(m,\mathcal{O}) \backslash \mathrm{SL}(m,K_S)
+        inoremap <buffer> <localleader>sldcoks \mathrm{SL}(d,\mathcal{O}) \backslash \mathrm{SL}(d,K_S)
+        inoremap <buffer> <localleader>slkcoks \mathrm{SL}(k,\mathcal{O}) \backslash \mathrm{SL}(k,K_S)
+        inoremap <buffer> <localleader>sl2coks \mathrm{SL}(2,\mathcal{O}) \backslash \mathrm{SL}(2,K_S)
+        inoremap <buffer> <localleader>sl3coks \mathrm{SL}(3,\mathcal{O}) \backslash \mathrm{SL}(3,K_S)
+        inoremap <buffer> <localleader>sl.coks \mathrm{SL}(,\mathcal{O}) \backslash \mathrm{SL}(,K_S)<esc>F,i
 
         "}}}
         " PSL{{{
@@ -1010,6 +1063,15 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m3ok \mathrm{M}_{3}(\mathcal{O}_K)
         inoremap <buffer> <localleader>m.ok \mathrm{M}_{}(\mathcal{O}_K)<esc>F};i
 
+        inoremap <buffer> <localleader>mmnco \mathrm{M}_{m \times n}(\mathcal{O})
+        inoremap <buffer> <localleader>m..co \mathrm{M}_{}(\mathcal{O})<esc>F};i
+        inoremap <buffer> <localleader>mnco \mathrm{M}_{n}(\mathcal{O})
+        inoremap <buffer> <localleader>mmco \mathrm{M}_{m}(\mathcal{O})
+        inoremap <buffer> <localleader>mdco \mathrm{M}_{d}(\mathcal{O})
+        inoremap <buffer> <localleader>m2co \mathrm{M}_{2}(\mathcal{O})
+        inoremap <buffer> <localleader>m3co \mathrm{M}_{3}(\mathcal{O})
+        inoremap <buffer> <localleader>m.co \mathrm{M}_{}(\mathcal{O})<esc>F};i
+
         inoremap <buffer> <localleader>mmnjk \mathrm{M}_{m \times n}(K)
         inoremap <buffer> <localleader>m..jk \mathrm{M}_{}(K)<esc>F}i
         inoremap <buffer> <localleader>mnjk \mathrm{M}_{n}(K)
@@ -1135,6 +1197,13 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl3ok \mathrm{GL}_{3}(\mathcal{O}_K)
         inoremap <buffer> <localleader>gl.ok \mathrm{GL}_{}(\mathcal{O}_K)<esc>F};i
 
+        inoremap <buffer> <localleader>glnco \mathrm{GL}_{n}(\mathcal{O})
+        inoremap <buffer> <localleader>glmco \mathrm{GL}_{m}(\mathcal{O})
+        inoremap <buffer> <localleader>gldco \mathrm{GL}_{d}(\mathcal{O})
+        inoremap <buffer> <localleader>gl2co \mathrm{GL}_{2}(\mathcal{O})
+        inoremap <buffer> <localleader>gl3co \mathrm{GL}_{3}(\mathcal{O})
+        inoremap <buffer> <localleader>gl.co \mathrm{GL}_{}(\mathcal{O})<esc>F};i
+
         inoremap <buffer> <localleader>glnjk \mathrm{GL}_{n}(K)
         inoremap <buffer> <localleader>glmjk \mathrm{GL}_{m}(K)
         inoremap <buffer> <localleader>gldjk \mathrm{GL}_{d}(K)
@@ -1243,6 +1312,14 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl3ok \mathrm{SL}_{3}(\mathcal{O}_K)
         inoremap <buffer> <localleader>sl.ok \mathrm{SL}_{}(\mathcal{O}_K)<esc>F};i
 
+        inoremap <buffer> <localleader>slnco \mathrm{SL}_{n}(\mathcal{O})
+        inoremap <buffer> <localleader>slmco \mathrm{SL}_{m}(\mathcal{O})
+        inoremap <buffer> <localleader>sldco \mathrm{SL}_{d}(\mathcal{O})
+        inoremap <buffer> <localleader>slkco \mathrm{SL}_{k}(\mathcal{O})
+        inoremap <buffer> <localleader>sl2co \mathrm{SL}_{2}(\mathcal{O})
+        inoremap <buffer> <localleader>sl3co \mathrm{SL}_{3}(\mathcal{O})
+        inoremap <buffer> <localleader>sl.co \mathrm{SL}_{}(\mathcal{O})<esc>F};i
+
         inoremap <buffer> <localleader>slnjk \mathrm{SL}_{n}(K)
         inoremap <buffer> <localleader>slmjk \mathrm{SL}_{m}(K)
         inoremap <buffer> <localleader>sldjk \mathrm{SL}_{d}(K)
@@ -1290,6 +1367,22 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2okks \mathrm{SL}_{2}(\mathcal{O}_K) \backslash \mathrm{SL}_{2}(K_S)
         inoremap <buffer> <localleader>sl3okks \mathrm{SL}_{3}(\mathcal{O}_K) \backslash \mathrm{SL}_{3}(K_S)
         inoremap <buffer> <localleader>sl.okks \mathrm{SL}_{}(\mathcal{O}_K) \backslash \mathrm{SL}_{}(K_S)<esc>F};i
+
+        inoremap <buffer> <localleader>slnksco \mathrm{SL}_{n}(K_S)/\mathrm{SL}_{n}(\mathcal{O})
+        inoremap <buffer> <localleader>slmksco \mathrm{SL}_{m}(K_S)/\mathrm{SL}_{m}(\mathcal{O})
+        inoremap <buffer> <localleader>sldksco \mathrm{SL}_{d}(K_S)/\mathrm{SL}_{d}(\mathcal{O})
+        inoremap <buffer> <localleader>slkksco \mathrm{SL}_{k}(K_S)/\mathrm{SL}_{k}(\mathcal{O})
+        inoremap <buffer> <localleader>sl2ksco \mathrm{SL}_{2}(K_S)/\mathrm{SL}_{2}(\mathcal{O})
+        inoremap <buffer> <localleader>sl3ksco \mathrm{SL}_{3}(K_S)/\mathrm{SL}_{3}(\mathcal{O})
+        inoremap <buffer> <localleader>sl.ksco \mathrm{SL}_{}(K_S)/\mathrm{SL}_{}(\mathcal{O})<esc>F};i
+
+        inoremap <buffer> <localleader>slncoks \mathrm{SL}_{n}(\mathcal{O}) \backslash \mathrm{SL}_{n}(K_S)
+        inoremap <buffer> <localleader>slmcoks \mathrm{SL}_{m}(\mathcal{O}) \backslash \mathrm{SL}_{m}(K_S)
+        inoremap <buffer> <localleader>sldcoks \mathrm{SL}_{d}(\mathcal{O}) \backslash \mathrm{SL}_{d}(K_S)
+        inoremap <buffer> <localleader>slkcoks \mathrm{SL}_{k}(\mathcal{O}) \backslash \mathrm{SL}_{k}(K_S)
+        inoremap <buffer> <localleader>sl2coks \mathrm{SL}_{2}(\mathcal{O}) \backslash \mathrm{SL}_{2}(K_S)
+        inoremap <buffer> <localleader>sl3coks \mathrm{SL}_{3}(\mathcal{O}) \backslash \mathrm{SL}_{3}(K_S)
+        inoremap <buffer> <localleader>sl.coks \mathrm{SL}_{}(\mathcal{O}) \backslash \mathrm{SL}_{}(K_S)<esc>F};i
 
         "}}}
         " PSL{{{
@@ -1868,6 +1961,7 @@ inoremap <buffer> ;mu \mu
 inoremap <buffer> ;nu \nu
 inoremap <buffer> ;xi \xi
 inoremap <buffer> ;pi \pi
+inoremap <buffer> ;vpi \varpi
 inoremap <buffer> ;rh \rho
 inoremap <buffer> ;si \sigma
 inoremap <buffer> ;ta \tau
@@ -1981,16 +2075,16 @@ let m = matchadd("MarkerGroup",'% Notation')
 let m = matchadd("MarkerGroup",'% Definition')
 let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
 let m = matchadd("MarkerGroup",'% Theorem')
-let m = matchadd("MarkerGroup",'% JustTheorem')
+let m = matchadd("MarkerGroup",'% StatementofTheorem')
 let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
 let m = matchadd("MarkerGroup",'% Lemma')
-let m = matchadd("MarkerGroup",'% JustLemma')
+let m = matchadd("MarkerGroup",'% StatementofLemma')
 let m = matchadd("MarkerGroup",'% UnnumberedLemma')
 let m = matchadd("MarkerGroup",'% Proposition')
-let m = matchadd("MarkerGroup",'% JustProposition')
+let m = matchadd("MarkerGroup",'% StatementofProposition')
 let m = matchadd("MarkerGroup",'% UnnumberedProposition')
 let m = matchadd("MarkerGroup",'% Corollary')
-let m = matchadd("MarkerGroup",'% JustCorollary')
+let m = matchadd("MarkerGroup",'% StatementofCorollary')
 let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
 let m = matchadd("MarkerGroup",'% Problem')
 let m = matchadd("MarkerGroup",'% Solution')
