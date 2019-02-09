@@ -1106,6 +1106,8 @@ iunmap <buffer> <localleader>lto
 iunmap <buffer> <localleader>mto
 iunmap <buffer> <localleader>lmto
 
+iunmap <buffer> <localleader>v
+
 "}}}
 " Others{{{
 "-------------------------------------------------------------------
@@ -1305,4 +1307,3 @@ iunmap <buffer> <F9>
 nunmap <buffer> <F9>
 
 "}}}
-

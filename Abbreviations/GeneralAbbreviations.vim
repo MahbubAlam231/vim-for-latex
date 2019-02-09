@@ -38,7 +38,7 @@ iabbr WE We
 
 Abolish adn and
 Abolish alg{,ic} algebra{,ic}
-Abolish approx{n,s,e,ed} approximat{ion,ions,e,ed}
+Abolish approx{n,ns,e,es,ed,g} approximat{ion,ions,e,es,ed,ing}
 Abolish arb arbitrary
 
 "}}}
@@ -176,4 +176,3 @@ Abolish wrt with respect to
 Abolish wlog without loss of generality
 
 "}}}
-

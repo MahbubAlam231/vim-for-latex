@@ -1719,7 +1719,9 @@ inoremap <buffer> <localleader>lto \leadsto
 inoremap <buffer> <localleader>mto \mapsto
 inoremap <buffer> <localleader>lmto \longmapsto
 
-inoremap <buffer> <localleader>vv \vv{}<esc>i
+inoremap <buffer> <localleader>v \vv{}<esc>i
+
+inoremap <buffer> <localleader>act \curvearrowright
 
 "}}}
 " Others{{{

@@ -5756,11 +5756,10 @@ snippet homotopy
 endsnippet
 
 snippet frame
-% frame
-\begin{frame}
-    \frametitle{}
-    $1
-\end{frame}
+% Frame
+\begin{frame}$1%{T{E{X
+    $2
+\end{frame}%}T}E}X
 endsnippet
 
 
@@ -5791,7 +5790,7 @@ endsnippet
 
 #}}}
 
-# Are these useful?{{{
+# Others{{{
 #-------------------------------------------------------------------
 
 # SomeAbbreviation{{{
@@ -5815,49 +5814,10 @@ snippet in
 endsnippet
 
 
-snippet ld "Lateral dot"
-\ldot$0
-endsnippet
-
-
-snippet lds "Lateral dots"
-\ldots$0
-endsnippet
-
-
-snippet cd "Central dot"
-\cdot$0
-endsnippet
-
-
-snippet cds "Central dots"
-\cdots$0
-endsnippet
-
-
-snippet vd "Vertical dot"
-\vdot$0
-endsnippet
-
-
-snippet vds "Vertical dots"
-\vdots$0
-endsnippet
-
-
-snippet dds "Diagonal dots"
-\ddots$0
-endsnippet
-
-
 snippet ul "Underline for latex"
 \uline{$1}$0
 endsnippet
 
-
-snippet fr
-\frac{$1}{$2}$0
-endsnippet
 
 snippet \ "Backslash"
 \backslash$0
@@ -6650,4 +6610,3 @@ endsnippet
 #}}}
 
 #}}}
-
