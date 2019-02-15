@@ -863,7 +863,7 @@ augroup end
 " Doesn't seem to work when template is enabled
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile *.* :write
+    autocmd BufNewFile,BufRead *.* :write
 augroup end
 
 nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz

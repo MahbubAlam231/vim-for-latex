@@ -66,8 +66,8 @@ inoremap <buffer> ;b1 \mathbbm{1}
 " Set theory and Logic"{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <localleader>fa \forall
-inoremap <buffer> <localleader>E \exists
+inoremap <buffer> <localleader>fa \forall~
+inoremap <buffer> <localleader>E \exists~
 inoremap <buffer> <localleader>e \in
 inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>ne \notin
@@ -2020,8 +2020,6 @@ nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>
 " Chapter, Section, Subsection, Subsubsection, label"{{{
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
-let m = matchadd("Folds_brackets_comments",'{{{')
-let m = matchadd("Folds_brackets_comments",'}}}')
 let m = matchadd("Folds_brackets_comments",'%{{{')
 let m = matchadd("Folds_brackets_comments",'%}}}')
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')

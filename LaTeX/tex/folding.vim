@@ -401,12 +401,12 @@ function! LatexBox_FoldLevel(lnum)
                 let secondarytitle = ' - ' . envname
             endif
 
+            " Abstract{{{
+
             if env == 'abstract'
                 let title = 'Abstract'
 
-            elseif env == 'frame'
-                let caption = s:CaptionFrame(line)
-                let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
+                "}}}
 
                 " Lemma{{{
 
@@ -448,6 +448,13 @@ function! LatexBox_FoldLevel(lnum)
 
                 "}}}
 
+                " Proof{{{
+
+            elseif env == 'proof'
+                let title = 'Proof'
+
+                "}}}
+
                 " Remark{{{
 
             elseif env == 'remark'
@@ -468,9 +475,13 @@ function! LatexBox_FoldLevel(lnum)
 
                 "}}}
 
-            elseif env == 'proof'
-                let title = 'Proof'
+                " Frame{{{
 
+            elseif env == 'frame'
+                let caption = s:CaptionFrame(line)
+                let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
+
+                "}}}
 
                 " Other environments
             else
@@ -526,18 +537,31 @@ function! LatexBox_FoldLevel(lnum)
 
         " Helper folds{{{
 
-        if line =~ '^\s*% '
-            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
-            if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
-                if len(primarytitle) > 124
-                    let title = '[H]    ' . printf('%.121s', primarytitle) . '...'
-                else
-                    let title = '[H]    ' . primarytitle
-                endif
+        if line =~ '^\s*%% '
+            let primarytitle = matchstr(line, '^\s*%% \zs.\{-}\ze%{')
+            if len(primarytitle) > 124
+                let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
+            else
+                let title = '[H]  - ' . primarytitle
             endif
         endif
 
         "}}}
+
+        "" Helper folds{{{
+
+        "if line =~ '^\s*% '
+        "    let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
+        "    if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
+        "        if len(primarytitle) > 124
+        "            let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
+        "        else
+        "            let title = '[H]  - ' . primarytitle
+        "        endif
+        "    endif
+        "endif
+
+        ""}}}
 
         return printf('%-15s %-138s %4d lines', level, title, nlines)
         " return printf('%-15s %-138s', level, title)
@@ -547,4 +571,3 @@ function! LatexBox_FoldLevel(lnum)
     endfunction
 
     " }}}
-
