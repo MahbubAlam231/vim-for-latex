@@ -1,6 +1,6 @@
 
 %-------------------------------------------------------------------
-% Author        : {{NAME}}{{CURSOR}}
+% Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
 % Created       : {{TODAY}} {{TIME}}
 % Description   : <++>
@@ -41,6 +41,7 @@
 % \usepackage{titlesec}
 % \usepackage{titling}
 \usepackage[normalem]{ulem}%for writing a underlined text
+\usepackage{url}
 \usepackage{xcolor}
 % \usepackage[dvipsnames]{xcolor}
 
@@ -133,7 +134,11 @@
 
 \title[<++>]{<++>}
 
-\author{{{NAME}}<++>}
+\author{{{NAME}}}
+\address{\textbf{{{NAME}}} \\
+    School of Mathematics,
+    Tata Institute of Fundamental Research, Mumbai, India 400005}
+\email{mahbub@math.tifr.res.in}
 
 \date{<++>}
 

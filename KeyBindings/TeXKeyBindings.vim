@@ -1636,25 +1636,25 @@ inoremap <buffer> ;2 \Big
 inoremap <buffer> ;3 \bigg
 inoremap <buffer> ;4 \Bigg
 
-inoremap <buffer> ;1( {\big({}\big)}<esc>F{a
-inoremap <buffer> ;2( {\Big({}\Big)}<esc>F{a
-inoremap <buffer> ;3( {\bigg({}\bigg)}<esc>F{a
-inoremap <buffer> ;4( {\Bigg({}\Bigg)}<esc>F{a
-inoremap <buffer> ;5( {\left({}\right)}<esc>F{a
+inoremap <buffer> ;1( {\big(\big)}<esc>F(a
+inoremap <buffer> ;2( {\Big(\Big)}<esc>F(a
+inoremap <buffer> ;3( {\bigg(\bigg)}<esc>F(a
+inoremap <buffer> ;4( {\Bigg(\Bigg)}<esc>F(a
+inoremap <buffer> ;5( {\left(\right)}<esc>F(a
 
-inoremap <buffer> ;1{ {\big\{{}\big\}}<esc>F{a
-inoremap <buffer> ;2{ {\Big\{{}\Big\}}<esc>F{a
-inoremap <buffer> ;3{ {\bigg\{{}\bigg\}}<esc>F{a
-inoremap <buffer> ;4{ {\Bigg\{{}\Bigg\}}<esc>F{a
-inoremap <buffer> ;5{ {\left\{{}\right\}}<esc>F{a
+inoremap <buffer> ;1{ {\big\{\big\}}<esc>F{a
+inoremap <buffer> ;2{ {\Big\{\Big\}}<esc>F{a
+inoremap <buffer> ;3{ {\bigg\{\bigg\}}<esc>F{a
+inoremap <buffer> ;4{ {\Bigg\{\Bigg\}}<esc>F{a
+inoremap <buffer> ;5{ {\left\{\right\}}<esc>F{a
 
-inoremap <buffer> ;1[ {\big[{}\big]}<esc>F{a
-inoremap <buffer> ;2[ {\Big[{}\Big]}<esc>F{a
-inoremap <buffer> ;3[ {\bigg[{}\bigg]}<esc>F{a
-inoremap <buffer> ;4[ {\Bigg[{}\Bigg]}<esc>F{a
-inoremap <buffer> ;5[ {\left[{}\right]}<esc>F{a
+inoremap <buffer> ;1[ {\big[\big]}<esc>F[a
+inoremap <buffer> ;2[ {\Big[\Big]}<esc>F[a
+inoremap <buffer> ;3[ {\bigg[\bigg]}<esc>F[a
+inoremap <buffer> ;4[ {\Bigg[\Bigg]}<esc>F[a
+inoremap <buffer> ;5[ {\left[\right]}<esc>F[a
 
-inoremap <buffer> ;5\| {\left\|{}\right\|}<esc>F{a
+inoremap <buffer> ;5\| {\left\|\right\|}<esc>2F\|a
 
 inoremap <buffer> <localleader>fl \fl{}<esc>i
 inoremap <buffer> ;1fl \bigfl{}<esc>i
@@ -1670,7 +1670,7 @@ inoremap <buffer> ;3ce \biggce{}<esc>i
 inoremap <buffer> ;4ce \Biggce{}<esc>i
 inoremap <buffer> ;5ce \lrce{}<esc>i
 
-inoremap <buffer> <localleader>lrab {\left\langle{}\right\rangle}<esc>F{a
+inoremap <buffer> <localleader>lrab {\left\langle\right\rangle}<esc>2Fea
 
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
@@ -1844,8 +1844,12 @@ function! ReferencingAndCiting(code)
     elseif a:code == "jref"
         :execute ":normal! a\\ref{\<esc>"
     elseif a:code == "eqref"
+        :execute ":normal! hmmlx`ma~\\eqref{\<esc>"
+    elseif a:code == "jeqref"
         :execute ":normal! a\\eqref{\<esc>"
     elseif a:code == "cit"
+        :execute ":normal! hmmlx`ma~\\cite{\<esc>"
+    elseif a:code == "jcit"
         :execute ":normal! a\\cite{\<esc>"
     endif
 
@@ -1854,7 +1858,9 @@ endfunction
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
 inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
 inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
+inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>
@@ -2003,14 +2009,17 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-" inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
-" nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
 inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zza
 nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
-inoremap <buffer> <F8> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
-inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+
+" inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
+" nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
+" nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
+" inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
+" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -bibtex %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
 
 "}}}
 
@@ -2286,94 +2295,94 @@ let m = matchadd("ParenthesisGroup",'\\big(')
 let m = matchadd("ParenthesisGroup",'\\big)')
 let m = matchadd("ParenthesisGroup",'{\\big(')
 let m = matchadd("ParenthesisGroup",'\\big)}')
-let m = matchadd("ParenthesisGroup",'{\\big({')
-let m = matchadd("ParenthesisGroup",'}\\big)}')
+" let m = matchadd("ParenthesisGroup",'{\\big({')
+" let m = matchadd("ParenthesisGroup",'}\\big)}')
 let m = matchadd("ParenthesisGroup",'\\Big(')
 let m = matchadd("ParenthesisGroup",'\\Big)')
 let m = matchadd("ParenthesisGroup",'{\\Big(')
 let m = matchadd("ParenthesisGroup",'\\Big)}')
-let m = matchadd("ParenthesisGroup",'{\\Big({')
-let m = matchadd("ParenthesisGroup",'}\\Big)}')
+" let m = matchadd("ParenthesisGroup",'{\\Big({')
+" let m = matchadd("ParenthesisGroup",'}\\Big)}')
 let m = matchadd("ParenthesisGroup",'\\bigg(')
 let m = matchadd("ParenthesisGroup",'\\bigg)')
 let m = matchadd("ParenthesisGroup",'{\\bigg(')
 let m = matchadd("ParenthesisGroup",'\\bigg)}')
-let m = matchadd("ParenthesisGroup",'{\\bigg({')
-let m = matchadd("ParenthesisGroup",'}\\bigg)}')
+" let m = matchadd("ParenthesisGroup",'{\\bigg({')
+" let m = matchadd("ParenthesisGroup",'}\\bigg)}')
 let m = matchadd("ParenthesisGroup",'\\Bigg(')
 let m = matchadd("ParenthesisGroup",'\\Bigg)')
 let m = matchadd("ParenthesisGroup",'{\\Bigg(')
 let m = matchadd("ParenthesisGroup",'\\Bigg)}')
-let m = matchadd("ParenthesisGroup",'{\\Bigg({')
-let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
+" let m = matchadd("ParenthesisGroup",'{\\Bigg({')
+" let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
 let m = matchadd("ParenthesisGroup",'\\left(')
 let m = matchadd("ParenthesisGroup",'\\right)')
 let m = matchadd("ParenthesisGroup",'{\\left(')
 let m = matchadd("ParenthesisGroup",'\\right)}')
-let m = matchadd("ParenthesisGroup",'{\\left({')
-let m = matchadd("ParenthesisGroup",'}\\right)}')
+" let m = matchadd("ParenthesisGroup",'{\\left({')
+" let m = matchadd("ParenthesisGroup",'}\\right)}')
 
 let m = matchadd("ParenthesisGroup",'\\big\\{')
 let m = matchadd("ParenthesisGroup",'\\big\\}')
 let m = matchadd("ParenthesisGroup",'{\\big\\{')
 let m = matchadd("ParenthesisGroup",'\\big\\}}')
-let m = matchadd("ParenthesisGroup",'{\\big\\{{')
-let m = matchadd("ParenthesisGroup",'}\\big\\}}')
+" let m = matchadd("ParenthesisGroup",'{\\big\\{{')
+" let m = matchadd("ParenthesisGroup",'}\\big\\}}')
 let m = matchadd("ParenthesisGroup",'\\Big\\{')
 let m = matchadd("ParenthesisGroup",'\\Big\\}')
 let m = matchadd("ParenthesisGroup",'{\\Big\\{')
 let m = matchadd("ParenthesisGroup",'\\Big\\}}')
-let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
-let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
+" let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
+" let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
 let m = matchadd("ParenthesisGroup",'\\bigg\\{')
 let m = matchadd("ParenthesisGroup",'\\bigg\\}')
 let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
 let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
-let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
-let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
+" let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
+" let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
 let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
 let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
 let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
 let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
-let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
-let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
+" let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
+" let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
 let m = matchadd("ParenthesisGroup",'\\left\\{')
 let m = matchadd("ParenthesisGroup",'\\right\\}')
 let m = matchadd("ParenthesisGroup",'{\\left\\{')
 let m = matchadd("ParenthesisGroup",'\\right\\}}')
-let m = matchadd("ParenthesisGroup",'{\\left\\{{')
-let m = matchadd("ParenthesisGroup",'}\\right\\}}')
+" let m = matchadd("ParenthesisGroup",'{\\left\\{{')
+" let m = matchadd("ParenthesisGroup",'}\\right\\}}')
 
 let m = matchadd("ParenthesisGroup",'\\big[')
 let m = matchadd("ParenthesisGroup",'\\big]')
 let m = matchadd("ParenthesisGroup",'{\\big[')
 let m = matchadd("ParenthesisGroup",'\\big]}')
-let m = matchadd("ParenthesisGroup",'{\\big[{')
-let m = matchadd("ParenthesisGroup",'}\\big]}')
+" let m = matchadd("ParenthesisGroup",'{\\big[{')
+" let m = matchadd("ParenthesisGroup",'}\\big]}')
 let m = matchadd("ParenthesisGroup",'\\Big[')
 let m = matchadd("ParenthesisGroup",'\\Big]')
 let m = matchadd("ParenthesisGroup",'{\\Big[')
 let m = matchadd("ParenthesisGroup",'\\Big]}')
-let m = matchadd("ParenthesisGroup",'{\\Big[{')
-let m = matchadd("ParenthesisGroup",'}\\Big]}')
+" let m = matchadd("ParenthesisGroup",'{\\Big[{')
+" let m = matchadd("ParenthesisGroup",'}\\Big]}')
 let m = matchadd("ParenthesisGroup",'\\bigg[')
 let m = matchadd("ParenthesisGroup",'\\bigg]')
 let m = matchadd("ParenthesisGroup",'{\\bigg[')
 let m = matchadd("ParenthesisGroup",'\\bigg]}')
-let m = matchadd("ParenthesisGroup",'{\\bigg[{')
-let m = matchadd("ParenthesisGroup",'}\\bigg]}')
+" let m = matchadd("ParenthesisGroup",'{\\bigg[{')
+" let m = matchadd("ParenthesisGroup",'}\\bigg]}')
 let m = matchadd("ParenthesisGroup",'\\Bigg[')
 let m = matchadd("ParenthesisGroup",'\\Bigg]')
 let m = matchadd("ParenthesisGroup",'{\\Bigg[')
 let m = matchadd("ParenthesisGroup",'\\Bigg]}')
-let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
-let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
+" let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
+" let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
 let m = matchadd("ParenthesisGroup",'\\left[')
 let m = matchadd("ParenthesisGroup",'\\right]')
 let m = matchadd("ParenthesisGroup",'{\\left[')
 let m = matchadd("ParenthesisGroup",'\\right]}')
-let m = matchadd("ParenthesisGroup",'{\\left[{')
-let m = matchadd("ParenthesisGroup",'}\\right]}')
+" let m = matchadd("ParenthesisGroup",'{\\left[{')
+" let m = matchadd("ParenthesisGroup",'}\\right]}')
 
 "}}}
 

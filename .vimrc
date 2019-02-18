@@ -420,7 +420,7 @@ cnoremap <buffer> <c-e> <end>
 " Trailing White Space{{{2
 "-------------------------------------------------------------------
 
-"autocmd BufWritePre * %s/\s\+$//e
+"autocmd BufWritePre *.* %s/\s\+$//e
 inoremap <buffer> <localleader>fws <Esc>mwV:FixWhitespace<cr>:echo<cr>`wa
 nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
@@ -467,10 +467,10 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
-onoremap <silent> H :normal! mh^<cr>
-onoremap <silent> J :normal! mjL<cr>dd
-onoremap <silent> K :normal! mkH<cr>
-onoremap <silent> L :normal! mlg_<cr>x
+" omap H ^
+" omap J L
+" omap K H
+" omap L g_
 
 nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
@@ -538,11 +538,11 @@ vnoremap <buffer> gg mggg
 vnoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
 
-" " Easy splits navigation{{{3
-" nnoremap <buffer> ;h <c-w>h
-" nnoremap <buffer> ;j <c-w>j
-" nnoremap <buffer> ;k <c-w>k
-" nnoremap <buffer> ;l <c-w>l
+" Easy splits navigation{{{3
+nnoremap <buffer> <localleader>h <c-w>h
+nnoremap <buffer> <localleader>j <c-w>j
+nnoremap <buffer> <localleader>k <c-w>k
+nnoremap <buffer> <localleader>l <c-w>l
 
 "3}}}
 
@@ -744,21 +744,21 @@ endfunction
 
 augroup SourceEverythingForPython
     autocmd!
-    autocmd BufNewFile,BufRead *.py :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.py :call KeyBindings("py")
-    autocmd BufNewFile,BufRead *.tex :setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.py source $MYVIMRC
+    autocmd BufNewFile,BufRead *.py call KeyBindings("py")
+    autocmd BufNewFile,BufRead *.py setlocal spell spelllang=en_us
 augroup end
 
 augroup SourceEverythingForTeX
     autocmd!
-    autocmd BufNewFile,BufRead *.tex :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.tex :call Abbreviations("gen")
-    autocmd BufNewFile,BufRead *.tex :call Abbreviations("math")
-    autocmd BufNewFile,BufRead *.tex :call KeyBindings("tex")
-    autocmd BufNewFile,BufRead *.tex :call MatrixGroupToggle()
-    autocmd BufNewFile,BufRead *.tex :setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.tex :setlocal foldmethod=marker
-    autocmd BufNewFile,BufRead *.tex :set foldmarker={T{E{X,}T}E}X
+    autocmd BufNewFile,BufRead *.tex source $MYVIMRC
+    autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
+    autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
+    autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
+    autocmd BufNewFile,BufRead *.tex call MatrixGroupToggle()
+    autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
+    autocmd BufNewFile,BufRead *.tex set foldmarker={T{E{X,}T}E}X
 augroup end
 
 " TeXHighlight
@@ -863,7 +863,7 @@ augroup end
 " Doesn't seem to work when template is enabled
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile,BufRead *.* :write
+    autocmd BufNewFile *.* write
 augroup end
 
 nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
@@ -906,8 +906,8 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 augroup Source$MYVIMRC
     autocmd!
-    autocmd BufNewFile,BufRead *.* :source $MYVIMRC
-    autocmd BufNewFile,BufRead *.* :setlocal foldmethod=marker
+    autocmd BufNewFile,BufRead *.* source $MYVIMRC
+    autocmd BufNewFile,BufRead *.* setlocal foldmethod=marker
 augroup end
 
 " Sourcing .vimrc
