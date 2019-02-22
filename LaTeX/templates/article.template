@@ -111,6 +111,17 @@
 \newcommand{\Biggce}[1]{\Bigg\lceil#1 \Bigg\rceil}
 \newcommand{\lrce}[1]{\left\lceil#1 \right\rceil}
 
+\newcommand{\M}{\mathrm{M}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\O}{\mathrm{O}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\renewcommand{\d}{\mathrm{d}}
+
 \DeclareMathOperator*{\vol}{vol}
 \DeclareMathOperator*{\supp}{supp}
 

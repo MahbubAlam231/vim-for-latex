@@ -133,6 +133,7 @@ Plugin 'danro/rename.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'haya14busa/vim-asterisk'
 Plugin 'junegunn/fzf.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
@@ -207,14 +208,33 @@ nnoremap <buffer> <localleader>fzd :FZF<cr>
 nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 
 "}}}
+" Vim-asterisk{{{
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)zz
+map g#  <Plug>(asterisk-g#)zz
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+let g:asterisk#keeppos = 1
+
+"}}}
 " LaTeX-Box and Folding{{{3
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_latexmk_preview_continuously = 1
-" let g:LatexBox_Folding=1
+let g:LatexBox_Folding=0
+let g:LatexBox_no_mappings=0
+
+nnoremap <buffer> <localleader>lv :LatexView<cr>
+nnoremap <buffer> <localleader>lj :LatexLabels<cr>
 
 " Folding
 set foldlevelstart=0
+set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
 nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
@@ -467,10 +487,10 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
-" omap H ^
-" omap J L
-" omap K H
-" omap L g_
+onoremap <buffer> H :<c-u>normal! mh^<cr>
+onoremap <buffer> J :<c-u>normal! mjL<cr>
+onoremap <buffer> K :<c-u>normal! mkH<cr>
+onoremap <buffer> L :<c-u>normal! mlg_<cr>
 
 nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
@@ -539,10 +559,10 @@ vnoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
 
 " Easy splits navigation{{{3
-nnoremap <buffer> <localleader>h <c-w>h
-nnoremap <buffer> <localleader>j <c-w>j
-nnoremap <buffer> <localleader>k <c-w>k
-nnoremap <buffer> <localleader>l <c-w>l
+nnoremap <buffer> <localleader>hh <c-w>h
+nnoremap <buffer> <localleader>j  <c-w>j
+nnoremap <buffer> <localleader>k  <c-w>k
+nnoremap <buffer> <localleader>ll <c-w>l
 
 "3}}}
 
@@ -575,8 +595,8 @@ function! s:VSerSearch()
     let @@ = temp
 endfunction
 
-vnoremap <buffer> * :<C-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>zz
-vnoremap <buffer> # :<C-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
+vnoremap <buffer> * :<c-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>zz
+vnoremap <buffer> # :<c-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
 
 "3}}}
 
@@ -588,6 +608,25 @@ nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
 " Vim very magic mode search
 " nnoremap <buffer> / ms/\v
 " vnoremap <buffer> / ms/\v
+
+" Number of matches{{{3
+" Number of matches for a pattern
+" <localleader>/<cr> gives number of matches for last search pattern
+nnoremap <buffer> <localleader>/ :%s///gn<left><left><left><left>
+nnoremap <buffer> <localleader>? :%s///gn<left><left><left><left>
+
+vnoremap <buffer> <localleader>/ :s///gn<left><left><left><left>
+vnoremap <buffer> <localleader>? :s///gn<left><left><left><left>
+
+" Number of matches for a word
+nnoremap <buffer> <localleader>* ms*<c-o>zz:%s///gn<cr>
+nnoremap <buffer> <localleader># ms#<c-o>zz:%s///gn<cr>
+
+" Number of matches for the visually selected text
+vnoremap <buffer> <localleader>* ymszz:%s/<c-r>0//gn<cr>
+vnoremap <buffer> <localleader># ymszz:%s/<c-r>0//gn<cr>
+
+"3}}}
 
 " Clearing highlighted matches
 nnoremap <buffer> <esc> :noh<cr>:echo<cr>
@@ -758,7 +797,7 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex call MatrixGroupToggle()
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
-    autocmd BufNewFile,BufRead *.tex set foldmarker={T{E{X,}T}E}X
+    autocmd BufNewFile,BufRead *.tex setlocal foldmarker={T{E{X,}T}E}X
 augroup end
 
 " TeXHighlight
@@ -906,8 +945,7 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 augroup Source$MYVIMRC
     autocmd!
-    autocmd BufNewFile,BufRead *.* source $MYVIMRC
-    autocmd BufNewFile,BufRead *.* setlocal foldmethod=marker
+    autocmd BufRead *.* source $MYVIMRC
 augroup end
 
 " Sourcing .vimrc

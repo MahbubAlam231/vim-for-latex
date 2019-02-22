@@ -1538,6 +1538,1211 @@ nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>:echo<cr>
 inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
 
 "}}}
+"" Macro Matrix Groups{{{
+""-------------------------------------------------------------------
+
+"" Toggle Matrix groups writing style
+"let s:Matrix_group_toggle = 1
+
+"function! MatrixGroupToggle()
+"    if s:Matrix_group_toggle
+"        " Parenthesis style
+"        " M{{{
+
+"        inoremap <buffer> <leader>mmn \M_{m \times n}
+"        inoremap <buffer> <leader>mn \M_{n}
+"        inoremap <buffer> <leader>mm \M_{m}
+"        inoremap <buffer> <leader>md \M_{d}
+"        inoremap <buffer> <leader>mk \M_{k}
+"        inoremap <buffer> <leader>m2 \M_{2}
+"        inoremap <buffer> <leader>m3 \M_{3}
+"        inoremap <buffer> <leader>m. \M_{}<esc>i
+
+"        inoremap <buffer> <localleader>mmn \M_{m \times n}()<esc>i
+"        inoremap <buffer> <localleader>m.. \M_{}()<esc>F}i
+"        inoremap <buffer> <localleader>m \M()<esc>i
+
+"        inoremap <buffer> <localleader>mn \M(n,)<esc>i
+"        inoremap <buffer> <localleader>mm \M(m,)<esc>i
+"        inoremap <buffer> <localleader>md \M(d,)<esc>i
+"        inoremap <buffer> <localleader>mk \M(k,)<esc>i
+"        inoremap <buffer> <localleader>m2 \M(2,)<esc>i
+"        inoremap <buffer> <localleader>m3 \M(3,)<esc>i
+"        inoremap <buffer> <localleader>m. \M(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnz \M_{m \times n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>m..z \M_{}(\mathbb{Z})<esc>F};i
+"        inoremap <buffer> <localleader>mnz \M(n,\mathbb{Z})
+"        inoremap <buffer> <localleader>mmz \M(m,\mathbb{Z})
+"        inoremap <buffer> <localleader>mdz \M(d,\mathbb{Z})
+"        inoremap <buffer> <localleader>mkz \M(k,\mathbb{Z})
+"        inoremap <buffer> <localleader>m2z \M(2,\mathbb{Z})
+"        inoremap <buffer> <localleader>m3z \M(3,\mathbb{Z})
+"        inoremap <buffer> <localleader>m.z \M(,\mathbb{Z})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnq \M_{m \times n}(\mathbb{Q})
+"        inoremap <buffer> <localleader>m..q \M_{}(\mathbb{Q})<esc>F};i
+"        inoremap <buffer> <localleader>mnq \M(n,\mathbb{Q})
+"        inoremap <buffer> <localleader>mmq \M(m,\mathbb{Q})
+"        inoremap <buffer> <localleader>mdq \M(d,\mathbb{Q})
+"        inoremap <buffer> <localleader>mkq \M(k,\mathbb{Q})
+"        inoremap <buffer> <localleader>m2q \M(2,\mathbb{Q})
+"        inoremap <buffer> <localleader>m3q \M(3,\mathbb{Q})
+"        inoremap <buffer> <localleader>m.q \M(,\mathbb{Q})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnr \M_{m \times n}(\mathbb{R})
+"        inoremap <buffer> <localleader>m..r \M_{}(\mathbb{R})<esc>F};i
+"        inoremap <buffer> <localleader>mnr \M(n,\mathbb{R})
+"        inoremap <buffer> <localleader>mmr \M(m,\mathbb{R})
+"        inoremap <buffer> <localleader>mdr \M(d,\mathbb{R})
+"        inoremap <buffer> <localleader>mkr \M(k,\mathbb{R})
+"        inoremap <buffer> <localleader>m2r \M(2,\mathbb{R})
+"        inoremap <buffer> <localleader>m3r \M(3,\mathbb{R})
+"        inoremap <buffer> <localleader>m.r \M(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnc \M_{m \times n}(\mathbb{C})
+"        inoremap <buffer> <localleader>m..c \M_{}(\mathbb{C})<esc>F};i
+"        inoremap <buffer> <localleader>mnc \M(n,\mathbb{C})
+"        inoremap <buffer> <localleader>mmc \M(m,\mathbb{C})
+"        inoremap <buffer> <localleader>mdc \M(d,\mathbb{C})
+"        inoremap <buffer> <localleader>mkc \M(k,\mathbb{C})
+"        inoremap <buffer> <localleader>m2c \M(2,\mathbb{C})
+"        inoremap <buffer> <localleader>m3c \M(3,\mathbb{C})
+"        inoremap <buffer> <localleader>m.c \M(,\mathbb{C})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnzp \M_{m \times n}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m..zp \M_{}(\mathbb{Z}_p)<esc>F};i
+"        inoremap <buffer> <localleader>mnzp \M(n,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>mmzp \M(m,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>mdzp \M(d,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>mkzp \M(k,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m2zp \M(2,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m3zp \M(3,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m.zp \M(,\mathbb{Z}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnqp \M_{m \times n}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m..qp \M_{}(\mathbb{Q}_p)<esc>F};i
+"        inoremap <buffer> <localleader>mnqp \M(n,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>mmqp \M(m,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>mdqp \M(d,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>mkqp \M(k,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m2qp \M(2,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m3qp \M(3,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m.qp \M(,\mathbb{Q}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnk \M_{m \times n}(\mathbb{K})
+"        inoremap <buffer> <localleader>m..k \M_{}(\mathbb{K})<esc>F};i
+"        inoremap <buffer> <localleader>mnk \M(n,\mathbb{K})
+"        inoremap <buffer> <localleader>mmk \M(m,\mathbb{K})
+"        inoremap <buffer> <localleader>mdk \M(d,\mathbb{K})
+"        inoremap <buffer> <localleader>mkk \M(k,\mathbb{K})
+"        inoremap <buffer> <localleader>m2k \M(2,\mathbb{K})
+"        inoremap <buffer> <localleader>m3k \M(3,\mathbb{K})
+"        inoremap <buffer> <localleader>m.k \M(,\mathbb{K})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmna \M_{m \times n}(\mathbb{A})
+"        inoremap <buffer> <localleader>m..a \M_{}(\mathbb{A})<esc>F};i
+"        inoremap <buffer> <localleader>mna \M(n,\mathbb{A})
+"        inoremap <buffer> <localleader>mma \M(m,\mathbb{A})
+"        inoremap <buffer> <localleader>mda \M(d,\mathbb{A})
+"        inoremap <buffer> <localleader>mka \M(k,\mathbb{A})
+"        inoremap <buffer> <localleader>m2a \M(2,\mathbb{A})
+"        inoremap <buffer> <localleader>m3a \M(3,\mathbb{A})
+"        inoremap <buffer> <localleader>m.a \M(,\mathbb{A})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnok \M_{m \times n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m..ok \M_{}(\mathcal{O}_K)<esc>F};i
+"        inoremap <buffer> <localleader>mnok \M(n,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>mmok \M(m,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>mdok \M(d,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>mkok \M(k,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m2ok \M(2,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m3ok \M(3,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m.ok \M(,\mathcal{O}_K)<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnco \M_{m \times n}(\mathcal{O})
+"        inoremap <buffer> <localleader>m..co \M_{}(\mathcal{O})<esc>F};i
+"        inoremap <buffer> <localleader>mnco \M(n,\mathcal{O})
+"        inoremap <buffer> <localleader>mmco \M(m,\mathcal{O})
+"        inoremap <buffer> <localleader>mdco \M(d,\mathcal{O})
+"        inoremap <buffer> <localleader>mkco \M(k,\mathcal{O})
+"        inoremap <buffer> <localleader>m2co \M(2,\mathcal{O})
+"        inoremap <buffer> <localleader>m3co \M(3,\mathcal{O})
+"        inoremap <buffer> <localleader>m.co \M(,\mathcal{O})<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnjk \M_{m \times n}(K)
+"        inoremap <buffer> <localleader>m..jk \M_{}(K)<esc>F}i
+"        inoremap <buffer> <localleader>mnjk \M(n,K)
+"        inoremap <buffer> <localleader>mmjk \M(m,K)
+"        inoremap <buffer> <localleader>mdjk \M(d,K)
+"        inoremap <buffer> <localleader>mkjk \M(k,K)
+"        inoremap <buffer> <localleader>m2jk \M(2,K)
+"        inoremap <buffer> <localleader>m3jk \M(3,K)
+"        inoremap <buffer> <localleader>m.jk \M(,K)<esc>F,i
+
+"        inoremap <buffer> <localleader>mmnks \M_{m \times n}(K_S)
+"        inoremap <buffer> <localleader>m..ks \M_{}(K_S)<esc>F}i
+"        inoremap <buffer> <localleader>mnks \M(n,K_S)
+"        inoremap <buffer> <localleader>mmks \M(m,K_S)
+"        inoremap <buffer> <localleader>mdks \M(d,K_S)
+"        inoremap <buffer> <localleader>mkks \M(k,K_S)
+"        inoremap <buffer> <localleader>m2ks \M(2,K_S)
+"        inoremap <buffer> <localleader>m3ks \M(3,K_S)
+"        inoremap <buffer> <localleader>m.ks \M(,K_S)<esc>F,i
+
+"        "}}}
+"        " GL{{{
+
+"        inoremap <buffer> <leader>gl \GL
+"        inoremap <buffer> <leader>gln \GL_{n}
+"        inoremap <buffer> <leader>glm \GL_{m}
+"        inoremap <buffer> <leader>gld \GL_{d}
+"        inoremap <buffer> <leader>glk \GL_{k}
+"        inoremap <buffer> <leader>gl2 \GL_{2}
+"        inoremap <buffer> <leader>gl3 \GL_{3}
+"        inoremap <buffer> <leader>gl. \GL_{}<esc>i
+
+"        inoremap <buffer> <localleader>gl \GL()<esc>i
+
+"        inoremap <buffer> <localleader>gln \GL(n,)<esc>i
+"        inoremap <buffer> <localleader>glm \GL(m,)<esc>i
+"        inoremap <buffer> <localleader>gld \GL(d,)<esc>i
+"        inoremap <buffer> <localleader>glk \GL(k,)<esc>i
+"        inoremap <buffer> <localleader>gl2 \GL(2,)<esc>i
+"        inoremap <buffer> <localleader>gl3 \GL(3,)<esc>i
+"        inoremap <buffer> <localleader>gl. \GL(,)<esc>F,i
+"        inoremap <buffer> <localleader>glpn \GL^+(n,)<esc>i
+"        inoremap <buffer> <localleader>glpm \GL^+(m,)<esc>i
+"        inoremap <buffer> <localleader>glpd \GL^+(d,)<esc>i
+"        inoremap <buffer> <localleader>glp2 \GL^+(2,)<esc>i
+"        inoremap <buffer> <localleader>glp3 \GL^+(3,)<esc>i
+"        inoremap <buffer> <localleader>glp. \GL^+(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>glnz \GL(n,\mathbb{Z})
+"        inoremap <buffer> <localleader>glmz \GL(m,\mathbb{Z})
+"        inoremap <buffer> <localleader>gldz \GL(d,\mathbb{Z})
+"        inoremap <buffer> <localleader>glkz \GL(k,\mathbb{Z})
+"        inoremap <buffer> <localleader>gl2z \GL(2,\mathbb{Z})
+"        inoremap <buffer> <localleader>gl3z \GL(3,\mathbb{Z})
+"        inoremap <buffer> <localleader>gl.z \GL(,\mathbb{Z})<esc>F,i
+"        inoremap <buffer> <localleader>glpnz \GL^+(n,\mathbb{Z})
+"        inoremap <buffer> <localleader>glpmz \GL^+(m,\mathbb{Z})
+"        inoremap <buffer> <localleader>glpdz \GL^+(d,\mathbb{Z})
+"        inoremap <buffer> <localleader>glp2z \GL^+(2,\mathbb{Z})
+"        inoremap <buffer> <localleader>glp3z \GL^+(3,\mathbb{Z})
+"        inoremap <buffer> <localleader>glp.z \GL^+(,\mathbb{Z})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnq \GL(n,\mathbb{Q})
+"        inoremap <buffer> <localleader>glmq \GL(m,\mathbb{Q})
+"        inoremap <buffer> <localleader>gldq \GL(d,\mathbb{Q})
+"        inoremap <buffer> <localleader>glkq \GL(k,\mathbb{Q})
+"        inoremap <buffer> <localleader>gl2q \GL(2,\mathbb{Q})
+"        inoremap <buffer> <localleader>gl3q \GL(3,\mathbb{Q})
+"        inoremap <buffer> <localleader>gl.q \GL(,\mathbb{Q})<esc>F,i
+"        inoremap <buffer> <localleader>glpnq \GL^+(n,\mathbb{Q})
+"        inoremap <buffer> <localleader>glpmq \GL^+(m,\mathbb{Q})
+"        inoremap <buffer> <localleader>glpdq \GL^+(d,\mathbb{Q})
+"        inoremap <buffer> <localleader>glpkq \GL^+(k,\mathbb{Q})
+"        inoremap <buffer> <localleader>glp2q \GL^+(2,\mathbb{Q})
+"        inoremap <buffer> <localleader>glp3q \GL^+(3,\mathbb{Q})
+"        inoremap <buffer> <localleader>glp.q \GL^+(,\mathbb{Q})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnr \GL(n,\mathbb{R})
+"        inoremap <buffer> <localleader>glmr \GL(m,\mathbb{R})
+"        inoremap <buffer> <localleader>gldr \GL(d,\mathbb{R})
+"        inoremap <buffer> <localleader>glkr \GL(k,\mathbb{R})
+"        inoremap <buffer> <localleader>gl2r \GL(2,\mathbb{R})
+"        inoremap <buffer> <localleader>gl3r \GL(3,\mathbb{R})
+"        inoremap <buffer> <localleader>gl.r \GL(,\mathbb{R})<esc>F,i
+"        inoremap <buffer> <localleader>glpnr \GL^+(n,\mathbb{R})
+"        inoremap <buffer> <localleader>glpmr \GL^+(m,\mathbb{R})
+"        inoremap <buffer> <localleader>glpdr \GL^+(d,\mathbb{R})
+"        inoremap <buffer> <localleader>glpkr \GL^+(k,\mathbb{R})
+"        inoremap <buffer> <localleader>glp2r \GL^+(2,\mathbb{R})
+"        inoremap <buffer> <localleader>glp3r \GL^+(3,\mathbb{R})
+"        inoremap <buffer> <localleader>glp.r \GL^+(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnc \GL(n,\mathbb{C})
+"        inoremap <buffer> <localleader>glmc \GL(m,\mathbb{C})
+"        inoremap <buffer> <localleader>gldc \GL(d,\mathbb{C})
+"        inoremap <buffer> <localleader>glkc \GL(k,\mathbb{C})
+"        inoremap <buffer> <localleader>gl2c \GL(2,\mathbb{C})
+"        inoremap <buffer> <localleader>gl3c \GL(3,\mathbb{C})
+"        inoremap <buffer> <localleader>gl.c \GL(,\mathbb{C})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnzp \GL(n,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>glmzp \GL(m,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gldzp \GL(d,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>glkzp \GL(k,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl2zp \GL(2,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl3zp \GL(3,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl.zp \GL(,\mathbb{Z}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>glnqp \GL(n,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>glmqp \GL(m,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gldqp \GL(d,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>glkqp \GL(k,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl2qp \GL(2,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl3qp \GL(3,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl.qp \GL(,\mathbb{Q}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>glnk \GL(n,\mathbb{K})
+"        inoremap <buffer> <localleader>glmk \GL(m,\mathbb{K})
+"        inoremap <buffer> <localleader>gldk \GL(d,\mathbb{K})
+"        inoremap <buffer> <localleader>glkk \GL(k,\mathbb{K})
+"        inoremap <buffer> <localleader>gl2k \GL(2,\mathbb{K})
+"        inoremap <buffer> <localleader>gl3k \GL(3,\mathbb{K})
+"        inoremap <buffer> <localleader>gl.k \GL(,\mathbb{K})<esc>F,i
+
+"        inoremap <buffer> <localleader>glna \GL(n,\mathbb{A})
+"        inoremap <buffer> <localleader>glma \GL(m,\mathbb{A})
+"        inoremap <buffer> <localleader>glda \GL(d,\mathbb{A})
+"        inoremap <buffer> <localleader>glka \GL(k,\mathbb{A})
+"        inoremap <buffer> <localleader>gl2a \GL(2,\mathbb{A})
+"        inoremap <buffer> <localleader>gl3a \GL(3,\mathbb{A})
+"        inoremap <buffer> <localleader>gl.a \GL(,\mathbb{A})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnok \GL(n,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>glmok \GL(m,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gldok \GL(d,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>glkok \GL(k,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl2ok \GL(2,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl3ok \GL(3,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl.ok \GL(,\mathcal{O}_K)<esc>F,i
+
+"        inoremap <buffer> <localleader>glnco \GL(n,\mathcal{O})
+"        inoremap <buffer> <localleader>glmco \GL(m,\mathcal{O})
+"        inoremap <buffer> <localleader>gldco \GL(d,\mathcal{O})
+"        inoremap <buffer> <localleader>glkco \GL(k,\mathcal{O})
+"        inoremap <buffer> <localleader>gl2co \GL(2,\mathcal{O})
+"        inoremap <buffer> <localleader>gl3co \GL(3,\mathcal{O})
+"        inoremap <buffer> <localleader>gl.co \GL(,\mathcal{O})<esc>F,i
+
+"        inoremap <buffer> <localleader>glnjk \GL(n,K)
+"        inoremap <buffer> <localleader>glmjk \GL(m,K)
+"        inoremap <buffer> <localleader>gldjk \GL(d,K)
+"        inoremap <buffer> <localleader>glkjk \GL(k,K)
+"        inoremap <buffer> <localleader>gl2jk \GL(2,K)
+"        inoremap <buffer> <localleader>gl3jk \GL(3,K)
+"        inoremap <buffer> <localleader>gl.jk \GL(,K)<esc>F,i
+
+"        inoremap <buffer> <localleader>glnks \GL(n,K_S)
+"        inoremap <buffer> <localleader>glmks \GL(m,K_S)
+"        inoremap <buffer> <localleader>gldks \GL(d,K_S)
+"        inoremap <buffer> <localleader>glkks \GL(k,K_S)
+"        inoremap <buffer> <localleader>gl2ks \GL(2,K_S)
+"        inoremap <buffer> <localleader>gl3ks \GL(3,K_S)
+"        inoremap <buffer> <localleader>gl.ks \GL(,K_S)<esc>F,i
+
+"        "}}}
+"        " SL{{{
+
+"        inoremap <buffer> <leader>sl \SL
+"        inoremap <buffer> <leader>sln \SL_{n}
+"        inoremap <buffer> <leader>slm \SL_{m}
+"        inoremap <buffer> <leader>sld \SL_{d}
+"        inoremap <buffer> <leader>slk \SL_{k}
+"        inoremap <buffer> <leader>sl2 \SL_{2}
+"        inoremap <buffer> <leader>sl3 \SL_{3}
+"        inoremap <buffer> <leader>sl. \SL_{}<esc>i
+
+"        inoremap <buffer> <localleader>sl \SL()<esc>i
+
+"        inoremap <buffer> <localleader>sln \SL(n,)<esc>i
+"        inoremap <buffer> <localleader>slm \SL(m,)<esc>i
+"        inoremap <buffer> <localleader>sld \SL(d,)<esc>i
+"        inoremap <buffer> <localleader>slk \SL(k,)<esc>i
+"        inoremap <buffer> <localleader>sl2 \SL(2,)<esc>i
+"        inoremap <buffer> <localleader>sl3 \SL(3,)<esc>i
+"        inoremap <buffer> <localleader>sl. \SL(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnz \SL(n,\mathbb{Z})
+"        inoremap <buffer> <localleader>slmz \SL(m,\mathbb{Z})
+"        inoremap <buffer> <localleader>sldz \SL(d,\mathbb{Z})
+"        inoremap <buffer> <localleader>slkz \SL(k,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl2z \SL(2,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl3z \SL(3,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl.z \SL(,\mathbb{Z})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnq \SL(n,\mathbb{Q})
+"        inoremap <buffer> <localleader>slmq \SL(m,\mathbb{Q})
+"        inoremap <buffer> <localleader>sldq \SL(d,\mathbb{Q})
+"        inoremap <buffer> <localleader>slkq \SL(k,\mathbb{Q})
+"        inoremap <buffer> <localleader>sl2q \SL(2,\mathbb{Q})
+"        inoremap <buffer> <localleader>sl3q \SL(3,\mathbb{Q})
+"        inoremap <buffer> <localleader>sl.q \SL(,\mathbb{Q})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnr \SL(n,\mathbb{R})
+"        inoremap <buffer> <localleader>slmr \SL(m,\mathbb{R})
+"        inoremap <buffer> <localleader>sldr \SL(d,\mathbb{R})
+"        inoremap <buffer> <localleader>slkr \SL(k,\mathbb{R})
+"        inoremap <buffer> <localleader>sl2r \SL(2,\mathbb{R})
+"        inoremap <buffer> <localleader>sl3r \SL(3,\mathbb{R})
+"        inoremap <buffer> <localleader>sl.r \SL(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnc \SL(n,\mathbb{C})
+"        inoremap <buffer> <localleader>slmc \SL(m,\mathbb{C})
+"        inoremap <buffer> <localleader>sldc \SL(d,\mathbb{C})
+"        inoremap <buffer> <localleader>slkc \SL(k,\mathbb{C})
+"        inoremap <buffer> <localleader>sl2c \SL(2,\mathbb{C})
+"        inoremap <buffer> <localleader>sl3c \SL(3,\mathbb{C})
+"        inoremap <buffer> <localleader>sl.c \SL(,\mathbb{C})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnzp \SL(n,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>slmzp \SL(m,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sldzp \SL(d,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>slkzp \SL(k,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl2zp \SL(2,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl3zp \SL(3,\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl.zp \SL(,\mathbb{Z}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnqp \SL(n,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>slmqp \SL(m,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sldqp \SL(d,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>slkqp \SL(k,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl2qp \SL(2,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl3qp \SL(3,\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl.qp \SL(,\mathbb{Q}_p)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnk \SL(n,\mathbb{K})
+"        inoremap <buffer> <localleader>slmk \SL(m,\mathbb{K})
+"        inoremap <buffer> <localleader>sldk \SL(d,\mathbb{K})
+"        inoremap <buffer> <localleader>slkk \SL(k,\mathbb{K})
+"        inoremap <buffer> <localleader>sl2k \SL(2,\mathbb{K})
+"        inoremap <buffer> <localleader>sl3k \SL(3,\mathbb{K})
+"        inoremap <buffer> <localleader>sl.k \SL(,\mathbb{K})<esc>F,i
+
+"        inoremap <buffer> <localleader>slna \SL(n,\mathbb{A})
+"        inoremap <buffer> <localleader>slma \SL(m,\mathbb{A})
+"        inoremap <buffer> <localleader>slda \SL(d,\mathbb{A})
+"        inoremap <buffer> <localleader>slka \SL(k,\mathbb{A})
+"        inoremap <buffer> <localleader>sl2a \SL(2,\mathbb{A})
+"        inoremap <buffer> <localleader>sl3a \SL(3,\mathbb{A})
+"        inoremap <buffer> <localleader>sl.a \SL(,\mathbb{A})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnok \SL(n,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slmok \SL(m,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sldok \SL(d,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slkok \SL(k,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl2ok \SL(2,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl3ok \SL(3,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl.ok \SL(,\mathcal{O}_K)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnco \SL(n,\mathcal{O})
+"        inoremap <buffer> <localleader>slmco \SL(m,\mathcal{O})
+"        inoremap <buffer> <localleader>sldco \SL(d,\mathcal{O})
+"        inoremap <buffer> <localleader>slkco \SL(k,\mathcal{O})
+"        inoremap <buffer> <localleader>sl2co \SL(2,\mathcal{O})
+"        inoremap <buffer> <localleader>sl3co \SL(3,\mathcal{O})
+"        inoremap <buffer> <localleader>sl.co \SL(,\mathcal{O})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnjk \SL(n,K)
+"        inoremap <buffer> <localleader>slmjk \SL(m,K)
+"        inoremap <buffer> <localleader>sldjk \SL(d,K)
+"        inoremap <buffer> <localleader>slkjk \SL(k,K)
+"        inoremap <buffer> <localleader>sl2jk \SL(2,K)
+"        inoremap <buffer> <localleader>sl3jk \SL(3,K)
+"        inoremap <buffer> <localleader>sl.jk \SL(,K)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnks \SL(n,K_S)
+"        inoremap <buffer> <localleader>slmks \SL(m,K_S)
+"        inoremap <buffer> <localleader>sldks \SL(d,K_S)
+"        inoremap <buffer> <localleader>slkks \SL(k,K_S)
+"        inoremap <buffer> <localleader>sl2ks \SL(2,K_S)
+"        inoremap <buffer> <localleader>sl3ks \SL(3,K_S)
+"        inoremap <buffer> <localleader>sl.ks \SL(,K_S)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnrz \SL(n,\mathbb{R})/\SL(n,\mathbb{Z})
+"        inoremap <buffer> <localleader>slmrz \SL(m,\mathbb{R})/\SL(m,\mathbb{Z})
+"        inoremap <buffer> <localleader>sldrz \SL(d,\mathbb{R})/\SL(d,\mathbb{Z})
+"        inoremap <buffer> <localleader>slkrz \SL(k,\mathbb{R})/\SL(k,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl2rz \SL(2,\mathbb{R})/\SL(2,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl3rz \SL(3,\mathbb{R})/\SL(3,\mathbb{Z})
+"        inoremap <buffer> <localleader>sl.rz \SL(,\mathbb{R})/\SL(,\mathbb{Z})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnzr \SL(n,\mathbb{Z}) \backslash \SL(n,\mathbb{R})
+"        inoremap <buffer> <localleader>slmzr \SL(m,\mathbb{Z}) \backslash \SL(m,\mathbb{R})
+"        inoremap <buffer> <localleader>sldzr \SL(d,\mathbb{Z}) \backslash \SL(d,\mathbb{R})
+"        inoremap <buffer> <localleader>slkzr \SL(k,\mathbb{Z}) \backslash \SL(k,\mathbb{R})
+"        inoremap <buffer> <localleader>sl2zr \SL(2,\mathbb{Z}) \backslash \SL(2,\mathbb{R})
+"        inoremap <buffer> <localleader>sl3zr \SL(3,\mathbb{Z}) \backslash \SL(3,\mathbb{R})
+"        inoremap <buffer> <localleader>sl.zr \SL(,\mathbb{Z}) \backslash \SL(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>slnksok \SL(n,K_S)/\SL(n,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slmksok \SL(m,K_S)/\SL(m,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sldksok \SL(d,K_S)/\SL(d,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slkksok \SL(k,K_S)/\SL(k,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl2ksok \SL(2,K_S)/\SL(2,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl3ksok \SL(3,K_S)/\SL(3,\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl.ksok \SL(,K_S)/\SL(,\mathcal{O}_K)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnokks \SL(n,\mathcal{O}_K) \backslash \SL(n,K_S)
+"        inoremap <buffer> <localleader>slmokks \SL(m,\mathcal{O}_K) \backslash \SL(m,K_S)
+"        inoremap <buffer> <localleader>sldokks \SL(d,\mathcal{O}_K) \backslash \SL(d,K_S)
+"        inoremap <buffer> <localleader>slkokks \SL(k,\mathcal{O}_K) \backslash \SL(k,K_S)
+"        inoremap <buffer> <localleader>sl2okks \SL(2,\mathcal{O}_K) \backslash \SL(2,K_S)
+"        inoremap <buffer> <localleader>sl3okks \SL(3,\mathcal{O}_K) \backslash \SL(3,K_S)
+"        inoremap <buffer> <localleader>sl.okks \SL(,\mathcal{O}_K) \backslash \SL(,K_S)<esc>F,i
+
+"        inoremap <buffer> <localleader>slnksco \SL(n,K_S)/\SL(n,\mathcal{O})
+"        inoremap <buffer> <localleader>slmksco \SL(m,K_S)/\SL(m,\mathcal{O})
+"        inoremap <buffer> <localleader>sldksco \SL(d,K_S)/\SL(d,\mathcal{O})
+"        inoremap <buffer> <localleader>slkksco \SL(k,K_S)/\SL(k,\mathcal{O})
+"        inoremap <buffer> <localleader>sl2ksco \SL(2,K_S)/\SL(2,\mathcal{O})
+"        inoremap <buffer> <localleader>sl3ksco \SL(3,K_S)/\SL(3,\mathcal{O})
+"        inoremap <buffer> <localleader>sl.ksco \SL(,K_S)/\SL(,\mathcal{O})<esc>F,i
+
+"        inoremap <buffer> <localleader>slncoks \SL(n,\mathcal{O}) \backslash \SL(n,K_S)
+"        inoremap <buffer> <localleader>slmcoks \SL(m,\mathcal{O}) \backslash \SL(m,K_S)
+"        inoremap <buffer> <localleader>sldcoks \SL(d,\mathcal{O}) \backslash \SL(d,K_S)
+"        inoremap <buffer> <localleader>slkcoks \SL(k,\mathcal{O}) \backslash \SL(k,K_S)
+"        inoremap <buffer> <localleader>sl2coks \SL(2,\mathcal{O}) \backslash \SL(2,K_S)
+"        inoremap <buffer> <localleader>sl3coks \SL(3,\mathcal{O}) \backslash \SL(3,K_S)
+"        inoremap <buffer> <localleader>sl.coks \SL(,\mathcal{O}) \backslash \SL(,K_S)<esc>F,i
+
+"        "}}}
+"        " PSL{{{
+
+"        inoremap <buffer> <leader>psl \PSL
+"        inoremap <buffer> <leader>psln \PSL_{n}
+"        inoremap <buffer> <leader>pslm \PSL_{m}
+"        inoremap <buffer> <leader>psld \PSL_{d}
+"        inoremap <buffer> <leader>pslk \PSL_{k}
+"        inoremap <buffer> <leader>psl2 \PSL_{2}
+"        inoremap <buffer> <leader>psl3 \PSL_{3}
+"        inoremap <buffer> <leader>psl. \PSL_{}<esc>i
+
+"        inoremap <buffer> <localleader>psl \PSL()<esc>i
+
+"        inoremap <buffer> <localleader>psln \PSL(n,)<esc>i
+"        inoremap <buffer> <localleader>pslm \PSL(m,)<esc>i
+"        inoremap <buffer> <localleader>psld \PSL(d,)<esc>i
+"        inoremap <buffer> <localleader>pslk \PSL(k,)<esc>i
+"        inoremap <buffer> <localleader>psl2 \PSL(2,)<esc>i
+"        inoremap <buffer> <localleader>psl3 \PSL(3,)<esc>i
+"        inoremap <buffer> <localleader>psl. \PSL(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>pslnr \PSL(n,\mathbb{R})
+"        inoremap <buffer> <localleader>pslmr \PSL(m,\mathbb{R})
+"        inoremap <buffer> <localleader>psldr \PSL(d,\mathbb{R})
+"        inoremap <buffer> <localleader>pslkr \PSL(k,\mathbb{R})
+"        inoremap <buffer> <localleader>psl2r \PSL(2,\mathbb{R})
+"        inoremap <buffer> <localleader>psl3r \PSL(3,\mathbb{R})
+"        inoremap <buffer> <localleader>psl.r \PSL(,\mathbb{R})<esc>F,i
+
+"        "}}}
+"        " O{{{
+
+"        inoremap <buffer> <leader>on \O_{n}
+"        inoremap <buffer> <leader>om \O_{m}
+"        inoremap <buffer> <leader>od \O_{d}
+"        inoremap <buffer> <leader>o2 \O_{2}
+"        inoremap <buffer> <leader>o3 \O_{3}
+"        inoremap <buffer> <leader>o. \O_{}<esc>i
+
+"        inoremap <buffer> <localleader>o \O()<esc>i
+
+"        inoremap <buffer> <localleader>on \O(n,)<esc>i
+"        inoremap <buffer> <localleader>om \O(m,)<esc>i
+"        inoremap <buffer> <localleader>od \O(d,)<esc>i
+"        inoremap <buffer> <localleader>o2 \O(2,)<esc>i
+"        inoremap <buffer> <localleader>o3 \O(3,)<esc>i
+"        inoremap <buffer> <localleader>o. \O(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>onr \O(n,\mathbb{R})
+"        inoremap <buffer> <localleader>omr \O(m,\mathbb{R})
+"        inoremap <buffer> <localleader>odr \O(d,\mathbb{R})
+"        inoremap <buffer> <localleader>okr \O(k,\mathbb{R})
+"        inoremap <buffer> <localleader>o2r \O(2,\mathbb{R})
+"        inoremap <buffer> <localleader>o3r \O(3,\mathbb{R})
+"        inoremap <buffer> <localleader>o.r \O(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>onc \O(n,\mathbb{C})
+"        inoremap <buffer> <localleader>omc \O(m,\mathbb{C})
+"        inoremap <buffer> <localleader>odc \O(d,\mathbb{C})
+"        inoremap <buffer> <localleader>okc \O(k,\mathbb{C})
+"        inoremap <buffer> <localleader>o2c \O(2,\mathbb{C})
+"        inoremap <buffer> <localleader>o3c \O(3,\mathbb{C})
+"        inoremap <buffer> <localleader>o.c \O(,\mathbb{C})<esc>F,i
+
+"        "}}}
+"        " SO{{{
+
+"        inoremap <buffer> <leader>so \SO
+"        inoremap <buffer> <leader>son \SO_{n}
+"        inoremap <buffer> <leader>som \SO_{m}
+"        inoremap <buffer> <leader>sod \SO_{d}
+"        inoremap <buffer> <leader>sok \SO_{k}
+"        inoremap <buffer> <leader>so2 \SO_{2}
+"        inoremap <buffer> <leader>so3 \SO_{3}
+"        inoremap <buffer> <leader>so. \SO_{}<esc>i
+
+"        inoremap <buffer> <localleader>so \SO()<esc>i
+
+"        inoremap <buffer> <localleader>son \SO(n,)<esc>i
+"        inoremap <buffer> <localleader>som \SO(m,)<esc>i
+"        inoremap <buffer> <localleader>sod \SO(d,)<esc>i
+"        inoremap <buffer> <localleader>sok \SO(k,)<esc>i
+"        inoremap <buffer> <localleader>so2 \SO(2,)<esc>i
+"        inoremap <buffer> <localleader>so3 \SO(3,)<esc>i
+"        inoremap <buffer> <localleader>so. \SO(,)<esc>F,i
+
+"        inoremap <buffer> <localleader>sonr \SO(n,\mathbb{R})
+"        inoremap <buffer> <localleader>somr \SO(m,\mathbb{R})
+"        inoremap <buffer> <localleader>sodr \SO(d,\mathbb{R})
+"        inoremap <buffer> <localleader>sokr \SO(k,\mathbb{R})
+"        inoremap <buffer> <localleader>so2r \SO(2,\mathbb{R})
+"        inoremap <buffer> <localleader>so3r \SO(3,\mathbb{R})
+"        inoremap <buffer> <localleader>so.r \SO(,\mathbb{R})<esc>F,i
+
+"        inoremap <buffer> <localleader>sonc \SO(n,\mathbb{C})
+"        inoremap <buffer> <localleader>somc \SO(m,\mathbb{C})
+"        inoremap <buffer> <localleader>sodc \SO(d,\mathbb{C})
+"        inoremap <buffer> <localleader>sokc \SO(k,\mathbb{C})
+"        inoremap <buffer> <localleader>so2c \SO(2,\mathbb{C})
+"        inoremap <buffer> <localleader>so3c \SO(3,\mathbb{C})
+"        inoremap <buffer> <localleader>so.c \SO(,\mathbb{C})<esc>F,i
+
+"        "}}}
+"        " U{{{
+
+"        inoremap <buffer> <leader>un \U_{n}
+"        inoremap <buffer> <leader>um \U_{m}
+"        inoremap <buffer> <leader>ud \U_{d}
+"        inoremap <buffer> <leader>uk \U_{k}
+"        inoremap <buffer> <leader>u2 \U_{2}
+"        inoremap <buffer> <leader>u3 \U_{3}
+"        inoremap <buffer> <leader>u. \U_{}<esc>i
+
+"        inoremap <buffer> <localleader>u \U()<esc>i
+
+"        inoremap <buffer> <localleader>un \U(n)
+"        inoremap <buffer> <localleader>um \U(m)
+"        inoremap <buffer> <localleader>ud \U(d)
+"        inoremap <buffer> <localleader>uk \U(k)
+"        inoremap <buffer> <localleader>u2 \U(2)
+"        inoremap <buffer> <localleader>u3 \U(3)
+"        inoremap <buffer> <localleader>u. \U()<esc>i
+
+"        inoremap <buffer> <localleader>unc \U(n,\mathbb{C})
+"        inoremap <buffer> <localleader>umc \U(m,\mathbb{C})
+"        inoremap <buffer> <localleader>udc \U(d,\mathbb{C})
+"        inoremap <buffer> <localleader>ukc \U(k,\mathbb{C})
+"        inoremap <buffer> <localleader>u2c \U(2,\mathbb{C})
+"        inoremap <buffer> <localleader>u3c \U(3,\mathbb{C})
+"        inoremap <buffer> <localleader>u.c \U(,\mathbb{C})<esc>F,i
+
+"        "}}}
+"        " SU{{{
+
+"        inoremap <buffer> <leader>su \SU
+"        inoremap <buffer> <leader>sun \SU_{n}
+"        inoremap <buffer> <leader>sum \SU_{m}
+"        inoremap <buffer> <leader>sud \SU_{d}
+"        inoremap <buffer> <leader>suk \SU_{k}
+"        inoremap <buffer> <leader>su2 \SU_{2}
+"        inoremap <buffer> <leader>su3 \SU_{3}
+"        inoremap <buffer> <leader>su. \SU_{}<esc>i
+
+"        inoremap <buffer> <localleader>su \SU()<esc>i
+
+"        inoremap <buffer> <localleader>sun \SU(n)
+"        inoremap <buffer> <localleader>sum \SU(m)
+"        inoremap <buffer> <localleader>sud \SU(d)
+"        inoremap <buffer> <localleader>suk \SU(k)
+"        inoremap <buffer> <localleader>su2 \SU(2)
+"        inoremap <buffer> <localleader>su3 \SU(3)
+"        inoremap <buffer> <localleader>su. \SU()<esc>i
+
+"        inoremap <buffer> <localleader>sunc \SU(n,\mathbb{C})
+"        inoremap <buffer> <localleader>sumc \SU(m,\mathbb{C})
+"        inoremap <buffer> <localleader>sudc \SU(d,\mathbb{C})
+"        inoremap <buffer> <localleader>sukc \SU(k,\mathbb{C})
+"        inoremap <buffer> <localleader>su2c \SU(2,\mathbb{C})
+"        inoremap <buffer> <localleader>su3c \SU(3,\mathbb{C})
+"        inoremap <buffer> <localleader>su.c \SU(,\mathbb{C})<esc>F,i
+
+"        "}}}
+"        let s:Matrix_group_toggle = 0
+"    else
+"        " Underscore style
+"        " M{{{
+
+"        inoremap <buffer> <leader>mmn \M_{m \times n}
+"        inoremap <buffer> <leader>mn \M_{n}
+"        inoremap <buffer> <leader>mm \M_{m}
+"        inoremap <buffer> <leader>md \M_{d}
+"        inoremap <buffer> <leader>m2 \M_{2}
+"        inoremap <buffer> <leader>m3 \M_{3}
+"        inoremap <buffer> <leader>m. \M_{}<esc>i
+
+"        inoremap <buffer> <localleader>mmn \M_{m \times n}()<esc>i
+"        inoremap <buffer> <localleader>m.. \M_{}()<esc>F}i
+"        inoremap <buffer> <localleader>m \M_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>mn \M_{n}()<esc>i
+"        inoremap <buffer> <localleader>mm \M_{m}()<esc>i
+"        inoremap <buffer> <localleader>md \M_{d}()<esc>i
+"        inoremap <buffer> <localleader>m2 \M_{2}()<esc>i
+"        inoremap <buffer> <localleader>m3 \M_{3}()<esc>i
+"        inoremap <buffer> <localleader>m. \M_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>mmnz \M_{m \times n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>m..z \M_{}(\mathbb{Z})<esc>F};i
+"        inoremap <buffer> <localleader>mnz \M_{n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>mmz \M_{m}(\mathbb{Z})
+"        inoremap <buffer> <localleader>mdz \M_{d}(\mathbb{Z})
+"        inoremap <buffer> <localleader>m2z \M_{2}(\mathbb{Z})
+"        inoremap <buffer> <localleader>m3z \M_{3}(\mathbb{Z})
+"        inoremap <buffer> <localleader>m.z \M_{}(\mathbb{Z})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnq \M_{m \times n}(\mathbb{Q})
+"        inoremap <buffer> <localleader>m..q \M_{}(\mathbb{Q})<esc>F};i
+"        inoremap <buffer> <localleader>mnq \M_{n}(\mathbb{Q})
+"        inoremap <buffer> <localleader>mmq \M_{m}(\mathbb{Q})
+"        inoremap <buffer> <localleader>mdq \M_{d}(\mathbb{Q})
+"        inoremap <buffer> <localleader>m2q \M_{2}(\mathbb{Q})
+"        inoremap <buffer> <localleader>m3q \M_{3}(\mathbb{Q})
+"        inoremap <buffer> <localleader>m.q \M_{}(\mathbb{Q})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnr \M_{m \times n}(\mathbb{R})
+"        inoremap <buffer> <localleader>m..r \M_{}(\mathbb{R})<esc>F};i
+"        inoremap <buffer> <localleader>mnr \M_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>mmr \M_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>mdr \M_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>m2r \M_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>m3r \M_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>m.r \M_{}(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnc \M_{m \times n}(\mathbb{C})
+"        inoremap <buffer> <localleader>m..c \M_{}(\mathbb{C})<esc>F};i
+"        inoremap <buffer> <localleader>mnc \M_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>mmc \M_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>mdc \M_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>m2c \M_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>m3c \M_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>m.c \M_{}(\mathbb{C})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnzp \M_{m \times n}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m..zp \M_{}(\mathbb{Z}_p)<esc>F};i
+"        inoremap <buffer> <localleader>mnzp \M_{n}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>mmzp \M_{m}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>mdzp \M_{d}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m2zp \M_{2}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m3zp \M_{3}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>m.zp \M_{}(\mathbb{Z}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnqp \M_{m \times n}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m..qp \M_{}(\mathbb{Q}_p)<esc>F};i
+"        inoremap <buffer> <localleader>mnqp \M_{n}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>mmqp \M_{m}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>mdqp \M_{d}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m2qp \M_{2}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m3qp \M_{3}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>m.qp \M_{}(\mathbb{Q}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnk \M_{m \times n}(\mathbb{K})
+"        inoremap <buffer> <localleader>m..k \M_{}(\mathbb{K})<esc>F};i
+"        inoremap <buffer> <localleader>mnk \M_{n}(\mathbb{K})
+"        inoremap <buffer> <localleader>mmk \M_{m}(\mathbb{K})
+"        inoremap <buffer> <localleader>mdk \M_{d}(\mathbb{K})
+"        inoremap <buffer> <localleader>m2k \M_{2}(\mathbb{K})
+"        inoremap <buffer> <localleader>m3k \M_{3}(\mathbb{K})
+"        inoremap <buffer> <localleader>m.k \M_{}(\mathbb{K})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmna \M_{m \times n}(\mathbb{A})
+"        inoremap <buffer> <localleader>m..a \M_{}(\mathbb{A})<esc>F};i
+"        inoremap <buffer> <localleader>mna \M_{n}(\mathbb{A})
+"        inoremap <buffer> <localleader>mma \M_{m}(\mathbb{A})
+"        inoremap <buffer> <localleader>mda \M_{d}(\mathbb{A})
+"        inoremap <buffer> <localleader>m2a \M_{2}(\mathbb{A})
+"        inoremap <buffer> <localleader>m3a \M_{3}(\mathbb{A})
+"        inoremap <buffer> <localleader>m.a \M_{}(\mathbb{A})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnok \M_{m \times n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m..ok \M_{}(\mathcal{O}_K)<esc>F};i
+"        inoremap <buffer> <localleader>mnok \M_{n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>mmok \M_{m}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>mdok \M_{d}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m2ok \M_{2}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m3ok \M_{3}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>m.ok \M_{}(\mathcal{O}_K)<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnco \M_{m \times n}(\mathcal{O})
+"        inoremap <buffer> <localleader>m..co \M_{}(\mathcal{O})<esc>F};i
+"        inoremap <buffer> <localleader>mnco \M_{n}(\mathcal{O})
+"        inoremap <buffer> <localleader>mmco \M_{m}(\mathcal{O})
+"        inoremap <buffer> <localleader>mdco \M_{d}(\mathcal{O})
+"        inoremap <buffer> <localleader>m2co \M_{2}(\mathcal{O})
+"        inoremap <buffer> <localleader>m3co \M_{3}(\mathcal{O})
+"        inoremap <buffer> <localleader>m.co \M_{}(\mathcal{O})<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnjk \M_{m \times n}(K)
+"        inoremap <buffer> <localleader>m..jk \M_{}(K)<esc>F}i
+"        inoremap <buffer> <localleader>mnjk \M_{n}(K)
+"        inoremap <buffer> <localleader>mmjk \M_{m}(K)
+"        inoremap <buffer> <localleader>mdjk \M_{d}(K)
+"        inoremap <buffer> <localleader>m2jk \M_{2}(K)
+"        inoremap <buffer> <localleader>m3jk \M_{3}(K)
+"        inoremap <buffer> <localleader>m.jk \M_{}(K)<esc>F};i
+
+"        inoremap <buffer> <localleader>mmnks \M_{m \times n}(K_S)
+"        inoremap <buffer> <localleader>m..ks \M_{}(K_S)<esc>F}i
+"        inoremap <buffer> <localleader>mnks \M_{n}(K_S)
+"        inoremap <buffer> <localleader>mmks \M_{m}(K_S)
+"        inoremap <buffer> <localleader>mdks \M_{d}(K_S)
+"        inoremap <buffer> <localleader>m2ks \M_{2}(K_S)
+"        inoremap <buffer> <localleader>m3ks \M_{3}(K_S)
+"        inoremap <buffer> <localleader>m.ks \M_{}(K_S)<esc>F}i
+
+"        "}}}
+"        " GL{{{
+
+"        inoremap <buffer> <leader>gl \GL
+"        inoremap <buffer> <leader>gln \GL_{n}
+"        inoremap <buffer> <leader>glm \GL_{m}
+"        inoremap <buffer> <leader>gld \GL_{d}
+"        inoremap <buffer> <leader>gl2 \GL_{2}
+"        inoremap <buffer> <leader>gl3 \GL_{3}
+"        inoremap <buffer> <leader>gl. \GL_{}<esc>i
+
+"        inoremap <buffer> <localleader>gl \GL_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>gln \GL_{n}()<esc>i
+"        inoremap <buffer> <localleader>glm \GL_{m}()<esc>i
+"        inoremap <buffer> <localleader>gld \GL_{d}()<esc>i
+"        inoremap <buffer> <localleader>gl2 \GL_{2}()<esc>i
+"        inoremap <buffer> <localleader>gl3 \GL_{3}()<esc>i
+"        inoremap <buffer> <localleader>gl. \GL_{}()<esc>F}i
+"        inoremap <buffer> <localleader>glnp \GL_{n}^+()<esc>i
+"        inoremap <buffer> <localleader>glmp \GL_{m}^+()<esc>i
+"        inoremap <buffer> <localleader>gldp \GL_{d}^+()<esc>i
+"        inoremap <buffer> <localleader>gl2p \GL_{2}^+()<esc>i
+"        inoremap <buffer> <localleader>gl3p \GL_{3}^+()<esc>i
+"        inoremap <buffer> <localleader>gl.p \GL_{}^+()<esc>F}i
+
+"        inoremap <buffer> <localleader>glnz \GL_{n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>glmz \GL_{m}(\mathbb{Z})
+"        inoremap <buffer> <localleader>gldz \GL_{d}(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl2z \GL_{2}(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl3z \GL_{3}(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl.z \GL_{}(\mathbb{Z})<esc>F};i
+"        inoremap <buffer> <localleader>glnpz \GL_{n}^+(\mathbb{Z})
+"        inoremap <buffer> <localleader>glmpz \GL_{m}^+(\mathbb{Z})
+"        inoremap <buffer> <localleader>gldpz \GL_{d}^+(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl2pz \GL_{2}^+(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl3pz \GL_{3}^+(\mathbb{Z})
+"        inoremap <buffer> <localleader>gl.pz \GL_{}^+(\mathbb{Z})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnq \GL_{n}(\mathbb{Q})
+"        inoremap <buffer> <localleader>glmq \GL_{m}(\mathbb{Q})
+"        inoremap <buffer> <localleader>gldq \GL_{d}(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl2q \GL_{2}(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl3q \GL_{3}(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl.q \GL_{}(\mathbb{Q})<esc>F};i
+"        inoremap <buffer> <localleader>glnpq \GL_{n}^+(\mathbb{Q})
+"        inoremap <buffer> <localleader>glmpq \GL_{m}^+(\mathbb{Q})
+"        inoremap <buffer> <localleader>gldpq \GL_{d}^+(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl2pq \GL_{2}^+(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl3pq \GL_{3}^+(\mathbb{Q})
+"        inoremap <buffer> <localleader>gl.pq \GL_{}^+(\mathbb{Q})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnr \GL_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>glmr \GL_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>gldr \GL_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>gl2r \GL_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>gl3r \GL_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>gl.r \GL_{}(\mathbb{R})<esc>F};i
+"        inoremap <buffer> <localleader>glnpr \GL_{n}^+(\mathbb{R})
+"        inoremap <buffer> <localleader>glmpr \GL_{m}^+(\mathbb{R})
+"        inoremap <buffer> <localleader>gldpr \GL_{d}^+(\mathbb{R})
+"        inoremap <buffer> <localleader>gl2pr \GL_{2}^+(\mathbb{R})
+"        inoremap <buffer> <localleader>gl3pr \GL_{3}^+(\mathbb{R})
+"        inoremap <buffer> <localleader>gl.pr \GL_{}^+(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnc \GL_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>glmc \GL_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>gldc \GL_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>gl2c \GL_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>gl3c \GL_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>gl.c \GL_{}(\mathbb{C})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnzp \GL_{n}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>glmzp \GL_{m}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gldzp \GL_{d}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl2zp \GL_{2}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl3zp \GL_{3}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>gl.zp \GL_{}(\mathbb{Z}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>glnqp \GL_{n}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>glmqp \GL_{m}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gldqp \GL_{d}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl2qp \GL_{2}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl3qp \GL_{3}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>gl.qp \GL_{}(\mathbb{Q}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>glnk \GL_{n}(\mathbb{K})
+"        inoremap <buffer> <localleader>glmk \GL_{m}(\mathbb{K})
+"        inoremap <buffer> <localleader>gldk \GL_{d}(\mathbb{K})
+"        inoremap <buffer> <localleader>gl2k \GL_{2}(\mathbb{K})
+"        inoremap <buffer> <localleader>gl3k \GL_{3}(\mathbb{K})
+"        inoremap <buffer> <localleader>gl.k \GL_{}(\mathbb{K})<esc>F};i
+
+"        inoremap <buffer> <localleader>glna \GL_{n}(\mathbb{A})
+"        inoremap <buffer> <localleader>glma \GL_{m}(\mathbb{A})
+"        inoremap <buffer> <localleader>glda \GL_{d}(\mathbb{A})
+"        inoremap <buffer> <localleader>gl2a \GL_{2}(\mathbb{A})
+"        inoremap <buffer> <localleader>gl3a \GL_{3}(\mathbb{A})
+"        inoremap <buffer> <localleader>gl.a \GL_{}(\mathbb{A})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnok \GL_{n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>glmok \GL_{m}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gldok \GL_{d}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl2ok \GL_{2}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl3ok \GL_{3}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>gl.ok \GL_{}(\mathcal{O}_K)<esc>F};i
+
+"        inoremap <buffer> <localleader>glnco \GL_{n}(\mathcal{O})
+"        inoremap <buffer> <localleader>glmco \GL_{m}(\mathcal{O})
+"        inoremap <buffer> <localleader>gldco \GL_{d}(\mathcal{O})
+"        inoremap <buffer> <localleader>gl2co \GL_{2}(\mathcal{O})
+"        inoremap <buffer> <localleader>gl3co \GL_{3}(\mathcal{O})
+"        inoremap <buffer> <localleader>gl.co \GL_{}(\mathcal{O})<esc>F};i
+
+"        inoremap <buffer> <localleader>glnjk \GL_{n}(K)
+"        inoremap <buffer> <localleader>glmjk \GL_{m}(K)
+"        inoremap <buffer> <localleader>gldjk \GL_{d}(K)
+"        inoremap <buffer> <localleader>gl2jk \GL_{2}(K)
+"        inoremap <buffer> <localleader>gl3jk \GL_{3}(K)
+"        inoremap <buffer> <localleader>gl.jk \GL_{}(K)<esc>F}i
+
+"        inoremap <buffer> <localleader>glnks \GL_{n}(K_S)
+"        inoremap <buffer> <localleader>glmks \GL_{m}(K_S)
+"        inoremap <buffer> <localleader>gldks \GL_{d}(K_S)
+"        inoremap <buffer> <localleader>gl2ks \GL_{2}(K_S)
+"        inoremap <buffer> <localleader>gl3ks \GL_{3}(K_S)
+"        inoremap <buffer> <localleader>gl.ks \GL_{}(K_S)<esc>F}i
+
+"        "}}}
+"        " SL{{{
+
+"        inoremap <buffer> <leader>sl \SL
+"        inoremap <buffer> <leader>sln \SL_{n}
+"        inoremap <buffer> <leader>slm \SL_{m}
+"        inoremap <buffer> <leader>sld \SL_{d}
+"        inoremap <buffer> <leader>slk \SL_{k}
+"        inoremap <buffer> <leader>sl2 \SL_{2}
+"        inoremap <buffer> <leader>sl3 \SL_{3}
+"        inoremap <buffer> <leader>sl. \SL_{}<esc>i
+
+"        inoremap <buffer> <localleader>sl \SL_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>sln \SL_{n}()<esc>i
+"        inoremap <buffer> <localleader>slm \SL_{m}()<esc>i
+"        inoremap <buffer> <localleader>sld \SL_{d}()<esc>i
+"        inoremap <buffer> <localleader>slk \SL_{k}()<esc>i
+"        inoremap <buffer> <localleader>sl2 \SL_{2}()<esc>i
+"        inoremap <buffer> <localleader>sl3 \SL_{3}()<esc>i
+"        inoremap <buffer> <localleader>sl. \SL_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>slnz \SL_{n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>slmz \SL_{m}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sldz \SL_{d}(\mathbb{Z})
+"        inoremap <buffer> <localleader>slkz \SL_{k}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl2z \SL_{2}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl3z \SL_{3}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl.z \SL_{}(\mathbb{Z})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnq \SL_{n}(\mathbb{Q})
+"        inoremap <buffer> <localleader>slmq \SL_{m}(\mathbb{Q})
+"        inoremap <buffer> <localleader>sldq \SL_{d}(\mathbb{Q})
+"        inoremap <buffer> <localleader>slkq \SL_{k}(\mathbb{Q})
+"        inoremap <buffer> <localleader>sl2q \SL_{2}(\mathbb{Q})
+"        inoremap <buffer> <localleader>sl3q \SL_{3}(\mathbb{Q})
+"        inoremap <buffer> <localleader>sl.q \SL_{}(\mathbb{Q})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnr \SL_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>slmr \SL_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>sldr \SL_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>slkr \SL_{k}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl2r \SL_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl3r \SL_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl.r \SL_{}(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnc \SL_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>slmc \SL_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>sldc \SL_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>slkc \SL_{k}(\mathbb{C})
+"        inoremap <buffer> <localleader>sl2c \SL_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>sl3c \SL_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>sl.c \SL_{}(\mathbb{C})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnzp \SL_{n}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>slmzp \SL_{m}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sldzp \SL_{d}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>slkzp \SL_{k}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl2zp \SL_{2}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl3zp \SL_{3}(\mathbb{Z}_p)
+"        inoremap <buffer> <localleader>sl.zp \SL_{}(\mathbb{Z}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>slnqp \SL_{n}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>slmqp \SL_{m}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sldqp \SL_{d}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>slkqp \SL_{k}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl2qp \SL_{2}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl3qp \SL_{3}(\mathbb{Q}_p)
+"        inoremap <buffer> <localleader>sl.qp \SL_{}(\mathbb{Q}_p)<esc>F};i
+
+"        inoremap <buffer> <localleader>slnk \SL_{n}(\mathbb{K})
+"        inoremap <buffer> <localleader>slmk \SL_{m}(\mathbb{K})
+"        inoremap <buffer> <localleader>sldk \SL_{d}(\mathbb{K})
+"        inoremap <buffer> <localleader>slkk \SL_{k}(\mathbb{K})
+"        inoremap <buffer> <localleader>sl2k \SL_{2}(\mathbb{K})
+"        inoremap <buffer> <localleader>sl3k \SL_{3}(\mathbb{K})
+"        inoremap <buffer> <localleader>sl.k \SL_{}(\mathbb{K})<esc>F};i
+
+"        inoremap <buffer> <localleader>slna \SL_{n}(\mathbb{A})
+"        inoremap <buffer> <localleader>slma \SL_{m}(\mathbb{A})
+"        inoremap <buffer> <localleader>slda \SL_{d}(\mathbb{A})
+"        inoremap <buffer> <localleader>slka \SL_{k}(\mathbb{A})
+"        inoremap <buffer> <localleader>sl2a \SL_{2}(\mathbb{A})
+"        inoremap <buffer> <localleader>sl3a \SL_{3}(\mathbb{A})
+"        inoremap <buffer> <localleader>sl.a \SL_{}(\mathbb{A})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnok \SL_{n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slmok \SL_{m}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sldok \SL_{d}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slkok \SL_{k}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl2ok \SL_{2}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl3ok \SL_{3}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl.ok \SL_{}(\mathcal{O}_K)<esc>F};i
+
+"        inoremap <buffer> <localleader>slnco \SL_{n}(\mathcal{O})
+"        inoremap <buffer> <localleader>slmco \SL_{m}(\mathcal{O})
+"        inoremap <buffer> <localleader>sldco \SL_{d}(\mathcal{O})
+"        inoremap <buffer> <localleader>slkco \SL_{k}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl2co \SL_{2}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl3co \SL_{3}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl.co \SL_{}(\mathcal{O})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnjk \SL_{n}(K)
+"        inoremap <buffer> <localleader>slmjk \SL_{m}(K)
+"        inoremap <buffer> <localleader>sldjk \SL_{d}(K)
+"        inoremap <buffer> <localleader>slkjk \SL_{k}(K)
+"        inoremap <buffer> <localleader>sl2jk \SL_{2}(K)
+"        inoremap <buffer> <localleader>sl3jk \SL_{3}(K)
+"        inoremap <buffer> <localleader>sl.jk \SL_{}(K)<esc>F}i
+
+"        inoremap <buffer> <localleader>slnks \SL_{n}(K_S)
+"        inoremap <buffer> <localleader>slmks \SL_{m}(K_S)
+"        inoremap <buffer> <localleader>sldks \SL_{d}(K_S)
+"        inoremap <buffer> <localleader>slkks \SL_{k}(K_S)
+"        inoremap <buffer> <localleader>sl2ks \SL_{2}(K_S)
+"        inoremap <buffer> <localleader>sl3ks \SL_{3}(K_S)
+"        inoremap <buffer> <localleader>sl.ks \SL_{}(K_S)<esc>F}i
+
+"        inoremap <buffer> <localleader>slnrz \SL_{n}(\mathbb{R})/\SL_{n}(\mathbb{Z})
+"        inoremap <buffer> <localleader>slmrz \SL_{m}(\mathbb{R})/\SL_{m}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sldrz \SL_{d}(\mathbb{R})/\SL_{d}(\mathbb{Z})
+"        inoremap <buffer> <localleader>slkrz \SL_{k}(\mathbb{R})/\SL_{k}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl2rz \SL_{2}(\mathbb{R})/\SL_{2}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl3rz \SL_{3}(\mathbb{R})/\SL_{3}(\mathbb{Z})
+"        inoremap <buffer> <localleader>sl.rz \SL_{}(\mathbb{R})/\SL_{}(\mathbb{Z})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnzr \SL_{n}(\mathbb{Z}) \backslash \SL_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>slmzr \SL_{m}(\mathbb{Z}) \backslash \SL_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>sldzr \SL_{d}(\mathbb{Z}) \backslash \SL_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>slkzr \SL_{k}(\mathbb{Z}) \backslash \SL_{k}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl2zr \SL_{2}(\mathbb{Z}) \backslash \SL_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl3zr \SL_{3}(\mathbb{Z}) \backslash \SL_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>sl.zr \SL_{}(\mathbb{Z}) \backslash \SL_{}(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>slnksok \SL_{n}(K_S)/\SL_{n}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slmksok \SL_{m}(K_S)/\SL_{m}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sldksok \SL_{d}(K_S)/\SL_{d}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>slkksok \SL_{k}(K_S)/\SL_{k}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl2ksok \SL_{2}(K_S)/\SL_{2}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl3ksok \SL_{3}(K_S)/\SL_{3}(\mathcal{O}_K)
+"        inoremap <buffer> <localleader>sl.ksok \SL_{}(K_S)/\SL_{}(\mathcal{O}_K)<esc>F};i
+
+"        inoremap <buffer> <localleader>slnokks \SL_{n}(\mathcal{O}_K) \backslash \SL_{n}(K_S)
+"        inoremap <buffer> <localleader>slmokks \SL_{m}(\mathcal{O}_K) \backslash \SL_{m}(K_S)
+"        inoremap <buffer> <localleader>sldokks \SL_{d}(\mathcal{O}_K) \backslash \SL_{d}(K_S)
+"        inoremap <buffer> <localleader>slkokks \SL_{k}(\mathcal{O}_K) \backslash \SL_{k}(K_S)
+"        inoremap <buffer> <localleader>sl2okks \SL_{2}(\mathcal{O}_K) \backslash \SL_{2}(K_S)
+"        inoremap <buffer> <localleader>sl3okks \SL_{3}(\mathcal{O}_K) \backslash \SL_{3}(K_S)
+"        inoremap <buffer> <localleader>sl.okks \SL_{}(\mathcal{O}_K) \backslash \SL_{}(K_S)<esc>F};i
+
+"        inoremap <buffer> <localleader>slnksco \SL_{n}(K_S)/\SL_{n}(\mathcal{O})
+"        inoremap <buffer> <localleader>slmksco \SL_{m}(K_S)/\SL_{m}(\mathcal{O})
+"        inoremap <buffer> <localleader>sldksco \SL_{d}(K_S)/\SL_{d}(\mathcal{O})
+"        inoremap <buffer> <localleader>slkksco \SL_{k}(K_S)/\SL_{k}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl2ksco \SL_{2}(K_S)/\SL_{2}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl3ksco \SL_{3}(K_S)/\SL_{3}(\mathcal{O})
+"        inoremap <buffer> <localleader>sl.ksco \SL_{}(K_S)/\SL_{}(\mathcal{O})<esc>F};i
+
+"        inoremap <buffer> <localleader>slncoks \SL_{n}(\mathcal{O}) \backslash \SL_{n}(K_S)
+"        inoremap <buffer> <localleader>slmcoks \SL_{m}(\mathcal{O}) \backslash \SL_{m}(K_S)
+"        inoremap <buffer> <localleader>sldcoks \SL_{d}(\mathcal{O}) \backslash \SL_{d}(K_S)
+"        inoremap <buffer> <localleader>slkcoks \SL_{k}(\mathcal{O}) \backslash \SL_{k}(K_S)
+"        inoremap <buffer> <localleader>sl2coks \SL_{2}(\mathcal{O}) \backslash \SL_{2}(K_S)
+"        inoremap <buffer> <localleader>sl3coks \SL_{3}(\mathcal{O}) \backslash \SL_{3}(K_S)
+"        inoremap <buffer> <localleader>sl.coks \SL_{}(\mathcal{O}) \backslash \SL_{}(K_S)<esc>F};i
+
+"        "}}}
+"        " PSL{{{
+
+"        inoremap <buffer> <leader>psl \PSL
+"        inoremap <buffer> <leader>psln \PSL_{n}
+"        inoremap <buffer> <leader>pslm \PSL_{m}
+"        inoremap <buffer> <leader>psld \PSL_{d}
+"        inoremap <buffer> <leader>pslk \PSL_{k}
+"        inoremap <buffer> <leader>psl2 \PSL_{2}
+"        inoremap <buffer> <leader>psl3 \PSL_{3}
+"        inoremap <buffer> <leader>psl. \PSL_{}<esc>i
+
+"        inoremap <buffer> <localleader>psl \PSL_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>psln \PSL_{n}()<esc>i
+"        inoremap <buffer> <localleader>pslm \PSL_{m}()<esc>i
+"        inoremap <buffer> <localleader>psld \PSL_{d}()<esc>i
+"        inoremap <buffer> <localleader>pslk \PSL_{k}()<esc>i
+"        inoremap <buffer> <localleader>psl2 \PSL_{2}()<esc>i
+"        inoremap <buffer> <localleader>psl3 \PSL_{3}()<esc>i
+"        inoremap <buffer> <localleader>psl. \PSL_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>pslnr \PSL_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>pslmr \PSL_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>pslmd \PSL_{m}(\mathbb{d})
+"        inoremap <buffer> <localleader>psl2r \PSL_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>psl3r \PSL_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>psl.r \PSL_{}(\mathbb{R})<esc>F};i
+
+"        "}}}
+"        " O{{{
+
+"        inoremap <buffer> <leader>on \O_{n}
+"        inoremap <buffer> <leader>om \O_{m}
+"        inoremap <buffer> <leader>od \O_{d}
+"        inoremap <buffer> <leader>o2 \O_{2}
+"        inoremap <buffer> <leader>o3 \O_{3}
+"        inoremap <buffer> <leader>o. \O_{}<esc>i
+
+"        inoremap <buffer> <localleader>o \O_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>on \O_{n}()<esc>i
+"        inoremap <buffer> <localleader>om \O_{m}()<esc>i
+"        inoremap <buffer> <localleader>od \O_{d}()<esc>i
+"        inoremap <buffer> <localleader>o2 \O_{2}()<esc>i
+"        inoremap <buffer> <localleader>o3 \O_{3}()<esc>i
+"        inoremap <buffer> <localleader>o. \O_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>onr \O_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>omr \O_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>odr \O_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>okr \O_{k}(\mathbb{R})
+"        inoremap <buffer> <localleader>o2r \O_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>o3r \O_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>o.r \O_{}(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>onc \O_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>omc \O_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>odc \O_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>okc \O_{k}(\mathbb{C})
+"        inoremap <buffer> <localleader>o2c \O_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>o3c \O_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>o.c \O_{}(\mathbb{C})<esc>F};i
+
+"        "}}}
+"        " SO{{{
+
+"        inoremap <buffer> <leader>so \SO
+"        inoremap <buffer> <leader>son \SO_{n}
+"        inoremap <buffer> <leader>som \SO_{m}
+"        inoremap <buffer> <leader>sod \SO_{d}
+"        inoremap <buffer> <leader>sok \SO_{k}
+"        inoremap <buffer> <leader>so2 \SO_{2}
+"        inoremap <buffer> <leader>so3 \SO_{3}
+"        inoremap <buffer> <leader>so. \SO_{}<esc>i
+
+"        inoremap <buffer> <localleader>so \SO_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>son \SO_{n}()<esc>i
+"        inoremap <buffer> <localleader>som \SO_{m}()<esc>i
+"        inoremap <buffer> <localleader>sod \SO_{d}()<esc>i
+"        inoremap <buffer> <localleader>sok \SO_{k}()<esc>i
+"        inoremap <buffer> <localleader>so2 \SO_{2}()<esc>i
+"        inoremap <buffer> <localleader>so3 \SO_{3}()<esc>i
+"        inoremap <buffer> <localleader>so. \SO_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>sonr \SO_{n}(\mathbb{R})
+"        inoremap <buffer> <localleader>somr \SO_{m}(\mathbb{R})
+"        inoremap <buffer> <localleader>sodr \SO_{d}(\mathbb{R})
+"        inoremap <buffer> <localleader>sokr \SO_{k}(\mathbb{R})
+"        inoremap <buffer> <localleader>so2r \SO_{2}(\mathbb{R})
+"        inoremap <buffer> <localleader>so3r \SO_{3}(\mathbb{R})
+"        inoremap <buffer> <localleader>so.r \SO_{}(\mathbb{R})<esc>F};i
+
+"        inoremap <buffer> <localleader>sonc \SO_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>somc \SO_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>sodc \SO_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>sokc \SO_{k}(\mathbb{C})
+"        inoremap <buffer> <localleader>so2c \SO_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>so3c \SO_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>so.c \SO_{}(\mathbb{C})<esc>F};i
+
+"        "}}}
+"        " U{{{
+
+"        inoremap <buffer> <leader>un \U_{n}
+"        inoremap <buffer> <leader>um \U_{m}
+"        inoremap <buffer> <leader>ud \U_{d}
+"        inoremap <buffer> <leader>uk \U_{k}
+"        inoremap <buffer> <leader>u2 \U_{2}
+"        inoremap <buffer> <leader>u3 \U_{3}
+"        inoremap <buffer> <leader>u. \U_{}<esc>i
+
+"        inoremap <buffer> <localleader>u \U_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>unc \U_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>umc \U_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>udc \U_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>ukc \U_{k}(\mathbb{C})
+"        inoremap <buffer> <localleader>u2c \U_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>u3c \U_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>u.c \U_{}(\mathbb{C})<esc>F};i
+
+"        "}}}
+"        " SU{{{
+
+"        inoremap <buffer> <leader>su \SU
+"        inoremap <buffer> <leader>sun \SU_{n}
+"        inoremap <buffer> <leader>sum \SU_{m}
+"        inoremap <buffer> <leader>sud \SU_{d}
+"        inoremap <buffer> <leader>suk \SU_{k}
+"        inoremap <buffer> <leader>su2 \SU_{2}
+"        inoremap <buffer> <leader>su3 \SU_{3}
+"        inoremap <buffer> <leader>su. \SU_{}<esc>i
+
+"        inoremap <buffer> <localleader>su \SU_{}()<esc>F}i
+
+"        inoremap <buffer> <localleader>sunc \SU_{n}(\mathbb{C})
+"        inoremap <buffer> <localleader>sumc \SU_{m}(\mathbb{C})
+"        inoremap <buffer> <localleader>sudc \SU_{d}(\mathbb{C})
+"        inoremap <buffer> <localleader>sukc \SU_{k}(\mathbb{C})
+"        inoremap <buffer> <localleader>su2c \SU_{2}(\mathbb{C})
+"        inoremap <buffer> <localleader>su3c \SU_{3}(\mathbb{C})
+"        inoremap <buffer> <localleader>su.c \SU_{}(\mathbb{C})<esc>F};i
+
+"        "}}}
+"        let s:Matrix_group_toggle = 1
+"    endif
+"endfunction
+
+"nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>:echo<cr>
+"inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
+
+""}}}
 " times, tilde, hat, accent, bar, over/uline, power"{{{
 "-------------------------------------------------------------------
 
@@ -1593,7 +2798,7 @@ inoremap <buffer> <localleader>di \displaystyle\int_{}^{}<esc>F}i
 inoremap <buffer> ;dil \displaystyle\int\limits_{}<esc>i
 inoremap <buffer> <localleader>dil \displaystyle\int\limits_{}^{}<esc>F}i
 
-inoremap <buffer> ;d \, \mathrm{d}
+inoremap <buffer> ;d \, \d
 inoremap <buffer> <localleader>d \displaystyle
 
 inoremap <buffer> ;s \sum_{}<esc>i
