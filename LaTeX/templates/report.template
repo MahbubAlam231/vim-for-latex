@@ -32,6 +32,7 @@
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
+\usepackage{MnSymbol}
 \usepackage{physics}
 \usepackage{relsize}
 \usepackage{slantsc}

@@ -310,7 +310,9 @@ function! LatexBox_FoldLevel(lnum)
                 endif
             endif
 
-            if type == 'chapter'
+            if type == 'part'
+                let title = '* P    ' . secondarytitle1 . label
+            elseif type == 'chapter'
                 let title = '* C    ' . secondarytitle1 . label
             elseif type == 'section'
                 let title = '* S    ' . secondarytitle1 . label
@@ -536,9 +538,10 @@ function! LatexBox_FoldLevel(lnum)
         "}}}
 
         " Helper folds{{{
+        " Put two spaces after '%' in the commented line to get helper folds
 
-        if line =~ '^\s*%% '
-            let primarytitle = matchstr(line, '^\s*%% \zs.\{-}\ze%{')
+        if line =~ '^\s*%  '
+            let primarytitle = matchstr(line, '^\s*%  \zs.\{-}\ze%{')
             if len(primarytitle) > 124
                 let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
             else

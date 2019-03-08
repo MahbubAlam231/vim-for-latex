@@ -52,7 +52,7 @@ Abolish btw by the way
 "}}}
 "C{{{
 
-Abolish char{,c,tic,stic,n,izatn} character{,istic,istic,istic,ization,ization}
+Abolish char{,s,c,tic,stic,n,izatn} character{,s,istic,istic,istic,ization,ization}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
 Abolish corr{,s,es,g,ing,e,ce,ence,es,ces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ences,ences,ences}
@@ -102,7 +102,8 @@ Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
 "I{{{
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
-Abolish int{n,ns,l,ls,e,te,ble,bility,y,ing} integra{tion,tions,l,ls,te,te,ble,bility,bility,ting}
+Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
+Abolish irred{,y} irreducib{le,ility}
 Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
 
 "}}}
@@ -135,7 +136,8 @@ Abolish prop{,s} proposition{,s}
 "}}}
 "R{{{
 
-Abolish respy respectively
+Abolish repn{,s} representation{,s}
+Abolish resply respectively
 
 "}}}
 "S{{{
@@ -143,7 +145,7 @@ Abolish respy respectively
 Abolish seq{,s} sequence{,s}
 Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
-Abolish sp{,s} space{,s}
+Abolish sp{,es} space{,s}
 Abolish st such that
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
@@ -157,8 +159,7 @@ Abolish teh the
 Abolish tehn then
 Abolish tf therefore
 Abolish thm{,s} theorem{,s}
-Abolish top{o,cal,cally} topolog{y,ical,ically}
-Abolish topsp topological space
+Abolish top{y,cal,cally,sp,sps} topolog{y,ical,ically,ical space,ical spaces}
 Abolish tx{,s} there exist{,s}
 
 "}}}

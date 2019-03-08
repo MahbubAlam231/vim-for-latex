@@ -971,6 +971,17 @@ iunmap <buffer> <localleader>ll
 iunmap <buffer> <localleader>lil
 iunmap <buffer> <localleader>lsl
 
+iunmap <buffer> <localleader>l.
+iunmap <buffer> <localleader>li.
+iunmap <buffer> <localleader>ls.
+iunmap <buffer> <localleader>ll.
+iunmap <buffer> <localleader>lil.
+iunmap <buffer> <localleader>lsl.
+
+iunmap <buffer> <localleader>jl
+iunmap <buffer> <localleader>jli
+iunmap <buffer> <localleader>jls
+
 iunmap <buffer> ;i
 iunmap <buffer> <localleader>i
 iunmap <buffer> ;il

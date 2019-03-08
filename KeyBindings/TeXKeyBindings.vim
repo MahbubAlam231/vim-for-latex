@@ -206,25 +206,25 @@ inoremap <buffer> <localleader>c. \mathbb{C}^{}<esc>i
 " p-adic numbers{{{
 
 inoremap <buffer> <localleader>qp \mathbb{Q}_p
-inoremap <buffer> <localleader>qpp {\mathbb{Q}_p}^2
-inoremap <buffer> <localleader>qpn {\mathbb{Q}_p}^{n}
-inoremap <buffer> <localleader>qpm {\mathbb{Q}_p}^{m}
-inoremap <buffer> <localleader>qpd {\mathbb{Q}_p}^{d}
-inoremap <buffer> <localleader>qpk {\mathbb{Q}_p}^{k}
-inoremap <buffer> <localleader>qpx {\mathbb{Q}_p}^{\times}
-inoremap <buffer> <localleader>qp. {\mathbb{Q}_p}^{}<esc>i
+inoremap <buffer> <localleader>qpp \mathbb{Q}_p^2
+inoremap <buffer> <localleader>qpn \mathbb{Q}_p^{n}
+inoremap <buffer> <localleader>qpm \mathbb{Q}_p^{m}
+inoremap <buffer> <localleader>qpd \mathbb{Q}_p^{d}
+inoremap <buffer> <localleader>qpk \mathbb{Q}_p^{k}
+inoremap <buffer> <localleader>qpx \mathbb{Q}_p^{\times}
+inoremap <buffer> <localleader>qp. \mathbb{Q}_p^{}<esc>i
 
 "}}}
 " p-adic Integers{{{
 
 inoremap <buffer> <localleader>zp \mathbb{Z}_p
-inoremap <buffer> <localleader>zpp {\mathbb{Z}_p}^2
-inoremap <buffer> <localleader>zpn {\mathbb{Z}_p}^{n}
-inoremap <buffer> <localleader>zpm {\mathbb{Z}_p}^{m}
-inoremap <buffer> <localleader>zpd {\mathbb{Z}_p}^{d}
-inoremap <buffer> <localleader>zpk {\mathbb{Z}_p}^{k}
-inoremap <buffer> <localleader>zpx {\mathbb{Z}_p}^{\times}
-inoremap <buffer> <localleader>zp. {\mathbb{Z}_p}^{}<esc>i
+inoremap <buffer> <localleader>zpp \mathbb{Z}_p^2
+inoremap <buffer> <localleader>zpn \mathbb{Z}_p^{n}
+inoremap <buffer> <localleader>zpm \mathbb{Z}_p^{m}
+inoremap <buffer> <localleader>zpd \mathbb{Z}_p^{d}
+inoremap <buffer> <localleader>zpk \mathbb{Z}_p^{k}
+inoremap <buffer> <localleader>zpx \mathbb{Z}_p^{\times}
+inoremap <buffer> <localleader>zp. \mathbb{Z}_p^{}<esc>i
 
 "}}}
 " Other fields{{{
@@ -2764,17 +2764,27 @@ inoremap <buffer> <localleader>ol \overline{}<esc>i
 inoremap <buffer> <localleader>ul \uline{}<esc>i
 inoremap <buffer> <localleader>. \dot{}<esc>i
 
-inoremap <buffer> ;-1 ^{-1}
 inoremap <buffer> ;-. ^{-}<esc>i
 
+inoremap <buffer> ;-1 ^{-1}
+inoremap <buffer> ;-2 ^{-2}
+inoremap <buffer> ;-3 ^{-3}
+
+inoremap <buffer> ;-x ^{-x}
+inoremap <buffer> ;-y ^{-y}
+inoremap <buffer> ;-z ^{-z}
+inoremap <buffer> ;-r ^{-r}
+inoremap <buffer> ;-s ^{-s}
+inoremap <buffer> ;-t ^{-t}
+
 inoremap <buffer> ^^ ^{}<esc>i
-inoremap <buffer> ;^ {}^{}<esc>hF}i
+inoremap <buffer> ;^ {}^{}<esc>F}i
 
 inoremap <buffer> __ _{}<esc>i
-inoremap <buffer> ;_ {}_{}<esc>hF}i
+inoremap <buffer> ;_ {}_{}<esc>F}i
 
-inoremap <buffer> ^_ ^{}_{}<esc>F^i
-inoremap <buffer> _^ _{}^{}<esc>F_i
+inoremap <buffer> ^_ ^{}_{}<esc>F}i
+inoremap <buffer> _^ _{}^{}<esc>F}i
 inoremap <buffer> ^__ {}^{}_{}<esc>F};i
 inoremap <buffer> _^^ {}_{}^{}<esc>F};i
 
@@ -2788,6 +2798,17 @@ inoremap <buffer> <localleader>ls \limsup_{ \to }<esc>F{a
 inoremap <buffer> <localleader>ll \lim\limits_{ \to }<esc>F{a
 inoremap <buffer> <localleader>lil \liminf\limits_{ \to }<esc>F{a
 inoremap <buffer> <localleader>lsl \limsup\limits_{ \to }<esc>F{a
+
+inoremap <buffer> <localleader>l. \lim_{}<esc>i
+inoremap <buffer> <localleader>li. \liminf_{}<esc>i
+inoremap <buffer> <localleader>ls. \limsup_{}<esc>i
+inoremap <buffer> <localleader>ll. \lim\limits_{}<esc>i
+inoremap <buffer> <localleader>lil. \liminf\limits_{}<esc>i
+inoremap <buffer> <localleader>lsl. \limsup\limits_{}<esc>i
+
+inoremap <buffer> <localleader>jl \lim
+inoremap <buffer> <localleader>jli \liminf
+inoremap <buffer> <localleader>jls \limsup
 
 inoremap <buffer> ;i \int_{}<esc>i
 inoremap <buffer> <localleader>i \int_{}^{}<esc>F}i
@@ -2875,13 +2896,14 @@ inoremap <buffer> ;3ce \biggce{}<esc>i
 inoremap <buffer> ;4ce \Biggce{}<esc>i
 inoremap <buffer> ;5ce \lrce{}<esc>i
 
-inoremap <buffer> <localleader>lrab {\left\langle\right\rangle}<esc>2Fea
+inoremap <buffer> <localleader>lrab {\left\langle \right\rangle}<esc>2Fela
+inoremap <buffer> <localleader>lrdab {\left\llangle \right\rrangle}<esc>2Fela
 
 inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
 inoremap <buffer> << \ll
 inoremap <buffer> >> \gg
-inoremap <buffer> n= \neq
+inoremap <buffer> ;= \neq
 inoremap <buffer> == \equiv
 inoremap <buffer> <localleader>= \cong
 
@@ -3239,6 +3261,14 @@ let m = matchadd("Folds_brackets_comments",'%}}}')
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')
 let m = matchadd("Folds_brackets_comments",'%}T}E}X')
 
+highlight PartMarkerGroup ctermbg=087 ctermfg=black
+let m = matchadd("PartMarkerGroup",'% Part')
+let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
+
+highlight PartGroup ctermbg=087 ctermfg=black
+let m = matchadd("PartGroup",'\\part{.\{}}')
+let m = matchadd("PartGroup",'\\part\*{.\{}}')
+
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
 let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
@@ -3286,6 +3316,7 @@ let m = matchadd("Abstract",'% Abstract')
 highlight MarkerGroup ctermbg=White ctermfg=Black
 
 let m = matchadd("MarkerGroup",'% Notation')
+let m = matchadd("MarkerGroup",'% UnnumberedNotation')
 let m = matchadd("MarkerGroup",'% Definition')
 let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
 let m = matchadd("MarkerGroup",'% Theorem')
@@ -3368,6 +3399,8 @@ highlight NotationGroup ctermbg=244 ctermfg=Black
 
 let m = matchadd("NotationGroup",'\\begin{notation}')
 let m = matchadd("NotationGroup",'\\end{notation}')
+let m = matchadd("NotationGroup",'\\begin{unotation}')
+let m = matchadd("NotationGroup",'\\end{unotation}')
 
 highlight DefinitionGroup ctermbg=214 ctermfg=Black
 

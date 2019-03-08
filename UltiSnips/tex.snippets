@@ -303,31 +303,31 @@ $\mathbb{Q}_p$$0
 endsnippet
 
 snippet qpp
-${\mathbb{Q}_p}^2$$0
+$\mathbb{Q}_p^2$$0
 endsnippet
 
 snippet qpn
-${\mathbb{Q}_p}^{n}$$0
+$\mathbb{Q}_p^{n}$$0
 endsnippet
 
 snippet qpm
-${\mathbb{Q}_p}^{m}$$0
+$\mathbb{Q}_p^{m}$$0
 endsnippet
 
 snippet qpd
-${\mathbb{Q}_p}^{d}$$0
+$\mathbb{Q}_p^{d}$$0
 endsnippet
 
 snippet qpk
-${\mathbb{Q}_p}^{k}$$0
+$\mathbb{Q}_p^{k}$$0
 endsnippet
 
 snippet qpx
-${\mathbb{Q}_p}^{\times}$$0
+$\mathbb{Q}_p^{\times}$$0
 endsnippet
 
 snippet qp.
-${\mathbb{Q}_p}^{$1}$$0
+$\mathbb{Q}_p^{$1}$$0
 endsnippet
 
 #}}}
@@ -338,31 +338,31 @@ $\mathbb{Z}_p$$0
 endsnippet
 
 snippet zpp
-${\mathbb{Z}_p}^2$$0
+$\mathbb{Z}_p^2$$0
 endsnippet
 
 snippet zpn
-${\mathbb{Z}_p}^{n}$$0
+$\mathbb{Z}_p^{n}$$0
 endsnippet
 
 snippet zpm
-${\mathbb{Z}_p}^{m}$$0
+$\mathbb{Z}_p^{m}$$0
 endsnippet
 
 snippet zpd
-${\mathbb{Z}_p}^{d}$$0
+$\mathbb{Z}_p^{d}$$0
 endsnippet
 
 snippet zpk
-${\mathbb{Z}_p}^{k}$$0
+$\mathbb{Z}_p^{k}$$0
 endsnippet
 
 snippet zpx
-${\mathbb{Z}_p}^{\times}$$0
+$\mathbb{Z}_p^{\times}$$0
 endsnippet
 
 snippet zp.
-${\mathbb{Z}_p}^{$1}$$0
+$\mathbb{Z}_p^{$1}$$0
 endsnippet
 
 #}}}
@@ -9145,6 +9145,14 @@ snippet o
 \varnothing
 endsnippet
 
+snippet lrab "left-right angle bracket"
+${\left\langle $1 \right\rangle}$
+endsnippet
+
+snippet lrdab "left-right double angle bracket"
+${\left\llangle $1 \right\rrangle}$
+endsnippet
+
 #}}}
 # SymbolsOfDerivatives{{{
 #-------------------------------------------------------------------
@@ -9296,6 +9304,15 @@ snippet not "Notation" b
 \begin{notation}$1\label{$2}%{T{E{X
     $3
 \end{notation}%}T}E}X
+
+$0
+endsnippet
+
+snippet unot "Unnumbered Notation" b
+% UnnumberedNotation
+\begin{unotation}$1\label{$2}%{T{E{X
+    $3
+\end{unotation}%}T}E}X
 
 $0
 endsnippet
@@ -9511,7 +9528,7 @@ endsnippet
 
 snippet ex "Example" b
 % Example
-\begin{example}$1
+\begin{example}\label{$1}
     $2
 \end{example}
 
@@ -9520,7 +9537,7 @@ endsnippet
 
 snippet exc "Exercise" b
 % Exercise
-\begin{exercise}$1
+\begin{exercise}\label{$1}
     $2
 \end{exercise}
 
