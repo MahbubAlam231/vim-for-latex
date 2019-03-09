@@ -946,8 +946,18 @@ iunmap <buffer> <localleader>ol
 iunmap <buffer> <localleader>ul
 iunmap <buffer> <localleader>.
 
-iunmap <buffer> ;-1
 iunmap <buffer> ;-.
+
+inoremap <buffer> ;-1 ^{-1}
+inoremap <buffer> ;-2 ^{-2}
+inoremap <buffer> ;-3 ^{-3}
+
+inoremap <buffer> ;-x ^{-x}
+inoremap <buffer> ;-y ^{-y}
+inoremap <buffer> ;-z ^{-z}
+inoremap <buffer> ;-r ^{-r}
+inoremap <buffer> ;-s ^{-s}
+inoremap <buffer> ;-t ^{-t}
 
 iunmap <buffer> ^^
 iunmap <buffer> ;^
@@ -1068,7 +1078,10 @@ iunmap <buffer> ;3ce
 iunmap <buffer> ;4ce
 iunmap <buffer> ;5ce
 
+iunmap <buffer> <localleader>lrdb
+
 iunmap <buffer> <localleader>lrab
+iunmap <buffer> <localleader>lrdab
 
 iunmap <buffer> <localleader><
 iunmap <buffer> <localleader>>
@@ -1118,6 +1131,8 @@ iunmap <buffer> <localleader>mto
 iunmap <buffer> <localleader>lmto
 
 iunmap <buffer> <localleader>v
+
+iunmap <buffer> <localleader>act
 
 "}}}
 " Others{{{
@@ -1310,8 +1325,6 @@ iunmap <buffer> ;Om
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-" iunmap <buffer> <F5>
-" nunmap <buffer> <F5>
 iunmap <buffer> <F5>
 nunmap <buffer> <F5>
 iunmap <buffer> <F8>

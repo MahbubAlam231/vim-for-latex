@@ -9672,45 +9672,6 @@ endsnippet
 # Matrices{{{
 #-------------------------------------------------------------------
 
-snippet matn "Matrix m x n"
-% Matrix
-\renewcommand\arraystretch{1}
-\begin{matrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{matrix}
-$0
-endsnippet
-
-
-snippet bmatn "Bracket matrix m x n"
-% Bmatrix
-\renewcommand\arraystretch{1}
-\begin{bmatrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{bmatrix}
-$0
-endsnippet
-
-
-snippet pmatn "Parenthesis matrix m x n"
-% Pmatrix
-\renewcommand\arraystretch{1}
-\begin{pmatrix}
-    ${1:x_{11}} & ${2:x_{12}} & \cdots  & ${3:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-    ${4:x_{21}} & ${5:x_{22}} & \cdots  & ${6:x_{2n}} \\\
-    \vdots & \vdots & \ddots & \vdots \\\
-    ${7:x_{m1}} & ${8:x_{m2}} & \cdots  & ${9:x_{mn}}
-\end{pmatrix}
-$0
-endsnippet
-
-
 snippet mat "Matrix"
 \begin{matrix}
     $1 & $2  \\\
@@ -9718,7 +9679,6 @@ snippet mat "Matrix"
 \end{matrix}
 $0
 endsnippet
-
 
 snippet pmat "Parenthesis matrix"
 \begin{pmatrix}
@@ -9728,7 +9688,6 @@ snippet pmat "Parenthesis matrix"
 $0
 endsnippet
 
-
 snippet bmat "Bracket matrix"
 \begin{bmatrix}
     $1 & $2  \\\
@@ -9737,28 +9696,58 @@ snippet bmat "Bracket matrix"
 $0
 endsnippet
 
+snippet matn "Matrix m x n"
+% Matrix
+\renewcommand\arraystretch{1}
+\begin{matrix}
+    ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
+    ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
+    \vdots      & \ddots & \vdots \\\
+    ${5:x_{m1}} & \cdots & ${6:x_{mn}}
+\end{matrix}
+$0
+endsnippet
 
-snippet cpmatn "Colomn parenthesis matrix n x 1"
+snippet pmatn "Parenthesis matrix m x n"
+% Pmatrix
+\renewcommand\arraystretch{1}
 \begin{pmatrix}
-    $1 \\\
-    $2 \\\
-    \\vdots \\\
-    $3
+    ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
+    ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
+    \vdots      & \ddots & \vdots \\\
+    ${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{pmatrix}
 $0
 endsnippet
 
-
-snippet cmatn "Colomn bracket matrix n x 1"
+snippet bmatn "Bracket matrix m x n"
+% Bmatrix
+\renewcommand\arraystretch{1}
 \begin{bmatrix}
-    $1 \\\
-    $2 \\\
-    \\vdots \\\
-    $3
+    ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
+    ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
+    \vdots      & \ddots & \vdots \\\
+    ${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{bmatrix}
 $0
 endsnippet
 
+snippet cmat "Colomn matrix"
+\begin{matrix}
+    $1 \\\
+    $2
+\end{matrix}
+$0
+endsnippet
+
+snippet cmatn "Colomn matrix n x 1"
+\begin{matrix}
+    $1 \\\
+    \\vdots \\\
+    $2
+\end{matrix}
+$0
+endsnippet
 
 snippet cpmat "Colomn parenthesis matrix"
 \begin{pmatrix}
@@ -9768,10 +9757,27 @@ snippet cpmat "Colomn parenthesis matrix"
 $0
 endsnippet
 
+snippet cpmatn "Colomn parenthesis matrix n x 1"
+\begin{pmatrix}
+    $1 \\\
+    \\vdots \\\
+    $2
+\end{pmatrix}
+$0
+endsnippet
 
 snippet cbmat "Colomn bracket matrix"
 \begin{bmatrix}
     $1 \\\
+    $2
+\end{bmatrix}
+$0
+endsnippet
+
+snippet cbmatn "Colomn bracket matrix n x 1"
+\begin{bmatrix}
+    $1 \\\
+    \\vdots \\\
     $2
 \end{bmatrix}
 $0
@@ -9861,7 +9867,6 @@ snippet enum "Enumeration" b
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
     \item $2
 \end{enumerate}
-
 $0
 endsnippet
 
@@ -9877,7 +9882,6 @@ snippet henum "Hyper-Enumeration" b
 \begin{enumerate}
     \item $1
 \end{enumerate}
-
 $0
 endsnippet
 

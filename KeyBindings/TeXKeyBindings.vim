@@ -2896,6 +2896,8 @@ inoremap <buffer> ;3ce \biggce{}<esc>i
 inoremap <buffer> ;4ce \Biggce{}<esc>i
 inoremap <buffer> ;5ce \lrce{}<esc>i
 
+inoremap <buffer> <localleader>lrdb {\llbracket \rrbracket}<esc>2Ftla
+
 inoremap <buffer> <localleader>lrab {\left\langle \right\rangle}<esc>2Fela
 inoremap <buffer> <localleader>lrdab {\left\llangle \right\rrangle}<esc>2Fela
 
