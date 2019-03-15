@@ -122,6 +122,7 @@ inoremap <buffer> <localleader>mbf \mathbf{}<esc>i
 inoremap <buffer> <localleader>mc \mathcal{}<esc>i
 inoremap <buffer> <localleader>mrsf \mathrsf{}<esc>i
 inoremap <buffer> <localleader>mscr \mathscr{}<esc>i
+inoremap <buffer> <localleader>ms \mathscr{}<esc>i
 inoremap <buffer> <localleader>mi \mathit{}<esc>i
 inoremap <buffer> <localleader>mf \mathfrak{}<esc>i
 
@@ -2917,10 +2918,12 @@ inoremap <buffer> <localleader>ra \rightarrow
 inoremap <buffer> <localleader>la \leftarrow
 inoremap <buffer> <localleader>Ra \Rightarrow
 inoremap <buffer> <localleader>La \Leftarrow
+inoremap <buffer> <localleader>lra \longrightarrow
+inoremap <buffer> <localleader>lla \longleftarrow
 inoremap <buffer> <localleader>Lra \Longrightarrow
 inoremap <buffer> <localleader>Lla \Longleftarrow
-inoremap <buffer> <localleader>rra \rightrightarrow
-inoremap <buffer> <localleader>lla \leftleftarrow
+inoremap <buffer> <localleader>rras \rightrightarrows
+inoremap <buffer> <localleader>llas \leftleftarrows
 inoremap <buffer> <localleader>xra \xrightarrow
 inoremap <buffer> <localleader>xla \xleftarrow
 inoremap <buffer> <localleader>thra \twoheadrightarrow
@@ -3255,7 +3258,7 @@ nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latex
 " Highlighting{{{
 "-------------------------------------------------------------------
 
-" Chapter, Section, Subsection, Subsubsection, label"{{{
+" Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
 let m = matchadd("Folds_brackets_comments",'%{{{')

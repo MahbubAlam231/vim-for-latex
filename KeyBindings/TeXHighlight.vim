@@ -3,13 +3,21 @@
 " License       : Self
 " Description   : TeXHighlight
 
-" Chapter, Section, Subsection, Subsubsection, label"{{{
+" Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
 let m = matchadd("Folds_brackets_comments",'%{{{')
 let m = matchadd("Folds_brackets_comments",'%}}}')
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')
 let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+
+highlight PartMarkerGroup ctermbg=087 ctermfg=black
+let m = matchadd("PartMarkerGroup",'% Part')
+let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
+
+highlight PartGroup ctermbg=087 ctermfg=black
+let m = matchadd("PartGroup",'\\part{.\{}}')
+let m = matchadd("PartGroup",'\\part\*{.\{}}')
 
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
@@ -59,6 +67,7 @@ let m = matchadd("Abstract",'% Abstract')
 highlight MarkerGroup ctermbg=White ctermfg=Black
 
 let m = matchadd("MarkerGroup",'% Notation')
+let m = matchadd("MarkerGroup",'% UnnumberedNotation')
 let m = matchadd("MarkerGroup",'% Definition')
 let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
 let m = matchadd("MarkerGroup",'% Theorem')
@@ -142,6 +151,8 @@ highlight NotationGroup ctermbg=244 ctermfg=Black
 
 let m = matchadd("NotationGroup",'\\begin{notation}')
 let m = matchadd("NotationGroup",'\\end{notation}')
+let m = matchadd("NotationGroup",'\\begin{unotation}')
+let m = matchadd("NotationGroup",'\\end{unotation}')
 
 highlight DefinitionGroup ctermbg=214 ctermfg=Black
 
