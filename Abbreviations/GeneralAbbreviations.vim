@@ -46,7 +46,7 @@ Abolish arb arbitrary
 
 Abolish bdd bounded
 Abolish bd{y,ies} boundar{y,ies}
-Abolish bij{n,ve,vely,ely,ly} bijecti{on,ve,vely,vely,vely}
+Abolish bij{,n,e,ve,ity,y,vely,ely,ly} bijecti{on,on,ve,ve,vity,vity,vely,vely,vely}
 Abolish btw by the way
 
 "}}}
@@ -96,15 +96,16 @@ Abolish gp{,s,g} group{,s,ing}
 
 Abolish homeo{,s,c,cally} homeomorphi{sm,sms,c,cally}
 Abolish homog{,ly,y} homogene{ous,ously,ity}
-Abolish homo{,s,c,cally} homomorphi{sm,sms,c,cally}
+Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 
 "}}}
 "I{{{
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
+Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
 Abolish irred{,y} irreducib{le,ility}
-Abolish iso{,s,c,cally} isomorphi{sm,sms,c,cally}
+Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
 
 "}}}
 "L{{{
@@ -150,6 +151,7 @@ Abolish st such that
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
 Abolish subsp{,s} subspace{,s}
+Abolish surj{,n,e,ve,ity,y,ly} surjecti{on,on,ve,ve,vity,vity,ly}
 
 "}}}
 "T{{{
