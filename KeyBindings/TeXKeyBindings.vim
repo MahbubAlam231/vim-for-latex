@@ -2771,12 +2771,20 @@ inoremap <buffer> ;-1 ^{-1}
 inoremap <buffer> ;-2 ^{-2}
 inoremap <buffer> ;-3 ^{-3}
 
-inoremap <buffer> ;-x ^{-x}
-inoremap <buffer> ;-y ^{-y}
-inoremap <buffer> ;-z ^{-z}
+inoremap <buffer> ;-d ^{-d}
+inoremap <buffer> ;-i ^{-i}
+inoremap <buffer> ;-j ^{-j}
+inoremap <buffer> ;-k ^{-k}
+inoremap <buffer> ;-l ^{-\ell}
+inoremap <buffer> ;-m ^{-m}
+inoremap <buffer> ;-n ^{-n}
+inoremap <buffer> ;-p ^{-p}
 inoremap <buffer> ;-r ^{-r}
 inoremap <buffer> ;-s ^{-s}
 inoremap <buffer> ;-t ^{-t}
+inoremap <buffer> ;-x ^{-x}
+inoremap <buffer> ;-y ^{-y}
+inoremap <buffer> ;-z ^{-z}
 
 inoremap <buffer> ^^ ^{}<esc>i
 inoremap <buffer> ;^ {}^{}<esc>F}i
@@ -2793,12 +2801,149 @@ inoremap <buffer> _^^ {}_{}^{}<esc>F};i
 " lim, int, sum, operators{{{
 "-------------------------------------------------------------------
 
+" Limits{{{
+
 inoremap <buffer> <localleader>l \lim_{ \to }<esc>F{a
 inoremap <buffer> <localleader>li \liminf_{ \to }<esc>F{a
 inoremap <buffer> <localleader>ls \limsup_{ \to }<esc>F{a
 inoremap <buffer> <localleader>ll \lim\limits_{ \to }<esc>F{a
 inoremap <buffer> <localleader>lil \liminf\limits_{ \to }<esc>F{a
 inoremap <buffer> <localleader>lsl \limsup\limits_{ \to }<esc>F{a
+
+inoremap <buffer> <localleader>lii \liminf_{i \to \infty}
+inoremap <buffer> <localleader>lsi \limsup_{i \to \infty}
+inoremap <buffer> <localleader>lli \lim\limits_{i \to \infty}
+inoremap <buffer> <localleader>lili \liminf\limits_{i \to \infty}
+inoremap <buffer> <localleader>lsli \limsup\limits_{i \to \infty}
+
+inoremap <buffer> <localleader>lj \lim_{j \to \infty}
+inoremap <buffer> <localleader>lij \liminf_{j \to \infty}
+inoremap <buffer> <localleader>lsj \limsup_{j \to \infty}
+inoremap <buffer> <localleader>llj \lim\limits_{j \to \infty}
+inoremap <buffer> <localleader>lilj \liminf\limits_{j \to \infty}
+inoremap <buffer> <localleader>lslj \limsup\limits_{j \to \infty}
+
+inoremap <buffer> <localleader>lk \lim_{k \to \infty}
+inoremap <buffer> <localleader>lik \liminf_{k \to \infty}
+inoremap <buffer> <localleader>lsk \limsup_{k \to \infty}
+inoremap <buffer> <localleader>llk \lim\limits_{k \to \infty}
+inoremap <buffer> <localleader>lilk \liminf\limits_{k \to \infty}
+inoremap <buffer> <localleader>lslk \limsup\limits_{k \to \infty}
+
+inoremap <buffer> <localleader>lll \lim\limits_{l \to \infty}
+inoremap <buffer> <localleader>lill \liminf\limits_{l \to \infty}
+inoremap <buffer> <localleader>lsll \limsup\limits_{l \to \infty}
+
+inoremap <buffer> <localleader>lm \lim_{m \to \infty}
+inoremap <buffer> <localleader>lim \liminf_{m \to \infty}
+inoremap <buffer> <localleader>lsm \limsup_{m \to \infty}
+inoremap <buffer> <localleader>llm \lim\limits_{m \to \infty}
+inoremap <buffer> <localleader>lilm \liminf\limits_{m \to \infty}
+inoremap <buffer> <localleader>lslm \limsup\limits_{m \to \infty}
+
+inoremap <buffer> <localleader>lM \lim_{M \to \infty}
+inoremap <buffer> <localleader>liM \liminf_{M \to \infty}
+inoremap <buffer> <localleader>lsM \limsup_{M \to \infty}
+inoremap <buffer> <localleader>llM \lim\limits_{M \to \infty}
+inoremap <buffer> <localleader>lilM \liminf\limits_{M \to \infty}
+inoremap <buffer> <localleader>lslM \limsup\limits_{M \to \infty}
+
+inoremap <buffer> <localleader>ln \lim_{n \to \infty}
+inoremap <buffer> <localleader>lin \liminf_{n \to \infty}
+inoremap <buffer> <localleader>lsn \limsup_{n \to \infty}
+inoremap <buffer> <localleader>lln \lim\limits_{n \to \infty}
+inoremap <buffer> <localleader>liln \liminf\limits_{n \to \infty}
+inoremap <buffer> <localleader>lsln \limsup\limits_{n \to \infty}
+
+inoremap <buffer> <localleader>lN \lim_{N \to \infty}
+inoremap <buffer> <localleader>liN \liminf_{N \to \infty}
+inoremap <buffer> <localleader>lsN \limsup_{N \to \infty}
+inoremap <buffer> <localleader>llN \lim\limits_{N \to \infty}
+inoremap <buffer> <localleader>lilN \liminf\limits_{N \to \infty}
+inoremap <buffer> <localleader>lslN \limsup\limits_{N \to \infty}
+
+inoremap <buffer> <localleader>lp \lim_{p \to \infty}
+inoremap <buffer> <localleader>lip \liminf_{p \to \infty}
+inoremap <buffer> <localleader>lsp \limsup_{p \to \infty}
+inoremap <buffer> <localleader>llp \lim\limits_{p \to \infty}
+inoremap <buffer> <localleader>lilp \liminf\limits_{p \to \infty}
+inoremap <buffer> <localleader>lslp \limsup\limits_{p \to \infty}
+
+inoremap <buffer> <localleader>lq \lim_{q \to \infty}
+inoremap <buffer> <localleader>liq \liminf_{q \to \infty}
+inoremap <buffer> <localleader>lsq \limsup_{q \to \infty}
+inoremap <buffer> <localleader>llq \lim\limits_{q \to \infty}
+inoremap <buffer> <localleader>lilq \liminf\limits_{q \to \infty}
+inoremap <buffer> <localleader>lslq \limsup\limits_{q \to \infty}
+
+inoremap <buffer> <localleader>lQ \lim_{Q \to \infty}
+inoremap <buffer> <localleader>liQ \liminf_{Q \to \infty}
+inoremap <buffer> <localleader>lsQ \limsup_{Q \to \infty}
+inoremap <buffer> <localleader>llQ \lim\limits_{Q \to \infty}
+inoremap <buffer> <localleader>lilQ \liminf\limits_{Q \to \infty}
+inoremap <buffer> <localleader>lslQ \limsup\limits_{Q \to \infty}
+
+inoremap <buffer> <localleader>lr \lim_{r \to }<esc>i
+inoremap <buffer> <localleader>lir \liminf_{r \to }<esc>i
+inoremap <buffer> <localleader>lsr \limsup_{r \to }<esc>i
+inoremap <buffer> <localleader>llr \lim\limits_{r \to }<esc>i
+inoremap <buffer> <localleader>lilr \liminf\limits_{r \to }<esc>i
+inoremap <buffer> <localleader>lslr \limsup\limits_{r \to }<esc>i
+
+inoremap <buffer> <localleader>lR \lim_{R \to \infty}
+inoremap <buffer> <localleader>liR \liminf_{R \to \infty}
+inoremap <buffer> <localleader>lsR \limsup_{R \to \infty}
+inoremap <buffer> <localleader>llR \lim\limits_{R \to \infty}
+inoremap <buffer> <localleader>lilR \liminf\limits_{R \to \infty}
+inoremap <buffer> <localleader>lslR \limsup\limits_{R \to \infty}
+
+inoremap <buffer> <localleader>lis \liminf_{s \to }<esc>i
+inoremap <buffer> <localleader>lss \limsup_{s \to }<esc>i
+inoremap <buffer> <localleader>lls \lim\limits_{s \to }<esc>i
+inoremap <buffer> <localleader>lils \liminf\limits_{s \to }<esc>i
+inoremap <buffer> <localleader>lsls \limsup\limits_{s \to }<esc>i
+
+inoremap <buffer> <localleader>lt \lim_{t \to }<esc>i
+inoremap <buffer> <localleader>lit \liminf_{t \to }<esc>i
+inoremap <buffer> <localleader>lst \limsup_{t \to }<esc>i
+inoremap <buffer> <localleader>llt \lim\limits_{t \to }<esc>i
+inoremap <buffer> <localleader>lilt \liminf\limits_{t \to }<esc>i
+inoremap <buffer> <localleader>lslt \limsup\limits_{t \to }<esc>i
+
+inoremap <buffer> <localleader>lT \lim_{T \to \infty}
+inoremap <buffer> <localleader>liT \liminf_{T \to \infty}
+inoremap <buffer> <localleader>lsT \limsup_{T \to \infty}
+inoremap <buffer> <localleader>llT \lim\limits_{T \to \infty}
+inoremap <buffer> <localleader>lilT \liminf\limits_{T \to \infty}
+inoremap <buffer> <localleader>lslT \limsup\limits_{T \to \infty}
+
+inoremap <buffer> <localleader>lw \lim_{w \to }<esc>i
+inoremap <buffer> <localleader>liw \liminf_{w \to }<esc>i
+inoremap <buffer> <localleader>lsw \limsup_{w \to }<esc>i
+inoremap <buffer> <localleader>llw \lim\limits_{w \to }<esc>i
+inoremap <buffer> <localleader>lilw \liminf\limits_{w \to }<esc>i
+inoremap <buffer> <localleader>lslw \limsup\limits_{w \to }<esc>i
+
+inoremap <buffer> <localleader>lx \lim_{x \to }<esc>i
+inoremap <buffer> <localleader>lix \liminf_{x \to }<esc>i
+inoremap <buffer> <localleader>lsx \limsup_{x \to }<esc>i
+inoremap <buffer> <localleader>llx \lim\limits_{x \to }<esc>i
+inoremap <buffer> <localleader>lilx \liminf\limits_{x \to }<esc>i
+inoremap <buffer> <localleader>lslx \limsup\limits_{x \to }<esc>i
+
+inoremap <buffer> <localleader>ly \lim_{y \to }<esc>i
+inoremap <buffer> <localleader>liy \liminf_{y \to }<esc>i
+inoremap <buffer> <localleader>lsy \limsup_{y \to }<esc>i
+inoremap <buffer> <localleader>lly \lim\limits_{y \to }<esc>i
+inoremap <buffer> <localleader>lily \liminf\limits_{y \to }<esc>i
+inoremap <buffer> <localleader>lsly \limsup\limits_{y \to }<esc>i
+
+inoremap <buffer> <localleader>lz \lim_{z \to }<esc>i
+inoremap <buffer> <localleader>liz \liminf_{z \to }<esc>i
+inoremap <buffer> <localleader>lsz \limsup_{z \to }<esc>i
+inoremap <buffer> <localleader>llz \lim\limits_{z \to }<esc>i
+inoremap <buffer> <localleader>lilz \liminf\limits_{z \to }<esc>i
+inoremap <buffer> <localleader>lslz \limsup\limits_{z \to }<esc>i
 
 inoremap <buffer> <localleader>l. \lim_{}<esc>i
 inoremap <buffer> <localleader>li. \liminf_{}<esc>i
@@ -2810,6 +2955,8 @@ inoremap <buffer> <localleader>lsl. \limsup\limits_{}<esc>i
 inoremap <buffer> <localleader>jl \lim
 inoremap <buffer> <localleader>jli \liminf
 inoremap <buffer> <localleader>jls \limsup
+
+"}}}
 
 inoremap <buffer> ;i \int_{}<esc>i
 inoremap <buffer> <localleader>i \int_{}^{}<esc>F}i

@@ -948,16 +948,24 @@ iunmap <buffer> <localleader>.
 
 iunmap <buffer> ;-.
 
-inoremap <buffer> ;-1 ^{-1}
-inoremap <buffer> ;-2 ^{-2}
-inoremap <buffer> ;-3 ^{-3}
+iunmap <buffer> ;-1
+iunmap <buffer> ;-2
+iunmap <buffer> ;-3
 
-inoremap <buffer> ;-x ^{-x}
-inoremap <buffer> ;-y ^{-y}
-inoremap <buffer> ;-z ^{-z}
-inoremap <buffer> ;-r ^{-r}
-inoremap <buffer> ;-s ^{-s}
-inoremap <buffer> ;-t ^{-t}
+iunmap <buffer> ;-d
+iunmap <buffer> ;-i
+iunmap <buffer> ;-j
+iunmap <buffer> ;-k
+iunmap <buffer> ;-l
+iunmap <buffer> ;-m
+iunmap <buffer> ;-n
+iunmap <buffer> ;-p
+iunmap <buffer> ;-r
+iunmap <buffer> ;-s
+iunmap <buffer> ;-t
+iunmap <buffer> ;-x
+iunmap <buffer> ;-y
+iunmap <buffer> ;-z
 
 iunmap <buffer> ^^
 iunmap <buffer> ;^
@@ -974,12 +982,149 @@ iunmap <buffer> _^^
 " lim, int, sum, operators{{{
 "-------------------------------------------------------------------
 
+" Limits{{{
+
 iunmap <buffer> <localleader>l
 iunmap <buffer> <localleader>li
 iunmap <buffer> <localleader>ls
 iunmap <buffer> <localleader>ll
 iunmap <buffer> <localleader>lil
 iunmap <buffer> <localleader>lsl
+
+iunmap <buffer> <localleader>lii
+iunmap <buffer> <localleader>lsi
+iunmap <buffer> <localleader>lli
+iunmap <buffer> <localleader>lili
+iunmap <buffer> <localleader>lsli
+
+iunmap <buffer> <localleader>lj
+iunmap <buffer> <localleader>lij
+iunmap <buffer> <localleader>lsj
+iunmap <buffer> <localleader>llj
+iunmap <buffer> <localleader>lilj
+iunmap <buffer> <localleader>lslj
+
+iunmap <buffer> <localleader>lk
+iunmap <buffer> <localleader>lik
+iunmap <buffer> <localleader>lsk
+iunmap <buffer> <localleader>llk
+iunmap <buffer> <localleader>lilk
+iunmap <buffer> <localleader>lslk
+
+iunmap <buffer> <localleader>lll
+iunmap <buffer> <localleader>lill
+iunmap <buffer> <localleader>lsll
+
+iunmap <buffer> <localleader>lm
+iunmap <buffer> <localleader>lim
+iunmap <buffer> <localleader>lsm
+iunmap <buffer> <localleader>llm
+iunmap <buffer> <localleader>lilm
+iunmap <buffer> <localleader>lslm
+
+iunmap <buffer> <localleader>lM
+iunmap <buffer> <localleader>liM
+iunmap <buffer> <localleader>lsM
+iunmap <buffer> <localleader>llM
+iunmap <buffer> <localleader>lilM
+iunmap <buffer> <localleader>lslM
+
+iunmap <buffer> <localleader>ln
+iunmap <buffer> <localleader>lin
+iunmap <buffer> <localleader>lsn
+iunmap <buffer> <localleader>lln
+iunmap <buffer> <localleader>liln
+iunmap <buffer> <localleader>lsln
+
+iunmap <buffer> <localleader>lN
+iunmap <buffer> <localleader>liN
+iunmap <buffer> <localleader>lsN
+iunmap <buffer> <localleader>llN
+iunmap <buffer> <localleader>lilN
+iunmap <buffer> <localleader>lslN
+
+iunmap <buffer> <localleader>lp
+iunmap <buffer> <localleader>lip
+iunmap <buffer> <localleader>lsp
+iunmap <buffer> <localleader>llp
+iunmap <buffer> <localleader>lilp
+iunmap <buffer> <localleader>lslp
+
+iunmap <buffer> <localleader>lq
+iunmap <buffer> <localleader>liq
+iunmap <buffer> <localleader>lsq
+iunmap <buffer> <localleader>llq
+iunmap <buffer> <localleader>lilq
+iunmap <buffer> <localleader>lslq
+
+iunmap <buffer> <localleader>lQ
+iunmap <buffer> <localleader>liQ
+iunmap <buffer> <localleader>lsQ
+iunmap <buffer> <localleader>llQ
+iunmap <buffer> <localleader>lilQ
+iunmap <buffer> <localleader>lslQ
+
+iunmap <buffer> <localleader>lr
+iunmap <buffer> <localleader>lir
+iunmap <buffer> <localleader>lsr
+iunmap <buffer> <localleader>llr
+iunmap <buffer> <localleader>lilr
+iunmap <buffer> <localleader>lslr
+
+iunmap <buffer> <localleader>lR
+iunmap <buffer> <localleader>liR
+iunmap <buffer> <localleader>lsR
+iunmap <buffer> <localleader>llR
+iunmap <buffer> <localleader>lilR
+iunmap <buffer> <localleader>lslR
+
+iunmap <buffer> <localleader>lis
+iunmap <buffer> <localleader>lss
+iunmap <buffer> <localleader>lls
+iunmap <buffer> <localleader>lils
+iunmap <buffer> <localleader>lsls
+
+iunmap <buffer> <localleader>lt
+iunmap <buffer> <localleader>lit
+iunmap <buffer> <localleader>lst
+iunmap <buffer> <localleader>llt
+iunmap <buffer> <localleader>lilt
+iunmap <buffer> <localleader>lslt
+
+iunmap <buffer> <localleader>lT
+iunmap <buffer> <localleader>liT
+iunmap <buffer> <localleader>lsT
+iunmap <buffer> <localleader>llT
+iunmap <buffer> <localleader>lilT
+iunmap <buffer> <localleader>lslT
+
+iunmap <buffer> <localleader>lw
+iunmap <buffer> <localleader>liw
+iunmap <buffer> <localleader>lsw
+iunmap <buffer> <localleader>llw
+iunmap <buffer> <localleader>lilw
+iunmap <buffer> <localleader>lslw
+
+iunmap <buffer> <localleader>lx
+iunmap <buffer> <localleader>lix
+iunmap <buffer> <localleader>lsx
+iunmap <buffer> <localleader>llx
+iunmap <buffer> <localleader>lilx
+iunmap <buffer> <localleader>lslx
+
+iunmap <buffer> <localleader>ly
+iunmap <buffer> <localleader>liy
+iunmap <buffer> <localleader>lsy
+iunmap <buffer> <localleader>lly
+iunmap <buffer> <localleader>lily
+iunmap <buffer> <localleader>lsly
+
+iunmap <buffer> <localleader>lz
+iunmap <buffer> <localleader>liz
+iunmap <buffer> <localleader>lsz
+iunmap <buffer> <localleader>llz
+iunmap <buffer> <localleader>lilz
+iunmap <buffer> <localleader>lslz
 
 iunmap <buffer> <localleader>l.
 iunmap <buffer> <localleader>li.
@@ -991,6 +1136,8 @@ iunmap <buffer> <localleader>lsl.
 iunmap <buffer> <localleader>jl
 iunmap <buffer> <localleader>jli
 iunmap <buffer> <localleader>jls
+
+"}}}
 
 iunmap <buffer> ;i
 iunmap <buffer> <localleader>i
