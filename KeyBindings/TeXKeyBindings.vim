@@ -2748,8 +2748,13 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>x \times
-inoremap <buffer> <localleader>circ \circ
+inoremap <buffer> <localleader>ox \otimes
+inoremap <buffer> <localleader>o \circ
+
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
+inoremap <buffer> ;1/ \frac{1}{}<esc>F}i
+inoremap <buffer> ;2/ \frac{2}{}<esc>F}i
+inoremap <buffer> ;3/ \frac{3}{}<esc>F}i
 
 inoremap <buffer> <localleader>no \norm{}<esc>i
 
@@ -3350,6 +3355,7 @@ inoremap <buffer> ;xi \xi
 inoremap <buffer> ;pi \pi
 inoremap <buffer> ;vpi \varpi
 inoremap <buffer> ;rh \rho
+inoremap <buffer> ;vrh \varrho
 inoremap <buffer> ;si \sigma
 inoremap <buffer> ;ta \tau
 inoremap <buffer> ;ph \phi
@@ -3374,6 +3380,8 @@ inoremap <buffer> ;PI \Pi
 inoremap <buffer> ;Pi \Pi
 inoremap <buffer> ;SI \Sigma
 inoremap <buffer> ;Si \Sigma
+inoremap <buffer> ;UP \Upsilon
+inoremap <buffer> ;Up \Upsilon
 inoremap <buffer> ;PH \Phi
 inoremap <buffer> ;Ph \Phi
 inoremap <buffer> ;PS \Psi

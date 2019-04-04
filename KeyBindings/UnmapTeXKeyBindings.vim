@@ -929,6 +929,7 @@ iunmap <buffer> <localleader>gl.pr
 "-------------------------------------------------------------------
 
 iunmap <buffer> <localleader>x
+iunmap <buffer> <localleader>ox
 iunmap <buffer> <localleader>o
 iunmap <buffer> <localleader>/
 
@@ -1434,6 +1435,7 @@ iunmap <buffer> ;xi
 iunmap <buffer> ;pi
 iunmap <buffer> ;vpi
 iunmap <buffer> ;rh
+iunmap <buffer> ;vrh
 iunmap <buffer> ;si
 iunmap <buffer> ;ta
 iunmap <buffer> ;ph
@@ -1458,6 +1460,8 @@ iunmap <buffer> ;PI
 iunmap <buffer> ;Pi
 iunmap <buffer> ;SI
 iunmap <buffer> ;Si
+iunmap <buffer> ;UP
+iunmap <buffer> ;Up
 iunmap <buffer> ;PH
 iunmap <buffer> ;Ph
 iunmap <buffer> ;PS
