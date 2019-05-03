@@ -122,6 +122,7 @@ iunmap <buffer> <localleader>mbf
 iunmap <buffer> <localleader>mc
 iunmap <buffer> <localleader>mrsf
 iunmap <buffer> <localleader>mscr
+iunmap <buffer> <localleader>ms
 iunmap <buffer> <localleader>mi
 iunmap <buffer> <localleader>mf
 
@@ -931,7 +932,11 @@ iunmap <buffer> <localleader>gl.pr
 iunmap <buffer> <localleader>x
 iunmap <buffer> <localleader>ox
 iunmap <buffer> <localleader>o
+
 iunmap <buffer> <localleader>/
+iunmap <buffer> ;1/
+iunmap <buffer> ;2/
+iunmap <buffer> ;3/
 
 iunmap <buffer> <localleader>no
 
@@ -1247,10 +1252,12 @@ iunmap <buffer> <localleader>ra
 iunmap <buffer> <localleader>la
 iunmap <buffer> <localleader>Ra
 iunmap <buffer> <localleader>La
+iunmap <buffer> <localleader>lra
+iunmap <buffer> <localleader>lla
 iunmap <buffer> <localleader>Lra
 iunmap <buffer> <localleader>Lla
-iunmap <buffer> <localleader>rra
-iunmap <buffer> <localleader>lla
+iunmap <buffer> <localleader>rras
+iunmap <buffer> <localleader>llas
 iunmap <buffer> <localleader>xra
 iunmap <buffer> <localleader>xla
 iunmap <buffer> <localleader>thra
