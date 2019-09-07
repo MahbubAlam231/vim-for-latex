@@ -125,6 +125,7 @@ iunmap <buffer> <localleader>mscr
 iunmap <buffer> <localleader>ms
 iunmap <buffer> <localleader>mi
 iunmap <buffer> <localleader>mf
+iunmap <buffer> <localleader>ff
 
 "}}}
 " Real numbers{{{

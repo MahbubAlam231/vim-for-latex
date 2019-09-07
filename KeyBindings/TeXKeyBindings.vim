@@ -125,6 +125,7 @@ inoremap <buffer> <localleader>mscr \mathscr{}<esc>i
 inoremap <buffer> <localleader>ms \mathscr{}<esc>i
 inoremap <buffer> <localleader>mi \mathit{}<esc>i
 inoremap <buffer> <localleader>mf \mathfrak{}<esc>i
+inoremap <buffer> <localleader>ff \frakfamily{}<esc>i
 
 "}}}
 " Real numbers{{{
