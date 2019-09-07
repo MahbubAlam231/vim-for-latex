@@ -368,6 +368,11 @@ vmap <localleader>t <Plug>Titlecase
 " let g:loaded_youcompleteme = 0
 
 "3}}}
+" Supertab{{{3
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+"3}}}
 
 "2}}}
 
@@ -885,7 +890,7 @@ nnoremap <buffer> <leader>msv :vnew ~/.vim/spell/math.utf-8.add<cr>
 nnoremap <buffer> <leader>ms :vnew ~/.vim/spell/math.utf-8.add<cr>
 
 " Opening .vimrc
-nnoremap <buffer> <leader>vh :hsplit $MYVIMRC<cr>
+nnoremap <buffer> <leader>vh :split $MYVIMRC<cr>
 nnoremap <buffer> <leader>vv :vsplit $MYVIMRC<cr>
 nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 

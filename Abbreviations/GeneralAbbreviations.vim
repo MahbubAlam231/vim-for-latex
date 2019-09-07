@@ -53,6 +53,7 @@ Abolish btw by the way
 "C{{{
 
 Abolish char{,s,c,tic,stic,n,izatn} character{,s,istic,istic,istic,ization,ization}
+Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
 Abolish corr{,s,es,g,ing,e,ce,ence,es,ces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ences,ences,ences}
