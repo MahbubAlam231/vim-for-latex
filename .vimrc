@@ -300,6 +300,11 @@ vnoremap <buffer> 'm `mzvzz
 nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 
 "3}}}
+" Supertab{{{3
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+"3}}}
 "Templates and Selecting Template{{{3
 
 " Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim" and add autocmd for writing BufNewFile event
@@ -366,11 +371,6 @@ vmap <localleader>t <Plug>Titlecase
 " YouCompleteMe{{{3
 
 " let g:loaded_youcompleteme = 0
-
-"3}}}
-" Supertab{{{3
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 "3}}}
 
