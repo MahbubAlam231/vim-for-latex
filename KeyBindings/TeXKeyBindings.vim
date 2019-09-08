@@ -2753,9 +2753,9 @@ inoremap <buffer> <localleader>ox \otimes
 inoremap <buffer> <localleader>o \circ
 
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
-inoremap <buffer> ;1/ \frac{1}{}<esc>F}i
-inoremap <buffer> ;2/ \frac{2}{}<esc>F}i
-inoremap <buffer> ;3/ \frac{3}{}<esc>F}i
+inoremap <buffer> ;1/ \frac{1}{}<esc>i
+inoremap <buffer> ;2/ \frac{2}{}<esc>i
+inoremap <buffer> ;3/ \frac{3}{}<esc>i
 
 inoremap <buffer> <localleader>no \norm{}<esc>i
 
@@ -2980,6 +2980,7 @@ inoremap <buffer> ;s \sum_{}<esc>i
 inoremap <buffer> <localleader>s \sum_{}^{}<esc>F}i
 inoremap <buffer> ;sl \sum\limits_{}<esc>i
 inoremap <buffer> ;ds \displaystyle\sum_{}<esc>i
+inoremap <buffer> <localleader>sli \sum\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>slim \sum\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>ds \displaystyle\sum_{}^{}<esc>F}i
 

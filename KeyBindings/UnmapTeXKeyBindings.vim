@@ -1162,6 +1162,7 @@ iunmap <buffer> ;s
 iunmap <buffer> <localleader>s
 iunmap <buffer> ;sl
 iunmap <buffer> ;ds
+iunmap <buffer> <localleader>sli
 iunmap <buffer> <localleader>slim
 iunmap <buffer> <localleader>ds
 

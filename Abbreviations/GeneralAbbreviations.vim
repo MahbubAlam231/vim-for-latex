@@ -44,7 +44,7 @@ Abolish arb arbitrary
 "}}}
 "B{{{
 
-Abolish bdd bounded
+Abolish bdd{,ness} bounded{,ness}
 Abolish bd{y,ies} boundar{y,ies}
 Abolish bij{,n,e,ve,ity,y,vely,ely,ly} bijecti{on,on,ve,ve,vity,vity,vely,vely,vely}
 Abolish btw by the way
@@ -59,6 +59,7 @@ Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
 Abolish corr{,s,es,g,ing,e,ce,ence,es,ces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
 Abolish cpt{,fication,ficatn,fy,g,fyg,ly} compact{,ification,ification,ify,ifying,ifying,ly}
+Abolish ctbl{e,y,ey} countabl{e,ity,ity}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 
 "}}}
@@ -145,6 +146,7 @@ Abolish resply respectively
 "S{{{
 
 Abolish seq{,s} sequence{,s}
+Abolish subseq{,s} subsequence{,s}
 Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
 Abolish sp{,es} space{,s}
@@ -169,6 +171,7 @@ Abolish tx{,s} there exist{,s}
 "U{{{
 
 Abolish unbdd unbounded
+Abolish unctbl{e,y,ey} uncountabl{e,ity,ity}
 
 "}}}
 "W{{{
