@@ -1217,6 +1217,10 @@ iunmap <buffer> ;3[
 iunmap <buffer> ;4[
 iunmap <buffer> ;5[
 
+iunmap <buffer> ;1\|
+iunmap <buffer> ;2\|
+iunmap <buffer> ;3\|
+iunmap <buffer> ;4\|
 iunmap <buffer> ;5\|
 
 iunmap <buffer> <localleader>fl

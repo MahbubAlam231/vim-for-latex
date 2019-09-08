@@ -55,10 +55,11 @@ Abolish btw by the way
 Abolish char{,s,c,tic,stic,n,izatn} character{,s,istic,istic,istic,ization,ization}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
+Abolish compt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
 Abolish corr{,s,es,g,ing,e,ce,ence,es,ces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
-Abolish cpt{,fication,ficatn,fy,g,fyg,ly} compact{,ification,ification,ify,ifying,ifying,ly}
+Abolish cpt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish ctbl{e,y,ey} countabl{e,ity,ity}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 
@@ -105,6 +106,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
 Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
+Abolish insuff{,ly} insufficient{,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
 Abolish irred{,y} irreducib{le,ility}
 Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
@@ -134,6 +136,7 @@ Abolish ob{e,s,ss,g} observ{e,ation,ations,ing}
 "P{{{
 
 Abolish poly{,s} polynomial{,s}
+Abolish proj{,s} projection{,s}
 Abolish prop{,s} proposition{,s}
 
 "}}}
@@ -145,15 +148,16 @@ Abolish resply respectively
 "}}}
 "S{{{
 
-Abolish seq{,s} sequence{,s}
-Abolish subseq{,s} subsequence{,s}
+Abolish seq{,s,l,ly} sequen{ce,ces,tial,tially}
 Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
 Abolish sp{,es} space{,s}
 Abolish st such that
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
+Abolish subseq{,s,l,ly} subsequen{ce,ces,tial,tially}
 Abolish subsp{,s} subspace{,s}
+Abolish suff{,ly} sufficient{,ly}
 Abolish surj{,n,e,ve,ity,y,ly} surjecti{on,on,ve,ve,vity,vity,ly}
 
 "}}}

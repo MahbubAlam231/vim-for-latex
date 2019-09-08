@@ -3035,6 +3035,10 @@ inoremap <buffer> ;3[ {\bigg[\bigg]}<esc>F[a
 inoremap <buffer> ;4[ {\Bigg[\Bigg]}<esc>F[a
 inoremap <buffer> ;5[ {\left[\right]}<esc>F[a
 
+inoremap <buffer> ;1\| {\big\|\big\|}<esc>F[a
+inoremap <buffer> ;2\| {\Big\|\Big\|}<esc>F[a
+inoremap <buffer> ;3\| {\bigg\|\bigg\|}<esc>F[a
+inoremap <buffer> ;4\| {\Bigg\|\Bigg\|}<esc>F[a
 inoremap <buffer> ;5\| {\left\|\right\|}<esc>2F\|a
 
 inoremap <buffer> <localleader>fl \fl{}<esc>i
@@ -3783,6 +3787,37 @@ let m = matchadd("ParenthesisGroup",'{\\left[')
 let m = matchadd("ParenthesisGroup",'\\right]}')
 " let m = matchadd("ParenthesisGroup",'{\\left[{')
 " let m = matchadd("ParenthesisGroup",'}\\right]}')
+
+let m = matchadd("ParenthesisGroup",'\\big|')
+let m = matchadd("ParenthesisGroup",'\\big|')
+let m = matchadd("ParenthesisGroup",'{\\big|')
+let m = matchadd("ParenthesisGroup",'\\big|}')
+" let m = matchadd("ParenthesisGroup",'{\\big|{')
+" let m = matchadd("ParenthesisGroup",'}\\big|}')
+let m = matchadd("ParenthesisGroup",'\\Big|')
+let m = matchadd("ParenthesisGroup",'\\Big|')
+let m = matchadd("ParenthesisGroup",'{\\Big|')
+let m = matchadd("ParenthesisGroup",'\\Big|}')
+" let m = matchadd("ParenthesisGroup",'{\\Big|{')
+" let m = matchadd("ParenthesisGroup",'}\\Big|}')
+let m = matchadd("ParenthesisGroup",'\\bigg|')
+let m = matchadd("ParenthesisGroup",'\\bigg|')
+let m = matchadd("ParenthesisGroup",'{\\bigg|')
+let m = matchadd("ParenthesisGroup",'\\bigg|}')
+" let m = matchadd("ParenthesisGroup",'{\\bigg|{')
+" let m = matchadd("ParenthesisGroup",'}\\bigg|}')
+let m = matchadd("ParenthesisGroup",'\\Bigg|')
+let m = matchadd("ParenthesisGroup",'\\Bigg|')
+let m = matchadd("ParenthesisGroup",'{\\Bigg|')
+let m = matchadd("ParenthesisGroup",'\\Bigg|}')
+" let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
+" let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
+let m = matchadd("ParenthesisGroup",'\\left|')
+let m = matchadd("ParenthesisGroup",'\\right|')
+let m = matchadd("ParenthesisGroup",'{\\left|')
+let m = matchadd("ParenthesisGroup",'\\right|}')
+" let m = matchadd("ParenthesisGroup",'{\\left|{')
+" let m = matchadd("ParenthesisGroup",'}\\right|}')
 
 "}}}
 
