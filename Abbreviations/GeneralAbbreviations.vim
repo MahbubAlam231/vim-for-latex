@@ -37,7 +37,7 @@ iabbr WE We
 "A{{{
 
 Abolish adn and
-Abolish alg{,ic} algebra{,ic}
+Abolish alg{,s,ic} algebra{,s,ic}
 Abolish approx{n,ns,e,es,ed,g} approximat{ion,ions,e,es,ed,ing}
 Abolish arb arbitrary
 
@@ -153,6 +153,7 @@ Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
 Abolish sp{,es} space{,s}
 Abolish st such that
+Abolish subalg{,s,ic} subalgebra{,s,ic}
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
 Abolish subseq{,s,l,ly} subsequen{ce,ces,tial,tially}
