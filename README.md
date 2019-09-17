@@ -42,7 +42,7 @@ run `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.
 using `git`, i.e., run `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf`
 and then `~/.fzf/install` from terminal (enable auto-completion and key bindings, and
 update shell configuration files while running `~/.fzf/install`), and add the line
-`export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc`, (watch
+`export FZF_DEFAULT_OPS="--extended"` at the end of your `.bashrc` (watch
 [How to install and use fzf: the command-line fuzzy finder](https://www.youtube.com/watch?v=1a5NiMhqAR0));
 - Put `.vimrc` in your home directory;
 - Put `Abbreviations`, `after`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
