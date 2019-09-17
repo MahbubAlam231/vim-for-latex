@@ -142,7 +142,7 @@ Abolish prop{,s} proposition{,s}
 "}}}
 "R{{{
 
-Abolish repn{,s} representation{,s}
+Abolish rep{n,ns,e,ve} representa{tion,tions,tive,tive}
 Abolish resply respectively
 
 "}}}

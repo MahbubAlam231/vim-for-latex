@@ -1296,8 +1296,21 @@ iunmap <buffer> <localleader>v
 iunmap <buffer> <localleader>act
 
 "}}}
-" Others{{{
+" Derivatives and others{{{
 "-------------------------------------------------------------------
+
+iunmap <buffer> ;dv
+iunmap <buffer> ;dvn
+iunmap <buffer> <localleader>dv
+iunmap <buffer> <localleader>dvn
+
+iunmap <buffer> ;pdv
+iunmap <buffer> ;pdvn
+iunmap <buffer> <localleader>pdv
+iunmap <buffer> <localleader>pdvn
+
+iunmap <buffer> ;fdv
+iunmap <buffer> <localleader>fdv
 
 iunmap <buffer> ;l
 

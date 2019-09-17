@@ -2973,7 +2973,7 @@ inoremap <buffer> <localleader>di \displaystyle\int_{}^{}<esc>F}i
 inoremap <buffer> ;dil \displaystyle\int\limits_{}<esc>i
 inoremap <buffer> <localleader>dil \displaystyle\int\limits_{}^{}<esc>F}i
 
-inoremap <buffer> ;d \, \d
+inoremap <buffer> ;d \d{}<esc>i
 inoremap <buffer> <localleader>d \displaystyle
 
 inoremap <buffer> ;s \sum_{}<esc>i
@@ -3114,8 +3114,21 @@ inoremap <buffer> <localleader>v \vv{}<esc>i
 inoremap <buffer> <localleader>act \curvearrowright
 
 "}}}
-" Others{{{
+" Derivatives and others{{{
 "-------------------------------------------------------------------
+
+inoremap <buffer> ;dv \dv{}{}<esc>F}i
+inoremap <buffer> ;dvn \dv[]{}{}<esc>F]i
+inoremap <buffer> <localleader>dv \displaystyle\dv{}{}<esc>F}i
+inoremap <buffer> <localleader>dvn \displaystyle\dv[]{}{}<esc>F]i
+
+inoremap <buffer> ;pdv \pdv{}{}<esc>F}i
+inoremap <buffer> ;pdvn \pdv[]{}{}<esc>F]i
+inoremap <buffer> <localleader>pdv \displaystyle\pdv{}{}<esc>F}i
+inoremap <buffer> <localleader>pdvn \displaystyle\pdv[]{}{}<esc>F]i
+
+inoremap <buffer> ;fdv \fdv{}{}<esc>F}i
+inoremap <buffer> <localleader>fdv \displaystyle\fdv{}{}<esc>F}i
 
 inoremap <buffer> ;l \ell
 
@@ -3632,6 +3645,8 @@ let m = matchadd("ProofGroup",'\\end{prf}')
 
 highlight EquationGroup ctermbg=106 ctermfg=Black
 
+let m = matchadd("EquationGroup",'\\(')
+let m = matchadd("EquationGroup",'\\)')
 let m = matchadd("EquationGroup",'\\[')
 let m = matchadd("EquationGroup",'\\]')
 let m = matchadd("EquationGroup",'\\begin{equation}')
