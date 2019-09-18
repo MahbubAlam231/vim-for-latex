@@ -442,14 +442,6 @@ cnoremap <buffer> <c-e> <end>
 "inoremap <expr> <C-K> BDG_GetDigraph()
 
 "2}}}
-" Trailing White Space{{{2
-"-------------------------------------------------------------------
-
-"autocmd BufWritePre *.* %s/\s\+$//e
-inoremap <buffer> <localleader>fws <Esc>mwV:FixWhitespace<cr>:echo<cr>`wa
-nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
-
-"2}}}
 " Leader Mappings{{{2
 "-------------------------------------------------------------------
 
@@ -578,6 +570,31 @@ nnoremap <buffer> g; g;zvzz
 nnoremap <buffer> g, g,zvzz
 
 "2}}}
+" Pasting, visual selection and dragging{{{2
+"-------------------------------------------------------------------
+
+" Pasting
+nnoremap <buffer> p pmp
+nnoremap <buffer> P Pmp
+
+" Visually reselect whatever is pasted
+nnoremap <buffer> <localleader>V `pV`]
+vnoremap <buffer> <localleader>V <esc>`pV`]
+
+" Visually select current line excluding indentation and white space
+nnoremap <buffer> vv ^vg_
+
+" Dragging visual blocks
+vmap <expr> <S-LEFT>  DVB_Drag('left')
+vmap <expr> <S-RIGHT> DVB_Drag('right')
+vmap <expr> <S-DOWN>  DVB_Drag('down')
+vmap <expr> <S-UP>    DVB_Drag('up')
+vmap <expr> D         DVB_Duplicate()
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+"2}}}
 " Searching remaps{{{2
 
 " Marking before searching
@@ -690,29 +707,12 @@ nnoremap <buffer> <localleader>S :%S/
 vnoremap <buffer> <localleader>S :S/
 
 "2}}}
-" Pasting, visual selection and dragging{{{2
+" Trailing White Space{{{2
 "-------------------------------------------------------------------
 
-" Pasting
-nnoremap <buffer> p pmp
-nnoremap <buffer> P Pmp
-
-" Visually reselect whatever is pasted
-nnoremap <buffer> <localleader>V `pV`]
-vnoremap <buffer> <localleader>V <esc>`pV`]
-
-" Visually select current line excluding indentation and white space
-nnoremap <buffer> vv ^vg_
-
-" Dragging visual blocks
-vmap <expr> <S-LEFT>  DVB_Drag('left')
-vmap <expr> <S-RIGHT> DVB_Drag('right')
-vmap <expr> <S-DOWN>  DVB_Drag('down')
-vmap <expr> <S-UP>    DVB_Drag('up')
-vmap <expr> D         DVB_Duplicate()
-
-" Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
+"autocmd BufWritePre *.* %s/\s\+$//e
+inoremap <buffer> <localleader>fws <Esc>mwV:FixWhitespace<cr>:echo<cr>`wa
+nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
 "2}}}
 

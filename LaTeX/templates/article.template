@@ -124,7 +124,7 @@
 
 \renewcommand{\O}{\mathrm{O}}
 
-\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\d}{\dd}
 
 \DeclareMathOperator*{\vol}{vol}
 \DeclareMathOperator*{\supp}{supp}
