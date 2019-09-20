@@ -9170,6 +9170,9 @@ endsnippet
 # SymbolsOfDerivatives{{{
 #-------------------------------------------------------------------
 
+# Inside math-mode{{{
+#-------------------------------------------------------------------
+
 snippet pd "Partial symbol"
 \partial$0
 endsnippet
@@ -9202,33 +9205,39 @@ snippet cdvt "Partial covariant derivative wrt t"
 \frac{D}{\partial t}$0
 endsnippet
 
+#}}}
+# Outside math-mode{{{
+#-------------------------------------------------------------------
+
 snippet dv "Derivative"
-\dv{$1}{$2}$0
+$\dv{$1}{$2}$$0
 endsnippet
 
 snippet dvn "nth derivative"
-\dv[$1]{$2}{$3}$0
+$\dv[$1]{$2}{$3}$$0
 endsnippet
 
 # snippet dv "Derivative"
-# \frac{d $1}{d $2}$0
+# $\frac{d $1}{d $2}$$0
 # endsnippet
 
 # snippet dvn "nth derivative"
-# \frac{d^$1 $2}{d $3^$1}$0
+# $\frac{d^$1 $2}{d $3^$1}$$0
 # endsnippet
 
 snippet pdv "Partial derivative"
-\pdv{$1}{$2}$0
+$\pdv{$1}{$2}$$0
 endsnippet
 
 snippet pdvn "nth partial derivative"
-\pdv[$1]{$2}{$3}$0
+$\pdv[$1]{$2}{$3}$$0
 endsnippet
 
 snippet fdv "Wiggly derivative"
-\fdv{$1}{$2}$0
+$\fdv{$1}{$2}$$0
 endsnippet
+
+#}}}
 
 #}}}
 # Fractions{{{

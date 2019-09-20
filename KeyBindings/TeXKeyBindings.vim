@@ -2973,7 +2973,15 @@ inoremap <buffer> <localleader>di \displaystyle\int_{}^{}<esc>F}i
 inoremap <buffer> ;dil \displaystyle\int\limits_{}<esc>i
 inoremap <buffer> <localleader>dil \displaystyle\int\limits_{}^{}<esc>F}i
 
+inoremap <buffer> ;jd \d
 inoremap <buffer> ;d \d{}<esc>i
+inoremap <buffer> ;dx \d{x}
+inoremap <buffer> ;dy \d{y}
+inoremap <buffer> ;dz \d{z}
+inoremap <buffer> ;dz \d{w}
+inoremap <buffer> ;dr \d{r}
+inoremap <buffer> ;ds \d{s}
+inoremap <buffer> ;dt \d{t}
 inoremap <buffer> <localleader>d \displaystyle
 
 inoremap <buffer> ;s \sum_{}<esc>i
@@ -3035,10 +3043,10 @@ inoremap <buffer> ;3[ {\bigg[\bigg]}<esc>F[a
 inoremap <buffer> ;4[ {\Bigg[\Bigg]}<esc>F[a
 inoremap <buffer> ;5[ {\left[\right]}<esc>F[a
 
-inoremap <buffer> ;1\| {\big\|\big\|}<esc>F\|a
-inoremap <buffer> ;2\| {\Big\|\Big\|}<esc>F\|a
-inoremap <buffer> ;3\| {\bigg\|\bigg\|}<esc>F\|a
-inoremap <buffer> ;4\| {\Bigg\|\Bigg\|}<esc>F\|a
+inoremap <buffer> ;1\| {\big\|\big\|}<esc>2F\|a
+inoremap <buffer> ;2\| {\Big\|\Big\|}<esc>2F\|a
+inoremap <buffer> ;3\| {\bigg\|\bigg\|}<esc>2F\|a
+inoremap <buffer> ;4\| {\Bigg\|\Bigg\|}<esc>2F\|a
 inoremap <buffer> ;5\| {\left\|\right\|}<esc>2F\|a
 
 inoremap <buffer> <localleader>fl \fl{}<esc>i
@@ -3117,15 +3125,55 @@ inoremap <buffer> <localleader>act \curvearrowright
 " Derivatives and others{{{
 "-------------------------------------------------------------------
 
+inoremap <buffer> ;jdv \dv{}<esc>i
 inoremap <buffer> ;dv \dv{}{}<esc>F}i
+inoremap <buffer> ;jdvn \dv[]{}<esc>F]i
 inoremap <buffer> ;dvn \dv[]{}{}<esc>F]i
+inoremap <buffer> <localleader>jdv \displaystyle\dv{}<esc>i
 inoremap <buffer> <localleader>dv \displaystyle\dv{}{}<esc>F}i
+inoremap <buffer> <localleader>jdvn \displaystyle\dv[]{}<esc>F]i
 inoremap <buffer> <localleader>dvn \displaystyle\dv[]{}{}<esc>F]i
 
+inoremap <buffer> ;jdvx \dv{x}
+inoremap <buffer> ;jdvy \dv{y}
+inoremap <buffer> ;jdvz \dv{z}
+inoremap <buffer> ;jdvw \dv{w}
+inoremap <buffer> ;jdvr \dv{r}
+inoremap <buffer> ;jdvs \dv{s}
+inoremap <buffer> ;jdvt \dv{t}
+
+inoremap <buffer> <localleader>jdvx \displaystyle\dv{x}
+inoremap <buffer> <localleader>jdvy \displaystyle\dv{y}
+inoremap <buffer> <localleader>jdvz \displaystyle\dv{z}
+inoremap <buffer> <localleader>jdvw \displaystyle\dv{w}
+inoremap <buffer> <localleader>jdvr \displaystyle\dv{r}
+inoremap <buffer> <localleader>jdvs \displaystyle\dv{s}
+inoremap <buffer> <localleader>jdvt \displaystyle\dv{t}
+
+inoremap <buffer> ;jpdv \pdv{}<esc>i
 inoremap <buffer> ;pdv \pdv{}{}<esc>F}i
+inoremap <buffer> ;jpdvn \pdv[]{}<esc>F]i
 inoremap <buffer> ;pdvn \pdv[]{}{}<esc>F]i
+inoremap <buffer> <localleader>jpdv \displaystyle\pdv{}<esc>i
 inoremap <buffer> <localleader>pdv \displaystyle\pdv{}{}<esc>F}i
+inoremap <buffer> <localleader>jpdvn \displaystyle\pdv[]{}<esc>F]i
 inoremap <buffer> <localleader>pdvn \displaystyle\pdv[]{}{}<esc>F]i
+
+inoremap <buffer> ;jpdvx \pdv{x}
+inoremap <buffer> ;jpdvy \pdv{y}
+inoremap <buffer> ;jpdvz \pdv{z}
+inoremap <buffer> ;jpdvw \pdv{w}
+inoremap <buffer> ;jpdvr \pdv{r}
+inoremap <buffer> ;jpdvs \pdv{s}
+inoremap <buffer> ;jpdvt \pdv{t}
+
+inoremap <buffer> <localleader>jpdvx \displaystyle\pdv{x}
+inoremap <buffer> <localleader>jpdvy \displaystyle\pdv{y}
+inoremap <buffer> <localleader>jpdvz \displaystyle\pdv{z}
+inoremap <buffer> <localleader>jpdvw \displaystyle\pdv{w}
+inoremap <buffer> <localleader>jpdvr \displaystyle\pdv{r}
+inoremap <buffer> <localleader>jpdvs \displaystyle\pdv{s}
+inoremap <buffer> <localleader>jpdvt \displaystyle\pdv{t}
 
 inoremap <buffer> ;fdv \fdv{}{}<esc>F}i
 inoremap <buffer> <localleader>fdv \displaystyle\fdv{}{}<esc>F}i

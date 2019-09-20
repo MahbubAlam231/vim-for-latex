@@ -47,17 +47,19 @@ Abolish arb arbitrary
 Abolish bdd{,ness} bounded{,ness}
 Abolish bd{y,ies} boundar{y,ies}
 Abolish bij{,n,e,ve,ity,y,vely,ely,ly} bijecti{on,on,ve,ve,vity,vity,vely,vely,vely}
+Abolish betn between
 Abolish btw by the way
 
 "}}}
 "C{{{
 
+Abolish chap{,s} chapter{,s}
 Abolish char{,s,c,tic,stic,n,izatn} character{,s,istic,istic,istic,ization,ization}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish compt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
-Abolish corr{,s,es,g,ing,e,ce,ence,es,ces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ences,ences,ences}
+Abolish corr{,s,es,g,ing,e,ce,ence,esce,ences,esces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ence,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
 Abolish cpt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish ctbl{e,y,ey} countabl{e,ity,ity}
@@ -148,10 +150,13 @@ Abolish resply respectively
 "}}}
 "S{{{
 
+Abolish sec{,s} section{,s}
 Abolish seq{,s,l,ly} sequen{ce,ces,tial,tially}
 Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{,n,s,ns} solution{,,s,s}
 Abolish sp{,es} space{,s}
+Abolish ssec{,s} subsection{,s}
+Abolish sssec{,s} subsubsection{,s}
 Abolish st such that
 Abolish subalg{,s,ic} subalgebra{,s,ic}
 Abolish subgph{,s} subgraph{,s}
@@ -177,6 +182,11 @@ Abolish tx{,s} there exist{,s}
 
 Abolish unbdd unbounded
 Abolish unctbl{e,y,ey} uncountabl{e,ity,ity}
+
+"}}}
+"V{{{
+
+Abolish vsp vector space
 
 "}}}
 "W{{{

@@ -1155,7 +1155,15 @@ iunmap <buffer> <localleader>di
 iunmap <buffer> ;dil
 iunmap <buffer> <localleader>dil
 
+iunmap <buffer> ;jd
 iunmap <buffer> ;d
+iunmap <buffer> ;dx
+iunmap <buffer> ;dy
+iunmap <buffer> ;dz
+iunmap <buffer> ;dw
+iunmap <buffer> ;dr
+iunmap <buffer> ;ds
+iunmap <buffer> ;dt
 iunmap <buffer> <localleader>d
 
 iunmap <buffer> ;s
@@ -1299,15 +1307,55 @@ iunmap <buffer> <localleader>act
 " Derivatives and others{{{
 "-------------------------------------------------------------------
 
+iunmap <buffer> ;jdv
 iunmap <buffer> ;dv
+iunmap <buffer> ;jdvn
 iunmap <buffer> ;dvn
+iunmap <buffer> <localleader>jdv
 iunmap <buffer> <localleader>dv
+iunmap <buffer> <localleader>jdvn
 iunmap <buffer> <localleader>dvn
 
+iunmap <buffer> ;jdvx
+iunmap <buffer> ;jdvy
+iunmap <buffer> ;jdvz
+iunmap <buffer> ;jdvw
+iunmap <buffer> ;jdvr
+iunmap <buffer> ;jdvs
+iunmap <buffer> ;jdvt
+
+iunmap <buffer> <localleader>jdvx
+iunmap <buffer> <localleader>jdvy
+iunmap <buffer> <localleader>jdvz
+iunmap <buffer> <localleader>jdvw
+iunmap <buffer> <localleader>jdvr
+iunmap <buffer> <localleader>jdvs
+iunmap <buffer> <localleader>jdvt
+
+iunmap <buffer> ;jpdv
 iunmap <buffer> ;pdv
+iunmap <buffer> ;jpdvn
 iunmap <buffer> ;pdvn
+iunmap <buffer> <localleader>jpdv
 iunmap <buffer> <localleader>pdv
+iunmap <buffer> <localleader>jpdvn
 iunmap <buffer> <localleader>pdvn
+
+iunmap <buffer> ;jpdvx
+iunmap <buffer> ;jpdvy
+iunmap <buffer> ;jpdvz
+iunmap <buffer> ;jpdvw
+iunmap <buffer> ;jpdvr
+iunmap <buffer> ;jpdvs
+iunmap <buffer> ;jpdvt
+
+iunmap <buffer> <localleader>jpdvx
+iunmap <buffer> <localleader>jpdvy
+iunmap <buffer> <localleader>jpdvz
+iunmap <buffer> <localleader>jpdvw
+iunmap <buffer> <localleader>jpdvr
+iunmap <buffer> <localleader>jpdvs
+iunmap <buffer> <localleader>jpdvt
 
 iunmap <buffer> ;fdv
 iunmap <buffer> <localleader>fdv
