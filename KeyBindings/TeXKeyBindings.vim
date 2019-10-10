@@ -2750,7 +2750,10 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
 
 inoremap <buffer> <localleader>x \times
 inoremap <buffer> <localleader>ox \otimes
-inoremap <buffer> <localleader>o \circ
+inoremap <buffer> <localleader>Ox \bigotimes
+inoremap <buffer> <localleader>oa \oplus
+inoremap <buffer> <localleader>Oa \bigoplus
+inoremap <buffer> ;o \circ
 
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
 inoremap <buffer> ;1/ \frac{1}{}<esc>i

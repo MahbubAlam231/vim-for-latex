@@ -932,7 +932,10 @@ iunmap <buffer> <localleader>gl.pr
 
 iunmap <buffer> <localleader>x
 iunmap <buffer> <localleader>ox
-iunmap <buffer> <localleader>o
+iunmap <buffer> <localleader>Ox
+iunmap <buffer> <localleader>oa
+iunmap <buffer> <localleader>Oa
+iunmap <buffer> ;o
 
 iunmap <buffer> <localleader>/
 iunmap <buffer> ;1/
