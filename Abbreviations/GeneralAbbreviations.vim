@@ -54,7 +54,7 @@ Abolish btw by the way
 "C{{{
 
 Abolish chap{,s} chapter{,s}
-Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes}
+Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}
@@ -187,7 +187,7 @@ Abolish unctbl{e,y,ey} uncountabl{e,ity,ity}
 "}}}
 "V{{{
 
-Abolish vsp vector space
+Abolish vsp{,s} vector space{,s}
 
 "}}}
 "W{{{

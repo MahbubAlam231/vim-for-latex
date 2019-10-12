@@ -931,10 +931,29 @@ iunmap <buffer> <localleader>gl.pr
 "-------------------------------------------------------------------
 
 iunmap <buffer> <localleader>x
+
+iunmap <buffer> ;ox
+iunmap <buffer> ;oa
 iunmap <buffer> <localleader>ox
-iunmap <buffer> <localleader>Ox
 iunmap <buffer> <localleader>oa
-iunmap <buffer> <localleader>Oa
+iunmap <buffer> ;oxl
+iunmap <buffer> ;oal
+iunmap <buffer> <localleader>oxl
+iunmap <buffer> <localleader>oal
+
+iunmap <buffer> ;OX
+iunmap <buffer> ;OA
+iunmap <buffer> <localleader>OX
+iunmap <buffer> <localleader>OA
+iunmap <buffer> ;OXl
+iunmap <buffer> ;OXL
+iunmap <buffer> ;OAl
+iunmap <buffer> ;OAL
+iunmap <buffer> <localleader>OXl
+iunmap <buffer> <localleader>OXL
+iunmap <buffer> <localleader>OAl
+iunmap <buffer> <localleader>OAL
+
 iunmap <buffer> ;o
 
 iunmap <buffer> <localleader>/

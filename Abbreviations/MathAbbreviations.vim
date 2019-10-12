@@ -19,6 +19,11 @@ iabbr sqUU \bigsqcup
 iabbr sm \setminus
 iabbr ssm \smallsetminus
 
+iabbr ox \otimes
+iabbr oa \oplus
+iabbr OX \bigotimes
+iabbr OA \bigoplus
+
 "}}}
 
 " Trig and Other Functions{{{

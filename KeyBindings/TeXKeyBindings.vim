@@ -2749,10 +2749,29 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
 "-------------------------------------------------------------------
 
 inoremap <buffer> <localleader>x \times
-inoremap <buffer> <localleader>ox \otimes
-inoremap <buffer> <localleader>Ox \bigotimes
-inoremap <buffer> <localleader>oa \oplus
-inoremap <buffer> <localleader>Oa \bigoplus
+
+inoremap <buffer> ;ox \otimes_{}<esc>i
+inoremap <buffer> ;oa \oplus_{}<esc>i
+inoremap <buffer> <localleader>ox \otimes_{}^{}<esc>F}i
+inoremap <buffer> <localleader>oa \oplus_{}^{}<esc>F}i
+inoremap <buffer> ;oxl \otimes\limits_{}<esc>i
+inoremap <buffer> ;oal \oplus\limits_{}<esc>i
+inoremap <buffer> <localleader>oxl \otimes\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>oal \oplus\limits_{}^{}<esc>F}i
+
+inoremap <buffer> ;OX \bigotimes_{}<esc>i
+inoremap <buffer> ;OA \bigoplus_{}<esc>i
+inoremap <buffer> <localleader>OX \bigotimes_{}^{}<esc>F}i
+inoremap <buffer> <localleader>OA \bigoplus_{}^{}<esc>F}i
+inoremap <buffer> ;OXl \bigotimes\limits_{}<esc>i
+inoremap <buffer> ;OXL \bigotimes\limits_{}<esc>i
+inoremap <buffer> ;OAl \bigoplus\limits_{}<esc>i
+inoremap <buffer> ;OAL \bigoplus\limits_{}<esc>i
+inoremap <buffer> <localleader>OXl \bigotimes\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>OXL \bigotimes\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>OAl \bigoplus\limits_{}^{}<esc>F}i
+inoremap <buffer> <localleader>OAL \bigoplus\limits_{}^{}<esc>F}i
+
 inoremap <buffer> ;o \circ
 
 inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
