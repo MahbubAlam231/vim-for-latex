@@ -334,6 +334,8 @@ iunmap <buffer> <localleader>Ccx
 iunmap <buffer> <localleader>Cci
 iunmap <buffer> <localleader>Ccix
 
+iunmap <buffer> <localleader>Cx
+
 "}}}
 " Matrix Groups{{{
 "-------------------------------------------------------------------
@@ -1445,6 +1447,12 @@ iunmap <buffer> <localleader>eqref
 iunmap <buffer> <localleader>jeqref
 iunmap <buffer> <localleader>cit
 iunmap <buffer> <localleader>jcit
+
+iunmap <buffer> <localleader>thm
+iunmap <buffer> <localleader>lem
+iunmap <buffer> <localleader>prop
+iunmap <buffer> <localleader>cor
+iunmap <buffer> <localleader>rem
 
 " LaTeX table of contents
 unmap <buffer> <localleader>toc

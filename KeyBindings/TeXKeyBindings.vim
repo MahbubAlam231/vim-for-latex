@@ -334,6 +334,8 @@ inoremap <buffer> <localleader>Ccx C_c(X)
 inoremap <buffer> <localleader>Cci C_c^{\infty}()<esc>i
 inoremap <buffer> <localleader>Ccix C_c^{\infty}(X)
 
+inoremap <buffer> <localleader>Ci C^{\infty}()<esc>i
+
 "}}}
 " Matrix Groups{{{
 "-------------------------------------------------------------------
@@ -3334,6 +3336,12 @@ inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr
 inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
+
+inoremap <buffer> <localleader>thm Theorem~\ref{
+inoremap <buffer> <localleader>lem Lemma~\ref{
+inoremap <buffer> <localleader>prop Proposition~\ref{
+inoremap <buffer> <localleader>cor Corollary~\ref{
+inoremap <buffer> <localleader>rem Remark~\ref{
 
 " LaTeX table of contents
 nnoremap <buffer> <localleader>toc :LatexTOC<cr>

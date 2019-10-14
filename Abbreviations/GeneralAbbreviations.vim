@@ -54,7 +54,7 @@ Abolish btw by the way
 "C{{{
 
 Abolish chap{,s} chapter{,s}
-Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized}
+Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}

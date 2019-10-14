@@ -607,6 +607,10 @@ snippet Ccix
 $C_c^{\infty}(X)$$0
 endsnippet
 
+snippet Ci
+$C^{\infty}($1)$$0
+endsnippet
+
 #}}}
 # MatrixGroups{{{
 #-------------------------------------------------------------------
@@ -9756,7 +9760,7 @@ snippet matn "Matrix m x n"
 \begin{matrix}
     ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
     ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-    \vdots      & \ddots & \vdots \\\
+    \vdots & \ddots & \vdots \\\
     ${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{matrix}$0
 endsnippet
@@ -9767,7 +9771,7 @@ snippet pmatn "Parenthesis matrix m x n"
 \begin{pmatrix}
     ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
     ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-    \vdots      & \ddots & \vdots \\\
+    \vdots & \ddots & \vdots \\\
     ${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{pmatrix}$0
 endsnippet
@@ -9778,7 +9782,7 @@ snippet bmatn "Bracket matrix m x n"
 \begin{bmatrix}
     ${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
     ${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-    \vdots      & \ddots & \vdots \\\
+    \vdots & \ddots & \vdots \\\
     ${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{bmatrix}$0
 endsnippet
@@ -9906,10 +9910,19 @@ endsnippet
 # Enumeration{{{
 #-------------------------------------------------------------------
 
-snippet enum "Enumeration" b
+snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
+    \item $2
+\end{enumerate}
+$0
+endsnippet
+
+snippet enumr "Enumeration" b
+% Enumerate
+% \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
+\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont]
     \item $2
 \end{enumerate}
 $0
