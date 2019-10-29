@@ -29,6 +29,11 @@ snippet abs "Abstract" b
 $0
 endsnippet
 
+snippet today "Today's date"
+`date %e/%m/%y`
+endsnippet
+
+
 #}}}
 
 # Math Symbols{{{
@@ -9247,25 +9252,32 @@ endsnippet
 # Fractions{{{
 #-------------------------------------------------------------------
 
-snippet / "writing fractions"
-$\frac{$1}{$2}$$0
+# snippet // "Fraction" iA
+# \\frac{$1}{$2}$0
+# endsnippet
+
+priority 1000
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-snippet fr "writing fractions"
-$\frac{$1}{$2}$$0
+priority 1000
+snippet '^.*\)/' "() Fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
 endsnippet
 
-
-snippet 1/ "1 by something"
-$\frac{1}{$1}$$0
-endsnippet
-
-snippet 2/ "2 by something"
-$\frac{2}{$1}$$0
-endsnippet
-
-snippet 3/ "3 by something"
-$\frac{3}{$1}$$0
+snippet // "Fraction" iA
+\\frac{${VISUAL}}{$1}$0
 endsnippet
 
 #}}}
@@ -9608,7 +9620,7 @@ endsnippet
 snippet align "Align" b
 % Align
 \begin{align}\label{$1}
-    $2
+    ${2:${VISUAL}}
 \end{align}
 $0
 endsnippet
@@ -9616,7 +9628,7 @@ endsnippet
 snippet ualign "Unnumbered Align" b
 % UnnumberedAlign
 \begin{align*}
-    $1
+    ${1:${VISUAL}}
 \end{align*}
 $0
 endsnippet
@@ -9624,7 +9636,7 @@ endsnippet
 snippet eq "Equation" b
 % Equation
 \begin{equation}\label{$1}
-    $2
+    ${2:${VISUAL}}
 \end{equation}
 $0
 endsnippet
@@ -9632,7 +9644,7 @@ endsnippet
 snippet ueq "Unnumbered Equation" b
 % UnnumberedEquation
 \begin{equation*}
-    $2
+    ${2:${VISUAL}}
 \end{equation*}
 $0
 endsnippet
@@ -9641,7 +9653,7 @@ snippet aligneq "Aligned Equation" b
 % AlignedEquation
 \begin{equation}\label{$1}
 \begin{split}
-    $2
+    ${2:${VISUAL}}
 \end{split}
 \end{equation}
 $0
@@ -9651,7 +9663,7 @@ snippet ualigneq "Unnumbered Aligned Equation" b
 % UnnumberedAlignedEquation
 \begin{equation*}
 \begin{split}
-    $1
+    ${1:${VISUAL}}
 \end{split}
 \end{equation*}
 $0
@@ -9661,7 +9673,7 @@ snippet gathereq "Gathered Equation" b
 % GatheredEquation
 \begin{equation}\label{$1}
 \begin{gathered}
-    $2
+    ${2:${VISUAL}}
 \end{gathered}
 \end{equation}
 $0
@@ -9671,7 +9683,7 @@ snippet ugathereq "Unnumbered Gathered Equation" b
 % UnnumberedGatheredEquation
 \begin{equation*}
 \begin{gathered}
-    $1
+    ${1:${VISUAL}}
 \end{gathered}
 \end{equation*}
 $0
@@ -9691,7 +9703,7 @@ endsnippet
 snippet gather "Gather" b
 % Gather
 \begin{gather}
-    $1 \label{$2}
+    ${1:${VISUAL}} \label{$2}
 \end{gather}
 $0
 endsnippet
@@ -9699,7 +9711,7 @@ endsnippet
 snippet ugather "Unnumbered Gather" b
 % UnnumberedGather
 \begin{gather*}
-    $1
+    ${1:${VISUAL}}
 \end{gather*}
 $0
 endsnippet
@@ -9716,7 +9728,7 @@ endsnippet
 
 snippet cen "Centering" b
 \begin{center}
-    $1
+    ${1:${VISUAL}}
 \end{center}
 $0
 endsnippet
@@ -9724,7 +9736,7 @@ endsnippet
 snippet itemize "Itemize" b
 % Itemize
 \begin{itemize}[]
-    \item $2
+    \item ${1:${VISUAL}}
 \end{itemize}
 $0
 endsnippet
@@ -9735,21 +9747,21 @@ endsnippet
 
 snippet mat "Matrix"
 \begin{matrix}
-    $1 & $2  \\\
+    $1 & $2 \\\
     $3 & $4
 \end{matrix}$0
 endsnippet
 
 snippet pmat "Parenthesis matrix"
 \begin{pmatrix}
-    $1 & $2  \\\
+    $1 & $2 \\\
     $3 & $4
 \end{pmatrix}$0
 endsnippet
 
 snippet bmat "Bracket matrix"
 \begin{bmatrix}
-    $1 & $2  \\\
+    $1 & $2 \\\
     $3 & $4
 \end{bmatrix}$0
 endsnippet
@@ -9838,64 +9850,54 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet case "case"
-\[
 \begin{cases}
     $1 \\\
     $2
 \end{cases}
-\]
 $0
 endsnippet
 
 
 snippet cases "cases"
-\[
 \begin{cases}
     $1 \\\
     $2
 \end{cases}
-\]
 $0
 endsnippet
 
 
 snippet dcase "dcase"
-\[
 \begin{dcases}
-    $1 \\\
-    $2
+    $1 & \text{$2} \\ $3 \\\
+    $4 & \text{$5} \\ $6
 \end{dcases}
-\]
 $0
 endsnippet
 
 
 snippet dcases "dcases"
-\[
 \begin{dcases}
-    $1 \\\
-    $2
+    $1 & \text{$2} \\ $3 \\\
+    $4 & \text{$5} \\ $6
 \end{dcases}
-\]
 $0
 endsnippet
 
 
-snippet casedefn "case definition"
-% CaseDefinition
+snippet casedef "case definition"
 \[
     $1 =
 \begin{cases}
-    $2 & \text{$3} \\ $4 \\\
-    $5 & \text{$6} \\ $7
+    $2 \\\
+    $3
 \end{cases}
 \]
 $0
 endsnippet
 
 
-snippet dcasedefn "dcase definition"
-% DcaseDefinition
+snippet dcasedef "dcase definition"
 \[
     $1 =
 \begin{dcases}
@@ -9914,7 +9916,7 @@ snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
-    \item $2
+    \item ${1:${VISUAL}}
 \end{enumerate}
 $0
 endsnippet
@@ -9923,7 +9925,7 @@ snippet enumr "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 \begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont]
-    \item $2
+    \item ${1:${VISUAL}}
 \end{enumerate}
 $0
 endsnippet
@@ -9938,7 +9940,7 @@ snippet henum "Hyper-Enumeration" b
 
 % Enumerate
 \begin{enumerate}
-    \item $1
+    \item ${1:${VISUAL}}
 \end{enumerate}
 $0
 endsnippet
@@ -10096,7 +10098,7 @@ endsnippet
 snippet frame
 % Frame
 \begin{frame}$1%{T{E{X
-    $2
+    ${2:${VISUAL}}
 \end{frame}%}T}E}X
 endsnippet
 
@@ -10237,6 +10239,14 @@ $\varphi : $1 \to $2$$0
 endsnippet
 
 #}}}
+
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
 
 snippet rom
 \rom{$1}$0
