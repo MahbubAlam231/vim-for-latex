@@ -118,6 +118,7 @@ call vundle#begin()                   " Vundle_will_run_the_following_Plugins
 
 
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'KeitaNakamura/tex-conceal.vim'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'MahbubAlam231/dragvisuals'
 Plugin 'MahbubAlam231/hybrid-line-numbers'
@@ -168,6 +169,12 @@ filetype plugin indent on             " required, enables filetype detection
 " Airline{{{3
 
 let g:airline_theme = 'simple'
+
+"3}}}
+" Conceal{{{3
+
+set conceallevel=2
+let g:tex_conceal='abdgm'
 
 "3}}}
 " Easymotion and Sneak{{{3
