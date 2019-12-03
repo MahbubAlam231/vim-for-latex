@@ -2987,6 +2987,7 @@ inoremap <buffer> <localleader>jli \liminf
 inoremap <buffer> <localleader>jls \limsup
 
 "}}}
+" Int{{{
 
 inoremap <buffer> ;i \int_{}<esc>i
 inoremap <buffer> <localleader>i \int_{}^{}<esc>F}i
@@ -3007,6 +3008,9 @@ inoremap <buffer> ;dr \d{r}
 inoremap <buffer> ;ds \d{s}
 inoremap <buffer> ;dt \d{t}
 inoremap <buffer> <localleader>d \displaystyle
+
+"}}}
+" Sum-and-prod{{{
 
 inoremap <buffer> ;s \sum_{}<esc>i
 inoremap <buffer> <localleader>s \sum_{}^{}<esc>F}i
@@ -3029,6 +3033,8 @@ inoremap <buffer> ;cpl \coprod\limits_{}<esc>i
 inoremap <buffer> ;dcp \displaystyle\coprod_{}<esc>i
 inoremap <buffer> <localleader>cpl \coprod\limits_{}^{}<esc>F}i
 inoremap <buffer> <localleader>dcp \displaystyle\coprod_{}^{}<esc>F}i
+
+"}}}
 
 inoremap <buffer> ;mn \min_{}<esc>i
 inoremap <buffer> ;mnl \min\limits_{}<esc>i
@@ -3146,7 +3152,7 @@ inoremap <buffer> <localleader>v \vv{}<esc>i
 inoremap <buffer> <localleader>act \curvearrowright
 
 "}}}
-" Derivatives and others{{{
+" Derivatives{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> ;jdv \dv{}<esc>i
@@ -3201,6 +3207,9 @@ inoremap <buffer> <localleader>jpdvt \displaystyle\pdv{t}
 
 inoremap <buffer> ;fdv \fdv{}{}<esc>F}i
 inoremap <buffer> <localleader>fdv \displaystyle\fdv{}{}<esc>F}i
+
+"}}}
+" Others{{{
 
 inoremap <buffer> ;l \ell
 

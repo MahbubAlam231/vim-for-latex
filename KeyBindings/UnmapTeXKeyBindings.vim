@@ -1169,6 +1169,7 @@ iunmap <buffer> <localleader>jli
 iunmap <buffer> <localleader>jls
 
 "}}}
+" Int{{{
 
 iunmap <buffer> ;i
 iunmap <buffer> <localleader>i
@@ -1189,6 +1190,9 @@ iunmap <buffer> ;dr
 iunmap <buffer> ;ds
 iunmap <buffer> ;dt
 iunmap <buffer> <localleader>d
+
+"}}}
+" Sum-and-prod{{{
 
 iunmap <buffer> ;s
 iunmap <buffer> <localleader>s
@@ -1211,6 +1215,8 @@ iunmap <buffer> ;cpl
 iunmap <buffer> ;dcp
 iunmap <buffer> <localleader>cpl
 iunmap <buffer> <localleader>dcp
+
+"}}}
 
 iunmap <buffer> ;mn
 iunmap <buffer> ;mnl
@@ -1328,7 +1334,7 @@ iunmap <buffer> <localleader>v
 iunmap <buffer> <localleader>act
 
 "}}}
-" Derivatives and others{{{
+" Derivatives{{{
 "-------------------------------------------------------------------
 
 iunmap <buffer> ;jdv
@@ -1383,6 +1389,9 @@ iunmap <buffer> <localleader>jpdvt
 
 iunmap <buffer> ;fdv
 iunmap <buffer> <localleader>fdv
+
+"}}}
+" Others{{{
 
 iunmap <buffer> ;l
 
