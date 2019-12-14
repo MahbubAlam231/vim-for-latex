@@ -567,7 +567,7 @@ function! LatexBox_FoldLevel(lnum)
         ""}}}
 
         " Ignored-folds{{{
-        " Put two spaces after '%' in the commented line to get ignored-folds
+        " Put one space after '%' in the commented line to get ignored-folds
 
         if line =~ '^\s*% '
             let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
