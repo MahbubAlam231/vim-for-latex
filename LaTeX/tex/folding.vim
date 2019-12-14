@@ -566,6 +566,20 @@ function! LatexBox_FoldLevel(lnum)
 
         ""}}}
 
+        " Ignored-folds{{{
+        " Put two spaces after '%' in the commented line to get ignored-folds
+
+        if line =~ '^\s*% '
+            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
+            if len(primarytitle) > 124
+                let title = '[Ignored]  - ' . printf('%.121s', primarytitle) . '...'
+            else
+                let title = '[Ignored]  - ' . primarytitle
+            endif
+        endif
+
+        "}}}
+
         return printf('%-15s %-138s %4d lines', level, title, nlines)
         " return printf('%-15s %-138s', level, title)
         " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)

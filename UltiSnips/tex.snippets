@@ -9912,9 +9912,18 @@ endsnippet
 # Enumeration{{{
 #-------------------------------------------------------------------
 
+snippet enum "Enumeration" b
+% Enumerate
+% \renewcommand{\labelenumi}{\emph{\alph{enumi}.}}
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
+    \item ${1:${VISUAL}}
+\end{enumerate}
+$0
+endsnippet
+
 snippet enuma "Enumeration" b
 % Enumerate
-% \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
+% \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
     \item ${1:${VISUAL}}
 \end{enumerate}

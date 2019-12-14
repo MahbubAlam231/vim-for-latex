@@ -602,6 +602,11 @@ vmap <expr> D         DVB_Duplicate()
 let g:DVB_TrimWS = 1
 
 "2}}}
+" Running command in shell and pasting in buffer{{{2
+
+nnoremap <buffer> !! !!sh<cr>
+
+"2}}}
 " Searching remaps{{{2
 
 " Marking before searching
@@ -643,19 +648,19 @@ nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
 " Number of matches{{{3
 " Number of matches for a pattern
 " <localleader>/<cr> gives number of matches for last search pattern
-nnoremap <buffer> <localleader>/ :%s///gn<left><left><left><left>
-nnoremap <buffer> <localleader>? :%s///gn<left><left><left><left>
+nnoremap <buffer> <localleader>/ ms:%s///gn<left><left><left><left>
+nnoremap <buffer> <localleader>? ms:%s///gn<left><left><left><left>
 
-vnoremap <buffer> <localleader>/ :s///gn<left><left><left><left>
-vnoremap <buffer> <localleader>? :s///gn<left><left><left><left>
+vnoremap <buffer> <localleader>/ ms:s///gn<left><left><left><left>
+vnoremap <buffer> <localleader>? ms:s///gn<left><left><left><left>
 
 " Number of matches for a word
-nnoremap <buffer> <localleader>* ms*<c-o>zz:%s///gn<cr>
-nnoremap <buffer> <localleader># ms#<c-o>zz:%s///gn<cr>
+nnoremap <buffer> <localleader>* ms*<c-o>zz:%s///gn<cr>`s
+nnoremap <buffer> <localleader># ms#<c-o>zz:%s///gn<cr>`s
 
 " Number of matches for the visually selected text
-vnoremap <buffer> <localleader>* ymszz:%s/<c-r>0//gn<cr>
-vnoremap <buffer> <localleader># ymszz:%s/<c-r>0//gn<cr>
+vnoremap <buffer> <localleader>* ymszz:%s/<c-r>0//gn<cr>`s
+vnoremap <buffer> <localleader># ymszz:%s/<c-r>0//gn<cr>`s
 
 "3}}}
 
@@ -892,7 +897,7 @@ nnoremap <buffer> <leader>utv :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<c
 nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening mathspell file
-nnoremap <buffer> <leadEr>msh :new ~/.vim/spell/math.utf-8.add<cr>
+nnoremap <buffer> <leader>msh :new ~/.vim/spell/math.utf-8.add<cr>
 nnoremap <buffer> <leader>msv :vnew ~/.vim/spell/math.utf-8.add<cr>
 nnoremap <buffer> <leader>ms :vnew ~/.vim/spell/math.utf-8.add<cr>
 
