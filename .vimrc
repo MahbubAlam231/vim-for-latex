@@ -173,7 +173,7 @@ let g:airline_theme = 'simple'
 "3}}}
 " Conceal{{{3
 
-set conceallevel=2
+" set conceallevel=2
 let g:tex_conceal='abdgm'
 
 "3}}}
@@ -314,8 +314,9 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 "3}}}
 "Templates and Selecting Template{{{3
 
-" Change "normal" to "normal!" in "~/.vim/bundle/vim-templates/plugin/templates.vim" and add autocmd for writing BufNewFile event
+" In "~/.vim/bundle/vim-templates/plugin/templates.vim" add autocmd for writing BufNewFile event
 
+let g:tmpl_auto_initialize=1
 let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
 
@@ -359,6 +360,9 @@ nnoremap <buffer> <c-j> zM/<++><cr>zv:noh<cr>cf>
 inoremap <buffer> <c-j> <esc>zM/<++><cr>zv:noh<cr>cf>
 nnoremap <buffer> <c-k> zM?<++><cr>zv:noh<cr>cf>
 inoremap <buffer> <c-k> <esc>zM?<++><cr>zv:noh<cr>cf>
+
+" Correcting indent immediately after template is infected
+nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
 
 "3}}}
 " Titlecase{{{3
@@ -918,11 +922,11 @@ augroup IndentTexPyBuf
     autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
 augroup end
 
-" Doesn't seem to work when template is enabled
-augroup WriteNewBuf
-    autocmd!
-    autocmd BufNewFile *.* write
-augroup end
+" " Doesn't seem to work when template is enabled
+" augroup WriteNewBuf
+"     autocmd!
+"     autocmd BufNewFile *.* write
+" augroup end
 
 nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
 inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza

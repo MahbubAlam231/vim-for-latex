@@ -410,6 +410,26 @@ function! LatexBox_FoldLevel(lnum)
 
                 "}}}
 
+                " Definition{{{
+
+            elseif env == 'definition'
+                let title = 'Definition' . secondarytitle
+
+            elseif env == 'udefinition'
+                let title = 'UnnumberedDefinition' . secondarytitle
+
+                "}}}
+
+                " Notation{{{
+
+            elseif env == 'notation'
+                let title = 'Notation' . secondarytitle
+
+            elseif env == 'unotation'
+                let title = 'UnnumberedNotation' . secondarytitle
+
+                "}}}
+
                 " Lemma{{{
 
             elseif env == 'lemma'
@@ -573,6 +593,12 @@ function! LatexBox_FoldLevel(lnum)
             let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%{')
             if len(primarytitle) > 124
                 let title = '[Ignored]  - ' . printf('%.121s', primarytitle) . '...'
+            elseif line =~ '% Usepackages'
+                let title = 'Usepackages'
+            elseif line =~ '% Environments'
+                let title = 'Environments'
+            elseif line =~ '% Newcommands'
+                let title = 'Newcommands'
             else
                 let title = '[Ignored]  - ' . primarytitle
             endif

@@ -66,8 +66,8 @@ inoremap <buffer> ;b1 \mathbbm{1}
 " Set theory and Logic"{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <localleader>fa \forall~
-inoremap <buffer> <localleader>E \exists~
+inoremap <buffer> <localleader>fa \forall
+inoremap <buffer> <localleader>E \exists
 inoremap <buffer> <localleader>e \in
 inoremap <buffer> <localleader>e, \ni
 inoremap <buffer> <localleader>ne \notin
@@ -3502,10 +3502,10 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
-inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F7> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
 
 " inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
 " nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
@@ -3642,8 +3642,10 @@ let m = matchadd("Bibliography",'% Bibliography')
 
 highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
 
-let m = matchadd("ImpliesMarkerGroup",'($\\Longrightarrow$)')
-let m = matchadd("ImpliesMarkerGroup",'($\\Longleftarrow$)')
+let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
+let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
+let m = matchadd("ImpliesMarkerGroup",'\$(\\Longrightarrow)\$')
+let m = matchadd("ImpliesMarkerGroup",'\$(\\Longleftarrow)\$')
 
 highlight BoldGroup ctermfg=154 cterm=bold
 

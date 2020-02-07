@@ -1591,6 +1591,8 @@ iunmap <buffer> ;Om
 
 iunmap <buffer> <F5>
 nunmap <buffer> <F5>
+iunmap <buffer> <F7>
+nunmap <buffer> <F7>
 iunmap <buffer> <F8>
 nunmap <buffer> <F8>
 iunmap <buffer> <F9>
