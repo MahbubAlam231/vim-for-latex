@@ -272,6 +272,29 @@ function! LatexBox_FoldLevel(lnum)
 
         "}}}
 
+        "Title{{{
+
+        if line=~ '\\title'
+            let shorttitle = matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]')
+            let longtitle = matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+
+        if len(shorttitle) > 0
+            let primarytitle = shorttitle
+        else
+            let primarytitle = longtitle
+        endif
+
+        if len(primarytitle) > 90
+            let title = 'Title - ' . printf('%.087s', primarytitle) . '...'
+        else
+            let aligntitle = repeat(' ', 090-len(primarytitle))
+            let title = 'Title - ' . primarytitle . aligntitle
+        endif
+
+        endif
+
+        "}}}
+
         " Parts, sections and fakesections{{{
 
         let sections = '\(\(sub\)*section\|part\|chapter\)'
@@ -310,29 +333,29 @@ function! LatexBox_FoldLevel(lnum)
                 endif
             endif
 
-            if type == 'part'
-                let title = '* P    ' . secondarytitle1 . label
-            elseif type == 'chapter'
-                let title = '* C    ' . secondarytitle1 . label
-            elseif type == 'section'
-                let title = '* S    ' . secondarytitle1 . label
-            elseif type == 'subsection'
-                let title = '* Ss   ' . secondarytitle1 . label
-            elseif type == 'subsubsection'
-                let title = '* Sss  ' . secondarytitle1 . label
-            elseif type == 'chapter*'
-                let title = '* C*   ' . secondarytitle1 . label
-            elseif type == 'section*'
-                let title = '* S*   ' . secondarytitle1 . label
-            elseif type == 'subsection*'
-                let title = '* Ss*  ' . secondarytitle1 . label
-            elseif type == 'subsubsection*'
-                let title = '* Sss* ' . secondarytitle1 . label
-            else
-                let title = '~      ' . secondarytitle1 . label
-            endif
+        if type == 'part'
+            let title = '* P    ' . secondarytitle1 . label
+        elseif type == 'chapter'
+            let title = '* C    ' . secondarytitle1 . label
+        elseif type == 'section'
+            let title = '* S    ' . secondarytitle1 . label
+        elseif type == 'subsection'
+            let title = '* Ss   ' . secondarytitle1 . label
+        elseif type == 'subsubsection'
+            let title = '* Sss  ' . secondarytitle1 . label
+        elseif type == 'chapter*'
+            let title = '* C*   ' . secondarytitle1 . label
+        elseif type == 'section*'
+            let title = '* S*   ' . secondarytitle1 . label
+        elseif type == 'subsection*'
+            let title = '* Ss*  ' . secondarytitle1 . label
+        elseif type == 'subsubsection*'
+            let title = '* Sss* ' . secondarytitle1 . label
+        else
+            let title = '~      ' . secondarytitle1 . label
+        endif
 
-            "}}}
+        "}}}
 
             " Other types of section patterns{{{
 

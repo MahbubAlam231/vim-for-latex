@@ -145,7 +145,7 @@
 
 \begin{document}
 
-\title{\bfseries <++>}
+\title{\bfseries <++>}%{T{E{X
 
 \author{{{NAME}}}
 
@@ -155,6 +155,8 @@
 \email{mahbub@math.tifr.res.in}
 
 \date{<++>}
+
+%}T}E}X
 
 % Abstract
 \begin{abstract}%{T{E{X
@@ -176,4 +178,3 @@
 
 % foldmarker has been changed, if you open it in VIM, be careful.
 % set foldmarker={T{E{X,}T}E}X
-

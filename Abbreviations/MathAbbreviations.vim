@@ -37,6 +37,14 @@ iabbr sec \sec
 iabbr cosec \cosec
 iabbr csc \csc
 
+iabbr sinh \sinh
+iabbr cosh \cosh
+iabbr tanh \tanh
+iabbr coth \coth
+iabbr sech \sech
+iabbr cosech \cosech
+iabbr csch \csch
+
 "}}}
 
 " Some Command Shortcuts{{{
