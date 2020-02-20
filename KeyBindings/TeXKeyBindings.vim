@@ -3227,6 +3227,8 @@ inoremap <buffer> <localleader>N \nabla
 
 inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
+inoremap <buffer> ;te \text{}<esc>i
+
 "}}}
 
 "}}}
