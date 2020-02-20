@@ -3577,9 +3577,10 @@ let m = matchadd("Label",'\\label{.\{}}')
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight Abstract ctermbg=92 ctermfg=yellow
+highlight AbstractTitle ctermbg=92 ctermfg=yellow
 
-let m = matchadd("Abstract",'% Abstract')
+let m = matchadd("AbstractTitle",'% Abstract')
+let m = matchadd("AbstractTitle",'% Title')
 
 highlight MarkerGroup ctermbg=White ctermfg=Black
 

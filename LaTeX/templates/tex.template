@@ -147,6 +147,7 @@
 
 % \pagestyle{plain} % to remove header and footer
 
+% Title
 \title[<++>]{<++>}%{T{E{X
 
 \author{{{NAME}}}
