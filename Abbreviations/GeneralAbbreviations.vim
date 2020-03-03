@@ -123,7 +123,7 @@ Abolish lem{,s} lemma{,s}
 "M{{{
 
 Abolish mbl{e,ity} measurab{le,ility}
-Abolish mult{n,ns} multiplication{,s}
+Abolish mult{e,n,ns} multipl{e,ication,ications}
 
 "}}}
 "N{{{
