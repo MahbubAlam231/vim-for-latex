@@ -356,10 +356,10 @@ nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 "4}}}
 
 " Placeholders <++>
-nnoremap <buffer> <c-j> zM/<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <c-j> <esc>zM/<++><cr>zv:noh<cr>cf>
-nnoremap <buffer> <c-k> zM?<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <c-k> <esc>zM?<++><cr>zv:noh<cr>cf>
+nnoremap <buffer> <c-j> /<++><cr>zv:noh<cr>cf>
+inoremap <buffer> <c-j> <esc>/<++><cr>zv:noh<cr>cf>
+nnoremap <buffer> <c-k> ?<++><cr>zv:noh<cr>cf>
+inoremap <buffer> <c-k> <esc>?<++><cr>zv:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>

@@ -276,7 +276,7 @@ function! LatexBox_FoldLevel(lnum)
 
         if line=~ '\\title'
             let shorttitle = matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]')
-            let longtitle = matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+            let longtitle = matchstr(line, '\*\?\s*{\zs.\{-}\ze}%{')
 
         if len(shorttitle) > 0
             let primarytitle = shorttitle

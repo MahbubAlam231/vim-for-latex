@@ -9261,7 +9261,7 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-priority 1000
+priority 10000000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
 stripped = match.string[:-1]
