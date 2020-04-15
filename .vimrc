@@ -433,7 +433,7 @@ inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
 syntax on
 
-colorscheme wombat256dave
+colorscheme wombat256i
 " colorscheme morning
 
 set background=dark
