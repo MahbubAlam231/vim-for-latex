@@ -75,6 +75,7 @@ Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{,ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{,ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
+Abolish dist{rn,rns,re,res,red,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ion,ions,e,es,ed}
 
 "}}}
 "E{{{
@@ -183,6 +184,7 @@ Abolish tx{,s} there exist{,s}
 
 Abolish unbdd unbounded
 Abolish unctbl{e,y,ey} uncountabl{e,ity,ity}
+Abolish unif{,s,ly,ty,ties} uniform{,s,ly,ity,ities}
 
 "}}}
 "V{{{

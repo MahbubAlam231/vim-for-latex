@@ -1409,6 +1409,8 @@ iunmap <buffer> <localleader>N
 
 iunmap <buffer> <localleader><C-E>
 
+iunmap <buffer> ;te
+
 "}}}
 
 "}}}

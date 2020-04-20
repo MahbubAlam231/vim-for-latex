@@ -6,9 +6,9 @@
 % Description   : <++>
 %-------------------------------------------------------------------
 
-\documentclass[12pt,reqno]{amsart}%{T{E{X
+\documentclass[12pt,reqno]{amsart}%F{O{L{D
 
-% Usepackages%{T{E{X
+% Usepackages%F{O{L{D
 %-------------------------------------------------------------------
 
 \usepackage{afterpage}
@@ -50,8 +50,8 @@
 
 \graphicspath{{Images/}}
 
-%}T}E}X
-% Environments%{T{E{X
+%F}O}L}D
+% Environments%F{O{L{D
 %-------------------------------------------------------------------
 
 % To write names of theorems in bold
@@ -94,8 +94,8 @@
 \theoremstyle{remark}
 \newtheorem*{uremark}{Remark}
 
-%}T}E}X
-% Newcommands%{T{E{X
+%F}O}L}D
+% Newcommands%F{O{L{D
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
@@ -139,16 +139,16 @@
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-%}T}E}X
+%F}O}L}D
 
-%}T}E}X
+%F}O}L}D
 
 \begin{document}
 
 % \pagestyle{plain} % to remove header and footer
 
 % Title
-\title[<++>]{<++>}%{T{E{X
+\title[<++>]{<++>}%F{O{L{D
 
 \author{{{NAME}}}
 
@@ -159,12 +159,12 @@
 
 \date{<++>}
 
-%}T}E}X
+%F}O}L}D
 
 % Abstract
-\begin{abstract}%{T{E{X
+\begin{abstract}%F{O{L{D
     <++>
-\end{abstract}%}T}E}X
+\end{abstract}%F}O}L}D
 
 \maketitle
 
@@ -180,4 +180,4 @@
 %-------------------------------------------------------------------
 
 % foldmarker has been changed, if you open it in VIM, be careful.
-% set foldmarker={T{E{X,}T}E}X
+% set foldmarker=F{O{L{D,F}O}L}D

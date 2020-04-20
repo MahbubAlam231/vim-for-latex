@@ -10,6 +10,8 @@ let m = matchadd("Folds_brackets_comments",'%{{{')
 let m = matchadd("Folds_brackets_comments",'%}}}')
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')
 let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
+let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 
 highlight PartMarkerGroup ctermbg=087 ctermfg=black
 let m = matchadd("PartMarkerGroup",'% Part')

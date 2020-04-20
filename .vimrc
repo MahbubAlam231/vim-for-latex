@@ -245,7 +245,7 @@ set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
 nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
-" Saving folds set in manual fold method
+" Saving folds set in ~/.vim/view
 function! MakeView()
     :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction
@@ -821,22 +821,30 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex call MatrixGroupToggle()
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
-    autocmd BufNewFile,BufRead *.tex setlocal foldmarker={T{E{X,}T}E}X
+    autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
 augroup end
+
+" Changing foldmarker for tex
+nnoremap <buffer> <localleader>cfm :%s/}T}E}X/F}O}L}D/g<cr>:%s/{T{E{X/F{O{L{D/g<cr>
+
+augroup SourceTheseForAll
+    autocmd!
+    autocmd BufNewFile,BufRead * call Abbreviations("gen")
+augroup end
+
+" Sourcing everything for tex
+function! SourceEverythingForTeX()
+    call Abbreviations("gen")
+    call Abbreviations("math")
+    call KeyBindings("tex")
+    setlocal foldmethod=marker
+endfunction
 
 " TeXHighlight
 function! TeXHighlight()
     if (&ft=='tex')
         source ~/.vim/KeyBindings/TeXHighlight.vim
     endif
-endfunction
-
-"Sourcing everything for tex
-function! SourceEverythingForTeX()
-    call Abbreviations("gen")
-    call Abbreviations("math")
-    call KeyBindings("tex")
-    setlocal foldmethod=marker
 endfunction
 
 nnoremap <buffer> <localleader>ev :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
