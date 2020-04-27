@@ -543,32 +543,32 @@ function! LatexBox_FoldLevel(lnum)
                 "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
                 "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'ulemma'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'proposition'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'uproposition'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'theorem'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'utheorem'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'corollary'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'ucorollary'
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'remark'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'uremark'
-                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D{')
-                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D{')
+                "     let title = '\' . matchstr(line, '\*\?\s*\\\zs.\{-}\ze%F{O{L{D')
+                "     let title = matchstr(line, '^\s*\zs.\{-}\ze%F{O{L{D')
                 " elseif env == 'proof'
                 "     let title = 'Proof'
                 "     let title = matchstr(line, '\\label\*\?\s*{\zs.\{-}\ze}')
