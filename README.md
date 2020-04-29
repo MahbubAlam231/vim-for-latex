@@ -19,7 +19,7 @@ This folding technique uses `foldmethod=marker` and `foldmarker={T{E{X,}T}E}X`,
 so you will have to use `foldmethod=marker` to fold your `tex`, and keep in
 mind the different `foldmarker`.
 
-## Guide to install VIM and [`vim-for-latex`](https://github.com/MahbubAlam231/vim-for-latex)
+## Guide to install VIM and vim-for-latex
 
 Download `MahbubAlam231/vim-for-latex` form GitHub.
 
@@ -80,6 +80,7 @@ For basic vim tips you can watch the following videos-
 - [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA)
 - [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk)
 
-For any query about vimscripts go to `:help` from inside vim; you can also look at the book
+For any query about vimscripts go to `:help` from inside vim.
+You can also look at the book
 [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
 
