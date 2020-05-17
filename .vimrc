@@ -233,6 +233,7 @@ let g:asterisk#keeppos = 1
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_latexmk_preview_continuously = 1
+" let b:LatexBox_loaded=0
 let g:LatexBox_Folding=0
 let g:LatexBox_no_mappings=0
 
@@ -479,10 +480,10 @@ nnoremap <buffer> Q @q
 "-------------------------------------------------------------------
 
 " Get off my lawn - helpful when learning Vim :){{{3
-nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
-nnoremap <buffer> <Down>  :echoe "Use 'j'. Navigate smartly!"<cr>
-nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
-nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
+" nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
+" nnoremap <buffer> <Down>  :echoe "Use 'j'. Navigate smartly!"<cr>
+" nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
+" nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
 "3}}}
 " Moving on the screen{{{3

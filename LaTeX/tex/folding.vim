@@ -587,6 +587,12 @@ function! LatexBox_FoldLevel(lnum)
             let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%F{O{L{D')
             if len(primarytitle) > 124
                 let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
+            elseif line =~ '% Usepackages'
+                let title = 'Usepackages'
+            elseif line =~ '% Environments'
+                let title = 'Environments'
+            elseif line =~ '% Newcommands'
+                let title = 'Newcommands'
             else
                 let title = '[H]  - ' . primarytitle
             endif
