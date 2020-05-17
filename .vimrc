@@ -245,7 +245,7 @@ set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
 nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
-" Saving folds set in ~/.vim/view
+" Saving folds in ~/.vim/view
 function! MakeView()
     :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction

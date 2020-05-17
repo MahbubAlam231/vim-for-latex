@@ -3504,10 +3504,10 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F5> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>:!latexmk -pdf %:r.tex<CR><CR>zz
-inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F7> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zza
+nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zz
 
 " inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
 " nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
@@ -3573,7 +3573,7 @@ let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
 
-highlight Label ctermbg=Red ctermfg=black
+highlight Label ctermbg=141 ctermfg=0
 let m = matchadd("Label",'\\label{.\{}}')
 
 "}}}

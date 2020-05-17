@@ -581,14 +581,34 @@ function! LatexBox_FoldLevel(lnum)
         "}}}
 
         " Helper folds{{{
-        " Put two spaces after '%' in the commented line to get helper folds
+        " Put one spaces after '%' in the commented line to get helper folds
 
-        if line =~ '^\s*%  '
-            let primarytitle = matchstr(line, '^\s*%  \zs.\{-}\ze%F{O{L{D')
+        if line =~ '^\s*% '
+            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%F{O{L{D')
             if len(primarytitle) > 124
                 let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
             else
                 let title = '[H]  - ' . primarytitle
+            endif
+        endif
+
+        "}}}
+
+        " Ignored-folds{{{
+        " Put two space after '%' in the commented line to get ignored-folds
+
+        if line =~ '^\s*%  '
+            let primarytitle = matchstr(line, '^\s*%  \zs.\{-}\ze%F{O{L{D')
+            if len(primarytitle) > 124
+                let title = '[Ignored]  - ' . printf('%.121s', primarytitle) . '...'
+            elseif line =~ '% Usepackages'
+                let title = 'Usepackages'
+            elseif line =~ '% Environments'
+                let title = 'Environments'
+            elseif line =~ '% Newcommands'
+                let title = 'Newcommands'
+            else
+                let title = '[Ignored]  - ' . primarytitle
             endif
         endif
 
@@ -608,26 +628,6 @@ function! LatexBox_FoldLevel(lnum)
         "endif
 
         ""}}}
-
-        " Ignored-folds{{{
-        " Put one space after '%' in the commented line to get ignored-folds
-
-        if line =~ '^\s*% '
-            let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze%F{O{L{D')
-            if len(primarytitle) > 124
-                let title = '[Ignored]  - ' . printf('%.121s', primarytitle) . '...'
-            elseif line =~ '% Usepackages'
-                let title = 'Usepackages'
-            elseif line =~ '% Environments'
-                let title = 'Environments'
-            elseif line =~ '% Newcommands'
-                let title = 'Newcommands'
-            else
-                let title = '[Ignored]  - ' . primarytitle
-            endif
-        endif
-
-        "}}}
 
         return printf('%-15s %-138s %4d lines', level, title, nlines)
         " return printf('%-15s %-138s', level, title)
