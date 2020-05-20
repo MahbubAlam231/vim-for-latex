@@ -11,13 +11,12 @@ Here uploaded are,
 - My templates for LaTeX;
   - A 'universal' latex template (`tex.template`).
 - A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex)
-folding method and [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) folding method.
+folding method, [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) and
+[vimtex](https://github.com/lervag/vimtex) folding method.
 This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
 folding technique which can be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
 and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
-This folding technique uses `foldmethod=marker` and `foldmarker={T{E{X,}T}E}X`,
-so you will have to use `foldmethod=marker` to fold your `tex`, and keep in
-mind the different `foldmarker`.
+This folding technique uses `foldmethod=marker` and `foldmarker=F{O{L{D,F}O}L}D`.
 
 ## Guide to install VIM and vim-for-latex
 
@@ -49,7 +48,7 @@ update shell configuration files while running `~/.fzf/install`), and add the li
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template`
 in `~/.vim/bundle/vim-templates/templates`;
-- Put `tex` in `~/.vim/bundle/Latex-Box/ftplugin`.
+- Put `tex` in `~/.vim/bundle/vimtex/ftplugin`.
 
 #### For macOS (not very sure about it btw)
 

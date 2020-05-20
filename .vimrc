@@ -117,9 +117,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()                   " Vundle_will_run_the_following_Plugins
 
 
+" Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'KeitaNakamura/tex-conceal.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'MahbubAlam231/dragvisuals'
 Plugin 'MahbubAlam231/hybrid-line-numbers'
 Plugin 'MahbubAlam231/searching-with-blinking'
@@ -142,6 +142,7 @@ Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-user'
+Plugin 'lervag/vimtex'
 Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tibabit/vim-templates'
@@ -229,16 +230,36 @@ map gz# <Plug>(asterisk-gz#)
 let g:asterisk#keeppos = 1
 
 "}}}
-" LaTeX-Box and Folding{{{3
+" LaTeX-Box, vimtex and Folding{{{3
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_latexmk_preview_continuously = 1
 " let b:LatexBox_loaded=0
-let g:LatexBox_Folding=0
-let g:LatexBox_no_mappings=0
+" let g:LatexBox_custom_indent=0
+" let g:LatexBox_Folding=0
+" let g:LatexBox_no_mappings=0
 
-nnoremap <buffer> <localleader>lv :LatexView<cr>
-nnoremap <buffer> <localleader>lj :LatexLabels<cr>
+" nnoremap <buffer> <localleader>lv :LatexView<cr>
+" nnoremap <buffer> <localleader>lj :LatexLabels<cr>
+
+" vimtex
+" let g:vimtex_indent_enabled=1
+" let g:vimtex_complete_enabled=0
+" let g:vimtex_complete_bib=0
+" let g:vimtex_complete_citation=0
+" let g:vimtex_complete_ref=0
+" let g:vimtex_complete_close_braces=0
+let g:vimtex_fold_enabled=0
+
+map dsm <plug>(vimtex-env-delete-math)
+map csm <plug>(vimtex-env-change-math)
+map am  <plug>(vimtex-a$)
+map im  <plug>(vimtex-i$)
+
+omap dsm <plug>(vimtex-env-delete-math)
+omap csm <plug>(vimtex-env-change-math)
+omap am  <plug>(vimtex-a$)
+omap im  <plug>(vimtex-i$)
 
 " Folding
 set foldlevelstart=0
@@ -305,6 +326,7 @@ vnoremap <buffer> 'm `mzvzz
 "3}}}
 " NERDtree{{{3
 
+nnoremap <buffer> <localleader>ner :NERDTree<cr>
 nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 
 "3}}}
@@ -385,6 +407,27 @@ vmap <localleader>t <Plug>Titlecase
 " let g:loaded_youcompleteme = 0
 
 "3}}}
+" Text objects via vim-textobj-user{{{3
+
+" call textobj#user#plugin('tex', {
+"             \   'dollar-math': {
+"             \     'pattern': ['\$', '\$'],
+"             \    'select-a': [],
+"             \    'select-i': [],
+"             \   },
+"             \ })
+
+" augroup tex_textobjs
+"     autocmd!
+"     autocmd FileType tex call textobj#user#map('tex', {
+"                 \   'dollar-math': {
+"                 \         'select-a': '<buffer> a\$',
+"                 \         'select-i': '<buffer> i\$',
+"                 \   },
+"                 \ })
+" augroup end
+
+"3}}}
 
 "2}}}
 
@@ -408,19 +451,20 @@ vnoremap <buffer> <localleader>ar :right<cr>
 " Braces and stuff{{{2
 "-------------------------------------------------------------------
 
-inoremap <buffer> ( ()<esc>i
+inoremap <buffer> ( ()<left>
 inoremap <buffer> (( (
-inoremap <buffer> { {}<esc>i
+inoremap <buffer> { {}<left>
+inoremap <buffer> {{ \{\}<left><left>
 inoremap <buffer> p{ {
 inoremap <buffer> P{ {
-inoremap <buffer> [ []<esc>i
+inoremap <buffer> [ []<left>
 inoremap <buffer> [[ [
 
-inoremap <buffer> \| \|\|<esc>i
+inoremap <buffer> \| \|\|<left>
 inoremap <buffer> \|\| \|
 
-inoremap <buffer> '' ''<esc>i
-inoremap <buffer> "" ""<esc>i
+inoremap <buffer> '' ''<left>
+inoremap <buffer> "" ""<left>
 
 "2}}}
 " Calculator{{{2
@@ -462,12 +506,12 @@ let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
 " To get <> and write <localleader> easily
-inoremap <buffer> <> <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
-inoremap <buffer> <L <><esc>ileader<esc>la
-inoremap <buffer> <LL <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <> <><left>
+inoremap <buffer> <localleader>bu <><left>buffer<right>
+inoremap <buffer> <L <><left>leader<right>
+inoremap <buffer> <LL <><left>ilocalleader<right>
+inoremap <buffer> <localleader>bl <><left>buffer<right> <><left>leader<right>
+inoremap <buffer> <localleader>bll <><left>buffer<right> <><left>localleader<right>
 
 "2}}}
 " Macros{{{2
@@ -729,7 +773,7 @@ vnoremap <buffer> <localleader>S :S/
 "-------------------------------------------------------------------
 
 "autocmd BufWritePre *.* %s/\s\+$//e
-inoremap <buffer> <localleader>fws <Esc>mwV:FixWhitespace<cr>:echo<cr>`wa
+inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>:echo<cr>`wa
 nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
 "2}}}
@@ -853,7 +897,7 @@ inoremap <buffer> <localleader>ev <esc>:source $MYVIMRC<cr>:call SourceEverythin
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>:echo<cr>
-inoremap <buffer> <F4> <Esc>:call KeyBindings("tex")<cr>:echo<cr>a
+inoremap <buffer> <F4> <esc>:call KeyBindings("tex")<cr>:echo<cr>a
 
 "Sourcing NumbersPeacefully
 nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>:echo<cr>
@@ -871,7 +915,7 @@ nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>:echo<cr>
 
 "Sourcing UnmapTexKeyBindings
 nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>:echo<cr>
-inoremap <buffer> <localleader>ut <Esc>:call KeyBindings("unmaptex")<cr>:echo<cr>a
+inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>:echo<cr>a
 
 "2}}}
 " Opening .vimrc, KeyBindings and Stuff{{{2
@@ -927,10 +971,10 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-augroup IndentTexPyBuf
-    autocmd!
-    autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
-augroup end
+" augroup IndentTexPyBuf
+"     autocmd!
+"     autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
+" augroup end
 
 " " Doesn't seem to work when template is enabled
 " augroup WriteNewBuf

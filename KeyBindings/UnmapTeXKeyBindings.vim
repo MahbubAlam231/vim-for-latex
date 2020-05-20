@@ -1262,18 +1262,7 @@ iunmap <buffer> ;4\|
 iunmap <buffer> ;5\|
 
 iunmap <buffer> <localleader>fl
-iunmap <buffer> ;1fl
-iunmap <buffer> ;2fl
-iunmap <buffer> ;3fl
-iunmap <buffer> ;4fl
-iunmap <buffer> ;5fl
-
 iunmap <buffer> <localleader>ce
-iunmap <buffer> ;1ce
-iunmap <buffer> ;2ce
-iunmap <buffer> ;3ce
-iunmap <buffer> ;4ce
-iunmap <buffer> ;5ce
 
 iunmap <buffer> <localleader>lrdb
 
