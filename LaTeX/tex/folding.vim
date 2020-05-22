@@ -1,4 +1,4 @@
-" Folding in LaTeX-Box like in LaTeX-Suite
+" Folding in LaTeX-Box or in vimtex like in LaTeX-Suite
 
 " My modification of @petobens (https://tex.stackexchange.com/users/9953/petobens) folding method.
 

@@ -100,19 +100,8 @@
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
 
-\newcommand{\fl}[1]{\lfloor#1 \rfloor}
-\newcommand{\bigfl}[1]{\big\lfloor#1 \big\rfloor}
-\newcommand{\Bigfl}[1]{\Big\lfloor#1 \Big\rfloor}
-\newcommand{\biggfl}[1]{\bigg\lfloor#1 \bigg\rfloor}
-\newcommand{\Biggfl}[1]{\Bigg\lfloor#1 \Bigg\rfloor}
-\newcommand{\lrfl}[1]{\left\lfloor#1 \right\rfloor}
-
-\newcommand{\ce}[1]{\lceil#1 \rceil}
-\newcommand{\bigce}[1]{\big\lceil#1 \big\rceil}
-\newcommand{\Bigce}[1]{\Big\lceil#1 \Big\rceil}
-\newcommand{\biggce}[1]{\bigg\lceil#1 \bigg\rceil}
-\newcommand{\Biggce}[1]{\Bigg\lceil#1 \Bigg\rceil}
-\newcommand{\lrce}[1]{\left\lceil#1 \right\rceil}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \newcommand{\M}{\mathrm{M}}
 \newcommand{\GL}{\mathrm{GL}}

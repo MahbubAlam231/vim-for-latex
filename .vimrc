@@ -97,6 +97,8 @@ nnoremap <buffer> <S-RIGHT> 5<c-w>>
 "2}}}
 " Line number{{{
 
+set number relativenumber
+
 nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 
 "}}}
@@ -135,6 +137,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'ervandew/supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'haya14busa/vim-asterisk'
+Plugin 'inkarkat/vim-PatternsOnText'
 Plugin 'junegunn/fzf.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kana/vim-textobj-datetime'
@@ -251,15 +254,29 @@ let g:asterisk#keeppos = 1
 " let g:vimtex_complete_close_braces=0
 let g:vimtex_fold_enabled=0
 
-map dsm <plug>(vimtex-env-delete-math)
-map csm <plug>(vimtex-env-change-math)
-map am  <plug>(vimtex-a$)
-map im  <plug>(vimtex-i$)
+xmap dsm <plug>(vimtex-env-delete-math)
+xmap csm <plug>(vimtex-env-change-math)
+xmap am  <plug>(vimtex-a$)
+xmap im  <plug>(vimtex-i$)
 
 omap dsm <plug>(vimtex-env-delete-math)
 omap csm <plug>(vimtex-env-change-math)
 omap am  <plug>(vimtex-a$)
 omap im  <plug>(vimtex-i$)
+
+" augroup NextPrevMath
+"     autocmd!
+"     autocmd FileType tex nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:echo<cr>
+" augroup end
+
+" function! FindMath()
+"     :execute ":normal! /\\(^\\([^$]\\|\\$[^$]\\+\\$\\)\\+\\)\\@<=\\$\<cr>"
+" endfunction
+
+" nnoremap <buffer> <localleader>fm :call FindMath()<cr>:echo<cr>
+
+nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>:echo<cr>
+nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>:echo<cr>
 
 " Folding
 set foldlevelstart=0
