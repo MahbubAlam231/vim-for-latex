@@ -4,4 +4,10 @@
  * @created     : {{TIMESTAMP}}
  */
 
-#include "{{FILE}}.h"
+#include <stdio.h>
+
+int main()
+{
+    {{CURSOR}}
+    return 0;
+}

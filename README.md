@@ -14,7 +14,8 @@ Here uploaded are,
 folding method, [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) and
 [vimtex](https://github.com/lervag/vimtex) folding method.
 This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
-folding technique which can be found [here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
+folding technique which can be found
+[here](https://github.com/petobens/dotfiles/blob/master/vim/ftplugin/tex/folding.vim)
 and [here](https://tex.stackexchange.com/questions/130586/vim-nice-folding-function).
 This folding technique uses `foldmethod=marker` and `foldmarker=F{O{L{D,F}O}L}D`.
 

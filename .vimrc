@@ -6,7 +6,7 @@
 " Preamble{{{
 "-------------------------------------------------------------------
 
-" Basic options{{{2
+" All basic options{{{2
 "-------------------------------------------------------------------
 
 set nocompatible                      " be improved, required (must be before everything)
@@ -20,7 +20,6 @@ set clipboard=unnamed                 " Clipboard support (OSX)
 set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
-set nobackup nowritebackup noswapfile " Turn off backup files
 set noerrorbells                      " Turn off audible bells
 set visualbell                        " Flash the screen when an error message is displayed
 set history=10000                     " Command line history for vim
@@ -35,15 +34,39 @@ set cursorline                        " Highlighting the line containing the cur
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
 "2}}}
+" Backups{{{
+
+set backup                            " Enable backups
+set noswapfile                        " It's 2013, Vim.
+
+set undodir=~/.vim/tmp/undo//         " Undo files
+set backupdir=~/.vim/tmp/backup//     " Backups
+set directory=~/.vim/tmp/swap//       " Swap files
+set writebackup                       " Write backup
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+"}}}
 " Tabs, indentation and wrapping{{{2
 "-------------------------------------------------------------------
 
 set tabstop=4                         " Redefine tab as four spaces
+set softtabstop=4                     " Number of spaces in tab when editing
 set shiftwidth=4                      " To change the number of space characters inserted for indentation
 set expandtab                         " Four spaces for tabs everywhere
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
 set showmatch                         " Briefly jump to the match if a bracket is inserted, 'matchtime' to be used to set the time to show the match
+set foldenable                        " Enable folding
 
 ""Make the 71th column stand out
 "highlight ColorColumn ctermbg=magenta
@@ -57,14 +80,16 @@ set listchars+=precedes:←             " Show arrow if line continues leftwards
 nnoremap <buffer> <localleader>wt :set wrap!<cr>:echo<cr>
 
 "2}}}
-" Ignored files/directories from autocomplete (and CtrlP){{{2
+" Ignored files/directories from autocomplete{{{2
 "-------------------------------------------------------------------
 
 set wildignore+=*/tmp/*
-set wildignore+=*.so
-set wildignore+=*.zip,*.jpg,*.jpeg,*.png
-set wildignore+=*/vendor/bundle/*
-set wildignore+=*/node_modules/
+" set wildignore+=*.so
+set wildignore+=*.aux,*.out,*.toc     " LaTeX intermediate files
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif " Images
+set wildignore+=*.zip                 " zip files
+" set wildignore+=*/vendor/bundle/*
+" set wildignore+=*/node_modules/
 
 "2}}}
 " Searching{{{2
@@ -148,6 +173,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
 Plugin 'tibabit/vim-templates'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -164,7 +190,7 @@ Plugin 'vim-syntastic/syntastic'
 
 
 call vundle#end()                     " required
-filetype plugin indent on             " required, enables filetype detection
+filetype indent plugin on             " required, enables filetype detection
 
 "2}}}
 " Plugin mappings{{{2
@@ -219,21 +245,14 @@ nnoremap <buffer> <localleader>fzd :FZF<cr>
 nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 
 "}}}
-" Vim-asterisk{{{
+" Gundo{{{
 
-map *   <Plug>(asterisk-*)
-map #   <Plug>(asterisk-#)
-map g*  <Plug>(asterisk-g*)zz
-map g#  <Plug>(asterisk-g#)zz
-map z*  <Plug>(asterisk-z*)
-map gz* <Plug>(asterisk-gz*)
-map z#  <Plug>(asterisk-z#)
-map gz# <Plug>(asterisk-gz#)
-
-let g:asterisk#keeppos = 1
+nnoremap <localleader>gt :GundoToggle<CR>
 
 "}}}
 " LaTeX-Box, vimtex and Folding{{{3
+
+" LaTeX-Box{{{
 
 " let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
 " let g:LatexBox_latexmk_preview_continuously = 1
@@ -245,7 +264,9 @@ let g:asterisk#keeppos = 1
 " nnoremap <buffer> <localleader>lv :LatexView<cr>
 " nnoremap <buffer> <localleader>lj :LatexLabels<cr>
 
-" vimtex
+"}}}
+" vimtex{{{
+
 " let g:vimtex_indent_enabled=1
 " let g:vimtex_complete_enabled=0
 " let g:vimtex_complete_bib=0
@@ -254,31 +275,20 @@ let g:asterisk#keeppos = 1
 " let g:vimtex_complete_close_braces=0
 let g:vimtex_fold_enabled=0
 
-xmap dsm <plug>(vimtex-env-delete-math)
-xmap csm <plug>(vimtex-env-change-math)
 xmap am  <plug>(vimtex-a$)
 xmap im  <plug>(vimtex-i$)
 
-omap dsm <plug>(vimtex-env-delete-math)
-omap csm <plug>(vimtex-env-change-math)
 omap am  <plug>(vimtex-a$)
 omap im  <plug>(vimtex-i$)
 
-" augroup NextPrevMath
-"     autocmd!
-"     autocmd FileType tex nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:echo<cr>
-" augroup end
+nmap dsm <plug>(vimtex-env-delete-math)
+nmap csm <plug>(vimtex-env-change-math)
 
-" function! FindMath()
-"     :execute ":normal! /\\(^\\([^$]\\|\\$[^$]\\+\\$\\)\\+\\)\\@<=\\$\<cr>"
-" endfunction
+nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 
-" nnoremap <buffer> <localleader>fm :call FindMath()<cr>:echo<cr>
-
-nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>:echo<cr>
-nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>:echo<cr>
-
-" Folding
+"}}}
+" Folding{{{
 set foldlevelstart=0
 set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
@@ -305,7 +315,7 @@ augroup Loadview
     autocmd BufNewFile,BufRead *.* silent loadview
 augroup end
 
-" Opening/closing folding{{{4
+" Opening/closing folding{{{
 nnoremap <buffer> zo mozozz
 nnoremap <buffer> zc mczczz
 nnoremap <buffer> zC mczCzz
@@ -338,7 +348,9 @@ vnoremap <buffer> 'v `vzvzz
 vnoremap <buffer> 'r `rzvzz
 vnoremap <buffer> 'm `mzvzz
 
-"4}}}
+"}}}
+
+"}}}
 
 "3}}}
 " NERDtree{{{3
@@ -348,6 +360,7 @@ nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 
 "3}}}
 " Supertab{{{3
+
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
@@ -372,15 +385,15 @@ function! Template(code)
     if l:code == "art"
         :TemplateInit article
 
-    "ams
+        "ams
     elseif l:code == "ams"
         :TemplateInit amsart
 
-    "rep
+        "rep
     elseif l:code == "rep"
         :TemplateInit report
 
-    "invalid template
+        "invalid template
     elseif l:code != 'art' && l:code != 'ams' && l:code != 'rep'
         echom " <-- Not a valid template"
     endif
@@ -405,25 +418,6 @@ inoremap <buffer> <c-k> <esc>?<++><cr>zv:noh<cr>cf>
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
 
 "3}}}
-" Titlecase{{{3
-
-let g:titlecase_map_keys = 0
-
-" <Plug>Titlecase " Titlecase the region defined by a text object or motion
-nmap <localleader>t <Plug>Titlecase
-
-" <Plug>TitlecaseLine " Titlecase the entire line
-nmap <localleader>tt <Plug>TitlecaseLine
-
-" <Plug>Titlecase " Titlecase the visually selected region
-vmap <localleader>t <Plug>Titlecase
-
-"3}}}
-" YouCompleteMe{{{3
-
-" let g:loaded_youcompleteme = 0
-
-"3}}}
 " Text objects via vim-textobj-user{{{3
 
 " call textobj#user#plugin('tex', {
@@ -445,6 +439,39 @@ vmap <localleader>t <Plug>Titlecase
 " augroup end
 
 "3}}}
+" Titlecase{{{3
+
+let g:titlecase_map_keys = 0
+
+" <Plug>Titlecase " Titlecase the region defined by a text object or motion
+nmap <localleader>t <Plug>Titlecase
+
+" <Plug>TitlecaseLine " Titlecase the entire line
+nmap <localleader>tt <Plug>TitlecaseLine
+
+" <Plug>Titlecase " Titlecase the visually selected region
+vmap <localleader>t <Plug>Titlecase
+
+"3}}}
+" YouCompleteMe{{{3
+
+" let g:loaded_youcompleteme = 0
+
+"3}}}
+" Vim-asterisk{{{
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)zz
+map g#  <Plug>(asterisk-g#)zz
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+let g:asterisk#keeppos = 1
+
+"}}}
 
 "2}}}
 
@@ -496,7 +523,7 @@ inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 syntax on
 
 colorscheme wombat256i
-" colorscheme morning
+" colorscheme badwolf
 
 set background=dark
 
@@ -516,6 +543,66 @@ cnoremap <buffer> <c-e> <end>
 "inoremap <expr> <C-K> BDG_GetDigraph()
 
 "2}}}
+" Highlight Word {{{
+"
+" This mini-plugin provides a few mappings for highlighting words temporarily.
+"
+" Sometimes you're looking at a hairy piece of code and would like a certain
+" word or two to stand out temporarily.  You can search for it, but that only
+" gives you one color of highlighting.  Now you can use <leader>N where N is
+" a number from 1-6 to highlight the current word in a specific color.
+
+function! HiInterestingWord(n) " {{{
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction " }}}
+" Mappings {{{
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
+
+" nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
+" nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
+" nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
+" nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
+" nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
+" nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
+
+" }}}
+" Default Highlights {{{
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+
+" }}}
+
+" }}}
 " Leader Mappings{{{2
 "-------------------------------------------------------------------
 
@@ -580,7 +667,7 @@ inoremap <buffer> <leader>zb <esc>zba
 
 "3}}}
 " Toggle VIM lines and visual lines navigation{{{3
-let s:navigation_toggle = 0
+let s:navigation_toggle=0
 
 function! NavigationToggleInWrapMode()
     if s:navigation_toggle
@@ -596,7 +683,7 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> J mjL
         vnoremap <buffer> K mkH
         vnoremap <buffer> L mlg_
-        let s:navigation_toggle = 0
+        let s:navigation_toggle=0
     else
         " Using visual lines
         nnoremap <buffer> j gj
@@ -612,7 +699,7 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> J mjL
         vnoremap <buffer> K mkH
         vnoremap <buffer> L mlg$
-        let s:navigation_toggle = 1
+        let s:navigation_toggle=1
     endif
 endfunction
 
@@ -624,10 +711,12 @@ nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<c
 nnoremap <buffer> gg mggg
 nnoremap <buffer> G mgG
 nnoremap <buffer> 'g `gzvzz
+nnoremap <buffer> 'j `jzvzz
 
 vnoremap <buffer> gg mggg
 vnoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
+vnoremap <buffer> 'j `jzvzz
 
 " Easy splits navigation{{{3
 nnoremap <buffer> <localleader>h  <c-w>h
@@ -651,9 +740,12 @@ nnoremap <buffer> g, g,zvzz
 nnoremap <buffer> p pmp
 nnoremap <buffer> P Pmp
 
-" Visually reselect whatever is pasted
-nnoremap <buffer> <localleader>V `pV`]
-vnoremap <buffer> <localleader>V <esc>`pV`]
+" Visually reselect whatever is pasted (not working)
+nnoremap <buffer> <localleader>V V`[
+vnoremap <buffer> <localleader>V <esc>V`[
+
+" Highlight last inserted text
+nnoremap gV `[v`]
 
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
@@ -687,8 +779,8 @@ vnoremap <buffer> / <esc>ms/\%V
 vnoremap <buffer> 's `szvzz
 
 " Don't move on after */#
-nnoremap <buffer> * ms*<c-o>zz
-nnoremap <buffer> # ms#<c-o>zz
+nnoremap <buffer> * ms*<c-o>
+nnoremap <buffer> # ms#<c-o>
 
 " Search the visually selected using */# (from Scrooloose){{{3
 function! s:VSerSearch()
@@ -722,18 +814,18 @@ vnoremap <buffer> <localleader>/ ms:s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>? ms:s///gn<left><left><left><left>
 
 " Number of matches for a word
-nnoremap <buffer> <localleader>* ms*<c-o>zz:%s///gn<cr>`s
-nnoremap <buffer> <localleader># ms#<c-o>zz:%s///gn<cr>`s
+nnoremap <buffer> <localleader>* ms*<c-o>:%s///gn<cr>
+nnoremap <buffer> <localleader># ms#<c-o>:%s///gn<cr>
 
 " Number of matches for the visually selected text
-vnoremap <buffer> <localleader>* ymszz:%s/<c-r>0//gn<cr>`s
-vnoremap <buffer> <localleader># ymszz:%s/<c-r>0//gn<cr>`s
+vnoremap <buffer> <localleader>* yms:%s/<c-r>0//gn<cr>
+vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 
 "3}}}
 
 " Clearing highlighted matches
 nnoremap <buffer> <esc> :noh<cr>:echo<cr>
-nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`mzz
+nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
 
 "2}}}
 " Some other remaps{{{2
@@ -816,20 +908,20 @@ function! KeyBindings(code)
         source ~/.vim/KeyBindings/TeXKeyBindings.vim
         set spellfile=~/.vim/spell/math.utf-8.add
 
-    "to enter numbers peacefully
+        "to enter numbers peacefully
     elseif l:code == "np"
         source ~/.vim/KeyBindings/NumbersPeacefully.vim
 
-    "python
+        "python
     elseif l:code == "py"
         source ~/.vim/KeyBindings/PythonKeyBindings.vim
         set spellfile=~/.vim/spell/math.utf-8.add
 
-    "UnmapTeXKeyBindings
+        "UnmapTeXKeyBindings
     elseif l:code == "unmaptex"
         source ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
 
-    "invalid KeyBindings
+        "invalid KeyBindings
     elseif l:code != 'tex' && l:code != 'np' && l:code != 'py' && l:code != 'unmaptex'
         echom " <-- Not a valid KeyBinding"
     endif
@@ -850,13 +942,13 @@ function! Abbreviations(code)
 
     "gen
     if l:code == "gen"
-    source ~/.vim/Abbreviations/GeneralAbbreviations.vim
+        source ~/.vim/Abbreviations/GeneralAbbreviations.vim
 
-    "math
+        "math
     elseif l:code == "math"
-    source ~/.vim/Abbreviations/MathAbbreviations.vim
+        source ~/.vim/Abbreviations/MathAbbreviations.vim
 
-    "invalid Abbreviations
+        "invalid Abbreviations
     elseif l:code != 'gen' && l:code != 'math'
         echom " <-- Not a valid Abbreviation"
     endif
@@ -884,6 +976,7 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
 augroup end
 
 " Changing foldmarker for tex
@@ -899,7 +992,9 @@ function! SourceEverythingForTeX()
     call Abbreviations("gen")
     call Abbreviations("math")
     call KeyBindings("tex")
+    setlocal spell spelllang=en_us
     setlocal foldmethod=marker
+    setlocal foldmarker=F{O{L{D,F}O}L}D
 endfunction
 
 " TeXHighlight
@@ -999,8 +1094,8 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 "     autocmd BufNewFile * write
 " augroup end
 
-nnoremap <buffer> <localleader>w mm:w!<cr>:redraw!<cr>`mzz
-inoremap <buffer> ;w <esc>mm:w!<cr>:redraw!<cr>`mzza
+nnoremap <buffer> <localleader>w mm:w!<cr>`m
+inoremap <buffer> ;w <esc>mm:w!<cr>`ma
 
 augroup ContinuouslyWriteBuf
     autocmd!
@@ -1019,8 +1114,8 @@ augroup end
 "     endif
 " endfunction
 
-nnoremap <buffer> <localleader>q mqzMgg:q!<cr>
-nnoremap <buffer> <localleader>wq mqzMgg:wq<cr>
+nnoremap <buffer> <localleader>q mq:q!<cr>
+nnoremap <buffer> <localleader>wq mq:wq<cr>
 nnoremap <buffer> 'q `qzvzz
 vnoremap <buffer> 'q `qzvzz
 

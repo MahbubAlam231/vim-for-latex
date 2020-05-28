@@ -1,11 +1,10 @@
-#!/usr/bin/env sh
-
 ######################################################################
 # @author      : {{NAME}} ({{EMAIL}})
 # @file        : {{FILE}}
 # @created     : {{TIMESTAMP}}
-#
-# @description : {{CURSOR}}
 ######################################################################
 
+cmake_minimum_required(VERSION 2.8)
+project({{CURSOR}} C)
 
+add_executable(main main.c)

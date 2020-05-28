@@ -58,11 +58,6 @@ inoremap <buffer> "" ``''<left><left>
 
 inoremap <buffer> ;b1 \mathbbm{1}
 
-" augroup NextDollar
-"     autocmd!
-"     autocmd FileType tex nnoremap <buffer> <localleader>fm /\(^\([^$]\|\$[^$]\+\$\)\+\)\@<=\$
-" augroup end
-
 "}}}
 
 " Math Symbols{{{

@@ -10295,8 +10295,9 @@ snippet ts "Text sc"
 \textsc{$1}$0
 endsnippet
 
+# \{\} used for better-working-fold
 snippet em "Emphasize even visually selected text"
-\emph{${1:${VISUAL}}}$0
+\emph\{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet tc "Text color"
