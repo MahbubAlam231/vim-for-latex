@@ -1445,6 +1445,10 @@ iunmap <buffer> <localleader>ref
 iunmap <buffer> <localleader>jref
 iunmap <buffer> <localleader>eqref
 iunmap <buffer> <localleader>jeqref
+iunmap <buffer> <localleader>aref
+iunmap <buffer> <localleader>jaref
+iunmap <buffer> <localleader>cref
+iunmap <buffer> <localleader>jcref
 iunmap <buffer> <localleader>cit
 iunmap <buffer> <localleader>jcit
 
@@ -1454,8 +1458,6 @@ iunmap <buffer> <localleader>prop
 iunmap <buffer> <localleader>cor
 iunmap <buffer> <localleader>rem
 
-" LaTeX table of contents
-unmap <buffer> <localleader>toc
 "}}}
 
 " Alphabets{{{

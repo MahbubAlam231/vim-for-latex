@@ -6,13 +6,14 @@
 " Preamble{{{
 "-------------------------------------------------------------------
 
-" All basic options{{{2
+" All basic options{{{
 "-------------------------------------------------------------------
 
-set nocompatible                      " be improved, required (must be before everything)
-filetype off                          " required, disables filetype detection
+set nocompatible                      " Be iMproved, required (must be before everything)
+filetype off                          " Required before Vundle and plugins, disables filetype detection
 
 set title                             " Terminal title reflects buffer name
+set autochdir                         " Auto change directory (some plugins may not work)
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
@@ -33,7 +34,7 @@ set cursorline                        " Highlighting the line containing the cur
 " set laststatus=2                      " Always display statusline
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
-"2}}}
+"}}}
 " Backups{{{
 
 set backup                            " Enable backups
@@ -56,7 +57,7 @@ if !isdirectory(expand(&directory))
 endif
 
 "}}}
-" Tabs, indentation and wrapping{{{2
+" Tabs, indentation and wrapping{{{
 "-------------------------------------------------------------------
 
 set tabstop=4                         " Redefine tab as four spaces
@@ -79,8 +80,8 @@ set listchars+=precedes:←             " Show arrow if line continues leftwards
 " Wrap toggle
 nnoremap <buffer> <localleader>wt :set wrap!<cr>:echo<cr>
 
-"2}}}
-" Ignored files/directories from autocomplete{{{2
+"}}}
+" Ignored files/directories from autocomplete{{{
 "-------------------------------------------------------------------
 
 set wildignore+=*/tmp/*
@@ -91,8 +92,8 @@ set wildignore+=*.zip                 " zip files
 " set wildignore+=*/vendor/bundle/*
 " set wildignore+=*/node_modules/
 
-"2}}}
-" Searching{{{2
+"}}}
+" Searching{{{
 "-------------------------------------------------------------------
 
 set ignorecase                        " Search queries intelligently set case
@@ -100,8 +101,8 @@ set smartcase                         " Override 'ignorecase' option if search p
 set incsearch                         " Show search results as you type
 set hlsearch                          " Highlight all search patterns
 
-"2}}}
-" Split{{{2
+"}}}
+" Split{{{
 "-------------------------------------------------------------------
 
 set splitright                        " Open new splits to the right
@@ -119,7 +120,7 @@ augroup end
 nnoremap <buffer> <S-LEFT>  5<c-w><
 nnoremap <buffer> <S-RIGHT> 5<c-w>>
 
-"2}}}
+"}}}
 " Line number{{{
 
 set number relativenumber
@@ -130,10 +131,7 @@ nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 
 "}}}
 
-" Plugins and Plugin mappings{{{
-"-------------------------------------------------------------------
-
-" Plugins{{{2
+" Plugins{{{
 "-------------------------------------------------------------------
 
 " Set the runtime path to include fzf and Vundle, and initialize
@@ -141,10 +139,9 @@ nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 set rtp+=~/.fzf
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()                   " Vundle_will_run_the_following_Plugins
+call vundle#begin()                   " Vundle will run the following Plugins
 
 
-" Plugin 'LaTeX-Box-Team/LaTeX-Box'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'KeitaNakamura/tex-conceal.vim'
 Plugin 'MahbubAlam231/dragvisuals'
@@ -189,25 +186,53 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-syntastic/syntastic'
 
 
-call vundle#end()                     " required
-filetype indent plugin on             " required, enables filetype detection
+call vundle#end()                     " Required
+filetype indent plugin on             " Required, enables filetype detection
 
-"2}}}
-" Plugin mappings{{{2
+"}}}
+
+" Plugin mappings{{{
 "-------------------------------------------------------------------
 
-" Airline{{{3
+" Airline{{{
 
 let g:airline_theme = 'simple'
 
-"3}}}
-" Conceal{{{3
+"}}}
+" Asterisk{{{
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)zz
+map g#  <Plug>(asterisk-g#)zz
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+let g:asterisk#keeppos = 1
+
+"}}}
+" Conceal{{{
 
 " set conceallevel=2
 let g:tex_conceal='abdgm'
 
-"3}}}
-" Easymotion and Sneak{{{3
+"}}}
+" Dragvisuals{{{
+
+" Dragging visual blocks
+vmap <expr> <S-LEFT>  DVB_Drag('left')
+vmap <expr> <S-RIGHT> DVB_Drag('right')
+vmap <expr> <S-DOWN>  DVB_Drag('down')
+vmap <expr> <S-UP>    DVB_Drag('up')
+vmap <expr> D         DVB_Duplicate()
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+"}}}
+" Easymotion and Sneak{{{
 
 map <leader>w mw<Plug>(easymotion-bd-w)
 map <leader>e me<Plug>(easymotion-bd-e)
@@ -232,7 +257,7 @@ nnoremap <buffer> 'f `fzvzz
 nnoremap <buffer> 's `szvzz
 nnoremap <buffer> 't `tzvzz
 
-"3}}}
+"}}}
 " Fugitive{{{
 
 nnoremap <buffer> <localleader>gp :Gw<cr>:Gcommit -m "Add updated files"<cr><cr>:Gpush origin master<cr>
@@ -250,122 +275,19 @@ nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 nnoremap <localleader>gt :GundoToggle<CR>
 
 "}}}
-" LaTeX-Box, vimtex and Folding{{{3
-
-" LaTeX-Box{{{
-
-" let g:LatexBox_latexmk_options="-shell-escape --enable-write18"
-" let g:LatexBox_latexmk_preview_continuously = 1
-" let b:LatexBox_loaded=0
-" let g:LatexBox_custom_indent=0
-" let g:LatexBox_Folding=0
-" let g:LatexBox_no_mappings=0
-
-" nnoremap <buffer> <localleader>lv :LatexView<cr>
-" nnoremap <buffer> <localleader>lj :LatexLabels<cr>
-
-"}}}
-" vimtex{{{
-
-" let g:vimtex_indent_enabled=1
-" let g:vimtex_complete_enabled=0
-" let g:vimtex_complete_bib=0
-" let g:vimtex_complete_citation=0
-" let g:vimtex_complete_ref=0
-" let g:vimtex_complete_close_braces=0
-let g:vimtex_fold_enabled=0
-
-xmap am  <plug>(vimtex-a$)
-xmap im  <plug>(vimtex-i$)
-
-omap am  <plug>(vimtex-a$)
-omap im  <plug>(vimtex-i$)
-
-nmap dsm <plug>(vimtex-env-delete-math)
-nmap csm <plug>(vimtex-env-change-math)
-
-nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
-nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
-
-"}}}
-" Folding{{{
-set foldlevelstart=0
-set foldmethod=marker
-nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
-nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
-
-" Saving folds in ~/.vim/view
-function! MakeView()
-    :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
-endfunction
-
-nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
-nnoremap <buffer> 'f `fzvzz
-vnoremap <buffer> 'f `fzvzz
-
-function! FoldingTeXPreamble()
-    :execute ":normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
-
-endfunction
-
-nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>:echo<cr>
-
-augroup Loadview
-    autocmd!
-    autocmd BufNewFile,BufRead *.* silent loadview
-augroup end
-
-" Opening/closing folding{{{
-nnoremap <buffer> zo mozozz
-nnoremap <buffer> zc mczczz
-nnoremap <buffer> zC mczCzz
-nnoremap <buffer> zv mvzvzz
-nnoremap <buffer> zr mrzRzz
-nnoremap <buffer> zm mmzMzz
-nnoremap <buffer> <localleader>z zMzvzz
-nnoremap <buffer> <space> zazz
-nnoremap <buffer> <localleader><space> zazt
-
-vnoremap <buffer> zo mozozz
-vnoremap <buffer> zc mczczz
-vnoremap <buffer> zC mczCzz
-vnoremap <buffer> zv mvzvzz
-vnoremap <buffer> zr mrzRzz
-vnoremap <buffer> zm mmzMzz
-vnoremap <buffer> <localleader>z zMzvzz
-vnoremap <buffer> <space> zazz
-vnoremap <buffer> <localleader><space> zazt
-
-nnoremap <buffer> 'o `ozvzz
-nnoremap <buffer> 'c `czvzz
-nnoremap <buffer> 'v `vzvzz
-nnoremap <buffer> 'r `rzvzz
-nnoremap <buffer> 'm `mzvzz
-
-vnoremap <buffer> 'o `ozvzz
-vnoremap <buffer> 'c `czvzz
-vnoremap <buffer> 'v `vzvzz
-vnoremap <buffer> 'r `rzvzz
-vnoremap <buffer> 'm `mzvzz
-
-"}}}
-
-"}}}
-
-"3}}}
-" NERDtree{{{3
+" NERDtree{{{
 
 nnoremap <buffer> <localleader>ner :NERDTree<cr>
 nnoremap <buffer> <localleader>nerd :NERDTree<cr>
 
-"3}}}
-" Supertab{{{3
+"}}}
+" Supertab{{{
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
-"3}}}
-"Templates and Selecting Template{{{3
+"}}}
+"Templates and Selecting Template{{{
 
 " In "~/.vim/bundle/vim-templates/plugin/templates.vim" add autocmd for writing BufNewFile event
 
@@ -373,7 +295,7 @@ let g:tmpl_auto_initialize=1
 let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
 
-" Selecting template{{{4
+" Selecting template{{{
 function! Template(code)
     if a:code != 'art' && a:code != 'ams' && a:code != 'rep'
         let l:code = input("Which Template: ")
@@ -406,7 +328,7 @@ nnoremap <buffer> <localleader>art :call Template("art")<cr>:echo<cr>
 nnoremap <buffer> <localleader>ams :call Template("ams")<cr>:echo<cr>
 nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
 
-"4}}}
+"}}}
 
 " Placeholders <++>
 nnoremap <buffer> <c-j> /<++><cr>zv:noh<cr>cf>
@@ -417,29 +339,8 @@ inoremap <buffer> <c-k> <esc>?<++><cr>zv:noh<cr>cf>
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
 
-"3}}}
-" Text objects via vim-textobj-user{{{3
-
-" call textobj#user#plugin('tex', {
-"             \   'dollar-math': {
-"             \     'pattern': ['\$', '\$'],
-"             \    'select-a': [],
-"             \    'select-i': [],
-"             \   },
-"             \ })
-
-" augroup tex_textobjs
-"     autocmd!
-"     autocmd FileType tex call textobj#user#map('tex', {
-"                 \   'dollar-math': {
-"                 \         'select-a': '<buffer> a\$',
-"                 \         'select-i': '<buffer> i\$',
-"                 \   },
-"                 \ })
-" augroup end
-
-"3}}}
-" Titlecase{{{3
+"}}}
+" Titlecase{{{
 
 let g:titlecase_map_keys = 0
 
@@ -452,35 +353,118 @@ nmap <localleader>tt <Plug>TitlecaseLine
 " <Plug>Titlecase " Titlecase the visually selected region
 vmap <localleader>t <Plug>Titlecase
 
-"3}}}
-" YouCompleteMe{{{3
+"}}}
+" Vimtex and Folding{{{
 
-" let g:loaded_youcompleteme = 0
+" let g:vimtex_indent_enabled=1
+" let g:vimtex_complete_enabled=0
+" let g:vimtex_complete_bib=0
+" let g:vimtex_complete_citation=0
+" let g:vimtex_complete_ref=0
+" let g:vimtex_complete_close_braces=0
+" let g:vimtex_fold_enabled=1
 
-"3}}}
-" Vim-asterisk{{{
+xmap am  <plug>(vimtex-a$)
+xmap im  <plug>(vimtex-i$)
 
-map *   <Plug>(asterisk-*)
-map #   <Plug>(asterisk-#)
-map g*  <Plug>(asterisk-g*)zz
-map g#  <Plug>(asterisk-g#)zz
-map z*  <Plug>(asterisk-z*)
-map gz* <Plug>(asterisk-gz*)
-map z#  <Plug>(asterisk-z#)
-map gz# <Plug>(asterisk-gz#)
+omap am  <plug>(vimtex-a$)
+omap im  <plug>(vimtex-i$)
 
-let g:asterisk#keeppos = 1
+nmap dsm <plug>(vimtex-env-delete-math)
+nmap csm <plug>(vimtex-env-change-math)
+
+xmap at  <plug>(vimtex-am)
+xmap it  <plug>(vimtex-im)
+
+omap at  <plug>(vimtex-am)
+omap it  <plug>(vimtex-im)
+
+augroup UseVimtex_ae/ie_InTeX
+    autocmd!
+    autocmd FileType tex xmap <silent><nowait><buffer> ie <plug>(vimtex-ie)
+    autocmd FileType tex xmap <silent><nowait><buffer> ae <plug>(vimtex-ae)
+
+    autocmd FileType tex omap <silent><nowait><buffer> ie <plug>(vimtex-ie)
+    autocmd FileType tex omap <silent><nowait><buffer> ae <plug>(vimtex-ae)
+augroup end
+
+nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+
+" Folding{{{
+set foldlevelstart=0
+set foldmethod=marker
+nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
+nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
+
+" Saving folds in ~/.vim/view
+function! MakeView()
+    :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
+endfunction
+
+nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
+nnoremap <buffer> 'f `fzvzz
+vnoremap <buffer> 'f `fzvzz
+
+function! FoldingTeXPreamble()
+    :execute ":normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
+
+endfunction
+
+nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>:echo<cr>
+
+augroup Loadview
+    autocmd!
+    autocmd BufNewFile,BufRead * silent loadview
+augroup end
+
+" Opening/closing folding{{{
+nnoremap <buffer> zo mozozz
+nnoremap <buffer> zc mczczz
+nnoremap <buffer> zC mczCzz
+nnoremap <buffer> zv mvzvzz
+nnoremap <buffer> zr mrzRzz
+nnoremap <buffer> zm mmzMzz
+nnoremap <buffer> <localleader>z zMzvzz
+nnoremap <buffer> <space> zazz
+nnoremap <buffer> <localleader><space> zazt
+nnoremap <buffer> z<space> zazb
+
+vnoremap <buffer> zo mozozz
+vnoremap <buffer> zc mczczz
+vnoremap <buffer> zC mczCzz
+vnoremap <buffer> zv mvzvzz
+vnoremap <buffer> zr mrzRzz
+vnoremap <buffer> zm mmzMzz
+vnoremap <buffer> <localleader>z zMzvzz
+vnoremap <buffer> <space> zazz
+vnoremap <buffer> <localleader><space> zazt
+vnoremap <buffer> z<space> zazb
+
+nnoremap <buffer> 'o `ozvzz
+nnoremap <buffer> 'c `czvzz
+nnoremap <buffer> 'v `vzvzz
+nnoremap <buffer> 'r `rzvzz
+nnoremap <buffer> 'm `mzvzz
+
+vnoremap <buffer> 'o `ozvzz
+vnoremap <buffer> 'c `czvzz
+vnoremap <buffer> 'v `vzvzz
+vnoremap <buffer> 'r `rzvzz
+vnoremap <buffer> 'm `mzvzz
 
 "}}}
 
-"2}}}
+"}}}
+
+"}}}
 
 "}}}
 
 " Misc{{{
 "-------------------------------------------------------------------
 
-" Align text{{{2
+" Align text{{{
 "-------------------------------------------------------------------
 
 nnoremap <buffer> <localleader>al :left<cr>
@@ -491,8 +475,8 @@ vnoremap <buffer> <localleader>al :left<cr>
 vnoremap <buffer> <localleader>ac :center<cr>
 vnoremap <buffer> <localleader>ar :right<cr>
 
-"2}}}
-" Braces and stuff{{{2
+"}}}
+" Braces and stuff{{{
 "-------------------------------------------------------------------
 
 inoremap <buffer> ( ()<left>
@@ -510,14 +494,14 @@ inoremap <buffer> \|\| \|
 inoremap <buffer> '' ''<left>
 inoremap <buffer> "" ""<left>
 
-"2}}}
-" Calculator{{{2
+"}}}
+" Calculator{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
+inoremap <buffer> <C-C> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
-"2}}}
-" Colorschemes{{{2
+"}}}
+" Colorschemes{{{
 "-------------------------------------------------------------------
 
 syntax on
@@ -527,83 +511,23 @@ colorscheme wombat256i
 
 set background=dark
 
-"2}}}
-" Command line mappings{{{2
+"}}}
+" Command line mappings{{{
 "-------------------------------------------------------------------
 
 cnoremap <buffer> <c-h> <home>
 cnoremap <buffer> <c-e> <end>
 
-"2}}}
-" Diagraphs{{{2
+"}}}
+" Diagraphs{{{
 "-------------------------------------------------------------------
 
 ""Make CTRL-K list diagraphs before each digraph entry
 "runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
 "inoremap <expr> <C-K> BDG_GetDigraph()
 
-"2}}}
-" Highlight Word {{{
-"
-" This mini-plugin provides a few mappings for highlighting words temporarily.
-"
-" Sometimes you're looking at a hairy piece of code and would like a certain
-" word or two to stand out temporarily.  You can search for it, but that only
-" gives you one color of highlighting.  Now you can use <leader>N where N is
-" a number from 1-6 to highlight the current word in a specific color.
-
-function! HiInterestingWord(n) " {{{
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
-endfunction " }}}
-" Mappings {{{
-
-nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
-
-" nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
-" nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
-" nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
-" nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
-" nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
-" nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
-
-" }}}
-" Default Highlights {{{
-
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-
-" }}}
-
-" }}}
-" Leader Mappings{{{2
+"}}}
+" Leader Mappings{{{
 "-------------------------------------------------------------------
 
 let mapleader="-" "Use leader expressly in normal mode
@@ -617,24 +541,24 @@ inoremap <buffer> <LL <><left>ilocalleader<right>
 inoremap <buffer> <localleader>bl <><left>buffer<right> <><left>leader<right>
 inoremap <buffer> <localleader>bll <><left>buffer<right> <><left>localleader<right>
 
-"2}}}
-" Macros{{{2
+"}}}
+" Macros{{{
 "-------------------------------------------------------------------
 
 nnoremap <buffer> Q @q
 
-"2}}}
-" Navigation{{{2
+"}}}
+" Navigation{{{
 "-------------------------------------------------------------------
 
-" Get off my lawn - helpful when learning Vim :){{{3
+" Get off my lawn - helpful when learning Vim :){{{
 " nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
 " nnoremap <buffer> <Down>  :echoe "Use 'j'. Navigate smartly!"<cr>
 " nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
 " nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
-"3}}}
-" Moving on the screen{{{3
+"}}}
+" Moving on the screen{{{
 nnoremap <buffer> H mh^
 nnoremap <buffer> J mjL
 nnoremap <buffer> K mkH
@@ -665,8 +589,8 @@ inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
-"3}}}
-" Toggle VIM lines and visual lines navigation{{{3
+"}}}
+" Toggle VIM lines and visual lines navigation{{{
 let s:navigation_toggle=0
 
 function! NavigationToggleInWrapMode()
@@ -705,7 +629,7 @@ endfunction
 
 nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<cr>
 
-"3}}}
+"}}}
 
 " Mark and then go to the beginning or end of the file
 nnoremap <buffer> gg mggg
@@ -718,7 +642,7 @@ vnoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
 vnoremap <buffer> 'j `jzvzz
 
-" Easy splits navigation{{{3
+" Easy splits navigation{{{
 nnoremap <buffer> <localleader>h  <c-w>h
 nnoremap <buffer> <localleader>j  <c-w>j
 nnoremap <buffer> <localleader>k  <c-w>k
@@ -726,14 +650,14 @@ nnoremap <buffer> <localleader>l  <c-w>l
 nnoremap <buffer> <localleader>hh <c-w>h
 nnoremap <buffer> <localleader>ll <c-w>l
 
-"3}}}
+"}}}
 
 " Revisit changelog
 nnoremap <buffer> g; g;zvzz
 nnoremap <buffer> g, g,zvzz
 
-"2}}}
-" Pasting, visual selection and dragging{{{2
+"}}}
+" Pasting, visual selection{{{
 "-------------------------------------------------------------------
 
 " Pasting
@@ -750,23 +674,13 @@ nnoremap gV `[v`]
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
 
-" Dragging visual blocks
-vmap <expr> <S-LEFT>  DVB_Drag('left')
-vmap <expr> <S-RIGHT> DVB_Drag('right')
-vmap <expr> <S-DOWN>  DVB_Drag('down')
-vmap <expr> <S-UP>    DVB_Drag('up')
-vmap <expr> D         DVB_Duplicate()
-
-" Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
-
-"2}}}
-" Running command in shell and pasting in buffer{{{2
+"}}}
+" Running command in shell and pasting in buffer{{{
 
 nnoremap <buffer> !! !!sh<cr>
 
-"2}}}
-" Searching remaps{{{2
+"}}}
+" Searching remaps{{{
 
 " Marking before searching
 nnoremap <buffer> / ms/
@@ -782,7 +696,8 @@ vnoremap <buffer> 's `szvzz
 nnoremap <buffer> * ms*<c-o>
 nnoremap <buffer> # ms#<c-o>
 
-" Search the visually selected using */# (from Scrooloose){{{3
+" Search the visually selected using */# (from Scrooloose){{{
+" Shorter mapping, although z* from vim-asterisk even keeps cursor the first time
 function! s:VSerSearch()
     let temp = @@
     norm! gvy
@@ -793,7 +708,7 @@ endfunction
 vnoremap <buffer> * :<c-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>zz
 vnoremap <buffer> # :<c-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
 
-"3}}}
+"}}}
 
 " Highlighting next match
 nnoremap <buffer> n nzvzz:call HLNext(0.05)<cr>:echo<cr>
@@ -804,7 +719,7 @@ nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
 " nnoremap <buffer> / ms/\v
 " vnoremap <buffer> / ms/\v
 
-" Number of matches{{{3
+" Number of matches{{{
 " Number of matches for a pattern
 " <localleader>/<cr> gives number of matches for last search pattern
 nnoremap <buffer> <localleader>/ ms:%s///gn<left><left><left><left>
@@ -821,14 +736,14 @@ nnoremap <buffer> <localleader># ms#<c-o>:%s///gn<cr>
 vnoremap <buffer> <localleader>* yms:%s/<c-r>0//gn<cr>
 vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 
-"3}}}
+"}}}
 
 " Clearing highlighted matches
 nnoremap <buffer> <esc> :noh<cr>:echo<cr>
 nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
 
-"2}}}
-" Some other remaps{{{2
+"}}}
+" Some other remaps{{{
 "-------------------------------------------------------------------
 
 " Yank till the end of the line and clearing a line
@@ -839,12 +754,13 @@ nnoremap <buffer> <leader>d 0D
 nnoremap <buffer> <localleader>o mmo<esc>`m
 nnoremap <buffer> <localleader>O mmO<esc>`m
 
-" " Uppercasing
+" " Uppercasing (move half-screen up has <c-u>)
 " nnoremap <buffer> <c-u> mmgUiw`m
 " inoremap <buffer> <c-u> <esc>mmgUiw`ma
+" vnoremap <buffer> <c-u> gU
 
-"2}}}
-" Spelling Check{{{2
+"}}}
+" Spelling Check{{{
 "-------------------------------------------------------------------
 
 augroup Spelling
@@ -868,8 +784,8 @@ nnoremap <buffer> zgn zg]szz
 nnoremap <buffer> zwN zw[szz
 nnoremap <buffer> zwn zw]szz
 
-"2}}}
-" Substitute/change{{{2
+"}}}
+" Substitute/change{{{
 "-------------------------------------------------------------------
 
 nnoremap <buffer> <localleader>s :%s/
@@ -877,22 +793,506 @@ vnoremap <buffer> <localleader>s :s/
 nnoremap <buffer> <localleader>S :%S/
 vnoremap <buffer> <localleader>S :S/
 
-"2}}}
-" Trailing White Space{{{2
+"}}}
+" TeXHighlighting{{{
+"-------------------------------------------------------------------
+
+" Part, Chapter, Section, Subsection, Subsubsection, label"{{{
+
+highlight Folds_brackets_comments ctermbg=174 ctermfg=black
+
+augroup TeXHighlighting
+    autocmd!
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
+augroup end
+
+highlight PartMarkerGroup ctermbg=087 ctermfg=black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% Part')
+    autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
+augroup end
+
+highlight PartGroup ctermbg=087 ctermfg=black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("PartGroup",'\\part{.\{}}')
+    autocmd Filetype tex let m = matchadd("PartGroup",'\\part\*{.\{}}')
+augroup end
+
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% Chapter')
+    autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
+augroup end
+
+highlight ChapterGroup ctermbg=092 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
+    autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
+augroup end
+
+highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% Section')
+    autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
+augroup end
+
+highlight SectionGroup ctermbg=39 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SectionGroup",'\\section{.\{}}')
+    autocmd Filetype tex let m = matchadd("SectionGroup",'\\section\*{.\{}}')
+augroup end
+
+highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% Subsection')
+    autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
+augroup end
+
+highlight SubsectionGroup ctermbg=198 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
+    autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
+augroup end
+
+highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
+    autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
+augroup end
+
+highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
+    autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
+augroup end
+
+highlight Label ctermbg=141 ctermfg=0
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Label",'\\label{.\{}}')
+augroup end
+
+"}}}
+" MarkerGroup, BoldGroup"{{{
+
+highlight TitleAbstract ctermbg=92 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("TitleAbstract",'% Abstract')
+    autocmd Filetype tex let m = matchadd("TitleAbstract",'% Title')
+augroup end
+
+highlight MarkerGroup ctermbg=White ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Notation')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedNotation')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Definition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Theorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofTheorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Lemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofLemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedLemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Proposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofProposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedProposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Corollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofCorollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Problem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Solution')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Proof')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Remark')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedRemark')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Conjecture')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Example')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Exercise')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Frame')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Claim')
+augroup end
+
+highlight YellowMarkerGroup ctermbg=yellow ctermfg=black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Equation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedEquation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Align')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Subequations')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Gather')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Center')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Enumerate')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% figure')
+    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% diary')
+augroup end
+
+highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Array')
+    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Matrix')
+    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
+    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+augroup end
+
+highlight Bibliography ctermbg=92 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
+augroup end
+
+highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'\$(\\Longrightarrow)\$')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'\$(\\Longleftarrow)\$')
+augroup end
+
+highlight BoldGroup ctermfg=154 cterm=bold
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("BoldGroup",'&')
+augroup end
+
+highlight BoldRedGroup ctermfg=red cterm=bold
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("BoldRedGroup",'\\todo')
+augroup end
+
+"}}}
+" Abstract, Theorem, Equation"{{{
+
+highlight Abstract ctermbg=92 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Abstract",'\\begin{abstract}')
+    autocmd Filetype tex let m = matchadd("Abstract",'\\end{abstract}')
+augroup end
+
+highlight NotationGroup ctermbg=244 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\begin{notation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{notation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\begin{unotation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{unotation}')
+augroup end
+
+highlight DefinitionGroup ctermbg=214 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\begin{definition}')
+    autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\end{definition}')
+augroup end
+
+highlight uDefinitionGroup ctermbg=100 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\begin{udefinition}')
+    autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
+augroup end
+
+highlight TheoremGroup ctermbg=133 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{theorem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{theorem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{lemma}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{lemma}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{proposition}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{proposition}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{corollary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{corollary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{problem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{problem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{solution}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{solution}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{remark}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{remark}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{conjecture}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{conjecture}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{example}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{example}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{exercise}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{exercise}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{diary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{diary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{frame}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{frame}')
+
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{thmbox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{thmbox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{orangebox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{orangebox}')
+augroup end
+
+highlight uTheoremGroup ctermbg=brown ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{utheorem}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{ulemma}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{ulemma}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{uproposition}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uproposition}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{ucorollary}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{uremark}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uremark}')
+augroup end
+
+highlight ProofGroup ctermbg=108 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{proof}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{proof}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{prf}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{prf}')
+augroup end
+
+highlight EquationGroup ctermbg=106 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\(')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\)')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\[')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\]')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{equation}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{equation}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{equation\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{equation\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{split}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{split}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{align}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{align\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{subequations}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{subequations}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{center}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{center}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gather}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gather\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gathered}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gathered}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{cases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{cases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{dcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{dcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{enumerate}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{enumerate}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{landscape}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
+augroup end
+
+highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{matrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{matrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{bmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{bmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{pmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{pmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\item')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliographystyle{.\{}}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
+augroup end
+
+highlight asterisk ctermbg=130 ctermfg=yellow
+
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("asterisk",'\*')
+augroup end
+
+highlight ParenthesisGroup ctermbg=182 ctermfg=black
+
+augroup TeXHighlighting
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right')
+
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right)}')
+
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right\\}}')
+
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right]}')
+
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right|}')
+augroup end
+
+"}}}
+
+"}}}
+" Trailing White Space{{{
 "-------------------------------------------------------------------
 
 "autocmd BufWritePre *.* %s/\s\+$//e
 inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>:echo<cr>`wa
 nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
-"2}}}
+"}}}
 
 "}}}
 
 " KeyBinding, Abbreviations and Stuff{{{
 "-------------------------------------------------------------------
 
-" Selecting KeyBindings{{{2
+" Selecting KeyBindings{{{
 "-------------------------------------------------------------------
 
 " Select KeyBinding Scheme
@@ -906,7 +1306,6 @@ function! KeyBindings(code)
     "tex
     if l:code == "tex"
         source ~/.vim/KeyBindings/TeXKeyBindings.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
 
         "to enter numbers peacefully
     elseif l:code == "np"
@@ -915,7 +1314,6 @@ function! KeyBindings(code)
         "python
     elseif l:code == "py"
         source ~/.vim/KeyBindings/PythonKeyBindings.vim
-        set spellfile=~/.vim/spell/math.utf-8.add
 
         "UnmapTeXKeyBindings
     elseif l:code == "unmaptex"
@@ -928,8 +1326,8 @@ function! KeyBindings(code)
 
 endfunction
 
-"2}}}
-" Selecting Abbreviations{{{2
+"}}}
+" Selecting Abbreviations{{{
 "-------------------------------------------------------------------
 
 " Select Abbreviation Type
@@ -955,16 +1353,9 @@ function! Abbreviations(code)
 
 endfunction
 
-"2}}}
-" Sourcing KeyBindings, Abbreviations and Stuff{{{2
+"}}}
+" Sourcing KeyBindings, Abbreviations and Stuff{{{
 "-------------------------------------------------------------------
-
-augroup SourceEverythingForPython
-    autocmd!
-    autocmd BufNewFile,BufRead *.py source $MYVIMRC
-    autocmd BufNewFile,BufRead *.py call KeyBindings("py")
-    autocmd BufNewFile,BufRead *.py setlocal spell spelllang=en_us
-augroup end
 
 augroup SourceEverythingForTeX
     autocmd!
@@ -974,17 +1365,25 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
     autocmd BufNewFile,BufRead *.tex call MatrixGroupToggle()
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
 augroup end
 
 " Changing foldmarker for tex
-nnoremap <buffer> <localleader>cfm :%s/}T}E}X/F}O}L}D/g<cr>:%s/{T{E{X/F{O{L{D/g<cr>
+nnoremap <buffer> <localleader>cfm :%s/}T}E}X/F}O}L}D/g \| :%s/{T{E{X/F{O{L{D/g<cr><cr>
 
 augroup SourceTheseForAll
     autocmd!
     autocmd BufNewFile,BufRead * call Abbreviations("gen")
+augroup end
+
+augroup SourceEverythingForPython
+    autocmd!
+    autocmd BufNewFile,BufRead *.py source $MYVIMRC
+    autocmd BufNewFile,BufRead *.tex call KeyBindings("py")
+    autocmd BufNewFile,BufRead *.py setlocal spell spelllang=en_us
 augroup end
 
 " Sourcing everything for tex
@@ -993,19 +1392,13 @@ function! SourceEverythingForTeX()
     call Abbreviations("math")
     call KeyBindings("tex")
     setlocal spell spelllang=en_us
+    setlocal spellfile=~/.vim/spell/math.utf-8.add
     setlocal foldmethod=marker
     setlocal foldmarker=F{O{L{D,F}O}L}D
 endfunction
 
-" TeXHighlight
-function! TeXHighlight()
-    if (&ft=='tex')
-        source ~/.vim/KeyBindings/TeXHighlight.vim
-    endif
-endfunction
-
-nnoremap <buffer> <localleader>ev :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>
-inoremap <buffer> <localleader>ev <esc>:source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>:echo<cr>a
+nnoremap <buffer> <localleader>ev :call SourceEverythingForTeX()<cr>:echo<cr>
+inoremap <buffer> <localleader>ev <esc>:call SourceEverythingForTeX()<cr>:echo<cr>a
 
 "Sourcing TexKeyBindings
 nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>:echo<cr>
@@ -1029,8 +1422,8 @@ nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>:echo<cr>
 nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>:echo<cr>
 inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>:echo<cr>a
 
-"2}}}
-" Opening .vimrc, KeyBindings and Stuff{{{2
+"}}}
+" Opening .vimrc, KeyBindings and Stuff{{{
 "-------------------------------------------------------------------
 
 " Opening TeXKeyBindings "t=tex
@@ -1076,23 +1469,23 @@ nnoremap <buffer> <leader>vh :split $MYVIMRC<cr>
 nnoremap <buffer> <leader>vv :vsplit $MYVIMRC<cr>
 nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 
-"2}}}
+"}}}
 
 "}}}
 
 " Writing in Normal/Insert Mode and quitting{{{
 "-------------------------------------------------------------------
 
-" augroup IndentTexPyBuf
-"     autocmd!
-"     autocmd BufNewFile,BufRead,BufWritePre *.tex,*.py :normal! mmgg=G`m
-" augroup end
+augroup IndentTexPyBuf
+    autocmd!
+    autocmd BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
+augroup end
 
-" " Doesn't seem to work when template is enabled
-" augroup WriteNewBuf
-"     autocmd!
-"     autocmd BufNewFile * write
-" augroup end
+" Doesn't seem to work when template is enabled
+augroup WriteNewBuf
+    autocmd!
+    autocmd BufNewFile * silent write
+augroup end
 
 nnoremap <buffer> <localleader>w mm:w!<cr>`m
 inoremap <buffer> ;w <esc>mm:w!<cr>`ma
@@ -1114,8 +1507,8 @@ augroup end
 "     endif
 " endfunction
 
-nnoremap <buffer> <localleader>q mq:q!<cr>
-nnoremap <buffer> <localleader>wq mq:wq<cr>
+nnoremap <buffer> <localleader>q mqzM:q!<cr>
+nnoremap <buffer> <localleader>wq mqzM:wq<cr>
 nnoremap <buffer> 'q `qzvzz
 vnoremap <buffer> 'q `qzvzz
 
@@ -1134,7 +1527,7 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 augroup Source$MYVIMRC
     autocmd!
-    autocmd BufRead *.* source $MYVIMRC
+    autocmd BufNewfile,BufRead * source $MYVIMRC
 augroup end
 
 " Sourcing .vimrc

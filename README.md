@@ -10,8 +10,8 @@ Here uploaded are,
   [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
   - A 'universal' latex template (`tex.template`).
-- A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex)
-folding method, [Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) and
+- A folding technique which is a mixture of [LaTeX-Suite](https://github.com/vim-latex/vim-latex),
+[Latex-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) and
 [vimtex](https://github.com/lervag/vimtex) folding method.
 This a modification of [petobens](https://tex.stackexchange.com/users/9953/petobens)
 folding technique which can be found
@@ -46,7 +46,7 @@ update shell configuration files while running `~/.fzf/install`), and add the li
 [How to install and use fzf: the command-line fuzzy finder](https://www.youtube.com/watch?v=1a5NiMhqAR0));
 - Put `.vimrc` in your home directory;
 - Put `Abbreviations`, `after`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
-- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `PluginInstall`;
+- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `:PluginInstall`;
 - Put `amsart.template`, `article.template`, `report.template` and `tex.template`
 in `~/.vim/bundle/vim-templates/templates`;
 - Put `tex` in `~/.vim/bundle/vimtex/ftplugin`.
@@ -72,15 +72,15 @@ Read `.vimrc`, `TeXKeyBindings.vim`, `NumbersPeacefully.vim`, `UnmapKeyBindings.
 The mappings are designed to be easy to remember, just like vim commands.
 As you go over these mappings I hope you will find that these are time-saving and easy-to-perform mappings.
 
-For me these mappings simplify writing not only `.tex` files, but also many other types of files as well.
+For me these mappings simplify writing `.tex` files, and also many other types of files as well.
 
 For basic vim tips you can watch the following videos-
 - [Vim Navigation Commands](https://www.youtube.com/watch?v=Qem8cpbJeYc)
-- [Mastering the Vim Language](https://www.youtube.com/watch?v=wlR5gYd6um0)
 - [Improving Vim Speed](https://www.youtube.com/watch?v=OnUiHLYZgaA)
+- [Mastering the Vim Language](https://www.youtube.com/watch?v=wlR5gYd6um0)
 - [Your First Vim Plugin](https://www.youtube.com/watch?v=lwD8G1P52Sk)
 
 For any query about vimscripts go to `:help` from inside vim.
-You can also look at the book
-[_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/) by [_Steve Losh_](http://stevelosh.com/).
+You can also look at the book [_Learn Vimscripts the Hard Way_](http://learnvimscriptthehardway.stevelosh.com/)
+by [_Steve Losh_](http://stevelosh.com/).
 

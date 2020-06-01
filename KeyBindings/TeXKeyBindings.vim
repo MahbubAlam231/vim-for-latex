@@ -3322,6 +3322,14 @@ function! ReferencingAndCiting(code)
         :execute ":normal! hmmlx`ma~\\eqref{\<esc>"
     elseif a:code == "jeqref"
         :execute ":normal! a\\eqref{\<esc>"
+    elseif a:code == "aref"
+        :execute ":normal! hmmlx`ma~\\autoref{\<esc>"
+    elseif a:code == "jaref"
+        :execute ":normal! hmmlx`ma\\autoref{\<esc>"
+    elseif a:code == "cref"
+        :execute ":normal! hmmlx`ma~\\cleverref{\<esc>"
+    elseif a:code == "jcref"
+        :execute ":normal! hmmlx`ma\\cleverref{\<esc>"
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
@@ -3334,6 +3342,10 @@ inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
 inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
 inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
 inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
+inoremap <buffer> <localleader>aref <esc>:call ReferencingAndCiting("aref")<cr>a
+inoremap <buffer> <localleader>jaref <esc>:call ReferencingAndCiting("jaref")<cr>a
+inoremap <buffer> <localleader>cref <esc>:call ReferencingAndCiting("cref")<cr>a
+inoremap <buffer> <localleader>jcref <esc>:call ReferencingAndCiting("jcref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
 
@@ -3342,9 +3354,6 @@ inoremap <buffer> <localleader>lem Lemma~\ref{
 inoremap <buffer> <localleader>prop Proposition~\ref{
 inoremap <buffer> <localleader>cor Corollary~\ref{
 inoremap <buffer> <localleader>rem Remark~\ref{
-
-" LaTeX table of contents
-nnoremap <buffer> <localleader>toc :LatexTOC<cr>
 
 " Folding in foldmethod marker (Incomplete)
 function! FoldTexfile()
@@ -3507,71 +3516,79 @@ nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zz
 
 "}}}
 
-" Highlighting{{{
+" TeXHighlighting (don't delete, has more than .vimrc){{{
 "-------------------------------------------------------------------
 
 " Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
-let m = matchadd("Folds_brackets_comments",'%{{{')
-let m = matchadd("Folds_brackets_comments",'%}}}')
+
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')
 let m = matchadd("Folds_brackets_comments",'%}T}E}X')
 let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
 let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 
 highlight PartMarkerGroup ctermbg=087 ctermfg=black
+
 let m = matchadd("PartMarkerGroup",'% Part')
 let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 
 highlight PartGroup ctermbg=087 ctermfg=black
+
 let m = matchadd("PartGroup",'\\part{.\{}}')
 let m = matchadd("PartGroup",'\\part\*{.\{}}')
 
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
 let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 
 highlight ChapterGroup ctermbg=092 ctermfg=yellow
+
 let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
 let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 
-
 highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+
 let m = matchadd("SectionMarkerGroup",'% Section')
 let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 
 highlight SectionGroup ctermbg=39 ctermfg=Black
+
 let m = matchadd("SectionGroup",'\\section{.\{}}')
 let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 
 highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+
 let m = matchadd("SubsectionMarkerGroup",'% Subsection')
 let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 
 highlight SubsectionGroup ctermbg=198 ctermfg=Black
+
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
 let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 
 highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+
 let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
 let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 
 highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
-
 highlight Label ctermbg=141 ctermfg=0
+
 let m = matchadd("Label",'\\label{.\{}}')
 
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight AbstractTitle ctermbg=92 ctermfg=yellow
+highlight TitleAbstract ctermbg=92 ctermfg=yellow
 
-let m = matchadd("AbstractTitle",'% Abstract')
-let m = matchadd("AbstractTitle",'% Title')
+let m = matchadd("TitleAbstract",'% Abstract')
+let m = matchadd("TitleAbstract",'% Title')
 
 highlight MarkerGroup ctermbg=White ctermfg=Black
 
@@ -3916,6 +3933,66 @@ let m = matchadd("ParenthesisGroup",'{\\left|')
 let m = matchadd("ParenthesisGroup",'\\right|}')
 " let m = matchadd("ParenthesisGroup",'{\\left|{')
 " let m = matchadd("ParenthesisGroup",'}\\right|}')
+
+"}}}
+" Highlight Word{{{
+"
+" This mini-plugin provides a few mappings for highlighting words temporarily.
+"
+" Sometimes you're looking at a hairy piece of code and would like a certain
+" word or two to stand out temporarily.  You can search for it, but that only
+" gives you one color of highlighting.  Now you can use <leader>N where N is
+" a number from 1-6 to highlight the current word in a specific color.
+
+function! HiInterestingWord(n) "{{{
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction "}}}
+" Mappings{{{
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
+
+nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
+nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
+nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
+nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
+nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
+nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
+
+"}}}
+" Default Highlights{{{
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+
+"}}}
 
 "}}}
 
