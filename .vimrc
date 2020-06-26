@@ -1,3 +1,9 @@
+         " _
+ " __   __(_) _ __ ___   _ __  ___
+ " \ \ / /| || '_ ` _ \ | '__|/ __|
+ " _\ V / | || | | | | || |  | (__
+" (_)\_/  |_||_| |_| |_||_|   \___|
+
 
 "-------------------------------------------------------------------
 " Mahbub's .vimrc
@@ -16,19 +22,24 @@ set title                             " Terminal title reflects buffer name
 set autochdir                         " Auto change directory (some plugins may not work)
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
-set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set clipboard=unnamed                 " Clipboard support (OSX)
+set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
 set noerrorbells                      " Turn off audible bells
-set visualbell                        " Flash the screen when an error message is displayed
-set history=10000                     " Command line history for vim
-set timeoutlen=1000 ttimeoutlen=0     " Remove timeout when hitting escape
+set history=1000                      " Command line history for vim
+set timeoutlen=1500 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show partial commands in the line of the screen
-set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p
+" set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p (relevant without Ctrl-p?)
 set textwidth=1000                    " Line length in vim
 set cursorline                        " Highlighting the line containing the cursor
+set updatetime=100                    " For gitgutter
+set showmatch                         " Briefly jump to the match if a bracket is inserted, :h 'matchtime'
+set foldenable                        " Enable folding
+set novisualbell                      " Flash the screen when an error message is displayed
+set modeline                          " In Debian and Ubuntu, for example, the modeline option has been disabled for security reasons
+" set encoding=latin1                   " Default is utf-8
 " set cursorcolumn                      " Highlighting the column containing the cursor
 " set mouse=a                           " Mouse could work on vim too
 " set laststatus=2                      " Always display statusline
@@ -60,14 +71,12 @@ endif
 " Tabs, indentation and wrapping{{{
 "-------------------------------------------------------------------
 
-set tabstop=4                         " Redefine tab as four spaces
+set tabstop=4                         " Redefine tab as width of four spaces
 set softtabstop=4                     " Number of spaces in tab when editing
-set shiftwidth=4                      " To change the number of space characters inserted for indentation
-set expandtab                         " Four spaces for tabs everywhere
+set shiftwidth=4                      " Number of space characters inserted for indentation
+set expandtab                         " Insert four spaces for tabs everywhere
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
-set showmatch                         " Briefly jump to the match if a bracket is inserted, 'matchtime' to be used to set the time to show the match
-set foldenable                        " Enable folding
 
 ""Make the 71th column stand out
 "highlight ColorColumn ctermbg=magenta
@@ -78,7 +87,7 @@ set listchars=extends:→               " Show arrow if line continues rightward
 set listchars+=precedes:←             " Show arrow if line continues leftwards
 
 " Wrap toggle
-nnoremap <buffer> <localleader>wt :set wrap!<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>wt :set wrap!<cr>
 
 "}}}
 " Ignored files/directories from autocomplete{{{
@@ -125,7 +134,7 @@ nnoremap <buffer> <S-RIGHT> 5<c-w>>
 
 set number relativenumber
 
-nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>nt :call NumberToggle()<cr>
 
 "}}}
 
@@ -136,67 +145,114 @@ nnoremap <buffer> <localleader>nt :call NumberToggle()<cr>:echo<cr>
 
 " Set the runtime path to include fzf and Vundle, and initialize
 
-set rtp+=~/.fzf
+" set rtp+=~/.fzf
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()                   " Vundle will run the following Plugins
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()                   " Vundle will run the following Plugins
 
+call plug#begin('~/.vim/plugged')
 
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'KeitaNakamura/tex-conceal.vim'
-Plugin 'MahbubAlam231/dragvisuals'
-Plugin 'MahbubAlam231/hybrid-line-numbers'
-Plugin 'MahbubAlam231/searching-with-blinking'
-Plugin 'MahbubAlam231/vim-system-copy'
-Plugin 'SirVer/ultisnips'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'christoomey/vim-quicklink'
-Plugin 'christoomey/vim-sort-motion'
-Plugin 'christoomey/vim-titlecase'
-Plugin 'danro/rename.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'ervandew/supertab'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'haya14busa/vim-asterisk'
-Plugin 'inkarkat/vim-PatternsOnText'
-Plugin 'junegunn/fzf.vim'
-Plugin 'justinmk/vim-sneak'
-Plugin 'kana/vim-textobj-datetime'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'kana/vim-textobj-line'
-Plugin 'kana/vim-textobj-user'
-Plugin 'lervag/vimtex'
-Plugin 'mattn/webapi-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sjl/gundo.vim'
-Plugin 'tibabit/vim-templates'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/ReplaceWithRegister'
-Plugin 'vim-scripts/ZoomWin'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-syntastic/syntastic'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'VundleVim/Vundle.vim'
+Plug 'Julian/vim-textobj-brace'
+Plug 'MahbubAlam231/dragvisuals'
+Plug 'MahbubAlam231/hybrid-line-numbers'
+Plug 'MahbubAlam231/searching-with-blinking'
+Plug 'MahbubAlam231/vim-system-copy'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'bps/vim-textobj-python'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'christoomey/vim-quicklink'
+Plug 'christoomey/vim-sort-motion'
+Plug 'christoomey/vim-titlecase'
+Plug 'danro/rename.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'flazz/vim-colorschemes'
+Plug 'godlygeek/tabular'
+Plug 'haya14busa/vim-asterisk'
+Plug 'inkarkat/vim-PatternsOnText'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-after-object'
+Plug 'justinmk/vim-sneak'
+Plug 'kana/vim-textobj-datetime'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-lastpat'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-user'
+Plug 'lervag/vimtex'
+Plug 'mattn/vim-textobj-url'
+Plug 'mattn/webapi-vim'
+Plug 'mhinz/vim-startify'
+Plug 'michal-h21/vim-zettel'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/nerdtree'
+Plug 'sjl/gundo.vim'
+Plug 'somini/vim-textobj-fold'
+Plug 'thinca/vim-textobj-between'
+Plug 'tibabit/vim-templates'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'vim-scripts/ZoomWin'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/matchit.zip'
+Plug 'vim-syntastic/syntastic'
+Plug 'vimwiki/vimwiki'
 
+call plug#end()
 
-call vundle#end()                     " Required
-filetype indent plugin on             " Required, enables filetype detection
+" call vundle#end()                     " Required
+" filetype indent plugin on             " Required, enables filetype detection
 
 "}}}
 
 " Plugin mappings{{{
 "-------------------------------------------------------------------
 
+" After object{{{
+
+" augroup AfterObject
+"     autocmd!
+"     autocmd VimEnter * call after_object#enable(':', '+', '-', '#', ' ', '.', ',', ';', '$', '&', '=', '\')
+" augroup end
+
+"}}}
 " Airline{{{
 
 let g:airline_theme = 'simple'
+
+"}}}
+" GitGutter{{{
+
+" let g:gitgutter_set_sign_backgrounds = 1
+
+" highlight GitGutterAdd guifg=#009900 ctermfg=Green
+" highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
+" highlight GitGutterDelete guifg=#ff2222 ctermfg=209
+
+" let g:gitgutter_sign_added = 'xx'
+" let g:gitgutter_sign_modified = 'yy'
+" let g:gitgutter_sign_removed = 'zz'
+" let g:gitgutter_sign_removed_first_line = '^^'
+" let g:gitgutter_sign_modified_removed = 'ww'
+
+" let g:gitgutter_enabled = 1
 
 "}}}
 " Asterisk{{{
@@ -215,7 +271,6 @@ let g:asterisk#keeppos = 1
 "}}}
 " Conceal{{{
 
-" set conceallevel=2
 let g:tex_conceal='abdgm'
 
 "}}}
@@ -246,10 +301,15 @@ omap <leader>f <Plug>(easymotion-bd-f)
 omap <leader>s <Plug>(easymotion-s2)
 " omap <leader>t <Plug>(easymotion-t2)
 
-" map f <Plug>Sneak_f
-" map F <Plug>Sneak_F
-" map t <Plug>Sneak_t
-" map T <Plug>Sneak_T
+" nmap f <Plug>Sneak_f
+" nmap F <Plug>Sneak_F
+" nmap t <Plug>Sneak_t
+" nmap T <Plug>Sneak_T
+
+" omap f <Plug>Sneak_f
+" omap F <Plug>Sneak_F
+" omap t <Plug>Sneak_t
+" omap T <Plug>Sneak_T
 
 nnoremap <buffer> 'w `wzvzz
 nnoremap <buffer> 'e `ezvzz
@@ -265,14 +325,59 @@ nnoremap <buffer> <localleader>gp :Gw<cr>:Gcommit -m "Add updated files"<cr><cr>
 "}}}
 " FuzzyFinder{{{
 
+" Show dot files and ignore .git files
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_OPTS='-m --height=80% --layout=reverse --inline-info --border --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+let g:fzf_preview_window = 'right:60%'
+
 nnoremap <buffer> <localleader>fzf :FZF ~/
-nnoremap <buffer> <localleader>fzd :FZF<cr>
+nnoremap <buffer> <localleader>fzd :Files<cr>
 nnoremap <buffer> <localleader>fzh :FZF ~<cr>
 
 "}}}
 " Gundo{{{
 
 nnoremap <localleader>gt :GundoToggle<CR>
+
+"}}}
+" Indent Guides{{{
+
+" let g:indent_guides_start_level = 2
+" let g:indent_guides_guide_size = 1
+
+nnoremap <buffer> <localleader>i :IndentGuidesToggle<cr>
+
+"}}}
+" Limelight{{{
+
+nmap <localleader>l <Plug>(Limelight)
+xmap <localleader>l <Plug>(Limelight)
+
+nnoremap <buffer> <localleader>li :Limelight!!<cr>
+
+" Color name (:help cterm-colors) or ANSI code
+" let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 244
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+" let g:limelight_priority = -1
+
+" " Color name (:help gui-colors) or RGB color
+" let g:limelight_conceal_guifg = 'DarkGray'
+" let g:limelight_conceal_guifg = '#777777'
+
+" " Default: 0.5
+" let g:limelight_default_coefficient = 0.7
+
+" " Beginning/end of paragraph
+" "   When there's no empty line between the paragraphs
+" "   and each paragraph starts with indentation
+" let g:limelight_bop = '^\s'
+" let g:limelight_eop = '\ze\n^\s'
+
+" " Number of preceding/following paragraphs to include (default: 0)
+" let g:limelight_paragraph_span = 1
 
 "}}}
 " NERDtree{{{
@@ -322,19 +427,19 @@ function! Template(code)
 
 endfunction
 
-nnoremap <buffer> <localleader>tem :call Template("")<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>tem :call Template("")<cr>
 
-nnoremap <buffer> <localleader>art :call Template("art")<cr>:echo<cr>
-nnoremap <buffer> <localleader>ams :call Template("ams")<cr>:echo<cr>
-nnoremap <buffer> <localleader>rep :call Template("rep")<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>art :call Template("art")<cr>
+nnoremap <silent> <buffer> <localleader>ams :call Template("ams")<cr>
+nnoremap <silent> <buffer> <localleader>rep :call Template("rep")<cr>
 
 "}}}
 
 " Placeholders <++>
-nnoremap <buffer> <c-j> /<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <c-j> <esc>/<++><cr>zv:noh<cr>cf>
-nnoremap <buffer> <c-k> ?<++><cr>zv:noh<cr>cf>
-inoremap <buffer> <c-k> <esc>?<++><cr>zv:noh<cr>cf>
+nnoremap <buffer> <c-j> /<++><cr>zMzv:noh<cr>cf>
+inoremap <buffer> <c-j> <esc>/<++><cr>zMzv:noh<cr>cf>
+nnoremap <buffer> <c-k> ?<++><cr>zMzv:noh<cr>cf>
+inoremap <buffer> <c-k> <esc>?<++><cr>zMzv:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
@@ -356,14 +461,6 @@ vmap <localleader>t <Plug>Titlecase
 "}}}
 " Vimtex and Folding{{{
 
-" let g:vimtex_indent_enabled=1
-" let g:vimtex_complete_enabled=0
-" let g:vimtex_complete_bib=0
-" let g:vimtex_complete_citation=0
-" let g:vimtex_complete_ref=0
-" let g:vimtex_complete_close_braces=0
-" let g:vimtex_fold_enabled=1
-
 xmap am  <plug>(vimtex-a$)
 xmap im  <plug>(vimtex-i$)
 
@@ -379,17 +476,39 @@ xmap it  <plug>(vimtex-im)
 omap at  <plug>(vimtex-am)
 omap it  <plug>(vimtex-im)
 
-augroup UseVimtex_ae/ie_InTeX
-    autocmd!
-    autocmd FileType tex xmap <silent><nowait><buffer> ie <plug>(vimtex-ie)
-    autocmd FileType tex xmap <silent><nowait><buffer> ae <plug>(vimtex-ae)
+" To get ae/ie from vimtex
+let g:vimtex_mappings_override_existing = 1
 
-    autocmd FileType tex omap <silent><nowait><buffer> ie <plug>(vimtex-ie)
-    autocmd FileType tex omap <silent><nowait><buffer> ae <plug>(vimtex-ae)
-augroup end
+" augroup UseVimtex_ae/ie_InTeX
+"     autocmd!
+"     autocmd FileType tex xmap <silent><nowait><buffer> ie <plug>(vimtex-ie)
+"     autocmd FileType tex xmap <silent><nowait><buffer> ae <plug>(vimtex-ae)
+
+"     autocmd FileType tex omap <silent><nowait><buffer> ie <plug>(vimtex-ie)
+"     autocmd FileType tex omap <silent><nowait><buffer> ae <plug>(vimtex-ae)
+" augroup end
 
 nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+
+let g:vimtex_compiler_latexmk = {
+            \ 'backend' : 'process',
+            \ 'background' : 1,
+            \ 'build_dir' : '',
+            \ 'callback' : 1,
+            \ 'continuous' : 1,
+            \ 'executable' : 'latexmk',
+            \ 'hooks' : [],
+            \ 'options' : [
+            \   '-silent',
+            \   '-file-line-error',
+            \   '-synctex=1',
+            \   '-interaction=nonstopmode',
+            \ ],
+            \}
+
+nnoremap <silent> <buffer> <leader>tc :VimtexCompile<cr>
+" nnoremap <silent> <buffer> <leader>tc <plug>(vimtex-view):VimtexCompile<cr>
 
 " Folding{{{
 set foldlevelstart=0
@@ -402,7 +521,7 @@ function! MakeView()
     :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction
 
-nnoremap <buffer> <localleader>mk :call MakeView()<cr>:echo<cr>
+nnoremap <buffer> <localleader>mk :call MakeView()<cr>
 nnoremap <buffer> 'f `fzvzz
 vnoremap <buffer> 'f `fzvzz
 
@@ -411,7 +530,7 @@ function! FoldingTeXPreamble()
 
 endfunction
 
-nnoremap <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>fp :call FoldingTeXPreamble()<cr>
 
 augroup Loadview
     autocmd!
@@ -458,6 +577,36 @@ vnoremap <buffer> 'm `mzvzz
 "}}}
 
 "}}}
+" Vimwiki{{{
+
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \'syntax': 'markdown', 'ext': '.md'},
+            \{'path': '~/vimwiki/Python',
+            \'syntax': 'markdown', 'ext': '.md'}]
+" Mappings
+nmap <leader><cr> <Plug>VimwikiSplitLink
+nmap <localleader><cr> <Plug>VimwikiVSplitLink
+nmap <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
+
+nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
+nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
+
+"}}}
+" Plugin test{{{
+
+" Vim instant markdown
+" let g:instant_markdown_autostart = 1
+" " let g:instant_markdown_slow = 1
+" let g:instant_markdown_browser = "firefox --new-window"
+
+" " Plasticboy markdown
+" let g:vim_markdown_folding_disabled = 1
+
+" Pandoc
+" let g:pandoc#keyboard#display_motions=0
+
+"}}}
 
 "}}}
 
@@ -482,9 +631,7 @@ vnoremap <buffer> <localleader>ar :right<cr>
 inoremap <buffer> ( ()<left>
 inoremap <buffer> (( (
 inoremap <buffer> { {}<left>
-inoremap <buffer> {{ \{\}<left><left>
-inoremap <buffer> p{ {
-inoremap <buffer> P{ {
+inoremap <buffer> {{ {
 inoremap <buffer> [ []<left>
 inoremap <buffer> [[ [
 
@@ -498,24 +645,25 @@ inoremap <buffer> "" ""<left>
 " Calculator{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <C-C> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
+inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
 
 "}}}
 " Colorschemes{{{
 "-------------------------------------------------------------------
 
+let python_highlight_all=1
 syntax on
 
 colorscheme wombat256i
-" colorscheme badwolf
+" colorscheme seoul256
 
-set background=dark
+" set background=light
 
 "}}}
 " Command line mappings{{{
 "-------------------------------------------------------------------
 
-cnoremap <buffer> <c-h> <home>
+cnoremap <buffer> <c-a> <home>
 cnoremap <buffer> <c-e> <end>
 
 "}}}
@@ -537,7 +685,7 @@ let maplocalleader=","
 inoremap <buffer> <> <><left>
 inoremap <buffer> <localleader>bu <><left>buffer<right>
 inoremap <buffer> <L <><left>leader<right>
-inoremap <buffer> <LL <><left>ilocalleader<right>
+inoremap <buffer> <LL <><left>localleader<right>
 inoremap <buffer> <localleader>bl <><left>buffer<right> <><left>leader<right>
 inoremap <buffer> <localleader>bll <><left>buffer<right> <><left>localleader<right>
 
@@ -569,10 +717,15 @@ vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
 
-onoremap <buffer> H :<c-u>normal! mh^<cr>
-onoremap <buffer> J :<c-u>normal! mjL<cr>
-onoremap <buffer> K :<c-u>normal! mkH<cr>
-onoremap <buffer> L :<c-u>normal! mlg_<cr>
+onoremap <buffer> H ^
+onoremap <buffer> J L
+onoremap <buffer> K H
+onoremap <buffer> L g_
+
+" onoremap <buffer> H :<c-u>normal! mh^<cr>
+" onoremap <buffer> J :<c-u>normal! mjL<cr>
+" onoremap <buffer> K :<c-u>normal! mkH<cr>
+" onoremap <buffer> L :<c-u>normal! mlg_<cr>
 
 nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
@@ -627,7 +780,7 @@ function! NavigationToggleInWrapMode()
     endif
 endfunction
 
-nnoremap <buffer> <localleader>nvt :call NavigationToggleInWrapMode()<cr>:echo<cr>
+nnoremap <buffer> <localleader>nv :call NavigationToggleInWrapMode()<cr>
 
 "}}}
 
@@ -677,7 +830,16 @@ nnoremap <buffer> vv ^vg_
 "}}}
 " Running command in shell and pasting in buffer{{{
 
-nnoremap <buffer> !! !!sh<cr>
+" Run in shell and paste in line below
+nnoremap <silent> <buffer> !! yiwo<esc>:.!<c-r><c-r>0<cr>
+vnoremap <silent> <buffer> !! yo<esc>:.!<c-r><c-r>0<cr>0
+
+" Paste date at cursor
+nnoremap <silent> <buffer> <localleader>now a<cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%l
+inoremap <silent> <buffer> <localleader>now <cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%li
+
+" Calendar on next paragraph with cursor on today
+nnoremap <silent> <buffer> <localleader>cal o<esc>:.!cal<cr>mm:FixWhitespace<cr>/_<cr>2x`mn2xhe:noh<cr>
 
 "}}}
 " Searching remaps{{{
@@ -711,9 +873,9 @@ vnoremap <buffer> # :<c-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
 "}}}
 
 " Highlighting next match
-nnoremap <buffer> n nzvzz:call HLNext(0.05)<cr>:echo<cr>
-nnoremap <buffer> N Nzvzz:call HLNext(0.05)<cr>:echo<cr>
-nnoremap <buffer> <localleader>nm :call NextMatchToggle()<cr>:echo<cr>
+nnoremap <silent> <buffer> n nzvzz:call HLNext(0.05)<cr>
+nnoremap <silent> <buffer> N Nzvzz:call HLNext(0.05)<cr>
+nnoremap <silent> <buffer> <localleader>nm :call NextMatchToggle()<cr>
 
 " Vim very magic mode search
 " nnoremap <buffer> / ms/\v
@@ -739,8 +901,12 @@ vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 "}}}
 
 " Clearing highlighted matches
-nnoremap <buffer> <esc> :noh<cr>:echo<cr>
-nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
+nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
+" nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
+
+" " Clearing highlighted matches
+" nnoremap <silent> <buffer> <esc> :noh<cr>:echo<cr>
+" nnoremap <silent> <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>`m
 
 "}}}
 " Some other remaps{{{
@@ -773,8 +939,8 @@ function! FixLastSpellingError()
     :normal! mf[s1z=`f
 endfunction
 
-nnoremap <buffer> <localleader>fs :call FixLastSpellingError()<cr>:echo<cr>
-inoremap <buffer> <localleader>fs <esc>:call FixLastSpellingError()<cr>:echo<cr>a
+nnoremap <silent> <buffer> <localleader>fs :call FixLastSpellingError()<cr>
+inoremap <silent> <buffer> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
 
 " Adding new words to dictionary
 nnoremap <buffer> < ms[szz
@@ -809,77 +975,77 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 augroup end
 
-highlight PartMarkerGroup ctermbg=087 ctermfg=black
+highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% Part')
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 augroup end
 
-highlight PartGroup ctermbg=087 ctermfg=black
+highlight PartGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("PartGroup",'\\part{.\{}}')
     autocmd Filetype tex let m = matchadd("PartGroup",'\\part\*{.\{}}')
 augroup end
 
-highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% Chapter')
     autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 augroup end
 
-highlight ChapterGroup ctermbg=092 ctermfg=yellow
+highlight ChapterGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
     autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 augroup end
 
-highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+highlight SectionMarkerGroup ctermbg=30 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% Section')
     autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 augroup end
 
-highlight SectionGroup ctermbg=39 ctermfg=Black
+highlight SectionGroup ctermbg=30 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SectionGroup",'\\section{.\{}}')
     autocmd Filetype tex let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 augroup end
 
-highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+highlight SubsectionMarkerGroup ctermbg=143 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% Subsection')
     autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 augroup end
 
-highlight SubsectionGroup ctermbg=198 ctermfg=Black
+highlight SubsectionGroup ctermbg=143 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
     autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 augroup end
 
-highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionMarkerGroup ctermbg=069 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
     autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 augroup end
 
-highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionGroup ctermbg=069 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
     autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 augroup end
 
-highlight Label ctermbg=141 ctermfg=0
+highlight Label ctermbg=250 ctermfg=0
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Label",'\\label{.\{}}')
@@ -888,14 +1054,14 @@ augroup end
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight TitleAbstract ctermbg=92 ctermfg=yellow
+highlight TitleAbstract ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TitleAbstract",'% Abstract')
     autocmd Filetype tex let m = matchadd("TitleAbstract",'% Title')
 augroup end
 
-highlight MarkerGroup ctermbg=White ctermfg=Black
+highlight MarkerGroup ctermbg=251 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Notation')
@@ -926,45 +1092,45 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Claim')
 augroup end
 
-highlight YellowMarkerGroup ctermbg=yellow ctermfg=black
+highlight EquationMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Equation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Align')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Subequations')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Gather')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Center')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Enumerate')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Itemize')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% figure')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% diary')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Equation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Align')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Subequations')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Gather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Center')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% figure')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
 augroup end
 
-highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
 
 augroup TeXHighlighting
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Array')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Matrix')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
 augroup end
 
-highlight Bibliography ctermbg=92 ctermfg=yellow
+highlight Bibliography ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
 augroup end
 
-highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
@@ -988,7 +1154,7 @@ augroup end
 "}}}
 " Abstract, Theorem, Equation"{{{
 
-highlight Abstract ctermbg=92 ctermfg=yellow
+highlight Abstract ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Abstract",'\\begin{abstract}')
@@ -1004,7 +1170,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{unotation}')
 augroup end
 
-highlight DefinitionGroup ctermbg=214 ctermfg=Black
+highlight DefinitionGroup ctermbg=107 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\begin{definition}')
@@ -1018,7 +1184,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
 augroup end
 
-highlight TheoremGroup ctermbg=133 ctermfg=Black
+highlight TheoremGroup ctermbg=139 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{theorem}')
@@ -1052,7 +1218,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{orangebox}')
 augroup end
 
-highlight uTheoremGroup ctermbg=brown ctermfg=Black
+highlight uTheoremGroup ctermbg=169 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
@@ -1067,7 +1233,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uremark}')
 augroup end
 
-highlight ProofGroup ctermbg=108 ctermfg=Black
+highlight ProofGroup ctermbg=139 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{proof}')
@@ -1076,7 +1242,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{prf}')
 augroup end
 
-highlight EquationGroup ctermbg=106 ctermfg=Black
+highlight EquationGroup ctermbg=109 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\(')
@@ -1115,7 +1281,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
 augroup end
 
-highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
+highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
@@ -1140,7 +1306,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("asterisk",'\*')
 augroup end
 
-highlight ParenthesisGroup ctermbg=182 ctermfg=black
+highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
 augroup TeXHighlighting
     " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big')
@@ -1282,8 +1448,8 @@ augroup end
 "-------------------------------------------------------------------
 
 "autocmd BufWritePre *.* %s/\s\+$//e
-inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>:echo<cr>`wa
-nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
+inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wa
+nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`w
 
 "}}}
 
@@ -1297,7 +1463,7 @@ nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>:echo<cr>`w
 
 " Select KeyBinding Scheme
 function! KeyBindings(code)
-    if a:code != 'tex' && a:code != 'np' && a:code != 'py' && a:code != 'unmaptex'
+    if a:code != 'tex' && a:code != 'np' && a:code != 'py' && a:code != 'unmaptex' && a:code != 'go'
         let l:code = input("Which KeyBindings: ")
     else
         let l:code = a:code
@@ -1318,6 +1484,10 @@ function! KeyBindings(code)
         "UnmapTeXKeyBindings
     elseif l:code == "unmaptex"
         source ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
+
+        "Go-lang
+    elseif l:code == "go"
+        source ~/.vim/KeyBindings/GoKeyBindings.vim
 
         "invalid KeyBindings
     elseif l:code != 'tex' && l:code != 'np' && l:code != 'py' && l:code != 'unmaptex'
@@ -1359,7 +1529,8 @@ endfunction
 
 augroup SourceEverythingForTeX
     autocmd!
-    autocmd BufNewFile,BufRead *.tex source $MYVIMRC
+    autocmd BufNewFile         *.tex silent write
+    autocmd BufNewFile         *.tex source ~/.vim/plugged/vimtex/ftplugin/tex/folding.vim
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
@@ -1369,21 +1540,6 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
-augroup end
-
-" Changing foldmarker for tex
-nnoremap <buffer> <localleader>cfm :%s/}T}E}X/F}O}L}D/g \| :%s/{T{E{X/F{O{L{D/g<cr><cr>
-
-augroup SourceTheseForAll
-    autocmd!
-    autocmd BufNewFile,BufRead * call Abbreviations("gen")
-augroup end
-
-augroup SourceEverythingForPython
-    autocmd!
-    autocmd BufNewFile,BufRead *.py source $MYVIMRC
-    autocmd BufNewFile,BufRead *.tex call KeyBindings("py")
-    autocmd BufNewFile,BufRead *.py setlocal spell spelllang=en_us
 augroup end
 
 " Sourcing everything for tex
@@ -1397,30 +1553,57 @@ function! SourceEverythingForTeX()
     setlocal foldmarker=F{O{L{D,F}O}L}D
 endfunction
 
-nnoremap <buffer> <localleader>ev :call SourceEverythingForTeX()<cr>:echo<cr>
-inoremap <buffer> <localleader>ev <esc>:call SourceEverythingForTeX()<cr>:echo<cr>a
+nnoremap <silent> <buffer> <localleader>ev :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
+inoremap <silent> <buffer> <localleader>ev <esc>:source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>a
 
-"Sourcing TexKeyBindings
-nnoremap <buffer> <F4> :call KeyBindings("tex")<cr>:echo<cr>
-inoremap <buffer> <F4> <esc>:call KeyBindings("tex")<cr>:echo<cr>a
+" Changing foldmarker for tex
+nnoremap <buffer> <localleader>cfm :%s/}T}E}X/F}O}L}D/g \| :%s/{T{E{X/F{O{L{D/g<cr><cr>
+
+augroup Vimwiki
+    autocmd!
+    autocmd BufNewFile         *.md silent write
+    autocmd BufNewfile,BufRead *.md colorscheme wombat256i
+    autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
+augroup end
+
+augroup SourceEverythingForPython
+    autocmd!
+    autocmd BufNewFile         *.py silent write
+    autocmd BufNewFile,BufRead *.py call KeyBindings("py")
+    " autocmd BufNewFile,BufRead *.py set foldmethod=indent
+    autocmd BufNewFile,BufRead *.py setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.py setlocal spellfile=~/.vim/spell/math.utf-8.add
+augroup end
+
+augroup SourceEverythingForGo
+    autocmd!
+    autocmd BufNewFile         *.go silent write
+    autocmd BufNewFile,BufRead *.go call KeyBindings("go")
+    autocmd BufNewFile,BufRead *.go setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.go setlocal spellfile=~/.vim/spell/math.utf-8.add
+augroup end
 
 "Sourcing NumbersPeacefully
-nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>:echo<cr>
-inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>:echo<cr>a
-inoremap <buffer> <localleader>nd <esc>:call KeyBindings("tex")<cr>:echo<cr>a
+nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
+inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>a
+inoremap <buffer> <localleader>nd <esc>:call KeyBindings("tex")<cr>a
 
 "Sourcing GeneralAbbreviations
-nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>:echo<cr>
+nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
 
 " Sourcing MathAbbreviations
-nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>:echo<cr>
+nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
 
 "Sourcing PythonKeyBindings
-nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>:echo<cr>
+nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>
 
 "Sourcing UnmapTexKeyBindings
-nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>:echo<cr>
-inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>:echo<cr>a
+nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>
+inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>a
 
 "}}}
 " Opening .vimrc, KeyBindings and Stuff{{{
@@ -1433,10 +1616,30 @@ nnoremap <buffer> <leader>nph :new ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>npv :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
-" Opening Ultisnips "u=ultisnips
-nnoremap <buffer> <leader>uh :new ~/.vim/UltiSnips/tex.snippets<cr>
-nnoremap <buffer> <leader>uv :vnew ~/.vim/UltiSnips/tex.snippets<cr>
-nnoremap <buffer> <leader>u :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+" Opening PythonKeyBindings
+nnoremap <buffer> <leader>ph :new ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+nnoremap <buffer> <leader>pv :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
+
+" Opening GoKeyBindings
+nnoremap <buffer> <leader>gh :new ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
+nnoremap <buffer> <leader>gv :vnew ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
+nnoremap <buffer> <leader>go :vnew ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
+
+" Opening UnmapTeXKeyBindings
+nnoremap <buffer> <leader>uth :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>utv :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
+
+" Opening tex.snippets "u=ultisnips
+nnoremap <buffer> <leader>tuh :new ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>tuv :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <buffer> <leader>tu :vnew ~/.vim/UltiSnips/tex.snippets<cr>
+
+" Opening py.snippets
+nnoremap <buffer> <leader>puh :new ~/.vim/UltiSnips/python.snippets<cr>
+nnoremap <buffer> <leader>puv :vnew ~/.vim/UltiSnips/python.snippets<cr>
+nnoremap <buffer> <leader>pu :vnew ~/.vim/UltiSnips/python.snippets<cr>
 
 " Opening Abbreviations
 nnoremap <buffer> <leader>ah :new ~/.vim/Abbreviations<cr>
@@ -1448,16 +1651,6 @@ nnoremap <buffer> <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim
 nnoremap <buffer> <leader>amh :new ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 nnoremap <buffer> <leader>amv :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
-
-" Opening PythonKeyBindings
-nnoremap <buffer> <leader>pyh :new ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
-nnoremap <buffer> <leader>pyv :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
-nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
-
-" Opening UnmapTeXKeyBindings
-nnoremap <buffer> <leader>uth :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>utv :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening mathspell file
 nnoremap <buffer> <leader>msh :new ~/.vim/spell/math.utf-8.add<cr>
@@ -1473,13 +1666,13 @@ nnoremap <buffer> <leader>v :vsplit $MYVIMRC<cr>
 
 "}}}
 
-" Writing in Normal/Insert Mode and quitting{{{
+" Writing and quitting{{{
 "-------------------------------------------------------------------
 
-augroup IndentTexPyBuf
-    autocmd!
-    autocmd BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
-augroup end
+" augroup IndentTexPyBuf
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
+" augroup end
 
 " Doesn't seem to work when template is enabled
 augroup WriteNewBuf
@@ -1487,28 +1680,16 @@ augroup WriteNewBuf
     autocmd BufNewFile * silent write
 augroup end
 
-nnoremap <buffer> <localleader>w mm:w!<cr>`m
-inoremap <buffer> ;w <esc>mm:w!<cr>`ma
+nnoremap <silent> <buffer> <localleader>w mm:w!<cr>`m
+inoremap <silent> <buffer> ;w <esc>mm:w!<cr>`ma
 
 augroup ContinuouslyWriteBuf
     autocmd!
     autocmd TextChanged,TextChangedI *.* silent write
 augroup end
 
-" autocmd BufRead,BufNewFile *.* let b:save_time=localtime()
-" autocmd CursorHold,CursorHoldI,CursorMoved,CursorMovedI *.* call UpdateFile()
-" autocmd BufWritePre *.* let b:save_time=localtime()
-
-" function! UpdateFile()
-"     if ((localtime() - b:save_time) >= 2)
-"         update
-"         call TeXHighlight()
-"         let b:save_time=localtime()
-"     endif
-" endfunction
-
 nnoremap <buffer> <localleader>q mqzM:q!<cr>
-nnoremap <buffer> <localleader>wq mqzM:wq<cr>
+nnoremap <buffer> <localleader>wq mqzM:wq!<cr>
 nnoremap <buffer> 'q `qzvzz
 vnoremap <buffer> 'q `qzvzz
 
@@ -1518,16 +1699,20 @@ vnoremap <buffer> 'q `qzvzz
 "-------------------------------------------------------------------
 
 " Sourcing current file
-nnoremap <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>:echo<cr>
-nnoremap <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>:echo<cr>
+nnoremap <silent> <buffer> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
+nnoremap <silent> <buffer> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>
 
 " Sourcing visual selection/current line for testing code
 vnoremap <buffer> <localleader>E y:execute @@<cr>
 nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
-augroup Source$MYVIMRC
+augroup ForAllBuf
     autocmd!
+    " autocmd BufNewfile,BufRead,BufEnter * source $MYVIMRC
     autocmd BufNewfile,BufRead * source $MYVIMRC
+    " autocmd BufNewFile,BufRead * call Abbreviations("gen")
+    autocmd FocusGained,FocusLost,BufEnter * checktime
+    autocmd CursorHold,CursorHoldI * checktime
 augroup end
 
 " Sourcing .vimrc

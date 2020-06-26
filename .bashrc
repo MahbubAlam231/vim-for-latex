@@ -130,3 +130,9 @@ setxkbmap -option "caps:swapescape"
 # fzf configurations
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# My custom aliases
+alias vc="cd && vim .vimrc"
+alias t="cd && vim .vim/KeyBindings/TeXKeyBindings.vim"
+alias ut="cd && vim .vim/UltiSnips/tex.snippets"

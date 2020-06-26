@@ -29,7 +29,7 @@
 \usepackage{float}
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
-% \usepackage[pdftex,bookmarks,colorlinks,breaklinks,linktoc=all]{hyperref}
+% \usepackage[bookmarks,breaklinks,citecolor=blue,colorlinks,linktoc=all,pdftex]{hyperref}
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}

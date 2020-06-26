@@ -18,77 +18,77 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 augroup end
 
-highlight PartMarkerGroup ctermbg=087 ctermfg=black
+highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% Part')
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 augroup end
 
-highlight PartGroup ctermbg=087 ctermfg=black
+highlight PartGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("PartGroup",'\\part{.\{}}')
     autocmd Filetype tex let m = matchadd("PartGroup",'\\part\*{.\{}}')
 augroup end
 
-highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% Chapter')
     autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 augroup end
 
-highlight ChapterGroup ctermbg=092 ctermfg=yellow
+highlight ChapterGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
     autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 augroup end
 
-highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+highlight SectionMarkerGroup ctermbg=30 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% Section')
     autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 augroup end
 
-highlight SectionGroup ctermbg=39 ctermfg=Black
+highlight SectionGroup ctermbg=30 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SectionGroup",'\\section{.\{}}')
     autocmd Filetype tex let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 augroup end
 
-highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+highlight SubsectionMarkerGroup ctermbg=143 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% Subsection')
     autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 augroup end
 
-highlight SubsectionGroup ctermbg=198 ctermfg=Black
+highlight SubsectionGroup ctermbg=143 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
     autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 augroup end
 
-highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionMarkerGroup ctermbg=069 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
     autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 augroup end
 
-highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionGroup ctermbg=069 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
     autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 augroup end
 
-highlight Label ctermbg=141 ctermfg=0
+highlight Label ctermbg=250 ctermfg=0
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Label",'\\label{.\{}}')
@@ -97,14 +97,14 @@ augroup end
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight TitleAbstract ctermbg=92 ctermfg=yellow
+highlight TitleAbstract ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TitleAbstract",'% Abstract')
     autocmd Filetype tex let m = matchadd("TitleAbstract",'% Title')
 augroup end
 
-highlight MarkerGroup ctermbg=White ctermfg=Black
+highlight MarkerGroup ctermbg=251 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Notation')
@@ -135,45 +135,45 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Claim')
 augroup end
 
-highlight YellowMarkerGroup ctermbg=yellow ctermfg=black
+highlight EquationMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Equation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Align')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Subequations')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Gather')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Center')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Enumerate')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% Itemize')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% figure')
-    autocmd Filetype tex let m = matchadd("YellowMarkerGroup",'% diary')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Equation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Align')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Subequations')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Gather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Center')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% figure')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
 augroup end
 
-highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
 
 augroup TeXHighlighting
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Array')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Matrix')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
-    autocmd Filetype tex let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
 augroup end
 
-highlight Bibliography ctermbg=92 ctermfg=yellow
+highlight Bibliography ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
 augroup end
 
-highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
@@ -197,7 +197,7 @@ augroup end
 "}}}
 " Abstract, Theorem, Equation"{{{
 
-highlight Abstract ctermbg=92 ctermfg=yellow
+highlight Abstract ctermbg=92 ctermfg=149
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Abstract",'\\begin{abstract}')
@@ -213,7 +213,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{unotation}')
 augroup end
 
-highlight DefinitionGroup ctermbg=214 ctermfg=Black
+highlight DefinitionGroup ctermbg=107 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\begin{definition}')
@@ -227,7 +227,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
 augroup end
 
-highlight TheoremGroup ctermbg=133 ctermfg=Black
+highlight TheoremGroup ctermbg=139 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{theorem}')
@@ -261,7 +261,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{orangebox}')
 augroup end
 
-highlight uTheoremGroup ctermbg=brown ctermfg=Black
+highlight uTheoremGroup ctermbg=169 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
@@ -276,7 +276,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uremark}')
 augroup end
 
-highlight ProofGroup ctermbg=108 ctermfg=Black
+highlight ProofGroup ctermbg=139 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{proof}')
@@ -285,7 +285,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{prf}')
 augroup end
 
-highlight EquationGroup ctermbg=106 ctermfg=Black
+highlight EquationGroup ctermbg=109 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\(')
@@ -324,7 +324,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
 augroup end
 
-highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
+highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
@@ -349,7 +349,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("asterisk",'\*')
 augroup end
 
-highlight ParenthesisGroup ctermbg=182 ctermfg=black
+highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
 augroup TeXHighlighting
     " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big')
@@ -486,7 +486,6 @@ augroup end
 
 "}}}
 
-
 " From TeXKeyBindings.vim
 "-------------------------------------------------------------------
 
@@ -499,69 +498,69 @@ let m = matchadd("Folds_brackets_comments",'%}T}E}X')
 let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
 let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 
-highlight PartMarkerGroup ctermbg=087 ctermfg=black
+highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("PartMarkerGroup",'% Part')
 let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 
-highlight PartGroup ctermbg=087 ctermfg=black
+highlight PartGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("PartGroup",'\\part{.\{}}')
 let m = matchadd("PartGroup",'\\part\*{.\{}}')
 
-highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
 let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 
-highlight ChapterGroup ctermbg=092 ctermfg=yellow
+highlight ChapterGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
 let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 
-highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+highlight SectionMarkerGroup ctermbg=30 ctermfg=Black
 
 let m = matchadd("SectionMarkerGroup",'% Section')
 let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 
-highlight SectionGroup ctermbg=39 ctermfg=Black
+highlight SectionGroup ctermbg=30 ctermfg=Black
 
 let m = matchadd("SectionGroup",'\\section{.\{}}')
 let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 
-highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+highlight SubsectionMarkerGroup ctermbg=143 ctermfg=Black
 
 let m = matchadd("SubsectionMarkerGroup",'% Subsection')
 let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 
-highlight SubsectionGroup ctermbg=198 ctermfg=Black
+highlight SubsectionGroup ctermbg=143 ctermfg=Black
 
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
 let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 
-highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionMarkerGroup ctermbg=069 ctermfg=Black
 
 let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
 let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 
-highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionGroup ctermbg=069 ctermfg=Black
 
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
-highlight Label ctermbg=141 ctermfg=0
+highlight Label ctermbg=250 ctermfg=0
 
 let m = matchadd("Label",'\\label{.\{}}')
 
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight TitleAbstract ctermbg=92 ctermfg=yellow
+highlight TitleAbstract ctermbg=92 ctermfg=149
 
 let m = matchadd("TitleAbstract",'% Abstract')
 let m = matchadd("TitleAbstract",'% Title')
 
-highlight MarkerGroup ctermbg=White ctermfg=Black
+highlight MarkerGroup ctermbg=251 ctermfg=Black
 
 let m = matchadd("MarkerGroup",'% Notation')
 let m = matchadd("MarkerGroup",'% UnnumberedNotation')
@@ -590,39 +589,39 @@ let m = matchadd("MarkerGroup",'% Exercise')
 let m = matchadd("MarkerGroup",'% Frame')
 let m = matchadd("MarkerGroup",'% Claim')
 
-highlight YellowMarkerGroup ctermbg=yellow ctermfg=black
+highlight EquationMarkerGroup ctermbg=174 ctermfg=black
 
-let m = matchadd("YellowMarkerGroup",'% Equation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedEquation')
-let m = matchadd("YellowMarkerGroup",'% Align')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
-let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
-let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
-let m = matchadd("YellowMarkerGroup",'% Subequations')
-let m = matchadd("YellowMarkerGroup",'% Gather')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
-let m = matchadd("YellowMarkerGroup",'% Center')
-let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
-let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
-let m = matchadd("YellowMarkerGroup",'% Enumerate')
-let m = matchadd("YellowMarkerGroup",'% Itemize')
-let m = matchadd("YellowMarkerGroup",'% figure')
-let m = matchadd("YellowMarkerGroup",'% diary')
+let m = matchadd("EquationMarkerGroup",'% Equation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
+let m = matchadd("EquationMarkerGroup",'% Align')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
+let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
+let m = matchadd("EquationMarkerGroup",'% Subequations')
+let m = matchadd("EquationMarkerGroup",'% Gather')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
+let m = matchadd("EquationMarkerGroup",'% Center')
+let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
+let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
+let m = matchadd("EquationMarkerGroup",'% Enumerate')
+let m = matchadd("EquationMarkerGroup",'% Itemize')
+let m = matchadd("EquationMarkerGroup",'% figure')
+let m = matchadd("EquationMarkerGroup",'% diary')
 
-highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
 
-let m = matchadd("SalmonMarkerGroup",'% Array')
-let m = matchadd("SalmonMarkerGroup",'% Matrix')
-let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
-let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
 
-highlight Bibliography ctermbg=92 ctermfg=yellow
+highlight Bibliography ctermbg=92 ctermfg=149
 
 let m = matchadd("Bibliography",'% Bibliography')
 
-highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
 
 let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
 let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
@@ -640,7 +639,7 @@ let m = matchadd("BoldRedGroup",'\\todo')
 "}}}
 " Abstract, Theorem, Equation"{{{
 
-highlight Abstract ctermbg=92 ctermfg=yellow
+highlight Abstract ctermbg=92 ctermfg=149
 
 let m = matchadd("Abstract",'\\begin{abstract}')
 let m = matchadd("Abstract",'\\end{abstract}')
@@ -652,7 +651,7 @@ let m = matchadd("NotationGroup",'\\end{notation}')
 let m = matchadd("NotationGroup",'\\begin{unotation}')
 let m = matchadd("NotationGroup",'\\end{unotation}')
 
-highlight DefinitionGroup ctermbg=214 ctermfg=Black
+highlight DefinitionGroup ctermbg=107 ctermfg=Black
 
 let m = matchadd("DefinitionGroup",'\\begin{definition}')
 let m = matchadd("DefinitionGroup",'\\end{definition}')
@@ -662,7 +661,7 @@ highlight uDefinitionGroup ctermbg=100 ctermfg=Black
 let m = matchadd("uDefinitionGroup",'\\begin{udefinition}')
 let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
 
-highlight TheoremGroup ctermbg=133 ctermfg=Black
+highlight TheoremGroup ctermbg=139 ctermfg=Black
 
 let m = matchadd("TheoremGroup",'\\begin{theorem}')
 let m = matchadd("TheoremGroup",'\\end{theorem}')
@@ -694,7 +693,7 @@ let m = matchadd("TheoremGroup",'\\end{thmbox}')
 let m = matchadd("TheoremGroup",'\\begin{orangebox}')
 let m = matchadd("TheoremGroup",'\\end{orangebox}')
 
-highlight uTheoremGroup ctermbg=brown ctermfg=Black
+highlight uTheoremGroup ctermbg=169 ctermfg=Black
 
 let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
 let m = matchadd("uTheoremGroup",'\\end{utheorem}')
@@ -707,14 +706,14 @@ let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
 let m = matchadd("uTheoremGroup",'\\begin{uremark}')
 let m = matchadd("uTheoremGroup",'\\end{uremark}')
 
-highlight ProofGroup ctermbg=108 ctermfg=Black
+highlight ProofGroup ctermbg=139 ctermfg=Black
 
 let m = matchadd("ProofGroup",'\\begin{proof}')
 let m = matchadd("ProofGroup",'\\end{proof}')
 let m = matchadd("ProofGroup",'\\begin{prf}')
 let m = matchadd("ProofGroup",'\\end{prf}')
 
-highlight EquationGroup ctermbg=106 ctermfg=Black
+highlight EquationGroup ctermbg=109 ctermfg=Black
 
 let m = matchadd("EquationGroup",'\\(')
 let m = matchadd("EquationGroup",'\\)')
@@ -751,7 +750,7 @@ let m = matchadd("EquationGroup",'\\end{itemize}')
 let m = matchadd("EquationGroup",'\\begin{landscape}')
 let m = matchadd("EquationGroup",'\\end{landscape}')
 
-highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
+highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 
 let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
 let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
@@ -772,7 +771,7 @@ highlight asterisk ctermbg=130 ctermfg=yellow
 
 let m = matchadd("asterisk",'\*')
 
-highlight ParenthesisGroup ctermbg=182 ctermfg=black
+highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
 " let m = matchadd("ParenthesisGroup",'\\big')
 " let m = matchadd("ParenthesisGroup",'\\Big')

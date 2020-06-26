@@ -43,8 +43,7 @@ iunmap <buffer> (
 iunmap <buffer> ((
 iunmap <buffer> {
 iunmap <buffer> {{
-iunmap <buffer> p{
-iunmap <buffer> P{
+iunmap <buffer> <localleader>{
 iunmap <buffer> [
 iunmap <buffer> [[
 

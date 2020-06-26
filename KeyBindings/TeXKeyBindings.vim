@@ -1,3 +1,9 @@
+ " _____   __  ___  __          ____  _           _ _
+" |_   _|__\ \/ / |/ /___ _   _| __ )(_)_ __   __| (_)_ __   __ _ ___
+ "  | |/ _ \\  /| ' // _ \ | | |  _ \| | '_ \ / _` | | '_ \ / _` / __|
+ "  | |  __//  \| . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
+ "  |_|\___/_/\_\_|\_\___|\__, |____/|_|_| |_|\__,_|_|_| |_|\__, |___/
+ "                        |___/                             |___/
 
 "-------------------------------------------------------------------
 " Mahbub's TeXKeyBindings
@@ -42,9 +48,8 @@ inoremap <buffer> 00 0
 inoremap <buffer> ( ()<left>
 inoremap <buffer> (( (
 inoremap <buffer> { {}<left>
-inoremap <buffer> {{ \{\}<left><left>
-inoremap <buffer> p{ {
-inoremap <buffer> P{ {
+inoremap <buffer> {{ {
+inoremap <buffer> <localleader>{ \{\}<left><left>
 inoremap <buffer> [ []<left>
 inoremap <buffer> [[ [
 
@@ -1538,8 +1543,8 @@ function! MatrixGroupToggle()
     endif
 endfunction
 
-nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>:echo<cr>
-inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
+nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>
+inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>a
 
 "}}}
 "" Macro Matrix Groups{{{
@@ -3502,17 +3507,17 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -pdf -bibtex -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zz
-inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zza
-nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -pdf %:r.tex<CR><CR>zz
+inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+nnoremap <buffer> <F5> :w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
+inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+nnoremap <buffer> <F7> :w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
 
-" inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:r.tex<CR><CR>a
-" nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:r.tex<CR><CR>
-" nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
-" inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zza
-" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -bibtex %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf %:r.tex<CR><CR>zz
-" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:r.tex<CR><CR>zz
+" inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:p<CR><CR>a
+" nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:p<CR><CR>
+" nnoremap <buffer> <F8> :w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>zz
+" inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>zza
+" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf %:p<CR><CR>:w!<CR>:!latexmk -bibtex %:p<CR><CR>:w!<CR>:!latexmk -pdf %:p<CR><CR>zz
+" nnoremap <buffer> <F9> :w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>:w!<CR>:!latexmk -pdf -bibtex -pdf %:p<CR><CR>zz
 
 "}}}
 
@@ -3528,69 +3533,69 @@ let m = matchadd("Folds_brackets_comments",'%}T}E}X')
 let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
 let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
 
-highlight PartMarkerGroup ctermbg=087 ctermfg=black
+highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("PartMarkerGroup",'% Part')
 let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 
-highlight PartGroup ctermbg=087 ctermfg=black
+highlight PartGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("PartGroup",'\\part{.\{}}')
 let m = matchadd("PartGroup",'\\part\*{.\{}}')
 
-highlight ChapterMarkerGroup ctermbg=092 ctermfg=yellow
+highlight ChapterMarkerGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("ChapterMarkerGroup",'% Chapter')
 let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
 
-highlight ChapterGroup ctermbg=092 ctermfg=yellow
+highlight ChapterGroup ctermbg=092 ctermfg=149
 
 let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
 let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
 
-highlight SectionMarkerGroup ctermbg=39 ctermfg=Black
+highlight SectionMarkerGroup ctermbg=30 ctermfg=Black
 
 let m = matchadd("SectionMarkerGroup",'% Section')
 let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
 
-highlight SectionGroup ctermbg=39 ctermfg=Black
+highlight SectionGroup ctermbg=30 ctermfg=Black
 
 let m = matchadd("SectionGroup",'\\section{.\{}}')
 let m = matchadd("SectionGroup",'\\section\*{.\{}}')
 
-highlight SubsectionMarkerGroup ctermbg=198 ctermfg=Black
+highlight SubsectionMarkerGroup ctermbg=143 ctermfg=Black
 
 let m = matchadd("SubsectionMarkerGroup",'% Subsection')
 let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
 
-highlight SubsectionGroup ctermbg=198 ctermfg=Black
+highlight SubsectionGroup ctermbg=143 ctermfg=Black
 
 let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
 let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
 
-highlight SubsubsectionMarkerGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionMarkerGroup ctermbg=069 ctermfg=Black
 
 let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
 let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
 
-highlight SubsubsectionGroup ctermbg=yellow ctermfg=Black
+highlight SubsubsectionGroup ctermbg=069 ctermfg=Black
 
 let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
 let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
 
-highlight Label ctermbg=141 ctermfg=0
+highlight Label ctermbg=250 ctermfg=0
 
 let m = matchadd("Label",'\\label{.\{}}')
 
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
-highlight TitleAbstract ctermbg=92 ctermfg=yellow
+highlight TitleAbstract ctermbg=92 ctermfg=149
 
 let m = matchadd("TitleAbstract",'% Abstract')
 let m = matchadd("TitleAbstract",'% Title')
 
-highlight MarkerGroup ctermbg=White ctermfg=Black
+highlight MarkerGroup ctermbg=251 ctermfg=Black
 
 let m = matchadd("MarkerGroup",'% Notation')
 let m = matchadd("MarkerGroup",'% UnnumberedNotation')
@@ -3619,39 +3624,39 @@ let m = matchadd("MarkerGroup",'% Exercise')
 let m = matchadd("MarkerGroup",'% Frame')
 let m = matchadd("MarkerGroup",'% Claim')
 
-highlight YellowMarkerGroup ctermbg=yellow ctermfg=black
+highlight EquationMarkerGroup ctermbg=174 ctermfg=black
 
-let m = matchadd("YellowMarkerGroup",'% Equation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedEquation')
-let m = matchadd("YellowMarkerGroup",'% Align')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedAlign')
-let m = matchadd("YellowMarkerGroup",'% AlignedEquation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedAlignedEquation')
-let m = matchadd("YellowMarkerGroup",'% GatheredEquation')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedGatheredEquation')
-let m = matchadd("YellowMarkerGroup",'% Subequations')
-let m = matchadd("YellowMarkerGroup",'% Gather')
-let m = matchadd("YellowMarkerGroup",'% UnnumberedGather')
-let m = matchadd("YellowMarkerGroup",'% Center')
-let m = matchadd("YellowMarkerGroup",'% CaseDefinition')
-let m = matchadd("YellowMarkerGroup",'% DcaseDefinition')
-let m = matchadd("YellowMarkerGroup",'% Enumerate')
-let m = matchadd("YellowMarkerGroup",'% Itemize')
-let m = matchadd("YellowMarkerGroup",'% figure')
-let m = matchadd("YellowMarkerGroup",'% diary')
+let m = matchadd("EquationMarkerGroup",'% Equation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
+let m = matchadd("EquationMarkerGroup",'% Align')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
+let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
+let m = matchadd("EquationMarkerGroup",'% Subequations')
+let m = matchadd("EquationMarkerGroup",'% Gather')
+let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
+let m = matchadd("EquationMarkerGroup",'% Center')
+let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
+let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
+let m = matchadd("EquationMarkerGroup",'% Enumerate')
+let m = matchadd("EquationMarkerGroup",'% Itemize')
+let m = matchadd("EquationMarkerGroup",'% figure')
+let m = matchadd("EquationMarkerGroup",'% diary')
 
-highlight SalmonMarkerGroup ctermbg=209 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
 
-let m = matchadd("SalmonMarkerGroup",'% Array')
-let m = matchadd("SalmonMarkerGroup",'% Matrix')
-let m = matchadd("SalmonMarkerGroup",'% Bmatrix')
-let m = matchadd("SalmonMarkerGroup",'% Pmatrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
+let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
 
-highlight Bibliography ctermbg=92 ctermfg=yellow
+highlight Bibliography ctermbg=92 ctermfg=149
 
 let m = matchadd("Bibliography",'% Bibliography')
 
-highlight ImpliesMarkerGroup ctermbg=208 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
 
 let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
 let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
@@ -3669,7 +3674,7 @@ let m = matchadd("BoldRedGroup",'\\todo')
 "}}}
 " Abstract, Theorem, Equation"{{{
 
-highlight Abstract ctermbg=92 ctermfg=yellow
+highlight Abstract ctermbg=92 ctermfg=149
 
 let m = matchadd("Abstract",'\\begin{abstract}')
 let m = matchadd("Abstract",'\\end{abstract}')
@@ -3681,7 +3686,7 @@ let m = matchadd("NotationGroup",'\\end{notation}')
 let m = matchadd("NotationGroup",'\\begin{unotation}')
 let m = matchadd("NotationGroup",'\\end{unotation}')
 
-highlight DefinitionGroup ctermbg=214 ctermfg=Black
+highlight DefinitionGroup ctermbg=107 ctermfg=Black
 
 let m = matchadd("DefinitionGroup",'\\begin{definition}')
 let m = matchadd("DefinitionGroup",'\\end{definition}')
@@ -3691,7 +3696,7 @@ highlight uDefinitionGroup ctermbg=100 ctermfg=Black
 let m = matchadd("uDefinitionGroup",'\\begin{udefinition}')
 let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
 
-highlight TheoremGroup ctermbg=133 ctermfg=Black
+highlight TheoremGroup ctermbg=139 ctermfg=Black
 
 let m = matchadd("TheoremGroup",'\\begin{theorem}')
 let m = matchadd("TheoremGroup",'\\end{theorem}')
@@ -3723,7 +3728,7 @@ let m = matchadd("TheoremGroup",'\\end{thmbox}')
 let m = matchadd("TheoremGroup",'\\begin{orangebox}')
 let m = matchadd("TheoremGroup",'\\end{orangebox}')
 
-highlight uTheoremGroup ctermbg=brown ctermfg=Black
+highlight uTheoremGroup ctermbg=169 ctermfg=Black
 
 let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
 let m = matchadd("uTheoremGroup",'\\end{utheorem}')
@@ -3736,14 +3741,14 @@ let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
 let m = matchadd("uTheoremGroup",'\\begin{uremark}')
 let m = matchadd("uTheoremGroup",'\\end{uremark}')
 
-highlight ProofGroup ctermbg=108 ctermfg=Black
+highlight ProofGroup ctermbg=139 ctermfg=Black
 
 let m = matchadd("ProofGroup",'\\begin{proof}')
 let m = matchadd("ProofGroup",'\\end{proof}')
 let m = matchadd("ProofGroup",'\\begin{prf}')
 let m = matchadd("ProofGroup",'\\end{prf}')
 
-highlight EquationGroup ctermbg=106 ctermfg=Black
+highlight EquationGroup ctermbg=109 ctermfg=Black
 
 let m = matchadd("EquationGroup",'\\(')
 let m = matchadd("EquationGroup",'\\)')
@@ -3780,7 +3785,7 @@ let m = matchadd("EquationGroup",'\\end{itemize}')
 let m = matchadd("EquationGroup",'\\begin{landscape}')
 let m = matchadd("EquationGroup",'\\end{landscape}')
 
-highlight ArrayMatrixEtcGroup ctermbg=209 ctermfg=Black
+highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 
 let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
 let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
@@ -3801,7 +3806,7 @@ highlight asterisk ctermbg=130 ctermfg=yellow
 
 let m = matchadd("asterisk",'\*')
 
-highlight ParenthesisGroup ctermbg=182 ctermfg=black
+highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
 " let m = matchadd("ParenthesisGroup",'\\big')
 " let m = matchadd("ParenthesisGroup",'\\Big')
