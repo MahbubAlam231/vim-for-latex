@@ -46,7 +46,7 @@ Abolish arb arbitrary
 
 Abolish bdd{,ness} bounded{,ness}
 Abolish bd{y,ies} boundar{y,ies}
-Abolish bij{,n,e,ve,ity,y,vely,ely,ly} bijecti{on,on,ve,ve,vity,vity,vely,vely,vely}
+Abolish bij{n,e,ve,ity,y,vely,ely,ly} bijecti{on,ve,ve,vity,vity,vely,vely,vely}
 Abolish betn between
 Abolish btw by the way
 
@@ -54,7 +54,7 @@ Abolish btw by the way
 "C{{{
 
 Abolish chap{,s} chapter{,s}
-Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized}
+Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized,d} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized,ized}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}
@@ -69,11 +69,11 @@ Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 "}}}
 "D{{{
 
-Abolish def{,n,s,ns,d,g} defin{ition,ition,itions,itions,ed,ing}
+Abolish def{n,ns,d,g} defin{ition,itions,ed,ing}
 Abolish dep{,e,y,ly,g,ble,bility} depend{ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
-Abolish diff{,ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{,ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
+Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish dist{rn,rns,re,res,red,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ion,ions,e,es,ed}
 
@@ -89,7 +89,7 @@ Abolish eq{n,ns,g} equat{ion,ions,ing}
 "F{{{
 
 Abolish fa for all
-Abolish fn{,s,l,al,ls,als} function{,s,al,al,als,als}
+Abolish f{n,ns,nl,nal,nls,nals,tr,trl} func{tion,tions,tional,tional,tionals,tionals,tor,torial}
 Abolish fs for some
 
 "}}}
@@ -134,14 +134,14 @@ Abolish nbd{,s} neighborhood{,s}
 "}}}
 "O{{{
 
-Abolish ob{e,s,ss,g} observ{e,ation,ations,ing}
+Abolish ob{e,n,ns,g,se,sn,sns,sg} observ{e,ation,ations,ing,e,ation,ations,ing}
 
 "}}}
 "P{{{
 
 Abolish poly{,s} polynomial{,s}
-Abolish proj{,s} projection{,s}
-Abolish prop{,s} proposition{,s}
+Abolish proj{n,ns} projection{,s}
+Abolish prop{n,ns} proposition{,s}
 
 "}}}
 "R{{{
@@ -152,13 +152,13 @@ Abolish resp{ble,e,ly} respect{able,ive,ively}
 "}}}
 "S{{{
 
-Abolish sec{,s} section{,s}
+Abolish sec{n,ns} section{,s}
 Abolish seq{,s,l,ly} sequen{ce,ces,tial,tially}
 Abolish simul{,ly} simultaneous{,ly}
-Abolish sol{,n,s,ns} solution{,,s,s}
+Abolish sol{n,s,ns} solution{,s,s}
 Abolish sp{,es} space{,s}
-Abolish ssec{,s} subsection{,s}
-Abolish sssec{,s} subsubsection{,s}
+Abolish ssec{n,ns} subsection{,s}
+Abolish sssec{n,ns} subsubsection{,s}
 Abolish st such that
 Abolish subalg{,s,ic} subalgebra{,s,ic}
 Abolish subgph{,s} subgraph{,s}

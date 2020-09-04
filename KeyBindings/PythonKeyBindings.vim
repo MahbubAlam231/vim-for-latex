@@ -20,16 +20,16 @@
 
 inoremap <buffer> 1 <esc>A
 inoremap <buffer> 11 1
-inoremap <buffer> 2 <esc>f$i
+inoremap <buffer> 2 <esc>f"i
 inoremap <buffer> 22 2
-inoremap <buffer> 3 <esc>lf}i
+inoremap <buffer> 3 <esc>lf)i
 inoremap <buffer> 33 3
 inoremap <buffer> 4 $$<esc>i
 inoremap <buffer> 44 4
 inoremap <buffer> <localleader>4 <esc>o\[<cr>\]<esc>O
-inoremap <buffer> 5 <esc>l2f}i
+inoremap <buffer> 5 <esc>l2f)i
 inoremap <buffer> 55 5
-inoremap <buffer> 6 <esc>jo
+inoremap <buffer> 6 <esc>f'i
 inoremap <buffer> 66 6
 inoremap <buffer> 7 <esc>hi
 inoremap <buffer> 77 7
@@ -48,7 +48,7 @@ inoremap <buffer> ( ()<esc>i
 inoremap <buffer> (( (
 inoremap <buffer> { {}<esc>i
 inoremap <buffer> {{ {
-inoremap <buffer> [ []<esc>i
+inoremap <buffer> [ []<left>
 inoremap <buffer> [[ [
 
 "}}}
@@ -58,6 +58,8 @@ inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
 inoremap <buffer> ' ''<esc>i
+inoremap <buffer> 3' ''''''<esc>hhi
+inoremap <buffer> 3" """"""<esc>hhi
 inoremap <buffer> " ""<esc>i
 inoremap <buffer> '' '
 inoremap <buffer> "" "
@@ -71,6 +73,7 @@ inoremap <buffer> <localleader>int int()<esc>i
 inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
 inoremap <buffer> n= !=
+inoremap <buffer> ;la lambda
 
 "}}}
 
@@ -78,6 +81,7 @@ inoremap <buffer> n= !=
 "-------------------------------------------------------------------
 
 nnoremap <silent> <buffer> <F7> :w!<cr>:!python %:p<cr>
+nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=1000 python %:p<cr>
 nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python' shellescape(@%, 1)<cr>
 
 inoremap <silent> <buffer> <F7> <esc>:w!<cr>:!python %:p<cr>

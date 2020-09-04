@@ -73,7 +73,10 @@ inoremap <buffer> n= !=
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-nnoremap <silent> <buffer> <F5> :w!<cr>:!go install %:p:h<cr><cr>:!cp /home/mahbub/codego/bin/%:t:r /home/mahbub/golib/bin<cr><cr>
+nnoremap <silent> <buffer> <F5> :w!<cr>:!go install %:p:h<cr><cr>:!cp /home/mahbub/go-code/bin/%:t:r /home/mahbub/golib/bin<cr><cr>
 nnoremap <silent> <buffer> <F7> :w!<cr>:!go run %:p<cr>
+nnoremap <silent> <buffer>  &&  :w!<cr>:term ++noclose go run %:p<cr>
+
+inoremap <silent> <buffer> <F7> <esc>:w!<cr>:!go run %:p<cr>
 
 "}}}

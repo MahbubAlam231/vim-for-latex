@@ -11,12 +11,133 @@
 # |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                |_|    |_|                    
 
-snippet me "Executable modules"
-if __name__ == '__main__':
-    $1
+snippet em "Execute modules"
+if __name__ == "__main__":
+    ${1:${VISUAL}}$0
 endsnippet
+
+# Time module{{{
+
+snippet time "Importing and start_time" b
+import time
+st = time.time()$0
+endsnippet
+
+snippet st "Start time of a program" b
+st = time.time()
+endsnippet
+
+snippet sst "Start time of a sub-program" b
+st0 = time.time()
+endsnippet
+
+snippet rt "Print runtime of a program" b
+print(f"\nProgram ran for {time.time() - st:.2f} secs.")$0
+endsnippet
+
+snippet srt "Print runtime of a sub-program" b
+print(f"\nSub-program ran for {time.time() - st0:.2f} secs.")$0
+endsnippet
+
+#}}}
+
+# Title format{{{
+
+snippet wt "21 = symbols[[ Write title like this ]]21 = symbols" b
+# =====================[[ $1 ]]=====================
+$0
+endsnippet
+
+snippet pt "[========== Print title like this ==========]" b
+# [========== Print title like this ==========]
+print(f"\t\t[{10*'='} $1 {10*'='}]\n")
+endsnippet
+
+snippet # "Commenting as doc-string" b
+"""
+${1:${VISUAL}}$0
+"""
+endsnippet
+
+#}}}
 
 snippet pr "Print in python" b
 print($1)$0
 endsnippet
+
+snippet ra "range function"
+range($1)$0
+endsnippet
+
+# Function{{{
+
+snippet fn "Defining functions" b
+def $1($2):
+	${3:${VISUAL}}$4
+
+    return$5
+$0
+endsnippet
+
+snippet fns "Defining functions in classes" b
+def $1(self, $2):
+	${3:${VISUAL}}$4
+
+    return$5
+$0
+endsnippet
+
+#}}}
+
+snippet if "if statement" b
+if $1:
+	${2:${VISUAL}}$3
+$0
+endsnippet
+
+# Loops{{{
+
+snippet for "for loop" b
+for $1:
+	${2:${VISUAL}}$3
+$0
+endsnippet
+
+snippet wh "while loop" b
+${1:# Initialize while loop}
+while $2:
+	${3:${VISUAL}}$4
+	
+    ${5:# Re-initialize while loop}
+$0
+endsnippet
+
+snippet whi "while loop" b
+${1:# Initialize while loop}
+while $2:
+	${3:${VISUAL}}$4
+	
+    ${5:# Re-initialize while loop}
+$0
+endsnippet
+
+snippet whil "while loop" b
+${1:# Initialize while loop}
+while $2:
+	${3:${VISUAL}}$4
+	
+    ${5:# Re-initialize while loop}
+$0
+endsnippet
+
+snippet while "while loop" b
+${1:# Initialize while loop}
+while $2:
+	${3:${VISUAL}}$4
+	
+    ${5:# Re-initialize while loop}
+$0
+endsnippet
+
+#}}}
 

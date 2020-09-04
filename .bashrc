@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Initial{{{
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -37,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -57,20 +58,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    if [[ ${EUID} == 0 ]] ; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
-    fi
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -119,20 +116,88 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+#}}}
 
-if [ -x /usr/bin/mint-fortune ]; then
-     /usr/bin/mint-fortune
-fi
-
-# Swap caps and escape key
+# Swap caps and escape key{{{
 setxkbmap -option "caps:swapescape"
+#}}}
+# Default editor{{{
+# export EDITOR=vim
+#}}}
+# Go Path{{{
+export PATH=$PATH:/usr/local/go/bin
 
-# fzf configurations
+export GOPATH=/home/mahbub/golib
+export PATH=$PATH:$GOPATH/bin
+
+export GOPATH=$GOPATH:/home/mahbub/go-code
+
+#}}}
+# Python Path{{{
+export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code
+export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code/my-modules
+
+#}}}
+# Other Path{{{
+export PATH=$PATH:/home/mahbub/scripts/bin
+
+#}}}
+# fzf configurations{{{
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_OPS="--extended"
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
+export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
-# My custom aliases
-alias vc="cd && vim .vimrc"
-alias t="cd && vim .vim/KeyBindings/TeXKeyBindings.vim"
-alias ut="cd && vim .vim/UltiSnips/tex.snippets"
+s() {
+    cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
+}
+
+sd() {
+    cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
+}
+
+sf() {
+    cd $HOME && fzf --bind "enter:execute(xdg-open {})"
+}
+
+sdd() {
+    cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
+}
+
+sdf() {
+    fzf --bind "enter:execute(xdg-open {})"
+}
+
+#}}}
+# My custom aliases{{{
+# Opening frequent files
+alias    v='vim'
+alias    v.='vim .'
+alias   vc='vim ~/.vimrc'
+alias   te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+alias   ut='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
+alias   py='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
+alias   go='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
+alias   ts='vim ~/.vim/UltiSnips/tex.snippets'
+alias   ps='vim ~/.vim/UltiSnips/python.snippets'
+alias    w='vim ~/vimwiki/index.md'
+alias   vz='vim `fzf`'
+alias   ss='s'
+
+alias    p='python'
+alias   pr='python `fzf`'
+alias   pz='python `fzf`'
+alias   pf='python `fzf`'
+# shell commands
+alias    c='clear'
+alias    q='exit'
+alias   ,q='exit'
+
+alias   ob='vim ~/.bashrc'
+alias   sb='source ~/.bashrc'
+alias   op='vim ~/.profile'
+alias   sp='source ~/.profile'
+
+alias   in='sudo apt-get install '
+alias   re='sudo apt-get remove '
+#}}}
+
