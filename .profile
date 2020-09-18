@@ -32,4 +32,3 @@ fi
 #Swap caps and escape key everytime I login{{{
 setxkbmap -option "caps:swapescape"
 #}}}
-

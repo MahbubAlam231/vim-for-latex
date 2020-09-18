@@ -60,7 +60,7 @@ Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}
 Abolish compt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
-Abolish corr{,s,es,g,ing,e,ce,ence,esce,ences,esces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ence,ences,ences,ences}
+Abolish corr{,s,es,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ence,ences,ences,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
 Abolish cpt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish ctbl{e,y,ey} countabl{e,ity,ity}
@@ -75,7 +75,8 @@ Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
-Abolish dist{rn,rns,re,res,red,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ion,ions,e,es,ed}
+Abolish distr{n,ns,e,es,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ion,ions,e,es,ed}
+Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 
 "}}}
 "E{{{
@@ -147,7 +148,7 @@ Abolish prop{n,ns} proposition{,s}
 "R{{{
 
 Abolish rep{n,ns,e,ve} representa{tion,tions,tive,tive}
-Abolish resp{ble,e,ly} respect{able,ive,ively}
+Abolish resp{ble,e,ve,ly} respect{able,ive,ive,ively}
 
 "}}}
 "S{{{

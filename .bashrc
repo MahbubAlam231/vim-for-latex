@@ -145,6 +145,8 @@ export PATH=$PATH:/home/mahbub/scripts/bin
 # fzf configurations{{{
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
+# export FZF_DEFAULT_OPTS='-m --cycle --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ -d {} ]; then echo ""{} is a directory.""; else bat --style=numbers --wrap --color=always {}; fi" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+# export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
 s() {
@@ -171,12 +173,12 @@ sdf() {
 # My custom aliases{{{
 # Opening frequent files
 alias    v='vim'
-alias    v.='vim .'
+alias   v.='vim .'
 alias   vc='vim ~/.vimrc'
-alias   te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
-alias   ut='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
-alias   py='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
-alias   go='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
+alias   tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+alias   ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
+alias   pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
+alias   gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
 alias   ts='vim ~/.vim/UltiSnips/tex.snippets'
 alias   ps='vim ~/.vim/UltiSnips/python.snippets'
 alias    w='vim ~/vimwiki/index.md'
@@ -191,13 +193,19 @@ alias   pf='python `fzf`'
 alias    c='clear'
 alias    q='exit'
 alias   ,q='exit'
+alias   dl='trash'
+alias  tra='trash'
+alias  tre='trash-restore'
+alias   tl='trash-list'
 
 alias   ob='vim ~/.bashrc'
 alias   sb='source ~/.bashrc'
 alias   op='vim ~/.profile'
 alias   sp='source ~/.profile'
 
-alias   in='sudo apt-get install '
-alias   re='sudo apt-get remove '
+alias   sa='sudo apt '
+alias   in='sudo apt install '
+alias   up='sudo apt update '
+alias   re='sudo apt remove '
+alias   ar='sudo apt autoremove '
 #}}}
-

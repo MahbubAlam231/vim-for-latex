@@ -1,4 +1,3 @@
-
 %-------------------------------------------------------------------
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
@@ -6,9 +5,9 @@
 % Description   : <++>
 %-------------------------------------------------------------------
 
-\documentclass[11pt]{article}%F{O{L{D
+\documentclass[11pt]{article}% F{O{L{D
 
-% Usepackages%F{O{L{D
+% Usepackages% F{O{L{D
 %-------------------------------------------------------------------
 
 \usepackage{afterpage}
@@ -50,8 +49,8 @@
 
 \graphicspath{{Images/}}
 
-%F}O}L}D
-% Environments%F{O{L{D
+% F}O}L}D
+% Environments% F{O{L{D
 %-------------------------------------------------------------------
 
 % To write names of theorems in bold
@@ -94,8 +93,8 @@
 \theoremstyle{remark}
 \newtheorem*{uremark}{Remark}
 
-%F}O}L}D
-% Newcommands%F{O{L{D
+% F}O}L}D
+% Newcommands% F{O{L{D
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
@@ -128,14 +127,14 @@
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-%F}O}L}D
+% F}O}L}D
 
-%F}O}L}D
+% F}O}L}D
 
 \begin{document}
 
 % Title
-\title{\bfseries <++>}%F{O{L{D
+\title{\bfseries <++>}% F{O{L{D
 
 \author{{{NAME}}}
 
@@ -144,14 +143,14 @@
     Tata Institute of Fundamental Research, Mumbai, India 400005}
 \email{mahbub@math.tifr.res.in}
 
-\date{<++>}
+\date{}
 
-%F}O}L}D
+% F}O}L}D
 
 % Abstract
-\begin{abstract}%F{O{L{D
+\begin{abstract}% F{O{L{D
     <++>
-\end{abstract}%F}O}L}D
+\end{abstract}% F}O}L}D
 
 \maketitle
 

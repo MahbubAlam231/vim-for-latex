@@ -1,19 +1,19 @@
-#  ____          _    _                   
-# |  _ \  _   _ | |_ | |__    ___   _ __  
+#  ____          _    _
+# |  _ \  _   _ | |_ | |__    ___   _ __
 # | |_) || | | || __|| '_ \  / _ \ | '_ \ 
 # |  __/ | |_| || |_ | | | || (_) || | | |
 # |_|     \__, | \__||_| |_| \___/ |_| |_|
-#         |___/                           
-#              _                      _        
-#  ___  _ __  (_) _ __   _ __    ___ | |_  ___ 
+#         |___/
+#              _                      _
+#  ___  _ __  (_) _ __   _ __    ___ | |_  ___
 # / __|| '_ \ | || '_ \ | '_ \  / _ \| __|/ __|
 # \__ \| | | || || |_) || |_) ||  __/| |_ \__ \
 # |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
-#                |_|    |_|                    
+#                |_|    |_|
 
 snippet em "Execute modules"
 if __name__ == "__main__":
-    ${1:${VISUAL}}$0
+	${1:${VISUAL:pass}}$0
 endsnippet
 
 # Time module{{{
@@ -44,13 +44,13 @@ endsnippet
 # Title format{{{
 
 snippet wt "21 = symbols[[ Write title like this ]]21 = symbols" b
-# =====================[[ $1 ]]=====================
+# =====================[[ ${1:${VISUAL}} ]]=====================
 $0
 endsnippet
 
 snippet pt "[========== Print title like this ==========]" b
 # [========== Print title like this ==========]
-print(f"\t\t[{10*'='} $1 {10*'='}]\n")
+print(f"\t\t[{10*'='} ${1:${VISUAL}} {10*'='}]\n")
 endsnippet
 
 snippet # "Commenting as doc-string" b
@@ -62,7 +62,7 @@ endsnippet
 #}}}
 
 snippet pr "Print in python" b
-print($1)$0
+print(${1:${VISUAL}})$0
 endsnippet
 
 snippet ra "range function"
@@ -71,16 +71,16 @@ endsnippet
 
 # Function{{{
 
-snippet fn "Defining functions" b
-def $1($2):
+snippet fn "Defining functions" bm
+def ${1:foo}($2):
 	${3:${VISUAL}}$4
 
     return$5
 $0
 endsnippet
 
-snippet fns "Defining functions in classes" b
-def $1(self, $2):
+snippet fns "Defining functions in classes" bm
+def ${1:foo}(self, $2):
 	${3:${VISUAL}}$4
 
     return$5
@@ -89,55 +89,54 @@ endsnippet
 
 #}}}
 
-snippet if "if statement" b
-if $1:
-	${2:${VISUAL}}$3
+snippet if "if statement" bm
+if ${1:BOOLEAN}:
+	${2:${VISUAL:pass}}$3
 $0
 endsnippet
 
 # Loops{{{
 
-snippet for "for loop" b
-for $1:
-	${2:${VISUAL}}$3
+snippet for "for loop" bm
+for ${1:ITERABLE}:
+	${2:${VISUAL:pass}}$3
 $0
 endsnippet
 
-snippet wh "while loop" b
+snippet wh "while loop" bm
 ${1:# Initialize while loop}
-while $2:
-	${3:${VISUAL}}$4
-	
+while ${2:BOOLEAN}:
+	${3:${VISUAL:pass}}$4
+
     ${5:# Re-initialize while loop}
 $0
 endsnippet
 
-snippet whi "while loop" b
+snippet whi "while loop" bm
 ${1:# Initialize while loop}
-while $2:
-	${3:${VISUAL}}$4
-	
+while ${2:BOOLEAN}:
+	${3:${VISUAL:pass}}$4
+
     ${5:# Re-initialize while loop}
 $0
 endsnippet
 
-snippet whil "while loop" b
+snippet whil "while loop" bm
 ${1:# Initialize while loop}
-while $2:
-	${3:${VISUAL}}$4
-	
+while ${2:BOOLEAN}:
+	${3:${VISUAL:pass}}$4
+
     ${5:# Re-initialize while loop}
 $0
 endsnippet
 
-snippet while "while loop" b
+snippet while "while loop" bm
 ${1:# Initialize while loop}
-while $2:
-	${3:${VISUAL}}$4
-	
+while ${2:BOOLEAN}:
+	${3:${VISUAL:pass}}$4
+
     ${5:# Re-initialize while loop}
 $0
 endsnippet
 
 #}}}
-

@@ -4,8 +4,8 @@ My personalization of vim for mainly LaTeX.
 Here uploaded are,
 - My `.vimrc`;
 - My keybindings, snippets and abbreviations for LaTeX;
-  - KeyBindings for writing math sets, greek alphabets, math notations easily and fast;
-  - Snippets for math sets, greek alphabets, math environments;
+  - KeyBindings for writing math sets, Greek alphabets, math notations easily and fast;
+  - Snippets for math sets, Greek alphabets, math environments;
   - General word abbreviations (using
   [`tpope/vim-abolish`](https://github.com/tpope/vim-abolish)) and math abbreviations.
 - My templates for LaTeX;
@@ -39,9 +39,8 @@ on your computer.
 - Put `.vimrc` in your home directory;
 - Put `Abbreviations`, `after`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
 - Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `:PluginInstall`;
-- Put `amsart.template`, `article.template`, `report.template` and `tex.template`
-in `~/.vim/bundle/vim-templates/templates`;
-- Put `tex` in `~/.vim/plugged/vimtex/ftplugin`.
+- Put `LaTeX/templates` in `~/.vim/bundle/vim-templates/`;
+- Put `LaTeX/tex` in `~/.vim/plugged/vimtex/ftplugin/`.
 
 #### For macOS (not very sure about it btw)
 

@@ -1,4 +1,3 @@
-
 %-------------------------------------------------------------------
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
@@ -6,9 +5,9 @@
 % Description   : <++>
 %-------------------------------------------------------------------
 
-\documentclass[12pt,reqno]{amsart}%F{O{L{D
+\documentclass[12pt,reqno]{amsart}% F{O{L{D
 
-% Usepackages%F{O{L{D
+% Usepackages% F{O{L{D
 %-------------------------------------------------------------------
 
 \usepackage{afterpage}
@@ -25,7 +24,7 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{esvect}
-\usepackage{eufrak}
+% \usepackage{eufrak} % not required when have amsfonts
 \usepackage{float}
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
@@ -50,8 +49,8 @@
 
 \graphicspath{{Images/}}
 
-%F}O}L}D
-% Environments%F{O{L{D
+% F}O}L}D
+% Environments% F{O{L{D
 %-------------------------------------------------------------------
 
 % To write names of theorems in bold
@@ -74,6 +73,14 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{conjecture}{Conjecture}[section]
 
+% Unnumbered Environments
+%-------------------------------------------------------------------
+
+\newtheorem*{utheorem}{Theorem}
+\newtheorem*{ulemma}{Lemma}
+\newtheorem*{uproposition}{Proposition}
+\newtheorem*{ucorollary}{Corollary}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}{Example}[section]
@@ -85,17 +92,10 @@
 % Unnumbered Environments
 %-------------------------------------------------------------------
 
-\theoremstyle{theorem}
-\newtheorem*{utheorem}{Theorem}
-\newtheorem*{ulemma}{Lemma}
-\newtheorem*{uproposition}{Proposition}
-\newtheorem*{ucorollary}{Corollary}
-
-\theoremstyle{remark}
 \newtheorem*{uremark}{Remark}
 
-%F}O}L}D
-% Newcommands%F{O{L{D
+% F}O}L}D
+% Newcommands% F{O{L{D
 %-------------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
@@ -128,16 +128,16 @@
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
-%F}O}L}D
+% F}O}L}D
 
-%F}O}L}D
+% F}O}L}D
 
 \begin{document}
 
 % \pagestyle{plain} % to remove header and footer
 
 % Title
-\title[<++>]{<++>}%F{O{L{D
+\title[<++>]{<++>}% F{O{L{D
 
 \author{{{NAME}}}
 
@@ -146,14 +146,14 @@
     Tata Institute of Fundamental Research, Mumbai, India 400005}
 \email{mahbub@math.tifr.res.in}
 
-\date{<++>}
+\date{}
 
-%F}O}L}D
+% F}O}L}D
 
 % Abstract
-\begin{abstract}%F{O{L{D
+\begin{abstract}% F{O{L{D
     <++>
-\end{abstract}%F}O}L}D
+\end{abstract}% F}O}L}D
 
 \maketitle
 

@@ -1274,6 +1274,7 @@ iunmap <buffer> <<
 iunmap <buffer> >>
 iunmap <buffer> n=
 iunmap <buffer> ==
+iunmap <buffer> =>
 iunmap <buffer> <localleader>=
 
 "}}}

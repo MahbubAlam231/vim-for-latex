@@ -1,8 +1,8 @@
 ---
-title: {{CURSOR}}
+title: {{FILE}}
 author: {{NAME}}
-Created: {{TODAY}} {{TIME}}
+created: {{TODAY}} {{TIME}}
 theme: Copenhagen
 ---
 
-<++>
+{{CURSOR}}

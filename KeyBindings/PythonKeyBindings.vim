@@ -1,19 +1,19 @@
- "____        _   _                 
-"|  _ \ _   _| |_| |__   ___  _ __  
+ "____        _   _
+"|  _ \ _   _| |_| |__   ___  _ __
 "| |_) | | | | __| '_ \ / _ \| '_ \ 
 "|  __/| |_| | |_| | | | (_) | | | |
 "|_|    \__, |\__|_| |_|\___/|_| |_|
- "      |___/                       
- "_  __          ____  _           _ _                 
-"| |/ /___ _   _| __ )(_)_ __   __| (_)_ __   __ _ ___ 
+ "      |___/
+ "_  __          ____  _           _ _
+"| |/ /___ _   _| __ )(_)_ __   __| (_)_ __   __ _ ___
 "| ' // _ \ | | |  _ \| | '_ \ / _` | | '_ \ / _` / __|
 "| . \  __/ |_| | |_) | | | | | (_| | | | | | (_| \__ \
 "|_|\_\___|\__, |____/|_|_| |_|\__,_|_|_| |_|\__, |___/
- "         |___/                             |___/     
+ "         |___/                             |___/
 
-""-------------------------------------------------------------------
-"" Mahbub's PythonKeyBindings
-""-------------------------------------------------------------------
+"-------------------------------------------------------------------
+" Mahbub's PythonKeyBindings
+"-------------------------------------------------------------------
 
 " Numbers"{{{
 "-------------------------------------------------------------------
@@ -68,7 +68,6 @@ inoremap <buffer> "" "
 
 " Python symbols{{{
 
-inoremap <buffer> <localleader>pr print()<esc>i
 inoremap <buffer> <localleader>int int()<esc>i
 inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
@@ -81,7 +80,7 @@ inoremap <buffer> ;la lambda
 "-------------------------------------------------------------------
 
 nnoremap <silent> <buffer> <F7> :w!<cr>:!python %:p<cr>
-nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=1000 python %:p<cr>
+nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=86 python %:p<cr>
 nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python' shellescape(@%, 1)<cr>
 
 inoremap <silent> <buffer> <F7> <esc>:w!<cr>:!python %:p<cr>

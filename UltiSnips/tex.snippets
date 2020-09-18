@@ -1,9 +1,9 @@
-#  _____     __  __              _                      _        
-# |_   _|___ \ \/ /  ___  _ __  (_) _ __   _ __    ___ | |_  ___ 
+#  _____     __  __              _                      _
+# |_   _|___ \ \/ /  ___  _ __  (_) _ __   _ __    ___ | |_  ___
 #   | | / _ \ \  /  / __|| '_ \ | || '_ \ | '_ \  / _ \| __|/ __|
 #   | ||  __/ /  \  \__ \| | | || || |_) || |_) ||  __/| |_ \__ \
 #   |_| \___|/_/\_\ |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
-#                                  |_|    |_|                    
+#                                  |_|    |_|
 
 #-------------------------------------------------------------------
 # Mahbub's TeX snippets
@@ -28,17 +28,12 @@ endsnippet
 
 snippet abs "Abstract" b
 % Abstract
-\begin{abstract}%F{O{L{D
+\begin{abstract}% F{O{L{D
 	$1
-\end{abstract}%F}O}L}D
+\end{abstract}% F}O}L}D
 
 $0
 endsnippet
-
-snippet today "Today's date"
-`date %e/%m/%y`
-endsnippet
-
 
 #}}}
 
@@ -9298,309 +9293,309 @@ endsnippet
 
 snippet part "Part" b
 % Part
-\part{$1}\label{$2}%F{O{L{D
+\part{$1}\label{$2}% F{O{L{D
 $3
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 
 snippet chap "Chapter" b
 % Chapter
-\chapter{$1}\label{$2}%F{O{L{D
+\chapter{$1}\label{$2}% F{O{L{D
 $3
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet uchap "Unnumbered Chapter" b
 % UnnumberedChapter
-\chapter*{$1}%F{O{L{D
+\chapter*{$1}% F{O{L{D
 $2
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet sec "Section" b
 % Section
-\section{$1}\label{$2}%F{O{L{D
+\section{$1}\label{$2}% F{O{L{D
 $3
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet usec "Unnumbered Section" b
 % UnnumberedSection
-\section*{$1}%F{O{L{D
+\section*{$1}% F{O{L{D
 $2
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet ssec "Subsection" b
 % Subsection
-\subsection{$1}\label{$2}%F{O{L{D
+\subsection{$1}\label{$2}% F{O{L{D
 $3
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet ussec "Unnumbered Subsection" b
 % UnnumberedSubsection
-\subsection*{$1}%F{O{L{D
+\subsection*{$1}% F{O{L{D
 $2
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet sssec "Subsubsection" b
 % Subsubsection
-\subsubsection{$1}\label{$2}%F{O{L{D
+\subsubsection{$1}\label{$2}% F{O{L{D
 $3
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet usssec "Unnumbered Subsubsection" b
 % UnnumberedSubsubsection
-\subsubsection*{$1}%F{O{L{D
+\subsubsection*{$1}% F{O{L{D
 $2
 
-%F}O}L}D
+% F}O}L}D
 $0
 endsnippet
 
 snippet not "Notation" b
 % Notation
-\begin{notation}$1\label{$2}%F{O{L{D
+\begin{notation}[$1]\label{$2}% F{O{L{D
 	$3
-\end{notation}%F}O}L}D
+\end{notation}% F}O}L}D
 
 $0
 endsnippet
 
 snippet unot "Unnumbered Notation" b
 % UnnumberedNotation
-\begin{unotation}$1\label{$2}%F{O{L{D
+\begin{unotation}[$1]\label{$2}% F{O{L{D
 	$3
-\end{unotation}%F}O}L}D
+\end{unotation}% F}O}L}D
 
 $0
 endsnippet
 
 snippet def "Definition" b
 % Definition
-\begin{definition}$1\label{$2}%F{O{L{D
+\begin{definition}[$1]\label{$2}% F{O{L{D
 	$3
-\end{definition}%F}O}L}D
+\end{definition}% F}O}L}D
 
 $0
 endsnippet
 
 snippet udef "Unnumbered Definition" b
 % UnnumberedDefinition
-\begin{udefinition}$1%F{O{L{D
+\begin{udefinition}[$1]% F{O{L{D
 	$2
-\end{udefinition}%F}O}L}D
+\end{udefinition}% F}O}L}D
 
 $0
 endsnippet
 
 snippet thm "Theorem" b
 % Theorem
-\begin{theorem}$1\label{$2}%F{O{L{D
+\begin{theorem}[$1]\label{$2}% F{O{L{D
 	$3
-\end{theorem}%F}O}L}D
+\end{theorem}% F}O}L}D
 % Proof
-\begin{proof}%F{O{L{D
+\begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}%F}O}L}D
+\end{proof}% F}O}L}D
 
 $0
 endsnippet
 
 snippet sthm "Statement of Theorem" b
 % StatementofTheorem
-\begin{theorem}$1\label{$2}%F{O{L{D
+\begin{theorem}[$1]\label{$2}% F{O{L{D
 	$3
-\end{theorem}%F}O}L}D
+\end{theorem}% F}O}L}D
 
 $0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
 % UnnumberedTheorem
-\begin{utheorem}$1%F{O{L{D
+\begin{utheorem}[$1]% F{O{L{D
 	$2
-\end{utheorem}%F}O}L}D
+\end{utheorem}% F}O}L}D
 
 $0
 endsnippet
 
 snippet lem "Lemma" b
 % Lemma
-\begin{lemma}$1\label{$2}%F{O{L{D
+\begin{lemma}[$1]\label{$2}% F{O{L{D
 	$3
-\end{lemma}%F}O}L}D
+\end{lemma}% F}O}L}D
 % Proof
-\begin{proof}%F{O{L{D
+\begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}%F}O}L}D
+\end{proof}% F}O}L}D
 
 $0
 endsnippet
 
 snippet slem "Statement of Lemma" b
 % StatementofLemma
-\begin{lemma}$1\label{$2}%F{O{L{D
+\begin{lemma}[$1]\label{$2}% F{O{L{D
 	$3
-\end{lemma}%F}O}L}D
+\end{lemma}% F}O}L}D
 
 $0
 endsnippet
 
 snippet ulem "Unnumbered Lemma" b
 % UnnumberedLemma
-\begin{ulemma}$1%F{O{L{D
+\begin{ulemma}[$1]% F{O{L{D
 	$2
-\end{ulemma}%F}O}L}D
+\end{ulemma}% F}O}L}D
 
 $0
 endsnippet
 
 snippet prop "Proposition" b
 % Proposition
-\begin{proposition}$1\label{$2}%F{O{L{D
+\begin{proposition}[$1]\label{$2}% F{O{L{D
 	$3
-\end{proposition}%F}O}L}D
+\end{proposition}% F}O}L}D
 % Proof
-\begin{proof}%F{O{L{D
+\begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}%F}O}L}D
+\end{proof}% F}O}L}D
 
 $0
 endsnippet
 
 snippet sprop "Statement of Proposition" b
 % StatementofProposition
-\begin{proposition}$1\label{$2}%F{O{L{D
+\begin{proposition}[$1]\label{$2}% F{O{L{D
 	$3
-\end{proposition}%F}O}L}D
+\end{proposition}% F}O}L}D
 
 $0
 endsnippet
 
 snippet uprop "Unnumbered Proposition" b
 % UnnumberedProposition
-\begin{uproposition}$1%F{O{L{D
+\begin{uproposition}[$1]% F{O{L{D
 	$3
-\end{uproposition}%F}O}L}D
+\end{uproposition}% F}O}L}D
 
 $0
 endsnippet
 
 snippet cor "Corollary" b
 % Corollary
-\begin{corollary}$1\label{$2}%F{O{L{D
+\begin{corollary}[$1]\label{$2}% F{O{L{D
 	$3
-\end{corollary}%F}O}L}D
+\end{corollary}% F}O}L}D
 % Proof
-\begin{proof}%F{O{L{D
+\begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}%F}O}L}D
+\end{proof}% F}O}L}D
 
 $0
 endsnippet
 
 snippet scor "Statement of Corollary" b
 % StatementofCorollary
-\begin{corollary}$1\label{$2}%F{O{L{D
+\begin{corollary}[$1]\label{$2}% F{O{L{D
 	$3
-\end{corollary}%F}O}L}D
+\end{corollary}% F}O}L}D
 
 $0
 endsnippet
 
 snippet ucor "Unnumbered Corollary" b
 % UnnumberedCorollary
-\begin{ucorollary}$1%F{O{L{D
+\begin{ucorollary}[$1]% F{O{L{D
 	$2
-\end{ucorollary}%F}O}L}D
+\end{ucorollary}% F}O}L}D
 
 $0
 endsnippet
 
 snippet prob "Problem" b
 % Problem
-\begin{problem}$1%F{O{L{D
+\begin{problem}[$1]% F{O{L{D
 	$2
-\end{problem}%F}O}L}D
+\end{problem}% F}O}L}D
 % Solution
-\begin{solution}%F{O{L{D
+\begin{solution}% F{O{L{D
 	${3:\bfseries\textcolor{red}{Write a solution}}
-\end{solution}%F}O}L}D
+\end{solution}% F}O}L}D
 
 $0
 endsnippet
 
 snippet sprob "Statement of Problem" b
 % Problem
-\begin{problem}$1%F{O{L{D
+\begin{problem}[$1]% F{O{L{D
 	$2
-\end{problem}%F}O}L}D
+\end{problem}% F}O}L}D
 
 $0
 endsnippet
 
 snippet prf "Prf" b
 % Proof
-\begin{${1:prf}}%F{O{L{D
+\begin{${1:prf}}% F{O{L{D
 	${2:\bfseries\textcolor{red}{Write a Proof}}
-\end{$1}%F}O}L}D
+\end{$1}% F}O}L}D
 
 $0
 endsnippet
 
 snippet proof "Proof" b
 % Proof
-\begin{proof}%F{O{L{D
+\begin{proof}% F{O{L{D
 	${1:\bfseries\textcolor{red}{Write a Proof}}
-\end{proof}%F}O}L}D
+\end{proof}% F}O}L}D
 
 $0
 endsnippet
 
 snippet rem "Remark" b
 % Remark
-\begin{remark}\label{$1}%F{O{L{D
+\begin{remark}\label{$1}% F{O{L{D
 	$2
-\end{remark}%F}O}L}D
+\end{remark}% F}O}L}D
 
 $0
 endsnippet
 
 snippet urem "Unnumbered Remark" b
 % UnnumberedRemark
-\begin{uremark}%F{O{L{D
+\begin{uremark}% F{O{L{D
 	$1
-\end{uremark}%F}O}L}D
+\end{uremark}% F}O}L}D
 
 $0
 endsnippet
 
 snippet conj "Conjecture" b
 % Conjecture
-\begin{conjecture}$1\label{$2}%F{O{L{D
+\begin{conjecture}[$1]\label{$2}% F{O{L{D
 	$3
-\end{conjecture}%F}O}L}D
+\end{conjecture}% F}O}L}D
 
 $0
 endsnippet
@@ -9739,35 +9734,27 @@ snippet cen "Centering" b
 $0
 endsnippet
 
-snippet itemize "Itemize" b
-% Itemize
-\begin{itemize}[]
-	\item ${1:${VISUAL}}
-\end{itemize}
-$0
-endsnippet
-
 #}}}
 # Matrices{{{
 #-------------------------------------------------------------------
 
 snippet mat "Matrix"
 \begin{matrix}
-	$1 & $2 \\\
+	$1 & $2 \\\\
 	$3 & $4
 \end{matrix}$0
 endsnippet
 
 snippet pmat "Parenthesis matrix"
 \begin{pmatrix}
-	$1 & $2 \\\
+	$1 & $2 \\\\
 	$3 & $4
 \end{pmatrix}$0
 endsnippet
 
 snippet bmat "Bracket matrix"
 \begin{bmatrix}
-	$1 & $2 \\\
+	$1 & $2 \\\\
 	$3 & $4
 \end{bmatrix}$0
 endsnippet
@@ -9776,9 +9763,9 @@ snippet matn "Matrix m x n"
 % Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
-	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-	\vdots & \ddots & \vdots \\\
+	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\\ % add[2em]toIncreaseSpacing
+	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\\
+	\vdots & \ddots & \vdots \\\\
 	${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{matrix}$0
 endsnippet
@@ -9787,9 +9774,9 @@ snippet pmatn "Parenthesis matrix m x n"
 % Pmatrix
 \renewcommand\arraystretch{1}
 \begin{pmatrix}
-	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-	\vdots & \ddots & \vdots \\\
+	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\\ % add[2em]toIncreaseSpacing
+	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\\
+	\vdots & \ddots & \vdots \\\\
 	${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{pmatrix}$0
 endsnippet
@@ -9798,54 +9785,54 @@ snippet bmatn "Bracket matrix m x n"
 % Bmatrix
 \renewcommand\arraystretch{1}
 \begin{bmatrix}
-	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\ % add[2em]toIncreaseSpacing
-	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\
-	\vdots & \ddots & \vdots \\\
+	${1:x_{11}} & \cdots & ${2:x_{1n}} \\\\ % add[2em]toIncreaseSpacing
+	${3:x_{21}} & \cdots & ${4:x_{2n}} \\\\
+	\vdots & \ddots & \vdots \\\\
 	${5:x_{m1}} & \cdots & ${6:x_{mn}}
 \end{bmatrix}$0
 endsnippet
 
 snippet cmat "Colomn matrix"
 \begin{matrix}
-	$1 \\\
+	$1 \\\\
 	$2
 \end{matrix}$0
 endsnippet
 
 snippet cmatn "Colomn matrix n x 1"
 \begin{matrix}
-	$1 \\\
-	\\vdots \\\
+	$1 \\\\
+	\\vdots \\\\
 	$2
 \end{matrix}$0
 endsnippet
 
 snippet cpmat "Colomn parenthesis matrix"
 \begin{pmatrix}
-	$1 \\\
+	$1 \\\\
 	$2
 \end{pmatrix}$0
 endsnippet
 
 snippet cpmatn "Colomn parenthesis matrix n x 1"
 \begin{pmatrix}
-	$1 \\\
-	\\vdots \\\
+	$1 \\\\
+	\\vdots \\\\
 	$2
 \end{pmatrix}$0
 endsnippet
 
 snippet cbmat "Colomn bracket matrix"
 \begin{bmatrix}
-	$1 \\\
+	$1 \\\\
 	$2
 \end{bmatrix}$0
 endsnippet
 
 snippet cbmatn "Colomn bracket matrix n x 1"
 \begin{bmatrix}
-	$1 \\\
-	\\vdots \\\
+	$1 \\\\
+	\\vdots \\\\
 	$2
 \end{bmatrix}$0
 endsnippet
@@ -9857,7 +9844,7 @@ endsnippet
 
 snippet case "case"
 \begin{cases}
-	$1 \\\
+	$1 \\\\
 	$2
 \end{cases}
 $0
@@ -9866,7 +9853,7 @@ endsnippet
 
 snippet cases "cases"
 \begin{cases}
-	$1 \\\
+	$1 \\\\
 	$2
 \end{cases}
 $0
@@ -9875,7 +9862,7 @@ endsnippet
 
 snippet dcase "dcase"
 \begin{dcases}
-	$1 & \text{$2} \\ $3 \\\
+	$1 & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
 \end{dcases}
 $0
@@ -9884,7 +9871,7 @@ endsnippet
 
 snippet dcases "dcases"
 \begin{dcases}
-	$1 & \text{$2} \\ $3 \\\
+	$1 & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
 \end{dcases}
 $0
@@ -9895,7 +9882,7 @@ snippet casedef "case definition"
 \[
 	$1 =
 \begin{cases}
-	$2 \\\
+	$2 \\\\
 	$3
 \end{cases}
 \]
@@ -9907,7 +9894,7 @@ snippet dcasedef "dcase definition"
 \[
 	$1 =
 \begin{dcases}
-	$2 & \text{$3} \\ $4 \\\
+	$2 & \text{$3} \\ $4 \\\\
 	$5 & \text{$6} \\ $7
 \end{dcases}
 \]
@@ -9918,9 +9905,28 @@ endsnippet
 # Enumeration{{{
 #-------------------------------------------------------------------
 
+snippet it "Writing \item" b
+\\item $0
+endsnippet
+
+snippet itemz "Itemize" b
+% Itemize
+\begin{itemize}[label=\bullet]
+	\item ${1:${VISUAL}}
+\end{itemize}
+$0
+endsnippet
+
+snippet itemize "Itemize" b
+% Itemize
+\begin{itemize}[label=\bullet]
+	\item ${1:${VISUAL}}
+\end{itemize}
+$0
+endsnippet
+
 snippet enum "Enumeration" b
 % Enumerate
-% \renewcommand{\labelenumi}{\emph{\alph{enumi}.}}
 \begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
 	\item ${1:${VISUAL}}
 \end{enumerate}
@@ -9990,7 +9996,7 @@ snippet \grey
 \end{theorem}
 \end{greybox}
 \begin{proof}
-	${2:\textcolor{red} Write a Proof}
+	${2:\textcolor{red}{Write a Proof}}
 \end{proof}
 
 $0
@@ -10112,9 +10118,9 @@ endsnippet
 
 snippet frame
 % Frame
-\begin{frame}$1%F{O{L{D
+\begin{frame}$1% F{O{L{D
 	${2:${VISUAL}}
-\end{frame}%F}O}L}D
+\end{frame}% F}O}L}D
 endsnippet
 
 
