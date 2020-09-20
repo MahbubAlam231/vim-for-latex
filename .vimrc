@@ -1659,13 +1659,12 @@ nnoremap <buffer> <localleader>rfm :%s/F}O}L}D/ F}O}L}D/g \| :%s/F{O{L{D/ F{O{L{
 
 augroup Vimwiki
     autocmd!
-    autocmd BufNewFile         *.md silent write
-    autocmd BufNewfile,BufRead *.md colorscheme wombat256i
-    autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
-    " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
-    " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd BufNewFile         *.md, *.wiki silent write
+    autocmd BufNewFile,BufRead *.md, *.wiki setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.md, *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead *.md, *.wiki nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.md, *.wiki setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.md, *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
 augroup end
 
 augroup SourceEverythingForPython
