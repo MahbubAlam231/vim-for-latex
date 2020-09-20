@@ -184,6 +184,7 @@ alias   ps='vim ~/.vim/UltiSnips/python.snippets'
 alias    w='vim ~/vimwiki/index.md'
 alias   vz='vim `fzf`'
 alias   ss='s'
+alias   sv='savevim'
 
 alias    p='python'
 alias   pr='python `fzf`'

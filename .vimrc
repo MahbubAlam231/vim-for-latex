@@ -41,7 +41,7 @@ set novisualbell                      " Flash the screen when an error message i
 set modeline                          " In Debian and Ubuntu, for example, the modeline option has been disabled for security reasons
 " set encoding=latin1                   " Default is utf-8
 " set cursorcolumn                      " Highlighting the column containing the cursor
-" set mouse=a                           " Mouse could work on vim too
+set mouse=a                           " Mouse could work on vim too
 " set laststatus=2                      " Always display statusline
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
@@ -281,6 +281,7 @@ let g:vimtex_mappings_override_existing = 1
 "     autocmd FileType tex omap <buffer> <silent><nowait>ae <plug>(vimtex-ae)
 " augroup end
 
+" Finding next and previous math block
 nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 
@@ -375,11 +376,12 @@ vnoremap <buffer> 'm `mzvzz
 "}}}
 " Vimwiki{{{
 
-let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-            \'syntax': 'markdown', 'ext': '.md'},
-            \{'path': '~/vimwiki/Python',
-            \'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+"             \'syntax': 'markdown', 'ext': '.md'},
+"             \{'path': '~/vimwiki/Python',
+"             \'syntax': 'markdown', 'ext': '.md'}]
+
 " Mappings
 nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
 nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
@@ -387,6 +389,13 @@ nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
 
 nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
 nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
+
+" Link in table wiki
+function! LinkInTable()
+    execute ":normal! H3w*nn$yiW"
+    execute ":normal! gv\<cr>2li\|\<esc>hp"
+
+endfunction
 
 "}}}
 
@@ -999,14 +1008,14 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text setlocal spell spelllang=en_us
+    autocmd FileType tex,text    setlocal spell spelllang=en_us
     " Adding new words to dictionary
-    autocmd FileType tex,text nnoremap <buffer> < ms[szz
-    autocmd FileType tex,text nnoremap <buffer> > ms]szz
-    autocmd FileType tex,text nnoremap <buffer> zgN zg[szz
-    autocmd FileType tex,text nnoremap <buffer> zgn zg]szz
-    autocmd FileType tex,text nnoremap <buffer> zwN zw[szz
-    autocmd FileType tex,text nnoremap <buffer> zwn zw]szz
+    autocmd FileType tex,text    nnoremap <buffer> < ms[szz
+    autocmd FileType tex,text    nnoremap <buffer> > ms]szz
+    autocmd FileType tex,text,md nnoremap <buffer> zgN zg[szz
+    autocmd FileType tex,text,md nnoremap <buffer> zgn zg]szz
+    autocmd FileType tex,text,md nnoremap <buffer> zwN zw[szz
+    autocmd FileType tex,text,md nnoremap <buffer> zwn zw]szz
 
 augroup end
 
@@ -1624,6 +1633,7 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
     " autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader>ll <c-w>l
     autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
 augroup end
@@ -1662,7 +1672,7 @@ augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile         *.py silent write
     autocmd BufNewFile,BufRead *.py call KeyBindings("py")
-    autocmd BufNewFile,BufRead *.py set signcolumn=yes
+    autocmd BufNewFile,BufRead *.py setlocal signcolumn=yes
     " autocmd BufNewFile,BufRead *.py set foldmethod=indent
 augroup end
 
