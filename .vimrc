@@ -239,6 +239,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
+Plug 'jason6/vimwiki_md2html'
 
 call plug#end()
 
@@ -376,11 +377,18 @@ vnoremap <buffer> 'm `mzvzz
 "}}}
 " Vimwiki{{{
 
-" let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-" let g:vimwiki_list = [{'path': '~/vimwiki/',
-"             \'syntax': 'markdown', 'ext': '.md'},
-"             \{'path': '~/vimwiki/Python',
-"             \'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+            \'syntax': 'markdown',
+            \'ext': '.md',
+            \'path_html': '~/vimwiki_html',
+            \'custom_wiki2html': 'vimwiki_markdown',
+            \'html_filename_parametrization': 1,
+            \'template_path': '~/vimwiki/templates',
+            \'template_ext': '.tpl'},
+            \{'path': '~/vimwiki/Python',
+            \'syntax': 'markdown',
+            \'ext': '.md'}]
 
 " Mappings
 nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
@@ -389,6 +397,7 @@ nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
 
 nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
 nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
+nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
 
 " Link in table wiki
 function! LinkInTable()
@@ -1009,6 +1018,7 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 augroup Spelling
     autocmd!
     autocmd FileType tex,text    setlocal spell spelllang=en_us
+    autocmd FileType tex,text    setlocal spellfile=~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text    nnoremap <buffer> < ms[szz
     autocmd FileType tex,text    nnoremap <buffer> > ms]szz
@@ -1634,7 +1644,6 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    " autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader>ll <c-w>l
     autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
 augroup end
 
@@ -1647,7 +1656,6 @@ function! SourceEverythingForTeX()
     setlocal spellfile=~/.vim/spell/math.utf-8.add
     setlocal foldmethod=marker
     setlocal foldmarker=F{O{L{D,F}O}L}D
-    " nnoremap <buffer> <localleader>ll <c-w>l
 endfunction
 
 nnoremap <buffer> <silent> <localleader>te :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
@@ -1659,12 +1667,23 @@ nnoremap <buffer> <localleader>rfm :%s/F}O}L}D/ F}O}L}D/g \| :%s/F{O{L{D/ F{O{L{
 
 augroup Vimwiki
     autocmd!
-    autocmd BufNewFile         *.md, *.wiki silent write
-    autocmd BufNewFile,BufRead *.md, *.wiki setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.md, *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead *.md, *.wiki nnoremap <buffer> glm V<
-    " autocmd BufNewFile,BufRead *.md, *.wiki setlocal foldmethod=marker
-    " autocmd BufNewFile,BufRead *.md, *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd BufNewFile         *.md silent write
+    autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
+    autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
+
+    autocmd BufNewFile         *.wiki silent write
+    autocmd BufNewFile,BufRead *.wiki setlocal spell spelllang=en_us
+    autocmd BufNewFile,BufRead *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.wiki setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
+    autocmd FileType vimwiki inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
+    autocmd FileType vimwiki inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 augroup end
 
 augroup SourceEverythingForPython

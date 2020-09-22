@@ -185,6 +185,7 @@ alias    w='vim ~/vimwiki/index.md'
 alias   vz='vim `fzf`'
 alias   ss='s'
 alias   sv='savevim'
+alias   cv='commitvim'
 
 alias    p='python'
 alias   pr='python `fzf`'
