@@ -16,7 +16,7 @@
 "-------------------------------------------------------------------
 
 set nocompatible                      " Be iMproved, required (must be before everything)
-filetype off                          " Required before Vundle and plugins, disables filetype detection
+" filetype off                          " Required before Vundle and plugins, disables filetype detection
 
 set title                             " Terminal title reflects buffer name
 set autochdir                         " Auto change directory (some plugins may not work)
@@ -128,6 +128,8 @@ execute "set <M-a>=\ea"
 execute "set <M-s>=\es"
 execute "set <M-w>=\ew"
 execute "set <M-d>=\ed"
+execute "set <M-n>=\en"
+execute "set <M-p>=\ep"
 
 nnoremap <buffer> <M-a> <c-w>h
 nnoremap <buffer> <M-s> <c-w>j
@@ -178,6 +180,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'VundleVim/Vundle.vim'
+" Plug 'jason6/vimwiki_md2html'
+" Plug 'tpope/vim-eunuch'
 Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
@@ -225,7 +229,6 @@ Plug 'tibabit/vim-templates'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
-" Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -239,7 +242,6 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
-Plug 'jason6/vimwiki_md2html'
 
 call plug#end()
 
@@ -385,19 +387,22 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
             \'custom_wiki2html': 'vimwiki_markdown',
             \'html_filename_parametrization': 1,
             \'template_path': '~/vimwiki/templates',
-            \'template_ext': '.tpl'},
-            \{'path': '~/vimwiki/Python',
-            \'syntax': 'markdown',
-            \'ext': '.md'}]
+            \'template_default': 'default',
+            \'template_ext': '.tpl'}]
+
+" let g:vimwiki_global_ext = 0
+
+let g:vimwiki_table_mappings=0
+augroup ChangeVimwikiTableTab
+    autocmd!
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+augroup end
 
 " Mappings
 nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
 nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
 nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
-
-nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
-nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
-nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
 
 " Link in table wiki
 function! LinkInTable()
@@ -405,6 +410,23 @@ function! LinkInTable()
     execute ":normal! gv\<cr>2li\|\<esc>hp"
 
 endfunction
+
+"}}}
+" Pandoc{{{
+
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown = 0
+let g:pandoc#keyboard#display_motions = 0
+
+augroup SetFiletypeMarkdown
+    autocmd!
+    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+    autocmd BufNewFile,BufRead *.md setlocal commentstring=<!--%s-->
+augroup end
+
+nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
+nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
+nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
 
 "}}}
 
@@ -452,6 +474,14 @@ map <buffer> gz# <Plug>(asterisk-gz#)
 let g:asterisk#keeppos = 1
 
 "}}}
+" Commentary{{{
+
+augroup CommentString
+    autocmd!
+    autocmd FileType vimwiki setlocal commentstring=<!--%s-->
+augroup end
+
+"}}}
 " Conceal{{{
 
 let g:tex_conceal='abdgm'
@@ -471,6 +501,8 @@ let g:DVB_TrimWS = 1
 
 "}}}
 " Easymotion and Sneak{{{
+
+let g:EasyMotion_do_mapping = 0
 
 map <buffer> <leader>w mw<Plug>(easymotion-bd-w)
 map <buffer> <leader>e me<Plug>(easymotion-bd-e)
@@ -674,6 +706,12 @@ nmap <buffer> <localleader>tt <Plug>TitlecaseLine
 
 " <Plug>Titlecase " Titlecase the visually selected region
 vmap <buffer> <localleader>t <Plug>Titlecase
+
+"}}}
+" UltiSnips{{{
+
+let g:UltiSnipsEditSplit='vertical'
+nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 
 "}}}
 " Plugin test{{{
@@ -1670,16 +1708,18 @@ augroup Vimwiki
     autocmd BufNewFile         *.md silent write
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
+    autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
-    autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
-    autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
+    " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
+    " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 
     autocmd BufNewFile         *.wiki silent write
     autocmd BufNewFile,BufRead *.wiki setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
+    " autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
+    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> <localleader>u1 yypVr=
     " autocmd BufNewFile,BufRead *.wiki setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd FileType vimwiki inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>

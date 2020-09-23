@@ -191,6 +191,10 @@ alias    p='python'
 alias   pr='python `fzf`'
 alias   pz='python `fzf`'
 alias   pf='python `fzf`'
+alias  pip='pip3.8'
+
+alias  pmr='python ~/python-code/movie_rating.py'
+
 # shell commands
 alias    c='clear'
 alias    q='exit'
