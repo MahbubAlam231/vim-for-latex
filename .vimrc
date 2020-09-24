@@ -41,7 +41,7 @@ set novisualbell                      " Flash the screen when an error message i
 set modeline                          " In Debian and Ubuntu, for example, the modeline option has been disabled for security reasons
 " set encoding=latin1                   " Default is utf-8
 " set cursorcolumn                      " Highlighting the column containing the cursor
-set mouse=a                           " Mouse could work on vim too
+" set mouse=a                           " Mouse could work on vim too
 " set laststatus=2                      " Always display statusline
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
@@ -345,7 +345,6 @@ nnoremap <buffer> zm mmzMzz
 nnoremap <buffer> <localleader>z zMzvzz
 nnoremap <buffer> <space> zazz
 nnoremap <buffer> <localleader><space> zazt
-nnoremap <buffer> <localleader><localleader><space> zazb
 nnoremap <buffer> z<space> zazb
 
 vnoremap <buffer> zo mozozz
@@ -357,7 +356,6 @@ vnoremap <buffer> zm mmzMzz
 vnoremap <buffer> <localleader>z zMzvzz
 vnoremap <buffer> <space> zazz
 vnoremap <buffer> <localleader><space> zazt
-vnoremap <buffer> <localleader><localleader><space> zazb
 vnoremap <buffer> z<space> zazb
 
 nnoremap <buffer> 'o `ozvzz
@@ -418,11 +416,11 @@ let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown = 0
 let g:pandoc#keyboard#display_motions = 0
 
-augroup SetFiletypeMarkdown
-    autocmd!
-    autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-    autocmd BufNewFile,BufRead *.md setlocal commentstring=<!--%s-->
-augroup end
+" augroup SetFiletypeMarkdown
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+"     autocmd BufNewFile,BufRead *.md setlocal commentstring=<!--%s-->
+" augroup end
 
 nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
 nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
@@ -841,16 +839,22 @@ nnoremap <buffer> H mh^
 nnoremap <buffer> J mjL
 nnoremap <buffer> K mkH
 nnoremap <buffer> L mlg_
+nnoremap <buffer> gH mhg^
+nnoremap <buffer> gL mlg$
 
 vnoremap <buffer> H mh^
 vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
 vnoremap <buffer> L mlg_
+vnoremap <buffer> gH mhg^
+vnoremap <buffer> gL mlg$
 
 onoremap <buffer> H ^
 onoremap <buffer> J L
 onoremap <buffer> K H
 onoremap <buffer> L g_
+onoremap <buffer> gH g^
+onoremap <buffer> gL g$
 
 " onoremap <buffer> H :<c-u>normal! mh^<cr>
 " onoremap <buffer> J :<c-u>normal! mjL<cr>
@@ -1058,14 +1062,28 @@ augroup Spelling
     autocmd FileType tex,text    setlocal spell spelllang=en_us
     autocmd FileType tex,text    setlocal spellfile=~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
-    autocmd FileType tex,text    nnoremap <buffer> < ms[szz
-    autocmd FileType tex,text    nnoremap <buffer> > ms]szz
     autocmd FileType tex,text,md nnoremap <buffer> zgN zg[szz
     autocmd FileType tex,text,md nnoremap <buffer> zgn zg]szz
     autocmd FileType tex,text,md nnoremap <buffer> zwN zw[szz
     autocmd FileType tex,text,md nnoremap <buffer> zwn zw]szz
-
 augroup end
+
+let s:gtlt_toggle=0
+function! GtLtToggle()
+    if s:gtlt_toggle
+        " Using >< to (un)indent
+        unmap <buffer> <
+        unmap <buffer> >
+        let s:gtlt_toggle=0
+    else
+        " Using >< to to find mispelled words
+        nnoremap <buffer> < ms[szz
+        nnoremap <buffer> > ms]szz
+        let s:gtlt_toggle=1
+    endif
+endfunction
+
+nnoremap <buffer> <localleader>< :call GtLtToggle()<cr>
 
 " FixLastSpellingError
 function! FixLastSpellingError()

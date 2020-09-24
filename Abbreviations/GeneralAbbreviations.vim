@@ -37,6 +37,7 @@ iabbr WE We
 "A{{{
 
 Abolish adn and
+Abolish ae almost every
 Abolish alg{,s,ic} algebra{,s,ic}
 Abolish approx{n,ns,e,es,ed,g} approximat{ion,ions,e,es,ed,ing}
 Abolish arb arbitrary
@@ -84,14 +85,15 @@ Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 Abolish el{,s,y} element{,s,ary}
 Abolish equicont{,y,ly} equicontinu{ous,ity,ously}
 Abolish equidist{,n,d} equidistribut{e,ion,ed}
-Abolish eq{n,ns,g} equat{ion,ions,ing}
+Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 
 "}}}
 "F{{{
 
 Abolish fa for all
-Abolish f{n,ns,nl,nal,nls,nals,tr,trl} func{tion,tions,tional,tional,tionals,tionals,tor,torial}
+Abolish fae for almost every
 Abolish fs for some
+Abolish f{n,ns,nl,nal,nls,nals,tr,trl} func{tion,tions,tional,tional,tionals,tionals,tor,torial}
 
 "}}}
 "G{{{
@@ -110,6 +112,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 "I{{{
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
+Abolish ineq{n,ns,y,ty,ies} inequa{tion,tions,lity,lity,lities}
 Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
 Abolish insuff{,ly} insufficient{,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}

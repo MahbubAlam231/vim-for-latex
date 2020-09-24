@@ -67,6 +67,8 @@
 
 
 
+% Numbered Environments
+%-------------------------------------------------------------------
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -75,12 +77,13 @@
 
 % Unnumbered Environments
 %-------------------------------------------------------------------
-
 \newtheorem*{utheorem}{Theorem}
 \newtheorem*{ulemma}{Lemma}
 \newtheorem*{uproposition}{Proposition}
 \newtheorem*{ucorollary}{Corollary}
 
+% Numbered Environments
+%-------------------------------------------------------------------
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}{Example}[section]
@@ -91,7 +94,6 @@
 
 % Unnumbered Environments
 %-------------------------------------------------------------------
-
 \newtheorem*{uremark}{Remark}
 
 % F}O}L}D
@@ -121,7 +123,7 @@
 % Numbering of equations
 %-------------------------------------------------------------------
 
-% \numberwithin{equation}{section}
+\numberwithin{equation}{section}
 
 % QED symbol
 %-------------------------------------------------------------------

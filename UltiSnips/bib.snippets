@@ -9,18 +9,18 @@ snippet art "article bib" b
 @article{$1,
     author = "$2",
      title = "{$3}",
-   journal = "$4",
-  fjournal = "$5",
-    volume = "$6",
-      year = "$7",
-    number = "$8",
-     pages = "$9",
-      issn = "$10",
-   mrclass = "$11",
-  mrnumber = "$12",
-mrreviewer = "$13",
-       doi = "$14",
-       url = "$15"
+   journal = "{$4}",
+  fjournal = "{$5}",
+    volume = "{$6}",
+      year = "{$7}",
+    number = "{$8}",
+     pages = "{$9}",
+      issn = "{$10}",
+   mrclass = "{$11}",
+  mrnumber = "{$12}",
+mrreviewer = "{$13}",
+       doi = "{$14}",
+       url = "{$15}"
 }
 $0
 endsnippet
@@ -29,8 +29,8 @@ snippet unpub "unpublished bib" b
 @unpublished{$1,
     author = "$2",
      title = "{$3}",
-      note = "$4",
-      year = "$5"
+      note = "{$4}",
+      year = "{$5}"
 }
 $0
 endsnippet
@@ -39,9 +39,9 @@ snippet book "book bib" b
 @book{$1,
     author = "$2",
      title = "{$3}",
-      year = "$4",
- publisher = "$5",
-   address = "$6"
+      year = "{$4}",
+ publisher = "{$5}",
+   address = "{$6}"
 }
 $0
 endsnippet
@@ -50,7 +50,7 @@ snippet misc "misc bib" b
 @misc{$1,
     author = "$2",
      title = "{$3}",
-       url = "$4"
+       url = "{$4}"
   }
 $0
 endsnippet
@@ -59,7 +59,7 @@ snippet phdthesis "phdthesis bib" b
 @phdthesis{$1,
     author = "$2",
      title = "{$3}",
-       url = "$4"
+       url = "{$4}"
   }
 $0
 endsnippet
