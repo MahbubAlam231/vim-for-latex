@@ -413,8 +413,8 @@ endfunction
 "}}}
 " Pandoc{{{
 
-let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-let g:pandoc#filetypes#pandoc_markdown = 0
+" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#keyboard#display_motions = 0
 
 " augroup SetFiletypeMarkdown
@@ -784,7 +784,7 @@ syntax on
 " colorscheme wombat256i
 colorscheme seoul256
 
-" set background=light
+set background=dark
 
 "}}}
 " Command line mappings{{{
@@ -1075,11 +1075,13 @@ function! GtLtToggle()
         " Using >< to (un)indent
         unmap <buffer> <
         unmap <buffer> >
+        nmap <buffer> <D-CR> <Plug>VimwikiTabnewLink
         let s:gtlt_toggle=0
     else
         " Using >< to to find mispelled words
         nnoremap <buffer> < ms[szz
         nnoremap <buffer> > ms]szz
+        unmap <buffer> <D-CR>
         let s:gtlt_toggle=1
     endif
 endfunction
@@ -1729,6 +1731,7 @@ augroup Vimwiki
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
     " autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
+    autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
     " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
@@ -1739,10 +1742,11 @@ augroup Vimwiki
     autocmd BufNewFile,BufRead *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
     " autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
     autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> <localleader>u1 yypVr=
+    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> <localleader>u2 yypVr-
     " autocmd BufNewFile,BufRead *.wiki setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
-    autocmd FileType vimwiki inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
-    autocmd FileType vimwiki inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
+    " autocmd FileType vimwiki inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
+    " autocmd FileType vimwiki inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 augroup end
 
 augroup SourceEverythingForPython
