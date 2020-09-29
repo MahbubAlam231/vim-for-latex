@@ -148,7 +148,7 @@ nnoremap <buffer> <localleader>vs :vsplit<cr>
 
 augroup ResizeSplitsWhenTheWindowIsResized
     autocmd!
-    autocmd VimResized * silent exe "normal! \<C-w>="
+    autocmd VimResized * silent normal! \<C-w>=
 augroup end
 
 " Window resizing
@@ -161,6 +161,13 @@ nnoremap <buffer> <S-RIGHT> 5<c-w>>
 set number relativenumber
 
 nnoremap <buffer> <silent> <localleader>nt :call NumberToggle()<cr>
+
+"}}}
+" Pandoc filetype settings{{{
+
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#pandoc_markdown=0
+let g:pandoc#keyboard#display_motions = 0
 
 "}}}
 
@@ -182,6 +189,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'VundleVim/Vundle.vim'
 " Plug 'jason6/vimwiki_md2html'
 " Plug 'tpope/vim-eunuch'
+" Plug 'masukomi/vim-markdown-folding'
+Plug 'plasticboy/vim-markdown'
 Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
@@ -285,8 +294,11 @@ let g:vimtex_mappings_override_existing = 1
 " augroup end
 
 " Finding next and previous math block
-nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
-nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+augroup FindMath
+    autocmd!
+    autocmd FileType tex nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+    autocmd FileType tex nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+augroup end
 
 let g:vimtex_compiler_latexmk = {
             \ 'backend' : 'process',
@@ -316,7 +328,7 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 " Saving folds in ~/.vim/view
 function! MakeView()
-    :execute ":normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
+    execute "normal! mfzMgg:w!\<cr>:mkview\<cr>`fzvzz"
 endfunction
 
 nnoremap <buffer> <localleader>mk :call MakeView()<cr>
@@ -324,7 +336,7 @@ nnoremap <buffer> 'f `fzvzz
 vnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
-    :execute ":normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
+    execute "normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
 
 endfunction
 
@@ -413,7 +425,7 @@ endfunction
 "}}}
 " Pandoc{{{
 
-" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#keyboard#display_motions = 0
 
@@ -426,6 +438,8 @@ let g:pandoc#keyboard#display_motions = 0
 nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
 nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
 nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
+
+nnoremap <localleader>fm :setlocal filetype=markdown<cr>:setlocal cms=<!--%s--><cr>
 
 "}}}
 
@@ -1073,20 +1087,25 @@ let s:gtlt_toggle=0
 function! GtLtToggle()
     if s:gtlt_toggle
         " Using >< to (un)indent
+        let s:gtlt_toggle=0
         unmap <buffer> <
         unmap <buffer> >
-        nmap <buffer> <D-CR> <Plug>VimwikiTabnewLink
-        let s:gtlt_toggle=0
+        if &filetype=='vimwiki'
+            nmap <buffer> <D-CR> <Plug>VimwikiTabnewLink
+        endif
     else
         " Using >< to to find mispelled words
+        let s:gtlt_toggle=1
         nnoremap <buffer> < ms[szz
         nnoremap <buffer> > ms]szz
-        unmap <buffer> <D-CR>
-        let s:gtlt_toggle=1
+        if &filetype=='vimwiki'
+            unmap <buffer> <D-CR>
+        endif
     endif
 endfunction
 
 nnoremap <buffer> <localleader>< :call GtLtToggle()<cr>
+nnoremap <buffer> <localleader>> :call GtLtToggle()<cr>
 
 " FixLastSpellingError
 function! FixLastSpellingError()
@@ -1693,17 +1712,17 @@ endfunction
 
 augroup SourceEverythingForTeX
     autocmd!
-    autocmd BufNewFile         *.tex silent write
+    autocmd BufNewFile,BufRead *.tex silent write
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
-    autocmd BufNewFile,BufRead *.tex call MatrixGroupToggle()
+    autocmd BufNewFile,BufRead *.tex call GtLtToggle()
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    autocmd BufNewFile,BufRead *.tex exe "normal! 4zj"
+    autocmd BufNewFile,BufRead *.tex normal! 4zj
 augroup end
 
 " Sourcing everything for tex
@@ -1726,7 +1745,9 @@ nnoremap <buffer> <localleader>rfm :%s/F}O}L}D/ F}O}L}D/g \| :%s/F{O{L{D/ F{O{L{
 
 augroup Vimwiki
     autocmd!
-    autocmd BufNewFile         *.md silent write
+    autocmd BufNewFile,BufRead *.md silent write
+    autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
+    autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
     " autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
@@ -1737,7 +1758,7 @@ augroup Vimwiki
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 
-    autocmd BufNewFile         *.wiki silent write
+    autocmd BufNewFile,BufRead *.wiki silent write
     autocmd BufNewFile,BufRead *.wiki setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
     " autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
@@ -1751,7 +1772,7 @@ augroup end
 
 augroup SourceEverythingForPython
     autocmd!
-    autocmd BufNewFile         *.py silent write
+    autocmd BufNewFile,BufRead *.py silent write
     autocmd BufNewFile,BufRead *.py call KeyBindings("py")
     autocmd BufNewFile,BufRead *.py setlocal signcolumn=yes
     " autocmd BufNewFile,BufRead *.py set foldmethod=indent
@@ -1759,7 +1780,7 @@ augroup end
 
 augroup SourceEverythingForGo
     autocmd!
-    autocmd BufNewFile         *.go silent write
+    autocmd BufNewFile,BufRead *.go silent write
     autocmd BufNewFile,BufRead *.go call KeyBindings("go")
     autocmd BufNewFile,BufRead *.go setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.go setlocal spellfile=~/.vim/spell/math.utf-8.add
@@ -1850,11 +1871,6 @@ nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 " Writing and quitting{{{
 "-------------------------------------------------------------------
 
-" augroup IndentTexPyBuf
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.tex,*.py :normal! mmgg=G`m
-" augroup end
-
 " Doesn't seem to work when template is enabled
 augroup WriteNewBuf
     autocmd!
@@ -1888,6 +1904,7 @@ augroup ForAllBuf
     autocmd!
     " autocmd BufNewfile,BufRead,BufEnter * source $MYVIMRC
     autocmd BufNewfile,BufRead * source $MYVIMRC
+    " autocmd BufNewfile,BufRead *.tex let s:gtlt_toggle=0
     " autocmd BufNewFile,BufRead * call Abbreviations("gen")
     autocmd FocusGained,FocusLost,BufEnter * checktime
     autocmd CursorHold,CursorHoldI * checktime

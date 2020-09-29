@@ -54,6 +54,7 @@ Abolish btw by the way
 "}}}
 "C{{{
 
+Abolish conj{,s,d} conjecture{,s,d}
 Abolish chap{,s} chapter{,s}
 Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized,d} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized,ized}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
@@ -76,7 +77,7 @@ Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
-Abolish distr{n,ns,e,es,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ion,ions,e,es,ed}
+Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 
 "}}}

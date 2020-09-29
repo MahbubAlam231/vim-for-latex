@@ -12,15 +12,15 @@ snippet art "article bib" b
    journal = "{$4}",
   fjournal = "{$5}",
     volume = "{$6}",
-      year = "{$7}",
-    number = "{$8}",
+    number = "{${7:must delete this line if number doesn't exist}}",
+      year = "{$8}",
      pages = "{$9}",
       issn = "{$10}",
    mrclass = "{$11}",
   mrnumber = "{$12}",
 mrreviewer = "{$13}",
-       doi = "{$14}",
-       url = "{$15}"
+       doi = "{\url{$14}}",
+       url = "{\url{$15}}"
 }
 $0
 endsnippet

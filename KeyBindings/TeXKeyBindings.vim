@@ -9,7 +9,7 @@
 " Mahbub's TeXKeyBindings
 "-------------------------------------------------------------------
 
-" Numbers, Braces and Some symbols{{{
+" Numbers, Braces, Some symbols and Spelling{{{
 "-------------------------------------------------------------------
 
 " Numbers"{{{
@@ -62,6 +62,32 @@ inoremap <buffer> '' `'<left>
 inoremap <buffer> "" ``''<left><left>
 
 inoremap <buffer> ;b1 \mathbbm{1}
+
+" let s:gtlt_toggle_for_tex=0
+" function! GtLtToggleForTeX()
+"     if s:gtlt_toggle_for_tex
+"         " Using >< to (un)indent
+"         let s:gtlt_toggle_for_tex=0
+"         unmap <buffer> <
+"         unmap <buffer> >
+"         if &filetype=='vimwiki'
+"             nmap <buffer> <D-CR> <Plug>VimwikiTabnewLink
+"         endif
+"     else
+"         " Using >< to to find mispelled words
+"         let s:gtlt_toggle_for_tex=1
+"         nnoremap <buffer> < ms[szz
+"         nnoremap <buffer> > ms]szz
+"         if &filetype=='vimwiki'
+"             unmap <buffer> <D-CR>
+"         endif
+"     endif
+" endfunction
+
+" call GtLtToggleForTeX()
+
+" nnoremap <buffer> <localleader>< :call GtLtToggleForTeX()<cr>
+" nnoremap <buffer> <localleader>> :call GtLtToggleForTeX()<cr>
 
 "}}}
 
@@ -1543,6 +1569,8 @@ function! MatrixGroupToggle()
     endif
 endfunction
 
+call MatrixGroupToggle()
+
 nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>
 inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>a
 
@@ -2747,6 +2775,8 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>a
 "        let s:Matrix_group_toggle = 1
 "    endif
 "endfunction
+
+"call MatrixGroupToggle()
 
 "nnoremap <buffer> <localleader>mgt :call MatrixGroupToggle()<cr>:echo<cr>
 "inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>:echo<cr>a
