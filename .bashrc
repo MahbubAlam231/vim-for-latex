@@ -149,22 +149,27 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""
 # export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
+# Select directory or file and open with xdg-open
 s() {
     cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
 }
 
+# Select directory
 sd() {
     cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
 }
 
+# Select file
 sf() {
     cd $HOME && fzf --bind "enter:execute(xdg-open {})"
 }
 
+# Select directory inside directory (subdirectory)
 sdd() {
     cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
 }
 
+# Select file inside directory
 sdf() {
     fzf --bind "enter:execute(xdg-open {})"
 }

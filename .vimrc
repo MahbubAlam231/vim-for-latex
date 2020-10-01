@@ -255,7 +255,7 @@ Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " call vundle#end()                     " Required
-" filetype indent plugin on             " Required, enables filetype detection
+filetype indent plugin on             " Required, enables filetype detection
 
 "}}}
 
