@@ -148,7 +148,7 @@ nnoremap <buffer> <localleader>vs :vsplit<cr>
 
 augroup ResizeSplitsWhenTheWindowIsResized
     autocmd!
-    autocmd VimResized * silent normal! \<C-w>=
+    autocmd VimResized * silent exe "normal! \<C-w>="
 augroup end
 
 " Window resizing
@@ -165,9 +165,9 @@ nnoremap <buffer> <silent> <localleader>nt :call NumberToggle()<cr>
 "}}}
 " Pandoc filetype settings{{{
 
-let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-let g:pandoc#filetypes#pandoc_markdown=0
-let g:pandoc#keyboard#display_motions = 0
+" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+" let g:pandoc#filetypes#pandoc_markdown=0
+" let g:pandoc#keyboard#display_motions = 0
 
 "}}}
 
@@ -411,6 +411,7 @@ augroup ChangeVimwikiTableTab
 augroup end
 
 " Mappings
+" nmap <buffer> <leader>we :vsplit<cr><Plug>VimwikiIndex
 nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
 nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
 nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>

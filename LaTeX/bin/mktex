@@ -1,0 +1,34 @@
+#!/bin/bash
+
+##########################################################################
+# @author      : Mahbub Alam
+# @file        : mktex
+# @created     : Tuesday Sep 29, 2020 19:08:39 IST
+# @description : Create tex directory on Desktop named $@ and open in vim
+##########################################################################
+
+cd ~/Desktop
+
+if [ -d $@ ]
+then
+    cd $@
+else
+    mkdir $@
+    cd $@
+fi
+
+if [ -f $@.tex ]
+then
+    echo -e "$@.tex exists. Open? [Y/n] \c"
+    read response
+    if [ "$response" == "n" ]
+    then
+        echo Quitting
+        exit 1
+    else
+        vim $@.tex
+    fi
+else
+    vim $@.tex
+fi
+

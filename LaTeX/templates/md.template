@@ -1,11 +1,8 @@
-<!-- --- -->
-<!-- title: {{FILE}} -->
-<!-- author: {{NAME}} -->
-<!-- created: {{TODAY}} {{TIME}} -->
-<!-- theme: Copenhagen -->
-<!-- --- -->
+---
+title: {{FILE}}
+author: {{NAME}}
+created: {{TODAY}} {{TIME}}
+theme: Copenhagen
+---
 
-{{FILE}}
-============
-
-{{CURSOR}}
+[main index](~/vimwiki/index){{CURSOR}}
