@@ -191,6 +191,7 @@ alias   vz='vim `fzf`'
 alias   ss='s'
 alias   sv='savevim'
 alias   cv='commitvim'
+alias   cw='commitwiki'
 
 alias    p='python'
 alias   pr='python `fzf`'

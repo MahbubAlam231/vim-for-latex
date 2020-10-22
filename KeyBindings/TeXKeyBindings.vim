@@ -196,6 +196,7 @@ inoremap <buffer> <localleader>zge \mathbb{Z}_{\geq 0}
 inoremap <buffer> <localleader>zle \mathbb{Z}_{\leq 0}
 inoremap <buffer> <localleader>z> \mathbb{Z}_{>0}
 inoremap <buffer> <localleader>z< \mathbb{Z}_{<0}
+inoremap <buffer> <localleader>z;= \mathbb{Z}_{\neq 0}
 inoremap <buffer> <localleader>pz \mathbb{Z}_+
 inoremap <buffer> <localleader>mz \mathbb{Z}_-
 inoremap <buffer> <localleader>z \mathbb{Z}
@@ -360,12 +361,12 @@ inoremap <buffer> h<Space><Space> $\mathbb{H}$
 
 "}}}
 
-inoremap <buffer> <localleader>Cc C_c()<left>
-inoremap <buffer> <localleader>Ccx C_c(X)
-inoremap <buffer> <localleader>Cci C_c^{\infty}()<left>
-inoremap <buffer> <localleader>Ccix C_c^{\infty}(X)
+inoremap <buffer> <localleader>cc. C_c()<left>
+inoremap <buffer> <localleader>ccx C_c(X)
+inoremap <buffer> <localleader>cci C_c^{\infty}()<left>
+inoremap <buffer> <localleader>ccix C_c^{\infty}(X)
 
-inoremap <buffer> <localleader>Ci C^{\infty}()<left>
+inoremap <buffer> <localleader>ci C^{\infty}()<left>
 
 "}}}
 " Matrix Groups{{{
@@ -932,6 +933,44 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>so2c \mathrm{SO}(2, \mathbb{C})
         inoremap <buffer> <localleader>so3c \mathrm{SO}(3, \mathbb{C})
         inoremap <buffer> <localleader>so.c \mathrm{SO}(, \mathbb{C})<esc>F,i
+
+        "}}}
+        " PSO{{{
+
+        inoremap <buffer> <leader>pso \mathrm{PSO}
+        inoremap <buffer> <leader>pson \mathrm{PSO}_{n}
+        inoremap <buffer> <leader>psom \mathrm{PSO}_{m}
+        inoremap <buffer> <leader>psod \mathrm{PSO}_{d}
+        inoremap <buffer> <leader>psok \mathrm{PSO}_{k}
+        inoremap <buffer> <leader>pso2 \mathrm{PSO}_{2}
+        inoremap <buffer> <leader>pso3 \mathrm{PSO}_{3}
+        inoremap <buffer> <leader>pso. \mathrm{PSO}_{}<left>
+
+        inoremap <buffer> <localleader>pso \mathrm{PSO}()<left>
+
+        inoremap <buffer> <localleader>pson \mathrm{PSO}(n,)<left>
+        inoremap <buffer> <localleader>psom \mathrm{PSO}(m,)<left>
+        inoremap <buffer> <localleader>psod \mathrm{PSO}(d,)<left>
+        inoremap <buffer> <localleader>psok \mathrm{PSO}(k,)<left>
+        inoremap <buffer> <localleader>pso2 \mathrm{PSO}(2,)<left>
+        inoremap <buffer> <localleader>pso3 \mathrm{PSO}(3,)<left>
+        inoremap <buffer> <localleader>pso. \mathrm{PSO}(,)<esc>F,i
+
+        inoremap <buffer> <localleader>psonr \mathrm{PSO}(n, \mathbb{R})
+        inoremap <buffer> <localleader>psomr \mathrm{PSO}(m, \mathbb{R})
+        inoremap <buffer> <localleader>psodr \mathrm{PSO}(d, \mathbb{R})
+        inoremap <buffer> <localleader>psokr \mathrm{PSO}(k, \mathbb{R})
+        inoremap <buffer> <localleader>pso2r \mathrm{PSO}(2, \mathbb{R})
+        inoremap <buffer> <localleader>pso3r \mathrm{PSO}(3, \mathbb{R})
+        inoremap <buffer> <localleader>pso.r \mathrm{PSO}(, \mathbb{R})<esc>F,i
+
+        inoremap <buffer> <localleader>psonc \mathrm{PSO}(n, \mathbb{C})
+        inoremap <buffer> <localleader>psomc \mathrm{PSO}(m, \mathbb{C})
+        inoremap <buffer> <localleader>psodc \mathrm{PSO}(d, \mathbb{C})
+        inoremap <buffer> <localleader>psokc \mathrm{PSO}(k, \mathbb{C})
+        inoremap <buffer> <localleader>pso2c \mathrm{PSO}(2, \mathbb{C})
+        inoremap <buffer> <localleader>pso3c \mathrm{PSO}(3, \mathbb{C})
+        inoremap <buffer> <localleader>pso.c \mathrm{PSO}(, \mathbb{C})<esc>F,i
 
         "}}}
         " U{{{
@@ -1520,6 +1559,44 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>so2c \mathrm{SO}_{2}(\mathbb{C})
         inoremap <buffer> <localleader>so3c \mathrm{SO}_{3}(\mathbb{C})
         inoremap <buffer> <localleader>so.c \mathrm{SO}_{}(\mathbb{C})<esc>F};i
+
+        "}}}
+        " PSO{{{
+
+        inoremap <buffer> <leader>pso \mathrm{PSO}
+        inoremap <buffer> <leader>pson \mathrm{PSO}_{n}
+        inoremap <buffer> <leader>psom \mathrm{PSO}_{m}
+        inoremap <buffer> <leader>psod \mathrm{PSO}_{d}
+        inoremap <buffer> <leader>psok \mathrm{PSO}_{k}
+        inoremap <buffer> <leader>pso2 \mathrm{PSO}_{2}
+        inoremap <buffer> <leader>pso3 \mathrm{PSO}_{3}
+        inoremap <buffer> <leader>pso. \mathrm{PSO}_{}<left>
+
+        inoremap <buffer> <localleader>pso \mathrm{PSO}_{}()<esc>F}i
+
+        inoremap <buffer> <localleader>pson \mathrm{PSO}_{n}()<left>
+        inoremap <buffer> <localleader>psom \mathrm{PSO}_{m}()<left>
+        inoremap <buffer> <localleader>psod \mathrm{PSO}_{d}()<left>
+        inoremap <buffer> <localleader>psok \mathrm{PSO}_{k}()<left>
+        inoremap <buffer> <localleader>pso2 \mathrm{PSO}_{2}()<left>
+        inoremap <buffer> <localleader>pso3 \mathrm{PSO}_{3}()<left>
+        inoremap <buffer> <localleader>pso. \mathrm{PSO}_{}()<esc>F}i
+
+        inoremap <buffer> <localleader>psonr \mathrm{PSO}_{n}(\mathbb{R})
+        inoremap <buffer> <localleader>psomr \mathrm{PSO}_{m}(\mathbb{R})
+        inoremap <buffer> <localleader>psodr \mathrm{PSO}_{d}(\mathbb{R})
+        inoremap <buffer> <localleader>psokr \mathrm{PSO}_{k}(\mathbb{R})
+        inoremap <buffer> <localleader>pso2r \mathrm{PSO}_{2}(\mathbb{R})
+        inoremap <buffer> <localleader>pso3r \mathrm{PSO}_{3}(\mathbb{R})
+        inoremap <buffer> <localleader>pso.r \mathrm{PSO}_{}(\mathbb{R})<esc>F};i
+
+        inoremap <buffer> <localleader>psonc \mathrm{PSO}_{n}(\mathbb{C})
+        inoremap <buffer> <localleader>psomc \mathrm{PSO}_{m}(\mathbb{C})
+        inoremap <buffer> <localleader>psodc \mathrm{PSO}_{d}(\mathbb{C})
+        inoremap <buffer> <localleader>psokc \mathrm{PSO}_{k}(\mathbb{C})
+        inoremap <buffer> <localleader>pso2c \mathrm{PSO}_{2}(\mathbb{C})
+        inoremap <buffer> <localleader>pso3c \mathrm{PSO}_{3}(\mathbb{C})
+        inoremap <buffer> <localleader>pso.c \mathrm{PSO}_{}(\mathbb{C})<esc>F};i
 
         "}}}
         " U{{{
@@ -2141,6 +2218,44 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>a
 "        inoremap <buffer> <localleader>so.c \SO(, \mathbb{C})<esc>F,i
 
 "        "}}}
+        "" PSO{{{
+
+        "inoremap <buffer> <leader>pso \PSO
+        "inoremap <buffer> <leader>pson \PSO_{n}
+        "inoremap <buffer> <leader>psom \PSO_{m}
+        "inoremap <buffer> <leader>psod \PSO_{d}
+        "inoremap <buffer> <leader>psok \PSO_{k}
+        "inoremap <buffer> <leader>pso2 \PSO_{2}
+        "inoremap <buffer> <leader>pso3 \PSO_{3}
+        "inoremap <buffer> <leader>pso. \PSO_{}<left>
+
+        "inoremap <buffer> <localleader>pso \PSO()<left>
+
+        "inoremap <buffer> <localleader>pson \PSO(n,)<left>
+        "inoremap <buffer> <localleader>psom \PSO(m,)<left>
+        "inoremap <buffer> <localleader>psod \PSO(d,)<left>
+        "inoremap <buffer> <localleader>psok \PSO(k,)<left>
+        "inoremap <buffer> <localleader>pso2 \PSO(2,)<left>
+        "inoremap <buffer> <localleader>pso3 \PSO(3,)<left>
+        "inoremap <buffer> <localleader>pso. \PSO(,)<esc>F,i
+
+        "inoremap <buffer> <localleader>psonr \PSO(n, \mathbb{R})
+        "inoremap <buffer> <localleader>psomr \PSO(m, \mathbb{R})
+        "inoremap <buffer> <localleader>psodr \PSO(d, \mathbb{R})
+        "inoremap <buffer> <localleader>psokr \PSO(k, \mathbb{R})
+        "inoremap <buffer> <localleader>pso2r \PSO(2, \mathbb{R})
+        "inoremap <buffer> <localleader>pso3r \PSO(3, \mathbb{R})
+        "inoremap <buffer> <localleader>pso.r \PSO(, \mathbb{R})<esc>F,i
+
+        "inoremap <buffer> <localleader>psonc \PSO(n, \mathbb{C})
+        "inoremap <buffer> <localleader>psomc \PSO(m, \mathbb{C})
+        "inoremap <buffer> <localleader>psodc \PSO(d, \mathbb{C})
+        "inoremap <buffer> <localleader>psokc \PSO(k, \mathbb{C})
+        "inoremap <buffer> <localleader>pso2c \PSO(2, \mathbb{C})
+        "inoremap <buffer> <localleader>pso3c \PSO(3, \mathbb{C})
+        "inoremap <buffer> <localleader>pso.c \PSO(, \mathbb{C})<esc>F,i
+
+        ""}}}
 "        " U{{{
 
 "        inoremap <buffer> <leader>un \U_{n}
@@ -2729,6 +2844,44 @@ inoremap <buffer> <localleader>mgt <esc>:call MatrixGroupToggle()<cr>a
 "        inoremap <buffer> <localleader>so.c \SO_{}(\mathbb{C})<esc>F};i
 
 "        "}}}
+        "" PSO{{{
+
+        "inoremap <buffer> <leader>pso \PSO
+        "inoremap <buffer> <leader>pson \PSO_{n}
+        "inoremap <buffer> <leader>psom \PSO_{m}
+        "inoremap <buffer> <leader>psod \PSO_{d}
+        "inoremap <buffer> <leader>psok \PSO_{k}
+        "inoremap <buffer> <leader>pso2 \PSO_{2}
+        "inoremap <buffer> <leader>pso3 \PSO_{3}
+        "inoremap <buffer> <leader>pso. \PSO_{}<left>
+
+        "inoremap <buffer> <localleader>pso \PSO_{}()<esc>F}i
+
+        "inoremap <buffer> <localleader>pson \PSO_{n}()<left>
+        "inoremap <buffer> <localleader>psom \PSO_{m}()<left>
+        "inoremap <buffer> <localleader>psod \PSO_{d}()<left>
+        "inoremap <buffer> <localleader>psok \PSO_{k}()<left>
+        "inoremap <buffer> <localleader>pso2 \PSO_{2}()<left>
+        "inoremap <buffer> <localleader>pso3 \PSO_{3}()<left>
+        "inoremap <buffer> <localleader>pso. \PSO_{}()<esc>F}i
+
+        "inoremap <buffer> <localleader>psonr \PSO_{n}(\mathbb{R})
+        "inoremap <buffer> <localleader>psomr \PSO_{m}(\mathbb{R})
+        "inoremap <buffer> <localleader>psodr \PSO_{d}(\mathbb{R})
+        "inoremap <buffer> <localleader>psokr \PSO_{k}(\mathbb{R})
+        "inoremap <buffer> <localleader>pso2r \PSO_{2}(\mathbb{R})
+        "inoremap <buffer> <localleader>pso3r \PSO_{3}(\mathbb{R})
+        "inoremap <buffer> <localleader>pso.r \PSO_{}(\mathbb{R})<esc>F};i
+
+        "inoremap <buffer> <localleader>psonc \PSO_{n}(\mathbb{C})
+        "inoremap <buffer> <localleader>psomc \PSO_{m}(\mathbb{C})
+        "inoremap <buffer> <localleader>psodc \PSO_{d}(\mathbb{C})
+        "inoremap <buffer> <localleader>psokc \PSO_{k}(\mathbb{C})
+        "inoremap <buffer> <localleader>pso2c \PSO_{2}(\mathbb{C})
+        "inoremap <buffer> <localleader>pso3c \PSO_{3}(\mathbb{C})
+        "inoremap <buffer> <localleader>pso.c \PSO_{}(\mathbb{C})<esc>F};i
+
+        ""}}}
 "        " U{{{
 
 "        inoremap <buffer> <leader>un \U_{n}
@@ -3135,6 +3288,9 @@ inoremap <buffer> <localleader>= \cong
 " Arrows and vectors"{{{
 "-------------------------------------------------------------------
 
+inoremap <buffer> ;lra \leftrightarrow
+
+inoremap <buffer> <localleader>lra \longrightarrow
 inoremap <buffer> <localleader>ra \rightarrow
 inoremap <buffer> <localleader>la \leftarrow
 inoremap <buffer> <localleader>Ra \Rightarrow
@@ -3145,8 +3301,8 @@ inoremap <buffer> <localleader>Lra \Longrightarrow
 inoremap <buffer> <localleader>Lla \Longleftarrow
 inoremap <buffer> <localleader>rras \rightrightarrows
 inoremap <buffer> <localleader>llas \leftleftarrows
-inoremap <buffer> <localleader>xra \xrightarrow
-inoremap <buffer> <localleader>xla \xleftarrow
+inoremap <buffer> <localleader>xra \xrightarrow{}<esc>i
+inoremap <buffer> <localleader>xla \xleftarrow{}<esc>i
 inoremap <buffer> <localleader>thra \twoheadrightarrow
 inoremap <buffer> <localleader>thla \twoheadleftarrow
 inoremap <buffer> <localleader>rat \rightarrowtail
@@ -3189,6 +3345,14 @@ inoremap <buffer> <localleader>dv \displaystyle\dv{}{}<esc>F}i
 inoremap <buffer> <localleader>jdvn \displaystyle\dv[]{}<esc>F]i
 inoremap <buffer> <localleader>dvn \displaystyle\dv[]{}{}<esc>F]i
 
+inoremap <buffer> ;dvx \dv{}{x}<esc>F}i
+inoremap <buffer> ;dvy \dv{}{y}<esc>F}i
+inoremap <buffer> ;dvz \dv{}{z}<esc>F}i
+inoremap <buffer> ;dvw \dv{}{w}<esc>F}i
+inoremap <buffer> ;dvr \dv{}{r}<esc>F}i
+inoremap <buffer> ;dvs \dv{}{s}<esc>F}i
+inoremap <buffer> ;dvt \dv{}{t}<esc>F}i
+
 inoremap <buffer> ;jdvx \dv{x}
 inoremap <buffer> ;jdvy \dv{y}
 inoremap <buffer> ;jdvz \dv{z}
@@ -3213,6 +3377,14 @@ inoremap <buffer> <localleader>jpdv \displaystyle\pdv{}<left>
 inoremap <buffer> <localleader>pdv \displaystyle\pdv{}{}<esc>F}i
 inoremap <buffer> <localleader>jpdvn \displaystyle\pdv[]{}<esc>F]i
 inoremap <buffer> <localleader>pdvn \displaystyle\pdv[]{}{}<esc>F]i
+
+inoremap <buffer> ;pdvx \pdv{}{x}<esc>F}i
+inoremap <buffer> ;pdvy \pdv{}{y}<esc>F}i
+inoremap <buffer> ;pdvz \pdv{}{z}<esc>F}i
+inoremap <buffer> ;pdvw \pdv{}{w}<esc>F}i
+inoremap <buffer> ;pdvr \pdv{}{r}<esc>F}i
+inoremap <buffer> ;pdvs \pdv{}{s}<esc>F}i
+inoremap <buffer> ;pdvt \pdv{}{t}<esc>F}i
 
 inoremap <buffer> ;jpdvx \pdv{x}
 inoremap <buffer> ;jpdvy \pdv{y}
@@ -3242,7 +3414,6 @@ inoremap <buffer> <localleader>em \emph{}<left>
 
 inoremap <buffer> <localleader>bm \bm{}<left>
 
-inoremap <buffer> /, \,
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
 inoremap <buffer> <localleader>op \operatorname{}<left>
 inoremap <buffer> <localleader>op* \operatorname*{}<left>
@@ -3263,10 +3434,11 @@ inoremap <buffer> ;te \text{}<left>
 
 " Dollar to \[\]
 function! DollarToBracket()
-    :execute ":normal! F$hxdf$o\\\[\<cr>\\\]\<esc>O\<C-R>\"\<esc>^xg_x"
+    :execute ":normal! ?\$\<cr>Xd/\$\<cr>xo\\\[\<cr>\\\]\<esc>O\<C-R>\"\<esc>?\$\<cr>x"
 endfunction
 
-nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
+" nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
+nnoremap <buffer> <localleader>db ?\$<cr>Xd/\$<cr>xo\[<cr>\]<esc>O<C-R>1<esc>NxV/\\\]<cr>k=
 
 " \[\] to Align
 function! BracketToAlign()
@@ -3675,7 +3847,7 @@ let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
 let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
 let m = matchadd("EquationMarkerGroup",'% Enumerate')
 let m = matchadd("EquationMarkerGroup",'% Itemize')
-let m = matchadd("EquationMarkerGroup",'% figure')
+let m = matchadd("EquationMarkerGroup",'% Figure')
 let m = matchadd("EquationMarkerGroup",'% diary')
 
 highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
@@ -3817,6 +3989,8 @@ let m = matchadd("EquationGroup",'\\begin{itemize}')
 let m = matchadd("EquationGroup",'\\end{itemize}')
 let m = matchadd("EquationGroup",'\\begin{landscape}')
 let m = matchadd("EquationGroup",'\\end{landscape}')
+let m = matchadd("EquationGroup",'\\begin{figure}')
+let m = matchadd("EquationGroup",'\\end{figure}')
 
 highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 

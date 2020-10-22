@@ -164,6 +164,7 @@ iunmap <buffer> <localleader>zge
 iunmap <buffer> <localleader>zle
 iunmap <buffer> <localleader>z>
 iunmap <buffer> <localleader>z<
+iunmap <buffer> <localleader>z;=
 iunmap <buffer> <localleader>pz
 iunmap <buffer> <localleader>mz
 iunmap <buffer> <localleader>z
@@ -328,12 +329,12 @@ iunmap <buffer> h<Space><Space>
 
 "}}}
 
-iunmap <buffer> <localleader>Cc
-iunmap <buffer> <localleader>Ccx
-iunmap <buffer> <localleader>Cci
-iunmap <buffer> <localleader>Ccix
+iunmap <buffer> <localleader>cc.
+iunmap <buffer> <localleader>ccx
+iunmap <buffer> <localleader>cci
+iunmap <buffer> <localleader>ccix
 
-iunmap <buffer> <localleader>Cx
+iunmap <buffer> <localleader>cx
 
 "}}}
 " Matrix Groups{{{
@@ -839,6 +840,44 @@ iunmap <buffer> <localleader>so3c
 iunmap <buffer> <localleader>so.c
 
 "}}}
+" PSO{{{
+
+iunmap <buffer> <leader>pso
+iunmap <buffer> <leader>pson
+iunmap <buffer> <leader>psom
+iunmap <buffer> <leader>psod
+iunmap <buffer> <leader>psok
+iunmap <buffer> <leader>pso2
+iunmap <buffer> <leader>pso3
+iunmap <buffer> <leader>pso.
+
+iunmap <buffer> <localleader>pso
+
+iunmap <buffer> <localleader>pson
+iunmap <buffer> <localleader>psom
+iunmap <buffer> <localleader>psod
+iunmap <buffer> <localleader>psok
+iunmap <buffer> <localleader>pso2
+iunmap <buffer> <localleader>pso3
+iunmap <buffer> <localleader>pso.
+
+iunmap <buffer> <localleader>psonr
+iunmap <buffer> <localleader>psomr
+iunmap <buffer> <localleader>psodr
+iunmap <buffer> <localleader>psokr
+iunmap <buffer> <localleader>pso2r
+iunmap <buffer> <localleader>pso3r
+iunmap <buffer> <localleader>pso.r
+
+iunmap <buffer> <localleader>psonc
+iunmap <buffer> <localleader>psomc
+iunmap <buffer> <localleader>psodc
+iunmap <buffer> <localleader>psokc
+iunmap <buffer> <localleader>pso2c
+iunmap <buffer> <localleader>pso3c
+iunmap <buffer> <localleader>pso.c
+
+"}}}
 " U{{{
 
 iunmap <buffer> <leader>un
@@ -1272,7 +1311,7 @@ iunmap <buffer> <localleader><
 iunmap <buffer> <localleader>>
 iunmap <buffer> <<
 iunmap <buffer> >>
-iunmap <buffer> n=
+iunmap <buffer> ;=
 iunmap <buffer> ==
 iunmap <buffer> =>
 iunmap <buffer> <localleader>=
@@ -1335,6 +1374,14 @@ iunmap <buffer> <localleader>dv
 iunmap <buffer> <localleader>jdvn
 iunmap <buffer> <localleader>dvn
 
+iunmap <buffer> ;dvx
+iunmap <buffer> ;dvy
+iunmap <buffer> ;dvz
+iunmap <buffer> ;dvw
+iunmap <buffer> ;dvr
+iunmap <buffer> ;dvs
+iunmap <buffer> ;dvt
+
 iunmap <buffer> ;jdvx
 iunmap <buffer> ;jdvy
 iunmap <buffer> ;jdvz
@@ -1359,6 +1406,14 @@ iunmap <buffer> <localleader>jpdv
 iunmap <buffer> <localleader>pdv
 iunmap <buffer> <localleader>jpdvn
 iunmap <buffer> <localleader>pdvn
+
+iunmap <buffer> ;pdvx
+iunmap <buffer> ;pdvy
+iunmap <buffer> ;pdvz
+iunmap <buffer> ;pdvw
+iunmap <buffer> ;pdvr
+iunmap <buffer> ;pdvs
+iunmap <buffer> ;pdvt
 
 iunmap <buffer> ;jpdvx
 iunmap <buffer> ;jpdvy
@@ -1388,7 +1443,6 @@ iunmap <buffer> <localleader>em
 
 iunmap <buffer> <localleader>bm
 
-iunmap <buffer> /,
 iunmap <buffer> <localleader>st
 iunmap <buffer> <localleader>op
 iunmap <buffer> <localleader>op*

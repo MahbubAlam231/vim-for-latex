@@ -3,16 +3,32 @@
 #   / _ \  | || |   / __|| '_ \ | || '_ \ | '_ \  / _ \| __|/ __|
 #  / ___ \ | || |   \__ \| | | || || |_) || |_) ||  __/| |_ \__ \
 # /_/   \_\|_||_|   |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
-#                                |_|    |_|
+#                                  |_|    |_|
 
 snippet today "Today's date"
-`date +%d/%m/%y`
+`date +%d-%m-%y`
 endsnippet
 
-snippet bye "Mail signature" b
-Thanks. Bye. So long.
--- Indus Malcolm Alamogul
+snippet now "Date-month-weekday-time-zone"
+`date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
 endsnippet
+
+snippet psnow "ps date-month-weekday-time-zone"
+TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
+endsnippet
+
+snippet times "Time now with seconds"
+`date +%T`
+endsnippet
+
+snippet time "Time now without seconds"
+`date +%H:%M`
+endsnippet
+
+# snippet bye "Mail signature" b
+# Thanks. Bye. So long.
+# -- Indus Malcolm Alamogul
+# endsnippet
 
 # snippet is "Replace 'should be' by 'is'"
 # ${VISUAL:inner text/should be/is/g}

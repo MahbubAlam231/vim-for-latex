@@ -195,6 +195,10 @@ snippet z<
 $\mathbb{Z}_{<0}$$0
 endsnippet
 
+snippet z;=
+$\mathbb{Z}_{\neq 0}$$0
+endsnippet
+
 snippet pz
 $\mathbb{Z}_+$$0
 endsnippet
@@ -597,23 +601,23 @@ endsnippet
 
 #}}}
 
-snippet Cc
+snippet cc.
 $C_c($1)$$0
 endsnippet
 
-snippet Ccx
+snippet ccx
 $C_c(X)$$0
 endsnippet
 
-snippet Cci
+snippet cci
 $C_c^{\infty}($1)$$0
 endsnippet
 
-snippet Ccix
+snippet ccix
 $C_c^{\infty}(X)$$0
 endsnippet
 
-snippet Ci
+snippet ci
 $C^{\infty}($1)$$0
 endsnippet
 
@@ -9274,7 +9278,7 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 endsnippet
 
 snippet // "Fraction" iA
-\\frac{${1:${VISUAL}}}{$2}$0
+\\frac\{${VISUAL}$1\}{$2}$0
 endsnippet
 
 #}}}
@@ -9290,7 +9294,7 @@ endsnippet
 snippet part "Part" b
 % Part
 \part{$1}\label{$2}% F{O{L{D
-$3
+${3:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9300,7 +9304,7 @@ endsnippet
 snippet chap "Chapter" b
 % Chapter
 \chapter{$1}\label{$2}% F{O{L{D
-$3
+${3:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9309,7 +9313,7 @@ endsnippet
 snippet uchap "Unnumbered Chapter" b
 % UnnumberedChapter
 \chapter*{$1}% F{O{L{D
-$2
+${2:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9318,7 +9322,7 @@ endsnippet
 snippet sec "Section" b
 % Section
 \section{$1}\label{$2}% F{O{L{D
-$3
+${3:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9327,7 +9331,7 @@ endsnippet
 snippet usec "Unnumbered Section" b
 % UnnumberedSection
 \section*{$1}% F{O{L{D
-$2
+${2:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9336,7 +9340,7 @@ endsnippet
 snippet ssec "Subsection" b
 % Subsection
 \subsection{$1}\label{$2}% F{O{L{D
-$3
+${3:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9345,7 +9349,7 @@ endsnippet
 snippet ussec "Unnumbered Subsection" b
 % UnnumberedSubsection
 \subsection*{$1}% F{O{L{D
-$2
+${2:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9354,7 +9358,7 @@ endsnippet
 snippet sssec "Subsubsection" b
 % Subsubsection
 \subsubsection{$1}\label{$2}% F{O{L{D
-$3
+${3:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9363,7 +9367,7 @@ endsnippet
 snippet usssec "Unnumbered Subsubsection" b
 % UnnumberedSubsubsection
 \subsubsection*{$1}% F{O{L{D
-$2
+${2:${VISUAL}}
 
 % F}O}L}D
 $0
@@ -9372,182 +9376,164 @@ endsnippet
 snippet not "Notation" b
 % Notation
 \begin{notation}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{notation}% F}O}L}D
-
 $0
 endsnippet
 
 snippet unot "Unnumbered Notation" b
 % UnnumberedNotation
 \begin{unotation}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{unotation}% F}O}L}D
-
 $0
 endsnippet
 
 snippet def "Definition" b
 % Definition
 \begin{definition}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{definition}% F}O}L}D
-
 $0
 endsnippet
 
 snippet udef "Unnumbered Definition" b
 % UnnumberedDefinition
 \begin{udefinition}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{udefinition}% F}O}L}D
-
 $0
 endsnippet
 
 snippet thm "Theorem" b
 % Theorem
 \begin{theorem}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{theorem}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}% F}O}L}D
-
 $0
 endsnippet
 
 snippet sthm "Statement of Theorem" b
 % StatementofTheorem
 \begin{theorem}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{theorem}% F}O}L}D
-
 $0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
 % UnnumberedTheorem
 \begin{utheorem}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{utheorem}% F}O}L}D
-
 $0
 endsnippet
 
 snippet lem "Lemma" b
 % Lemma
 \begin{lemma}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{lemma}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}% F}O}L}D
-
 $0
 endsnippet
 
 snippet slem "Statement of Lemma" b
 % StatementofLemma
 \begin{lemma}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{lemma}% F}O}L}D
-
 $0
 endsnippet
 
 snippet ulem "Unnumbered Lemma" b
 % UnnumberedLemma
 \begin{ulemma}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{ulemma}% F}O}L}D
-
 $0
 endsnippet
 
 snippet prop "Proposition" b
 % Proposition
 \begin{proposition}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{proposition}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}% F}O}L}D
-
 $0
 endsnippet
 
 snippet sprop "Statement of Proposition" b
 % StatementofProposition
 \begin{proposition}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{proposition}% F}O}L}D
-
 $0
 endsnippet
 
 snippet uprop "Unnumbered Proposition" b
 % UnnumberedProposition
 \begin{uproposition}[$1]% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{uproposition}% F}O}L}D
-
 $0
 endsnippet
 
 snippet cor "Corollary" b
 % Corollary
 \begin{corollary}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{corollary}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
 	${4:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}% F}O}L}D
-
 $0
 endsnippet
 
 snippet scor "Statement of Corollary" b
 % StatementofCorollary
 \begin{corollary}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{corollary}% F}O}L}D
-
 $0
 endsnippet
 
 snippet ucor "Unnumbered Corollary" b
 % UnnumberedCorollary
 \begin{ucorollary}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{ucorollary}% F}O}L}D
-
 $0
 endsnippet
 
 snippet prob "Problem" b
 % Problem
 \begin{problem}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{problem}% F}O}L}D
 % Solution
 \begin{solution}% F{O{L{D
 	${3:\bfseries\textcolor{red}{Write a solution}}
 \end{solution}% F}O}L}D
-
 $0
 endsnippet
 
 snippet sprob "Statement of Problem" b
 % Problem
 \begin{problem}[$1]% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{problem}% F}O}L}D
-
 $0
 endsnippet
 
@@ -9556,7 +9542,6 @@ snippet prf "Prf" b
 \begin{${1:prf}}% F{O{L{D
 	${2:\bfseries\textcolor{red}{Write a Proof}}
 \end{$1}% F}O}L}D
-
 $0
 endsnippet
 
@@ -9565,52 +9550,46 @@ snippet proof "Proof" b
 \begin{proof}% F{O{L{D
 	${1:\bfseries\textcolor{red}{Write a Proof}}
 \end{proof}% F}O}L}D
-
 $0
 endsnippet
 
 snippet rem "Remark" b
 % Remark
 \begin{remark}\label{$1}% F{O{L{D
-	$2
+	${2:${VISUAL}}
 \end{remark}% F}O}L}D
-
 $0
 endsnippet
 
 snippet urem "Unnumbered Remark" b
 % UnnumberedRemark
 \begin{uremark}% F{O{L{D
-	$1
+	${1:${VISUAL}}
 \end{uremark}% F}O}L}D
-
 $0
 endsnippet
 
 snippet conj "Conjecture" b
 % Conjecture
 \begin{conjecture}[$1]\label{$2}% F{O{L{D
-	$3
+	${3:${VISUAL}}
 \end{conjecture}% F}O}L}D
-
 $0
 endsnippet
 
 snippet ex "Example" b
 % Example
 \begin{example}\label{$1}
-	$2
+	${2:${VISUAL}}
 \end{example}
-
 $0
 endsnippet
 
 snippet exc "Exercise" b
 % Exercise
 \begin{exercise}\label{$1}
-	$2
+	${2:${VISUAL}}
 \end{exercise}
-
 $0
 endsnippet
 
@@ -9717,7 +9696,7 @@ snippet array "Array" b
 % Array
 \[
 \begin{array}{rcl}
-	$1
+	${1:${VISUAL}}
 \end{array}
 \]
 $0
@@ -9905,9 +9884,17 @@ snippet it "Writing \item" b
 \\item $0
 endsnippet
 
+snippet items "Itemize" b
+% Itemize
+\begin{itemize}[]
+	\item ${1:${VISUAL}}
+\end{itemize}
+$0
+endsnippet
+
 snippet itemz "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet]
+\begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{itemize}
 $0
@@ -9915,7 +9902,7 @@ endsnippet
 
 snippet itemize "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet]
+\begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{itemize}
 $0
@@ -9923,7 +9910,7 @@ endsnippet
 
 snippet enum "Enumeration" b
 % Enumerate
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9932,7 +9919,7 @@ endsnippet
 snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont]
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9941,7 +9928,7 @@ endsnippet
 snippet enumr "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont]
+\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9949,9 +9936,9 @@ endsnippet
 
 snippet henum "Hyper-Enumeration" b
 % Change format of top-level list items
-\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries}
+\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.2em}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
-\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont}
+\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.2em}
 \setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
 
 
@@ -9961,6 +9948,15 @@ snippet henum "Hyper-Enumeration" b
 \end{enumerate}
 $0
 endsnippet
+
+snippet enumb "Bare enumerate in sub-level" b
+% Enumerate
+\begin{enumerate}
+	\item ${1:${VISUAL}}
+\end{enumerate}
+$0
+endsnippet
+
 
 #}}}
 # Other Environments (SES, Commutative Diagram etc){{{
@@ -10019,13 +10015,12 @@ snippet asser "Assertion" b
 \end{enumerate}
 endsnippet
 
-#snippet case "Case"
-#% Case
-#\begin{enumerate}[]
-#\label{case $1}
-	#\item[] \textsc{Case $2} $3
-#\end{enumerate}
-
+# snippet case "Case"
+# % Case
+# \begin{enumerate}[]
+# \label{case $1}
+# 	\item[] \textsc{Case $2} $3
+# \end{enumerate}
 #$0
 #endsnippet
 
@@ -10112,9 +10107,9 @@ snippet homotopy
 \noindent
 endsnippet
 
-snippet frame
+snippet fra
 % Frame
-\begin{frame}$1% F{O{L{D
+\begin{frame}{$1}% F{O{L{D
 	${2:${VISUAL}}
 \end{frame}% F}O}L}D
 endsnippet
@@ -10127,19 +10122,43 @@ snippet scope
 endsnippet
 
 snippet gra "Graphics"
-\begin{center}
-	\includegraphics{$1}
-\end{center}
-
+% Figure
+\begin{figure}
+	\begin{center}
+		\includegraphics[keepaspectratio,height=10cm,width=10cm]{$1}
+	\end{center}
+	\caption{$2}
+	\label{$3}
+\end{figure}
 $0
 endsnippet
 
+snippet fig "Figure"
+% Figure
+\begin{figure}
+	\begin{center}
+		\includegraphics[keepaspectratio,height=10cm,width=10cm]{$1}
+	\end{center}
+	\caption{$2}
+	\label{$3}
+\end{figure}
+$0
+endsnippet
 
 snippet bib "Bibliography" b
 % Bibliography
-\bibliographystyle{${1:alpha}}
-\bibliography{bib}
+\bibliographystyle{alpha}
+\bibliography{${1:bib}}
+$0
+endsnippet
 
+snippet frabib "Beamer bibliography" b
+% Frame
+\begin{frame}[allowframebreaks]{References}% F{O{L{D
+	% Bibliography
+	\bibliographystyle{alpha}
+	\bibliography{${1:bib}}
+\end{frame}% F}O}L}D
 $0
 endsnippet
 
@@ -10280,27 +10299,27 @@ endsnippet
 #-------------------------------------------------------------------
 
 snippet text "Text"
-\ \text{$1}$0
+\ \text{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet te "Text"
-\ \text{$1}$0
+\ \text{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet tb "Text boldfont"
-\textbf{$1}$0
+\textbf{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet ti "Text italic"
-\textit{$1}$0
+\textit{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet tt "Text typewriter"
-\texttt{$1}$0
+\texttt{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet ts "Text sc"
-\textsc{$1}$0
+\textsc{${1:${VISUAL}}\}$0
 endsnippet
 
 # \{\} used for better-working-fold
@@ -10309,7 +10328,7 @@ snippet em "Emphasize even visually selected text"
 endsnippet
 
 snippet tc "Text color"
-\textcolor{${1:red}}{$2}$0
+\textcolor{red}\{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet tbc "Text color"

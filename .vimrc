@@ -41,7 +41,7 @@ set novisualbell                      " Flash the screen when an error message i
 set modeline                          " In Debian and Ubuntu, for example, the modeline option has been disabled for security reasons
 " set encoding=latin1                   " Default is utf-8
 " set cursorcolumn                      " Highlighting the column containing the cursor
-" set mouse=a                           " Mouse could work on vim too
+set mouse=a                           " Mouse could work on vim too
 " set laststatus=2                      " Always display statusline
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
@@ -66,6 +66,21 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
+
+"}}}
+" Leader Mappings{{{
+"-------------------------------------------------------------------
+
+let mapleader="-" "Use leader expressly in normal mode
+let maplocalleader=","
+
+" To get <> and write <localleader> easily
+inoremap <buffer> <> <><esc>i
+inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>A
+inoremap <buffer> <L <><esc>ileader<esc>A
+inoremap <buffer> <localleader>ll <><esc>ilocalleader<esc>A
+inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>A <><esc>ileader<esc>A
+inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>A <><esc>ilocalleader<esc>A
 
 "}}}
 " Tabs, indentation and wrapping{{{
@@ -279,9 +294,11 @@ xmap <buffer> it  <plug>(vimtex-im)
 omap <buffer> at  <plug>(vimtex-am)
 omap <buffer> it  <plug>(vimtex-im)
 
+nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
+
 let g:tex_flavor = 'latex'
 
-" To get ae/ie from vimtex (this doesn't let own mappings work :-()
+" To get ae/ie from vimtex (this might not (idk) let own mappings work :-()
 let g:vimtex_mappings_override_existing = 1
 
 " augroup UseVimtex_ae/ie_InTeX
@@ -353,6 +370,7 @@ nnoremap <buffer> zc mczczz
 nnoremap <buffer> zC mczCzz
 nnoremap <buffer> zv mvzvzz
 nnoremap <buffer> zr mrzRzz
+nnoremap <buffer> zR mrzrzz
 nnoremap <buffer> zm mmzMzz
 nnoremap <buffer> <localleader>z zMzvzz
 nnoremap <buffer> <space> zazz
@@ -390,15 +408,19 @@ vnoremap <buffer> 'm `mzvzz
 " Vimwiki{{{
 
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
             \'syntax': 'markdown',
             \'ext': '.md',
-            \'path_html': '~/vimwiki_html',
+            \'path_html': '~/Dropbox/Data/vimwiki_html/',
             \'custom_wiki2html': 'vimwiki_markdown',
             \'html_filename_parametrization': 1,
-            \'template_path': '~/vimwiki/templates',
+            \'template_path': '~/Dropbox/Data/vimwiki/templates/',
             \'template_default': 'default',
             \'template_ext': '.tpl'}]
+let g:vimwiki_folding = 'custom'
+
+let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
+let g:zettel_format = "%title-%d-%m-%y"
 
 " let g:vimwiki_global_ext = 0
 " let g:vimwiki_commentstring='<!--%s-->'
@@ -411,17 +433,48 @@ augroup ChangeVimwikiTableTab
 augroup end
 
 " Mappings
-" nmap <buffer> <leader>we :vsplit<cr><Plug>VimwikiIndex
-nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
-nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
-nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
+augroup VimwikiMappings
+    autocmd!
+    autocmd Filetype vimwiki nmap <buffer> <leader>we :vsplit<cr><Plug>VimwikiIndex
+    autocmd Filetype vimwiki nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
+    autocmd Filetype vimwiki nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
+    autocmd Filetype vimwiki nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
+augroup end
 
-" Link in table wiki
-function! LinkInTable()
-    execute ":normal! H3w*nn$yiW"
-    execute ":normal! gv\<cr>2li\|\<esc>hp"
-
+function! CreateFilenameWithDateTime(filename)
+    return a:filename . '-' . strftime("%d-%m-%y")
 endfunction
+
+nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
+inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime('purpose-statement')<cr>]<esc>y%%p%r($r)<esc>
+
+nnoremap <buffer> <localleader>ml ^y$I[<esc>A]()<esc>P
+
+function! VimwikiFoldLevelCustom(lnum)
+    let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
+    if (pounds)
+        return '>' . pounds  " start a fold level
+    endif
+    if getline(a:lnum) =~? '\v^\s*$'
+        if (strlen(matchstr(getline(a:lnum + 1), '^#\+')))
+            return '-1' " don't fold last blank line before header
+        endif
+    endif
+    return '=' " return previous fold level
+endfunction
+
+augroup VimwikiAuGroup
+    autocmd!
+    autocmd FileType vimwiki setlocal foldmethod=expr
+    autocmd FileType vimwiki setlocal foldenable
+    autocmd FileType vimwiki setlocal foldexpr=VimwikiFoldLevelCustom(v:lnum)
+augroup end
+
+function! Backlinking()
+    execute "normal Vip:g/|/exe 'norm! f|d$'"
+endfunction
+
+nnoremap <localleader>vb Vip:g/\|/exe "norm! f\|d$"<cr>Vip:g/\.md/VimwikiFollowLink<cr>
 
 "}}}
 " Pandoc{{{
@@ -429,6 +482,7 @@ endfunction
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#keyboard#display_motions = 0
+let g:vim_markdown_no_default_key_mappings = 1
 
 " augroup SetFiletypeMarkdown
 "     autocmd!
@@ -545,6 +599,16 @@ nnoremap <buffer> 'e `ezvzz
 nnoremap <buffer> 'f `fzvzz
 nnoremap <buffer> 's `szvzz
 nnoremap <buffer> 't `tzvzz
+
+nnoremap <buffer> \ ,
+
+nmap <buffer> , <Plug>Sneak_,
+omap <buffer> , <Plug>Sneak_,
+xmap <buffer> , <Plug>Sneak_,
+
+nmap <buffer> \ <Plug>Sneak_,
+omap <buffer> \ <Plug>Sneak_,
+xmap <buffer> \ <Plug>Sneak_,
 
 "}}}
 " Eunuch"{{{
@@ -754,34 +818,30 @@ nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 " Misc{{{
 "-------------------------------------------------------------------
 
-" Align text{{{
-"-------------------------------------------------------------------
-
-nnoremap <buffer> <localleader>al :left<cr>
-nnoremap <buffer> <localleader>ac :center<cr>
-nnoremap <buffer> <localleader>ar :right<cr>
-
-vnoremap <buffer> <localleader>al :left<cr>
-vnoremap <buffer> <localleader>ac :center<cr>
-vnoremap <buffer> <localleader>ar :right<cr>
-
-"}}}
 " Braces and stuff{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> ( ()<esc>i
-inoremap <buffer> (( (
-inoremap <buffer> { {}<esc>i
-inoremap <buffer> {{ {
-inoremap <buffer> [ []<esc>i
-inoremap <buffer> [[ [
+inoremap ( ()<esc>i
+inoremap (( (
+inoremap { {}<esc>i
+inoremap {{ {
+inoremap [ []<esc>i
+inoremap [[ [
 
-inoremap <buffer> \| \|\|<esc>i
-inoremap <buffer> \|\| \|
+inoremap \| \|\|<esc>i
+inoremap \|\| \|
 
-inoremap <buffer> '' ''<esc>i
-inoremap <buffer> "" ""<esc>i
-inoremap <buffer> `` ``<esc>i
+inoremap '' ''<esc>i
+inoremap "" ""<esc>i
+inoremap `` ``<esc>i
+
+augroup MarkdownVimwiki
+    autocmd!
+    autocmd FileType markdown inoremap <buffer> * **<left>
+    autocmd FileType markdown inoremap <buffer> ** ****<left><left>
+    autocmd FileType vimwiki inoremap <buffer> * **<left>
+    autocmd FileType vimwiki inoremap <buffer> ** ****<left><left>
+augroup end
 
 "}}}
 " Calculator{{{
@@ -815,21 +875,6 @@ cnoremap <buffer> <c-e> <end>
 ""Make CTRL-K list diagraphs before each digraph entry
 "runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
 "inoremap <buffer> <expr> <C-K> BDG_GetDigraph()
-
-"}}}
-" Leader Mappings{{{
-"-------------------------------------------------------------------
-
-let mapleader="-" "Use leader expressly in normal mode
-let maplocalleader=","
-
-" To get <> and write <localleader> easily
-inoremap <buffer> <> <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>A
-inoremap <buffer> <L <><esc>ileader<esc>A
-inoremap <buffer> <localleader>ll <><esc>ilocalleader<esc>A
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>A <><esc>ileader<esc>A
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>A <><esc>ilocalleader<esc>A
 
 "}}}
 " Macros{{{
@@ -974,12 +1019,12 @@ nnoremap <buffer> vv ^vg_
 nnoremap <buffer> <silent> !! yiwo<esc>:.!<c-r><c-r>0<cr>
 vnoremap <buffer> <silent> !! yo<esc>:.!<c-r><c-r>0<cr>0
 
-" Paste date at cursor
-nnoremap <buffer> <silent> <localleader>now a<cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%l
-inoremap <buffer> <silent> <localleader>now <cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%li
+" " Paste date at cursor
+" nnoremap <buffer> <silent> <localleader>now a<cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%lx
+" inoremap <buffer> <silent> <localleader>now <cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%lxa
 
 " Calendar on next paragraph with cursor on today
-nnoremap <buffer> <silent> <localleader>cal o<esc>:.!cal<cr>mm:FixWhitespace<cr>/_<cr>2x`mn2xhe:noh<cr>
+nnoremap <buffer> <silent> <localleader>cal o<esc>:.!cal<cr>mm:FixWhitespace<cr>?_<cr>2xwn2xhe:noh<cr>
 
 "}}}
 " Searching remaps{{{
@@ -1075,13 +1120,13 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text    setlocal spell spelllang=en_us
-    autocmd FileType tex,text    setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki setlocal spell spelllang=en_us
+    autocmd FileType tex,text,markdown,vimwiki setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
-    autocmd FileType tex,text,md nnoremap <buffer> zgN zg[szz
-    autocmd FileType tex,text,md nnoremap <buffer> zgn zg]szz
-    autocmd FileType tex,text,md nnoremap <buffer> zwN zw[szz
-    autocmd FileType tex,text,md nnoremap <buffer> zwn zw]szz
+    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zgN zg[szz
+    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zgn zg]szz
+    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zwN zw[szz
+    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zwn zw]szz
 augroup end
 
 let s:gtlt_toggle=0
@@ -1279,7 +1324,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
-    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% figure')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Figure')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
 augroup end
 
@@ -1429,6 +1474,8 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align\*}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{subequations}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{subequations}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{figure}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{center}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{center}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather}')
@@ -1711,6 +1758,7 @@ endfunction
 " Sourcing KeyBindings, Abbreviations and Stuff{{{
 "-------------------------------------------------------------------
 
+" SourceEverythingForTeX{{{
 augroup SourceEverythingForTeX
     autocmd!
     autocmd BufNewFile,BufRead *.tex silent write
@@ -1718,12 +1766,13 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
     autocmd BufNewFile,BufRead *.tex call GtLtToggle()
+    autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    autocmd BufNewFile,BufRead *.tex normal! 4zj
+    autocmd BufNewFile,BufRead *.tex execute "normal! 4zj"
 augroup end
 
 " Sourcing everything for tex
@@ -1744,33 +1793,27 @@ inoremap <buffer> <silent> <localleader>te <esc>:source $MYVIMRC<cr>:call Source
 nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/g<cr><cr>
 nnoremap <buffer> <localleader>rfm :%s/F}O}L}D/ F}O}L}D/g \| :%s/F{O{L{D/ F{O{L{D/g<cr><cr>
 
-augroup Vimwiki
+"}}}
+" SourceEverythingForVimwiki{{{
+augroup SourceEverythingForVimwiki
     autocmd!
     autocmd BufNewFile,BufRead *.md silent write
     autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
-    " autocmd BufNewFile,BufRead *.md nnoremap <buffer> glm V<
+    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
-    " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
-    " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
+    " autocmd BufNewFile,BufRead *.md execute "normal! 4zj"
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
-
-    autocmd BufNewFile,BufRead *.wiki silent write
-    autocmd BufNewFile,BufRead *.wiki setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.wiki setlocal spellfile=~/.vim/spell/math.utf-8.add
-    " autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> glm V<
-    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> <localleader>u1 yypVr=
-    autocmd BufNewFile,BufRead *.wiki nnoremap <buffer> <localleader>u2 yypVr-
-    " autocmd BufNewFile,BufRead *.wiki setlocal foldmethod=marker
-    " autocmd BufNewFile,BufRead *.wiki setlocal foldmarker=F{O{L{D,F}O}L}D
-    " autocmd FileType vimwiki inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
-    " autocmd FileType vimwiki inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
+    " autocmd Filetype vimwiki setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
+    " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
 augroup end
 
+"}}}
+" SourceEverythingForPython{{{
 augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile,BufRead *.py silent write
@@ -1779,6 +1822,8 @@ augroup SourceEverythingForPython
     " autocmd BufNewFile,BufRead *.py set foldmethod=indent
 augroup end
 
+"}}}
+" SourceEverythingForGo{{{
 augroup SourceEverythingForGo
     autocmd!
     autocmd BufNewFile,BufRead *.go silent write
@@ -1787,6 +1832,8 @@ augroup SourceEverythingForGo
     autocmd BufNewFile,BufRead *.go setlocal spellfile=~/.vim/spell/math.utf-8.add
 augroup end
 
+"}}}
+" Leader mappings{{{
 "Sourcing NumbersPeacefully
 nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
 inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>a
@@ -1807,6 +1854,8 @@ nnoremap <buffer> <localleader>go :call KeyBindings("go")<cr>
 "Sourcing UnmapTexKeyBindings
 nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>
 inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>a
+
+"}}}
 
 "}}}
 " Opening .vimrc, KeyBindings and Stuff{{{
@@ -1887,10 +1936,10 @@ augroup ContinuouslyWriteBuf
     autocmd TextChangedI *.* silent write
 augroup end
 
-nnoremap <buffer> <localleader>q mqzM:q!<cr>
-nnoremap <buffer> <localleader>wq mqzM:wq!<cr>
-nnoremap <buffer> 'q `qzvzz
-vnoremap <buffer> 'q `qzvzz
+nnoremap <localleader>q mqzM:q!<cr>
+nnoremap <localleader>wq mqzM:wq!<cr>
+nnoremap 'q `qzvzz
+vnoremap 'q `qzvzz
 
 "}}}
 

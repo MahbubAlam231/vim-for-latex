@@ -38,9 +38,11 @@ iabbr WE We
 
 Abolish adn and
 Abolish ae almost every
+Abolish aew almost everywhere
 Abolish alg{,s,ic} algebra{,s,ic}
-Abolish approx{n,ns,e,es,ed,g} approximat{ion,ions,e,es,ed,ing}
+Abolish appl{n,ns,ble} applica{tion,tions,ble}
 Abolish arb arbitrary
+Abolish {approx,appr}{n,ns,e,es,ed,g,ble} {approxima,approxima}{tion,tions,te,tes,ted,ting,ble}
 
 "}}}
 "B{{{
@@ -54,19 +56,20 @@ Abolish btw by the way
 "}}}
 "C{{{
 
-Abolish conj{,s,d} conjecture{,s,d}
 Abolish chap{,s} chapter{,s}
 Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized,d} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized,ized}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}
-Abolish compt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
+Abolish cong{e,t} congruen{ce,t}
+Abolish conj{,s,d} conjecture{,s,d}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
-Abolish corr{,s,es,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,s,ing,ing,ence,ence,ence,ence,ences,ences,ences,ences,ences}
+Abolish corr{,s,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,ing,ing,ence,ence,ence,ence,ences,ences,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
-Abolish cpt{,fication,ficatn,fy,g,fyg,ly,ness} compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish ctbl{e,y,ey} countabl{e,ity,ity}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
+Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness} {compact,compact}{,ification,ification,ify,ifying,ifying,ly,ness}
+Abolish {cpt,cmpt}{,fication,ficatn,fy,g,fyg,ly,ness} {compact,compact}{,ification,ification,ify,ifying,ifying,ly,ness}
 
 "}}}
 "D{{{
@@ -84,8 +87,8 @@ Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 "E{{{
 
 Abolish el{,s,y} element{,s,ary}
-Abolish equicont{,y,ly} equicontinu{ous,ity,ously}
-Abolish equidist{,n,d} equidistribut{e,ion,ed}
+Abolish {equi,eq}cont{,y,ly} {equicontinu,equicontinu}{ous,ity,ously}
+Abolish {equi,eq}distr{,e,es,n,ns,d} {equidistribut,equidistribut}{e,e,es,ion,ions,ed}
 Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 
 "}}}
@@ -114,6 +117,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
 Abolish ineq{n,ns,y,ty,ies} inequa{tion,tions,lity,lity,lities}
+Abolish inf{e,te,y,ly,mal} infini{te,te,ty,tely,simal}
 Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
 Abolish insuff{,ly} insufficient{,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
@@ -140,6 +144,7 @@ Abolish nbd{,s} neighborhood{,s}
 "O{{{
 
 Abolish ob{e,n,ns,g,se,sn,sns,sg} observ{e,ation,ations,ing,e,ation,ations,ing}
+Abolish ow otherwise
 
 "}}}
 "P{{{
@@ -147,6 +152,11 @@ Abolish ob{e,n,ns,g,se,sn,sns,sg} observ{e,ation,ations,ing,e,ation,ations,ing}
 Abolish poly{,s} polynomial{,s}
 Abolish proj{n,ns} projection{,s}
 Abolish prop{n,ns} proposition{,s}
+
+"}}}
+"Q{{{
+
+Abolish quad{c} quadrati{c}
 
 "}}}
 "R{{{
@@ -181,6 +191,7 @@ Abolish teh the
 Abolish tehn then
 Abolish tf therefore
 Abolish thm{,s} theorem{,s}
+Abolish thr{y,es} theor{y,ies}
 Abolish top{y,cal,cally,sp,sps} topolog{y,ical,ically,ical space,ical spaces}
 Abolish tx{,s} there exist{,s}
 

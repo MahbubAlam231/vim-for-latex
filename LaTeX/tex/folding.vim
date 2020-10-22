@@ -215,23 +215,32 @@ endfunction
 function! s:CaptionFrame(line)
     " Test simple variants first
     let caption1 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+\ze}')
-    let caption2 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
+    let caption2 = matchstr(a:line,'\\begin\*\?{.*}\[.*\]{\zs.\+\ze}')
+    let caption3 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
 
     if len(caption1) > 0
         return caption1
     elseif len(caption2) > 0
         return caption2
+    " elseif len(caption3) > 0
+    "     return caption3
     else
         let i = v:foldstart
         while i <= v:foldend
             if getline(i) =~ '^\s*\\frametitle'
                 return matchstr(getline(i),
-                            \ '^\s*\\frametitle\(\[.*\]\)\?{\zs.\+')
+                            \ '^\s*\(%\)*\( \)*\\frametitle\(\[.*\]\)\?{\zs.\+\ze}')
+            elseif getline(i) =~ '^\s*\(%\)*\( \)*\\titlepage'
+                return 'Title page'
+            elseif getline(i) =~ '^\s*\(%\)*\( \)*\\tableofcontents'
+                return 'Table of contents'
+            elseif getline(i) =~ '^\s*\(%\)*\( \)*\(.\)*Thank you\s*$'
+                return 'Thank you'
             end
             let i += 1
         endwhile
 
-        return ""
+        return "/~/~NO CAPTION~/~/"
     endif
 endfunction
 
@@ -338,7 +347,7 @@ function! LatexBox_FoldText()
                 let secondarytitle = primarytitle1 . aligntitle1
             endif
 
-        else 
+        else
             " Label doesn't exist
             let label = '    \'
             " Capturing section-environment title
@@ -362,25 +371,25 @@ function! LatexBox_FoldText()
 
         " Final section-environment title
         if type == 'part'
-            let title = '* P    ' . secondarytitle . label
+            let title = 'P    ' . secondarytitle . label
         elseif type == 'chapter'
-            let title = '* C    ' . secondarytitle . label
+            let title = 'C    ' . secondarytitle . label
         elseif type == 'section'
-            let title = '* S    ' . secondarytitle . label
+            let title = 'S    ' . secondarytitle . label
         elseif type == 'subsection'
-            let title = '* Ss   ' . secondarytitle . label
+            let title = 'Ss   ' . secondarytitle . label
         elseif type == 'subsubsection'
-            let title = '* Sss  ' . secondarytitle . label
+            let title = 'Sss  ' . secondarytitle . label
         elseif type == 'chapter*'
-            let title = '* C*   ' . secondarytitle . label
+            let title = 'C*   ' . secondarytitle . label
         elseif type == 'section*'
-            let title = '* S*   ' . secondarytitle . label
+            let title = 'S*   ' . secondarytitle . label
         elseif type == 'subsection*'
-            let title = '* Ss*  ' . secondarytitle . label
+            let title = 'Ss*  ' . secondarytitle . label
         elseif type == 'subsubsection*'
-            let title = '* Sss* ' . secondarytitle . label
+            let title = 'Sss* ' . secondarytitle . label
         else
-            let title = '~      ' . secondarytitle . label
+            let title = '~    ' . secondarytitle . label
         endif
 
         "}}}
@@ -596,7 +605,12 @@ function! LatexBox_FoldText()
 
         elseif env == 'frame'
             let caption = s:CaptionFrame(line)
-            let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
+            if line =~ '^\s*\\begin'
+                " let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
+                let title = 'Frame - ' . caption
+            elseif line =~ '^\s*% \\begin'
+                let title = '[Commented Frame] - ' . caption
+            endif
 
         "}}}
 
@@ -716,7 +730,7 @@ function! LatexBox_FoldText()
     return printf('%-15s %-138s %4d lines', level, title, nlines)
     " return printf('%-15s %-138s', level, title)
     " return printf('%-15s %.095s %-40s %4d lines', level, title, label, nlines)
-    " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines 
+    " return level . alignlnr . title . ' ' . repeat(' ', 10) . nlines
 
 endfunction
 

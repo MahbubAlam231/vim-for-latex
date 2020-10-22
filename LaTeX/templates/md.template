@@ -1,8 +1,11 @@
----
-title: {{FILE}}
-author: {{NAME}}
-created: {{TODAY}} {{TIME}}
-theme: Copenhagen
----
+<!-- --- -->
+<!-- title: {{FILE}} -->
+<!-- author: {{NAME}} -->
+<!-- created: {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}} -->
+<!-- theme: Copenhagen -->
+<!-- --- -->
 
-[main index](~/vimwiki/index){{CURSOR}}
+[purpose-statement-index](../purpose-statements/purpose-statement-index)
+[project-gutenberg-index](../project-gutenberg/project-gutenberg-index)
+[leisure-reading-index](../leisure-reading/leisure-reading-index)
+[main index](../index)    [diary-index](../diary/diary){{CURSOR}}

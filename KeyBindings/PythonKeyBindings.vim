@@ -71,7 +71,7 @@ inoremap <buffer> "" "
 inoremap <buffer> <localleader>int int()<esc>i
 inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
-inoremap <buffer> n= !=
+inoremap <buffer> ;= !=
 inoremap <buffer> ;la lambda
 
 "}}}

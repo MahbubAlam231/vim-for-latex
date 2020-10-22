@@ -1,0 +1,238 @@
+%-------------------------------------------------------------------
+% Author(s)     : {{NAME}}
+% File          : {{FILE}}.tex
+% Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
+% Description   : {{CURSOR}}
+%-------------------------------------------------------------------
+
+\documentclass[xcolor=dvipsnames,10pt]{beamer}% F{O{L{D
+
+% Usepackages% F{O{L{D
+%-------------------------------------------------------------------
+
+% \usetheme{AnnArbor}
+% \usetheme{Antibes}
+% \usetheme{Bergen}
+% \usetheme{Berkeley}
+% \usetheme{Berlin}
+% \usetheme{Boadilla}
+% \usetheme{CambridgeUS}
+\usetheme{Copenhagen}
+% \usetheme{Darmstadt}
+% \usetheme{Frankfurt}
+% \usetheme{Goettingen}
+% \usetheme{Hannover}
+% \usetheme{Ilmenau}
+% \usetheme{JuanLesPins}
+% \usetheme{Luebeck}
+% \usetheme{Madrid}
+% \usetheme{Malmoe}
+% \usetheme{Marburg}
+% \usetheme{Montpellier}
+% \usetheme{PaloAlto}
+% \usetheme{Pittsburgh}
+% \usetheme{Rochester}
+% \usetheme{Singapore}
+% \usetheme{Szeged}
+% \usetheme{Warsaw}
+% \usetheme{boxes}
+% \usetheme{default}
+
+
+\usepackage{afterpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbding}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{contour}%for writing sc bf
+\usepackage{dsfont}
+% \usepackage[dvipsnames]{xcolor}
+\usepackage{esvect}
+\usepackage{enumerate}
+\usepackage{enumitem}
+% \usepackage{eufrak} % not required with amsfonts
+\usepackage{extarrows}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[bookmarks,breaklinks,citecolor=blue,colorlinks,linkcolor=blue,urlcolor=blue,linktoc=all,pdftex]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym,longtable,booktabs,amscd,microtype,booktabs,cases,graphics}
+\usepackage{lscape}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage[square,numbers]{natbib}
+% \usepackage[nottoc]{tocbibind}
+\usepackage{physics}
+% \usepackage{palatino}
+\usepackage{relsize}
+\usepackage{slantsc}
+\usepackage{stmaryrd}
+\usepackage{tfrupee}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+% \usepackage{titlesec}
+% \usepackage{titling}
+\usepackage{thmtools}
+\usepackage[normalem]{ulem}%for writing a underlined text
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage[cmtip]{xy}
+\usepackage{yfonts}
+
+\usetikzlibrary{matrix}
+
+% F}O}L}D
+% Environments% F{O{L{D
+%-------------------------------------------------------------------
+
+% % To write names of theorems in bold
+% \makeatletter
+% \def\th@plain{%
+%     \thm@notefont{}% same as heading font
+%     \itshape% body font
+% }
+% \def\th@definition{%
+%     \thm@notefont{}% same as heading font
+%     \normalfont% body font
+% }
+% \makeatother
+
+% \mode<presentation> { \setbeamercovered{transparent} }
+% % \mode<presentation> {%
+% % \setbeamercovered{%
+% %     still covered={\opaqueness<1>{0}\opaqueness<2>{0}\opaqueness<3>{0}\opaqueness<4>{0}\opaqueness<5->{0}\opaqueness<6>{0}\opaqueness<7->{0}},
+% %     again covered={\opaqueness<1->{0}}
+% % }
+% % \makeatletter
+% \def\pdftex@driver{pdftex.def}
+% \ifx\Gin@driver\pdftex@driver
+%   \def\pgfsys@color@unstacked#1{%
+%     \pdfliteral{\csname\string\color@#1\endcsname}%
+%   }
+% \fi
+% \makeatother
+
+
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{conjecture}{Conjecture}[section]
+
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{example}{Example}[section]
+% \newtheorem{exercise}{Exercise}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% \theoremstyle{definition}
+% \newcommand*{\theorembreak}{\usebeamertemplate{theorem end}\framebreak\usebeamertemplate{theorem begin}}
+
+% F}O}L}D
+% Newcommands% F{O{L{D
+%-------------------------------------------------------------------
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+
+\newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
+
+\newcommand{\fl}[1]{\lfloor#1 \rfloor}
+\newcommand{\bigfl}[1]{\big\lfloor#1 \big\rfloor}
+\newcommand{\Bigfl}[1]{\Big\lfloor#1 \Big\rfloor}
+\newcommand{\biggfl}[1]{\bigg\lfloor#1 \bigg\rfloor}
+\newcommand{\Biggfl}[1]{\Bigg\lfloor#1 \Bigg\rfloor}
+\newcommand{\lrfl}[1]{\left\lfloor#1 \right\rfloor}
+
+\newcommand{\ce}[1]{\lceil#1 \rceil}
+\newcommand{\bigce}[1]{\big\lceil#1 \big\rceil}
+\newcommand{\Bigce}[1]{\Big\lceil#1 \Big\rceil}
+\newcommand{\biggce}[1]{\bigg\lceil#1 \bigg\rceil}
+\newcommand{\Biggce}[1]{\Bigg\lceil#1 \Bigg\rceil}
+\newcommand{\lrce}[1]{\left\lceil#1 \right\rceil}
+
+\newcommand{\M}{\mathrm{M}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+
+\renewcommand{\O}{\mathrm{O}}
+
+\renewcommand{\d}{\dd}
+
+\DeclareMathOperator*{\vol}{vol}
+\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator*{\diag}{diag}
+
+%-------------------------------------------------------------------
+% QED symbol
+%-------------------------------------------------------------------
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% F}O}L}D
+
+% F}O}L}D
+
+\begin{document}
+
+% Title
+\title[<++>]{<++>}% F{O{L{D
+
+\author[]{\Large{{{NAME}}}}
+
+\institute[]{\inst{}%
+    \large{School of Mathematics}\\
+    \vspace{3mm}
+    \large{TIFR Mumbai}
+}
+\date{}
+
+\titlegraphic{\includegraphics[width=2cm]{TIFR-logo}}
+
+% F}O}L}D
+
+
+
+% Frame
+\begin{frame}[plain,noframenumbering]{}% F{O{L{D
+    \titlepage
+\end{frame}% F}O}L}D
+% Frame
+% \begin{frame}[]{}% F{O{L{D
+%     \tableofcontents
+% \end{frame}% F}O}L}D
+% Frame
+\begin{frame}{Last talk}% F{O{L{D
+	<++>
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{References}% F{O{L{D
+    % Bibliography
+    \bibliographystyle{alpha}
+    \bibliography{bib}
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{}% F{O{L{D
+    \begin{center}
+        \Huge Thank you
+    \end{center}
+\end{frame}% F}O}L}D
+
+\end{document}
+
+%-------------------------------------------------------------------
+% Comments on the document
+%-------------------------------------------------------------------
+
+% foldmarker has been changed, if you open it in VIM, be careful.
+% set foldmarker=F{O{L{D,F}O}L}D

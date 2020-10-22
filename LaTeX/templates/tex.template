@@ -1,7 +1,7 @@
 %-------------------------------------------------------------------
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
-% Created       : {{TODAY}} {{TIME}}
+% Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
 % Description   : <++>
 %-------------------------------------------------------------------
 
@@ -25,10 +25,11 @@
 \usepackage{enumitem}
 \usepackage{esvect}
 % \usepackage{eufrak} % not required when have amsfonts
+\usepackage{extarrows}
 \usepackage{float}
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
-% \usepackage[bookmarks,breaklinks,citecolor=blue,colorlinks,linktoc=all,pdftex]{hyperref}
+\usepackage[bookmarks,breaklinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,linktoc=all,pdftex]{hyperref}
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
