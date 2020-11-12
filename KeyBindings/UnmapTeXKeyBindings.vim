@@ -1320,12 +1320,15 @@ iunmap <buffer> <localleader>=
 " Arrows"{{{
 "-------------------------------------------------------------------
 
+iunmap <buffer> ;lra
+iunmap <buffer> ;llra
+
 iunmap <buffer> <localleader>ra
 iunmap <buffer> <localleader>la
-iunmap <buffer> <localleader>Ra
-iunmap <buffer> <localleader>La
 iunmap <buffer> <localleader>lra
 iunmap <buffer> <localleader>lla
+iunmap <buffer> <localleader>Ra
+iunmap <buffer> <localleader>La
 iunmap <buffer> <localleader>Lra
 iunmap <buffer> <localleader>Lla
 iunmap <buffer> <localleader>rras
@@ -1338,6 +1341,7 @@ iunmap <buffer> <localleader>rat
 iunmap <buffer> <localleader>lat
 iunmap <buffer> <localleader>rsa
 iunmap <buffer> <localleader>lsa
+iunmap <buffer> <localleader>lrsa
 iunmap <buffer> <localleader>da
 iunmap <buffer> <localleader>ua
 iunmap <buffer> <localleader>dda
@@ -1453,6 +1457,9 @@ iunmap <buffer> <localleader>N
 iunmap <buffer> <localleader><C-E>
 
 iunmap <buffer> ;te
+
+iunmap <buffer> /, \,
+iunmap <buffer> ./ .\
 
 "}}}
 

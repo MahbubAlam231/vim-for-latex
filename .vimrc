@@ -313,8 +313,8 @@ let g:vimtex_mappings_override_existing = 1
 " Finding next and previous math block
 augroup FindMath
     autocmd!
-    autocmd FileType tex nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
-    autocmd FileType tex nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 augroup end
 
 let g:vimtex_compiler_latexmk = {
@@ -417,7 +417,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
             \'template_path': '~/Dropbox/Data/vimwiki/templates/',
             \'template_default': 'default',
             \'template_ext': '.tpl'}]
-let g:vimwiki_folding = 'custom'
+" let g:vimwiki_folding = 'expr'
 
 let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
 let g:zettel_format = "%title-%d-%m-%y"
@@ -430,6 +430,8 @@ augroup ChangeVimwikiTableTab
     autocmd!
     autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
     autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+    " autocmd Filetype vimwiki inoremap <silent><expr> <Tab> vimwiki#tbl#kbd_tab()
+    " autocmd Filetype vimwiki inoremap <silent><expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
 augroup end
 
 " Mappings
@@ -467,7 +469,7 @@ augroup VimwikiAuGroup
     autocmd!
     autocmd FileType vimwiki setlocal foldmethod=expr
     autocmd FileType vimwiki setlocal foldenable
-    autocmd FileType vimwiki setlocal foldexpr=VimwikiFoldLevelCustom(v:lnum)
+    " autocmd FileType vimwiki setlocal foldexpr=VimwikiFoldLevelCustom(v:lnum)
 augroup end
 
 function! Backlinking()
@@ -489,12 +491,6 @@ let g:vim_markdown_no_default_key_mappings = 1
 "     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 "     autocmd BufNewFile,BufRead *.md setlocal commentstring=<!--%s-->
 " augroup end
-
-nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
-nnoremap <buffer> <localleader>pp :Pandoc pdf<cr>
-nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
-
-nnoremap <localleader>fm :setlocal filetype=markdown<cr>:setlocal cms=<!--%s--><cr>
 
 "}}}
 
@@ -532,12 +528,16 @@ let g:airline_theme = 'simple'
 
 map <buffer> *   <Plug>(asterisk-*)
 map <buffer> #   <Plug>(asterisk-#)
-map <buffer> g*  <Plug>(asterisk-g*)zz
-map <buffer> g#  <Plug>(asterisk-g#)zz
-map <buffer> z*  <Plug>(asterisk-z*)
+" map <buffer> g*  <Plug>(asterisk-g*)zz
+" map <buffer> g#  <Plug>(asterisk-g#)zz
+" map <buffer> z*  <Plug>(asterisk-z*)
+" map <buffer> z#  <Plug>(asterisk-z#)
 map <buffer> gz* <Plug>(asterisk-gz*)
-map <buffer> z#  <Plug>(asterisk-z#)
 map <buffer> gz# <Plug>(asterisk-gz#)
+
+" Use g instead of z, z messes up dz, cz
+map <buffer> g*  <Plug>(asterisk-z*)
+map <buffer> g#  <Plug>(asterisk-z#)
 
 let g:asterisk#keeppos = 1
 
@@ -790,6 +790,7 @@ vmap <buffer> <localleader>t <Plug>Titlecase
 
 let g:UltiSnipsEditSplit='vertical'
 nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
+nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
 
 "}}}
 " Plugin test{{{
@@ -837,17 +838,14 @@ inoremap `` ``<esc>i
 
 augroup MarkdownVimwiki
     autocmd!
-    autocmd FileType markdown inoremap <buffer> * **<left>
-    autocmd FileType markdown inoremap <buffer> ** ****<left><left>
-    autocmd FileType vimwiki inoremap <buffer> * **<left>
-    autocmd FileType vimwiki inoremap <buffer> ** ****<left><left>
+    autocmd FileType markdown,vimwiki inoremap <buffer> ** **<left>
 augroup end
 
 "}}}
 " Calculator{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<cr>
+inoremap <buffer> <C-B> <C-O>yiW<End> = <C-R>=<C-R>0<cr>
 
 "}}}
 " Colorschemes{{{
@@ -1669,6 +1667,18 @@ augroup PythonHighlighting
 augroup end
 
 "}}}
+" VimwikiHighlighting{{{
+
+highlight VimwikiBoldRedGroup ctermfg=39 ctermbg=Black
+
+augroup VimwikiHighlighting
+    autocmd!
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'TIME')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'BREAKTHROUGH')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE ENTRY')
+augroup end
+
+"}}}
 " TerminalHighlighting{{{
 
 " hi Terminal ctermbg=238 ctermfg=188 guibg=lightgrey guifg=blue
@@ -1772,7 +1782,14 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    autocmd BufNewFile,BufRead *.tex execute "normal! 4zj"
+    autocmd Filetype tex execute "normal! 4zj"
+
+    " Compiling tex
+    autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
+    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
+
 augroup end
 
 " Sourcing everything for tex
@@ -1804,6 +1821,14 @@ augroup SourceEverythingForVimwiki
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
+
+    " Compiling
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :Pandoc pdf -V geometry:margin=2.5cm -V fontsize=12pt<cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <F7>            :Pandoc pdf<cr>
+    autocmd Filetype markdown,vimwiki inoremap <buffer> <F7>            <esc>:Pandoc pdf<cr>a
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
+
     " autocmd BufNewFile,BufRead *.md execute "normal! 4zj"
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>

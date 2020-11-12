@@ -7,6 +7,11 @@
 " Abbreviations
 "--------------------------------------------------------------------
 
+"A{{{
+
+iabbr a.e. a.e.\
+
+"}}}
 "L{{{
 
 iabbr LEmma Lemma
@@ -42,7 +47,7 @@ Abolish aew almost everywhere
 Abolish alg{,s,ic} algebra{,s,ic}
 Abolish appl{n,ns,ble} applica{tion,tions,ble}
 Abolish arb arbitrary
-Abolish {approx,appr}{n,ns,e,es,ed,g,ble} {approxima,approxima}{tion,tions,te,tes,ted,ting,ble}
+Abolish {approx,appr,apr}{n,ns,e,te,es,ed,g,ble} {approxima,approxima,approxima}{tion,tions,te,te,tes,ted,ting,ble}
 
 "}}}
 "B{{{
@@ -79,6 +84,7 @@ Abolish dep{,e,y,ly,g,ble,bility} depend{ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
+Abolish dio diophantine
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
@@ -116,7 +122,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 "I{{{
 
 Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
-Abolish ineq{n,ns,y,ty,ies} inequa{tion,tions,lity,lity,lities}
+Abolish ineq{n,ns,,y,ty,ies,s} inequa{tion,tions,lity,lity,lity,lities,lities}
 Abolish inf{e,te,y,ly,mal} infini{te,te,ty,tely,simal}
 Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
 Abolish insuff{,ly} insufficient{,ly}

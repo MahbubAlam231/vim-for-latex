@@ -44,6 +44,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage[english]{babel}
 \usepackage{bbding}
 \usepackage{bbm}
 \usepackage{bm}
@@ -56,6 +57,7 @@
 \usepackage{enumitem}
 % \usepackage{eufrak} % not required with amsfonts
 \usepackage{extarrows}
+\usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[bookmarks,breaklinks,citecolor=blue,colorlinks,linkcolor=blue,urlcolor=blue,linktoc=all,pdftex]{hyperref}
@@ -141,6 +143,9 @@
 \newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
 \newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
 
+\newcommand{\pa}{\pause}
+\newcommand{\ps}{\pause\vspace{1em}}
+
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
 
 \newcommand{\fl}[1]{\lfloor#1 \rfloor}
@@ -212,7 +217,7 @@
 %     \tableofcontents
 % \end{frame}% F}O}L}D
 % Frame
-\begin{frame}{Last talk}% F{O{L{D
+\begin{frame}{<++>}% F{O{L{D
 	<++>
 \end{frame}% F}O}L}D
 % Frame

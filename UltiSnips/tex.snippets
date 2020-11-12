@@ -9886,7 +9886,7 @@ endsnippet
 
 snippet items "Itemize" b
 % Itemize
-\begin{itemize}[]
+\begin{itemize}[leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{itemize}
 $0
@@ -9894,7 +9894,7 @@ endsnippet
 
 snippet itemz "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.2em]
+\begin{itemize}[label=\bullet,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{itemize}
 $0
@@ -9902,7 +9902,7 @@ endsnippet
 
 snippet itemize "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.2em]
+\begin{itemize}[label=\bullet,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{itemize}
 $0
@@ -9910,7 +9910,7 @@ endsnippet
 
 snippet enum "Enumeration" b
 % Enumerate
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.2em]
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9919,7 +9919,7 @@ endsnippet
 snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.2em]
+\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9928,7 +9928,7 @@ endsnippet
 snippet enumr "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -9936,9 +9936,9 @@ endsnippet
 
 snippet henum "Hyper-Enumeration" b
 % Change format of top-level list items
-\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.2em}
+\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.3em}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
-\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.2em}
+\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.3em}
 \setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
 
 

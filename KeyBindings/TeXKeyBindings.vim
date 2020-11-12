@@ -22,12 +22,12 @@ inoremap <buffer> <localleader>1 <c-x><c-o>
 
 inoremap <buffer> 2 <esc>lf$i
 inoremap <buffer> 22 2
-inoremap <buffer> 3 <esc>lf}i
+inoremap <buffer> 3 <esc>lf{a
 inoremap <buffer> 33 3
 inoremap <buffer> 4 $$<left>
 inoremap <buffer> 44 4
 inoremap <buffer> <localleader>4 <esc>o\[<cr>\]<esc>O
-inoremap <buffer> 5 <esc>l2f}i
+inoremap <buffer> 5 <esc>l2f{a
 inoremap <buffer> 55 5
 inoremap <buffer> 6 <esc>jo
 inoremap <buffer> 66 6
@@ -3289,14 +3289,14 @@ inoremap <buffer> <localleader>= \cong
 "-------------------------------------------------------------------
 
 inoremap <buffer> ;lra \leftrightarrow
+inoremap <buffer> ;llra \longleftrightarrow
 
-inoremap <buffer> <localleader>lra \longrightarrow
 inoremap <buffer> <localleader>ra \rightarrow
 inoremap <buffer> <localleader>la \leftarrow
-inoremap <buffer> <localleader>Ra \Rightarrow
-inoremap <buffer> <localleader>La \Leftarrow
 inoremap <buffer> <localleader>lra \longrightarrow
 inoremap <buffer> <localleader>lla \longleftarrow
+inoremap <buffer> <localleader>Ra \Rightarrow
+inoremap <buffer> <localleader>La \Leftarrow
 inoremap <buffer> <localleader>Lra \Longrightarrow
 inoremap <buffer> <localleader>Lla \Longleftarrow
 inoremap <buffer> <localleader>rras \rightrightarrows
@@ -3309,6 +3309,7 @@ inoremap <buffer> <localleader>rat \rightarrowtail
 inoremap <buffer> <localleader>lat \leftarrowtail
 inoremap <buffer> <localleader>rsa \rightsquigarrow
 inoremap <buffer> <localleader>lsa \leftsquigarrow
+inoremap <buffer> <localleader>lrsa \leftrightsquigarrow
 inoremap <buffer> <localleader>da \downarrow
 inoremap <buffer> <localleader>ua \uparrow
 inoremap <buffer> <localleader>dda \downdownarrow
@@ -3425,6 +3426,8 @@ inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
 inoremap <buffer> ;te \text{}<left>
 
+inoremap <buffer> ./ .\
+
 "}}}
 
 "}}}
@@ -3446,7 +3449,7 @@ function! BracketToAlign()
 
 endfunction
 
-nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>
+nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>i
 
 " \[\] to Unnumbered Align
 function! BracketToUnnumAlign()
@@ -3462,7 +3465,7 @@ function! BracketToEq()
 
 endfunction
 
-nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>
+nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>i
 
 " \[\] to Unnumbered Equation
 function! BracketToUnnumEq()
@@ -3478,7 +3481,7 @@ function! BracketToAlignedEq()
 
 endfunction
 
-nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>
+nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>i
 
 " \[\] to Unnumbered Aligned Equation
 function! BracketToUnnumAlignedEq()
@@ -3494,7 +3497,7 @@ function! BracketToGatherEq()
 
 endfunction
 
-nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>
+nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>i
 
 " \[\] to Unnumbered Gathered Equation
 function! BracketToUnnumGatherEq()
@@ -3510,7 +3513,7 @@ function! BracketToGather()
 
 endfunction
 
-nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>
+nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>i
 
 " \[\] to Unnumbered Gather
 function! BracketToUnnumGather()
@@ -3546,16 +3549,16 @@ function! ReferencingAndCiting(code)
 
 endfunction
 
-inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("ref")<cr>a
-inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("jref")<cr>a
-inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("eqref")<cr>a
-inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
-inoremap <buffer> <localleader>aref <esc>:call ReferencingAndCiting("aref")<cr>a
-inoremap <buffer> <localleader>jaref <esc>:call ReferencingAndCiting("jaref")<cr>a
-inoremap <buffer> <localleader>cref <esc>:call ReferencingAndCiting("cref")<cr>a
-inoremap <buffer> <localleader>jcref <esc>:call ReferencingAndCiting("jcref")<cr>a
-inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("cit")<cr>a
-inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("jcit")<cr>a
+inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("jref")<cr>a
+inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("ref")<cr>a
+inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
+inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("eqref")<cr>a
+inoremap <buffer> <localleader>aref <esc>:call ReferencingAndCiting("jaref")<cr>a
+inoremap <buffer> <localleader>jaref <esc>:call ReferencingAndCiting("aref")<cr>a
+inoremap <buffer> <localleader>cref <esc>:call ReferencingAndCiting("jcref")<cr>a
+inoremap <buffer> <localleader>jcref <esc>:call ReferencingAndCiting("cref")<cr>a
+inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("jcit")<cr>a
+inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("cit")<cr>a
 
 inoremap <buffer> <localleader>thm Theorem~\ref{
 inoremap <buffer> <localleader>lem Lemma~\ref{
@@ -3710,10 +3713,10 @@ inoremap <buffer> ;Om \Omega
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
-nnoremap <buffer> <F5> :w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
-inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
-nnoremap <buffer> <F7> :w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
+" inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+" nnoremap <buffer> <F5> :w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
+" inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
+" nnoremap <buffer> <F7> :w!<CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zz
 
 " inoremap <buffer> <F5> <esc>:w!<CR>:!pdflatex %:p<CR><CR>a
 " nnoremap <buffer> <F5> :w!<CR>:!pdflatex %:p<CR><CR>

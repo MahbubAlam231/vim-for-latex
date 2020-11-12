@@ -1,8 +1,7 @@
 <!-- --- -->
-<!-- title: {{FILE}} -->
-<!-- author: {{NAME}} -->
+<!-- title: "{{FILE}}" -->
+<!-- author: "{{NAME}}" -->
 <!-- created: {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}} -->
-<!-- theme: Copenhagen -->
 <!-- --- -->
 
 [purpose-statement-index](../purpose-statements/purpose-statement-index)

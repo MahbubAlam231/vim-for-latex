@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage[english]{babel}
 \usepackage{bbding}
 \usepackage{bbm}
 \usepackage{bm}
@@ -26,10 +27,11 @@
 \usepackage{esvect}
 % \usepackage{eufrak} % not required when have amsfonts
 \usepackage{extarrows}
+\usepackage{fancyhdr}
 \usepackage{float}
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
-\usepackage[bookmarks,breaklinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,linktoc=all,pdftex]{hyperref}
+\usepackage[bookmarks,breaklinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,pagebackref=true,linktoc=all,pdftex]{hyperref}
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
@@ -146,8 +148,9 @@
 
 \address{\textbf{{{NAME}}} \\
     School of Mathematics,
-    Tata Institute of Fundamental Research, Mumbai, India 400005}
-\email{mahbub@math.tifr.res.in}
+    Tata Institute of Fundamental Research, Mumbai, India 400005 \\
+\url{https://sites.google.com/view/mahbubweb}}
+\email{mahbub.dta@gmail.com, mahbub@math.tifr.res.in}
 
 \date{}
 
