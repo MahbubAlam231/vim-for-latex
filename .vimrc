@@ -296,8 +296,6 @@ omap <buffer> it  <plug>(vimtex-im)
 
 nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
 
-let g:tex_flavor = 'latex'
-
 " To get ae/ie from vimtex (this might not (idk) let own mappings work :-()
 let g:vimtex_mappings_override_existing = 1
 
@@ -317,6 +315,8 @@ augroup FindMath
     autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
 augroup end
 
+let g:tex_flavor = 'latex'
+
 let g:vimtex_compiler_latexmk = {
             \ 'backend' : 'process',
             \ 'background' : 1,
@@ -331,8 +331,12 @@ let g:vimtex_compiler_latexmk = {
             \   '-synctex=1',
             \   '-interaction=nonstopmode']}
 
-nmap <buffer> <silent> <leader>tc :VimtexCompile<cr>
-" nnoremap <buffer> <silent> <leader>tc <plug>(vimtex-view):VimtexCompile<cr>
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+nmap <buffer> <leader>tc :VimtexCompile<cr>
+" nnoremap <buffer> <leader>tc <plug>(vimtex-view):VimtexCompile<cr>
 
 nmap <buffer> <localleader>cz :call vimtex#fzf#run('ctli')<cr>
 nmap <buffer> <localleader>tc <plug>(vimtex-toc-open)
@@ -441,6 +445,9 @@ augroup VimwikiMappings
     autocmd Filetype vimwiki nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
     autocmd Filetype vimwiki nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
     autocmd Filetype vimwiki nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
+    " Make current line a filename
+    autocmd Filetype vimwiki nnoremap <buffer> <localleader>ml ^y$I[<esc>A]()<esc>P
+
 augroup end
 
 function! CreateFilenameWithDateTime(filename)
@@ -449,8 +456,6 @@ endfunction
 
 nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
 inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime('purpose-statement')<cr>]<esc>y%%p%r($r)<esc>
-
-nnoremap <buffer> <localleader>ml ^y$I[<esc>A]()<esc>P
 
 function! VimwikiFoldLevelCustom(lnum)
     let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
@@ -979,12 +984,12 @@ nnoremap <buffer> <localleader>nv :call NavigationToggleInWrapMode()<cr>
 
 " Mark and then go to the beginning or end of the file
 nnoremap <buffer> gg mggg
-nnoremap <buffer> G mgG
+" nnoremap <buffer> G mgG
 nnoremap <buffer> 'g `gzvzz
 nnoremap <buffer> 'j `jzvzz
 
 vnoremap <buffer> gg mggg
-vnoremap <buffer> G mgG
+" vnoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
 vnoremap <buffer> 'j `jzvzz
 
@@ -1087,6 +1092,22 @@ vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 " nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
 
+" augroup EscapeRemap
+"     autocmd!
+"     autocmd VimEnter * nnoremap <buffer> <silent> <esc> :noh<cr>:echo<cr>
+"     autocmd VimEnter * inoremap <buffer> <silent> <esc> :noh<cr><esc>
+" augroup end
+
+" augroup Escape_mapping
+"   autocmd!
+"   autocmd InsertEnter * call s:setupEscapeMap()
+" augroup end
+
+" function! s:setupEscapeMap()
+"   nnoremap <Esc> :noh<CR>:echo<cr>
+"   " inoremap <Esc> <esc>:noh<CR>:echo<cr>
+" endfunction
+
 " " Clearing highlighted matches
 " nnoremap <buffer> <silent> <esc> :noh<cr>:echo<cr>
 " nnoremap <buffer> <silent> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>`m
@@ -1118,13 +1139,13 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text,markdown,vimwiki setlocal spell spelllang=en_us
-    autocmd FileType tex,text,markdown,vimwiki setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
-    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zgN zg[szz
-    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zgn zg]szz
-    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zwN zw[szz
-    autocmd FileType tex,text,markdown,vimwiki nnoremap <buffer> zwn zw]szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwN zw[szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwn zw]szz
 augroup end
 
 let s:gtlt_toggle=0
@@ -1676,6 +1697,10 @@ augroup VimwikiHighlighting
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'TIME')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'BREAKTHROUGH')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE ENTRY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQ')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQX')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'JX')
+    " autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
 augroup end
 
 "}}}
@@ -1775,14 +1800,14 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
-    autocmd BufNewFile,BufRead *.tex call GtLtToggle()
+    " autocmd BufNewFile,BufRead *.tex call GtLtToggle()
     autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    autocmd Filetype tex execute "normal! 4zj"
+    autocmd BufNewFile,BufRead *.tex execute "normal! 4zj"
 
     " Compiling tex
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -silent -cd -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>:!latexmk -silent -cd -pdf %:p<CR><CR>zza
@@ -1957,8 +1982,8 @@ inoremap <buffer> <silent> ;w <esc>mm:w!<cr>`ma
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged *.* nested silent write
-    autocmd TextChangedI *.* silent write
+    autocmd TextChanged * nested silent write
+    autocmd TextChangedI * silent write
 augroup end
 
 nnoremap <localleader>q mqzM:q!<cr>

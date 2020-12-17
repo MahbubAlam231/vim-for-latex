@@ -207,6 +207,7 @@ Abolish tx{,s} there exist{,s}
 Abolish unbdd unbounded
 Abolish unctbl{e,y,ey} uncountabl{e,ity,ity}
 Abolish unif{,s,ly,ty,ties} uniform{,s,ly,ity,ities}
+Abolish uni{e,ty,ties} univers{e,ity,ities}
 
 "}}}
 "V{{{

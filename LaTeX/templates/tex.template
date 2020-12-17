@@ -7,6 +7,8 @@
 
 \documentclass[12pt,reqno]{amsart}% F{O{L{D
 
+% \renewcommand{\baselinestretch}{1.5}
+
 % Usepackages% F{O{L{D
 %-------------------------------------------------------------------
 

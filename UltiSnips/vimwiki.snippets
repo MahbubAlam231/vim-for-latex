@@ -23,12 +23,12 @@ snippet is "Replace 'should be' by 'is'"
 ${VISUAL:inner text/should be/is/g}
 endsnippet
 
-snippet li "Add a link"
-[${1:here}](${2:url})$0
+snippet li "Add a link link"
+[${1:${VISUAL:here}}](${2:url})$0
 endsnippet
 
-snippet link "Add a link"
-[${1:here}](${2:url})$0
+snippet link "Add a link name"
+[${1:here}](${2:${VISUAL:url}})$0
 endsnippet
 
 snippet im "Adding a image" b
@@ -39,3 +39,10 @@ snippet image "Adding a image" b
 ![${1:Image}](${2:pic.jpg})$0
 endsnippet
 
+snippet mps "Make purpose statement filename"
+[$1purpose-statement-`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}purpose-statement-`!v strftime("%d-%m-%y")`)
+endsnippet
+
+snippet mfd "Make filename with date"
+[$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
+endsnippet
