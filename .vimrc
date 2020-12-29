@@ -1697,6 +1697,7 @@ augroup VimwikiHighlighting
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'TIME')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'BREAKTHROUGH')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE ENTRY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'NO DIARY')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQ')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQX')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'JX')
