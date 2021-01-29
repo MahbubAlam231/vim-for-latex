@@ -2,7 +2,7 @@
 % Author(s)     : {{NAME}}
 % File          : {{FILE}}.tex
 % Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
-% Description   : {{CURSOR}}
+% Description   :{{CURSOR}}
 %-------------------------------------------------------------------
 
 \documentclass[xcolor=dvipsnames,10pt]{beamer}% F{O{L{D

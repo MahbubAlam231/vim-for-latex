@@ -202,10 +202,12 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'VundleVim/Vundle.vim'
+" Plug 'chrisbra/changesPlugin'
 " Plug 'jason6/vimwiki_md2html'
-" Plug 'tpope/vim-eunuch'
 " Plug 'masukomi/vim-markdown-folding'
-Plug 'plasticboy/vim-markdown'
+" Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+" Plug 'tpope/vim-eunuch'
 Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
@@ -245,6 +247,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-startify'
 Plug 'michal-h21/vim-zettel'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 Plug 'somini/vim-textobj-fold'
@@ -294,7 +297,7 @@ xmap <buffer> it  <plug>(vimtex-im)
 omap <buffer> at  <plug>(vimtex-am)
 omap <buffer> it  <plug>(vimtex-im)
 
-nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
+" nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
 
 " To get ae/ie from vimtex (this might not (idk) let own mappings work :-()
 let g:vimtex_mappings_override_existing = 1
@@ -426,6 +429,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
 let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
 let g:zettel_format = "%title-%d-%m-%y"
 
+" Disabling wiki creation on the fly
 " let g:vimwiki_global_ext = 0
 " let g:vimwiki_commentstring='<!--%s-->'
 
@@ -1698,6 +1702,7 @@ augroup VimwikiHighlighting
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'BREAKTHROUGH')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE ENTRY')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'NO DIARY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE DIARY')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQ')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQX')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'JX')
@@ -1983,7 +1988,7 @@ inoremap <buffer> <silent> ;w <esc>mm:w!<cr>`ma
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged * nested silent write
+    autocmd TextChanged * nested if &modifiable | silent write | endif
     autocmd TextChangedI * silent write
 augroup end
 

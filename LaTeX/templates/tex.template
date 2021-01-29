@@ -2,7 +2,7 @@
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
 % Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
-% Description   : <++>
+% Description   :<++>
 %-------------------------------------------------------------------
 
 \documentclass[12pt,reqno]{amsart}% F{O{L{D

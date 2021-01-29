@@ -56,6 +56,7 @@ function <SID>ExpandTimestampTemplates()
     let l:time              = strftime('%T %Z')
     let l:time_12           = strftime('%r')
     let l:timestamp         = strftime('%A %b %d, %Y %T %Z')
+    let l:create_time       = strftime('%d-%m-%Y (%b, %a) %T %Z')
 
     call <SID>ExpandTemplate('DAY', l:day)
     call <SID>ExpandTemplate('DAY_FULL', l:day_full)
@@ -68,6 +69,7 @@ function <SID>ExpandTimestampTemplates()
     call <SID>ExpandTemplate('TIME', l:time)
     call <SID>ExpandTemplate('TIME_12', l:time_12)
     call <SID>ExpandTemplate('TIMESTAMP', l:timestamp)
+    call <SID>ExpandTemplate('CREATE_TIME', l:create_time)
 endfunction
 
 function <SID>ExpandAuthoringTemplates()

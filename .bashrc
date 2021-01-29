@@ -138,7 +138,7 @@ export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code
 export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code/my-modules
 
 #}}}
-# Other Path{{{
+# Other Path (own scripts){{{
 export PATH=$PATH:/home/mahbub/scripts/bin
 
 #}}}
