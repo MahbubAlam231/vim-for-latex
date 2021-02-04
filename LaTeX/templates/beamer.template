@@ -60,7 +60,7 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage{graphicx}
-\usepackage[bookmarks,breaklinks,citecolor=blue,colorlinks,linkcolor=blue,urlcolor=blue,linktoc=all,pdftex]{hyperref}
+\usepackage[bookmarks,breaklinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,pagebackref=true,linktoc=all,pdftex]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{latexsym,longtable,booktabs,amscd,microtype,booktabs,cases,graphics}
 \usepackage{lscape}
