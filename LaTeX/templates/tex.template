@@ -22,25 +22,31 @@
 \usepackage{bbm}
 \usepackage{bm}
 \usepackage{caption}
+\usepackage{comment}
 \usepackage{contour}%for writing sc bf
+\usepackage{datetime}
 \usepackage{dsfont}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{esvect}
 % \usepackage{eufrak} % not required when have amsfonts
 \usepackage{extarrows}
+\usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage{fancyhdr}
 \usepackage{float}
+\usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage[bookmarks,breaklinks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,pagebackref=true,linktoc=all,pdftex]{hyperref}
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
+\usepackage{pdfpages}
 \usepackage{physics}
 \usepackage{relsize}
 \usepackage{slantsc}
 \usepackage{stmaryrd}
+\usepackage[labelfont=rm]{subcaption}
 \usepackage{tfrupee}
 \usepackage{thmtools}
 \usepackage{tikz}

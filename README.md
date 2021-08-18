@@ -38,7 +38,7 @@ on your computer.
 - Install [vim-plug](https://github.com/junegunn/vim-plug) following installation guide;
 - Put `.vimrc` in your home directory;
 - Put `Abbreviations`, `after`, `KeyBindings`, `spell` and `UltiSnips` in `~/.vim`;
-- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `:PluginInstall`;
+- Open `.vimrc` using `VIM` (it might throw some errors, but enter anyway), and run `:PlugInstall`;
 - Put `LaTeX/templates` in `~/.vim/bundle/vim-templates/`;
 - Put `LaTeX/tex` in `~/.vim/plugged/vimtex/ftplugin/`.
 

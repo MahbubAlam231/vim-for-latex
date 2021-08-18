@@ -613,11 +613,19 @@ snippet cci
 $C_c^{\infty}($1)$$0
 endsnippet
 
+snippet cci.
+$C_c^{\infty}($1)$$0
+endsnippet
+
 snippet ccix
 $C_c^{\infty}(X)$$0
 endsnippet
 
 snippet ci
+$C^{\infty}($1)$$0
+endsnippet
+
+snippet ci.
 $C^{\infty}($1)$$0
 endsnippet
 
@@ -9628,9 +9636,9 @@ endsnippet
 snippet aligneq "Aligned Equation" b
 % AlignedEquation
 \begin{equation}\label{$1}
-\begin{split}
-	${2:${VISUAL}}
-\end{split}
+	\begin{split}
+		${2:${VISUAL}}
+	\end{split}
 \end{equation}
 $0
 endsnippet
@@ -9638,9 +9646,9 @@ endsnippet
 snippet ualigneq "Unnumbered Aligned Equation" b
 % UnnumberedAlignedEquation
 \begin{equation*}
-\begin{split}
-	${0:${VISUAL}}
-\end{split}
+	\begin{split}
+		${0:${VISUAL}}
+	\end{split}
 \end{equation*}
 $0
 endsnippet
@@ -9648,9 +9656,9 @@ endsnippet
 snippet gathereq "Gathered Equation" b
 % GatheredEquation
 \begin{equation}\label{$1}
-\begin{gathered}
-	${2:${VISUAL}}
-\end{gathered}
+	\begin{gathered}
+		${2:${VISUAL}}
+	\end{gathered}
 \end{equation}
 $0
 endsnippet
@@ -9658,9 +9666,9 @@ endsnippet
 snippet ugathereq "Unnumbered Gathered Equation" b
 % UnnumberedGatheredEquation
 \begin{equation*}
-\begin{gathered}
-	${1:${VISUAL}}
-\end{gathered}
+	\begin{gathered}
+		${1:${VISUAL}}
+	\end{gathered}
 \end{equation*}
 $0
 endsnippet
@@ -9668,10 +9676,10 @@ endsnippet
 snippet subeq "Sub Equations" b
 % Subequations
 \begin{equation*}
-\begin{gather}
-	$1 \\label{$2} \\
-	$3 \\label{$4}
-\end{gather}
+	\begin{gather}
+		$1 \\label{$2} \\
+		$3 \\label{$4}
+	\end{gather}
 \end{equation*}
 $0
 endsnippet
@@ -9713,28 +9721,28 @@ endsnippet
 # Matrices{{{
 #-------------------------------------------------------------------
 
-snippet mat "Matrix" i
+snippet mat "Matrix"
 \begin{matrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{matrix}$0
 endsnippet
 
-snippet pmat "Parenthesis matrix" i
+snippet pmat "Parenthesis matrix"
 \begin{pmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{pmatrix}$0
 endsnippet
 
-snippet bmat "Bracket matrix" i
+snippet bmat "Bracket matrix"
 \begin{bmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{bmatrix}$0
 endsnippet
 
-snippet matn "Matrix m x n" i
+snippet matn "Matrix m x n"
 % Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
@@ -9745,7 +9753,7 @@ snippet matn "Matrix m x n" i
 \end{matrix}$0
 endsnippet
 
-snippet pmatn "Parenthesis matrix m x n" i
+snippet pmatn "Parenthesis matrix m x n"
 % Pmatrix
 \renewcommand\arraystretch{1}
 \begin{pmatrix}
@@ -9756,7 +9764,7 @@ snippet pmatn "Parenthesis matrix m x n" i
 \end{pmatrix}$0
 endsnippet
 
-snippet bmatn "Bracket matrix m x n" i
+snippet bmatn "Bracket matrix m x n"
 % Bmatrix
 \renewcommand\arraystretch{1}
 \begin{bmatrix}
@@ -9767,14 +9775,14 @@ snippet bmatn "Bracket matrix m x n" i
 \end{bmatrix}$0
 endsnippet
 
-snippet cmat "Colomn matrix" i
+snippet cmat "Colomn matrix"
 \begin{matrix}
 	$1 \\\\
 	$2
 \end{matrix}$0
 endsnippet
 
-snippet cmatn "Colomn matrix n x 1" i
+snippet cmatn "Colomn matrix n x 1"
 \begin{matrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -9782,14 +9790,14 @@ snippet cmatn "Colomn matrix n x 1" i
 \end{matrix}$0
 endsnippet
 
-snippet cpmat "Colomn parenthesis matrix" i
+snippet cpmat "Colomn parenthesis matrix"
 \begin{pmatrix}
 	$1 \\\\
 	$2
 \end{pmatrix}$0
 endsnippet
 
-snippet cpmatn "Colomn parenthesis matrix n x 1" i
+snippet cpmatn "Colomn parenthesis matrix n x 1"
 \begin{pmatrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -9797,14 +9805,14 @@ snippet cpmatn "Colomn parenthesis matrix n x 1" i
 \end{pmatrix}$0
 endsnippet
 
-snippet cbmat "Colomn bracket matrix" i
+snippet cbmat "Colomn bracket matrix"
 \begin{bmatrix}
 	$1 \\\\
 	$2
 \end{bmatrix}$0
 endsnippet
 
-snippet cbmatn "Colomn bracket matrix n x 1" i
+snippet cbmatn "Colomn bracket matrix n x 1"
 \begin{bmatrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -10288,6 +10296,10 @@ snippet rom
 \rom{$1}$0
 endsnippet
 
+snippet p{ "Surround with bracket" iA
+\\\{${VISUAL}$1\\\}$0
+endsnippet
+
 
 snippet texroot
 % ! TEX root = <FileName>.tex
@@ -10304,6 +10316,14 @@ endsnippet
 
 snippet te "Text"
 \ \text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet qte "Text with qquad spaces"
+\quad \text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet qqte "Text with qquad spaces"
+\qquad \text{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet tb "Text boldfont"

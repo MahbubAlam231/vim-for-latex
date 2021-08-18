@@ -88,13 +88,14 @@ Abolish dio diophantine
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
+Abolish dyn{,s,l} dynamic{,s,al}
 
 "}}}
 "E{{{
 
 Abolish el{,s,y} element{,s,ary}
 Abolish {equi,eq}cont{,y,ly} {equicontinu,equicontinu}{ous,ity,ously}
-Abolish {equi,eq}distr{,e,es,n,ns,d} {equidistribut,equidistribut}{e,e,es,ion,ions,ed}
+Abolish {equidistr,eqdistr,equid}{,e,es,n,ns,d} {equidistribut,equidistribut}{e,e,es,ion,ions,ed}
 Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 
 "}}}
@@ -102,6 +103,7 @@ Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 
 Abolish fa for all
 Abolish fae for almost every
+Abolish fe for every
 Abolish fs for some
 Abolish f{n,ns,nl,nal,nls,nals,tr,trl} func{tion,tions,tional,tional,tionals,tionals,tor,torial}
 
@@ -145,6 +147,7 @@ Abolish mult{e,n,ns} multipl{e,ication,ications}
 "N{{{
 
 Abolish nbd{,s} neighborhood{,s}
+Abolish num{,s} number{,s}
 
 "}}}
 "O{{{
@@ -197,7 +200,7 @@ Abolish teh the
 Abolish tehn then
 Abolish tf therefore
 Abolish thm{,s} theorem{,s}
-Abolish thr{y,es} theor{y,ies}
+Abolish thr{y,es,c} theor{y,ies,etic}
 Abolish top{y,cal,cally,sp,sps} topolog{y,ical,ically,ical space,ical spaces}
 Abolish tx{,s} there exist{,s}
 

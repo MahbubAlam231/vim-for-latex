@@ -3303,6 +3303,8 @@ inoremap <buffer> <localleader>rras \rightrightarrows
 inoremap <buffer> <localleader>llas \leftleftarrows
 inoremap <buffer> <localleader>xra \xrightarrow{}<esc>i
 inoremap <buffer> <localleader>xla \xleftarrow{}<esc>i
+inoremap <buffer> <localleader>xlra \xlongrightarrow{}<esc>i
+inoremap <buffer> <localleader>xlla \xlongleftarrow{}<esc>i
 inoremap <buffer> <localleader>thra \twoheadrightarrow
 inoremap <buffer> <localleader>thla \twoheadleftarrow
 inoremap <buffer> <localleader>rat \rightarrowtail
@@ -3536,11 +3538,11 @@ function! ReferencingAndCiting(code)
     elseif a:code == "aref"
         :execute ":normal! hmmlx`ma~\\autoref{\<esc>"
     elseif a:code == "jaref"
-        :execute ":normal! hmmlx`ma\\autoref{\<esc>"
+        :execute ":normal! a\\autoref{\<esc>"
     elseif a:code == "cref"
         :execute ":normal! hmmlx`ma~\\cleverref{\<esc>"
     elseif a:code == "jcref"
-        :execute ":normal! hmmlx`ma\\cleverref{\<esc>"
+        :execute ":normal! a\\cleverref{\<esc>"
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
