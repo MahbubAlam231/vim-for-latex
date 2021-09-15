@@ -1284,7 +1284,7 @@ augroup end
 highlight Label ctermbg=250 ctermfg=0
 
 augroup TeXHighlighting
-    autocmd Filetype tex let m = matchadd("Label",'\\label{.\{}}')
+    autocmd Filetype tex let m = matchadd("Label",'\\label{.\{-}}')
 augroup end
 
 "}}}
@@ -1818,8 +1818,8 @@ augroup SourceEverythingForTeX
     " Compiling tex
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
     autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zza
-    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz
+    autocmd Filetype tex inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>a
+    autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>
 
 augroup end
 

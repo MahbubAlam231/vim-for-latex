@@ -30,7 +30,7 @@ fi
 #}}}
 
 #Swap caps and escape key everytime I login{{{
-setxkbmap -option "caps:swapescape"
+setxkbmap -option caps:swapescape
 #}}}
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.

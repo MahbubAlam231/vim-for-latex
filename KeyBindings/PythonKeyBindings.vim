@@ -79,10 +79,10 @@ inoremap <buffer> ;la lambda
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-nnoremap <silent> <buffer> <F7> :w!<cr>:!python %:p<cr>
+nnoremap <silent> <buffer> <F9> :w!<cr>:!python %:p<cr>
 nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=86 python %:p<cr>
 nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python' shellescape(@%, 1)<cr>
 
-inoremap <silent> <buffer> <F7> <esc>:w!<cr>:!python %:p<cr>
+inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python %:p<cr>
 
 "}}}

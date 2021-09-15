@@ -39,9 +39,13 @@ snippet book "book bib" b
 @book{$1,
     author = {$2},
      title = "{$3}",
-      year = {$4},
- publisher = {$5},
-   address = {$6}
+  subtitle = "{$4}",
+      year = {$5},
+ publisher = {$6},
+   address = {$7},
+      isbn = {$8},
+       doi = {$9},
+       url = {$10}
 }
 $0
 endsnippet

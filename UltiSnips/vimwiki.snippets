@@ -46,3 +46,7 @@ endsnippet
 snippet mfd "Make filename with date"
 [$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
 endsnippet
+
+snippet mfn "Make filename"
+[$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
+endsnippet

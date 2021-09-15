@@ -119,7 +119,7 @@ fi
 #}}}
 
 # Swap caps and escape key{{{
-setxkbmap -option "caps:swapescape"
+setxkbmap -option caps:swapescape
 #}}}
 # Default editor{{{
 # export EDITOR=vim
