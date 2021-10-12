@@ -27,7 +27,7 @@ inoremap <buffer> 33 3
 inoremap <buffer> 4 $$<left>
 inoremap <buffer> 44 4
 inoremap <buffer> <localleader>4 <esc>o\[<cr>\]<esc>O
-inoremap <buffer> 5 <esc>l2f{a
+inoremap <buffer> 5 <esc>lf}i
 inoremap <buffer> 55 5
 inoremap <buffer> 6 <esc>jo
 inoremap <buffer> 66 6

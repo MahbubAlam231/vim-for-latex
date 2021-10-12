@@ -173,7 +173,7 @@ function! LatexBox_FoldLevel(lnum)
 
         " " Fold preamble parts
         " if g:LatexBox_fold_preamble_parts == 1
-        "     if line =~# '% Usepackages'
+        "     if line =~# '% Packages'
         "         return ">1"
         "     elseif line =~# '% Environments'
         "         return "0"
@@ -277,9 +277,9 @@ function! LatexBox_FoldText()
 
     " if line =~ '\s*\\documentclass'
     if line =~ '\\documentclass'
-        let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}% F{O{L{D')
-    elseif line =~ '% Usepackages'
-        let title = 'Usepackages'
+        let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+    elseif line =~ '% Packages'
+        let title = 'Packages'
     elseif line =~ '% Environments'
         let title = 'Environments'
     elseif line =~ '% Newcommands'
@@ -682,8 +682,8 @@ function! LatexBox_FoldText()
         if len(primarytitle) > 120
             let title = '[H] - ' . printf('%.121s', primarytitle) . '...'
             " Don't mess up my preamble fold-titles
-        " elseif line =~ '% Usepackages'
-        "     let title = 'Usepackages'
+        " elseif line =~ '% Packages'
+        "     let title = 'Packages'
         " elseif line =~ '% Environments'
         "     let title = 'Environments'
         " elseif line =~ '% Newcommands'
@@ -716,7 +716,7 @@ function! LatexBox_FoldText()
 
     "if line =~ '^\s*% '
     "    let primarytitle = matchstr(line, '^\s*% \zs.\{-}\ze% F{O{L{D')
-    "    if title != 'Usepackages' && title != 'Environments' && title != 'Newcommands'
+    "    if title != 'Packages' && title != 'Environments' && title != 'Newcommands'
     "        if len(primarytitle) > 124
     "            let title = '[H]  - ' . printf('%.121s', primarytitle) . '...'
     "        else

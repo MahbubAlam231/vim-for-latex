@@ -939,7 +939,7 @@ vnoremap <buffer> 'j `j
 vnoremap <buffer> 'k `k
 vnoremap <buffer> 'l `l
 
-inoremap <buffer> <leader>z <esc>zMzvzza
+inoremap <buffer> \z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba

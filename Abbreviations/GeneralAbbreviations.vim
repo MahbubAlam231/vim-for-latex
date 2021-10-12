@@ -196,7 +196,7 @@ Abolish surj{,n,e,ve,ity,y,ly} surjecti{on,on,ve,ve,vity,vity,ly}
 "T{{{
 
 Abolish taht that
-Abolish teh the
+Abolish {teh,hte} {the,the}
 Abolish tehn then
 Abolish tf therefore
 Abolish thm{,s} theorem{,s}
