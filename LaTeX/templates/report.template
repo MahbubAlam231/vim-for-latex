@@ -7,7 +7,7 @@
 
 \documentclass[11pt]{report}% F{O{L{D
 
-% Usepackages% F{O{L{D
+% Packages% F{O{L{D
 %-------------------------------------------------------------------
 
 \usepackage{afterpage}
