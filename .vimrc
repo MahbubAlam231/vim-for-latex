@@ -503,6 +503,13 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 "}}}
 
+" Abolish{{{
+
+" Coercing
+vmap <buffer> <leader>cr :s/ /-/g<cr>:noh<cr>
+nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
+
+"}}}
 " After object{{{
 
 " augroup AfterObject
