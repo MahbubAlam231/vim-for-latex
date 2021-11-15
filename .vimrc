@@ -314,8 +314,8 @@ let g:vimtex_mappings_override_existing = 1
 " Finding next and previous math block
 augroup FindMath
     autocmd!
-    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
-    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>
+    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>fm /\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>
+    autocmd FileType tex,vimwiki,markdown nnoremap <buffer> <localleader>Fm ?\(^\([^$]\\|\$[^$]\+\$\)\+\)\@<=\$<cr>:noh<cr>
 augroup end
 
 let g:tex_flavor = 'latex'
@@ -349,6 +349,10 @@ set foldlevelstart=0
 set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
 nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
+
+
+" Fixing LaTeX folds
+nnoremap <buffer> <localleader>ff mm?% F{O{L{D<cr>i <esc>zczox`m
 
 " Saving folds in ~/.vim/view
 function! MakeView()
@@ -1344,6 +1348,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% SplitEquation')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Subequations')

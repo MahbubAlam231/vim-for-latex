@@ -9152,7 +9152,46 @@ endsnippet
 #}}}
 
 #}}}
-# SomeShortcuts{{{
+# Brackets{{{
+
+snippet lrdb "left-right double square bracket"
+${\llbracket $1 \rrbracket}$$0
+endsnippet
+
+snippet lr "Left-right angle bracket"
+\left \langle $1 \right \rangle $0
+endsnippet
+
+snippet lrab "left-right angle bracket"
+${\left\langle $1 \right\rangle}$$0
+endsnippet
+
+snippet lrdab "left-right double angle bracket"
+${\left\llangle $1 \right\rrangle}$$0
+endsnippet
+
+snippet p{ "Surround with math braces" iA
+\\\{${VISUAL}$1\\\}$0
+endsnippet
+
+snippet lrp "left-right math parenthesis"
+{\left(${VISUAL}$1\right)}$0
+endsnippet
+
+snippet lrb "left-right math braces"
+{\left\\{${VISUAL}$1\right\\}}$0
+endsnippet
+
+snippet lrs "left-right math square braces"
+{\left[${VISUAL}$1\right]}$0
+endsnippet
+
+snippet lrm "left-right math modulus"
+{\left\\|${VISUAL}$1\right\\|}$0
+endsnippet
+
+#}}}
+# SomeOtherShortcuts{{{
 #-------------------------------------------------------------------
 
 snippet ge
@@ -9173,19 +9212,6 @@ endsnippet
 
 snippet o
 \varnothing
-endsnippet
-
-snippet lrdb "left-right double square bracket"
-${\llbracket $1 \rrbracket}$$0
-endsnippet
-
-
-snippet lrab "left-right angle bracket"
-${\left\langle $1 \right\rangle}$$0
-endsnippet
-
-snippet lrdab "left-right double angle bracket"
-${\left\llangle $1 \right\rrangle}$$0
 endsnippet
 
 #}}}
@@ -9545,9 +9571,9 @@ snippet sprob "Statement of Problem" b
 $0
 endsnippet
 
-snippet prf "Prf" b
+snippet prf "Proof" b
 % Proof
-\begin{${1:prf}}% F{O{L{D
+\begin{${1:proof}}% F{O{L{D
 	${2:\bfseries\textcolor{red}{Write a Proof}}
 \end{$1}% F}O}L}D
 $0
@@ -9601,6 +9627,27 @@ snippet exc "Exercise" b
 $0
 endsnippet
 
+snippet sm "Surround by math" b
+\[
+	${1:${VISUAL}}
+\]
+$0
+endsnippet
+
+snippet math "Surround by math" b
+\[
+	${1:${VISUAL}}
+\]
+$0
+endsnippet
+
+snippet ma "Surround by math" b
+\[
+	${1:${VISUAL}}
+\]
+$0
+endsnippet
+
 snippet align "Align" b
 % Align
 \begin{align}\label{$1}
@@ -9647,9 +9694,29 @@ snippet ualigneq "Unnumbered Aligned Equation" b
 % UnnumberedAlignedEquation
 \begin{equation*}
 	\begin{split}
-		${0:${VISUAL}}
+		${1:${VISUAL}}
 	\end{split}
 \end{equation*}
+$0
+endsnippet
+
+snippet spliteq "SplitEquation"
+% SplitEquation
+\[
+	\begin{split}
+		${1:${VISUAL}}
+	\end{split}
+\]
+$0
+endsnippet
+
+snippet speq "SplitEquation"
+% SplitEquation
+\[
+	\begin{split}
+		${1:${VISUAL}}
+	\end{split}
+\]
 $0
 endsnippet
 
@@ -9927,7 +9994,7 @@ endsnippet
 snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{enumerate}[label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
 \end{enumerate}
 $0
@@ -10218,10 +10285,6 @@ snippet ve "Vector"
 \vec{$1}$0
 endsnippet
 
-snippet lr "Left-right angle bracket"
-\left \langle $1 \right \rangle $0
-endsnippet
-
 #}}}
 # Arrows, Limits and Function{{{
 #-------------------------------------------------------------------
@@ -10295,11 +10358,6 @@ endsnippet
 snippet rom
 \rom{$1}$0
 endsnippet
-
-snippet p{ "Surround with bracket" iA
-\\\{${VISUAL}$1\\\}$0
-endsnippet
-
 
 snippet texroot
 % ! TEX root = <FileName>.tex

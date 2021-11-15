@@ -326,7 +326,7 @@ function! LatexBox_FoldText()
     elseif line =~ '\\appendix'
         let title = "Appendix"
 
-    elseif line =~ secpat1 . '.*}% F{O{L{D'
+    elseif line =~ secpat1 . '.*}\( \)*% F{O{L{D'
         " Capturing the type of section-environment ((sub*)part|chapter|section)
         let type = matchstr(line, '\*\?\s*\\\zs.\{-}\ze{')
         " Checking whether label exists
@@ -430,6 +430,18 @@ function! LatexBox_FoldText()
         let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
         " Capturing given name to the environment
         let envname = matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]')
+
+        if line =~# '^\s*% \\begin'
+            let comment = '[COMMENTED '
+            let endbracket = ']'
+        elseif line =~# '^\s*%\\begin'
+            let comment = '[COMMENTED '
+            let endbracket = ']'
+        else
+            let comment = ''
+            let endbracket = ''
+        endif
+
         " Checking whether label exists when environment might have a given name
         let labelcheck1 = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
         let labelcheck2 = matchstr(line, '\*\?\s*\]\\\zs.\{-}\ze{')
@@ -486,118 +498,118 @@ function! LatexBox_FoldText()
         " Abstract{{{
 
         if env == 'abstract'
-            let title = 'Abstract'
+            let title = comment . 'Abstract' . endbracket
 
         "}}}
 
         " Definition{{{
 
         elseif env == 'definition'
-            let title = 'Definition' . secondarytitle
+            let title = comment . 'Definition' . endbracket . secondarytitle
 
         elseif env == 'udefinition'
-            let title = 'UnnumberedDefinition' . secondarytitle
+            let title = comment . 'UnnumberedDefinition' . endbracket . secondarytitle
 
         elseif env == 'definition*'
-            let title = 'UnnumberedDefinition' . secondarytitle
+            let title = comment . 'UnnumberedDefinition' . endbracket . secondarytitle
 
         "}}}
 
         " Notation{{{
 
         elseif env == 'notation'
-            let title = 'Notation' . secondarytitle
+            let title = comment . 'Notation' . endbracket . secondarytitle
 
         elseif env == 'unotation'
-            let title = 'UnnumberedNotation' . secondarytitle
+            let title = comment . 'UnnumberedNotation' . endbracket . secondarytitle
 
         elseif env == 'notation*'
-            let title = 'UnnumberedNotation' . secondarytitle
+            let title = comment . 'UnnumberedNotation' . endbracket . secondarytitle
 
         "}}}
 
         " Lemma{{{
 
         elseif env == 'lemma'
-            let title = 'Lemma' . secondarytitle
+            let title = comment . 'Lemma' . endbracket . secondarytitle
 
         elseif env == 'ulemma'
-            let title = 'UnnumberedLemma' . secondarytitle
+            let title = comment . 'UnnumberedLemma' . endbracket . secondarytitle
 
         elseif env == 'lemma*'
-            let title = 'UnnumberedLemma' . secondarytitle
+            let title = comment . 'UnnumberedLemma' . endbracket . secondarytitle
 
         "}}}
 
         " Proposition{{{
 
         elseif env == 'proposition'
-            let title = 'Proposition' . secondarytitle
+            let title = comment . 'Proposition' . endbracket . secondarytitle
 
         elseif env == 'uproposition'
-            let title = 'UnnumberedProposition' . secondarytitle
+            let title = comment . 'UnnumberedProposition' . endbracket . secondarytitle
 
         elseif env == 'proposition*'
-            let title = 'UnnumberedProposition' . secondarytitle
+            let title = comment . 'UnnumberedProposition' . endbracket . secondarytitle
 
         "}}}
 
         " Theorem{{{
 
         elseif env == 'theorem'
-            let title = 'Theorem' . secondarytitle
+            let title = comment . 'Theorem' . endbracket . secondarytitle
 
         elseif env == 'utheorem'
-            let title = 'UnnumberedTheorem' . secondarytitle
+            let title = comment . 'UnnumberedTheorem' . endbracket . secondarytitle
 
         elseif env == 'theorem*'
-            let title = 'UnnumberedTheorem' . secondarytitle
+            let title = comment . 'UnnumberedTheorem' . endbracket . secondarytitle
 
         "}}}
 
         " Corollary{{{
 
         elseif env == 'corollary'
-            let title = 'Corollary' . secondarytitle
+            let title = comment . 'Corollary' . endbracket . secondarytitle
 
         elseif env == 'ucorollary'
-            let title = 'UnnumberedCorollary' . secondarytitle
+            let title = comment . 'UnnumberedCorollary' . endbracket . secondarytitle
 
         elseif env == 'corollary*'
-            let title = 'UnnumberedCorollary' . secondarytitle
+            let title = comment . 'UnnumberedCorollary' . endbracket . secondarytitle
 
         "}}}
 
         " Proof{{{
 
         elseif env == 'proof'
-            let title = 'Proof'
+            let title = comment . 'Proof' . endbracket
 
         "}}}
 
         " Remark{{{
 
         elseif env == 'remark'
-            let title = 'Remark' . secondarytitle
+            let title = comment . 'Remark' . endbracket . secondarytitle
 
         elseif env == 'uremark'
-            let title = 'UnnumberedRemark' . secondarytitle
+            let title = comment . 'UnnumberedRemark' . endbracket . secondarytitle
 
         elseif env == 'remark*'
-            let title = 'UnnumberedRemark' . secondarytitle
+            let title = comment . 'UnnumberedRemark' . endbracket . secondarytitle
 
         "}}}
 
         " Conjecture{{{
 
         elseif env == 'conjecture'
-            let title = 'Conjecture' . secondarytitle
+            let title = comment . 'Conjecture' . endbracket . secondarytitle
 
         elseif env == 'uconjecture'
-            let title = 'UnnumberedConjecture' . secondarytitle
+            let title = comment . 'UnnumberedConjecture' . endbracket . secondarytitle
 
         elseif env == 'conjecture*'
-            let title = 'UnnumberedConjecture' . secondarytitle
+            let title = comment . 'UnnumberedConjecture' . endbracket . secondarytitle
 
         "}}}
 
@@ -609,7 +621,7 @@ function! LatexBox_FoldText()
                 " let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
                 let title = 'Frame - ' . caption
             elseif line =~ '^\s*% \\begin'
-                let title = '[Commented Frame] - ' . caption
+                let title = '[COMMENTED Frame] - ' . caption
             endif
 
         "}}}
@@ -704,9 +716,9 @@ function! LatexBox_FoldText()
 
         " Making commented-folds at max 120-character
         if len(primarytitle) > 120
-            let title = '[Commented] - ' . printf('%.121s', primarytitle) . '...'
+            let title = '[COMMENTED] - ' . printf('%.121s', primarytitle) . '...'
         else
-            let title = '[Commented] - ' . primarytitle
+            let title = '[COMMENTED] - ' . primarytitle
         endif
     endif
 

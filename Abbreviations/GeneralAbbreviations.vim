@@ -84,6 +84,7 @@ Abolish dep{,e,y,ly,g,ble,bility} depend{ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
+Abolish dim{n,ns,l} dimension{,s,al}
 Abolish dio diophantine
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
@@ -185,6 +186,7 @@ Abolish ssec{n,ns} subsection{,s}
 Abolish sssec{n,ns} subsubsection{,s}
 Abolish st such that
 Abolish subalg{,s,ic} subalgebra{,s,ic}
+Abolish subcoll{ection,n,ns} sub-collection{,,ns}
 Abolish subgph{,s} subgraph{,s}
 Abolish subgp{,s} subgroup{,s}
 Abolish subseq{,s,l,ly} subsequen{ce,ces,tial,tially}
