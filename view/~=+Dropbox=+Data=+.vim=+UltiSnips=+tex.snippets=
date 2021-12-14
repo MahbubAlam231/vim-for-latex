@@ -1,0 +1,420 @@
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+cnoremap <buffer> <C-E> <End>
+cnoremap <buffer> <C-A> <Home>
+inoremap <buffer> <C-B> yiW<End> = =0
+inoremap <buffer> <C-K> ?<++>zMzv:nohcf>
+inoremap <buffer> <C-J> /<++>zMzv:nohcf>
+nnoremap <buffer>  :noh:echo
+nnoremap <buffer> <NL> /<++>zMzv:nohcf>
+nnoremap <buffer>  ?<++>zMzv:nohcf>
+vnoremap <buffer>   zazz
+nnoremap <buffer>   zazz
+vnoremap <buffer> <silent> !! yo:.!00
+nnoremap <buffer> <silent> !! yiwo:.!0
+nnoremap <buffer> # ms#
+omap <buffer> # <Plug>(asterisk-#)
+vnoremap <buffer> 's `szvzz
+vnoremap <buffer> 'g `gzvzz
+nnoremap <buffer> 'g `gzvzz
+vnoremap <buffer> 'l `l
+vnoremap <buffer> 'k `k
+vnoremap <buffer> 'j `jzvzz
+vnoremap <buffer> 'h `h
+nnoremap <buffer> 'l `l
+nnoremap <buffer> 'k `k
+nnoremap <buffer> 'j `jzvzz
+nnoremap <buffer> 'h `h
+nnoremap <buffer> 't `tzvzz
+nnoremap <buffer> 's `szvzz
+nnoremap <buffer> 'e `ezvzz
+nnoremap <buffer> 'w `wzvzz
+vnoremap <buffer> 'm `mzvzz
+vnoremap <buffer> 'r `rzvzz
+vnoremap <buffer> 'v `vzvzz
+vnoremap <buffer> 'c `czvzz
+vnoremap <buffer> 'o `ozvzz
+nnoremap <buffer> 'm `mzvzz
+nnoremap <buffer> 'r `rzvzz
+nnoremap <buffer> 'v `vzvzz
+nnoremap <buffer> 'c `czvzz
+nnoremap <buffer> 'o `ozvzz
+vnoremap <buffer> 'f `fzvzz
+nnoremap <buffer> 'f `fzvzz
+nnoremap <buffer> * ms*
+omap <buffer> * <Plug>(asterisk-*)
+nnoremap <buffer> ,vc :source $MYVIMRC
+nnoremap <buffer> ,E ^vg_y:execute @@
+vnoremap <buffer> ,E y:execute @@
+nnoremap <buffer> <silent> ,msf :call MakeView():source %:noh
+nnoremap <buffer> <silent> ,sf :w!:source %:noh
+nnoremap <buffer> <silent> ,w mm:w!`m
+nnoremap <buffer> ,ut :call KeyBindings("unmaptex")
+nnoremap <buffer> ,go :call KeyBindings("go")
+nnoremap <buffer> ,py :call KeyBindings("py")
+nnoremap <buffer> ,am :call Abbreviations("math")
+nnoremap <buffer> ,ag :call Abbreviations("gen")
+nnoremap <buffer> ,np :call KeyBindings("np")
+nnoremap <buffer> ,rfm :%s/F}O}L}D/ F}O}L}D/g | :%s/F{O{L{D/ F{O{L{D/g
+nnoremap <buffer> ,cfm :%s/}T}E}X/ F}O}L}D/g | :%s/{T{E{X/ F{O{L{D/g
+nnoremap <buffer> <silent> ,te :source $MYVIMRC:call SourceEverythingForTeX()
+nnoremap <buffer> ,faw mw:FixWhitespace`w
+nnoremap <buffer> ,fws mwV:FixWhitespace`w
+vnoremap <buffer> ,S :S/
+nnoremap <buffer> ,S :%S/
+vnoremap <buffer> ,s :s/
+nnoremap <buffer> ,s :%s/
+nnoremap <buffer> <silent> ,fs :call FixLastSpellingError()
+nnoremap <buffer> ,> :call GtLtToggle()
+nnoremap <buffer> ,< :call GtLtToggle()
+nnoremap <buffer> ,O mmO`m
+nnoremap <buffer> ,o mmo`m
+vnoremap <buffer> ,J J
+nnoremap <buffer> ,J J
+vnoremap <buffer> ,# yms:%s/0//gn
+vnoremap <buffer> ,* yms:%s/0//gn
+nnoremap <buffer> ,# ms#:%s///gn
+nnoremap <buffer> ,* ms*:%s///gn
+vnoremap <buffer> ,? ms:s///gn<Left><Left><Left><Left>
+vnoremap <buffer> ,/ ms:s///gn<Left><Left><Left><Left>
+nnoremap <buffer> ,? ms:%s///gn<Left><Left><Left><Left>
+nnoremap <buffer> ,/ ms:%s///gn<Left><Left><Left><Left>
+nnoremap <buffer> <silent> ,nm :call NextMatchToggle()
+nnoremap <buffer> <silent> ,cal o:.!calmm:FixWhitespace?_2xwn2xhe:noh
+vnoremap <buffer> ,V V`[
+nnoremap <buffer> ,V V`[
+nnoremap <buffer> ,nv :call NavigationToggleInWrapMode()
+nnoremap <buffer> ,rq :let @q='q'<Left>
+vmap <buffer> ,t <Plug>Titlecase
+nmap <buffer> ,tt <Plug>TitlecaseLine
+nmap <buffer> ,t <Plug>Titlecase
+nnoremap <buffer> ,fi mm/                    0Gk^hd`m:noh
+nnoremap <buffer> <silent> ,sh :TemplateInit sh
+nnoremap <buffer> <silent> ,rep :TemplateInit report
+nnoremap <buffer> <silent> ,ams :TemplateInit amsart
+nnoremap <buffer> <silent> ,art :TemplateInit article
+nnoremap <buffer> ,ner :NERDTree
+nnoremap <buffer> ,,li :Limelight!!
+nnoremap <buffer> ,i :IndentGuidesToggle
+nnoremap <buffer> ,gt :GundoToggle
+nnoremap <buffer> ,fzh :FZF ~
+nnoremap <buffer> ,fzd :Files
+nnoremap <buffer> ,fzf :FZF ~/
+nnoremap <buffer> ,gp :Gw:Gcommit -m "Add updated files":Gpush origin master
+xmap <buffer> , <Plug>Sneak_,
+omap <buffer> , <Plug>Sneak_,
+nmap <buffer> , <Plug>Sneak_,
+nnoremap <buffer> ,mps :let @n=CreateFilenameWithDateTime("purpose-statement") | execute "normal! a[n](n)"
+vnoremap <buffer> ,  zazt
+vnoremap <buffer> ,z zMzvzz
+nnoremap <buffer> ,  zazt
+nnoremap <buffer> ,z zMzvzz
+nnoremap <buffer> <silent> ,fp :call FoldingTeXPreamble()
+nnoremap <buffer> ,mk :call MakeView()
+nnoremap <buffer> ,mr :setlocal foldmethod=marker
+nnoremap <buffer> ,mn :setlocal foldmethod=manual
+nmap <buffer> ,tc <Plug>(vimtex-toc-open)
+nmap <buffer> ,cz :call vimtex#fzf#run('ctli')
+nnoremap <buffer> <silent> ,nt :call NumberToggle()
+nnoremap <buffer> ,vs :vsplit
+nnoremap <buffer> ,hs :split
+nnoremap <buffer> <silent> ,wt :set wrap!
+nmap <buffer> -hp <Plug>(GitGutterPreviewHunk)
+nmap <buffer> -hu <Plug>(GitGutterUndoHunk)
+nmap <buffer> -hs <Plug>(GitGutterStageHunk)
+xmap <buffer> -hs <Plug>(GitGutterStageHunk)
+omap <buffer> -s <Plug>(easymotion-s2)
+omap <buffer> -f <Plug>(easymotion-bd-f)
+omap <buffer> -e <Plug>(easymotion-bd-e)
+omap <buffer> -w <Plug>(easymotion-bd-w)
+nnoremap <buffer> -vc :vsplit $MYVIMRC
+nnoremap <buffer> -hvc :split $MYVIMRC
+nnoremap <buffer> -ms :vnew ~/.vim/spell/math.utf-8.add
+nnoremap <buffer> -vms :vnew ~/.vim/spell/math.utf-8.add
+nnoremap <buffer> -hms :new ~/.vim/spell/math.utf-8.add
+nnoremap <buffer> -am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim
+nnoremap <buffer> -vam :vnew ~/.vim/Abbreviations/MathAbbreviations.vim
+nnoremap <buffer> -ham :new ~/.vim/Abbreviations/MathAbbreviations.vim
+nnoremap <buffer> -ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim
+nnoremap <buffer> -vag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim
+nnoremap <buffer> -hag :new ~/.vim/Abbreviations/GeneralAbbreviations.vim
+nnoremap <buffer> -a :vnew ~/.vim/Abbreviations
+nnoremap <buffer> -va :vnew ~/.vim/Abbreviations
+nnoremap <buffer> -ha :new ~/.vim/Abbreviations
+nnoremap <buffer> -ps :vnew ~/.vim/UltiSnips/python.snippets
+nnoremap <buffer> -vps :vnew ~/.vim/UltiSnips/python.snippets
+nnoremap <buffer> -hps :new ~/.vim/UltiSnips/python.snippets
+nnoremap <buffer> -ts :vnew ~/.vim/UltiSnips/tex.snippets
+nnoremap <buffer> -vts :vnew ~/.vim/UltiSnips/tex.snippets
+nnoremap <buffer> -hts :new ~/.vim/UltiSnips/tex.snippets
+nnoremap <buffer> -ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
+nnoremap <buffer> -vut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
+nnoremap <buffer> -hut :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim
+nnoremap <buffer> -go :vnew ~/.vim/KeyBindings/GoKeyBindings.vim
+nnoremap <buffer> -vgo :vnew ~/.vim/KeyBindings/GoKeyBindings.vim
+nnoremap <buffer> -hgo :new ~/.vim/KeyBindings/GoKeyBindings.vim
+nnoremap <buffer> -py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim
+nnoremap <buffer> -vpy :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim
+nnoremap <buffer> -hpy :new ~/.vim/KeyBindings/PythonKeyBindings.vim
+nnoremap <buffer> -np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim
+nnoremap <buffer> -vnp :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim
+nnoremap <buffer> -hnp :new ~/.vim/KeyBindings/NumbersPeacefully.vim
+nnoremap <buffer> -te :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim
+nnoremap <buffer> -vte :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim
+nnoremap <buffer> -hte :new ~/.vim/KeyBindings/TeXKeyBindings.vim
+nnoremap <buffer> -d 0D
+nnoremap <buffer> -as :vnew ~/.vim/UltiSnips/all.snippets
+nnoremap <buffer> -ue :UltiSnipsEdit
+nmap <buffer> -s ms<Plug>(easymotion-s2)
+vmap <buffer> -s ms<Plug>(easymotion-s2)
+nmap <buffer> -f mf<Plug>(easymotion-bd-f)
+vmap <buffer> -f mf<Plug>(easymotion-bd-f)
+nmap <buffer> -e me<Plug>(easymotion-bd-e)
+vmap <buffer> -e me<Plug>(easymotion-bd-e)
+nmap <buffer> -w mw<Plug>(easymotion-bd-w)
+vmap <buffer> -w mw<Plug>(easymotion-bd-w)
+nmap <buffer> -tc :VimtexCompile
+nnoremap <buffer> / ms/
+vnoremap <buffer> ;/ ms/\%V
+vmap <buffer> <expr> D DVB_Duplicate()
+onoremap <buffer> H ^
+vnoremap <buffer> H mh^
+nnoremap <buffer> H mh^
+onoremap <buffer> J L
+vnoremap <buffer> J mjL
+nnoremap <buffer> J mjL
+onoremap <buffer> K H
+vnoremap <buffer> K mkH
+nnoremap <buffer> K mkH
+onoremap <buffer> L g_
+vnoremap <buffer> L mlg_
+nnoremap <buffer> L mlg_
+nnoremap <buffer> <silent> N Nzvzz:call HLNext(0.05)
+nnoremap <buffer> P Pmp
+nnoremap <buffer> Q @q
+nnoremap <buffer> Y y$
+nmap <buffer> [c <Plug>(GitGutterPrevHunk)
+xmap <buffer> \ <Plug>Sneak_,
+omap <buffer> \ <Plug>Sneak_,
+nmap <buffer> \ <Plug>Sneak_,
+nmap <buffer> ]c <Plug>(GitGutterNextHunk)
+xmap <buffer> ac <Plug>(GitGutterTextObjectOuterVisual)
+omap <buffer> ac <Plug>(GitGutterTextObjectOuterPending)
+omap <buffer> at <Plug>(vimtex-am)
+xmap <buffer> at <Plug>(vimtex-am)
+omap <buffer> am <Plug>(vimtex-a$)
+xmap <buffer> am <Plug>(vimtex-a$)
+nmap <buffer> csm <Plug>(vimtex-env-change-math)
+nmap <buffer> dsm <Plug>(vimtex-env-delete-math)
+nnoremap <buffer> gV `[v`]
+nnoremap <buffer> g, g,zvzz
+nnoremap <buffer> g; g;zvzz
+vnoremap <buffer> gg mggg
+nnoremap <buffer> gg mggg
+onoremap <buffer> gL g$
+onoremap <buffer> gH g^
+vnoremap <buffer> gL mlg$
+vnoremap <buffer> gH mhg^
+nnoremap <buffer> gL mlg$
+nnoremap <buffer> gH mhg^
+map <buffer> g# <Plug>(asterisk-z#)
+map <buffer> g* <Plug>(asterisk-z*)
+map <buffer> gz# <Plug>(asterisk-gz#)
+map <buffer> gz* <Plug>(asterisk-gz*)
+xmap <buffer> ic <Plug>(GitGutterTextObjectInnerVisual)
+omap <buffer> ic <Plug>(GitGutterTextObjectInnerPending)
+omap <buffer> it <Plug>(vimtex-im)
+xmap <buffer> it <Plug>(vimtex-im)
+omap <buffer> im <Plug>(vimtex-i$)
+xmap <buffer> im <Plug>(vimtex-i$)
+nnoremap <buffer> <silent> n nzvzz:call HLNext(0.05)
+nnoremap <buffer> p pmp
+nnoremap <buffer> vv ^vg_
+vnoremap <buffer> z  zazb
+vnoremap <buffer> zm mmzMzz
+vnoremap <buffer> zr mrzRzz
+vnoremap <buffer> zv mvzvzz
+vnoremap <buffer> zC mczCzz
+vnoremap <buffer> zc mczczz
+vnoremap <buffer> zo mozozz
+nnoremap <buffer> z  zazb
+nnoremap <buffer> zm mmzMzz
+nnoremap <buffer> zR mrzrzz
+nnoremap <buffer> zr mrzRzz
+nnoremap <buffer> zv mvzvzz
+nnoremap <buffer> zC mczCzz
+nnoremap <buffer> zc mczczz
+nnoremap <buffer> zo mozozz
+nnoremap <buffer> <C-C> :noh:echo
+nnoremap <buffer> <C-K> ?<++>zMzv:nohcf>
+nnoremap <buffer> <C-J> /<++>zMzv:nohcf>
+vmap <buffer> <expr> <S-Up> DVB_Drag('up')
+vmap <buffer> <expr> <S-Down> DVB_Drag('down')
+vmap <buffer> <expr> <S-Right> DVB_Drag('right')
+vmap <buffer> <expr> <S-Left> DVB_Drag('left')
+nnoremap <buffer> <S-Right> 5>
+nnoremap <buffer> <S-Left> 5<
+nnoremap <buffer> <M-d> l
+nnoremap <buffer> <M-w> k
+nnoremap <buffer> <M-s> j
+nnoremap <buffer> <M-a> h
+cnoremap <buffer>  <Home>
+inoremap <buffer>  yiW<End> = =0
+cnoremap <buffer>  <End>
+inoremap <buffer> <NL> /<++>zMzv:nohcf>
+inoremap <buffer>  ?<++>zMzv:nohcf>
+inoremap <buffer> ,ut :call KeyBindings("unmaptex")a
+inoremap <buffer> ,nd :call KeyBindings("tex")a
+inoremap <buffer> ,np :call KeyBindings("np")a
+inoremap <buffer> <silent> ,te :source $MYVIMRC:call SourceEverythingForTeX()a
+inoremap <buffer> ,fws mwV:FixWhitespace`wa
+inoremap <buffer> <silent> ,fs :call FixLastSpellingError()a
+inoremap <buffer> ,mps [=CreateFilenameWithDateTime('purpose-statement')]y%%p%r($r)
+inoremap <buffer> ,bll <>ibufferA <>ilocalleaderA
+inoremap <buffer> ,bl <>ibufferA <>ileaderA
+inoremap <buffer> ,ll <>ilocalleaderA
+inoremap <buffer> ,bu <>ibufferA
+inoremap <buffer> -zb zba
+inoremap <buffer> -zt zta
+inoremap <buffer> -zz zza
+inoremap <buffer> -z zMzvzza
+inoremap <buffer> <silent> ;w mm:w!`ma
+inoremap <buffer> <L <>ileaderA
+inoremap <buffer> <> <>i
+nnoremap <buffer> ä l
+nnoremap <buffer> ÷ k
+nnoremap <buffer> ó j
+nnoremap <buffer> á h
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal balloonexpr=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'snippets'
+setlocal filetype=snippets
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=marker
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=-1
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal relativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal scrolloff=-1
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal sidescrolloff=-1
+setlocal signcolumn=auto
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!airline#statusline(1)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'snippets'
+setlocal syntax=snippets
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tagfunc=
+setlocal tags=
+setlocal termwinkey=
+setlocal termwinscroll=10000
+setlocal termwinsize=
+setlocal textwidth=1000
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal varsofttabstop=
+setlocal vartabstop=
+setlocal wincolor=
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+" vim: set ft=vim :
