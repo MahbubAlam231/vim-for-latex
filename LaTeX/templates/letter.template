@@ -1,0 +1,90 @@
+
+%-------------------------------------------------------------------
+% Author(s)     : {{NAME}}{{CURSOR}}
+% File          : {{FILE}}.tex
+% Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
+% Description   :<++>
+%-------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Formal Letter
+% LaTeX Template
+% Version 1.11 (8/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% WikiBooks (http://en.wikibooks.org/wiki/LaTeX/Letters)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{letter}
+
+% Adjust margins for aesthetics
+\addtolength{\voffset}{-0.5in}
+\addtolength{\hoffset}{-0.3in}
+\addtolength{\textheight}{2cm}
+
+%\longindentation=0pt % Un-commenting this line will push the closing "Sincerely," to the left of the page
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME & ADDRESS SECTION
+%----------------------------------------------------------------------------------------
+
+\signature{MAHBUB ALAM} % Your name for the signature at the bottom
+
+% Your address and phone number
+\address{Office A-365,\\
+    School of Mathematics,\\
+    TIFR, Navy Nagar, Colaba,\\
+    Mumbai 400005,\\
+Mobile: 7278373970}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE SECTION
+%----------------------------------------------------------------------------------------
+
+% Name/title of the addressee
+\begin{letter}{To,\\
+        The Dean,\\
+        School of Mathematics,\\
+        Tata Institute of Fundamental Research,\\
+        Homi Bhabha Road, Colaba,\\
+    Mumbai 400005}
+
+    %----------------------------------------------------------------------------------------
+    %	LETTER CONTENT SECTION
+    %----------------------------------------------------------------------------------------
+
+    \opening{Dear Sir,}
+
+    I am a 4th year student at School of Mathematics, TIFR.
+    I would like to take your permission to visit International Centre for Theoretical Sciences (ICTS), Bengaluru to attend a workshop on ``Smooth and homogeneous dynamics''.
+    I will be staying at ICTS for the entire duration of the workshop.
+
+    Kindly approve a deputation leave between 23rd September to 4th October, 2019.
+    I also need your approval to take travel expenses from my student travel grant, which will be less than ten thousand rupees (10,000/-).
+
+
+    \vspace{2\parskip} % Extra whitespace for aesthetics
+    \closing{Sincerely,}
+    \vspace{2\parskip} % Extra whitespace for aesthetics
+
+    %\ps{P.S. You can find the photocopy of my VISA  with this letter.} % Postscript text, comment this line to remove it
+
+\end{letter}
+
+\end{document}
+

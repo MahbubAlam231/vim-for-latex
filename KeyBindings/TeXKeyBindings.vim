@@ -3547,6 +3547,8 @@ function! ReferencingAndCiting(code)
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
         :execute ":normal! a\\cite{\<esc>"
+    elseif a:code == "rcit"
+        :execute ":normal! a\\cite[]{\<esc>"
     endif
 
 endfunction
@@ -3561,6 +3563,7 @@ inoremap <buffer> <localleader>cref <esc>:call ReferencingAndCiting("jcref")<cr>
 inoremap <buffer> <localleader>jcref <esc>:call ReferencingAndCiting("cref")<cr>a
 inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("jcit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("cit")<cr>a
+inoremap <buffer> <localleader>rcit <esc>:call ReferencingAndCiting("rcit")<cr>F[a
 
 inoremap <buffer> <localleader>thm Theorem~\ref{
 inoremap <buffer> <localleader>lem Lemma~\ref{
