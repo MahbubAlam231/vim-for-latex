@@ -151,33 +151,51 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # fzf configurations{{{
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
-# export FZF_DEFAULT_OPTS='-m --cycle --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ -d {} ]; then echo ""{} is a directory.""; else bat --style=numbers --wrap --color=always {}; fi" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
-# export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
-export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+# export FZF_DEFAULT_OPTS='-m --cycle --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ -d {} ]; then echo ""{} is a directory.""; else bat --style=numbers --wrap --color=always {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+# export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
 # Select directory or file and open with xdg-open
 s() {
-    cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
+    cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --query=$@ --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
 }
 
 # Select directory
 sd() {
-    cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
+    cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,enter:execute(xdg-open {})" )"
+}
+
+# Select file inside directory
+of() {
+    fzf --query=$@ --bind "enter:execute(xdg-open {})"
 }
 
 # Select file
 sf() {
-    cd $HOME && fzf --bind "enter:execute(xdg-open {})"
+    cd $HOME && fzf --query=$@ --bind "enter:execute(xdg-open {})" --exit-0
 }
+
+# # Select pdf
+# l() {
+#     cd $HOME && fzf --query=$@ --bind="enter:execute(okular {})" --exit-0
+# }
 
 # Select directory inside directory (subdirectory)
 sdd() {
-    cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --preview="tree -L 1 {}" --bind="f7:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
+    cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,ctrl-o:execute(xdg-open ./{})" )" && tree -L 1 ;
 }
 
 # Select file inside directory
 sdf() {
-    fzf --bind "enter:execute(xdg-open {})"
+    fzf --query=$@ --bind "enter:execute(xdg-open {})"
+}
+
+neo() {
+    cd $HOME && fzf --query=$@ | xargs xdg-open
+}
+
+lala() {
+    cd $HOME && fgrep | head -1 | xargs xdg-open
 }
 
 #}}}
@@ -205,7 +223,7 @@ alias    p='python3'
 alias   pr='python3 `fzf`'
 alias   pz='python3 `fzf`'
 alias   pf='python3 `fzf`'
-alias  pip='pip3.8'
+alias  pip='pip3'
 
 alias  pmr='python ~/python-code/movie_rating.py'
 

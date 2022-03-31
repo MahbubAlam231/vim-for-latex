@@ -90,6 +90,7 @@ set tabstop=4                         " Redefine tab as width of four spaces
 set softtabstop=4                     " Number of spaces in tab when editing
 set shiftwidth=4                      " Number of space characters inserted for indentation
 set expandtab                         " Insert four spaces for tabs everywhere
+set smarttab                          " Insert spaces or go to next indent
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
 
@@ -336,7 +337,7 @@ let g:vimtex_compiler_latexmk = {
 
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+" let g:vimtex_view_general_options_latexmk = '--unique'
 
 nmap <buffer> <leader>tc :VimtexCompile<cr>
 " nnoremap <buffer> <leader>tc <plug>(vimtex-view):VimtexCompile<cr>
@@ -507,10 +508,11 @@ let g:vim_markdown_no_default_key_mappings = 1
 
 "}}}
 
-" Abolish{{{
+" Abolish and coercing{{{
 
 " Coercing
 vmap <buffer> <leader>cr :s/ /-/g<cr>:noh<cr>
+nmap <buffer> <leader>cr :%s/ /-/g<cr>:noh<cr>
 nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
 
 "}}}
@@ -1147,6 +1149,45 @@ nnoremap <buffer> <localleader>O mmO<esc>`m
 " nnoremap <buffer> <c-u> mmgUiw`m
 " inoremap <buffer> <c-u> <esc>mmgUiw`ma
 " vnoremap <buffer> <c-u> gU
+
+" Number of paragraphs in a file
+function! AlignParagraphs()
+    normal! mpzR
+    " Only one empty line between paragraphs
+    silent! g/^$\n^$/d
+    " Delete 1st line if empty
+    if getline('1') == ''
+        normal! ggdd
+    endif
+    " Put blank line at the end of the file
+    if getline('$') != ''
+        $put _
+    endif
+    :call CountParagraphs()
+endfunction
+
+nnoremap <buffer> <localleader>ap mp:call AlignParagraphs()<cr>
+
+function! CountParagraphs()
+    normal! mpzRG
+    while getline('.') == ''
+        normal! k
+    endwhile
+    normal! j
+    let b:virtual_last_line=line('.')
+    normal! gg
+
+    let b:number_of_paragraphs=0
+    while line('.') != b:virtual_last_line
+        normal! }
+        let b:number_of_paragraphs=b:number_of_paragraphs + 1
+    endwhile
+
+    echom "Number of paragraphs: "b:number_of_paragraphs
+    normal! `pzMzv
+endfunction
+
+nnoremap <buffer> <localleader>cp mp:call CountParagraphs()<cr>
 
 "}}}
 " Spelling Check{{{
@@ -2033,6 +2074,6 @@ vnoremap <buffer> <localleader>E y:execute @@<cr>
 nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 " Sourcing .vimrc
-nnoremap <buffer> <localleader>vc :source $MYVIMRC<cr>
+nnoremap <buffer> <localleader>vc :source $MYVIMRC<cr>:noh<cr>
 
 "}}}
