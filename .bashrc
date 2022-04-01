@@ -190,8 +190,8 @@ sdf() {
     fzf --query=$@ --bind "enter:execute(xdg-open {})"
 }
 
-neo() {
-    cd $HOME && fzf --query=$@ | xargs xdg-open
+new() {
+    cd "$HOME" && fzf --query="$*" --preview='xdg-open {}'
 }
 
 lala() {
