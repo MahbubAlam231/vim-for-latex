@@ -43,10 +43,10 @@
 
 % Your address and phone number
 \address{Office A-365,\\
-    School of Mathematics,\\
-    TIFR, Navy Nagar, Colaba,\\
-    Mumbai 400005,\\
-Mobile: 7278373970}
+    Department of Mathematics,\\
+    Uppsala University, Sweden, \\
+    Postal address: Box 480, 751 06 Uppsala, \\
+Mobile: +46736925601}
 
 %----------------------------------------------------------------------------------------
 
@@ -58,11 +58,8 @@ Mobile: 7278373970}
 
 % Name/title of the addressee
 \begin{letter}{To,\\
-        The Dean,\\
-        School of Mathematics,\\
-        Tata Institute of Fundamental Research,\\
-        Homi Bhabha Road, Colaba,\\
-    Mumbai 400005}
+        The {{CURSOR}}
+    }
 
     %----------------------------------------------------------------------------------------
     %	LETTER CONTENT SECTION
