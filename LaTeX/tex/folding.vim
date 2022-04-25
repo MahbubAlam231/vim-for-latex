@@ -459,6 +459,7 @@ function! LatexBox_FoldText()
             endif
 
         elseif labelcheck2 == 'label'
+            " Environment has given name, empty or otherwise, together with label, so create apt title
             if envname == ''
                 let primarytitle1 = ''
             else
@@ -488,8 +489,10 @@ function! LatexBox_FoldText()
             let secondarytitle = primarytitle2 . '  ' . label2
 
         elseif envname == ''
+            " Environment is empty and has no label
             let secondarytitle = ''
         else
+            " Environment is non-empty and has no label
             let secondarytitle = ' - ' . envname
         endif
 
@@ -621,6 +624,8 @@ function! LatexBox_FoldText()
                 " let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
                 let title = 'Frame - ' . caption
             elseif line =~ '^\s*% \\begin'
+                let title = '[COMMENTED Frame] - ' . caption
+            elseif line =~ '^\s*%\\begin'
                 let title = '[COMMENTED Frame] - ' . caption
             endif
 
