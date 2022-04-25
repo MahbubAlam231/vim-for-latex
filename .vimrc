@@ -4,7 +4,6 @@
 "  _\ V / | || | | | | || |  | (__
 " (_)\_/  |_||_| |_| |_||_|   \___|
 
-
 "-------------------------------------------------------------------
 " Mahbub's .vimrc
 "-------------------------------------------------------------------
@@ -76,11 +75,11 @@ let maplocalleader=","
 
 " To get <> and write <localleader> easily
 inoremap <buffer> <> <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>A
-inoremap <buffer> <L <><esc>ileader<esc>A
-inoremap <buffer> <localleader>ll <><esc>ilocalleader<esc>A
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>A <><esc>ileader<esc>A
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>A <><esc>ilocalleader<esc>A
+inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
+inoremap <buffer> <L <><esc>ileader<esc>la
+inoremap <buffer> <localleader>ll <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
+inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "}}}
 " Tabs, indentation and wrapping{{{
@@ -719,7 +718,7 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:tmpl_auto_initialize=1
 let g:tmpl_author_name='Mahbub Alam'
 let g:tmpl_license='Self'
-let g:template_list = ["amsart", "article", "c", "CMakeLists.txt", "cpp", "go", "h", "hpp", "html", "java", "js", "jsx", "main.c", "main.cpp", "Makefile", "md", "mock", "py", "report", "sh", "tex", "vim"]
+let g:template_list = ["amsart", "article", "beamer", "c", "CMakeLists.txt", "cpp", "go", "h", "hpp", "html", "java", "js", "jsx", "letter", "main.c", "main.cpp", "Makefile", "md", "mock", "py", "report", "sh", "tex", "vim"]
 
 " Selecting template
 "function! Template(code)"{{{
@@ -813,6 +812,15 @@ vmap <buffer> <localleader>t <Plug>Titlecase
 let g:UltiSnipsEditSplit='vertical'
 nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
+
+" function! ExpandUltiSnipsNormal(snippet)
+"     exe "normal! a" . a:snippet
+"     call UltiSnips_ExpandSnippet()
+"     return
+" endfunction
+
+nnoremap <buffer> <silent> <localleader>ps gg4}otnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
+
 
 "}}}
 " Plugin test{{{
@@ -1163,10 +1171,11 @@ function! AlignParagraphs()
     if getline('$') != ''
         $put _
     endif
+    normal! `p
     :call CountParagraphs()
 endfunction
 
-nnoremap <buffer> <localleader>ap mp:call AlignParagraphs()<cr>
+nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
 
 function! CountParagraphs()
     normal! mpzRG
@@ -1183,11 +1192,11 @@ function! CountParagraphs()
         let b:number_of_paragraphs=b:number_of_paragraphs + 1
     endwhile
 
-    echom "Number of paragraphs: "b:number_of_paragraphs
+    echom "Number of paragraphs:" b:number_of_paragraphs
     normal! `pzMzv
 endfunction
 
-nnoremap <buffer> <localleader>cp mp:call CountParagraphs()<cr>
+nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
 
 "}}}
 " Spelling Check{{{
@@ -1747,18 +1756,21 @@ augroup end
 "}}}
 " VimwikiHighlighting{{{
 
-highlight VimwikiBoldRedGroup ctermfg=39 ctermbg=Black
+highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
+highlight VimwikiBoldGreenGroup ctermfg=46 ctermbg=Black
 
 augroup VimwikiHighlighting
     autocmd!
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'TIME')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'BREAKTHROUGH')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE ENTRY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'NO DIARY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'LATE DIARY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQ')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'SQX')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'JX')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'TIME')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'BREAKTHROUGH')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
+
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQ')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQX')
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'JX')
     " autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
 augroup end
 

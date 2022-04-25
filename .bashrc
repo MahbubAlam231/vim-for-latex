@@ -153,32 +153,32 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
 # export FZF_DEFAULT_OPTS='-m --cycle --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ -d {} ]; then echo ""{} is a directory.""; else bat --style=numbers --wrap --color=always {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 # export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
-export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
 # Select directory or file and open with xdg-open
-s() {
+od() {
     cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --query=$@ --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
 }
 
-# Select directory
-sd() {
-    cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,enter:execute(xdg-open {})" )"
-}
+# # Select directory
+# sd() {
+#     cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,enter:execute(xdg-open {})" )"
+# }
 
 # Select file inside directory
-of() {
+ofd() {
     fzf --query=$@ --bind "enter:execute(xdg-open {})"
 }
 
 # Select file
-sf() {
-    cd $HOME && fzf --query=$@ --bind "enter:execute(xdg-open {})" --exit-0
+of() {
+    cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
 }
 
-# # Select pdf
-# l() {
-#     cd $HOME && fzf --query=$@ --bind="enter:execute(okular {})" --exit-0
-# }
+# Select pdf
+ji() {
+    cd $HOME && fzf --query="$*" --bind "enter:execute(okular {})" --exit-0
+}
 
 # Select directory inside directory (subdirectory)
 sdd() {
@@ -199,6 +199,13 @@ lala() {
 }
 
 #}}}
+## fasd enabling{{{
+
+#set -x
+#eval "$(fasd --init auto)"
+#set +x
+
+##}}}
 # My custom aliases{{{
 # Opening frequent files
 alias    v='vim'

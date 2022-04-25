@@ -64,6 +64,9 @@ inoremap <buffer> " ""<esc>i
 inoremap <buffer> '' '
 inoremap <buffer> "" "
 
+" inoremap <buffer> - _
+" inoremap <buffer> _ -
+
 "}}}
 
 " Python symbols{{{
@@ -71,18 +74,23 @@ inoremap <buffer> "" "
 inoremap <buffer> <localleader>int int()<esc>i
 inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
-inoremap <buffer> ;= !=
 inoremap <buffer> ;la lambda
+
+inoremap <buffer> ;= !=
+inoremap <buffer> <localleader>> =>
+inoremap <buffer> <localleader>< <=
 
 "}}}
 
 " Compilation and Stuff{{{
 "-------------------------------------------------------------------
 
-nnoremap <silent> <buffer> <F9> :w!<cr>:!python3 %:p<cr>
-nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=86 python3 %:p<cr>
+let PythonBin = 'python 3.8'
+
+nnoremap <silent> <buffer> <F9> :w!<cr>:!python3.8 %:p<cr>
+nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=86 python3.8 %:p<cr>
 nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python3.8' shellescape(@%, 1)<cr>
 
-inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python3 %:p<cr>
+inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python3.8 %:p<cr>
 
 "}}}
