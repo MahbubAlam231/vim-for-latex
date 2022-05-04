@@ -304,6 +304,25 @@ iunmap <buffer> <localleader>hk
 iunmap <buffer> <localleader>h.
 
 "}}}
+" Function spaces{{{
+
+iunmap <buffer> <localleader>cc.
+iunmap <buffer> <localleader>ccx
+iunmap <buffer> <localleader>cci
+iunmap <buffer> <localleader>ccix
+
+iunmap <buffer> <localleader>cx
+
+iunmap <buffer> <localleader>l1.
+iunmap <buffer> <localleader>l1x
+
+iunmap <buffer> <localleader>l2.
+iunmap <buffer> <localleader>l2x
+
+iunmap <buffer> <localleader>lp.
+iunmap <buffer> <localleader>lpx
+
+"}}}
 
 "}}}
 " Outside math mode{{{
@@ -328,13 +347,6 @@ iunmap <buffer> t<Space><Space>
 iunmap <buffer> h<Space><Space>
 
 "}}}
-
-iunmap <buffer> <localleader>cc.
-iunmap <buffer> <localleader>ccx
-iunmap <buffer> <localleader>cci
-iunmap <buffer> <localleader>ccix
-
-iunmap <buffer> <localleader>cx
 
 "}}}
 " Matrix Groups{{{
@@ -1015,8 +1027,9 @@ iunmap <buffer> <localleader>ol
 iunmap <buffer> <localleader>ul
 iunmap <buffer> <localleader>.
 
-iunmap <buffer> ;-.
+iunmap <buffer> <localleader><C-E>
 
+iunmap <buffer> ;-.
 iunmap <buffer> ;-1
 iunmap <buffer> ;-2
 iunmap <buffer> ;-3
@@ -1454,12 +1467,11 @@ iunmap <buffer> <localleader>op*
 iunmap <buffer> <localleader>w
 iunmap <buffer> <localleader>N
 
-iunmap <buffer> <localleader><C-E>
-
 iunmap <buffer> ;te
 
-iunmap <buffer> /, \,
-iunmap <buffer> ./ .\
+iunmap <buffer> /,
+iunmap <buffer> ./
+iunmap <buffer> :+
 
 "}}}
 

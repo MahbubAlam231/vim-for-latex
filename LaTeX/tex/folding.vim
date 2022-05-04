@@ -717,13 +717,15 @@ function! LatexBox_FoldText()
 
     if line =~ '^\s*%c '
         " Capture the whole line for commented-folds
-        let primarytitle = matchstr(line, '^\s*%c \zs.\{-}\ze% F{O{L{D')
+        let primarytitle = matchstr(line, '^\s*%c \zs.\{-}\zeF{O{L{D')
 
         " Making commented-folds at max 120-character
         if len(primarytitle) > 120
             let title = '[COMMENTED] - ' . printf('%.121s', primarytitle) . '...'
-        else
+        elseif len(primarytitle) > 0
             let title = '[COMMENTED] - ' . primarytitle
+        else
+            let title = '[COMMENTED]'
         endif
     endif
 

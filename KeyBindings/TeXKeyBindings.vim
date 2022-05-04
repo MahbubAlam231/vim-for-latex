@@ -336,6 +336,25 @@ inoremap <buffer> <localleader>hk \mathbb{H}^{k}
 inoremap <buffer> <localleader>h. \mathbb{H}^{}<left>
 
 "}}}
+" Function spaces{{{
+
+inoremap <buffer> <localleader>cc. C_c()<left>
+inoremap <buffer> <localleader>ccx C_c(X)
+inoremap <buffer> <localleader>cci C_c^{\infty}()<left>
+inoremap <buffer> <localleader>ccix C_c^{\infty}(X)
+
+inoremap <buffer> <localleader>ci C^{\infty}()<left>
+
+inoremap <buffer> <localleader>l1. L^1()<left>
+inoremap <buffer> <localleader>l1x L^1(X)
+
+inoremap <buffer> <localleader>l2. L^2()<left>
+inoremap <buffer> <localleader>l2x L^2(X)
+
+inoremap <buffer> <localleader>lp. L^p()<left>
+inoremap <buffer> <localleader>lpx L^p(X)
+
+"}}}
 
 "}}}
 " Outside math mode{{{
@@ -360,13 +379,6 @@ inoremap <buffer> t<Space><Space> $\mathbb{T}$
 inoremap <buffer> h<Space><Space> $\mathbb{H}$
 
 "}}}
-
-inoremap <buffer> <localleader>cc. C_c()<left>
-inoremap <buffer> <localleader>ccx C_c(X)
-inoremap <buffer> <localleader>cci C_c^{\infty}()<left>
-inoremap <buffer> <localleader>ccix C_c^{\infty}(X)
-
-inoremap <buffer> <localleader>ci C^{\infty}()<left>
 
 "}}}
 "" Matrix Groups{{{
@@ -2983,8 +2995,9 @@ inoremap <buffer> <localleader>ol \overline{}<left>
 inoremap <buffer> <localleader>ul \uline{}<left>
 inoremap <buffer> <localleader>. \dot{}<left>
 
-inoremap <buffer> ;-. ^{-}<left>
+inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
 
+inoremap <buffer> ;-. ^{-}<left>
 inoremap <buffer> ;-1 ^{-1}
 inoremap <buffer> ;-2 ^{-2}
 inoremap <buffer> ;-3 ^{-3}
@@ -3305,6 +3318,8 @@ inoremap <buffer> <localleader>xra \xrightarrow{}<esc>i
 inoremap <buffer> <localleader>xla \xleftarrow{}<esc>i
 inoremap <buffer> <localleader>xlra \xlongrightarrow{}<esc>i
 inoremap <buffer> <localleader>xlla \xlongleftarrow{}<esc>i
+inoremap <buffer> <localleader>xRa \xRightarrow{}<esc>i
+inoremap <buffer> <localleader>xLa \xLeftarrow{}<esc>i
 inoremap <buffer> <localleader>thra \twoheadrightarrow
 inoremap <buffer> <localleader>thla \twoheadleftarrow
 inoremap <buffer> <localleader>rat \rightarrowtail
@@ -3424,11 +3439,10 @@ inoremap <buffer> <localleader>op* \operatorname*{}<left>
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
 
-inoremap <buffer> <localleader><C-E> \exp\left(\right)<esc>F(a
-
 inoremap <buffer> ;te \text{}<left>
 
 inoremap <buffer> ./ .\
+inoremap <buffer> :+ :=
 
 "}}}
 

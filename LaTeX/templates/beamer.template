@@ -38,6 +38,34 @@
 % \usetheme{boxes}
 % \usetheme{default}
 
+% For use with beamer v 2.20
+%  options  [handout]
+
+%  There is a VERY rich set of possible
+%  styles of presentations and color themes.  See the
+%  beamer documentation for a full list of possibilities.
+% \usetheme{Copenhagen}  % JuanLesPins  Rochester
+%  Berkeley  Palo Alto    with sidebar and top
+% Goettingen  Marburg     with sidebar
+%  Copenhagen  Luebeck  Warsaw
+\useinnertheme{rounded}
+%\usecolorheme{albatross}
+\usecolortheme[named=RoyalBlue]{structure}
+\useoutertheme{}
+%\setfootline{\insertshortinstitute, \insertshortdate, \insertframenumber/\inserttotalframenumber}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[page number]{}
+\usepackage{pgfarrows}
+%  Don't need to load the pgf package, but it has
+%  has itself some packages you might want, such as
+%  pgfarrows,,pgfnodes,pgfautomata,pgfheaps
+%  See the pgf documentation.
+
+\setbeamercolor{alerted text}{fg=blue}
+
 
 \usepackage{afterpage}
 \usepackage{amsfonts}
@@ -54,7 +82,7 @@
 % \usepackage[dvipsnames]{xcolor}
 \usepackage{esvect}
 \usepackage{enumerate}
-\usepackage{enumitem}
+% \usepackage{enumitem}
 % \usepackage{eufrak} % not required with amsfonts
 \usepackage{extarrows}
 \usepackage{fancyhdr}

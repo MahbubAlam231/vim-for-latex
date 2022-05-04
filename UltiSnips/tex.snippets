@@ -600,6 +600,7 @@ $\mathbb{H}^{}<esc>i$$0
 endsnippet
 
 #}}}
+# Function spaces{{{
 
 snippet cc.
 $C_c($1)$$0
@@ -628,6 +629,34 @@ endsnippet
 snippet ci.
 $C^{\infty}($1)$$0
 endsnippet
+
+
+
+snippet l1.
+$L^1($1)$$0
+endsnippet
+
+snippet l1x
+$L^1(X)$$0
+endsnippet
+
+snippet l2.
+$L^2($1)$$0
+endsnippet
+
+snippet l2x
+$L^2(X)$$0
+endsnippet
+
+snippet lp.
+$L^p($1)$$0
+endsnippet
+
+snippet lpx
+$L^p(X)$$0
+endsnippet
+
+#}}}
 
 #}}}
 ## MatrixGroups{{{
@@ -9198,6 +9227,11 @@ snippet ge
 $\varepsilon > 0$
 endsnippet
 
+snippet st "use substack" w
+\substack{${VISUAL}$1 \\\\ $2}$0
+$0
+endsnippet
+
 snippet inv
 ^{-1}
 endsnippet
@@ -9959,6 +9993,10 @@ snippet it "Writing \item" b
 \\item $0
 endsnippet
 
+snippet ita "Writing \item<+-| alert@+>" b
+\\item<+-| alert@+> $0
+endsnippet
+
 snippet items "Itemize" b
 % Itemize
 \begin{itemize}[leftmargin=1.3em]
@@ -9970,7 +10008,7 @@ endsnippet
 snippet itemz "Itemize" b
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=1.3em]
-	\item ${1:${VISUAL}}
+	\item<+-| alert@+> ${1:${VISUAL}}
 \end{itemize}
 $0
 endsnippet
@@ -10189,6 +10227,24 @@ snippet fra
 \end{frame}% F}O}L}D
 endsnippet
 
+snippet infra
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{$1}% F{O{L{D
+	${2:${VISUAL}}
+endsnippet
+
+snippet inf
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{$1}% F{O{L{D
+	${2:${VISUAL}}
+endsnippet
+
+snippet afb "allowframebreaks" w
+[allowframebreaks]$0
+endsnippet
+
 
 snippet scope
 \begin{scope}
@@ -10247,9 +10303,9 @@ endsnippet
 # SomeAbbreviation{{{
 #-------------------------------------------------------------------
 
-snippet st "such that"
-such that
-endsnippet
+# snippet st "such that"
+# such that
+# endsnippet
 
 
 snippet tg
@@ -10368,8 +10424,8 @@ endsnippet
 # TextInMathMode{{{
 #-------------------------------------------------------------------
 
-snippet text "Text"
-\ \text{${1:${VISUAL}}\}$0
+snippet text "Text" w
+\text{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet te "Text"
