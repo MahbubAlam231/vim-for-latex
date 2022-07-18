@@ -175,6 +175,10 @@ of() {
     cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
 }
 
+sf() {
+    cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
+}
+
 # Select pdf
 ji() {
     cd $HOME && fzf --query="$*" --bind "enter:execute(okular {})" --exit-0

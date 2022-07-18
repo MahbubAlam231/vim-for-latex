@@ -9993,8 +9993,26 @@ snippet it "Writing \item" b
 \\item $0
 endsnippet
 
+snippet itm "Writing \item" b
+\\item $0
+endsnippet
+
 snippet ita "Writing \item<+-| alert@+>" b
 \\item<+-| alert@+> $0
+endsnippet
+
+snippet item "Itemize" b
+% Itemize
+\begin{itemize}
+	\item ${1:${VISUAL}}
+\end{itemize}
+$0
+endsnippet
+
+snippet iitem "Itemize" b
+\end{itemize}
+% Itemize$0
+\begin{itemize}
 endsnippet
 
 snippet items "Itemize" b
@@ -10228,17 +10246,17 @@ snippet fra
 endsnippet
 
 snippet infra
+
 \end{frame}% F}O}L}D
 % Frame
-\begin{frame}{$1}% F{O{L{D
-	${2:${VISUAL}}
+\begin{frame}{$1}% F{O{L{D$2
 endsnippet
 
 snippet inf
+
 \end{frame}% F}O}L}D
 % Frame
-\begin{frame}{$1}% F{O{L{D
-	${2:${VISUAL}}
+\begin{frame}{$1}% F{O{L{D$2
 endsnippet
 
 snippet afb "allowframebreaks" w
@@ -10462,10 +10480,10 @@ snippet em "Emphasize even visually selected text"
 endsnippet
 
 snippet tc "Text color"
-\textcolor{red}\{${1:${VISUAL}}\}$0
+\textcolor{${1:red}}\{${2:${VISUAL}}\}$0
 endsnippet
 
-snippet tbc "Text color"
+snippet tbc "Text color in bold"
 \textcolor{${1:red}}{\textbf{$2}}$0
 endsnippet
 

@@ -66,6 +66,7 @@ Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,ve} commut{e,ative}
+Abolish cond{n,s,ns,d,l,ly} condition{,s,s,ed,al,ally}
 Abolish cong{e,t} congruen{ce,t}
 Abolish conj{,s,d} conjecture{,s,d}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}

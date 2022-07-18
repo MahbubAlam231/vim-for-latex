@@ -22,7 +22,7 @@ set autochdir                         " Auto change directory (some plugins may 
 set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 " set clipboard=unnamed                 " Clipboard support (OSX)
-" set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
+set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
 set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
@@ -650,9 +650,9 @@ let $FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
 let $FZF_DEFAULT_OPTS='-m --height=80% --layout=reverse --inline-info --border --preview="bat --style=numbers --wrap --color=always {}" --bind="f7:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 let g:fzf_preview_window = 'right:60%'
 
-nnoremap <buffer> <localleader>fzf :FZF ~/
+" nnoremap <buffer> <localleader>fzf :FZF ~/
 nnoremap <buffer> <localleader>fzd :Files<cr>
-nnoremap <buffer> <localleader>fzh :FZF ~<cr>
+nnoremap <buffer> <localleader>fzf :FZF ~<cr>
 
 "}}}
 " Gundo{{{
@@ -819,7 +819,8 @@ nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
 "     return
 " endfunction
 
-nnoremap <buffer> <silent> <localleader>ps gg4}otnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
+nnoremap <buffer> <silent> <localleader>ps gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
+nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
 
 
 "}}}
@@ -1007,6 +1008,10 @@ nnoremap <buffer> <localleader>nv :call NavigationToggleInWrapMode()<cr>
 
 "}}}
 
+" Marking remaps
+nnoremap <buffer> ' `
+nnoremap <buffer> ` '
+
 " Mark and then go to the beginning or end of the file
 nnoremap <buffer> gg mggg
 " nnoremap <buffer> G mgG
@@ -1140,6 +1145,13 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 "}}}
 " Some other remaps{{{
 "-------------------------------------------------------------------
+
+" Ctrl-BS in vim
+noremap <C-BS> :noh<cr>
+" noremap! <buffer> <C-BS> vbc
+
+" Indenting whole environment in tex
+" nnoremap <buffer> =ae mm=ae`m
 
 " Joining lines
 nnoremap <buffer> <localleader>J J
@@ -1784,9 +1796,9 @@ augroup end
 "-------------------------------------------------------------------
 
 "autocmd BufWritePre *.* %s/\s\+$//e
-inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wa
-nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`w
-nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`w
+inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wzva
+nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`wzv
+nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
 
 "}}}
 
@@ -1882,9 +1894,10 @@ augroup SourceEverythingForTeX
 
     " Compiling tex
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
-    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    autocmd Filetype tex inoremap <buffer> <F9> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>a
-    autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>
+    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
+    " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
+    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>a
+    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>
 
 augroup end
 
@@ -1904,7 +1917,10 @@ inoremap <buffer> <silent> <localleader>te <esc>:source $MYVIMRC<cr>:call Source
 
 " Changing and setting foldmarker for tex
 nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/g<cr><cr>
-nnoremap <buffer> <localleader>rfm :%s/F}O}L}D/ F}O}L}D/g \| :%s/F{O{L{D/ F{O{L{D/g<cr><cr>
+nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{O{L{D/g<cr><cr>
+
+" Editing tex in vimrc
+nnoremap <buffer> <localleader>et 1882Gzvzz
 
 "}}}
 " SourceEverythingForVimwiki{{{

@@ -24,12 +24,13 @@ ${VISUAL:inner text/should be/is/g}
 endsnippet
 
 snippet li "Add a link link"
-[${1:${VISUAL:here}}](${2:url})$0
+[${1:${VISUAL:here}}]($2${3:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 endsnippet
 
 snippet link "Add a link name"
-[${1:here}](${2:${VISUAL:url}})$0
+[${1:${VISUAL:here}}](${2:$1})$0
 endsnippet
+# [${1:${VISUAL:here}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 
 snippet im "Adding a image" b
 ![${1:Image}](${2:pic.jpg})$0
