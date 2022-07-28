@@ -3755,10 +3755,8 @@ highlight Folds_brackets_comments ctermbg=174 ctermfg=black
 
 let m = matchadd("Folds_brackets_comments",'%{T{E{X')
 let m = matchadd("Folds_brackets_comments",'%}T}E}X')
-let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
-let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
-let m = matchadd("Folds_brackets_comments",'% F{O{L{D')
-let m = matchadd("Folds_brackets_comments",'% F}O}L}D')
+let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
+let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
@@ -3897,6 +3895,10 @@ let m = matchadd("BoldGroup",'&')
 highlight BoldRedGroup ctermfg=red cterm=bold
 
 let m = matchadd("BoldRedGroup",'\\todo')
+
+highlight SpaceGroup ctermbg=red
+
+" let m = matchadd("SpaceGroup",'  *')
 
 "}}}
 " Abstract, Theorem, Equation"{{{

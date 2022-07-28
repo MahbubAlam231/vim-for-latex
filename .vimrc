@@ -1278,10 +1278,8 @@ augroup TeXHighlighting
     autocmd!
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%F}O}L}D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'% F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'% F}O}L}D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
 augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
@@ -1460,6 +1458,12 @@ highlight BoldRedGroup ctermfg=red cterm=bold
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("BoldRedGroup",'\\todo')
 augroup end
+
+highlight SpaceGroup ctermbg=red
+
+" augroup SpaceHighlighting
+"     autocmd Filetype tex let m = matchadd("SpaceGroup",'  *')
+" augroup end
 
 "}}}
 " Abstract, Theorem, Equation"{{{

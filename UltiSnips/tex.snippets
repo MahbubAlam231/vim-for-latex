@@ -9361,20 +9361,20 @@ endsnippet
 
 snippet part "Part" b
 % Part
-\part{$1}\label{$2}% F{O{L{D
+\part{$1}\label{part$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% F}O}L}D
+% part ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
 
 snippet chap "Chapter" b
 % Chapter
-\chapter{$1}\label{$2}% F{O{L{D
+\chapter{$1}\label{chap$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% F}O}L}D
+% chapter ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
@@ -9383,16 +9383,16 @@ snippet uchap "Unnumbered Chapter" b
 \chapter*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% F}O}L}D
+% unnumbered chapter ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
 snippet sec "Section" b
 % Section
-\section{$1}\label{$2}% F{O{L{D
+\section{$1}\label{sec$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% F}O}L}D
+% section ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
@@ -9401,16 +9401,16 @@ snippet usec "Unnumbered Section" b
 \section*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% F}O}L}D
+% unnumbered section ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
 snippet ssec "Subsection" b
 % Subsection
-\subsection{$1}\label{$2}% F{O{L{D
+\subsection{$1}\label{ssec$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% F}O}L}D
+% subsection ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
@@ -9419,16 +9419,16 @@ snippet ussec "Unnumbered Subsection" b
 \subsection*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% F}O}L}D
+% unnumbered subsection ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
 snippet sssec "Subsubsection" b
 % Subsubsection
-\subsubsection{$1}\label{$2}% F{O{L{D
+\subsubsection{$1}\label{sssec$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% F}O}L}D
+% subsubsection ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
@@ -9437,13 +9437,13 @@ snippet usssec "Unnumbered Subsubsection" b
 \subsubsection*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% F}O}L}D
+% unnumbered subsubsection ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:$1$2$3)/g} (end) F}O}L}D
 $0
 endsnippet
 
 snippet not "Notation" b
 % Notation
-\begin{notation}[$1]\label{$2}% F{O{L{D
+\begin{notation}[$1]\label{notn$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{notation}% F}O}L}D
 $0
@@ -9459,7 +9459,7 @@ endsnippet
 
 snippet def "Definition" b
 % Definition
-\begin{definition}[$1]\label{$2}% F{O{L{D
+\begin{definition}[$1]\label{defn$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{definition}% F}O}L}D
 $0
@@ -9475,7 +9475,7 @@ endsnippet
 
 snippet thm "Theorem" b
 % Theorem
-\begin{theorem}[$1]\label{$2}% F{O{L{D
+\begin{theorem}[$1]\label{thm$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{theorem}% F}O}L}D
 % Proof
@@ -9487,7 +9487,7 @@ endsnippet
 
 snippet sthm "Statement of Theorem" b
 % StatementofTheorem
-\begin{theorem}[$1]\label{$2}% F{O{L{D
+\begin{theorem}[$1]\label{thm$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{theorem}% F}O}L}D
 $0
@@ -9503,7 +9503,7 @@ endsnippet
 
 snippet lem "Lemma" b
 % Lemma
-\begin{lemma}[$1]\label{$2}% F{O{L{D
+\begin{lemma}[$1]\label{lem$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{lemma}% F}O}L}D
 % Proof
@@ -9515,7 +9515,7 @@ endsnippet
 
 snippet slem "Statement of Lemma" b
 % StatementofLemma
-\begin{lemma}[$1]\label{$2}% F{O{L{D
+\begin{lemma}[$1]\label{lem$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{lemma}% F}O}L}D
 $0
@@ -9531,7 +9531,7 @@ endsnippet
 
 snippet prop "Proposition" b
 % Proposition
-\begin{proposition}[$1]\label{$2}% F{O{L{D
+\begin{proposition}[$1]\label{prop$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{proposition}% F}O}L}D
 % Proof
@@ -9543,7 +9543,7 @@ endsnippet
 
 snippet sprop "Statement of Proposition" b
 % StatementofProposition
-\begin{proposition}[$1]\label{$2}% F{O{L{D
+\begin{proposition}[$1]\label{prop$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{proposition}% F}O}L}D
 $0
@@ -9559,7 +9559,7 @@ endsnippet
 
 snippet cor "Corollary" b
 % Corollary
-\begin{corollary}[$1]\label{$2}% F{O{L{D
+\begin{corollary}[$1]\label{cor$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{corollary}% F}O}L}D
 % Proof
@@ -9571,7 +9571,7 @@ endsnippet
 
 snippet scor "Statement of Corollary" b
 % StatementofCorollary
-\begin{corollary}[$1]\label{$2}% F{O{L{D
+\begin{corollary}[$1]\label{cor$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{corollary}% F}O}L}D
 $0
@@ -9582,26 +9582,6 @@ snippet ucor "Unnumbered Corollary" b
 \begin{ucorollary}[$1]% F{O{L{D
 	${2:${VISUAL}}
 \end{ucorollary}% F}O}L}D
-$0
-endsnippet
-
-snippet prob "Problem" b
-% Problem
-\begin{problem}[$1]% F{O{L{D
-	${2:${VISUAL}}
-\end{problem}% F}O}L}D
-% Solution
-\begin{solution}% F{O{L{D
-	${3:\bfseries\textcolor{red}{Write a solution}}
-\end{solution}% F}O}L}D
-$0
-endsnippet
-
-snippet sprob "Statement of Problem" b
-% Problem
-\begin{problem}[$1]% F{O{L{D
-	${2:${VISUAL}}
-\end{problem}% F}O}L}D
 $0
 endsnippet
 
@@ -9623,7 +9603,7 @@ endsnippet
 
 snippet rem "Remark" b
 % Remark
-\begin{remark}\label{$1}% F{O{L{D
+\begin{remark}\label{rem$1}% F{O{L{D
 	${2:${VISUAL}}
 \end{remark}% F}O}L}D
 $0
@@ -9639,7 +9619,7 @@ endsnippet
 
 snippet conj "Conjecture" b
 % Conjecture
-\begin{conjecture}[$1]\label{$2}% F{O{L{D
+\begin{conjecture}[$1]\label{conj$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{conjecture}% F}O}L}D
 $0
@@ -9647,7 +9627,7 @@ endsnippet
 
 snippet ex "Example" b
 % Example
-\begin{example}\label{$1}
+\begin{example}\label{eg$1}
 	${2:${VISUAL}}
 \end{example}
 $0
@@ -9655,9 +9635,29 @@ endsnippet
 
 snippet exc "Exercise" b
 % Exercise
-\begin{exercise}\label{$1}
+\begin{exercise}\label{exc$1}
 	${2:${VISUAL}}
 \end{exercise}
+$0
+endsnippet
+
+snippet prob "Problem" b
+% Problem
+\begin{problem}[$1]% F{O{L{D
+	${2:${VISUAL}}
+\end{problem}% F}O}L}D
+% Solution
+\begin{solution}% F{O{L{D
+	${3:\bfseries\textcolor{red}{Write a solution}}
+\end{solution}% F}O}L}D
+$0
+endsnippet
+
+snippet sprob "Statement of Problem" b
+% Problem
+\begin{problem}[$1]% F{O{L{D
+	${2:${VISUAL}}
+\end{problem}% F}O}L}D
 $0
 endsnippet
 
