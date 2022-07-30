@@ -1,4 +1,3 @@
-
 %-------------------------------------------------------------------
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
@@ -7,7 +6,7 @@
 %-------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Thin Formal Letter
+% Thin Formal Letter % F{O{L{D
 % LaTeX Template
 % Version 1.11 (8/12/12)
 %
@@ -20,13 +19,19 @@
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% F}O}L}D
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 %	DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 
-\documentclass{letter}
+\documentclass[10pt,a4paper]{letter}% F{O{L{D
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
 
 % Adjust margins for aesthetics
 \addtolength{\voffset}{-0.5in}
@@ -35,11 +40,11 @@
 
 %\longindentation=0pt % Un-commenting this line will push the closing "Sincerely," to the left of the page
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 %	YOUR NAME & ADDRESS SECTION
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 
-\signature{MAHBUB ALAM} % Your name for the signature at the bottom
+\signature{MAHBUB ALAM,\\ Rum ÅNG 14242, \\ Lägerhyddsvägen 1, Hus 1, 6 och 7, \\ Box 480, 751 06 Uppsala}
 
 % Your address and phone number
 \address{Office A-365,\\
@@ -48,27 +53,28 @@
     Postal address: Box 480, 751 06 Uppsala, \\
 Mobile: +46736925601}
 
-%----------------------------------------------------------------------------------------
+% F}O}L}D
+
+%-------------------------------------------------------------------
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 %	ADDRESSEE SECTION
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
 
 % Name/title of the addressee
 \begin{letter}{To,\\
-        The {{CURSOR}}
+        The <++>
     }
 
-    %----------------------------------------------------------------------------------------
-    %	LETTER CONTENT SECTION
-    %----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%-------------------------------------------------------------------
 
     \opening{Dear Sir,}
 
-    I am a 4th year student at School of Mathematics, TIFR.
-    I also need your approval to take travel expenses from my student travel grant, which will be less than ten thousand rupees (10,000/-).
+    <++>
 
 
     \vspace{2\parskip} % Extra whitespace for aesthetics
