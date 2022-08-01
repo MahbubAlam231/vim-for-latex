@@ -7,7 +7,7 @@
 
 " Folding in LaTeX-Box or in vimtex like in LaTeX-Suite{{{
 
-" My modification of @petobens (https://tex.stackexchange.com/users/9953/petobens) folding method.
+" My modification of @petobens (https://tex.stackexchange.com/a/130826/154271) folding method.
 
 " I've (@petobens https://tex.stackexchange.com/users/9953/petobens) modified Latex-Box (excellent) folding in two ways: i) since I only like to fold sections (parts, chapters, etc), the abstract environment and frames (in beamer class) I've added a new variable g:LatexBox_folded_environments that controls which environments are folded ii) I changed the LatexBox_FoldText() to resemble Latex-Suite.
 
@@ -709,9 +709,9 @@ function! LatexBox_FoldText()
         " Capture the whole line for helper-folds
         let primarytitle = matchstr(line, '^\s*%h \zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
 
-        " Making helper-folds at max 125-character
-        if len(primarytitle) > 119
-            let title = '[H] - ' . printf('%.116s', primarytitle) . '...'
+        " Making helper-folds at max 120-character
+        if len(primarytitle) > 114
+            let title = '[H] - ' . printf('%.111s', primarytitle) . '...'
             " Don't mess up my preamble fold-titles
             " elseif line =~ '% Packages'
             "     let title = 'Packages'
