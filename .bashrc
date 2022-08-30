@@ -160,10 +160,10 @@ od() {
     cd $HOME && find . \( -path ./.config/enchant -o -path ./.cache/dconf -o -path ./.gvfs -o -path ./.vim/tmp \) -prune -o -print | fzf --query=$@ --bind "enter:execute(xdg-open {}),ctrl-o:execute(xdg-open ./{})"
 }
 
-# # Select directory
-# sd() {
-#     cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,enter:execute(xdg-open {})" )"
-# }
+# Select directory
+sd() {
+    cd $HOME && cd "$(du --exclude=./.gvfs --exclude=./.cache --exclude=./.config/enchant | awk '{print $2}' | fzf --query=$@ --preview="tree -L 1 {}" --bind="f9:toggle-preview,enter:execute(xdg-open {})" )"
+}
 
 # Select file inside directory
 ofd() {
