@@ -23,6 +23,8 @@ set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 " set clipboard=unnamed                 " Clipboard support (OSX)
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
+set dictionary=+/usr/share/dict/sv    " adding new dictionaries
+" set dictionary=+/usr/share/dict/sv.cwl  " adding new dictionaries
 set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
 set ttyfast                           " Send more characters in fast terminals
@@ -1216,8 +1218,8 @@ nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us,svenska
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add,~/.vim/spell/svenska.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
