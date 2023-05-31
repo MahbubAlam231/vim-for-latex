@@ -9700,7 +9700,7 @@ endsnippet
 
 snippet eq "Equation" b
 % Equation
-\begin{equation}\label{$1}
+\begin{equation}\label{eq:$1}
 	${2:${VISUAL}}
 \end{equation}
 $0
@@ -9716,7 +9716,7 @@ endsnippet
 
 snippet aligneq "Aligned Equation" b
 % AlignedEquation
-\begin{equation}\label{$1}
+\begin{equation}\label{eq:$1}
 	\begin{split}
 		${2:${VISUAL}}
 	\end{split}
@@ -9725,6 +9725,26 @@ $0
 endsnippet
 
 snippet ualigneq "Unnumbered Aligned Equation" b
+% UnnumberedAlignedEquation
+\begin{equation*}
+	\begin{split}
+		${1:${VISUAL}}
+	\end{split}
+\end{equation*}
+$0
+endsnippet
+
+snippet aleq "Aligned Equation" b
+% AlignedEquation
+\begin{equation}\label{eq:$1}
+	\begin{split}
+		${2:${VISUAL}}
+	\end{split}
+\end{equation}
+$0
+endsnippet
+
+snippet ualeq "Unnumbered Aligned Equation" b
 % UnnumberedAlignedEquation
 \begin{equation*}
 	\begin{split}
@@ -9756,7 +9776,7 @@ endsnippet
 
 snippet gathereq "Gathered Equation" b
 % GatheredEquation
-\begin{equation}\label{$1}
+\begin{equation}\label{eq:$1}
 	\begin{gathered}
 		${2:${VISUAL}}
 	\end{gathered}
@@ -9765,6 +9785,26 @@ $0
 endsnippet
 
 snippet ugathereq "Unnumbered Gathered Equation" b
+% UnnumberedGatheredEquation
+\begin{equation*}
+	\begin{gathered}
+		${1:${VISUAL}}
+	\end{gathered}
+\end{equation*}
+$0
+endsnippet
+
+snippet gaeq "Gathered Equation" b
+% GatheredEquation
+\begin{equation}\label{eq:$1}
+	\begin{gathered}
+		${2:${VISUAL}}
+	\end{gathered}
+\end{equation}
+$0
+endsnippet
+
+snippet ugaeq "Unnumbered Gathered Equation" b
 % UnnumberedGatheredEquation
 \begin{equation*}
 	\begin{gathered}
@@ -10483,8 +10523,16 @@ snippet tc "Text color"
 \textcolor{${1:red}}\{${2:${VISUAL}}\}$0
 endsnippet
 
+snippet tr "Text color red"
+\textcolor{red}\{${2:${VISUAL}}\}$0
+endsnippet
+
 snippet tbc "Text color in bold"
 \textcolor{${1:red}}{\textbf{$2}}$0
+endsnippet
+
+snippet tbr "Text color red in bold"
+\textcolor{red}{\textbf{$2}}$0
 endsnippet
 
 snippet quo "Single quoting visually selected text"

@@ -47,7 +47,7 @@ Abolish aew almost everywhere
 Abolish alg{,s,ic} algebra{,s,ic}
 Abolish appl{n,ns,ble} applica{tion,tions,ble}
 Abolish arb arbitrary
-Abolish {approx,appr,apr}{n,ns,e,te,es,ed,g,ble} {approxima,approxima,approxima}{tion,tions,te,te,tes,ted,ting,ble}
+Abolish {approx,apprx,appr,aprx,apr}{n,ns,e,te,es,ed,g,ble} {approxima,approxima,approxima,approxima,approxima}{tion,tions,te,te,tes,ted,ting,ble}
 
 "}}}
 "B{{{

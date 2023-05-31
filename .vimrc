@@ -23,7 +23,7 @@ set autoread                          " Auto reload changed files
 set wildmenu                          " Tab autocomplete in command mode
 " set clipboard=unnamed                 " Clipboard support (OSX)
 set backspace=indent,eol,start        " http://vi.stackexchange.com/a/2163
-set dictionary=+/usr/share/dict/sv    " adding new dictionaries
+" set dictionary+=$HOME/.local/share/dict/sv    " adding new dictionaries
 " set dictionary=+/usr/share/dict/sv.cwl  " adding new dictionaries
 set nopaste                           " No pasting from other application in GUI
 set lazyredraw                        " Reduce the redraw frequency
@@ -1218,8 +1218,9 @@ nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
 
 augroup Spelling
     autocmd!
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us,svenska
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add,~/.vim/spell/svenska.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
+    " autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=sv
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
@@ -1227,6 +1228,63 @@ augroup Spelling
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwn zw]szz
 augroup end
 
+" FixLastSpellingError
+function! FixLastSpellingError()
+    :normal! mf[s1z=`f
+endfunction
+
+nnoremap <buffer> <silent> <localleader>fs :call FixLastSpellingError()<cr>
+inoremap <buffer> <silent> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
+
+" Toggling languages (en,sv){{{
+
+let s:lang_toggle=0
+function! LangToggle()
+    if s:lang_toggle
+        " Use english_US
+        let s:lang_toggle=0
+        setlocal spell spelllang=en_us
+        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    else
+        " Use svenska
+        let s:lang_toggle=1
+        setlocal spell spelllang=sv
+        setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    endif
+endfunction
+
+nnoremap <buffer> <localleader>lt :call LangToggle()<cr>
+
+function! SpellLang(lang)
+    if a:lang != 'en' && a:lang != 'sv'
+        let l:lang = input("Which Language: ")
+    else
+        let l:lang = a:lang
+    endif
+
+    "en
+    if l:lang == "en"
+        setlocal spell spelllang=en_us
+        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+
+        "sv
+    elseif l:lang == "sv"
+        setlocal spell spelllang=sv
+        setlocal spellfile=~/.vim/spell/sv.utf-8.add
+
+        "invalid Language
+    elseif l:lang != 'en' && l:lang != 'sv'
+        echom " <-- Not a valid Language"
+    endif
+
+endfunction
+
+nnoremap <buffer> <localleader>en :call SpellLang("en")<cr>
+nnoremap <buffer> <localleader>sv :call SpellLang("sv")<cr>
+
+"}}}
+
+" Greater-than less-than toggle to find miss-spelled words
 let s:gtlt_toggle=0
 function! GtLtToggle()
     if s:gtlt_toggle
@@ -1251,14 +1309,6 @@ endfunction
 nnoremap <buffer> <localleader>< :call GtLtToggle()<cr>
 nnoremap <buffer> <localleader>> :call GtLtToggle()<cr>
 
-" FixLastSpellingError
-function! FixLastSpellingError()
-    :normal! mf[s1z=`f
-endfunction
-
-nnoremap <buffer> <silent> <localleader>fs :call FixLastSpellingError()<cr>
-inoremap <buffer> <silent> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
-
 "}}}
 " Substitute/change{{{
 "-------------------------------------------------------------------
@@ -1281,7 +1331,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*F}O}L}D')
 augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
@@ -1807,6 +1857,66 @@ nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`wzv
 nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
 
 "}}}
+" Word Highlight{{{
+"
+" This mini-plugin provides a few mappings for highlighting words temporarily.
+"
+" Sometimes you're looking at a hairy piece of code and would like a certain
+" word or two to stand out temporarily.  You can search for it, but that only
+" gives you one color of highlighting.  Now you can use <leader>N where N is
+" a number from 1-6 to highlight the current word in a specific color.
+
+function! HiInterestingWord(n) "{{{
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction "}}}
+" Mappings{{{
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
+
+nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
+nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
+nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
+nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
+nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
+nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
+
+"}}}
+" Default Highlights{{{
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+
+"}}}
+
+"}}}
 
 "}}}
 
@@ -1902,9 +2012,8 @@ augroup SourceEverythingForTeX
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
     autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
     " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>a
-    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr>
-
+    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>a
+    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>
 augroup end
 
 " Sourcing everything for tex
@@ -1926,7 +2035,7 @@ nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/
 nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{O{L{D/g<cr><cr>
 
 " Editing tex in vimrc
-nnoremap <buffer> <localleader>et 1882Gzvzz
+nnoremap <buffer> <localleader>et 2018Gzvzz
 
 "}}}
 " SourceEverythingForVimwiki{{{
