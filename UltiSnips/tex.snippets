@@ -10130,6 +10130,51 @@ endsnippet
 
 
 #}}}
+# Beamer frames and bibliography{{{
+
+snippet fra
+% Frame
+\begin{frame}{$1}% F{O{L{D
+	${2:${VISUAL}}
+\end{frame}% F}O}L}D
+endsnippet
+
+snippet infra
+
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{$1}% F{O{L{D$2
+endsnippet
+
+snippet inf "insert frame/break frame into two here"
+
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{$1}% F{O{L{D$2
+endsnippet
+
+snippet afb "allowframebreaks" w
+[allowframebreaks]$0
+endsnippet
+
+snippet frabib "Beamer bibliography" b
+% Frame
+\begin{frame}[allowframebreaks]{References}% F{O{L{D
+	% Bibliography
+	\bibliographystyle{alpha}
+	\bibliography{${1:bib}}
+\end{frame}% F}O}L}D
+$0
+endsnippet
+
+snippet bib "Bibliography" b
+% Bibliography
+\bibliographystyle{alpha}
+\bibliography{${1:bib}}
+$0
+endsnippet
+
+#}}}
 # Other Environments (SES, Commutative Diagram etc){{{
 #-------------------------------------------------------------------
 
@@ -10203,6 +10248,16 @@ snippet app "Application" b
 \end{enumerate}
 endsnippet
 
+snippet comd "Making commutative diagram" b
+\[
+	\xymatrix{
+		% X \ar@/_/[ddr]_{x} \ar@/^/[drr]^y \ar@{>}[dr]^z \\
+		% & A \ar[r]^a \ar[d]_{b} & B \ar[d]_{d}\\
+		$1
+		}
+\]
+$0
+endsnippet
 
 snippet tikzcd
 % figure
@@ -10278,32 +10333,6 @@ snippet homotopy
 \noindent
 endsnippet
 
-snippet fra
-% Frame
-\begin{frame}{$1}% F{O{L{D
-	${2:${VISUAL}}
-\end{frame}% F}O}L}D
-endsnippet
-
-snippet infra
-
-\end{frame}% F}O}L}D
-% Frame
-\begin{frame}{$1}% F{O{L{D$2
-endsnippet
-
-snippet inf
-
-\end{frame}% F}O}L}D
-% Frame
-\begin{frame}{$1}% F{O{L{D$2
-endsnippet
-
-snippet afb "allowframebreaks" w
-[allowframebreaks]$0
-endsnippet
-
-
 snippet scope
 \begin{scope}
 	$1
@@ -10331,23 +10360,6 @@ snippet fig "Figure"
 	\caption{$2}
 	\label{$3}
 \end{figure}
-$0
-endsnippet
-
-snippet bib "Bibliography" b
-% Bibliography
-\bibliographystyle{alpha}
-\bibliography{${1:bib}}
-$0
-endsnippet
-
-snippet frabib "Beamer bibliography" b
-% Frame
-\begin{frame}[allowframebreaks]{References}% F{O{L{D
-	% Bibliography
-	\bibliographystyle{alpha}
-	\bibliography{${1:bib}}
-\end{frame}% F}O}L}D
 $0
 endsnippet
 

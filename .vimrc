@@ -878,7 +878,7 @@ augroup end
 " Calculator{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> <C-B> <C-O>yiW<End> = <C-R>=<C-R>0<cr>
+inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
 "}}}
 " Colorschemes{{{
@@ -1149,7 +1149,7 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 "-------------------------------------------------------------------
 
 " Ctrl-BS in vim
-noremap <C-BS> :noh<cr>
+noremap! <c-h> <c-w>
 " noremap! <buffer> <C-BS> vbc
 
 " Indenting whole environment in tex
@@ -1219,7 +1219,6 @@ nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
 augroup Spelling
     autocmd!
     autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
-    " autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=sv
     autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
@@ -1236,7 +1235,13 @@ endfunction
 nnoremap <buffer> <silent> <localleader>fs :call FixLastSpellingError()<cr>
 inoremap <buffer> <silent> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
 
-" Toggling languages (en,sv){{{
+" Toggling languages (en, sv){{{
+
+augroup SwedishFiles
+    autocmd!
+    autocmd BufRead,BufNewFile *-sv.md setlocal spell spelllang=sv
+    autocmd BufRead,BufNewFile *-sv.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+augroup end
 
 let s:lang_toggle=0
 function! LangToggle()
@@ -2180,7 +2185,9 @@ augroup WriteNewBuf
 augroup end
 
 nnoremap <buffer> <silent> <localleader>w mm:w!<cr>`m
+nnoremap <buffer> <silent> <localleader>ww mm:w!<cr>`m
 inoremap <buffer> <silent> ;w <esc>mm:w!<cr>`ma
+inoremap <buffer> <silent> ;ww <esc>mm:w!<cr>`ma
 
 augroup ContinuouslyWriteBuf
     autocmd!

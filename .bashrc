@@ -180,8 +180,8 @@ sf() {
 }
 
 # Select pdf
-ji() {
-    cd $HOME && fzf --query="$*" --bind "enter:execute(okular {})" --exit-0
+sp() {
+    cd $HOME && fzf --query="$@.pdf" --bind "enter:execute(okular {})" --exit-0
 }
 
 # Select directory inside directory (subdirectory)
@@ -212,49 +212,52 @@ lala() {
 ##}}}
 # My custom aliases{{{
 # Opening frequent files
-alias    v='vim'
-alias   v.='vim .'
-alias   vc='vim ~/.vimrc'
-alias   tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
-alias   ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
-alias   pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
-alias   gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
-alias   ts='vim ~/.vim/UltiSnips/tex.snippets'
-alias   ps='vim ~/.vim/UltiSnips/python.snippets'
-alias    w='vim ~/vimwiki/index.md'
-alias   vz='vim `fzf`'
-alias   ss='s'
-alias   sv='savevim'
-alias   cv='commitvim'
-alias   cw='commitwiki'
-alias   cb='commitbin'
-alias    h='happy'
+alias      v='vim'
+alias     v.='vim .'
+alias     vc='vim ~/.vimrc'
+alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+alias     ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
+alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
+alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
+alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
+alias     ps='vim ~/.vim/UltiSnips/python.snippets'
+alias      w='vim ~/vimwiki/index.md'
+alias     vz='vim `fzf`'
+alias     ss='s'
+alias     sv='savevim'
+alias     cv='commitvim'
+alias     cw='commitwiki'
+alias     cb='commitbin'
+alias     ca='commitall'
+alias      h='happy'
 
-alias    p='python3'
-alias   pr='python3 `fzf`'
-alias   pz='python3 `fzf`'
-alias   pf='python3 `fzf`'
-alias  pip='pip3'
+alias      p='python3'
+alias     pr='python3 `fzf`'
+alias     pz='python3 `fzf`'
+alias     pf='python3 `fzf`'
+alias    pip='pip3'
 
-alias  pmr='python ~/python-code/movie_rating.py'
+alias    pmr='python ~/python-code/movie_rating.py'
 
 # shell commands
-alias    c='clear'
-alias    q='exit'
-alias   ,q='exit'
-alias   dl='trash'
-alias  tra='trash'
-alias  tre='trash-restore'
-alias   tl='trash-list'
+alias      c='clear'
+alias      q='exit'
+alias     ,q='exit'
+alias     dl='trash'
+alias    tra='trash'
+alias    tre='trash-restore'
+alias     tl='trash-list'
 
-alias   ob='vim ~/.bashrc'
-alias   sb='source ~/.bashrc'
-alias   op='vim ~/.profile'
-alias   sp='source ~/.profile'
+alias     ob='vim ~/.bashrc'
+alias     sb='source ~/.bashrc'
+alias     op='vim ~/.profile'
+# alias     sp='source ~/.profile'
 
-alias   sa='sudo apt '
-alias   in='sudo apt install '
-alias   up='sudo apt update '
-alias   re='sudo apt remove '
-alias   ar='sudo apt autoremove '
+alias     sa='sudo apt '
+alias     in='sudo apt install '
+alias     up='sudo apt update '
+alias     re='sudo apt remove '
+alias     ar='sudo apt autoremove '
+alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
+
 #}}}
