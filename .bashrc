@@ -254,10 +254,11 @@ alias     op='vim ~/.profile'
 # alias     sp='source ~/.profile'
 
 alias     sa='sudo apt '
-alias     in='sudo apt install '
-alias     up='sudo apt update '
-alias     re='sudo apt remove '
-alias     ar='sudo apt autoremove '
+alias     in='sudo apt install'
+alias     up='sudo apt update'
+alias     ug='sudo apt upgrade'
+alias     re='sudo apt remove'
+alias     ar='sudo apt autoremove'
 alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
 #}}}

@@ -50,11 +50,14 @@
 % \usepackage{tfrupee}
 \usepackage{thmtools}
 \usepackage{tikz}
+\usetikzlibrary{cd}
 % \usepackage{titlesec}
 % \usepackage{titling}
 \usepackage[normalem]{ulem}%for writing a underlined text
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage[all,cmtip]{xy}
+\usepackage{xfrac}
 % \usepackage[dvipsnames]{xcolor}
 % \usepackage{yfonts}
 
@@ -128,8 +131,11 @@
 
 \renewcommand{\d}{\dd}
 
+\newcommand{\bs}{\backslash}
+
 \DeclareMathOperator*{\vol}{vol}
 \DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator{\diag}{diag}
 
 % Numbering of equations
 %-------------------------------------------------------------------
@@ -171,10 +177,12 @@
 
 \maketitle
 
-
-
 <++>
 
+
+% Bibliography
+\bibliographystyle{alpha}
+\bibliography{bib}
 
 \end{document}
 

@@ -19,8 +19,9 @@ snippet art "article bib" b
    mrclass = {$11},
   mrnumber = {$12},
 mrreviewer = {$13},
-       doi = {$14},
-       url = {\url{$15}}
+      note = {$14},
+       doi = {$15},
+       url = {\url{$16}}
 }
 $0
 endsnippet
@@ -43,9 +44,11 @@ snippet book "book bib" b
       year = {$5},
  publisher = {$6},
    address = {$7},
-      isbn = {$8},
-       doi = {$9},
-       url = {$10}
+    series = {$8},
+      note = {$9},
+      isbn = {$10},
+       doi = {$11},
+       url = {\url{$12}}
 }
 $0
 endsnippet
@@ -63,7 +66,7 @@ snippet phdthesis "phdthesis bib" b
 @phdthesis{$1,
     author = {$2},
      title = "{$3}",
-       url = {$4}
+       url = {\url{$4}}
   }
 $0
 endsnippet

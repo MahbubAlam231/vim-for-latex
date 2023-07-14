@@ -61,6 +61,7 @@ inoremap <buffer> \|\| \|
 inoremap <buffer> '' `'<left>
 inoremap <buffer> "" ``''<left><left>
 
+inoremap <buffer> ;b0 \bm{0}
 inoremap <buffer> ;b1 \mathbbm{1}
 
 " let s:gtlt_toggle_for_tex=0
@@ -303,7 +304,7 @@ inoremap <buffer> <localleader>okx \mathcal{O}_K^{\times}
 inoremap <buffer> <localleader>ok. \mathcal{O}_K^{}<left>
 
 "}}}
-" Adele{{{
+" Adeles{{{
 
 inoremap <buffer> <localleader>a \mathbb{A}
 inoremap <buffer> <localleader>aa \mathbb{A}^2
@@ -312,6 +313,24 @@ inoremap <buffer> <localleader>am \mathbb{A}^{m}
 inoremap <buffer> <localleader>ad \mathbb{A}^{d}
 inoremap <buffer> <localleader>ak \mathbb{A}^{k}
 inoremap <buffer> <localleader>a. \mathbb{A}^{}<left>
+
+" Adeles over Q
+inoremap <buffer> <localleader>aq \mathbb{A}_\mathbb{Q}
+inoremap <buffer> <localleader>aqq \mathbb{A}_\mathbb{Q}^2
+inoremap <buffer> <localleader>aqn \mathbb{A}_\mathbb{Q}^{n}
+inoremap <buffer> <localleader>aqm \mathbb{A}_\mathbb{Q}^{m}
+inoremap <buffer> <localleader>aqd \mathbb{A}_\mathbb{Q}^{d}
+inoremap <buffer> <localleader>aqk \mathbb{A}_\mathbb{Q}^{k}
+inoremap <buffer> <localleader>aq. \mathbb{A}_\mathbb{Q}^{}<left>
+
+" Adeles over F
+inoremap <buffer> <localleader>af \mathbb{A}_F
+inoremap <buffer> <localleader>aff \mathbb{A}_F^2
+inoremap <buffer> <localleader>afn \mathbb{A}_F^{n}
+inoremap <buffer> <localleader>afm \mathbb{A}_F^{m}
+inoremap <buffer> <localleader>afd \mathbb{A}_F^{d}
+inoremap <buffer> <localleader>afk \mathbb{A}_F^{k}
+inoremap <buffer> <localleader>af. \mathbb{A}_F^{}<left>
 
 "}}}
 " Tori{{{
@@ -2980,11 +2999,17 @@ inoremap <buffer> <localleader>/ \frac{}{}<esc>F}i
 inoremap <buffer> ;1/ \frac{1}{}<left>
 inoremap <buffer> ;2/ \frac{2}{}<left>
 inoremap <buffer> ;3/ \frac{3}{}<left>
+inoremap <buffer> <localleader>d/ \dfrac{}{}<esc>F}i
+inoremap <buffer> <localleader>s/ \sfrac{}{}<esc>F}i
 
 inoremap <buffer> <localleader>no \norm{}<left>
+inoremap <buffer> <localleader>ab \abs{}<left>
+inoremap <buffer> <localleader>abs \abs{}<left>
 
 inoremap <buffer> <localleader>wt \widetilde{}<left>
-inoremap <buffer> <localleader>~ \widetilde{}<left>
+inoremap <buffer> <localleader>~ \sim
+inoremap <buffer> <localleader>` \sim
+inoremap <buffer> <localleader>`` \sim<esc>A
 inoremap <buffer> <localleader>jt \tilde{}<left>
 
 inoremap <buffer> <localleader>wh \widehat{}<left>

@@ -705,13 +705,15 @@ function! LatexBox_FoldText()
     " Helper folds{{{
     " Put 'h' after '%' in the commented line to get helper-folds
 
-    if line =~ '^\s*%h '
+    if line =~ '\*\?\s*%\( \)*h\( \)*'
         " Capture the whole line for helper-folds
-        let primarytitle = matchstr(line, '^\s*%h \zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+        let primarytitleB = matchstr(line, '^\s*\zs.\{-}\ze\( \)*%\( \)*h\(\( \)*\(%\)*\)*F{O{L{D')
+        let primarytitleE = matchstr(line, '\*\?\s*%\( \)*h\( \)*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+        let primarytitle = primarytitleB . primarytitleE
 
         " Making helper-folds at max 120-character
         if len(primarytitle) > 114
-            let title = '[H] - ' . printf('%.111s', primarytitle) . '...'
+            let title = '[HELPER] - ' . printf('%.111s', primarytitle) . '...'
             " Don't mess up my preamble fold-titles
             " elseif line =~ '% Packages'
             "     let title = 'Packages'
@@ -720,7 +722,7 @@ function! LatexBox_FoldText()
             " elseif line =~ '% Newcommands'
             "     let title = 'Newcommands'
         else
-            let title = '[H] - ' . primarytitle
+            let title = '[HELPER] - ' . primarytitle
         endif
     endif
 
@@ -729,9 +731,9 @@ function! LatexBox_FoldText()
     " Commented-folds{{{
     " Put 'c' after '%' in the commented line to get commented-folds
 
-    if line =~ '^\s*%c '
+    if line =~ '^\s*%\( \)*c\( \)*'
         " Capture the whole line for commented-folds
-        let primarytitle = matchstr(line, '^\s*%c \zs.\{-}\zeF{O{L{D')
+        let primarytitle = matchstr(line, '^\s*%\( \)*c\( \)*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
 
         " Making commented-folds at max 120-character
         if len(primarytitle) > 120

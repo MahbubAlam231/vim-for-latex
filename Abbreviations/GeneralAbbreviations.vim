@@ -81,7 +81,7 @@ Abolish {cpt,cmpt}{,fication,ficatn,fy,g,fyg,ly,ness} {compact,compact}{,ificati
 "D{{{
 
 Abolish def{n,ns,d,g} defin{ition,itions,ed,ing}
-Abolish dep{,e,y,ly,g,ble,bility} depend{ent,ence,ency,ently,ing,able,ability}
+Abolish dep{,t,e,y,ly,g,ble,bility} depend{,ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
@@ -96,9 +96,9 @@ Abolish dyn{,s,l} dynamic{,s,al}
 "E{{{
 
 Abolish el{,s,y} element{,s,ary}
+Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 Abolish {equi,eq}cont{,y,ly} {equicontinu,equicontinu}{ous,ity,ously}
 Abolish {equidistr,eqdistr,equid}{,e,es,n,ns,d} {equidistribut,equidistribut}{e,e,es,ion,ions,ed}
-Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 
 "}}}
 "F{{{
@@ -118,6 +118,7 @@ Abolish gp{,s,g} group{,s,ing}
 "}}}
 "H{{{
 
+Abolish hdf{,f} hausdorff{,}
 Abolish homeo{,s,c,cally} homeomorphi{sm,sms,c,cally}
 Abolish homog{,ly,y} homogene{ous,ously,ity}
 Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
@@ -125,18 +126,20 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 "}}}
 "I{{{
 
-Abolish ind{ep,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
+Abolish ind{ep,ept,epe,epy,ly,eply} independ{,ent,ence,ency,ently,ently}
 Abolish ineq{n,ns,,y,ty,ies,s} inequa{tion,tions,lity,lity,lity,lities,lities}
 Abolish inf{e,te,y,ly,mal} infini{te,te,ty,tely,simal}
-Abolish inj{,n,e,ve,ity,y,ly} injecti{on,on,ve,ve,vity,vity,ly}
+Abolish inj{,n,e,ve,ity,ty,y,ly} injecti{on,on,ve,ve,vity,vity,vity,ly}
 Abolish insuff{,ly} insufficient{,ly}
-Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
+Abolish intr{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
 Abolish irred{,y} irreducib{le,ility}
 Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
 
 "}}}
 "L{{{
 
+Abolish lch{,s,ses,sep,seps,sepses} locally compact hausdorff{, space, spaces, separable, separable space, separable spaces}
+Abolish lch{gp,gps,sepgp,sepgps} locally compact hausdorff {group,groups,separable group,separable groups}
 Abolish lem{,s} lemma{,s}
 
 "}}}
@@ -183,29 +186,29 @@ Abolish seq{,s,l,ly} sequen{ce,ces,tial,tially}
 Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{n,s,ns} solution{,s,s}
 Abolish sp{,es} space{,s}
-Abolish ssec{n,ns} subsection{,s}
-Abolish sssec{n,ns} subsubsection{,s}
 Abolish st such that
-Abolish subalg{,s,ic} subalgebra{,s,ic}
-Abolish subcoll{ection,n,ns} sub-collection{,,ns}
-Abolish subgph{,s} subgraph{,s}
-Abolish subgp{,s} subgroup{,s}
-Abolish subseq{,s,l,ly} subsequen{ce,ces,tial,tially}
-Abolish subsp{,s} subspace{,s}
 Abolish suff{,ly} sufficient{,ly}
-Abolish surj{,n,e,ve,ity,y,ly} surjecti{on,on,ve,ve,vity,vity,ly}
+Abolish surj{,n,e,ve,ity,ty,y,ly} surjecti{on,on,ve,ve,vity,vity,vity,ly}
+Abolish {sub,s}alg{,s,ic} subalgebra{,s,ic}
+Abolish {sub,s}coll{ection,n,ns} sub-collection{,,ns}
+Abolish {sub,s}gph{,s} subgraph{,s}
+Abolish {sub,s}gp{,s} subgroup{,s}
+Abolish {sub,s}sec{n,ns} subsection{,s}
+Abolish {sub,s}seq{,s,l,ly} subsequen{ce,ces,tial,tially}
+Abolish {sub,s}sp{,es} subspace{,s}
+Abolish {subsub,ss}sec{n,ns} subsubsection{,s}
 
 "}}}
 "T{{{
 
 Abolish taht that
-Abolish {teh,hte} {the,the}
 Abolish tehn then
+Abolish te{,s} there exist{,s}
 Abolish tf therefore
-Abolish thm{,s} theorem{,s}
+Abolish thrm{,s} theorem{,s}
 Abolish thr{y,es,c} theor{y,ies,etic}
-Abolish top{y,cal,cally,sp,sps} topolog{y,ical,ically,ical space,ical spaces}
-Abolish tx{,s} there exist{,s}
+Abolish top{y,l,cal,cally,sp,spes,gp,gps} topolog{y,ical,ical,ically,ical space,ical spaces,ical group,ical groups}
+Abolish {teh,hte} {the,the}
 
 "}}}
 "U{{{
@@ -218,7 +221,7 @@ Abolish uni{e,ty,ties} univers{e,ity,ities}
 "}}}
 "V{{{
 
-Abolish vsp{,s} vector space{,s}
+Abolish vsp{,es} vector space{,s}
 
 "}}}
 "W{{{

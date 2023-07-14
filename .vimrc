@@ -79,7 +79,7 @@ let maplocalleader=","
 inoremap <buffer> <> <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
 inoremap <buffer> <L <><esc>ileader<esc>la
-inoremap <buffer> <localleader>ll <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader><localleader>ll <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
 inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
@@ -325,7 +325,7 @@ let g:tex_flavor = 'latex'
 let g:vimtex_compiler_latexmk = {
             \ 'backend' : 'process',
             \ 'background' : 1,
-            \ 'build_dir' : '',
+            \ 'out_dir' : '',
             \ 'callback' : 0,
             \ 'continuous' : 1,
             \ 'executable' : 'latexmk',
@@ -339,6 +339,14 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
+
+" let g:vimtex_view_method = 'zathura'
+" let g:vimtex_view_general_viewer = 'zathura'
+" let g:vimtex_compiler_progname = 'vim'
+
+" if empty(v:servername) && exists('*remote_startserver')
+"     call remote_startserver('VIM')
+" endif
 
 nmap <buffer> <leader>tc :VimtexCompile<cr>
 " nnoremap <buffer> <leader>tc <plug>(vimtex-view):VimtexCompile<cr>
@@ -778,7 +786,7 @@ let g:template_list = ["amsart", "article", "beamer", "c", "CMakeLists.txt", "cp
 
 "endfunction"}}}
 
-" nnoremap <buffer> <silent> <localleader>tem :TemplateInit
+nnoremap <buffer> <silent> <localleader>tem :TemplateAutoInit<cr>
 
 nnoremap <buffer> <silent> <localleader>art :TemplateInit article<cr>
 nnoremap <buffer> <silent> <localleader>ams :TemplateInit amsart<cr>
@@ -786,10 +794,10 @@ nnoremap <buffer> <silent> <localleader>rep :TemplateInit report<cr>
 nnoremap <buffer> <silent> <localleader>sh :TemplateInit sh<cr>
 
 " Placeholders <++>
-nnoremap <buffer> <c-j> /<++><cr>zMzv:noh<cr>cf>
-inoremap <buffer> <c-j> <esc>/<++><cr>zMzv:noh<cr>cf>
-nnoremap <buffer> <c-k> ?<++><cr>zMzv:noh<cr>cf>
-inoremap <buffer> <c-k> <esc>?<++><cr>zMzv:noh<cr>cf>
+nnoremap <buffer> <c-j> /<+\(.\)*+><cr>zMzv:noh<cr>cf>
+inoremap <buffer> <c-j> <esc>/<+\(.\)*+><cr>zMzv:noh<cr>cf>
+nnoremap <buffer> <c-k> ?<+\(.\)*+><cr>zMzv:noh<cr>cf>
+inoremap <buffer> <c-k> <esc>?<+\(.\)*+><cr>zMzv:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
@@ -1156,8 +1164,8 @@ noremap! <c-h> <c-w>
 " nnoremap <buffer> =ae mm=ae`m
 
 " Joining lines
-nnoremap <buffer> <localleader>J J
-vnoremap <buffer> <localleader>J J
+nnoremap <buffer> <localleader>j J
+vnoremap <buffer> <localleader>j J
 
 " Yank till the end of the line and clearing a line
 nnoremap <buffer> Y y$
@@ -1335,8 +1343,10 @@ augroup TeXHighlighting
     autocmd!
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%\( \)*\(h\|c\)\( \)*')
     autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
 augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149

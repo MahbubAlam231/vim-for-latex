@@ -18,6 +18,7 @@ then
 else
     mkdir $@
     cd $@
+    ln -s ~/Dropbox/main-bib.bib bib.bib
 fi
 
 if [ -f $@.tex ]
@@ -33,5 +34,6 @@ then
     fi
 else
     vim $@.tex
+    gio set $@.tex metadata::pinned-to-top true
 fi
 
