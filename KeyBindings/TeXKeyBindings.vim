@@ -332,6 +332,15 @@ inoremap <buffer> <localleader>afd \mathbb{A}_F^{d}
 inoremap <buffer> <localleader>afk \mathbb{A}_F^{k}
 inoremap <buffer> <localleader>af. \mathbb{A}_F^{}<left>
 
+" Adeles over K
+inoremap <buffer> <localleader>ak \mathbb{A}_K
+inoremap <buffer> <localleader>akk \mathbb{A}_K^2
+inoremap <buffer> <localleader>akn \mathbb{A}_K^{n}
+inoremap <buffer> <localleader>akm \mathbb{A}_K^{m}
+inoremap <buffer> <localleader>akd \mathbb{A}_K^{d}
+inoremap <buffer> <localleader>akk \mathbb{A}_K^{k}
+inoremap <buffer> <localleader>ak. \mathbb{A}_K^{}<left>
+
 "}}}
 " Tori{{{
 
@@ -359,10 +368,17 @@ inoremap <buffer> <localleader>h. \mathbb{H}^{}<left>
 
 inoremap <buffer> <localleader>cc. C_c()<left>
 inoremap <buffer> <localleader>ccx C_c(X)
+inoremap <buffer> <localleader>ccg C_c(G)
+inoremap <buffer> <localleader>ccgh C_c(G/H)
+
 inoremap <buffer> <localleader>cci C_c^{\infty}()<left>
 inoremap <buffer> <localleader>ccix C_c^{\infty}(X)
 
 inoremap <buffer> <localleader>ci C^{\infty}()<left>
+inoremap <buffer> <localleader>cir C^{\infty}(\mathbb{R})<left>
+inoremap <buffer> <localleader>cirr C^{\infty}(\mathbb{R}^2)<left>
+inoremap <buffer> <localleader>cird C^{\infty}(\mathbb{R}^d)<left>
+inoremap <buffer> <localleader>cirn C^{\infty}(\mathbb{R}^n)<left>
 
 inoremap <buffer> <localleader>l1. L^1()<left>
 inoremap <buffer> <localleader>l1x L^1(X)
@@ -376,28 +392,28 @@ inoremap <buffer> <localleader>lpx L^p(X)
 "}}}
 
 "}}}
-" Outside math mode{{{
-"-------------------------------------------------------------------
+"" Outside math mode{{{
+""-------------------------------------------------------------------
 
-inoremap <buffer> r<Space><Space> $\mathbb{R}$
+"inoremap <buffer> r<Space><Space> $\mathbb{R}$
 
-inoremap <buffer> n<Space><Space> $\mathbb{N}$
+"inoremap <buffer> n<Space><Space> $\mathbb{N}$
 
-inoremap <buffer> z<Space><Space> $\mathbb{Z}$
+"inoremap <buffer> z<Space><Space> $\mathbb{Z}$
 
-inoremap <buffer> q<Space><Space> $\mathbb{Q}$
+"inoremap <buffer> q<Space><Space> $\mathbb{Q}$
 
-inoremap <buffer> c<Space><Space> $\mathbb{C}$
+"inoremap <buffer> c<Space><Space> $\mathbb{C}$
 
-inoremap <buffer> k<Space><Space> $\mathbb{K}$
+"inoremap <buffer> k<Space><Space> $\mathbb{K}$
 
-inoremap <buffer> a<Space><Space> $\mathbb{A}$
+"inoremap <buffer> a<Space><Space> $\mathbb{A}$
 
-inoremap <buffer> t<Space><Space> $\mathbb{T}$
+"inoremap <buffer> t<Space><Space> $\mathbb{T}$
 
-inoremap <buffer> h<Space><Space> $\mathbb{H}$
+"inoremap <buffer> h<Space><Space> $\mathbb{H}$
 
-"}}}
+""}}}
 
 "}}}
 "" Matrix Groups{{{
@@ -1687,7 +1703,7 @@ inoremap <buffer> h<Space><Space> $\mathbb{H}$
 "-------------------------------------------------------------------
 
 " Toggle Matrix groups writing style
-let s:Matrix_group_toggle = 1
+let s:Matrix_group_toggle = 0
 
 function! MatrixGroupToggle()
     if s:Matrix_group_toggle
@@ -1794,6 +1810,36 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2a \M(2, \mathbb{A})
         inoremap <buffer> <localleader>m3a \M(3, \mathbb{A})
         inoremap <buffer> <localleader>m.a \M(, \mathbb{A})<esc>F,i
+
+        inoremap <buffer> <localleader>mmnaq \M_{m \times n}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m..aq \M_{}(\mathbb{A}_\mathbb{Q})<esc>F};i
+        inoremap <buffer> <localleader>mnaq \M(n, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>mmaq \M(m, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>mdaq \M(d, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>mkaq \M(k, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m2aq \M(2, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m3aq \M(3, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m.aq \M(, \mathbb{A}_\mathbb{Q})<esc>F,i
+
+        inoremap <buffer> <localleader>mmnaf \M_{m \times n}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>m..af \M_{}(\mathbb{A}_F)<esc>F};i
+        inoremap <buffer> <localleader>mnaf \M(n, \mathbb{A}_F)
+        inoremap <buffer> <localleader>mmaf \M(m, \mathbb{A}_F)
+        inoremap <buffer> <localleader>mdaf \M(d, \mathbb{A}_F)
+        inoremap <buffer> <localleader>mkaf \M(k, \mathbb{A}_F)
+        inoremap <buffer> <localleader>m2af \M(2, \mathbb{A}_F)
+        inoremap <buffer> <localleader>m3af \M(3, \mathbb{A}_F)
+        inoremap <buffer> <localleader>m.af \M(, \mathbb{A}_F)<esc>F,i
+
+        inoremap <buffer> <localleader>mmnak \M_{m \times n}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>m..ak \M_{}(\mathbb{A}_K)<esc>F};i
+        inoremap <buffer> <localleader>mnak \M(n, \mathbb{A}_K)
+        inoremap <buffer> <localleader>mmak \M(m, \mathbb{A}_K)
+        inoremap <buffer> <localleader>mdak \M(d, \mathbb{A}_K)
+        inoremap <buffer> <localleader>mkak \M(k, \mathbb{A}_K)
+        inoremap <buffer> <localleader>m2ak \M(2, \mathbb{A}_K)
+        inoremap <buffer> <localleader>m3ak \M(3, \mathbb{A}_K)
+        inoremap <buffer> <localleader>m.ak \M(, \mathbb{A}_K)<esc>F,i
 
         inoremap <buffer> <localleader>mmnok \M_{m \times n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>m..ok \M_{}(\mathcal{O}_K)<esc>F};i
@@ -1947,6 +1993,30 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl3a \GL(3, \mathbb{A})
         inoremap <buffer> <localleader>gl.a \GL(, \mathbb{A})<esc>F,i
 
+        inoremap <buffer> <localleader>glnaq \GL(n, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>glmaq \GL(m, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gldaq \GL(d, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>glkaq \GL(k, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl2aq \GL(2, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl3aq \GL(3, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl.aq \GL(, \mathbb{A}_\mathbb{Q})<esc>F,i
+
+        inoremap <buffer> <localleader>glnaf \GL(n, \mathbb{A}_F)
+        inoremap <buffer> <localleader>glmaf \GL(m, \mathbb{A}_F)
+        inoremap <buffer> <localleader>gldaf \GL(d, \mathbb{A}_F)
+        inoremap <buffer> <localleader>glkaf \GL(k, \mathbb{A}_F)
+        inoremap <buffer> <localleader>gl2af \GL(2, \mathbb{A}_F)
+        inoremap <buffer> <localleader>gl3af \GL(3, \mathbb{A}_F)
+        inoremap <buffer> <localleader>gl.af \GL(, \mathbb{A}_F)<esc>F,i
+
+        inoremap <buffer> <localleader>glnak \GL(n, \mathbb{A}_K)
+        inoremap <buffer> <localleader>glmak \GL(m, \mathbb{A}_K)
+        inoremap <buffer> <localleader>gldak \GL(d, \mathbb{A}_K)
+        inoremap <buffer> <localleader>glkak \GL(k, \mathbb{A}_K)
+        inoremap <buffer> <localleader>gl2ak \GL(2, \mathbb{A}_K)
+        inoremap <buffer> <localleader>gl3ak \GL(3, \mathbb{A}_K)
+        inoremap <buffer> <localleader>gl.ak \GL(, \mathbb{A}_K)<esc>F,i
+
         inoremap <buffer> <localleader>glnok \GL(n, \mathcal{O}_K)
         inoremap <buffer> <localleader>glmok \GL(m, \mathcal{O}_K)
         inoremap <buffer> <localleader>gldok \GL(d, \mathcal{O}_K)
@@ -2064,6 +2134,30 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2a \SL(2, \mathbb{A})
         inoremap <buffer> <localleader>sl3a \SL(3, \mathbb{A})
         inoremap <buffer> <localleader>sl.a \SL(, \mathbb{A})<esc>F,i
+
+        inoremap <buffer> <localleader>slnaq \SL(n, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>slmaq \SL(m, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sldaq \SL(d, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>slkaq \SL(k, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl2aq \SL(2, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl3aq \SL(3, \mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl.aq \SL(, \mathbb{A}_\mathbb{Q})<esc>F,i
+
+        inoremap <buffer> <localleader>slnaf \SL(n, \mathbb{A}_F)
+        inoremap <buffer> <localleader>slmaf \SL(m, \mathbb{A}_F)
+        inoremap <buffer> <localleader>sldaf \SL(d, \mathbb{A}_F)
+        inoremap <buffer> <localleader>slkaf \SL(k, \mathbb{A}_F)
+        inoremap <buffer> <localleader>sl2af \SL(2, \mathbb{A}_F)
+        inoremap <buffer> <localleader>sl3af \SL(3, \mathbb{A}_F)
+        inoremap <buffer> <localleader>sl.af \SL(, \mathbb{A}_F)<esc>F,i
+
+        inoremap <buffer> <localleader>slnak \SL(n, \mathbb{A}_K)
+        inoremap <buffer> <localleader>slmak \SL(m, \mathbb{A}_K)
+        inoremap <buffer> <localleader>sldak \SL(d, \mathbb{A}_K)
+        inoremap <buffer> <localleader>slkak \SL(k, \mathbb{A}_K)
+        inoremap <buffer> <localleader>sl2ak \SL(2, \mathbb{A}_K)
+        inoremap <buffer> <localleader>sl3ak \SL(3, \mathbb{A}_K)
+        inoremap <buffer> <localleader>sl.ak \SL(, \mathbb{A}_K)<esc>F,i
 
         inoremap <buffer> <localleader>slnok \SL(n, \mathcal{O}_K)
         inoremap <buffer> <localleader>slmok \SL(m, \mathcal{O}_K)
@@ -2346,7 +2440,7 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>su.c \SU(, \mathbb{C})<esc>F,i
 
         "}}}
-        let s:Matrix_group_toggle = 0
+        let s:Matrix_group_toggle = 1
     else
         " Underscore style
         " M{{{
@@ -2441,6 +2535,33 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>m2a \M_{2}(\mathbb{A})
         inoremap <buffer> <localleader>m3a \M_{3}(\mathbb{A})
         inoremap <buffer> <localleader>m.a \M_{}(\mathbb{A})<esc>F};i
+
+        inoremap <buffer> <localleader>mmnaq \M_{m \times n}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m..aq \M_{}(\mathbb{A}_\mathbb{Q})<esc>F};i
+        inoremap <buffer> <localleader>mnaq \M_{n}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>mmaq \M_{m}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>mdaq \M_{d}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m2aq \M_{2}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m3aq \M_{3}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>m.aq \M_{}(\mathbb{A}_\mathbb{Q})<esc>F};i
+
+        inoremap <buffer> <localleader>mmnaf \M_{m \times n}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>m..af \M_{}(\mathbb{A}_F)<esc>F};i
+        inoremap <buffer> <localleader>mnaf \M_{n}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>mmaf \M_{m}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>mdaf \M_{d}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>m2af \M_{2}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>m3af \M_{3}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>m.af \M_{}(\mathbb{A}_F)<esc>F};i
+
+        inoremap <buffer> <localleader>mmnak \M_{m \times n}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>m..ak \M_{}(\mathbb{A}_K)<esc>F};i
+        inoremap <buffer> <localleader>mnak \M_{n}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>mmak \M_{m}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>mdak \M_{d}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>m2ak \M_{2}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>m3ak \M_{3}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>m.ak \M_{}(\mathbb{A}_K)<esc>F};i
 
         inoremap <buffer> <localleader>mmnok \M_{m \times n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>m..ok \M_{}(\mathcal{O}_K)<esc>F};i
@@ -2578,6 +2699,27 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl3a \GL_{3}(\mathbb{A})
         inoremap <buffer> <localleader>gl.a \GL_{}(\mathbb{A})<esc>F};i
 
+        inoremap <buffer> <localleader>glnaq \GL_{n}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>glmaq \GL_{m}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gldaq \GL_{d}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl2aq \GL_{2}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl3aq \GL_{3}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>gl.aq \GL_{}(\mathbb{A}_\mathbb{Q})<esc>F};i
+
+        inoremap <buffer> <localleader>glnaf \GL_{n}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>glmaf \GL_{m}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>gldaf \GL_{d}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>gl2af \GL_{2}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>gl3af \GL_{3}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>gl.af \GL_{}(\mathbb{A}_F)<esc>F};i
+
+        inoremap <buffer> <localleader>glnak \GL_{n}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>glmak \GL_{m}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>gldak \GL_{d}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>gl2ak \GL_{2}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>gl3ak \GL_{3}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>gl.ak \GL_{}(\mathbb{A}_K)<esc>F};i
+
         inoremap <buffer> <localleader>glnok \GL_{n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>glmok \GL_{m}(\mathcal{O}_K)
         inoremap <buffer> <localleader>gldok \GL_{d}(\mathcal{O}_K)
@@ -2691,6 +2833,30 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>sl2a \SL_{2}(\mathbb{A})
         inoremap <buffer> <localleader>sl3a \SL_{3}(\mathbb{A})
         inoremap <buffer> <localleader>sl.a \SL_{}(\mathbb{A})<esc>F};i
+
+        inoremap <buffer> <localleader>slnaq \SL_{n}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>slmaq \SL_{m}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sldaq \SL_{d}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>slkaq \SL_{k}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl2aq \SL_{2}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl3aq \SL_{3}(\mathbb{A}_\mathbb{Q})
+        inoremap <buffer> <localleader>sl.aq \SL_{}(\mathbb{A}_\mathbb{Q})<esc>F};i
+
+        inoremap <buffer> <localleader>slnaf \SL_{n}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>slmaf \SL_{m}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>sldaf \SL_{d}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>slkaf \SL_{k}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>sl2af \SL_{2}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>sl3af \SL_{3}(\mathbb{A}_F)
+        inoremap <buffer> <localleader>sl.af \SL_{}(\mathbb{A}_F)<esc>F};i
+
+        inoremap <buffer> <localleader>slnak \SL_{n}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>slmak \SL_{m}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>sldak \SL_{d}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>slkak \SL_{k}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>sl2ak \SL_{2}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>sl3ak \SL_{3}(\mathbb{A}_K)
+        inoremap <buffer> <localleader>sl.ak \SL_{}(\mathbb{A}_K)<esc>F};i
 
         inoremap <buffer> <localleader>slnok \SL_{n}(\mathcal{O}_K)
         inoremap <buffer> <localleader>slmok \SL_{m}(\mathcal{O}_K)
@@ -3009,6 +3175,9 @@ inoremap <buffer> <localleader>abs \abs{}<left>
 inoremap <buffer> <localleader>wt \widetilde{}<left>
 inoremap <buffer> <localleader>~ \sim
 inoremap <buffer> <localleader>` \sim
+inoremap <buffer> ;~ {\sim}
+inoremap <buffer> ;` {\sim}
+inoremap <buffer> ;`` {\sim}<esc>A
 inoremap <buffer> <localleader>`` \sim<esc>A
 inoremap <buffer> <localleader>jt \tilde{}<left>
 
@@ -3317,9 +3486,12 @@ inoremap <buffer> <localleader>< \leq
 inoremap <buffer> <localleader>> \geq
 inoremap <buffer> << \ll
 inoremap <buffer> >> \gg
+inoremap <buffer> ;< \prec
+inoremap <buffer> ;> \succ
 inoremap <buffer> ;= \neq
 inoremap <buffer> == \equiv
 inoremap <buffer> => \implies
+inoremap <buffer> +> \implies
 inoremap <buffer> <localleader>= \cong
 
 "}}}
@@ -3464,9 +3636,11 @@ inoremap <buffer> <localleader>op* \operatorname*{}<left>
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
 
+inoremap <buffer> ;q \qquad
 inoremap <buffer> ;te \text{}<left>
 
 inoremap <buffer> ./ .\
+inoremap <buffer> /, \
 inoremap <buffer> :+ :=
 
 "}}}
@@ -3478,48 +3652,71 @@ inoremap <buffer> :+ :=
 
 " Dollar to \[\]
 function! DollarToBracket()
-    :execute ":normal! ?\$\<cr>Xd/\$\<cr>xo\\\[\<cr>\\\]\<esc>O\<C-R>\"\<esc>?\$\<cr>x"
+    call vimtex#env#toggle_math()
 endfunction
 
-" nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
-nnoremap <buffer> <localleader>db ?\$<cr>Xd/\$<cr>xo\[<cr>\]<esc>O<C-R>1<esc>NxV/\\\]<cr>k=
+nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
 
-" \[\] to Align
-function! BracketToAlign()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Align\<cr>\\begin{align}\\label{}\<cr>\\end{align}\<esc>mnkpdd`nkdd?label\<cr>$"
+" \[\] to math-envs
+function! BracketToEnv(new)
+    call vimtex#env#change_surrounding('math', a:new)
+    let l:cur_pos = vimtex#pos#get_cursor()
+    if matchstr(a:new, '*') != ''
+        let b:new = substitute(a:new, '*', '', '')
+        let @l = '% Unnumbered' . substitute(b:new,'\(\<\w\+\>\)', '\u\1', 'g')
+    else
+        let @l = '% ' . substitute(a:new,'\(\<\w\+\>\)', '\u\1', 'g')
+    endif
+    exe "normal! ?begin\<cr>"
+    put! l
+    normal! ==
 
+    if matchstr(a:new, '*') != ''
+        call vimtex#pos#set_cursor(l:cur_pos)
+        normal! j
+    elseif a:new == 'equation'
+            let @m = 'eq:'
+            exe "normal! jA\\label{}\<esc>\"mPl"
+    else
+            exe "normal! jA\\label{}\<esc>"
+    endif
 endfunction
 
-nnoremap <buffer> <localleader>bal :call BracketToAlign()<cr>i
+nnoremap <buffer> <localleader>bal :call BracketToEnv('align')<cr>i
+nnoremap <buffer> <localleader>bual :call BracketToEnv('align*')<cr>
+nnoremap <buffer> <localleader>beq :call BracketToEnv('equation')<cr>i
+nnoremap <buffer> <localleader>bueq :call BracketToEnv('equation*')<cr>
+nnoremap <buffer> <localleader>bga :call BracketToEnv('gather')<cr>i
+nnoremap <buffer> <localleader>buga :call BracketToEnv('gather*')<cr>
 
-" \[\] to Unnumbered Align
-function! BracketToUnnumAlign()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedAlign\<cr>\\begin{align*}\<cr>\\end{align*}\<esc>mnkpdd`nkddk$"
+" " \[\] to double math-envs
+" function! BracketToEnv2(new)
+"     call vimtex#env#change_surrounding('math', a:new)
+"     let l:cur_pos = vimtex#pos#get_cursor()
+"     if matchstr(a:new, '*') != ''
+"         let b:new = substitute(a:new, '*', '', '')
+"         let @l = '% Unnumbered' . substitute(b:new,'\(\<\w\+\>\)', '\u\1', 'g')
+"     else
+"         let @l = '% ' . substitute(a:new,'\(\<\w\+\>\)', '\u\1', 'g')
+"     endif
+"     exe "normal! ?begin\<cr>"
+"     put! l
+"     normal! ==
 
-endfunction
-
-nnoremap <buffer> <localleader>bual :call BracketToUnnumAlign()<cr>
-
-" \[\] to Equation
-function! BracketToEq()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\end{equation}\<esc>mnkpdd`nkdd?label\<cr>$"
-
-endfunction
-
-nnoremap <buffer> <localleader>beq :call BracketToEq()<cr>i
-
-" \[\] to Unnumbered Equation
-function! BracketToUnnumEq()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>mnkpdd`nkddk$"
-
-endfunction
-
-nnoremap <buffer> <localleader>bueq :call BracketToUnnumEq()<cr>
+"     if matchstr(a:new, '*') != ''
+"         call vimtex#pos#set_cursor(l:cur_pos)
+"         normal! j
+"     elseif a:new == 'equation'
+"             let @m = 'eq:'
+"             exe "normal! jA\\label{}\<esc>\"mPl"
+"     else
+"             exe "normal! jA\\label{}\<esc>"
+"     endif
+" endfunction
 
 " \[\] to Aligned Equation
 function! BracketToAlignedEq()
     :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
-
 endfunction
 
 nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>i
@@ -3527,7 +3724,6 @@ nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>i
 " \[\] to Unnumbered Aligned Equation
 function! BracketToUnnumAlignedEq()
     :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedAlignedEquation\<cr>\\begin{equation*}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
-
 endfunction
 
 nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
@@ -3535,7 +3731,6 @@ nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
 " \[\] to Gathered Equation
 function! BracketToGatherEq()
     :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% GatheredEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
-
 endfunction
 
 nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>i
@@ -3543,26 +3738,45 @@ nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>i
 " \[\] to Unnumbered Gathered Equation
 function! BracketToUnnumGatherEq()
     :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedGatheredEquation\<cr>\\begin{equation*}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation*}\<esc>mn2kpdd`n2kdd$"
-
 endfunction
 
 nnoremap <buffer> <localleader>bugaeq :call BracketToUnnumGatherEq()<cr>
 
-" \[\] to Gather
-function! BracketToGather()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Gather\<cr>\\begin{gather}\\label{}\<cr>\\end{gather}\<esc>mnkpdd`nkdd?label\<cr>$"
+" Old BraketToEnv{{{
 
-endfunction
+"" nnoremap <buffer> <localleader>db ?\$<cr>Xd/\$<cr>xo\[<cr>\]<esc>O<C-R>1<esc>NxV/\\\]<cr>k=
 
-nnoremap <buffer> <localleader>bga :call BracketToGather()<cr>i
+"" \[\] to Align
+"function! BracketToAlign()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Align\<cr>\\begin{align}\\label{}\<cr>\\end{align}\<esc>mnkpdd`nkdd?label\<cr>$"
+"endfunction
 
-" \[\] to Unnumbered Gather
-function! BracketToUnnumGather()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedGather\<cr>\\begin{gather*}\<cr>\\end{gather*}\<esc>mnkpdd`nkddk$"
+"" \[\] to Unnumbered Align
+"function! BracketToUnnumAlign()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedAlign\<cr>\\begin{align*}\<cr>\\end{align*}\<esc>mnkpdd`nkddk$"
+"endfunction
 
-endfunction
+"" \[\] to Equation
+"function! BracketToEq()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Equation\<cr>\\begin{equation}\\label{}\<cr>\\end{equation}\<esc>mnkpdd`nkdd?label\<cr>$"
+"endfunction
 
-nnoremap <buffer> <localleader>buga :call BracketToUnnumGather()<cr>
+"" \[\] to Unnumbered Equation
+"function! BracketToUnnumEq()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedEquation\<cr>\\begin{equation*}\<cr>\\end{equation*}\<esc>mnkpdd`nkddk$"
+"endfunction
+
+"" \[\] to Gather
+"function! BracketToGather()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% Gather\<cr>\\begin{gather}\\label{}\<cr>\\end{gather}\<esc>mnkpdd`nkdd?label\<cr>$"
+"endfunction
+
+"" \[\] to Unnumbered Gather
+"function! BracketToUnnumGather()
+"    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% UnnumberedGather\<cr>\\begin{gather*}\<cr>\\end{gather*}\<esc>mnkpdd`nkddk$"
+"endfunction
+
+""}}}
 
 " Referencing Theorem, Citation etc.
 function! ReferencingAndCiting(code)
@@ -3585,16 +3799,15 @@ function! ReferencingAndCiting(code)
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
-        :execute ":normal! a\\cite{\<esc>"
+        :execute ":normal! a\\cite{\<esc><c-x><c-o>"
     elseif a:code == "rcit"
-        :execute ":normal! a\\cite[]{\<esc>"
+        :execute ":normal! a\\cite[]{\<esc>hi"
     endif
-
 endfunction
 
 inoremap <buffer> <localleader>ref <esc>:call ReferencingAndCiting("jref")<cr>a
 inoremap <buffer> <localleader>jref <esc>:call ReferencingAndCiting("ref")<cr>a
-inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
+" inoremap <buffer> <localleader>eqref <esc>:call ReferencingAndCiting("jeqref")<cr>a
 inoremap <buffer> <localleader>jeqref <esc>:call ReferencingAndCiting("eqref")<cr>a
 inoremap <buffer> <localleader>aref <esc>:call ReferencingAndCiting("jaref")<cr>a
 inoremap <buffer> <localleader>jaref <esc>:call ReferencingAndCiting("aref")<cr>a
@@ -3604,34 +3817,18 @@ inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("jcit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("cit")<cr>a
 inoremap <buffer> <localleader>rcit <esc>:call ReferencingAndCiting("rcit")<cr>F[a
 
-inoremap <buffer> <localleader>thm Theorem~\ref{
-inoremap <buffer> <localleader>lem Lemma~\ref{
-inoremap <buffer> <localleader>prop Proposition~\ref{
-inoremap <buffer> <localleader>cor Corollary~\ref{
-inoremap <buffer> <localleader>rem Remark~\ref{
+inoremap <buffer> <localleader>aref \autoref{<c-x><c-o>
+inoremap <buffer> <localleader>tref \autoref{thm:<c-x><c-o>
+inoremap <buffer> <localleader>lref \autoref{lem:<c-x><c-o>
+inoremap <buffer> <localleader>pref \autoref{prop:<c-x><c-o>
+inoremap <buffer> <localleader>cref \autoref{cor:<c-x><c-o>
+inoremap <buffer> <localleader>rref \autoref{rem:<c-x><c-o>
+inoremap <buffer> <localleader>eqref \eqref{eq:<c-x><c-o>
 
-" Folding in foldmethod marker (Incomplete)
-function! FoldTexfile()
-    :execute ":normal! /\\documentclass\<cr>ma"
-    let line = getline()
-    if line =~ '^\s*\zs.\{-}\ze%{{'
-        :execute ":normal! zC"
-    else
-        :execute ":normal! /\\begin{document}\<cr>O\<cr>\<cr>mb`azf`b"
-    endif
-
-    :execute ":normal! /\\section\<cr>ma"
-    let line = getline()
-    if line =~ '^\s*\zs.\{-}\ze%{{'
-        :execute ":normal! zC"
-    else
-        :execute ":normal! /\\section\<cr>O\<cr>\<cr>mb`azf`b"
-    endif
-
-endfunction
-
-nnoremap <buffer> <localleader>ft :call FoldTexfile()<cr>
-
+inoremap <buffer> <localleader>chref   \S\autoref{chap:<c-x><c-o>
+inoremap <buffer> <localleader>sref   \S\autoref{sec:<c-x><c-o>
+inoremap <buffer> <localleader>ssref  \S\autoref{ssec:<c-x><c-o>
+inoremap <buffer> <localleader>sssref \S\autoref{sssec:<c-x><c-o>
 
 "}}}
 
@@ -3650,7 +3847,8 @@ inoremap <buffer> ;bh  \bm{h}
 inoremap <buffer> ;bi  \bm{i}
 inoremap <buffer> ;bj  \bm{j}
 inoremap <buffer> ;bk  \bm{k}
-inoremap <buffer> ;bl  \bm{l}
+inoremap <buffer> ;bnl  \bm{l}
+inoremap <buffer> ;bl  \bm{\ell}
 inoremap <buffer> ;bm  \bm{m}
 inoremap <buffer> ;bn  \bm{n}
 inoremap <buffer> ;bo  \bm{o}
@@ -4058,7 +4256,7 @@ let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
 let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
 let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
 
-highlight asterisk ctermbg=130 ctermfg=yellow
+highlight asterisk ctermbg=109 ctermfg=red
 
 let m = matchadd("asterisk",'\*')
 

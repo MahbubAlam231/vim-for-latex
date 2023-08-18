@@ -713,7 +713,7 @@ function! LatexBox_FoldText()
 
         " Making helper-folds at max 120-character
         if len(primarytitle) > 114
-            let title = '[HELPER] - ' . printf('%.111s', primarytitle) . '...'
+            let title = '[HELPER FOLD] - ' . printf('%.111s', primarytitle) . '...'
             " Don't mess up my preamble fold-titles
             " elseif line =~ '% Packages'
             "     let title = 'Packages'
@@ -722,7 +722,7 @@ function! LatexBox_FoldText()
             " elseif line =~ '% Newcommands'
             "     let title = 'Newcommands'
         else
-            let title = '[HELPER] - ' . primarytitle
+            let title = '[HELPER FOLD] - ' . primarytitle
         endif
     endif
 

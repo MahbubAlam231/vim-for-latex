@@ -239,6 +239,9 @@ alias    pip='pip3'
 
 alias    pmr='python ~/python-code/movie_rating.py'
 
+# Link bibliography
+alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
+
 # shell commands
 alias      c='clear'
 alias      q='exit'

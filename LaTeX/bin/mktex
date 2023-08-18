@@ -7,7 +7,7 @@
 # @description : Create tex directory on Desktop named $@ and open in vim
 ##########################################################################
 
-if [ "$PWD" == "/home/mahbub"]
+if [ "$PWD" == "/home/mahbub" ]
 then
     cd ~/Desktop
 fi

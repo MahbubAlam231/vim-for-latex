@@ -256,6 +256,7 @@ Plug 'somini/vim-textobj-fold'
 Plug 'thinca/vim-textobj-between'
 Plug 'tibabit/vim-templates'
 Plug 'tmhedberg/SimpylFold'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -292,6 +293,7 @@ omap <buffer> im  <plug>(vimtex-i$)
 
 nmap <buffer> dsm <plug>(vimtex-env-delete-math)
 nmap <buffer> csm <plug>(vimtex-env-change-math)
+nmap <buffer> tsm <plug>(vimtex-env-toggle-math)
 
 xmap <buffer> at  <plug>(vimtex-am)
 xmap <buffer> it  <plug>(vimtex-im)
@@ -794,10 +796,10 @@ nnoremap <buffer> <silent> <localleader>rep :TemplateInit report<cr>
 nnoremap <buffer> <silent> <localleader>sh :TemplateInit sh<cr>
 
 " Placeholders <++>
-nnoremap <buffer> <c-j> /<+\(.\)*+><cr>zMzv:noh<cr>cf>
-inoremap <buffer> <c-j> <esc>/<+\(.\)*+><cr>zMzv:noh<cr>cf>
-nnoremap <buffer> <c-k> ?<+\(.\)*+><cr>zMzv:noh<cr>cf>
-inoremap <buffer> <c-k> <esc>?<+\(.\)*+><cr>zMzv:noh<cr>cf>
+nnoremap <buffer> <c-j> h/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <c-j> <esc>h/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+nnoremap <buffer> <c-k> h?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <c-k> <esc>h?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
@@ -1119,8 +1121,8 @@ vnoremap <buffer> <localleader>/ ms:s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>? ms:s///gn<left><left><left><left>
 
 " Number of matches for the word under cursor
-nnoremap <buffer> <localleader>* ms*<c-o>:%s///gn<cr>
-nnoremap <buffer> <localleader># ms#<c-o>:%s///gn<cr>
+nnoremap <buffer> <localleader>* ms*:%s///gn<cr>
+nnoremap <buffer> <localleader># ms#:%s///gn<cr>
 
 " Number of matches for the visually selected text
 vnoremap <buffer> <localleader>* yms:%s/<c-r>0//gn<cr>
@@ -1198,6 +1200,7 @@ function! AlignParagraphs()
 endfunction
 
 nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
+vnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
 
 function! CountParagraphs()
     normal! mpzRG
@@ -1219,29 +1222,11 @@ function! CountParagraphs()
 endfunction
 
 nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
+vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
 
 "}}}
 " Spelling Check{{{
 "-------------------------------------------------------------------
-
-augroup Spelling
-    autocmd!
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
-    " Adding new words to dictionary
-    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
-    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
-    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwN zw[szz
-    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwn zw]szz
-augroup end
-
-" FixLastSpellingError
-function! FixLastSpellingError()
-    :normal! mf[s1z=`f
-endfunction
-
-nnoremap <buffer> <silent> <localleader>fs :call FixLastSpellingError()<cr>
-inoremap <buffer> <silent> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
 
 " Toggling languages (en, sv){{{
 
@@ -1296,6 +1281,25 @@ nnoremap <buffer> <localleader>en :call SpellLang("en")<cr>
 nnoremap <buffer> <localleader>sv :call SpellLang("sv")<cr>
 
 "}}}
+
+augroup Spelling
+    autocmd!
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    " Adding new words to dictionary
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwN zw[szz
+    autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zwn zw]szz
+augroup end
+
+" FixLastSpellingError
+function! FixLastSpellingError()
+    :normal! mf[s1z=`f
+endfunction
+
+nnoremap <buffer> <silent> <localleader>fs :call FixLastSpellingError()<cr>
+inoremap <buffer> <silent> <localleader>fs <esc>:call FixLastSpellingError()<cr>a
 
 " Greater-than less-than toggle to find miss-spelled words
 let s:gtlt_toggle=0
@@ -1520,10 +1524,11 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("BoldGroup",'&')
 augroup end
 
-highlight BoldRedGroup ctermfg=red cterm=bold
+highlight BoldRedGroup ctermbg=grey ctermfg=red cterm=bold
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("BoldRedGroup",'\\todo')
+    autocmd Filetype tex let m = matchadd("BoldRedGroup",'<+.\{-}+>')
 augroup end
 
 highlight SpaceGroup ctermbg=red
@@ -1683,7 +1688,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
 augroup end
 
-highlight asterisk ctermbg=130 ctermfg=yellow
+highlight asterisk ctermbg=109 ctermfg=red
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("asterisk",'\*')

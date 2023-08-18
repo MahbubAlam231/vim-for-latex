@@ -38,6 +38,7 @@
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage[bookmarks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,linktoc=all]{hyperref}
+\usepackage{cleveref}
 % \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}

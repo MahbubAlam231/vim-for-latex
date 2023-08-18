@@ -20,7 +20,6 @@ snippet title "Title" b
 \date{$3}
 
 \maketitle
-
 $0
 endsnippet
 
@@ -31,7 +30,6 @@ snippet abs "Abstract" b
 \begin{abstract}% F{O{L{D
 	$1
 \end{abstract}% F}O}L}D
-
 $0
 endsnippet
 
@@ -88,6 +86,9 @@ endsnippet
 #}}}
 # Real numbers{{{
 
+snippet ;r
+$\mathbb{R}$$0
+endsnippet
 
 snippet rge
 $\mathbb{R}_{\geq 0}$$0
@@ -156,6 +157,10 @@ endsnippet
 #}}}
 # Natural numbers{{{
 
+snippet ;n
+$\mathbb{N}$$0
+endsnippet
+
 snippet nn
 $\mathbb{N}^2$$0
 endsnippet
@@ -178,6 +183,10 @@ endsnippet
 
 #}}}
 # Integers{{{
+
+snippet ;z
+$\mathbb{Z}$$0
+endsnippet
 
 snippet zge
 $\mathbb{Z}_{\geq 0}$$0
@@ -238,6 +247,10 @@ endsnippet
 #}}}
 # Rationals{{{
 
+snippet ;q
+$\mathbb{Q}$$0
+endsnippet
+
 snippet qge
 $\mathbb{Q}_{\geq 0}$$0
 endsnippet
@@ -284,6 +297,10 @@ endsnippet
 
 #}}}
 # Complex numbers{{{
+
+snippet ;c
+$\mathbb{C}$$0
+endsnippet
 
 snippet cc
 $\mathbb{C}^2$$0
@@ -385,6 +402,10 @@ endsnippet
 
 #}}}
 # Other fields{{{
+
+snippet ;k
+$\mathbb{K}$$0
+endsnippet
 
 snippet kk
 $\mathbb{K}^2$$0
@@ -521,6 +542,10 @@ endsnippet
 #}}}
 # Adele{{{
 
+snippet ;a
+$\mathbb{A}$$0
+endsnippet
+
 snippet aa
 $\mathbb{A}^2$$0
 endsnippet
@@ -546,6 +571,10 @@ $\mathbb{A}^{$1}$$0
 endsnippet
 
 # Adeles over Q
+snippet aq
+$\mathbb{A}_\mathbb{Q}$$0
+endsnippet
+
 snippet aqq
 $\mathbb{A}_\mathbb{Q}^2$$0
 endsnippet
@@ -571,6 +600,10 @@ $\mathbb{A}_\mathbb{Q}^{$1}$$0
 endsnippet
 
 # Adeles over F
+snippet af
+$\mathbb{A}_F$$0
+endsnippet
+
 snippet aff
 $\mathbb{A}_F^2$$0
 endsnippet
@@ -598,6 +631,10 @@ endsnippet
 #}}}
 # Tori{{{
 
+snippet ;t
+$\mathbb{T}$$0
+endsnippet
+
 snippet tt
 $\mathbb{T}^2$$0
 endsnippet
@@ -624,6 +661,10 @@ endsnippet
 
 #}}}
 #Hyperbolic space{{{
+
+snippet ;h
+$\mathbb{H}$$0
+endsnippet
 
 snippet hh
 $\mathbb{H}^2$$0
@@ -660,6 +701,15 @@ snippet ccx
 $C_c(X)$$0
 endsnippet
 
+snippet ccg
+$C_c(G)$$0
+endsnippet
+
+snippet ccgh
+$C_c(G/H)$$0
+endsnippet
+
+
 snippet cci
 $C_c^{\infty}($1)$$0
 endsnippet
@@ -672,12 +722,25 @@ snippet ccix
 $C_c^{\infty}(X)$$0
 endsnippet
 
+
 snippet ci
 $C^{\infty}($1)$$0
 endsnippet
 
-snippet ci.
-$C^{\infty}($1)$$0
+snippet cir
+$C^{\infty}(\mathbb{R})$$0
+endsnippet
+
+snippet cirr
+$C^{\infty}(\mathbb{R}^2)$$0
+endsnippet
+
+snippet cird
+$C^{\infty}(\mathbb{R}^d)$$0
+endsnippet
+
+snippet cirn
+$C^{\infty}(\mathbb{R}^n)$$0
 endsnippet
 
 
@@ -5356,6 +5419,82 @@ endsnippet
 
 
 
+snippet mmnaq
+$\M_{m \times n}(\mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet m..aq
+$\M_{$1}(\mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet mnaq
+$\M(n, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet mmaq
+$\M(m, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet mdaq
+$\M(d, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet mkaq
+$\M(k, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet m2aq
+$\M(2, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet m3aq
+$\M(3, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+snippet m.aq
+$\M($1, \mathbb{A}_\mathbb{Q})$$0
+endsnippet
+
+
+
+snippet mmnaf
+$\M_{m \times n}(\mathbb{A}_F)$$0
+endsnippet
+
+snippet m..af
+$\M_{$1}(\mathbb{A}_F)$$0
+endsnippet
+
+snippet mnaf
+$\M(n, \mathbb{A}_F)$$0
+endsnippet
+
+snippet mmaf
+$\M(m, \mathbb{A}_F)$$0
+endsnippet
+
+snippet mdaf
+$\M(d, \mathbb{A}_F)$$0
+endsnippet
+
+snippet mkaf
+$\M(k, \mathbb{A}_F)$$0
+endsnippet
+
+snippet m2af
+$\M(2, \mathbb{A}_F)$$0
+endsnippet
+
+snippet m3af
+$\M(3, \mathbb{A}_F)$$0
+endsnippet
+
+snippet m.af
+$\M($1, \mathbb{A}_F)$$0
+endsnippet
+
+
+
 snippet mmnok
 $\M_{m \times n}(\mathcal{O}_K)$$0
 endsnippet
@@ -9249,27 +9388,39 @@ snippet lrdab "left-right double angle bracket"
 ${\left\llangle $1 \right\rrangle}$$0
 endsnippet
 
-snippet p{ "Surround with math braces" iA
+snippet p "Surround with math parenthesis" w
+(${VISUAL}$1)$0
+endsnippet
+
+snippet m{ "Surround with math-braces" w
 \\\{${VISUAL}$1\\\}$0
 endsnippet
 
-snippet lrp "left-right math parenthesis"
+# snippet mb "Surround with math-braces" w
+# \\\{${VISUAL}$1\\\}$0
+# endsnippet
+
+snippet mmb "Surround with math braces" w
+\{${VISUAL}$1\}$0
+endsnippet
+
+snippet lrp "left-right math parenthesis" w
 {\left(${VISUAL}$1\right)}$0
 endsnippet
 
-snippet lrb "left-right math braces"
+snippet lrmb "left-right math-braces" w
 {\left\\{${VISUAL}$1\right\\}}$0
 endsnippet
 
-snippet lrs "left-right math square braces"
+snippet lrs "left-right math square braces" w
 {\left[${VISUAL}$1\right]}$0
 endsnippet
 
-snippet lrm "left-right math modulus"
+snippet lrm "left-right math modulus" w
 {\left\\|${VISUAL}$1\right\\|}$0
 endsnippet
 
-snippet norm "surround with norm"
+snippet norm "surround with norm" w
 \\norm{${VISUAL}}$0
 endsnippet
 
@@ -9277,16 +9428,27 @@ endsnippet
 # SomeOtherShortcuts{{{
 #-------------------------------------------------------------------
 
-snippet ge
+snippet qed "QED symbol in math" w
+\\qed$0
+endsnippet
+
+snippet vv "Vector"
+\vv{$1}$0
+endsnippet
+
+snippet ve "Vector"
+\vec{$1}$0
+endsnippet
+
+snippet vepge
 $\varepsilon > 0$
 endsnippet
 
 snippet st "use substack" w
 \substack{${VISUAL}$1 \\\\ $2}$0
-$0
 endsnippet
 
-snippet inv
+snippet inv "" w
 ^{-1}
 endsnippet
 
@@ -9298,10 +9460,6 @@ snippet -m
 ^{-m}
 endsnippet
 
-snippet o
-\varnothing
-endsnippet
-
 #}}}
 # SymbolsOfDerivatives{{{
 #-------------------------------------------------------------------
@@ -9309,35 +9467,35 @@ endsnippet
 # Inside math-mode{{{
 #-------------------------------------------------------------------
 
-snippet pd "Partial symbol"
+snippet pd "Partial symbol" w
 \partial$0
 endsnippet
 
-snippet par "Partial derivative by frac"
+snippet par "Partial derivative by frac" w
 \frac{\partial $1}{\partial $2}$0
 endsnippet
 
-snippet dpar
+snippet dpar "Partial derivative by dfrac" w
 \dfrac{\partial $1}{\partial $2}$0
 endsnippet
 
-snippet cdv "Covariant derivative"
+snippet cdv "Covariant derivative" w
 \frac{D$1}{d$2}$0
 endsnippet
 
-snippet pcdv "Partial covariant derivative"
+snippet pcdv "Partial covariant derivative" w
 \frac{D$1}{\partial $2}$0
 endsnippet
 
-snippet pcdvx "Partial covariant derivative wrt x"
+snippet pcdvx "Partial covariant derivative wrt x" w
 \frac{D}{\partial x}$0
 endsnippet
 
-snippet pcdvy "Partial covariant derivative wrt y"
+snippet pcdvy "Partial covariant derivative wrt y" w
 \frac{D}{\partial y}$0
 endsnippet
 
-snippet cdvt "Partial covariant derivative wrt t"
+snippet cdvt "Partial covariant derivative wrt t" w
 \frac{D}{\partial t}$0
 endsnippet
 
@@ -9345,31 +9503,31 @@ endsnippet
 # Outside math-mode{{{
 #-------------------------------------------------------------------
 
-snippet dv "Derivative"
+snippet dv "Derivative" w
 $\dv{$1}{$2}$$0
 endsnippet
 
-snippet dvn "nth derivative"
+snippet dvn "nth derivative" w
 $\dv[$1]{$2}{$3}$$0
 endsnippet
 
-# snippet dv "Derivative"
+# snippet dv "Derivative" w
 # $\frac{d $1}{d $2}$$0
 # endsnippet
 
-# snippet dvn "nth derivative"
+# snippet dvn "nth derivative" w
 # $\frac{d^$1 $2}{d $3^$1}$$0
 # endsnippet
 
-snippet pdv "Partial derivative"
+snippet pdv "Partial derivative" w
 $\pdv{$1}{$2}$$0
 endsnippet
 
-snippet pdvn "nth partial derivative"
+snippet pdvn "nth partial derivative" w
 $\pdv[$1]{$2}{$3}$$0
 endsnippet
 
-snippet fdv "Wiggly derivative"
+snippet fdv "Wiggly derivative" w
 $\fdv{$1}{$2}$$0
 endsnippet
 
@@ -9418,8 +9576,7 @@ snippet part "Part" b
 \part{$1}\label{part:$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (part end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (part end) F}O}L}D$0
 endsnippet
 
 
@@ -9428,8 +9585,7 @@ snippet chap "Chapter" b
 \chapter{$1}\label{chap:$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (chapter end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (chapter end) F}O}L}D$0
 endsnippet
 
 snippet uchap "Unnumbered Chapter" b
@@ -9437,8 +9593,7 @@ snippet uchap "Unnumbered Chapter" b
 \chapter*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered chapter end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered chapter end) F}O}L}D$0
 endsnippet
 
 snippet sec "Section" b
@@ -9446,8 +9601,7 @@ snippet sec "Section" b
 \section{$1}\label{sec:$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end) F}O}L}D$0
 endsnippet
 
 snippet usec "Unnumbered Section" b
@@ -9455,8 +9609,7 @@ snippet usec "Unnumbered Section" b
 \section*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered section end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered section end) F}O}L}D$0
 endsnippet
 
 snippet ssec "Subsection" b
@@ -9464,8 +9617,7 @@ snippet ssec "Subsection" b
 \subsection{$1}\label{ssec:$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsection end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsection end) F}O}L}D$0
 endsnippet
 
 snippet ussec "Unnumbered Subsection" b
@@ -9473,8 +9625,7 @@ snippet ussec "Unnumbered Subsection" b
 \subsection*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsection end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsection end) F}O}L}D$0
 endsnippet
 
 snippet sssec "Subsubsection" b
@@ -9482,8 +9633,7 @@ snippet sssec "Subsubsection" b
 \subsubsection{$1}\label{sssec:$2}% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsubsection end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsubsection end) F}O}L}D$0
 endsnippet
 
 snippet usssec "Unnumbered Subsubsection" b
@@ -9491,40 +9641,35 @@ snippet usssec "Unnumbered Subsubsection" b
 \subsubsection*{$1}% F{O{L{D
 ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsubsection end) F}O}L}D
-$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsubsection end) F}O}L}D$0
 endsnippet
 
 snippet not "Notation" b
 % Notation
 \begin{notation}[$1]\label{notn:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{notation}% F}O}L}D
-$0
+\end{notation}% F}O}L}D$0
 endsnippet
 
 snippet unot "Unnumbered Notation" b
 % UnnumberedNotation
 \begin{unotation}[$1]% F{O{L{D
 	${3:${VISUAL}}
-\end{unotation}% F}O}L}D
-$0
+\end{unotation}% F}O}L}D$0
 endsnippet
 
 snippet def "Definition" b
 % Definition
 \begin{definition}[$1]\label{defn:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{definition}% F}O}L}D
-$0
+\end{definition}% F}O}L}D$0
 endsnippet
 
 snippet udef "Unnumbered Definition" b
 % UnnumberedDefinition
 \begin{udefinition}[$1]% F{O{L{D
 	${2:${VISUAL}}
-\end{udefinition}% F}O}L}D
-$0
+\end{udefinition}% F}O}L}D$0
 endsnippet
 
 snippet thm "Theorem" b
@@ -9534,25 +9679,22 @@ snippet thm "Theorem" b
 \end{theorem}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{proof}% F}O}L}D
-$0
+	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet sthm "Statement of Theorem" b
 % StatementofTheorem
 \begin{theorem}[$1]\label{thm:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{theorem}% F}O}L}D
-$0
+\end{theorem}% F}O}L}D$0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
 % UnnumberedTheorem
 \begin{utheorem}[$1]% F{O{L{D
 	${2:${VISUAL}}
-\end{utheorem}% F}O}L}D
-$0
+\end{utheorem}% F}O}L}D$0
 endsnippet
 
 snippet lem "Lemma" b
@@ -9562,25 +9704,22 @@ snippet lem "Lemma" b
 \end{lemma}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{proof}% F}O}L}D
-$0
+	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet slem "Statement of Lemma" b
 % StatementofLemma
 \begin{lemma}[$1]\label{lem:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{lemma}% F}O}L}D
-$0
+\end{lemma}% F}O}L}D$0
 endsnippet
 
 snippet ulem "Unnumbered Lemma" b
 % UnnumberedLemma
 \begin{ulemma}[$1]% F{O{L{D
 	${2:${VISUAL}}
-\end{ulemma}% F}O}L}D
-$0
+\end{ulemma}% F}O}L}D$0
 endsnippet
 
 snippet prop "Proposition" b
@@ -9590,25 +9729,22 @@ snippet prop "Proposition" b
 \end{proposition}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{proof}% F}O}L}D
-$0
+	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet sprop "Statement of Proposition" b
 % StatementofProposition
 \begin{proposition}[$1]\label{prop:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{proposition}% F}O}L}D
-$0
+\end{proposition}% F}O}L}D$0
 endsnippet
 
 snippet uprop "Unnumbered Proposition" b
 % UnnumberedProposition
 \begin{uproposition}[$1]% F{O{L{D
 	${3:${VISUAL}}
-\end{uproposition}% F}O}L}D
-$0
+\end{uproposition}% F}O}L}D$0
 endsnippet
 
 snippet cor "Corollary" b
@@ -9618,81 +9754,71 @@ snippet cor "Corollary" b
 \end{corollary}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{proof}% F}O}L}D
-$0
+	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet scor "Statement of Corollary" b
 % StatementofCorollary
 \begin{corollary}[$1]\label{cor:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{corollary}% F}O}L}D
-$0
+\end{corollary}% F}O}L}D$0
 endsnippet
 
 snippet ucor "Unnumbered Corollary" b
 % UnnumberedCorollary
 \begin{ucorollary}[$1]% F{O{L{D
 	${2:${VISUAL}}
-\end{ucorollary}% F}O}L}D
-$0
+\end{ucorollary}% F}O}L}D$0
 endsnippet
 
 snippet prf "Proof" b
 % Proof
-\begin{${1:proof}}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{$1}% F}O}L}D
-$0
+\begin{proof}$1% F{O{L{D
+	${2:${VISUAL:<+\bfseries\textcolor\{red\}\{Write a Proof\}+>}}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet proof "Proof" b
 % Proof
-\begin{proof}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{proof}% F}O}L}D
-$0
+\begin{proof}$1% F{O{L{D
+	${2:${VISUAL:<+\bfseries\textcolor\{red\}\{Write a Proof\}+>}}
+\end{proof}% F}O}L}D$0
 endsnippet
 
 snippet rem "Remark" b
 % Remark
 \begin{remark}\label{rem:$1}% F{O{L{D
 	${2:${VISUAL}}
-\end{remark}% F}O}L}D
-$0
+\end{remark}% F}O}L}D$0
 endsnippet
 
 snippet urem "Unnumbered Remark" b
 % UnnumberedRemark
 \begin{uremark}% F{O{L{D
 	${1:${VISUAL}}
-\end{uremark}% F}O}L}D
-$0
+\end{uremark}% F}O}L}D$0
 endsnippet
 
 snippet conj "Conjecture" b
 % Conjecture
 \begin{conjecture}[$1]\label{conj:$2}% F{O{L{D
 	${3:${VISUAL}}
-\end{conjecture}% F}O}L}D
-$0
+\end{conjecture}% F}O}L}D$0
 endsnippet
 
 snippet ex "Example" b
 % Example
 \begin{example}\label{eg:$1}
 	${2:${VISUAL}}
-\end{example}
-$0
+\end{example}$0
 endsnippet
 
 snippet exc "Exercise" b
 % Exercise
 \begin{exercise}\label{exc:$1}
 	${2:${VISUAL}}
-\end{exercise}
-$0
+\end{exercise}$0
 endsnippet
 
 snippet prob "Problem" b
@@ -9703,69 +9829,60 @@ snippet prob "Problem" b
 % Solution
 \begin{solution}% F{O{L{D
 	<+\bfseries\textcolor{red}{Write a solution}+>
-\end{solution}% F}O}L}D
-$0
+\end{solution}% F}O}L}D$0
 endsnippet
 
 snippet sprob "Statement of Problem" b
 % Problem
 \begin{problem}[$1]% F{O{L{D
 	${2:${VISUAL}}
-\end{problem}% F}O}L}D
-$0
+\end{problem}% F}O}L}D$0
 endsnippet
 
 snippet sm "Surround by math" b
 \[
 	${1:${VISUAL}}
-\]
-$0
+\]$0
 endsnippet
 
 snippet math "Surround by math" b
 \[
 	${1:${VISUAL}}
-\]
-$0
+\]$0
 endsnippet
 
 snippet ma "Surround by math" b
 \[
 	${1:${VISUAL}}
-\]
-$0
+\]$0
 endsnippet
 
 snippet align "Align" b
 % Align
 \begin{align}\label{$1}
 	${2:${VISUAL}}
-\end{align}
-$0
+\end{align}$0
 endsnippet
 
 snippet ualign "Unnumbered Align" b
 % UnnumberedAlign
 \begin{align*}
 	${1:${VISUAL}}
-\end{align*}
-$0
+\end{align*}$0
 endsnippet
 
 snippet eq "Equation" b
 % Equation
 \begin{equation}\label{eq:$1}
 	${2:${VISUAL}}
-\end{equation}
-$0
+\end{equation}$0
 endsnippet
 
 snippet ueq "Unnumbered Equation" b
 % UnnumberedEquation
 \begin{equation*}
 	${2:${VISUAL}}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet aligneq "Aligned Equation" b
@@ -9774,8 +9891,7 @@ snippet aligneq "Aligned Equation" b
 	\begin{split}
 		${2:${VISUAL}}
 	\end{split}
-\end{equation}
-$0
+\end{equation}$0
 endsnippet
 
 snippet ualigneq "Unnumbered Aligned Equation" b
@@ -9784,8 +9900,7 @@ snippet ualigneq "Unnumbered Aligned Equation" b
 	\begin{split}
 		${1:${VISUAL}}
 	\end{split}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet aleq "Aligned Equation" b
@@ -9794,8 +9909,7 @@ snippet aleq "Aligned Equation" b
 	\begin{split}
 		${2:${VISUAL}}
 	\end{split}
-\end{equation}
-$0
+\end{equation}$0
 endsnippet
 
 snippet ualeq "Unnumbered Aligned Equation" b
@@ -9804,8 +9918,7 @@ snippet ualeq "Unnumbered Aligned Equation" b
 	\begin{split}
 		${1:${VISUAL}}
 	\end{split}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet spliteq "SplitEquation"
@@ -9814,8 +9927,7 @@ snippet spliteq "SplitEquation"
 	\begin{split}
 		${1:${VISUAL}}
 	\end{split}
-\]
-$0
+\]$0
 endsnippet
 
 snippet speq "SplitEquation"
@@ -9824,8 +9936,7 @@ snippet speq "SplitEquation"
 	\begin{split}
 		${1:${VISUAL}}
 	\end{split}
-\]
-$0
+\]$0
 endsnippet
 
 snippet gathereq "Gathered Equation" b
@@ -9834,8 +9945,7 @@ snippet gathereq "Gathered Equation" b
 	\begin{gathered}
 		${2:${VISUAL}}
 	\end{gathered}
-\end{equation}
-$0
+\end{equation}$0
 endsnippet
 
 snippet ugathereq "Unnumbered Gathered Equation" b
@@ -9844,8 +9954,7 @@ snippet ugathereq "Unnumbered Gathered Equation" b
 	\begin{gathered}
 		${1:${VISUAL}}
 	\end{gathered}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet gaeq "Gathered Equation" b
@@ -9854,8 +9963,7 @@ snippet gaeq "Gathered Equation" b
 	\begin{gathered}
 		${2:${VISUAL}}
 	\end{gathered}
-\end{equation}
-$0
+\end{equation}$0
 endsnippet
 
 snippet ugaeq "Unnumbered Gathered Equation" b
@@ -9864,8 +9972,7 @@ snippet ugaeq "Unnumbered Gathered Equation" b
 	\begin{gathered}
 		${1:${VISUAL}}
 	\end{gathered}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet subeq "Sub Equations" b
@@ -9875,24 +9982,21 @@ snippet subeq "Sub Equations" b
 		$1 \\label{$2} \\
 		$3 \\label{$4}
 	\end{gather}
-\end{equation*}
-$0
+\end{equation*}$0
 endsnippet
 
 snippet gather "Gather" b
 % Gather
 \begin{gather}
 	${1:${VISUAL}} \label{$2}
-\end{gather}
-$0
+\end{gather}$0
 endsnippet
 
 snippet ugather "Unnumbered Gather" b
 % UnnumberedGather
 \begin{gather*}
 	${1:${VISUAL}}
-\end{gather*}
-$0
+\end{gather*}$0
 endsnippet
 
 snippet array "Array" b
@@ -9901,43 +10005,41 @@ snippet array "Array" b
 \begin{array}{rcl}
 	${1:${VISUAL}}
 \end{array}
-\]
-$0
+\]$0
 endsnippet
 
 snippet cen "Centering" b
 \begin{center}
 	${1:${VISUAL}}
-\end{center}
-$0
+\end{center}$0
 endsnippet
 
 #}}}
 # Matrices{{{
 #-------------------------------------------------------------------
 
-snippet mat "Matrix"
+snippet mat "Matrix" w
 \begin{matrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{matrix}$0
 endsnippet
 
-snippet pmat "Parenthesis matrix"
+snippet pmat "Parenthesis matrix" w
 \begin{pmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{pmatrix}$0
 endsnippet
 
-snippet bmat "Bracket matrix"
+snippet bmat "Bracket matrix" w
 \begin{bmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{bmatrix}$0
 endsnippet
 
-snippet matn "Matrix m x n"
+snippet matn "Matrix m x n" w
 % Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
@@ -9948,7 +10050,7 @@ snippet matn "Matrix m x n"
 \end{matrix}$0
 endsnippet
 
-snippet pmatn "Parenthesis matrix m x n"
+snippet pmatn "Parenthesis matrix m x n" w
 % Pmatrix
 \renewcommand\arraystretch{1}
 \begin{pmatrix}
@@ -9959,7 +10061,7 @@ snippet pmatn "Parenthesis matrix m x n"
 \end{pmatrix}$0
 endsnippet
 
-snippet bmatn "Bracket matrix m x n"
+snippet bmatn "Bracket matrix m x n" w
 % Bmatrix
 \renewcommand\arraystretch{1}
 \begin{bmatrix}
@@ -9970,14 +10072,14 @@ snippet bmatn "Bracket matrix m x n"
 \end{bmatrix}$0
 endsnippet
 
-snippet cmat "Colomn matrix"
+snippet cmat "Colomn matrix" w
 \begin{matrix}
 	$1 \\\\
 	$2
 \end{matrix}$0
 endsnippet
 
-snippet cmatn "Colomn matrix n x 1"
+snippet cmatn "Colomn matrix n x 1" w
 \begin{matrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -9985,14 +10087,14 @@ snippet cmatn "Colomn matrix n x 1"
 \end{matrix}$0
 endsnippet
 
-snippet cpmat "Colomn parenthesis matrix"
+snippet cpmat "Colomn parenthesis matrix" w
 \begin{pmatrix}
 	$1 \\\\
 	$2
 \end{pmatrix}$0
 endsnippet
 
-snippet cpmatn "Colomn parenthesis matrix n x 1"
+snippet cpmatn "Colomn parenthesis matrix n x 1" w
 \begin{pmatrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -10000,14 +10102,14 @@ snippet cpmatn "Colomn parenthesis matrix n x 1"
 \end{pmatrix}$0
 endsnippet
 
-snippet cbmat "Colomn bracket matrix"
+snippet cbmat "Colomn bracket matrix" w
 \begin{bmatrix}
 	$1 \\\\
 	$2
 \end{bmatrix}$0
 endsnippet
 
-snippet cbmatn "Colomn bracket matrix n x 1"
+snippet cbmatn "Colomn bracket matrix n x 1" w
 \begin{bmatrix}
 	$1 \\\\
 	\\vdots \\\\
@@ -10024,8 +10126,7 @@ snippet case "case"
 \begin{cases}
 	$1 \\\\
 	$2
-\end{cases}
-$0
+\end{cases}$0
 endsnippet
 
 
@@ -10033,8 +10134,7 @@ snippet cases "cases"
 \begin{cases}
 	$1 \\\\
 	$2
-\end{cases}
-$0
+\end{cases}$0
 endsnippet
 
 
@@ -10042,8 +10142,7 @@ snippet dcase "dcase"
 \begin{dcases}
 	$1 & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
-\end{dcases}
-$0
+\end{dcases}$0
 endsnippet
 
 
@@ -10051,8 +10150,7 @@ snippet dcases "dcases"
 \begin{dcases}
 	$1 & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
-\end{dcases}
-$0
+\end{dcases}$0
 endsnippet
 
 
@@ -10063,8 +10161,7 @@ snippet casedef "case definition"
 	$2 \\\\
 	$3
 \end{cases}
-\]
-$0
+\]$0
 endsnippet
 
 
@@ -10075,8 +10172,7 @@ snippet dcasedef "dcase definition"
 	$2 & \text{$3} \\ $4 \\\\
 	$5 & \text{$6} \\ $7
 \end{dcases}
-\]
-$0
+\]$0
 endsnippet
 
 #}}}
@@ -10099,8 +10195,7 @@ snippet item "Itemize" b
 % Itemize
 \begin{itemize}
 	\item ${1:${VISUAL}}
-\end{itemize}
-$0
+\end{itemize}$0
 endsnippet
 
 snippet iitem "Itemize" b
@@ -10113,50 +10208,47 @@ snippet items "Itemize" b
 % Itemize
 \begin{itemize}[leftmargin=1.3em]
 	\item ${1:${VISUAL}}
-\end{itemize}
-$0
+\end{itemize}$0
 endsnippet
 
 snippet itemz "Itemize" b
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=1.3em]
 	\item<+-| alert@+> ${1:${VISUAL}}
-\end{itemize}
-$0
+\end{itemize}$0
 endsnippet
 
 snippet itemize "Itemize" b
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=1.3em]
 	\item ${1:${VISUAL}}
-\end{itemize}
-$0
+\end{itemize}$0
 endsnippet
 
 snippet enum "Enumeration" b
 % Enumerate
-\begin{enumerate}[label=\arabic*.,font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{enumerate}[label=\arabic*)]
 	\item ${1:${VISUAL}}
-\end{enumerate}
-$0
+\end{enumerate}$0
 endsnippet
 
 snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-\begin{enumerate}[label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{enumerate}[label=(\alph*)]
 	\item ${1:${VISUAL}}
-\end{enumerate}
-$0
+\end{enumerate}$0
 endsnippet
 
 snippet enumr "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-\begin{enumerate}[label=(\roman*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{enumerate}[label=(\roman*)]
 	\item ${1:${VISUAL}}
-\end{enumerate}
-$0
+\end{enumerate}$0
 endsnippet
 
 snippet henum "Hyper-Enumeration" b
@@ -10170,30 +10262,28 @@ snippet henum "Hyper-Enumeration" b
 % Enumerate
 \begin{enumerate}
 	\item ${1:${VISUAL}}
-\end{enumerate}
-$0
+\end{enumerate}$0
 endsnippet
 
 snippet enumb "Bare enumerate in sub-level" b
 % Enumerate
 \begin{enumerate}
 	\item ${1:${VISUAL}}
-\end{enumerate}
-$0
+\end{enumerate}$0
 endsnippet
 
 
 #}}}
 # Beamer frames and bibliography{{{
 
-snippet fra
+snippet fra "create frame"
 % Frame
 \begin{frame}{$1}% F{O{L{D
 	${2:${VISUAL}}
 \end{frame}% F}O}L}D
 endsnippet
 
-snippet infra
+snippet infra "insert frame/break frame into two here"
 
 \end{frame}% F}O}L}D
 % Frame
@@ -10218,89 +10308,17 @@ snippet frabib "Beamer bibliography" b
 	\bibliographystyle{alpha}
 	\bibliography{${1:bib}}
 \end{frame}% F}O}L}D
-$0
 endsnippet
 
 snippet bib "Bibliography" b
 % Bibliography
 \bibliographystyle{alpha}
 \bibliography{${1:bib}}
-$0
 endsnippet
 
 #}}}
 # Other Environments (SES, Commutative Diagram etc){{{
 #-------------------------------------------------------------------
-
-# snippet claim
-# % claim
-# \item[\underline{\textit{Claim }}$1]
-# \begin{claimproof}
-# \end{claimproof}
-# endsnippet
-
-snippet claim "Claim" b
-% Claim
-\begin{enumerate}[]\label{claim $1}
-	\item[] \textbf{Claim $2} $3
-	\item[] \textbf{Proof.}<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{enumerate}
-
-$0
-endsnippet
-
-
-snippet \grey
-% theorem
-\begin{greybox}
-\begin{theorem}
-	$1
-\end{theorem}
-\end{greybox}
-\begin{proof}
-	${2:\textcolor{red}{Write a Proof}}
-\end{proof}
-
-$0
-endsnippet
-
-
-snippet \thmbox
-% theorem
-\begin{thmbox}
-\begin{theorem}
-	$1
-\end{theorem}
-\end{thmbox}
-\begin{boxprf}}
-	Write a Proof
-\end{boxprf}
-endsnippet
-
-snippet asser "Assertion" b
-% Assertion
-\begin{enumerate}[]\label{asser $1}
-	\item[] \textsc{Assertion $2} $3
-	\item[] \textbf{Proof.}<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{enumerate}
-endsnippet
-
-# snippet case "Case"
-# % Case
-# \begin{enumerate}[]
-# \label{case $1}
-# 	\item[] \textsc{Case $2} $3
-# \end{enumerate}
-#$0
-#endsnippet
-
-snippet app "Application" b
-% Application
-\begin{enumerate}[]\label{app $1}
-	\item[] \textsc{Application $2} $3
-	\item[] \textbf{Proof.}<+\bfseries\textcolor{red}{Write a Proof}+>
-\end{enumerate}
-endsnippet
 
 snippet comd "Making commutative diagram" b
 \[
@@ -10309,8 +10327,7 @@ snippet comd "Making commutative diagram" b
 		% & A \ar[r]^a \ar[d]_{b} & B \ar[d]_{d}\\\\
 		$1
 		}
-\]
-$0
+\]$0
 endsnippet
 
 snippet comdt "Making commutative diagram with tikz" b
@@ -10323,8 +10340,7 @@ T
 & X \arrow[d, "f"] \\\\
 & Y \arrow[r, "g"]
 & Z
-\end{tikzcd}
-$0
+\end{tikzcd}$0
 endsnippet
 
 snippet tikzcd
@@ -10415,8 +10431,7 @@ snippet gra "Graphics"
 	\end{center}
 	\caption{$2}
 	\label{$3}
-\end{figure}
-$0
+\end{figure}$0
 endsnippet
 
 snippet fig "Figure"
@@ -10427,8 +10442,7 @@ snippet fig "Figure"
 	\end{center}
 	\caption{$2}
 	\label{$3}
-\end{figure}
-$0
+\end{figure}$0
 endsnippet
 
 #}}}
@@ -10438,45 +10452,26 @@ endsnippet
 # Others{{{
 #-------------------------------------------------------------------
 
-# SomeAbbreviation{{{
+# SomeCommandsandStuff{{{
 #-------------------------------------------------------------------
 
-# snippet st "such that"
-# such that
-# endsnippet
-
-
-snippet tg
-To get to the
-endsnippet
-
-#}}}
-# NewCommandsandStuff{{{
-#-------------------------------------------------------------------
-
-snippet in
-\in$0
+snippet \ "Backslash" w
+\bs $0
 endsnippet
 
 
-snippet ul "Underline for latex"
-\uline{$1}$0
+snippet mac "Math color" w
+{\color{${1:red}}{$2}}$0
 endsnippet
 
 
-snippet \ "Backslash"
-\bs$0
+snippet mbx "boxed around environments" w
+\boxed{${1:${VISUAL}}\}$0
 endsnippet
 
 
-
-
-snippet vv "Vector"
-\vv{$1}$0
-endsnippet
-
-snippet ve "Vector"
-\vec{$1}$0
+snippet abx "boxes around environments with align" w
+\Aboxed{${1:${VISUAL}}\}$0
 endsnippet
 
 #}}}
@@ -10562,6 +10557,7 @@ endsnippet
 # TextInMathMode{{{
 #-------------------------------------------------------------------
 
+# \{\} used for better-working-fold
 snippet text "Text" w
 \text{${1:${VISUAL}}\}$0
 endsnippet
@@ -10571,11 +10567,11 @@ snippet te "Text"
 endsnippet
 
 snippet qte "Text with qquad spaces"
-\quad \text{${1:${VISUAL}}\} \ $0
+\qquad \text{${1:${VISUAL}}\} \ $0
 endsnippet
 
-snippet qqte "Text with qquad spaces"
-\qquad \text{${1:${VISUAL}}\} \ $0
+snippet qteq "Text with qquad spaces both sides"
+\qquad \text{${1:${VISUAL}}\} \qquad $0
 endsnippet
 
 snippet tb "Text boldfont"
@@ -10595,24 +10591,44 @@ snippet ts "Text sc"
 endsnippet
 
 # \{\} used for better-working-fold
-snippet em "Emphasize even visually selected text"
+snippet em "Emphasize even visually selected text" w
 \emph\{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet tc "Text color"
+snippet ul "Underline selected text" w
+\uline{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet emul "Emphasize-underline selected text" w
+\uline{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet emu "Emphasize-underline selected text" w
+\uline{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet embx "Emphasize-box selected text" w
+\boxed{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet emb "Emphasize-box selected text" w
+\boxed{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet tc "Text color" w
 \textcolor{${1:red}}\{${2:${VISUAL}}\}$0
 endsnippet
 
-snippet tr "Text color red"
+snippet tr "Text color red" w
 \textcolor{red}\{${2:${VISUAL}}\}$0
 endsnippet
 
-snippet tbc "Text color in bold"
-\textcolor{${1:red}}{\textbf{$2}}$0
+snippet tbc "Text color in bold" w
+\textcolor{${1:red}}{\textbf{${2:${VISUAL}}\}}$0
 endsnippet
 
-snippet tbr "Text color red in bold"
-\textcolor{red}{\textbf{$2}}$0
+snippet tbr "Text color red in bold" w
+\textcolor{red}{\textbf{${2:${VISUAL}}\}}$0
 endsnippet
 
 snippet quo "Single quoting visually selected text"
@@ -10631,222 +10647,218 @@ endsnippet
 # English Alphabets{{{
 #-------------------------------------------------------------------
 
-snippet a
+snippet a "" w
 $a$$0
 endsnippet
 
-snippet b
+snippet b "" w
 $b$$0
 endsnippet
 
-snippet c
+snippet c "" w
 $c$$0
 endsnippet
 
-snippet d
+snippet d "" w
 $d$$0
 endsnippet
 
-snippet e
+snippet e "" w
 $e$$0
 endsnippet
 
-snippet f
+snippet f "" w
 $f$$0
 endsnippet
 
-snippet g
+snippet g "" w
 $g$$0
 endsnippet
 
-snippet h
+snippet h "" w
 $h$$0
 endsnippet
 
-snippet i
+snippet i "" w
 $i$$0
 endsnippet
 
-snippet j
+snippet j "" w
 $j$$0
 endsnippet
 
-snippet k
+snippet k "" w
 $k$$0
 endsnippet
 
-snippet l
+snippet nl "" w
 $l$$0
 endsnippet
 
-snippet ;l
+snippet l "" w
 $\ell$$0
 endsnippet
 
-snippet ell
-$\ell$$0
-endsnippet
-
-snippet m
+snippet m "" w
 $m$$0
 endsnippet
 
-snippet n
+snippet n "" w
 $n$$0
 endsnippet
 
-#snippet o
+#snippet o "" w
 #$o$$0
 #endsnippet
 
-snippet p
+snippet p "" w
 $p$$0
 endsnippet
 
-snippet q
+snippet q "" w
 $q$$0
 endsnippet
 
-snippet r
+snippet r "" w
 $r$$0
 endsnippet
 
-snippet s
+snippet s "" w
 $s$$0
 endsnippet
 
-snippet t
+snippet t "" w
 $t$$0
 endsnippet
 
-snippet u
+snippet u "" w
 $u$$0
 endsnippet
 
-snippet v
+snippet v "" w
 $v$$0
 endsnippet
 
-snippet w
+snippet w "" w
 $w$$0
 endsnippet
 
-snippet x
+snippet x "" w
 $x$$0
 endsnippet
 
-snippet y
+snippet y "" w
 $y$$0
 endsnippet
 
-snippet z
+snippet z "" w
 $z$$0
 endsnippet
 
 
 
-snippet A
+snippet A "" w
 $A$$0
 endsnippet
 
-snippet B
+snippet B "" w
 $B$$0
 endsnippet
 
-snippet C
+snippet C "" w
 $C$$0
 endsnippet
 
-snippet D
+snippet D "" w
 $D$$0
 endsnippet
 
-snippet E
+snippet E "" w
 $E$$0
 endsnippet
 
-snippet F
+snippet F "" w
 $F$$0
 endsnippet
 
-snippet G
+snippet G "" w
 $G$$0
 endsnippet
 
-snippet H
+snippet H "" w
 $H$$0
 endsnippet
 
-snippet I
+snippet I "" w
 $I$$0
 endsnippet
 
-snippet J
+snippet J "" w
 $J$$0
 endsnippet
 
-snippet K
+snippet K "" w
 $K$$0
 endsnippet
 
-snippet L
+snippet L "" w
 $L$$0
 endsnippet
 
-snippet M
+snippet M "" w
 $M$$0
 endsnippet
 
-snippet N
+snippet N "" w
 $N$$0
 endsnippet
 
-snippet O
+snippet O "" w
 $O$$0
 endsnippet
 
-snippet P
+snippet P "" w
 $P$$0
 endsnippet
 
-snippet Q
+snippet Q "" w
 $Q$$0
 endsnippet
 
-snippet R
+snippet R "" w
 $R$$0
 endsnippet
 
 
-snippet S
+snippet S "" w
 $S$$0
 endsnippet
 
-snippet T
+snippet T "" w
 $T$$0
 endsnippet
 
-snippet U
+snippet U "" w
 $U$$0
 endsnippet
 
-snippet V
+snippet V "" w
 $V$$0
 endsnippet
 
-snippet W
+snippet W "" w
 $W$$0
 endsnippet
 
-snippet X
+snippet X "" w
 $X$$0
 endsnippet
 
-snippet Y
+snippet Y "" w
 $Y$$0
 endsnippet
 
-snippet Z
+snippet Z "" w
 $Z$$0
 endsnippet
 
@@ -10854,213 +10866,213 @@ endsnippet
 # Bold English Alphabets{{{
 
 
-snippet ba
+snippet ba "" w
 $\bm{a}$$0
 endsnippet
 
-snippet bb
+snippet bb "" w
 $\bm{b}$$0
 endsnippet
 
-snippet bc
+snippet bc "" w
 $\bm{c}$$0
 endsnippet
 
-snippet bd
+snippet bd "" w
 $\bm{d}$$0
 endsnippet
 
-snippet bee
+snippet bee "" w
 $\bm{e}$$0
 endsnippet
 
-snippet bf
+snippet bf "" w
 $\bm{f}$$0
 endsnippet
 
-snippet bg
+snippet bg "" w
 $\bm{g}$$0
 endsnippet
 
-snippet bh
+snippet bh "" w
 $\bm{h}$$0
 endsnippet
 
-snippet bi
+snippet bi "" w
 $\bm{i}$$0
 endsnippet
 
-snippet bj
+snippet bj "" w
 $\bm{j}$$0
 endsnippet
 
-snippet bk
+snippet bk "" w
 $\bm{k}$$0
 endsnippet
 
-snippet bl
+snippet bl "" w
 $\bm{l}$$0
 endsnippet
 
-snippet bm
+snippet bm "" w
 $\bm{m}$$0
 endsnippet
 
-snippet bn
+snippet bn "" w
 $\bm{n}$$0
 endsnippet
 
-snippet bo
+snippet bo "" w
 $\bm{o}$$0
 endsnippet
 
-snippet bp
+snippet bp "" w
 $\bm{p}$$0
 endsnippet
 
-snippet bq
+snippet bq "" w
 $\bm{q}$$0
 endsnippet
 
-snippet br
+snippet br "" w
 $\bm{r}$$0
 endsnippet
 
-snippet bs
+snippet bs "" w
 $\bm{s}$$0
 endsnippet
 
-snippet bt
+snippet bt "" w
 $\bm{t}$$0
 endsnippet
 
-snippet bu
+snippet bu "" w
 $\bm{u}$$0
 endsnippet
 
-snippet bv
+snippet bv "" w
 $\bm{v}$$0
 endsnippet
 
-snippet bw
+snippet bw "" w
 $\bm{w}$$0
 endsnippet
 
-snippet bx
+snippet bx "" w
 $\bm{x}$$0
 endsnippet
 
-snippet by
+snippet by "" w
 $\bm{y}$$0
 endsnippet
 
-snippet bz
+snippet bz "" w
 $\bm{z}$$0
 endsnippet
 
 
 
-snippet bA
+snippet bA "" w
 $\bm{A}$$0
 endsnippet
 
-snippet bB
+snippet bB "" w
 $\bm{B}$$0
 endsnippet
 
-snippet bC
+snippet bC "" w
 $\bm{C}$$0
 endsnippet
 
-snippet bD
+snippet bD "" w
 $\bm{D}$$0
 endsnippet
 
-snippet bE
+snippet bE "" w
 $\bm{E}$$0
 endsnippet
 
-snippet bF
+snippet bF "" w
 $\bm{F}$$0
 endsnippet
 
-snippet bG
+snippet bG "" w
 $\bm{G}$$0
 endsnippet
 
-snippet bH
+snippet bH "" w
 $\bm{H}$$0
 endsnippet
 
-snippet bI
+snippet bI "" w
 $\bm{I}$$0
 endsnippet
 
-snippet bJ
+snippet bJ "" w
 $\bm{J}$$0
 endsnippet
 
-snippet bK
+snippet bK "" w
 $\bm{K}$$0
 endsnippet
 
-snippet bL
+snippet bL "" w
 $\bm{L}$$0
 endsnippet
 
-snippet bM
+snippet bM "" w
 $\bm{M}$$0
 endsnippet
 
-snippet bN
+snippet bN "" w
 $\bm{N}$$0
 endsnippet
 
-snippet bO
+snippet bO "" w
 $\bm{O}$$0
 endsnippet
 
-snippet bP
+snippet bP "" w
 $\bm{P}$$0
 endsnippet
 
-snippet bQ
+snippet bQ "" w
 $\bm{Q}$$0
 endsnippet
 
-snippet bR
+snippet bR "" w
 $\bm{R}$$0
 endsnippet
 
-snippet bS
+snippet bS "" w
 $\bm{S}$$0
 endsnippet
 
-snippet bT
+snippet bT "" w
 $\bm{T}$$0
 endsnippet
 
-snippet bU
+snippet bU "" w
 $\bm{U}$$0
 endsnippet
 
-snippet bV
+snippet bV "" w
 $\bm{V}$$0
 endsnippet
 
-snippet bW
+snippet bW "" w
 $\bm{W}$$0
 endsnippet
 
-snippet bX
+snippet bX "" w
 $\bm{X}$$0
 endsnippet
 
-snippet bY
+snippet bY "" w
 $\bm{Y}$$0
 endsnippet
 
-snippet bZ
+snippet bZ "" w
 $\bm{Z}$$0
 endsnippet
 
@@ -11068,215 +11080,215 @@ endsnippet
 # Greek Alphabets{{{
 #-------------------------------------------------------------------
 
-snippet al
+snippet al "" w
 $\alpha$$0
 endsnippet
 
-snippet be
+snippet be "" w
 $\beta$$0
 endsnippet
 
-snippet ga
+snippet ga "" w
 $\gamma$$0
 endsnippet
 
-snippet de
+snippet de "" w
 $\delta$$0
 endsnippet
 
-snippet ep
+snippet ep "" w
 $\epsilon$$0
 endsnippet
 
-snippet vep
+snippet vep "" w
 $\varepsilon$$0
 endsnippet
 
-snippet ze
+snippet ze "" w
 $\zeta$$0
 endsnippet
 
-snippet et
+snippet et "" w
 $\eta$$0
 endsnippet
 
-snippet th
+snippet th "" w
 $\theta$$0
 endsnippet
 
-snippet vth
+snippet vth "" w
 $\vartheta$$0
 endsnippet
 
-snippet io
+snippet io "" w
 $\iota$$0
 endsnippet
 
-snippet ka
+snippet ka "" w
 $\kappa$$0
 endsnippet
 
-snippet la
+snippet la "" w
 $\lambda$$0
 endsnippet
 
-snippet mu
+snippet mu "" w
 $\mu$$0
 endsnippet
 
-snippet nu
+snippet nu "" w
 $\nu$$0
 endsnippet
 
-snippet xi
+snippet xi "" w
 $\xi$$0
 endsnippet
 
-snippet pi
+snippet pi "" w
 $\pi$$0
 endsnippet
 
-snippet vpi
+snippet vpi "" w
 $\varpi$$0
 endsnippet
 
-snippet rh
+snippet rh "" w
 $\rho$$0
 endsnippet
 
-snippet mrh
+snippet mrh "" w
 $\myrho$$0
 endsnippet
 
-snippet si
+snippet si "" w
 $\sigma$$0
 endsnippet
 
-snippet vsi
+snippet vsi "" w
 $\varsigma$$0
 endsnippet
 
-snippet ta
+snippet ta "" w
 $\tau$$0
 endsnippet
 
-snippet up
+snippet up "" w
 $\upsilon$$0
 endsnippet
 
-snippet ph
+snippet ph "" w
 $\phi$$0
 endsnippet
 
-snippet vph
+snippet vph "" w
 $\varphi$$0
 endsnippet
 
-snippet ch
+snippet ch "" w
 $\chi$$0
 endsnippet
 
-snippet mch
+snippet mch "" w
 $\mychi$$0
 endsnippet
 
-snippet ps
+snippet ps "" w
 $\psi$$0
 endsnippet
 
-snippet om
+snippet om "" w
 $\omega$$0
 endsnippet
 
 
 
-snippet GA
+snippet GA "" w
 $\Gamma$$0
 endsnippet
 
-snippet DE
+snippet DE "" w
 $\Delta$$0
 endsnippet
 
-snippet TH
+snippet TH "" w
 $\Theta$$0
 endsnippet
 
-snippet LA
+snippet LA "" w
 $\Lambda$$0
 endsnippet
 
-snippet XI
+snippet XI "" w
 $\Xi$$0
 endsnippet
 
-snippet PI
+snippet PI "" w
 $\Pi$$0
 endsnippet
 
-snippet SI
+snippet SI "" w
 $\Sigma$$0
 endsnippet
 
-snippet UP
+snippet UP "" w
 $\Upsilon$$0
 endsnippet
 
-snippet PH
+snippet PH "" w
 $\Phi$$0
 endsnippet
 
-snippet PS
+snippet PS "" w
 $\Psi$$0
 endsnippet
 
-snippet OM
+snippet OM "" w
 $\Omega$$0
 endsnippet
 
 
-snippet Ga
+snippet Ga "" w
 $\Gamma$$0
 endsnippet
 
-snippet De
+snippet De "" w
 $\Delta$$0
 endsnippet
 
-snippet Th
+snippet Th "" w
 $\Theta$$0
 endsnippet
 
-snippet La
+snippet La "" w
 $\Lambda$$0
 endsnippet
 
-snippet Xi
+snippet Xi "" w
 $\Xi$$0
 endsnippet
 
-snippet Pi
+snippet Pi "" w
 $\Pi$$0
 endsnippet
 
-snippet Si
+snippet Si "" w
 $\Sigma$$0
 endsnippet
 
 
-snippet Up
+snippet Up "" w
 $\Upsilon$$0
 endsnippet
 
-snippet Ph
+snippet Ph "" w
 $\Phi$$0
 endsnippet
 
-snippet Ps
+snippet Ps "" w
 $\Psi$$0
 endsnippet
 
-snippet Om
+snippet Om "" w
 $\Omega$$0
 endsnippet
 
