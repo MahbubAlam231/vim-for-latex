@@ -62,7 +62,7 @@
 % \usepackage[dvipsnames]{xcolor}
 % \usepackage{yfonts}
 
-\graphicspath{{Images/}}
+\graphicspath{{images/}}
 
 % F}O}L}D
 % Environments% F{O{L{D

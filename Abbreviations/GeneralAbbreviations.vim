@@ -4,38 +4,6 @@
 "--------------------------------------------------------------------
 
 "--------------------------------------------------------------------
-" Abbreviations
-"--------------------------------------------------------------------
-
-"A{{{
-
-iabbr a.e. a.e.\
-
-"}}}
-"L{{{
-
-iabbr LEmma Lemma
-iabbr LEt Let
-
-"}}}
-"M{{{
-
-iabbr Mvt Mean Value Theorem
-iabbr mvt mean value theorem
-
-"}}}
-"T{{{
-
-iabbr THeorem Theorem
-
-"}}}
-"W{{{
-
-iabbr WE We
-
-"}}}
-
-"--------------------------------------------------------------------
 " Abolish
 "--------------------------------------------------------------------
 
@@ -67,7 +35,7 @@ Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,es,ve} commut{e,es,ative}
 Abolish cond{n,s,ns,d,l,ly} condition{,s,s,ed,al,ally}
-Abolish cong{,e,es,t} congruen{,ce,ces,t}
+Abolish cong{e,es,t} congruen{ce,ces,t}
 Abolish conj{,s,d} conjecture{,s,d}
 Abolish cons{,t}{,s} constant{,}{,s}
 Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
@@ -76,7 +44,8 @@ Abolish corr{,s,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,ing
 Abolish cor{,s} corollar{y,ies}
 Abolish ctbl{e,y,ty,ey} countab{le,ility,ility,ility}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
-Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness} {compact,compact}{,ification,ification,ify,ifying,ifying,ly,ness}
+Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness}
+Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{continuous ,}function{,s}
 
 "}}}
 "D{{{
@@ -105,7 +74,6 @@ Abolish {equidistr,eqdistr,equid}{,e,es,n,ns,d} {equidistribut,equidistribut}{e,
 "F{{{
 
 Abolish fa for all
-Abolish fae for almost every
 Abolish fc{,y,ty} first-countab{le,ility,ility}
 Abolish fe for every
 Abolish fs for some
@@ -132,7 +100,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 Abolish ind{ep,ept,epe,epy,ly,eply} independ{,ent,ence,ency,ently,ently}
 Abolish ineq{n,ns,,y,ty,ies,s} inequa{tion,tions,lity,lity,lity,lities,lities}
 Abolish inf{e,te,y,ly,mal} infini{te,te,ty,tely,simal}
-Abolish inj{,n,e,ve,ity,ty,y,ly} injecti{on,on,ve,ve,vity,vity,vity,ly}
+Abolish inj{,n,e,ve,ity,ty,y,ly,t,ts} inject{ion,ion,ive,ive,ivity,ivity,ivity,ily,,s}
 Abolish insuff{,ly} insufficient{,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
 Abolish irred{,y} irreducib{le,ility}
@@ -168,6 +136,7 @@ Abolish ow otherwise
 Abolish poly{,s} polynomial{,s}
 Abolish proj{n,ns} projection{,s}
 Abolish prop{n,ns} proposition{,s}
+Abolish prb{,s} problem{,s}
 
 "}}}
 "Q{{{
@@ -190,7 +159,7 @@ Abolish simul{,ly} simultaneous{,ly}
 Abolish sol{n,s,ns} solution{,s,s}
 Abolish st such that
 Abolish suff{,ly} sufficient{,ly}
-Abolish surj{,n,e,ve,ity,ty,y,ly} surjecti{on,on,ve,ve,vity,vity,vity,ly}
+Abolish surj{,n,e,ve,ity,ty,y,ly,t,ts} surject{ion,ion,ive,ive,ivity,ivity,ivity,ily,,s}
 Abolish s{,ep}bl{e,y,ty} separab{,}{le,ility,ility}
 Abolish {,sub,s}sp{,es} {,sub,sub}space{,s}
 Abolish {sub,s}alg{,s,ic} subalgebra{,s,ic}
@@ -233,3 +202,43 @@ Abolish wrt with respect to
 Abolish wlog without loss of generality
 
 "}}}
+
+"--------------------------------------------------------------------
+" Abbreviations
+"--------------------------------------------------------------------
+
+"A{{{
+
+iabbr a.e. a.e.\
+
+"}}}
+"F{{{
+
+iabbr fae for a.e.\
+iabbr Fae For a.e.\
+iabbr Fc First-countable
+
+"}}}
+"L{{{
+
+iabbr LEmma Lemma
+iabbr LEt Let
+
+"}}}
+"M{{{
+
+iabbr Mvt Mean Value Theorem
+iabbr mvt mean value theorem
+
+"}}}
+"T{{{
+
+iabbr THeorem Theorem
+
+"}}}
+"W{{{
+
+iabbr WE We
+
+"}}}
+

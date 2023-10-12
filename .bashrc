@@ -264,4 +264,6 @@ alias     re='sudo apt remove'
 alias     ar='sudo apt autoremove'
 alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
+alias     dt='`date +%F-%H%M`'
+
 #}}}

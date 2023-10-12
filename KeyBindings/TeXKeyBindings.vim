@@ -41,6 +41,8 @@ inoremap <buffer> 99 9
 inoremap <buffer> 0 <right><right>
 inoremap <buffer> 00 0
 
+nnoremap <buffer> <localleader>4 o\[<cr>\]<esc>O
+
 "}}}
 " Braces{{{
 "-------------------------------------------------------------------
@@ -60,6 +62,9 @@ inoremap <buffer> \|\| \|
 
 inoremap <buffer> '' `'<left>
 inoremap <buffer> "" ``''<left><left>
+
+inoremap <buffer> 2' ''
+inoremap <buffer> 3' '''
 
 inoremap <buffer> ;b0 \bm{0}
 inoremap <buffer> ;b1 \mathbbm{1}
@@ -3173,13 +3178,13 @@ inoremap <buffer> <localleader>ab \abs{}<left>
 inoremap <buffer> <localleader>abs \abs{}<left>
 
 inoremap <buffer> <localleader>wt \widetilde{}<left>
-inoremap <buffer> <localleader>~ \sim
-inoremap <buffer> <localleader>` \sim
-inoremap <buffer> ;~ {\sim}
-inoremap <buffer> ;` {\sim}
-inoremap <buffer> ;`` {\sim}<esc>A
-inoremap <buffer> <localleader>`` \sim<esc>A
 inoremap <buffer> <localleader>jt \tilde{}<left>
+inoremap <buffer> <localleader>~ {\sim}
+inoremap <buffer> <localleader>` {\sim}
+inoremap <buffer> <localleader>`` {\sim}<esc>A
+inoremap <buffer> ;~ \sim
+inoremap <buffer> ;` \sim
+inoremap <buffer> ;`` \sim<esc>A
 
 inoremap <buffer> <localleader>wh \widehat{}<left>
 inoremap <buffer> `6 \widehat{}<left>
@@ -3642,6 +3647,7 @@ inoremap <buffer> ;te \text{}<left>
 inoremap <buffer> ./ .\
 inoremap <buffer> /, \
 inoremap <buffer> :+ :=
+inoremap <buffer> &+ &=
 
 "}}}
 
@@ -3661,13 +3667,17 @@ nnoremap <buffer> <localleader>db :call DollarToBracket()<cr>
 function! BracketToEnv(new)
     call vimtex#env#change_surrounding('math', a:new)
     let l:cur_pos = vimtex#pos#get_cursor()
+
+    " Get rid of '*', capitalize first-letter to create env-title
+    let l:new = substitute(a:new, '*', '', '')
+    let l:new0 = substitute(l:new,'\(\<\w\+\>\)', '\u\1', 'g')
     if matchstr(a:new, '*') != ''
-        let b:new = substitute(a:new, '*', '', '')
-        let @l = '% Unnumbered' . substitute(b:new,'\(\<\w\+\>\)', '\u\1', 'g')
+        let @l = '% Unnumbered' . l:new0
     else
-        let @l = '% ' . substitute(a:new,'\(\<\w\+\>\)', '\u\1', 'g')
+        let @l = '% ' . l:new0
     endif
-    exe "normal! ?begin\<cr>"
+
+    exe "normal! ?begin\<cr>:echo\<cr>"
     put! l
     normal! ==
 
@@ -3689,34 +3699,9 @@ nnoremap <buffer> <localleader>bueq :call BracketToEnv('equation*')<cr>
 nnoremap <buffer> <localleader>bga :call BracketToEnv('gather')<cr>i
 nnoremap <buffer> <localleader>buga :call BracketToEnv('gather*')<cr>
 
-" " \[\] to double math-envs
-" function! BracketToEnv2(new)
-"     call vimtex#env#change_surrounding('math', a:new)
-"     let l:cur_pos = vimtex#pos#get_cursor()
-"     if matchstr(a:new, '*') != ''
-"         let b:new = substitute(a:new, '*', '', '')
-"         let @l = '% Unnumbered' . substitute(b:new,'\(\<\w\+\>\)', '\u\1', 'g')
-"     else
-"         let @l = '% ' . substitute(a:new,'\(\<\w\+\>\)', '\u\1', 'g')
-"     endif
-"     exe "normal! ?begin\<cr>"
-"     put! l
-"     normal! ==
-
-"     if matchstr(a:new, '*') != ''
-"         call vimtex#pos#set_cursor(l:cur_pos)
-"         normal! j
-"     elseif a:new == 'equation'
-"             let @m = 'eq:'
-"             exe "normal! jA\\label{}\<esc>\"mPl"
-"     else
-"             exe "normal! jA\\label{}\<esc>"
-"     endif
-" endfunction
-
 " \[\] to Aligned Equation
 function! BracketToAlignedEq()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% AlignedEquation\<cr>\\begin{equation}\\label{eq:}\<cr>\\begin{split}\<cr>\\end{split}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
 endfunction
 
 nnoremap <buffer> <localleader>baleq :call BracketToAlignedEq()<cr>i
@@ -3730,7 +3715,7 @@ nnoremap <buffer> <localleader>bualeq :call BracketToUnnumAlignedEq()<cr>
 
 " \[\] to Gathered Equation
 function! BracketToGatherEq()
-    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% GatheredEquation\<cr>\\begin{equation}\\label{}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
+    :execute ":normal! /\\\]\<cr>mm?\\\[\<cr>V`mdO% GatheredEquation\<cr>\\begin{equation}\\label{eq:}\<cr>\\begin{gathered}\<cr>\\end{gathered}\<cr>\\end{equation}\<esc>mn2kpdd`n2kdd?label\<cr>$"
 endfunction
 
 nnoremap <buffer> <localleader>bgaeq :call BracketToGatherEq()<cr>i
@@ -3799,7 +3784,7 @@ function! ReferencingAndCiting(code)
     elseif a:code == "cit"
         :execute ":normal! hmmlx`ma~\\cite{\<esc>"
     elseif a:code == "jcit"
-        :execute ":normal! a\\cite{\<esc><c-x><c-o>"
+        :execute ":normal! a\\cite{\<esc>"
     elseif a:code == "rcit"
         :execute ":normal! a\\cite[]{\<esc>hi"
     endif
@@ -3817,18 +3802,18 @@ inoremap <buffer> <localleader>cit <esc>:call ReferencingAndCiting("jcit")<cr>a
 inoremap <buffer> <localleader>jcit <esc>:call ReferencingAndCiting("cit")<cr>a
 inoremap <buffer> <localleader>rcit <esc>:call ReferencingAndCiting("rcit")<cr>F[a
 
-inoremap <buffer> <localleader>aref \autoref{<c-x><c-o>
-inoremap <buffer> <localleader>tref \autoref{thm:<c-x><c-o>
-inoremap <buffer> <localleader>lref \autoref{lem:<c-x><c-o>
-inoremap <buffer> <localleader>pref \autoref{prop:<c-x><c-o>
-inoremap <buffer> <localleader>cref \autoref{cor:<c-x><c-o>
-inoremap <buffer> <localleader>rref \autoref{rem:<c-x><c-o>
-inoremap <buffer> <localleader>eqref \eqref{eq:<c-x><c-o>
+inoremap <buffer> <localleader>aref \autoref{
+inoremap <buffer> <localleader>tref \autoref{thm:
+inoremap <buffer> <localleader>lref \autoref{lem:
+inoremap <buffer> <localleader>pref \autoref{prop:
+inoremap <buffer> <localleader>cref \autoref{cor:
+inoremap <buffer> <localleader>rref \autoref{rem:
+inoremap <buffer> <localleader>eqref \eqref{eq:
 
-inoremap <buffer> <localleader>chref   \S\autoref{chap:<c-x><c-o>
-inoremap <buffer> <localleader>sref   \S\autoref{sec:<c-x><c-o>
-inoremap <buffer> <localleader>ssref  \S\autoref{ssec:<c-x><c-o>
-inoremap <buffer> <localleader>sssref \S\autoref{sssec:<c-x><c-o>
+inoremap <buffer> <localleader>chref   \S\ref{chap:
+inoremap <buffer> <localleader>sref   \S\ref{sec:
+inoremap <buffer> <localleader>ssref  \S\ref{ssec:
+inoremap <buffer> <localleader>sssref \S\ref{sssec:
 
 "}}}
 
@@ -3890,6 +3875,63 @@ inoremap <buffer> ;bW  \bm{W}
 inoremap <buffer> ;bX  \bm{X}
 inoremap <buffer> ;bY  \bm{Y}
 inoremap <buffer> ;bZ  \bm{Z}
+
+"}}}
+" Math frak english alphabets{{{
+
+inoremap <buffer> ;fa  \mathfrak{a}
+inoremap <buffer> ;fb  \mathfrak{b}
+inoremap <buffer> ;fc  \mathfrak{c}
+inoremap <buffer> ;fd  \mathfrak{d}
+inoremap <buffer> ;fee \mathfrak{e}
+inoremap <buffer> ;ff  \mathfrak{f}
+inoremap <buffer> ;fg  \mathfrak{g}
+inoremap <buffer> ;fh  \mathfrak{h}
+inoremap <buffer> ;fi  \mathfrak{i}
+inoremap <buffer> ;fj  \mathfrak{j}
+inoremap <buffer> ;fk  \mathfrak{k}
+inoremap <buffer> ;fl  \mathfrak{l}
+inoremap <buffer> ;fm  \mathfrak{m}
+inoremap <buffer> ;fn  \mathfrak{n}
+inoremap <buffer> ;fo  \mathfrak{o}
+inoremap <buffer> ;fp  \mathfrak{p}
+inoremap <buffer> ;fq  \mathfrak{q}
+inoremap <buffer> ;fr  \mathfrak{r}
+inoremap <buffer> ;fs  \mathfrak{s}
+inoremap <buffer> ;ft  \mathfrak{t}
+inoremap <buffer> ;fu  \mathfrak{u}
+inoremap <buffer> ;fv  \mathfrak{v}
+inoremap <buffer> ;fw  \mathfrak{w}
+inoremap <buffer> ;fx  \mathfrak{x}
+inoremap <buffer> ;fy  \mathfrak{y}
+inoremap <buffer> ;fz  \mathfrak{z}
+
+inoremap <buffer> ;fA  \mathfrak{A}
+inoremap <buffer> ;fB  \mathfrak{B}
+inoremap <buffer> ;fC  \mathfrak{C}
+inoremap <buffer> ;fD  \mathfrak{D}
+inoremap <buffer> ;fE  \mathfrak{E}
+inoremap <buffer> ;fF  \mathfrak{F}
+inoremap <buffer> ;fG  \mathfrak{G}
+inoremap <buffer> ;fH  \mathfrak{H}
+inoremap <buffer> ;fI  \mathfrak{I}
+inoremap <buffer> ;fJ  \mathfrak{J}
+inoremap <buffer> ;fK  \mathfrak{K}
+inoremap <buffer> ;fL  \mathfrak{L}
+inoremap <buffer> ;fM  \mathfrak{M}
+inoremap <buffer> ;fN  \mathfrak{N}
+inoremap <buffer> ;fO  \mathfrak{O}
+inoremap <buffer> ;fP  \mathfrak{P}
+inoremap <buffer> ;fQ  \mathfrak{Q}
+inoremap <buffer> ;fR  \mathfrak{R}
+inoremap <buffer> ;fS  \mathfrak{S}
+inoremap <buffer> ;fT  \mathfrak{T}
+inoremap <buffer> ;fU  \mathfrak{U}
+inoremap <buffer> ;fV  \mathfrak{V}
+inoremap <buffer> ;fW  \mathfrak{W}
+inoremap <buffer> ;fX  \mathfrak{X}
+inoremap <buffer> ;fY  \mathfrak{Y}
+inoremap <buffer> ;fZ  \mathfrak{Z}
 
 "}}}
 " Greek Alphabets{{{
@@ -3976,422 +4018,496 @@ inoremap <buffer> ;Om \Omega
 
 highlight Folds_brackets_comments ctermbg=174 ctermfg=black
 
-let m = matchadd("Folds_brackets_comments",'%{T{E{X')
-let m = matchadd("Folds_brackets_comments",'%}T}E}X')
-let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
-let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
+augroup TeXHighlighting
+    autocmd!
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%\( \)*\(h\|c\)\( \)*')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
+augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
-let m = matchadd("PartMarkerGroup",'% Part')
-let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% Part')
+    autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
+augroup end
 
 highlight PartGroup ctermbg=092 ctermfg=149
 
-let m = matchadd("PartGroup",'\\part{.\{}}')
-let m = matchadd("PartGroup",'\\part\*{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("PartGroup",'\\part{.\{}}')
+    autocmd Filetype tex let m = matchadd("PartGroup",'\\part\*{.\{}}')
+augroup end
 
 highlight ChapterMarkerGroup ctermbg=092 ctermfg=149
 
-let m = matchadd("ChapterMarkerGroup",'% Chapter')
-let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% Chapter')
+    autocmd Filetype tex let m = matchadd("ChapterMarkerGroup",'% UnnumberedChapter')
+augroup end
 
 highlight ChapterGroup ctermbg=092 ctermfg=149
 
-let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
-let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter{.\{}}')
+    autocmd Filetype tex let m = matchadd("ChapterGroup",'\\chapter\*{.\{}}')
+augroup end
 
 highlight SectionMarkerGroup ctermbg=30 ctermfg=Black
 
-let m = matchadd("SectionMarkerGroup",'% Section')
-let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% Section')
+    autocmd Filetype tex let m = matchadd("SectionMarkerGroup",'% UnnumberedSection')
+augroup end
 
 highlight SectionGroup ctermbg=30 ctermfg=Black
 
-let m = matchadd("SectionGroup",'\\section{.\{}}')
-let m = matchadd("SectionGroup",'\\section\*{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SectionGroup",'\\section{.\{}}')
+    autocmd Filetype tex let m = matchadd("SectionGroup",'\\section\*{.\{}}')
+augroup end
 
 highlight SubsectionMarkerGroup ctermbg=143 ctermfg=Black
 
-let m = matchadd("SubsectionMarkerGroup",'% Subsection')
-let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% Subsection')
+    autocmd Filetype tex let m = matchadd("SubsectionMarkerGroup",'% UnnumberedSubsection')
+augroup end
 
 highlight SubsectionGroup ctermbg=143 ctermfg=Black
 
-let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
-let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection{.\{}}')
+    autocmd Filetype tex let m = matchadd("SubsectionGroup",'\\subsection\*{.\{}}')
+augroup end
 
 highlight SubsubsectionMarkerGroup ctermbg=069 ctermfg=Black
 
-let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
-let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% Subsubsection')
+    autocmd Filetype tex let m = matchadd("SubsubsectionMarkerGroup",'% UnnumberedSubsubsection')
+augroup end
 
 highlight SubsubsectionGroup ctermbg=069 ctermfg=Black
 
-let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
-let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection{.\{}}')
+    autocmd Filetype tex let m = matchadd("SubsubsectionGroup",'\\subsubsection\*{.\{}}')
+augroup end
 
 highlight Label ctermbg=250 ctermfg=0
 
-let m = matchadd("Label",'\\label{.\{}}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Label",'\\label{.\{-}}')
+augroup end
 
 "}}}
 " MarkerGroup, BoldGroup"{{{
 
 highlight TitleAbstract ctermbg=92 ctermfg=149
 
-let m = matchadd("TitleAbstract",'% Abstract')
-let m = matchadd("TitleAbstract",'% Title')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("TitleAbstract",'% Abstract')
+    autocmd Filetype tex let m = matchadd("TitleAbstract",'% Title')
+augroup end
 
 highlight MarkerGroup ctermbg=251 ctermfg=Black
 
-let m = matchadd("MarkerGroup",'% Notation')
-let m = matchadd("MarkerGroup",'% UnnumberedNotation')
-let m = matchadd("MarkerGroup",'% Definition')
-let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
-let m = matchadd("MarkerGroup",'% Theorem')
-let m = matchadd("MarkerGroup",'% StatementofTheorem')
-let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
-let m = matchadd("MarkerGroup",'% Lemma')
-let m = matchadd("MarkerGroup",'% StatementofLemma')
-let m = matchadd("MarkerGroup",'% UnnumberedLemma')
-let m = matchadd("MarkerGroup",'% Proposition')
-let m = matchadd("MarkerGroup",'% StatementofProposition')
-let m = matchadd("MarkerGroup",'% UnnumberedProposition')
-let m = matchadd("MarkerGroup",'% Corollary')
-let m = matchadd("MarkerGroup",'% StatementofCorollary')
-let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
-let m = matchadd("MarkerGroup",'% Problem')
-let m = matchadd("MarkerGroup",'% Solution')
-let m = matchadd("MarkerGroup",'% Proof')
-let m = matchadd("MarkerGroup",'% Remark')
-let m = matchadd("MarkerGroup",'% UnnumberedRemark')
-let m = matchadd("MarkerGroup",'% Conjecture')
-let m = matchadd("MarkerGroup",'% Example')
-let m = matchadd("MarkerGroup",'% Exercise')
-let m = matchadd("MarkerGroup",'% Frame')
-let m = matchadd("MarkerGroup",'% Claim')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Notation')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedNotation')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Definition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedDefinition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Theorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofTheorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedTheorem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Lemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofLemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedLemma')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Proposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofProposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedProposition')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Corollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% StatementofCorollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedCorollary')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Problem')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Solution')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Proof')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Remark')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% UnnumberedRemark')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Conjecture')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Example')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Exercise')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Frame')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Claim')
+augroup end
 
 highlight EquationMarkerGroup ctermbg=174 ctermfg=black
 
-let m = matchadd("EquationMarkerGroup",'% Equation')
-let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
-let m = matchadd("EquationMarkerGroup",'% Align')
-let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
-let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
-let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
-let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
-let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
-let m = matchadd("EquationMarkerGroup",'% Subequations')
-let m = matchadd("EquationMarkerGroup",'% Gather')
-let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
-let m = matchadd("EquationMarkerGroup",'% Center')
-let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
-let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
-let m = matchadd("EquationMarkerGroup",'% Enumerate')
-let m = matchadd("EquationMarkerGroup",'% Itemize')
-let m = matchadd("EquationMarkerGroup",'% Figure')
-let m = matchadd("EquationMarkerGroup",'% diary')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Equation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Align')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlign')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% AlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedAlignedEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% SplitEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% GatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGatheredEquation')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Subequations')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Gather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Center')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CommutativeDiagram')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Figure')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
+augroup end
 
 highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
 
-let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
-let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
-let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
-let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Matrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Bmatrix')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Pmatrix')
+augroup end
 
 highlight Bibliography ctermbg=92 ctermfg=149
 
-let m = matchadd("Bibliography",'% Bibliography')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
+augroup end
 
 highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
 
-let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
-let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
-let m = matchadd("ImpliesMarkerGroup",'\$(\\Longrightarrow)\$')
-let m = matchadd("ImpliesMarkerGroup",'\$(\\Longleftarrow)\$')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longleftarrow\$)')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'\$(\\Longrightarrow)\$')
+    autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'\$(\\Longleftarrow)\$')
+augroup end
 
 highlight BoldGroup ctermfg=154 cterm=bold
 
-let m = matchadd("BoldGroup",'&')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("BoldGroup",'&')
+augroup end
 
-highlight BoldRedGroup ctermfg=red cterm=bold
+highlight BoldRedGroup ctermbg=grey ctermfg=red cterm=bold
 
-let m = matchadd("BoldRedGroup",'\\todo')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("BoldRedGroup",'\\todo')
+    autocmd Filetype tex let m = matchadd("BoldRedGroup",'<+.\{-}+>')
+augroup end
 
 highlight SpaceGroup ctermbg=red
 
-" let m = matchadd("SpaceGroup",'  *')
+" augroup SpaceHighlighting
+"     autocmd Filetype tex let m = matchadd("SpaceGroup",'  *')
+" augroup end
 
 "}}}
 " Abstract, Theorem, Equation"{{{
 
 highlight Abstract ctermbg=92 ctermfg=149
 
-let m = matchadd("Abstract",'\\begin{abstract}')
-let m = matchadd("Abstract",'\\end{abstract}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("Abstract",'\\begin{abstract}')
+    autocmd Filetype tex let m = matchadd("Abstract",'\\end{abstract}')
+augroup end
 
 highlight NotationGroup ctermbg=244 ctermfg=Black
 
-let m = matchadd("NotationGroup",'\\begin{notation}')
-let m = matchadd("NotationGroup",'\\end{notation}')
-let m = matchadd("NotationGroup",'\\begin{unotation}')
-let m = matchadd("NotationGroup",'\\end{unotation}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\begin{notation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{notation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\begin{unotation}')
+    autocmd Filetype tex let m = matchadd("NotationGroup",'\\end{unotation}')
+augroup end
 
 highlight DefinitionGroup ctermbg=107 ctermfg=Black
 
-let m = matchadd("DefinitionGroup",'\\begin{definition}')
-let m = matchadd("DefinitionGroup",'\\end{definition}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\begin{definition}')
+    autocmd Filetype tex let m = matchadd("DefinitionGroup",'\\end{definition}')
+augroup end
 
 highlight uDefinitionGroup ctermbg=100 ctermfg=Black
 
-let m = matchadd("uDefinitionGroup",'\\begin{udefinition}')
-let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\begin{udefinition}')
+    autocmd Filetype tex let m = matchadd("uDefinitionGroup",'\\end{udefinition}')
+augroup end
 
 highlight TheoremGroup ctermbg=139 ctermfg=Black
 
-let m = matchadd("TheoremGroup",'\\begin{theorem}')
-let m = matchadd("TheoremGroup",'\\end{theorem}')
-let m = matchadd("TheoremGroup",'\\begin{lemma}')
-let m = matchadd("TheoremGroup",'\\end{lemma}')
-let m = matchadd("TheoremGroup",'\\begin{proposition}')
-let m = matchadd("TheoremGroup",'\\end{proposition}')
-let m = matchadd("TheoremGroup",'\\begin{corollary}')
-let m = matchadd("TheoremGroup",'\\end{corollary}')
-let m = matchadd("TheoremGroup",'\\begin{problem}')
-let m = matchadd("TheoremGroup",'\\end{problem}')
-let m = matchadd("TheoremGroup",'\\begin{solution}')
-let m = matchadd("TheoremGroup",'\\end{solution}')
-let m = matchadd("TheoremGroup",'\\begin{remark}')
-let m = matchadd("TheoremGroup",'\\end{remark}')
-let m = matchadd("TheoremGroup",'\\begin{conjecture}')
-let m = matchadd("TheoremGroup",'\\end{conjecture}')
-let m = matchadd("TheoremGroup",'\\begin{example}')
-let m = matchadd("TheoremGroup",'\\end{example}')
-let m = matchadd("TheoremGroup",'\\begin{exercise}')
-let m = matchadd("TheoremGroup",'\\end{exercise}')
-let m = matchadd("TheoremGroup",'\\begin{diary}')
-let m = matchadd("TheoremGroup",'\\end{diary}')
-let m = matchadd("TheoremGroup",'\\begin{frame}')
-let m = matchadd("TheoremGroup",'\\end{frame}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{theorem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{theorem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{lemma}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{lemma}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{proposition}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{proposition}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{corollary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{corollary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{problem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{problem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{solution}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{solution}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{remark}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{remark}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{conjecture}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{conjecture}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{example}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{example}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{exercise}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{exercise}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{diary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{diary}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{frame}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{frame}')
 
-let m = matchadd("TheoremGroup",'\\begin{thmbox}')
-let m = matchadd("TheoremGroup",'\\end{thmbox}')
-let m = matchadd("TheoremGroup",'\\begin{orangebox}')
-let m = matchadd("TheoremGroup",'\\end{orangebox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{thmbox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{thmbox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{orangebox}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{orangebox}')
+augroup end
 
 highlight uTheoremGroup ctermbg=169 ctermfg=Black
 
-let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
-let m = matchadd("uTheoremGroup",'\\end{utheorem}')
-let m = matchadd("uTheoremGroup",'\\begin{ulemma}')
-let m = matchadd("uTheoremGroup",'\\end{ulemma}')
-let m = matchadd("uTheoremGroup",'\\begin{uproposition}')
-let m = matchadd("uTheoremGroup",'\\end{uproposition}')
-let m = matchadd("uTheoremGroup",'\\begin{ucorollary}')
-let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
-let m = matchadd("uTheoremGroup",'\\begin{uremark}')
-let m = matchadd("uTheoremGroup",'\\end{uremark}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{utheorem}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{utheorem}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{ulemma}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{ulemma}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{uproposition}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uproposition}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{ucorollary}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{ucorollary}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\begin{uremark}')
+    autocmd Filetype tex let m = matchadd("uTheoremGroup",'\\end{uremark}')
+augroup end
 
 highlight ProofGroup ctermbg=139 ctermfg=Black
 
-let m = matchadd("ProofGroup",'\\begin{proof}')
-let m = matchadd("ProofGroup",'\\end{proof}')
-let m = matchadd("ProofGroup",'\\begin{prf}')
-let m = matchadd("ProofGroup",'\\end{prf}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{proof}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{proof}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\begin{prf}')
+    autocmd Filetype tex let m = matchadd("ProofGroup",'\\end{prf}')
+augroup end
 
 highlight EquationGroup ctermbg=109 ctermfg=Black
 
-let m = matchadd("EquationGroup",'\\(')
-let m = matchadd("EquationGroup",'\\)')
-let m = matchadd("EquationGroup",'\\[')
-let m = matchadd("EquationGroup",'\\]')
-let m = matchadd("EquationGroup",'\\begin{equation}')
-let m = matchadd("EquationGroup",'\\end{equation}')
-let m = matchadd("EquationGroup",'\\begin{equation\*}')
-let m = matchadd("EquationGroup",'\\end{equation\*}')
-let m = matchadd("EquationGroup",'\\begin{split}')
-let m = matchadd("EquationGroup",'\\end{split}')
-let m = matchadd("EquationGroup",'\\begin{align}')
-let m = matchadd("EquationGroup",'\\end{align}')
-let m = matchadd("EquationGroup",'\\begin{align\*}')
-let m = matchadd("EquationGroup",'\\end{align\*}')
-let m = matchadd("EquationGroup",'\\begin{subequations}')
-let m = matchadd("EquationGroup",'\\end{subequations}')
-let m = matchadd("EquationGroup",'\\begin{center}')
-let m = matchadd("EquationGroup",'\\end{center}')
-let m = matchadd("EquationGroup",'\\begin{gather}')
-let m = matchadd("EquationGroup",'\\end{gather}')
-let m = matchadd("EquationGroup",'\\begin{gather\*}')
-let m = matchadd("EquationGroup",'\\end{gather\*}')
-let m = matchadd("EquationGroup",'\\begin{gathered}')
-let m = matchadd("EquationGroup",'\\end{gathered}')
-let m = matchadd("EquationGroup",'\\begin{cases}')
-let m = matchadd("EquationGroup",'\\end{cases}')
-let m = matchadd("EquationGroup",'\\begin{dcases}')
-let m = matchadd("EquationGroup",'\\end{dcases}')
-let m = matchadd("EquationGroup",'\\begin{enumerate}')
-let m = matchadd("EquationGroup",'\\end{enumerate}')
-let m = matchadd("EquationGroup",'\\begin{itemize}')
-let m = matchadd("EquationGroup",'\\end{itemize}')
-let m = matchadd("EquationGroup",'\\begin{landscape}')
-let m = matchadd("EquationGroup",'\\end{landscape}')
-let m = matchadd("EquationGroup",'\\begin{figure}')
-let m = matchadd("EquationGroup",'\\end{figure}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\(')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\)')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\[')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\]')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{equation}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{equation}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{equation\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{equation\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{split}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{split}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{align}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{align\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{subequations}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{subequations}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{center}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{center}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gather}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gather\*}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gathered}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gathered}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{cases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{cases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{rcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{rcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{dcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{dcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{enumerate}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{enumerate}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{landscape}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{figure}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{tikzcd}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{tikzcd}')
+augroup end
 
 highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
 
-let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\begin{matrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\end{matrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\begin{bmatrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\end{bmatrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\begin{pmatrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\end{pmatrix}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\item')
-let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem')
-let m = matchadd("ArrayMatrixEtcGroup",'\\bibliographystyle{.\{}}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
-let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{array}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{array}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{matrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{matrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{bmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{bmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{pmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{pmatrix}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\item')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliographystyle{.\{}}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
+augroup end
 
 highlight asterisk ctermbg=109 ctermfg=red
 
-let m = matchadd("asterisk",'\*')
+augroup TeXHighlighting
+    autocmd Filetype tex let m = matchadd("asterisk",'\*')
+augroup end
 
 highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
-" let m = matchadd("ParenthesisGroup",'\\big')
-" let m = matchadd("ParenthesisGroup",'\\Big')
-" let m = matchadd("ParenthesisGroup",'\\bigg')
-" let m = matchadd("ParenthesisGroup",'\\Bigg')
-" let m = matchadd("ParenthesisGroup",'\\left')
-" let m = matchadd("ParenthesisGroup",'\\right')
+augroup TeXHighlighting
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right')
 
-let m = matchadd("ParenthesisGroup",'\\big(')
-let m = matchadd("ParenthesisGroup",'\\big)')
-let m = matchadd("ParenthesisGroup",'{\\big(')
-let m = matchadd("ParenthesisGroup",'\\big)}')
-" let m = matchadd("ParenthesisGroup",'{\\big({')
-" let m = matchadd("ParenthesisGroup",'}\\big)}')
-let m = matchadd("ParenthesisGroup",'\\Big(')
-let m = matchadd("ParenthesisGroup",'\\Big)')
-let m = matchadd("ParenthesisGroup",'{\\Big(')
-let m = matchadd("ParenthesisGroup",'\\Big)}')
-" let m = matchadd("ParenthesisGroup",'{\\Big({')
-" let m = matchadd("ParenthesisGroup",'}\\Big)}')
-let m = matchadd("ParenthesisGroup",'\\bigg(')
-let m = matchadd("ParenthesisGroup",'\\bigg)')
-let m = matchadd("ParenthesisGroup",'{\\bigg(')
-let m = matchadd("ParenthesisGroup",'\\bigg)}')
-" let m = matchadd("ParenthesisGroup",'{\\bigg({')
-" let m = matchadd("ParenthesisGroup",'}\\bigg)}')
-let m = matchadd("ParenthesisGroup",'\\Bigg(')
-let m = matchadd("ParenthesisGroup",'\\Bigg)')
-let m = matchadd("ParenthesisGroup",'{\\Bigg(')
-let m = matchadd("ParenthesisGroup",'\\Bigg)}')
-" let m = matchadd("ParenthesisGroup",'{\\Bigg({')
-" let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
-let m = matchadd("ParenthesisGroup",'\\left(')
-let m = matchadd("ParenthesisGroup",'\\right)')
-let m = matchadd("ParenthesisGroup",'{\\left(')
-let m = matchadd("ParenthesisGroup",'\\right)}')
-" let m = matchadd("ParenthesisGroup",'{\\left({')
-" let m = matchadd("ParenthesisGroup",'}\\right)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left(')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left({')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right)}')
 
-let m = matchadd("ParenthesisGroup",'\\big\\{')
-let m = matchadd("ParenthesisGroup",'\\big\\}')
-let m = matchadd("ParenthesisGroup",'{\\big\\{')
-let m = matchadd("ParenthesisGroup",'\\big\\}}')
-" let m = matchadd("ParenthesisGroup",'{\\big\\{{')
-" let m = matchadd("ParenthesisGroup",'}\\big\\}}')
-let m = matchadd("ParenthesisGroup",'\\Big\\{')
-let m = matchadd("ParenthesisGroup",'\\Big\\}')
-let m = matchadd("ParenthesisGroup",'{\\Big\\{')
-let m = matchadd("ParenthesisGroup",'\\Big\\}}')
-" let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
-" let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
-let m = matchadd("ParenthesisGroup",'\\bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\bigg\\}')
-let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
-" let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
-" let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
-let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
-let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
-let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
-" let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
-" let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
-let m = matchadd("ParenthesisGroup",'\\left\\{')
-let m = matchadd("ParenthesisGroup",'\\right\\}')
-let m = matchadd("ParenthesisGroup",'{\\left\\{')
-let m = matchadd("ParenthesisGroup",'\\right\\}}')
-" let m = matchadd("ParenthesisGroup",'{\\left\\{{')
-" let m = matchadd("ParenthesisGroup",'}\\right\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right\\}}')
 
-let m = matchadd("ParenthesisGroup",'\\big[')
-let m = matchadd("ParenthesisGroup",'\\big]')
-let m = matchadd("ParenthesisGroup",'{\\big[')
-let m = matchadd("ParenthesisGroup",'\\big]}')
-" let m = matchadd("ParenthesisGroup",'{\\big[{')
-" let m = matchadd("ParenthesisGroup",'}\\big]}')
-let m = matchadd("ParenthesisGroup",'\\Big[')
-let m = matchadd("ParenthesisGroup",'\\Big]')
-let m = matchadd("ParenthesisGroup",'{\\Big[')
-let m = matchadd("ParenthesisGroup",'\\Big]}')
-" let m = matchadd("ParenthesisGroup",'{\\Big[{')
-" let m = matchadd("ParenthesisGroup",'}\\Big]}')
-let m = matchadd("ParenthesisGroup",'\\bigg[')
-let m = matchadd("ParenthesisGroup",'\\bigg]')
-let m = matchadd("ParenthesisGroup",'{\\bigg[')
-let m = matchadd("ParenthesisGroup",'\\bigg]}')
-" let m = matchadd("ParenthesisGroup",'{\\bigg[{')
-" let m = matchadd("ParenthesisGroup",'}\\bigg]}')
-let m = matchadd("ParenthesisGroup",'\\Bigg[')
-let m = matchadd("ParenthesisGroup",'\\Bigg]')
-let m = matchadd("ParenthesisGroup",'{\\Bigg[')
-let m = matchadd("ParenthesisGroup",'\\Bigg]}')
-" let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
-" let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
-let m = matchadd("ParenthesisGroup",'\\left[')
-let m = matchadd("ParenthesisGroup",'\\right]')
-let m = matchadd("ParenthesisGroup",'{\\left[')
-let m = matchadd("ParenthesisGroup",'\\right]}')
-" let m = matchadd("ParenthesisGroup",'{\\left[{')
-" let m = matchadd("ParenthesisGroup",'}\\right]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right]}')
 
-let m = matchadd("ParenthesisGroup",'\\big|')
-let m = matchadd("ParenthesisGroup",'\\big|')
-let m = matchadd("ParenthesisGroup",'{\\big|')
-let m = matchadd("ParenthesisGroup",'\\big|}')
-" let m = matchadd("ParenthesisGroup",'{\\big|{')
-" let m = matchadd("ParenthesisGroup",'}\\big|}')
-let m = matchadd("ParenthesisGroup",'\\Big|')
-let m = matchadd("ParenthesisGroup",'\\Big|')
-let m = matchadd("ParenthesisGroup",'{\\Big|')
-let m = matchadd("ParenthesisGroup",'\\Big|}')
-" let m = matchadd("ParenthesisGroup",'{\\Big|{')
-" let m = matchadd("ParenthesisGroup",'}\\Big|}')
-let m = matchadd("ParenthesisGroup",'\\bigg|')
-let m = matchadd("ParenthesisGroup",'\\bigg|')
-let m = matchadd("ParenthesisGroup",'{\\bigg|')
-let m = matchadd("ParenthesisGroup",'\\bigg|}')
-" let m = matchadd("ParenthesisGroup",'{\\bigg|{')
-" let m = matchadd("ParenthesisGroup",'}\\bigg|}')
-let m = matchadd("ParenthesisGroup",'\\Bigg|')
-let m = matchadd("ParenthesisGroup",'\\Bigg|')
-let m = matchadd("ParenthesisGroup",'{\\Bigg|')
-let m = matchadd("ParenthesisGroup",'\\Bigg|}')
-" let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
-" let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
-let m = matchadd("ParenthesisGroup",'\\left|')
-let m = matchadd("ParenthesisGroup",'\\right|')
-let m = matchadd("ParenthesisGroup",'{\\left|')
-let m = matchadd("ParenthesisGroup",'\\right|}')
-" let m = matchadd("ParenthesisGroup",'{\\left|{')
-" let m = matchadd("ParenthesisGroup",'}\\right|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|')
+    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right|}')
+augroup end
 
 "}}}
 " Highlight Word{{{

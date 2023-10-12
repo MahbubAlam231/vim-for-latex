@@ -79,14 +79,14 @@ snippet mf
 $\mathfrak{$1}$$0
 endsnippet
 
-snippet ff
-$\frakfamily{$1}$$0
-endsnippet
+# snippet ff
+# $\frakfamily{$1}$$0
+# endsnippet
 
 #}}}
 # Real numbers{{{
 
-snippet ;r
+snippet sr
 $\mathbb{R}$$0
 endsnippet
 
@@ -157,7 +157,7 @@ endsnippet
 #}}}
 # Natural numbers{{{
 
-snippet ;n
+snippet sn
 $\mathbb{N}$$0
 endsnippet
 
@@ -184,7 +184,7 @@ endsnippet
 #}}}
 # Integers{{{
 
-snippet ;z
+snippet sz
 $\mathbb{Z}$$0
 endsnippet
 
@@ -247,7 +247,7 @@ endsnippet
 #}}}
 # Rationals{{{
 
-snippet ;q
+snippet sq
 $\mathbb{Q}$$0
 endsnippet
 
@@ -298,7 +298,7 @@ endsnippet
 #}}}
 # Complex numbers{{{
 
-snippet ;c
+snippet sc
 $\mathbb{C}$$0
 endsnippet
 
@@ -403,7 +403,7 @@ endsnippet
 #}}}
 # Other fields{{{
 
-snippet ;k
+snippet sk
 $\mathbb{K}$$0
 endsnippet
 
@@ -542,7 +542,7 @@ endsnippet
 #}}}
 # Adele{{{
 
-snippet ;a
+snippet sa
 $\mathbb{A}$$0
 endsnippet
 
@@ -631,7 +631,7 @@ endsnippet
 #}}}
 # Tori{{{
 
-snippet ;t
+snippet sto
 $\mathbb{T}$$0
 endsnippet
 
@@ -662,7 +662,7 @@ endsnippet
 #}}}
 #Hyperbolic space{{{
 
-snippet ;h
+snippet sh
 $\mathbb{H}$$0
 endsnippet
 
@@ -5043,31 +5043,31 @@ snippet mmn-
 $\M_{m \times n}$$0
 endsnippet
 
-snippet mn-
+snippet mn- "" w
 $\M_{n}$$0
 endsnippet
 
-snippet mm-
+snippet mm- "" w
 $\M_{m}$$0
 endsnippet
 
-snippet md-
+snippet md- "" w
 $\M_{d}$$0
 endsnippet
 
-snippet mk-
+snippet mk- "" w
 $\M_{k}$$0
 endsnippet
 
-snippet m2-
+snippet m2- "" w
 $\M_{2}$$0
 endsnippet
 
-snippet m3-
+snippet m3- "" w
 $\M_{3}$$0
 endsnippet
 
-snippet m.-
+snippet m.- "" w
 $\M_{$1}$$0
 endsnippet
 
@@ -5075,39 +5075,39 @@ endsnippet
 
 # Bracketed{{{
 
-snippet mmn
+snippet mmn "" w
 $\M_{m \times n}($1)$$0
 endsnippet
 
-snippet m..
+snippet m.. "" w
 $\M_{$1}($2)$$0
 endsnippet
 
-snippet mn
+snippet mn "" w
 $\M(n,$1)$$0
 endsnippet
 
-snippet mm
+snippet mm "" w
 $\M(m,$1)$$0
 endsnippet
 
-snippet md
+snippet md "" w
 $\M(d,$1)$$0
 endsnippet
 
-snippet mk
+snippet mk "" w
 $\M(k,$1)$$0
 endsnippet
 
-snippet m2
+snippet m2 "" w
 $\M(2,$1)$$0
 endsnippet
 
-snippet m3
+snippet m3 "" w
 $\M(3,$1)$$0
 endsnippet
 
-snippet m.
+snippet m. "" w
 $\M($1,$2)$$0
 endsnippet
 
@@ -5119,453 +5119,453 @@ endsnippet
 
 
 
-snippet m..z
+snippet m..z "" w
 $\M_{$1}(\mathbb{Z})$$0
 endsnippet
 
-snippet mnz
+snippet mnz "" w
 $\M(n, \mathbb{Z})$$0
 endsnippet
 
-snippet mmz
+snippet mmz "" w
 $\M(m, \mathbb{Z})$$0
 endsnippet
 
-snippet mdz
+snippet mdz "" w
 $\M(d, \mathbb{Z})$$0
 endsnippet
 
-snippet mkz
+snippet mkz "" w
 $\M(k, \mathbb{Z})$$0
 endsnippet
 
-snippet m2z
+snippet m2z "" w
 $\M(2, \mathbb{Z})$$0
 endsnippet
 
-snippet m3z
+snippet m3z "" w
 $\M(3, \mathbb{Z})$$0
 endsnippet
 
-snippet m.z
+snippet m.z "" w
 $\M($1, \mathbb{Z})$$0
 endsnippet
 
 
 
-snippet mmnq
+snippet mmnq "" w
 $\M_{m \times n}(\mathbb{Q})$$0
 endsnippet
 
-snippet m..q
+snippet m..q "" w
 $\M_{$1}(\mathbb{Q})$$0
 endsnippet
 
-snippet mnq
+snippet mnq "" w
 $\M(n, \mathbb{Q})$$0
 endsnippet
 
-snippet mmq
+snippet mmq "" w
 $\M(m, \mathbb{Q})$$0
 endsnippet
 
-snippet mdq
+snippet mdq "" w
 $\M(d, \mathbb{Q})$$0
 endsnippet
 
-snippet mkq
+snippet mkq "" w
 $\M(k, \mathbb{Q})$$0
 endsnippet
 
-snippet m2q
+snippet m2q "" w
 $\M(2, \mathbb{Q})$$0
 endsnippet
 
-snippet m3q
+snippet m3q "" w
 $\M(3, \mathbb{Q})$$0
 endsnippet
 
-snippet m.q
+snippet m.q "" w
 $\M($1, \mathbb{Q})$$0
 endsnippet
 
 
 
-snippet mmnr
+snippet mmnr "" w
 $\M_{m \times n}(\mathbb{R})$$0
 endsnippet
 
-snippet m..r
+snippet m..r "" w
 $\M_{$1}(\mathbb{R})$$0
 endsnippet
 
-snippet mnr
+snippet mnr "" w
 $\M(n, \mathbb{R})$$0
 endsnippet
 
-snippet mmr
+snippet mmr "" w
 $\M(m, \mathbb{R})$$0
 endsnippet
 
-snippet mdr
+snippet mdr "" w
 $\M(d, \mathbb{R})$$0
 endsnippet
 
-snippet mkr
+snippet mkr "" w
 $\M(k, \mathbb{R})$$0
 endsnippet
 
-snippet m2r
+snippet m2r "" w
 $\M(2, \mathbb{R})$$0
 endsnippet
 
-snippet m3r
+snippet m3r "" w
 $\M(3, \mathbb{R})$$0
 endsnippet
 
-snippet m.r
+snippet m.r "" w
 $\M($1, \mathbb{R})$$0
 endsnippet
 
 
 
-snippet mmnc
+snippet mmnc "" w
 $\M_{m \times n}(\mathbb{C})$$0
 endsnippet
 
-snippet m..c
+snippet m..c "" w
 $\M_{$1}(\mathbb{C})$$0
 endsnippet
 
-snippet mnc
+snippet mnc "" w
 $\M(n, \mathbb{C})$$0
 endsnippet
 
-snippet mmc
+snippet mmc "" w
 $\M(m, \mathbb{C})$$0
 endsnippet
 
-snippet mdc
+snippet mdc "" w
 $\M(d, \mathbb{C})$$0
 endsnippet
 
-snippet mkc
+snippet mkc "" w
 $\M(k, \mathbb{C})$$0
 endsnippet
 
-snippet m2c
+snippet m2c "" w
 $\M(2, \mathbb{C})$$0
 endsnippet
 
-snippet m3c
+snippet m3c "" w
 $\M(3, \mathbb{C})$$0
 endsnippet
 
-snippet m.c
+snippet m.c "" w
 $\M($1, \mathbb{C})$$0
 endsnippet
 
 
 
-snippet mmnzp
+snippet mmnzp "" w
 $\M_{m \times n}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet m..zp
+snippet m..zp "" w
 $\M_{$1}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet mnzp
+snippet mnzp "" w
 $\M(n, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet mmzp
+snippet mmzp "" w
 $\M(m, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet mdzp
+snippet mdzp "" w
 $\M(d, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet mkzp
+snippet mkzp "" w
 $\M(k, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet m2zp
+snippet m2zp "" w
 $\M(2, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet m3zp
+snippet m3zp "" w
 $\M(3, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet m.zp
+snippet m.zp "" w
 $\M($1, \mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet mmnqp
+snippet mmnqp "" w
 $\M_{m \times n}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet m..qp
+snippet m..qp "" w
 $\M_{$1}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mnqp
+snippet mnqp "" w
 $\M(n, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet mmqp
+snippet mmqp "" w
 $\M(m, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet mdqp
+snippet mdqp "" w
 $\M(d, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet mkqp
+snippet mkqp "" w
 $\M(k, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet m2qp
+snippet m2qp "" w
 $\M(2, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet m3qp
+snippet m3qp "" w
 $\M(3, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet m.qp
+snippet m.qp "" w
 $\M($1, \mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet mmnk
+snippet mmnk "" w
 $\M_{m \times n}(\mathbb{K})$$0
 endsnippet
 
-snippet m..k
+snippet m..k "" w
 $\M_{$1}(\mathbb{K})$$0
 endsnippet
 
-snippet mnk
+snippet mnk "" w
 $\M(n, \mathbb{K})$$0
 endsnippet
 
-snippet mmk
+snippet mmk "" w
 $\M(m, \mathbb{K})$$0
 endsnippet
 
-snippet mdk
+snippet mdk "" w
 $\M(d, \mathbb{K})$$0
 endsnippet
 
-snippet mkk
+snippet mkk "" w
 $\M(k, \mathbb{K})$$0
 endsnippet
 
-snippet m2k
+snippet m2k "" w
 $\M(2, \mathbb{K})$$0
 endsnippet
 
-snippet m3k
+snippet m3k "" w
 $\M(3, \mathbb{K})$$0
 endsnippet
 
-snippet m.k
+snippet m.k "" w
 $\M($1, \mathbb{K})$$0
 endsnippet
 
 
 
-snippet mmna
+snippet mmna "" w
 $\M_{m \times n}(\mathbb{A})$$0
 endsnippet
 
-snippet m..a
+snippet m..a "" w
 $\M_{$1}(\mathbb{A})$$0
 endsnippet
 
-snippet mna
+snippet mna "" w
 $\M(n, \mathbb{A})$$0
 endsnippet
 
-snippet mma
+snippet mma "" w
 $\M(m, \mathbb{A})$$0
 endsnippet
 
-snippet mda
+snippet mda "" w
 $\M(d, \mathbb{A})$$0
 endsnippet
 
-snippet mka
+snippet mka "" w
 $\M(k, \mathbb{A})$$0
 endsnippet
 
-snippet m2a
+snippet m2a "" w
 $\M(2, \mathbb{A})$$0
 endsnippet
 
-snippet m3a
+snippet m3a "" w
 $\M(3, \mathbb{A})$$0
 endsnippet
 
-snippet m.a
+snippet m.a "" w
 $\M($1, \mathbb{A})$$0
 endsnippet
 
 
 
-snippet mmnaq
+snippet mmnaq "" w
 $\M_{m \times n}(\mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet m..aq
+snippet m..aq "" w
 $\M_{$1}(\mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet mnaq
+snippet mnaq "" w
 $\M(n, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet mmaq
+snippet mmaq "" w
 $\M(m, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet mdaq
+snippet mdaq "" w
 $\M(d, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet mkaq
+snippet mkaq "" w
 $\M(k, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet m2aq
+snippet m2aq "" w
 $\M(2, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet m3aq
+snippet m3aq "" w
 $\M(3, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
-snippet m.aq
+snippet m.aq "" w
 $\M($1, \mathbb{A}_\mathbb{Q})$$0
 endsnippet
 
 
 
-snippet mmnaf
+snippet mmnaf "" w
 $\M_{m \times n}(\mathbb{A}_F)$$0
 endsnippet
 
-snippet m..af
+snippet m..af "" w
 $\M_{$1}(\mathbb{A}_F)$$0
 endsnippet
 
-snippet mnaf
+snippet mnaf "" w
 $\M(n, \mathbb{A}_F)$$0
 endsnippet
 
-snippet mmaf
+snippet mmaf "" w
 $\M(m, \mathbb{A}_F)$$0
 endsnippet
 
-snippet mdaf
+snippet mdaf "" w
 $\M(d, \mathbb{A}_F)$$0
 endsnippet
 
-snippet mkaf
+snippet mkaf "" w
 $\M(k, \mathbb{A}_F)$$0
 endsnippet
 
-snippet m2af
+snippet m2af "" w
 $\M(2, \mathbb{A}_F)$$0
 endsnippet
 
-snippet m3af
+snippet m3af "" w
 $\M(3, \mathbb{A}_F)$$0
 endsnippet
 
-snippet m.af
+snippet m.af "" w
 $\M($1, \mathbb{A}_F)$$0
 endsnippet
 
 
 
-snippet mmnok
+snippet mmnok "" w
 $\M_{m \times n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet m..ok
+snippet m..ok "" w
 $\M_{$1}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet mnok
+snippet mnok "" w
 $\M(n, \mathcal{O}_K)$$0
 endsnippet
 
-snippet mmok
+snippet mmok "" w
 $\M(m, \mathcal{O}_K)$$0
 endsnippet
 
-snippet mdok
+snippet mdok "" w
 $\M(d, \mathcal{O}_K)$$0
 endsnippet
 
-snippet mkok
+snippet mkok "" w
 $\M(k, \mathcal{O}_K)$$0
 endsnippet
 
-snippet m2ok
+snippet m2ok "" w
 $\M(2, \mathcal{O}_K)$$0
 endsnippet
 
-snippet m3ok
+snippet m3ok "" w
 $\M(3, \mathcal{O}_K)$$0
 endsnippet
 
-snippet m.ok
+snippet m.ok "" w
 $\M($1, \mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet mmnco
+snippet mmnco "" w
 $\M_{m \times n}(\mathcal{O})$$0
 endsnippet
 
-snippet m..co
+snippet m..co "" w
 $\M_{$1}(\mathcal{O})$$0
 endsnippet
 
-snippet mnco
+snippet mnco "" w
 $\M(n, \mathcal{O})$$0
 endsnippet
 
-snippet mmco
+snippet mmco "" w
 $\M(m, \mathcal{O})$$0
 endsnippet
 
-snippet mdco
+snippet mdco "" w
 $\M(d, \mathcal{O})$$0
 endsnippet
 
-snippet mkco
+snippet mkco "" w
 $\M(k, \mathcal{O})$$0
 endsnippet
 
-snippet m2co
+snippet m2co "" w
 $\M(2, \mathcal{O})$$0
 endsnippet
 
-snippet m3co
+snippet m3co "" w
 $\M(3, \mathcal{O})$$0
 endsnippet
 
-snippet m.co
+snippet m.co "" w
 $\M($1, \mathcal{O})$$0
 endsnippet
 
@@ -5573,77 +5573,77 @@ endsnippet
 
 
 
-snippet mmnjk
+snippet mmnjk "" w
 $\M_{m \times n}(K)$$0
 endsnippet
 
-snippet m..jk
+snippet m..jk "" w
 $\M_{$1}(K)$$0
 endsnippet
 
-snippet mnjk
+snippet mnjk "" w
 $\M(n, K)$$0
 endsnippet
 
-snippet mmjk
+snippet mmjk "" w
 $\M(m, K)$$0
 endsnippet
 
-snippet mdjk
+snippet mdjk "" w
 $\M(d, K)$$0
 endsnippet
 
-snippet mkjk
+snippet mkjk "" w
 $\M(k, K)$$0
 endsnippet
 
-snippet m2jk
+snippet m2jk "" w
 $\M(2, K)$$0
 endsnippet
 
-snippet m3jk
+snippet m3jk "" w
 $\M(3, K)$$0
 endsnippet
 
-snippet m.jk
+snippet m.jk "" w
 $\M($1, K)$$0
 endsnippet
 
 
 
-snippet mmnks
+snippet mmnks "" w
 $\M_{m \times n}(K_S)$$0
 endsnippet
 
-snippet m..ks
+snippet m..ks "" w
 $\M_{$1}(K_S)$$0
 endsnippet
 
-snippet mnks
+snippet mnks "" w
 $\M(n, K_S)$$0
 endsnippet
 
-snippet mmks
+snippet mmks "" w
 $\M(m, K_S)$$0
 endsnippet
 
-snippet mdks
+snippet mdks "" w
 $\M(d, K_S)$$0
 endsnippet
 
-snippet mkks
+snippet mkks "" w
 $\M(k, K_S)$$0
 endsnippet
 
-snippet m2ks
+snippet m2ks "" w
 $\M(2, K_S)$$0
 endsnippet
 
-snippet m3ks
+snippet m3ks "" w
 $\M(3, K_S)$$0
 endsnippet
 
-snippet m.ks
+snippet m.ks "" w
 $\M($1, K_S)$$0
 endsnippet
 
@@ -5651,31 +5651,31 @@ endsnippet
 
 # Underscored{{{
 
-snippet mn,
+snippet mn, "" w
 $\M_{n}($1)$$0
 endsnippet
 
-snippet mm,
+snippet mm, "" w
 $\M_{m}($1)$$0
 endsnippet
 
-snippet md,
+snippet md, "" w
 $\M_{d}($1)$$0
 endsnippet
 
-snippet mk,
+snippet mk, "" w
 $\M_{k}($1)$$0
 endsnippet
 
-snippet m2,
+snippet m2, "" w
 $\M_{2}($1)$$0
 endsnippet
 
-snippet m3,
+snippet m3, "" w
 $\M_{3}($1)$$0
 endsnippet
 
-snippet m.,
+snippet m., "" w
 $\M_{$1}($2)$$0
 endsnippet
 
@@ -5687,454 +5687,454 @@ endsnippet
 
 
 
-snippet mmnz,
+snippet mmnz, "" w
 $\M_{m \times n}(\mathbb{Z})$$0
 endsnippet
 
-snippet m..z,
+snippet m..z, "" w
 $\M_{$1}(\mathbb{Z})$$0
 endsnippet
 
-snippet mnz,
+snippet mnz, "" w
 $\M_{n}(\mathbb{Z})$$0
 endsnippet
 
-snippet mmz,
+snippet mmz, "" w
 $\M_{m}(\mathbb{Z})$$0
 endsnippet
 
-snippet mdz,
+snippet mdz, "" w
 $\M_{d}(\mathbb{Z})$$0
 endsnippet
 
-snippet mkz,
+snippet mkz, "" w
 $\M_{k}(\mathbb{Z})$$0
 endsnippet
 
-snippet m2z,
+snippet m2z, "" w
 $\M_{2}(\mathbb{Z})$$0
 endsnippet
 
-snippet m3z,
+snippet m3z, "" w
 $\M_{3}(\mathbb{Z})$$0
 endsnippet
 
-snippet m.z,
+snippet m.z, "" w
 $\M_{$1}(\mathbb{Z})$$0
 endsnippet
 
 
 
-snippet mmnq,
+snippet mmnq, "" w
 $\M_{m \times n}(\mathbb{Q})$$0
 endsnippet
 
-snippet m..q,
+snippet m..q, "" w
 $\M_{$1}(\mathbb{Q})$$0
 endsnippet
 
-snippet mnq,
+snippet mnq, "" w
 $\M_{n}(\mathbb{Q})$$0
 endsnippet
 
-snippet mmq,
+snippet mmq, "" w
 $\M_{m}(\mathbb{Q})$$0
 endsnippet
 
-snippet mdq,
+snippet mdq, "" w
 $\M_{d}(\mathbb{Q})$$0
 endsnippet
 
-snippet mkq,
+snippet mkq, "" w
 $\M_{k}(\mathbb{Q})$$0
 endsnippet
 
-snippet m2q,
+snippet m2q, "" w
 $\M_{2}(\mathbb{Q})$$0
 endsnippet
 
-snippet m3q,
+snippet m3q, "" w
 $\M_{3}(\mathbb{Q})$$0
 endsnippet
 
-snippet m.q,
+snippet m.q, "" w
 $\M_{$1}(\mathbb{Q})$$0
 endsnippet
 
 
 
-snippet mmnr,
+snippet mmnr, "" w
 $\M_{m \times n}(\mathbb{R})$$0
 endsnippet
 
-snippet m..r,
+snippet m..r, "" w
 $\M_{$1}(\mathbb{R})$$0
 endsnippet
 
-snippet mnr,
+snippet mnr, "" w
 $\M_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet mmr,
+snippet mmr, "" w
 $\M_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet mdr,
+snippet mdr, "" w
 $\M_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet mkr,
+snippet mkr, "" w
 $\M_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet m2r,
+snippet m2r, "" w
 $\M_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet m3r,
+snippet m3r, "" w
 $\M_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet m.r,
+snippet m.r, "" w
 $\M_{$1}(\mathbb{R})$$0
 endsnippet
 
 
 
-snippet mmnc,
+snippet mmnc, "" w
 $\M_{m \times n}(\mathbb{C})$$0
 endsnippet
 
-snippet m..c,
+snippet m..c, "" w
 $\M_{$1}(\mathbb{C})$$0
 endsnippet
 
-snippet mnc,
+snippet mnc, "" w
 $\M_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet mmc,
+snippet mmc, "" w
 $\M_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet mdc,
+snippet mdc, "" w
 $\M_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet mkc,
+snippet mkc, "" w
 $\M_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet m2c,
+snippet m2c, "" w
 $\M_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet m3c,
+snippet m3c, "" w
 $\M_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet m.c,
+snippet m.c, "" w
 $\M_{$1}(\mathbb{C})$$0
 endsnippet
 
 
 
-snippet mmnzp,
+snippet mmnzp, "" w
 $\M_{m \times n}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet m..zp,
+snippet m..zp, "" w
 $\M_{$1}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet mnzp,
+snippet mnzp, "" w
 $\M_{n}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet mmzp,
+snippet mmzp, "" w
 $\M_{m}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet mdzp,
+snippet mdzp, "" w
 $\M_{d}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet mkzp,
+snippet mkzp, "" w
 $\M_{k}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet m2zp,
+snippet m2zp, "" w
 $\M_{2}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet m3zp,
+snippet m3zp, "" w
 $\M_{3}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet m.zp,
+snippet m.zp, "" w
 $\M_{$1}(\mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet mmnqp,
+snippet mmnqp, "" w
 $\M_{m \times n}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet m..qp,
+snippet m..qp, "" w
 $\M_{$1}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mnqp,
+snippet mnqp, "" w
 $\M_{n}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mmqp,
+snippet mmqp, "" w
 $\M_{m}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mdqp,
+snippet mdqp, "" w
 $\M_{d}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet mkqp,
+snippet mkqp, "" w
 $\M_{k}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet m2qp,
+snippet m2qp, "" w
 $\M_{2}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet m3qp,
+snippet m3qp, "" w
 $\M_{3}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet m.qp,
+snippet m.qp, "" w
 $\M_{$1}(\mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet mmnk,
+snippet mmnk, "" w
 $\M_{m \times n}(\mathbb{K})$$0
 endsnippet
 
-snippet m..k,
+snippet m..k, "" w
 $\M_{$1}(\mathbb{K})$$0
 endsnippet
 
-snippet mnk,
+snippet mnk, "" w
 $\M_{n}(\mathbb{K})$$0
 endsnippet
 
-snippet mmk,
+snippet mmk, "" w
 $\M_{m}(\mathbb{K})$$0
 endsnippet
 
-snippet mdk,
+snippet mdk, "" w
 $\M_{d}(\mathbb{K})$$0
 endsnippet
 
-snippet mkk,
+snippet mkk, "" w
 $\M_{k}(\mathbb{K})$$0
 endsnippet
 
-snippet m2k,
+snippet m2k, "" w
 $\M_{2}(\mathbb{K})$$0
 endsnippet
 
-snippet m3k,
+snippet m3k, "" w
 $\M_{3}(\mathbb{K})$$0
 endsnippet
 
-snippet m.k,
+snippet m.k, "" w
 $\M_{$1}(\mathbb{K})$$0
 endsnippet
 
 
 
-snippet mmna,
+snippet mmna, "" w
 $\M_{m \times n}(\mathbb{A})$$0
 endsnippet
 
-snippet m..a,
+snippet m..a, "" w
 $\M_{$1}(\mathbb{A})$$0
 endsnippet
 
-snippet mna,
+snippet mna, "" w
 $\M_{n}(\mathbb{A})$$0
 endsnippet
 
-snippet mma,
+snippet mma, "" w
 $\M_{m}(\mathbb{A})$$0
 endsnippet
 
-snippet mda,
+snippet mda, "" w
 $\M_{d}(\mathbb{A})$$0
 endsnippet
 
-snippet mka,
+snippet mka, "" w
 $\M_{k}(\mathbb{A})$$0
 endsnippet
 
-snippet m2a,
+snippet m2a, "" w
 $\M_{2}(\mathbb{A})$$0
 endsnippet
 
-snippet m3a,
+snippet m3a, "" w
 $\M_{3}(\mathbb{A})$$0
 endsnippet
 
-snippet m.a,
+snippet m.a, "" w
 $\M_{$1}(\mathbb{A})$$0
 endsnippet
 
 
 
-snippet mmnok,
+snippet mmnok, "" w
 $\M_{m \times n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet m..ok,
+snippet m..ok, "" w
 $\M_{$1}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet mnok,
+snippet mnok, "" w
 $\M_{n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet mmok,
+snippet mmok, "" w
 $\M_{m}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet mdok,
+snippet mdok, "" w
 $\M_{d}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet mkok,
+snippet mkok, "" w
 $\M_{k}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet m2ok,
+snippet m2ok, "" w
 $\M_{2}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet m3ok,
+snippet m3ok, "" w
 $\M_{3}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet m.ok,
+snippet m.ok, "" w
 $\M_{$1}(\mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet mmnco,
+snippet mmnco, "" w
 $\M_{m \times n}(\mathcal{O})$$0
 endsnippet
 
-snippet m..co,
+snippet m..co, "" w
 $\M_{$1}(\mathcal{O})$$0
 endsnippet
 
-snippet mnco,
+snippet mnco, "" w
 $\M_{n}(\mathcal{O})$$0
 endsnippet
 
-snippet mmco,
+snippet mmco, "" w
 $\M_{m}(\mathcal{O})$$0
 endsnippet
 
-snippet mdco,
+snippet mdco, "" w
 $\M_{d}(\mathcal{O})$$0
 endsnippet
 
-snippet m2co,
+snippet m2co, "" w
 $\M_{2}(\mathcal{O})$$0
 endsnippet
 
-snippet m3co,
+snippet m3co, "" w
 $\M_{3}(\mathcal{O})$$0
 endsnippet
 
-snippet m.co,
+snippet m.co, "" w
 $\M_{$1}(\mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet mmnjk,
+snippet mmnjk, "" w
 $\M_{m \times n}(K)$$0
 endsnippet
 
-snippet m..jk,
+snippet m..jk, "" w
 $\M_{$1}(K)$$0
 endsnippet
 
-snippet mnjk,
+snippet mnjk, "" w
 $\M_{n}(K)$$0
 endsnippet
 
-snippet mmjk,
+snippet mmjk, "" w
 $\M_{m}(K)$$0
 endsnippet
 
-snippet mdjk,
+snippet mdjk, "" w
 $\M_{d}(K)$$0
 endsnippet
 
-snippet mkjk,
+snippet mkjk, "" w
 $\M_{k}(K)$$0
 endsnippet
 
-snippet m2jk,
+snippet m2jk, "" w
 $\M_{2}(K)$$0
 endsnippet
 
-snippet m3jk,
+snippet m3jk, "" w
 $\M_{3}(K)$$0
 endsnippet
 
-snippet m.jk,
+snippet m.jk, "" w
 $\M_{$1}(K)$$0
 endsnippet
 
 
 
-snippet mmnks,
+snippet mmnks, "" w
 $\M_{m \times n}(K_S)$$0
 endsnippet
 
-snippet m..ks,
+snippet m..ks, "" w
 $\M_{$1}(K_S)$$0
 endsnippet
 
-snippet mnks,
+snippet mnks, "" w
 $\M_{n}(K_S)$$0
 endsnippet
 
-snippet mmks,
+snippet mmks, "" w
 $\M_{m}(K_S)$$0
 endsnippet
 
-snippet mdks,
+snippet mdks, "" w
 $\M_{d}(K_S)$$0
 endsnippet
 
-snippet mkks,
+snippet mkks, "" w
 $\M_{k}(K_S)$$0
 endsnippet
 
-snippet m2ks,
+snippet m2ks, "" w
 $\M_{2}(K_S)$$0
 endsnippet
 
-snippet m3ks,
+snippet m3ks, "" w
 $\M_{3}(K_S)$$0
 endsnippet
 
-snippet m.ks,
+snippet m.ks, "" w
 $\M_{$1}(K_S)$$0
 endsnippet
 
@@ -6144,35 +6144,35 @@ endsnippet
 #}}}
 # GL{{{
 
-snippet gl-
+snippet gl- "" w
 $\GL$$0
 endsnippet
 
-snippet gln-
+snippet gln- "" w
 $\GL_{n}$$0
 endsnippet
 
-snippet glm-
+snippet glm- "" w
 $\GL_{m}$$0
 endsnippet
 
-snippet gld-
+snippet gld- "" w
 $\GL_{d}$$0
 endsnippet
 
-snippet glk-
+snippet glk- "" w
 $\GL_{k}$$0
 endsnippet
 
-snippet gl2-
+snippet gl2- "" w
 $\GL_{2}$$0
 endsnippet
 
-snippet gl3-
+snippet gl3- "" w
 $\GL_{3}$$0
 endsnippet
 
-snippet gl.-
+snippet gl.- "" w
 $\GL_{$1}$$0
 endsnippet
 
@@ -6180,59 +6180,59 @@ endsnippet
 
 # Bracketed{{{
 
-snippet gl
+snippet gl "" w
 $\GL($1)$$0
 endsnippet
 
-snippet gln
+snippet gln "" w
 $\GL(n,$1)$$0
 endsnippet
 
-snippet glm
+snippet glm "" w
 $\GL(m,$1)$$0
 endsnippet
 
-snippet gld
+snippet gld "" w
 $\GL(d,$1)$$0
 endsnippet
 
-snippet glk
+snippet glk "" w
 $\GL(k,$1)$$0
 endsnippet
 
-snippet gl2
+snippet gl2 "" w
 $\GL(2,$1)$$0
 endsnippet
 
-snippet gl3
+snippet gl3 "" w
 $\GL(3,$1)$$0
 endsnippet
 
-snippet gl.
+snippet gl. "" w
 $\GL($1,$2)$$0
 endsnippet
 
-snippet glpn
+snippet glpn "" w
 $\GL^+(n,$1)$$0
 endsnippet
 
-snippet glpm
+snippet glpm "" w
 $\GL^+(m,$1)$$0
 endsnippet
 
-snippet glpd
+snippet glpd "" w
 $\GL^+(d,$1)$$0
 endsnippet
 
-snippet glp2
+snippet glp2 "" w
 $\GL^+(2,$1)$$0
 endsnippet
 
-snippet glp3
+snippet glp3 "" w
 $\GL^+(3,$1)$$0
 endsnippet
 
-snippet glp.
+snippet glp. "" w
 $\GL^+($1,$2)$$0
 endsnippet
 
@@ -6244,434 +6244,434 @@ endsnippet
 
 
 
-snippet glnz
+snippet glnz "" w
 $\GL(n, \mathbb{Z})$$0
 endsnippet
 
-snippet glmz
+snippet glmz "" w
 $\GL(m, \mathbb{Z})$$0
 endsnippet
 
-snippet gldz
+snippet gldz "" w
 $\GL(d, \mathbb{Z})$$0
 endsnippet
 
-snippet glkz
+snippet glkz "" w
 $\GL(k, \mathbb{Z})$$0
 endsnippet
 
-snippet gl2z
+snippet gl2z "" w
 $\GL(2, \mathbb{Z})$$0
 endsnippet
 
-snippet gl3z
+snippet gl3z "" w
 $\GL(3, \mathbb{Z})$$0
 endsnippet
 
-snippet gl.z
+snippet gl.z "" w
 $\GL($1, \mathbb{Z})$$0
 endsnippet
 
-snippet glpnz
+snippet glpnz "" w
 $\GL^+(n, \mathbb{Z})$$0
 endsnippet
 
-snippet glpmz
+snippet glpmz "" w
 $\GL^+(m, \mathbb{Z})$$0
 endsnippet
 
-snippet glpdz
+snippet glpdz "" w
 $\GL^+(d, \mathbb{Z})$$0
 endsnippet
 
-snippet glp2z
+snippet glp2z "" w
 $\GL^+(2, \mathbb{Z})$$0
 endsnippet
 
-snippet glp3z
+snippet glp3z "" w
 $\GL^+(3, \mathbb{Z})$$0
 endsnippet
 
-snippet glp.z
+snippet glp.z "" w
 $\GL^+($1, \mathbb{Z})$$0
 endsnippet
 
 
 
-snippet glnq
+snippet glnq "" w
 $\GL(n, \mathbb{Q})$$0
 endsnippet
 
-snippet glmq
+snippet glmq "" w
 $\GL(m, \mathbb{Q})$$0
 endsnippet
 
-snippet gldq
+snippet gldq "" w
 $\GL(d, \mathbb{Q})$$0
 endsnippet
 
-snippet glkq
+snippet glkq "" w
 $\GL(k, \mathbb{Q})$$0
 endsnippet
 
-snippet gl2q
+snippet gl2q "" w
 $\GL(2, \mathbb{Q})$$0
 endsnippet
 
-snippet gl3q
+snippet gl3q "" w
 $\GL(3, \mathbb{Q})$$0
 endsnippet
 
-snippet gl.q
+snippet gl.q "" w
 $\GL($1, \mathbb{Q})$$0
 endsnippet
 
-snippet glpnq
+snippet glpnq "" w
 $\GL^+(n, \mathbb{Q})$$0
 endsnippet
 
-snippet glpmq
+snippet glpmq "" w
 $\GL^+(m, \mathbb{Q})$$0
 endsnippet
 
-snippet glpdq
+snippet glpdq "" w
 $\GL^+(d, \mathbb{Q})$$0
 endsnippet
 
-snippet glp2q
+snippet glp2q "" w
 $\GL^+(2, \mathbb{Q})$$0
 endsnippet
 
-snippet glp3q
+snippet glp3q "" w
 $\GL^+(3, \mathbb{Q})$$0
 endsnippet
 
-snippet glp.q
+snippet glp.q "" w
 $\GL^+($1, \mathbb{Q})$$0
 endsnippet
 
 
 
-snippet glnr
+snippet glnr "" w
 $\GL(n, \mathbb{R})$$0
 endsnippet
 
-snippet glmr
+snippet glmr "" w
 $\GL(m, \mathbb{R})$$0
 endsnippet
 
-snippet gldr
+snippet gldr "" w
 $\GL(d, \mathbb{R})$$0
 endsnippet
 
-snippet glkr
+snippet glkr "" w
 $\GL(k, \mathbb{R})$$0
 endsnippet
 
-snippet gl2r
+snippet gl2r "" w
 $\GL(2, \mathbb{R})$$0
 endsnippet
 
-snippet gl3r
+snippet gl3r "" w
 $\GL(3, \mathbb{R})$$0
 endsnippet
 
-snippet gl.r
+snippet gl.r "" w
 $\GL($1, \mathbb{R})$$0
 endsnippet
 
-snippet glpnr
+snippet glpnr "" w
 $\GL^+(n, \mathbb{R})$$0
 endsnippet
 
-snippet glpmr
+snippet glpmr "" w
 $\GL^+(m, \mathbb{R})$$0
 endsnippet
 
-snippet glpdr
+snippet glpdr "" w
 $\GL^+(d, \mathbb{R})$$0
 endsnippet
 
-snippet glp2r
+snippet glp2r "" w
 $\GL^+(2, \mathbb{R})$$0
 endsnippet
 
-snippet glp3r
+snippet glp3r "" w
 $\GL^+(3, \mathbb{R})$$0
 endsnippet
 
-snippet glp.r
+snippet glp.r "" w
 $\GL^+($1, \mathbb{R})$$0
 endsnippet
 
 
 
-snippet glnc
+snippet glnc "" w
 $\GL(n, \mathbb{C})$$0
 endsnippet
 
-snippet glmc
+snippet glmc "" w
 $\GL(m, \mathbb{C})$$0
 endsnippet
 
-snippet gldc
+snippet gldc "" w
 $\GL(d, \mathbb{C})$$0
 endsnippet
 
-snippet glkc
+snippet glkc "" w
 $\GL(k, \mathbb{C})$$0
 endsnippet
 
-snippet gl2c
+snippet gl2c "" w
 $\GL(2, \mathbb{C})$$0
 endsnippet
 
-snippet gl3c
+snippet gl3c "" w
 $\GL(3, \mathbb{C})$$0
 endsnippet
 
-snippet gl.c
+snippet gl.c "" w
 $\GL($1, \mathbb{C})$$0
 endsnippet
 
 
 
-snippet glnzp
+snippet glnzp "" w
 $\GL(n, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet glmzp
+snippet glmzp "" w
 $\GL(m, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet gldzp
+snippet gldzp "" w
 $\GL(d, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet glkzp
+snippet glkzp "" w
 $\GL(k, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl2zp
+snippet gl2zp "" w
 $\GL(2, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl3zp
+snippet gl3zp "" w
 $\GL(3, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl.zp
+snippet gl.zp "" w
 $\GL($1, \mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet glnqp
+snippet glnqp "" w
 $\GL(n, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet glmqp
+snippet glmqp "" w
 $\GL(m, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet gldqp
+snippet gldqp "" w
 $\GL(d, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet glkqp
+snippet glkqp "" w
 $\GL(k, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl2qp
+snippet gl2qp "" w
 $\GL(2, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl3qp
+snippet gl3qp "" w
 $\GL(3, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl.qp
+snippet gl.qp "" w
 $\GL($1, \mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet glnk
+snippet glnk "" w
 $\GL(n, \mathbb{K})$$0
 endsnippet
 
-snippet glmk
+snippet glmk "" w
 $\GL(m, \mathbb{K})$$0
 endsnippet
 
-snippet gldk
+snippet gldk "" w
 $\GL(d, \mathbb{K})$$0
 endsnippet
 
-snippet glkk
+snippet glkk "" w
 $\GL(k, \mathbb{K})$$0
 endsnippet
 
-snippet gl2k
+snippet gl2k "" w
 $\GL(2, \mathbb{K})$$0
 endsnippet
 
-snippet gl3k
+snippet gl3k "" w
 $\GL(3, \mathbb{K})$$0
 endsnippet
 
-snippet gl.k
+snippet gl.k "" w
 $\GL($1, \mathbb{K})$$0
 endsnippet
 
 
 
-snippet glna
+snippet glna "" w
 $\GL(n, \mathbb{A})$$0
 endsnippet
 
-snippet glma
+snippet glma "" w
 $\GL(m, \mathbb{A})$$0
 endsnippet
 
-snippet glda
+snippet glda "" w
 $\GL(d, \mathbb{A})$$0
 endsnippet
 
-snippet glka
+snippet glka "" w
 $\GL(k, \mathbb{A})$$0
 endsnippet
 
-snippet gl2a
+snippet gl2a "" w
 $\GL(2, \mathbb{A})$$0
 endsnippet
 
-snippet gl3a
+snippet gl3a "" w
 $\GL(3, \mathbb{A})$$0
 endsnippet
 
-snippet gl.a
+snippet gl.a "" w
 $\GL($1, \mathbb{A})$$0
 endsnippet
 
 
 
-snippet glnok
+snippet glnok "" w
 $\GL(n, \mathcal{O}_K)$$0
 endsnippet
 
-snippet glmok
+snippet glmok "" w
 $\GL(m, \mathcal{O}_K)$$0
 endsnippet
 
-snippet gldok
+snippet gldok "" w
 $\GL(d, \mathcal{O}_K)$$0
 endsnippet
 
-snippet glkok
+snippet glkok "" w
 $\GL(k, \mathcal{O}_K)$$0
 endsnippet
 
-snippet gl2ok
+snippet gl2ok "" w
 $\GL(2, \mathcal{O}_K)$$0
 endsnippet
 
-snippet gl3ok
+snippet gl3ok "" w
 $\GL(3, \mathcal{O}_K)$$0
 endsnippet
 
-snippet gl.ok
+snippet gl.ok "" w
 $\GL($1, \mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet glnco
+snippet glnco "" w
 $\GL(n, \mathcal{O})$$0
 endsnippet
 
-snippet glmco
+snippet glmco "" w
 $\GL(m, \mathcal{O})$$0
 endsnippet
 
-snippet gldco
+snippet gldco "" w
 $\GL(d, \mathcal{O})$$0
 endsnippet
 
-snippet glkco
+snippet glkco "" w
 $\GL(k, \mathcal{O})$$0
 endsnippet
 
-snippet gl2co
+snippet gl2co "" w
 $\GL(2, \mathcal{O})$$0
 endsnippet
 
-snippet gl3co
+snippet gl3co "" w
 $\GL(3, \mathcal{O})$$0
 endsnippet
 
-snippet gl.co
+snippet gl.co "" w
 $\GL($1, \mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet glnjk
+snippet glnjk "" w
 $\GL(n, K)$$0
 endsnippet
 
-snippet glmjk
+snippet glmjk "" w
 $\GL(m, K)$$0
 endsnippet
 
-snippet gldjk
+snippet gldjk "" w
 $\GL(d, K)$$0
 endsnippet
 
-snippet glkjk
+snippet glkjk "" w
 $\GL(k, K)$$0
 endsnippet
 
-snippet gl2jk
+snippet gl2jk "" w
 $\GL(2, K)$$0
 endsnippet
 
-snippet gl3jk
+snippet gl3jk "" w
 $\GL(3, K)$$0
 endsnippet
 
-snippet gl.jk
+snippet gl.jk "" w
 $\GL($1, K)$$0
 endsnippet
 
 
 
-snippet glnks
+snippet glnks "" w
 $\GL(n, K_S)$$0
 endsnippet
 
-snippet glmks
+snippet glmks "" w
 $\GL(m, K_S)$$0
 endsnippet
 
-snippet gldks
+snippet gldks "" w
 $\GL(d, K_S)$$0
 endsnippet
 
-snippet glkks
+snippet glkks "" w
 $\GL(k, K_S)$$0
 endsnippet
 
-snippet gl2ks
+snippet gl2ks "" w
 $\GL(2, K_S)$$0
 endsnippet
 
-snippet gl3ks
+snippet gl3ks "" w
 $\GL(3, K_S)$$0
 endsnippet
 
-snippet gl.ks
+snippet gl.ks "" w
 $\GL($1, K_S)$$0
 endsnippet
 
@@ -6679,63 +6679,63 @@ endsnippet
 
 # Underscored{{{
 
-snippet gl,
+snippet gl, "" w
 $\GL_{$1}($2)$$0
 endsnippet
 
-snippet gln,
+snippet gln, "" w
 $\GL_{n}($1)$$0
 endsnippet
 
-snippet glm,
+snippet glm, "" w
 $\GL_{m}($1)$$0
 endsnippet
 
-snippet gld,
+snippet gld, "" w
 $\GL_{d}($1)$$0
 endsnippet
 
-snippet glk,
+snippet glk, "" w
 $\GL_{k}($1)$$0
 endsnippet
 
-snippet gl2,
+snippet gl2, "" w
 $\GL_{2}($1)$$0
 endsnippet
 
-snippet gl3,
+snippet gl3, "" w
 $\GL_{3}($1)$$0
 endsnippet
 
-snippet gl.,
+snippet gl., "" w
 $\GL_{$1}($2)$$0
 endsnippet
 
-snippet glnp,
+snippet glnp, "" w
 $\GL_{n}^+($1)$$0
 endsnippet
 
-snippet glmp,
+snippet glmp, "" w
 $\GL_{m}^+($1)$$0
 endsnippet
 
-snippet gldp,
+snippet gldp, "" w
 $\GL_{d}^+($1)$$0
 endsnippet
 
-snippet glkp,
+snippet glkp, "" w
 $\GL_{k}^+($1)$$0
 endsnippet
 
-snippet gl2p,
+snippet gl2p, "" w
 $\GL_{2}^+($1)$$0
 endsnippet
 
-snippet gl3p,
+snippet gl3p, "" w
 $\GL_{3}^+($1)$$0
 endsnippet
 
-snippet gl.p,
+snippet gl.p, "" w
 $\GL_{$1}^+($2)$$0
 endsnippet
 
@@ -6747,442 +6747,442 @@ endsnippet
 
 
 
-snippet glnz,
+snippet glnz, "" w
 $\GL_{n}(\mathbb{Z})$$0
 endsnippet
 
-snippet glmz,
+snippet glmz, "" w
 $\GL_{m}(\mathbb{Z})$$0
 endsnippet
 
-snippet gldz,
+snippet gldz, "" w
 $\GL_{d}(\mathbb{Z})$$0
 endsnippet
 
-snippet glkz,
+snippet glkz, "" w
 $\GL_{k}(\mathbb{Z})$$0
 endsnippet
 
-snippet gl2z,
+snippet gl2z, "" w
 $\GL_{2}(\mathbb{Z})$$0
 endsnippet
 
-snippet gl3z,
+snippet gl3z, "" w
 $\GL_{3}(\mathbb{Z})$$0
 endsnippet
 
-snippet gl.z,
+snippet gl.z, "" w
 $\GL_{$1}(\mathbb{Z})$$0
 endsnippet
 
-snippet glnpz,
+snippet glnpz, "" w
 $\GL_{n}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet glmpz,
+snippet glmpz, "" w
 $\GL_{m}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet gldpz,
+snippet gldpz, "" w
 $\GL_{d}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet glkpz,
+snippet glkpz, "" w
 $\GL_{k}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet gl2pz,
+snippet gl2pz, "" w
 $\GL_{2}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet gl3pz,
+snippet gl3pz, "" w
 $\GL_{3}^+(\mathbb{Z})$$0
 endsnippet
 
-snippet gl.pz,
+snippet gl.pz, "" w
 $\GL_{$1}^+(\mathbb{Z})$$0
 endsnippet
 
 
 
-snippet glnq,
+snippet glnq, "" w
 $\GL_{n}(\mathbb{Q})$$0
 endsnippet
 
-snippet glmq,
+snippet glmq, "" w
 $\GL_{m}(\mathbb{Q})$$0
 endsnippet
 
-snippet gldq,
+snippet gldq, "" w
 $\GL_{d}(\mathbb{Q})$$0
 endsnippet
 
-snippet glkq,
+snippet glkq, "" w
 $\GL_{k}(\mathbb{Q})$$0
 endsnippet
 
-snippet gl2q,
+snippet gl2q, "" w
 $\GL_{2}(\mathbb{Q})$$0
 endsnippet
 
-snippet gl3q,
+snippet gl3q, "" w
 $\GL_{3}(\mathbb{Q})$$0
 endsnippet
 
-snippet gl.q,
+snippet gl.q, "" w
 $\GL_{$1}(\mathbb{Q})$$0
 endsnippet
 
-snippet glnpq,
+snippet glnpq, "" w
 $\GL_{n}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet glmpq,
+snippet glmpq, "" w
 $\GL_{m}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet gldpq,
+snippet gldpq, "" w
 $\GL_{d}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet glkpq,
+snippet glkpq, "" w
 $\GL_{k}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet gl2pq,
+snippet gl2pq, "" w
 $\GL_{2}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet gl3pq,
+snippet gl3pq, "" w
 $\GL_{3}^+(\mathbb{Q})$$0
 endsnippet
 
-snippet gl.pq,
+snippet gl.pq, "" w
 $\GL_{$1}^+(\mathbb{Q})$$0
 endsnippet
 
 
 
-snippet glnr,
+snippet glnr, "" w
 $\GL_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet glmr,
+snippet glmr, "" w
 $\GL_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet gldr,
+snippet gldr, "" w
 $\GL_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet glkr,
+snippet glkr, "" w
 $\GL_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet gl2r,
+snippet gl2r, "" w
 $\GL_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet gl3r,
+snippet gl3r, "" w
 $\GL_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet gl.r,
+snippet gl.r, "" w
 $\GL_{$1}(\mathbb{R})$$0
 endsnippet
 
-snippet glnpr,
+snippet glnpr, "" w
 $\GL_{n}^+(\mathbb{R})$$0
 endsnippet
 
-snippet glmpr,
+snippet glmpr, "" w
 $\GL_{m}^+(\mathbb{R})$$0
 endsnippet
 
-snippet gldpr,
+snippet gldpr, "" w
 $\GL_{d}^+(\mathbb{R})$$0
 endsnippet
 
-snippet glkpr,
+snippet glkpr, "" w
 $\GL_{k}^+(\mathbb{R})$$0
 endsnippet
 
-snippet gl2pr,
+snippet gl2pr, "" w
 $\GL_{2}^+(\mathbb{R})$$0
 endsnippet
 
-snippet gl3pr,
+snippet gl3pr, "" w
 $\GL_{3}^+(\mathbb{R})$$0
 endsnippet
 
-snippet gl.pr,
+snippet gl.pr, "" w
 $\GL_{$1}^+(\mathbb{R})$$0
 endsnippet
 
 
 
-snippet glnc,
+snippet glnc, "" w
 $\GL_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet glmc,
+snippet glmc, "" w
 $\GL_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet gldc,
+snippet gldc, "" w
 $\GL_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet glkc,
+snippet glkc, "" w
 $\GL_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet gl2c,
+snippet gl2c, "" w
 $\GL_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet gl3c,
+snippet gl3c, "" w
 $\GL_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet gl.c,
+snippet gl.c, "" w
 $\GL_{$1}(\mathbb{C})$$0
 endsnippet
 
 
 
-snippet glnzp,
+snippet glnzp, "" w
 $\GL_{n}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet glmzp,
+snippet glmzp, "" w
 $\GL_{m}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet gldzp,
+snippet gldzp, "" w
 $\GL_{d}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet glkzp,
+snippet glkzp, "" w
 $\GL_{k}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl2zp,
+snippet gl2zp, "" w
 $\GL_{2}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl3zp,
+snippet gl3zp, "" w
 $\GL_{3}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet gl.zp,
+snippet gl.zp, "" w
 $\GL_{$1}(\mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet glnqp,
+snippet glnqp, "" w
 $\GL_{n}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet glmqp,
+snippet glmqp, "" w
 $\GL_{m}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet gldqp,
+snippet gldqp, "" w
 $\GL_{d}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet glkqp,
+snippet glkqp, "" w
 $\GL_{k}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl2qp,
+snippet gl2qp, "" w
 $\GL_{2}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl3qp,
+snippet gl3qp, "" w
 $\GL_{3}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet gl.qp,
+snippet gl.qp, "" w
 $\GL_{$1}(\mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet glnk,
+snippet glnk, "" w
 $\GL_{n}(\mathbb{K})$$0
 endsnippet
 
-snippet glmk,
+snippet glmk, "" w
 $\GL_{m}(\mathbb{K})$$0
 endsnippet
 
-snippet gldk,
+snippet gldk, "" w
 $\GL_{d}(\mathbb{K})$$0
 endsnippet
 
-snippet glkk,
+snippet glkk, "" w
 $\GL_{k}(\mathbb{K})$$0
 endsnippet
 
-snippet gl2k,
+snippet gl2k, "" w
 $\GL_{2}(\mathbb{K})$$0
 endsnippet
 
-snippet gl3k,
+snippet gl3k, "" w
 $\GL_{3}(\mathbb{K})$$0
 endsnippet
 
-snippet gl.k,
+snippet gl.k, "" w
 $\GL_{$1}(\mathbb{K})$$0
 endsnippet
 
 
 
-snippet glna,
+snippet glna, "" w
 $\GL_{n}(\mathbb{A})$$0
 endsnippet
 
-snippet glma,
+snippet glma, "" w
 $\GL_{m}(\mathbb{A})$$0
 endsnippet
 
-snippet glda,
+snippet glda, "" w
 $\GL_{d}(\mathbb{A})$$0
 endsnippet
 
-snippet glka,
+snippet glka, "" w
 $\GL_{k}(\mathbb{A})$$0
 endsnippet
 
-snippet gl2a,
+snippet gl2a, "" w
 $\GL_{2}(\mathbb{A})$$0
 endsnippet
 
-snippet gl3a,
+snippet gl3a, "" w
 $\GL_{3}(\mathbb{A})$$0
 endsnippet
 
-snippet gl.a,
+snippet gl.a, "" w
 $\GL_{$1}(\mathbb{A})$$0
 endsnippet
 
 
 
-snippet glnok,
+snippet glnok, "" w
 $\GL_{n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet glmok,
+snippet glmok, "" w
 $\GL_{m}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet gldok,
+snippet gldok, "" w
 $\GL_{d}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet glkok,
+snippet glkok, "" w
 $\GL_{k}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet gl2ok,
+snippet gl2ok, "" w
 $\GL_{2}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet gl3ok,
+snippet gl3ok, "" w
 $\GL_{3}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet gl.ok,
+snippet gl.ok, "" w
 $\GL_{$1}(\mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet glnco,
+snippet glnco, "" w
 $\GL_{n}(\mathcal{O})$$0
 endsnippet
 
-snippet glmco,
+snippet glmco, "" w
 $\GL_{m}(\mathcal{O})$$0
 endsnippet
 
-snippet gldco,
+snippet gldco, "" w
 $\GL_{d}(\mathcal{O})$$0
 endsnippet
 
-snippet gl2co,
+snippet gl2co, "" w
 $\GL_{2}(\mathcal{O})$$0
 endsnippet
 
-snippet gl3co,
+snippet gl3co, "" w
 $\GL_{3}(\mathcal{O})$$0
 endsnippet
 
-snippet gl.co,
+snippet gl.co, "" w
 $\GL_{$1}(\mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet glnjk,
+snippet glnjk, "" w
 $\GL_{n}(K)$$0
 endsnippet
 
-snippet glmjk,
+snippet glmjk, "" w
 $\GL_{m}(K)$$0
 endsnippet
 
-snippet gldjk,
+snippet gldjk, "" w
 $\GL_{d}(K)$$0
 endsnippet
 
-snippet glkjk,
+snippet glkjk, "" w
 $\GL_{k}(K)$$0
 endsnippet
 
-snippet gl2jk,
+snippet gl2jk, "" w
 $\GL_{2}(K)$$0
 endsnippet
 
-snippet gl3jk,
+snippet gl3jk, "" w
 $\GL_{3}(K)$$0
 endsnippet
 
-snippet gl.jk,
+snippet gl.jk, "" w
 $\GL_{$1}(K)$$0
 endsnippet
 
 
 
-snippet glnks,
+snippet glnks, "" w
 $\GL_{n}(K_S)$$0
 endsnippet
 
-snippet glmks,
+snippet glmks, "" w
 $\GL_{m}(K_S)$$0
 endsnippet
 
-snippet gldks,
+snippet gldks, "" w
 $\GL_{d}(K_S)$$0
 endsnippet
 
-snippet glkks,
+snippet glkks, "" w
 $\GL_{k}(K_S)$$0
 endsnippet
 
-snippet gl2ks,
+snippet gl2ks, "" w
 $\GL_{2}(K_S)$$0
 endsnippet
 
-snippet gl3ks,
+snippet gl3ks, "" w
 $\GL_{3}(K_S)$$0
 endsnippet
 
-snippet gl.ks,
+snippet gl.ks, "" w
 $\GL_{$1}(K_S)$$0
 endsnippet
 
@@ -7191,35 +7191,35 @@ endsnippet
 #}}}
 # SL{{{
 
-snippet sl-
+snippet sl- "" w
 $\SL$$0
 endsnippet
 
-snippet sln-
+snippet sln- "" w
 $\SL_{n}$$0
 endsnippet
 
-snippet slm-
+snippet slm- "" w
 $\SL_{m}$$0
 endsnippet
 
-snippet sld-
+snippet sld- "" w
 $\SL_{d}$$0
 endsnippet
 
-snippet slk-
+snippet slk- "" w
 $\SL_{k}$$0
 endsnippet
 
-snippet sl2-
+snippet sl2- "" w
 $\SL_{2}$$0
 endsnippet
 
-snippet sl3-
+snippet sl3- "" w
 $\SL_{3}$$0
 endsnippet
 
-snippet sl.-
+snippet sl.- "" w
 $\SL_{$1}$$0
 endsnippet
 
@@ -7227,35 +7227,35 @@ endsnippet
 
 # Bracketed{{{
 
-snippet sl
+snippet sl "" w
 $\SL($1)$$0
 endsnippet
 
-snippet sln
+snippet sln "" w
 $\SL(n,$1)$$0
 endsnippet
 
-snippet slm
+snippet slm "" w
 $\SL(m,$1)$$0
 endsnippet
 
-snippet sld
+snippet sld "" w
 $\SL(d,$1)$$0
 endsnippet
 
-snippet slk
+snippet slk "" w
 $\SL(k,$1)$$0
 endsnippet
 
-snippet sl2
+snippet sl2 "" w
 $\SL(2,$1)$$0
 endsnippet
 
-snippet sl3
+snippet sl3 "" w
 $\SL(3,$1)$$0
 endsnippet
 
-snippet sl.
+snippet sl. "" w
 $\SL($1,$2)$$0
 endsnippet
 
@@ -7267,543 +7267,543 @@ endsnippet
 
 
 
-snippet slnz
+snippet slnz "" w
 $\SL(n, \mathbb{Z})$$0
 endsnippet
 
-snippet slmz
+snippet slmz "" w
 $\SL(m, \mathbb{Z})$$0
 endsnippet
 
-snippet sldz
+snippet sldz "" w
 $\SL(d, \mathbb{Z})$$0
 endsnippet
 
-snippet slkz
+snippet slkz "" w
 $\SL(k, \mathbb{Z})$$0
 endsnippet
 
-snippet sl2z
+snippet sl2z "" w
 $\SL(2, \mathbb{Z})$$0
 endsnippet
 
-snippet sl3z
+snippet sl3z "" w
 $\SL(3, \mathbb{Z})$$0
 endsnippet
 
-snippet sl.z
+snippet sl.z "" w
 $\SL($1, \mathbb{Z})$$0
 endsnippet
 
 
 
-snippet slnq
+snippet slnq "" w
 $\SL(n, \mathbb{Q})$$0
 endsnippet
 
-snippet slmq
+snippet slmq "" w
 $\SL(m, \mathbb{Q})$$0
 endsnippet
 
-snippet sldq
+snippet sldq "" w
 $\SL(d, \mathbb{Q})$$0
 endsnippet
 
-snippet slkq
+snippet slkq "" w
 $\SL(k, \mathbb{Q})$$0
 endsnippet
 
-snippet sl2q
+snippet sl2q "" w
 $\SL(2, \mathbb{Q})$$0
 endsnippet
 
-snippet sl3q
+snippet sl3q "" w
 $\SL(3, \mathbb{Q})$$0
 endsnippet
 
-snippet sl.q
+snippet sl.q "" w
 $\SL($1, \mathbb{Q})$$0
 endsnippet
 
 
 
-snippet slnr
+snippet slnr "" w
 $\SL(n, \mathbb{R})$$0
 endsnippet
 
-snippet slmr
+snippet slmr "" w
 $\SL(m, \mathbb{R})$$0
 endsnippet
 
-snippet sldr
+snippet sldr "" w
 $\SL(d, \mathbb{R})$$0
 endsnippet
 
-snippet slkr
+snippet slkr "" w
 $\SL(k, \mathbb{R})$$0
 endsnippet
 
-snippet sl2r
+snippet sl2r "" w
 $\SL(2, \mathbb{R})$$0
 endsnippet
 
-snippet sl3r
+snippet sl3r "" w
 $\SL(3, \mathbb{R})$$0
 endsnippet
 
-snippet sl.r
+snippet sl.r "" w
 $\SL($1, \mathbb{R})$$0
 endsnippet
 
 
 
-snippet slnc
+snippet slnc "" w
 $\SL(n, \mathbb{C})$$0
 endsnippet
 
-snippet slmc
+snippet slmc "" w
 $\SL(m, \mathbb{C})$$0
 endsnippet
 
-snippet sldc
+snippet sldc "" w
 $\SL(d, \mathbb{C})$$0
 endsnippet
 
-snippet slkc
+snippet slkc "" w
 $\SL(k, \mathbb{C})$$0
 endsnippet
 
-snippet sl2c
+snippet sl2c "" w
 $\SL(2, \mathbb{C})$$0
 endsnippet
 
-snippet sl3c
+snippet sl3c "" w
 $\SL(3, \mathbb{C})$$0
 endsnippet
 
-snippet sl.c
+snippet sl.c "" w
 $\SL($1, \mathbb{C})$$0
 endsnippet
 
 
 
-snippet slnzp
+snippet slnzp "" w
 $\SL(n, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet slmzp
+snippet slmzp "" w
 $\SL(m, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet sldzp
+snippet sldzp "" w
 $\SL(d, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet slkzp
+snippet slkzp "" w
 $\SL(k, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl2zp
+snippet sl2zp "" w
 $\SL(2, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl3zp
+snippet sl3zp "" w
 $\SL(3, \mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl.zp
+snippet sl.zp "" w
 $\SL($1, \mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet slnqp
+snippet slnqp "" w
 $\SL(n, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet slmqp
+snippet slmqp "" w
 $\SL(m, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet sldqp
+snippet sldqp "" w
 $\SL(d, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet slkqp
+snippet slkqp "" w
 $\SL(k, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl2qp
+snippet sl2qp "" w
 $\SL(2, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl3qp
+snippet sl3qp "" w
 $\SL(3, \mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl.qp
+snippet sl.qp "" w
 $\SL($1, \mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet slnk
+snippet slnk "" w
 $\SL(n, \mathbb{K})$$0
 endsnippet
 
-snippet slmk
+snippet slmk "" w
 $\SL(m, \mathbb{K})$$0
 endsnippet
 
-snippet sldk
+snippet sldk "" w
 $\SL(d, \mathbb{K})$$0
 endsnippet
 
-snippet slkk
+snippet slkk "" w
 $\SL(k, \mathbb{K})$$0
 endsnippet
 
-snippet sl2k
+snippet sl2k "" w
 $\SL(2, \mathbb{K})$$0
 endsnippet
 
-snippet sl3k
+snippet sl3k "" w
 $\SL(3, \mathbb{K})$$0
 endsnippet
 
-snippet sl.k
+snippet sl.k "" w
 $\SL($1, \mathbb{K})$$0
 endsnippet
 
 
 
-snippet slna
+snippet slna "" w
 $\SL(n, \mathbb{A})$$0
 endsnippet
 
-snippet slma
+snippet slma "" w
 $\SL(m, \mathbb{A})$$0
 endsnippet
 
-snippet slda
+snippet slda "" w
 $\SL(d, \mathbb{A})$$0
 endsnippet
 
-snippet slka
+snippet slka "" w
 $\SL(k, \mathbb{A})$$0
 endsnippet
 
-snippet sl2a
+snippet sl2a "" w
 $\SL(2, \mathbb{A})$$0
 endsnippet
 
-snippet sl3a
+snippet sl3a "" w
 $\SL(3, \mathbb{A})$$0
 endsnippet
 
-snippet sl.a
+snippet sl.a "" w
 $\SL($1, \mathbb{A})$$0
 endsnippet
 
 
 
-snippet slnok
+snippet slnok "" w
 $\SL(n, \mathcal{O}_K)$$0
 endsnippet
 
-snippet slmok
+snippet slmok "" w
 $\SL(m, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sldok
+snippet sldok "" w
 $\SL(d, \mathcal{O}_K)$$0
 endsnippet
 
-snippet slkok
+snippet slkok "" w
 $\SL(k, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl2ok
+snippet sl2ok "" w
 $\SL(2, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl3ok
+snippet sl3ok "" w
 $\SL(3, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl.ok
+snippet sl.ok "" w
 $\SL($1, \mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet slnco
+snippet slnco "" w
 $\SL(n, \mathcal{O})$$0
 endsnippet
 
-snippet slmco
+snippet slmco "" w
 $\SL(m, \mathcal{O})$$0
 endsnippet
 
-snippet sldco
+snippet sldco "" w
 $\SL(d, \mathcal{O})$$0
 endsnippet
 
-snippet slkco
+snippet slkco "" w
 $\SL(k, \mathcal{O})$$0
 endsnippet
 
-snippet sl2co
+snippet sl2co "" w
 $\SL(2, \mathcal{O})$$0
 endsnippet
 
-snippet sl3co
+snippet sl3co "" w
 $\SL(3, \mathcal{O})$$0
 endsnippet
 
-snippet sl.co
+snippet sl.co "" w
 $\SL($1, \mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet slnjk
+snippet slnjk "" w
 $\SL(n, K)$$0
 endsnippet
 
-snippet slmjk
+snippet slmjk "" w
 $\SL(m, K)$$0
 endsnippet
 
-snippet sldjk
+snippet sldjk "" w
 $\SL(d, K)$$0
 endsnippet
 
-snippet slkjk
+snippet slkjk "" w
 $\SL(k, K)$$0
 endsnippet
 
-snippet sl2jk
+snippet sl2jk "" w
 $\SL(2, K)$$0
 endsnippet
 
-snippet sl3jk
+snippet sl3jk "" w
 $\SL(3, K)$$0
 endsnippet
 
-snippet sl.jk
+snippet sl.jk "" w
 $\SL($1, K)$$0
 endsnippet
 
 
 
-snippet slnks
+snippet slnks "" w
 $\SL(n, K_S)$$0
 endsnippet
 
-snippet slmks
+snippet slmks "" w
 $\SL(m, K_S)$$0
 endsnippet
 
-snippet sldks
+snippet sldks "" w
 $\SL(d, K_S)$$0
 endsnippet
 
-snippet slkks
+snippet slkks "" w
 $\SL(k, K_S)$$0
 endsnippet
 
-snippet sl2ks
+snippet sl2ks "" w
 $\SL(2, K_S)$$0
 endsnippet
 
-snippet sl3ks
+snippet sl3ks "" w
 $\SL(3, K_S)$$0
 endsnippet
 
-snippet sl.ks
+snippet sl.ks "" w
 $\SL($1, K_S)$$0
 endsnippet
 
 
 
-snippet slnrz
+snippet slnrz "" w
 $\SL(n, \mathbb{R})/\SL(n, \mathbb{Z})$$0
 endsnippet
 
-snippet slmrz
+snippet slmrz "" w
 $\SL(m, \mathbb{R})/\SL(m, \mathbb{Z})$$0
 endsnippet
 
-snippet sldrz
+snippet sldrz "" w
 $\SL(d, \mathbb{R})/\SL(d, \mathbb{Z})$$0
 endsnippet
 
-snippet slkrz
+snippet slkrz "" w
 $\SL(k, \mathbb{R})/\SL(k, \mathbb{Z})$$0
 endsnippet
 
-snippet sl2rz
+snippet sl2rz "" w
 $\SL(2, \mathbb{R})/\SL(2, \mathbb{Z})$$0
 endsnippet
 
-snippet sl3rz
+snippet sl3rz "" w
 $\SL(3, \mathbb{R})/\SL(3, \mathbb{Z})$$0
 endsnippet
 
-snippet sl.rz
+snippet sl.rz "" w
 $\SL($1, \mathbb{R})/\SL($2, \mathbb{Z})$$0
 endsnippet
 
 
 
-snippet slnzr
+snippet slnzr "" w
 $\SL(n, \mathbb{Z}) \bs \SL(n, \mathbb{R})$$0
 endsnippet
 
-snippet slmzr
+snippet slmzr "" w
 $\SL(m, \mathbb{Z}) \bs \SL(m, \mathbb{R})$$0
 endsnippet
 
-snippet sldzr
+snippet sldzr "" w
 $\SL(d, \mathbb{Z}) \bs \SL(d, \mathbb{R})$$0
 endsnippet
 
-snippet slkzr
+snippet slkzr "" w
 $\SL(k, \mathbb{Z}) \bs \SL(k, \mathbb{R})$$0
 endsnippet
 
-snippet sl2zr
+snippet sl2zr "" w
 $\SL(2, \mathbb{Z}) \bs \SL(2, \mathbb{R})$$0
 endsnippet
 
-snippet sl3zr
+snippet sl3zr "" w
 $\SL(3, \mathbb{Z}) \bs \SL(3, \mathbb{R})$$0
 endsnippet
 
-snippet sl.zr
+snippet sl.zr "" w
 $\SL($1, \mathbb{Z}) \bs \SL($2, \mathbb{R})$$0
 endsnippet
 
 
 
-snippet slnksok
+snippet slnksok "" w
 $\SL(n, K_S)/\SL(n, \mathcal{O}_K)$$0
 endsnippet
 
-snippet slmksok
+snippet slmksok "" w
 $\SL(m, K_S)/\SL(m, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sldksok
+snippet sldksok "" w
 $\SL(d, K_S)/\SL(d, \mathcal{O}_K)$$0
 endsnippet
 
-snippet slkksok
+snippet slkksok "" w
 $\SL(k, K_S)/\SL(k, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl2ksok
+snippet sl2ksok "" w
 $\SL(2, K_S)/\SL(2, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl3ksok
+snippet sl3ksok "" w
 $\SL(3, K_S)/\SL(3, \mathcal{O}_K)$$0
 endsnippet
 
-snippet sl.ksok
+snippet sl.ksok "" w
 $\SL($1, K_S)/\SL($1, \mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet slnokks
+snippet slnokks "" w
 $\SL(n, \mathcal{O}_K) \bs \SL(n, K_S)$$0
 endsnippet
 
-snippet slmokks
+snippet slmokks "" w
 $\SL(m, \mathcal{O}_K) \bs \SL(m, K_S)$$0
 endsnippet
 
-snippet sldokks
+snippet sldokks "" w
 $\SL(d, \mathcal{O}_K) \bs \SL(d, K_S)$$0
 endsnippet
 
-snippet slkokks
+snippet slkokks "" w
 $\SL(k, \mathcal{O}_K) \bs \SL(k, K_S)$$0
 endsnippet
 
-snippet sl2okks
+snippet sl2okks "" w
 $\SL(2, \mathcal{O}_K) \bs \SL(2, K_S)$$0
 endsnippet
 
-snippet sl3okks
+snippet sl3okks "" w
 $\SL(3, \mathcal{O}_K) \bs \SL(3, K_S)$$0
 endsnippet
 
-snippet sl.okks
+snippet sl.okks "" w
 $\SL($1, \mathcal{O}_K) \bs \SL($1, K_S)$$0
 endsnippet
 
 
 
-snippet slnksco
+snippet slnksco "" w
 $\SL(n, K_S)/\SL(n, \mathcal{O})$$0
 endsnippet
 
-snippet slmksco
+snippet slmksco "" w
 $\SL(m, K_S)/\SL(m, \mathcal{O})$$0
 endsnippet
 
-snippet sldksco
+snippet sldksco "" w
 $\SL(d, K_S)/\SL(d, \mathcal{O})$$0
 endsnippet
 
-snippet slkksco
+snippet slkksco "" w
 $\SL(k, K_S)/\SL(k, \mathcal{O})$$0
 endsnippet
 
-snippet sl2ksco
+snippet sl2ksco "" w
 $\SL(2, K_S)/\SL(2, \mathcal{O})$$0
 endsnippet
 
-snippet sl3ksco
+snippet sl3ksco "" w
 $\SL(3, K_S)/\SL(3, \mathcal{O})$$0
 endsnippet
 
-snippet sl.ksco
+snippet sl.ksco "" w
 $\SL($1, K_S)/\SL($1, \mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet slncoks
+snippet slncoks "" w
 $\SL(n, \mathcal{O}) \bs \SL(n, K_S)$$0
 endsnippet
 
-snippet slmcoks
+snippet slmcoks "" w
 $\SL(m, \mathcal{O}) \bs \SL(m, K_S)$$0
 endsnippet
 
-snippet sldcoks
+snippet sldcoks "" w
 $\SL(d, \mathcal{O}) \bs \SL(d, K_S)$$0
 endsnippet
 
-snippet slkcoks
+snippet slkcoks "" w
 $\SL(k, \mathcal{O}) \bs \SL(k, K_S)$$0
 endsnippet
 
-snippet sl2coks
+snippet sl2coks "" w
 $\SL(2, \mathcal{O}) \bs \SL(2, K_S)$$0
 endsnippet
 
-snippet sl3coks
+snippet sl3coks "" w
 $\SL(3, \mathcal{O}) \bs \SL(3, K_S)$$0
 endsnippet
 
-snippet sl.coks
+snippet sl.coks "" w
 $\SL($1, \mathcal{O}) \bs \SL($1, K_S)$$0
 endsnippet
 
@@ -7811,35 +7811,35 @@ endsnippet
 
 # Underscored{{{
 
-snippet sl,
+snippet sl, "" w
 $\SL_{$1}($2)$$0
 endsnippet
 
-snippet sln,
+snippet sln, "" w
 $\SL_{n}($1)$$0
 endsnippet
 
-snippet slm,
+snippet slm, "" w
 $\SL_{m}($1)$$0
 endsnippet
 
-snippet sld,
+snippet sld, "" w
 $\SL_{d}($1)$$0
 endsnippet
 
-snippet slk,
+snippet slk, "" w
 $\SL_{k}($1)$$0
 endsnippet
 
-snippet sl2,
+snippet sl2, "" w
 $\SL_{2}($1)$$0
 endsnippet
 
-snippet sl3,
+snippet sl3, "" w
 $\SL_{3}($1)$$0
 endsnippet
 
-snippet sl.,
+snippet sl., "" w
 $\SL_{$1}($2)$$0
 endsnippet
 
@@ -7851,544 +7851,544 @@ endsnippet
 
 
 
-snippet slnz,
+snippet slnz, "" w
 $\SL_{n}(\mathbb{Z})$$0
 endsnippet
 
-snippet slmz,
+snippet slmz, "" w
 $\SL_{m}(\mathbb{Z})$$0
 endsnippet
 
-snippet sldz,
+snippet sldz, "" w
 $\SL_{d}(\mathbb{Z})$$0
 endsnippet
 
-snippet slkz,
+snippet slkz, "" w
 $\SL_{k}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl2z,
+snippet sl2z, "" w
 $\SL_{2}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl3z,
+snippet sl3z, "" w
 $\SL_{3}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl.z,
+snippet sl.z, "" w
 $\SL_{$1}(\mathbb{Z})$$0
 endsnippet
 
 
 
-snippet slnq,
+snippet slnq, "" w
 $\SL_{n}(\mathbb{Q})$$0
 endsnippet
 
-snippet slmq,
+snippet slmq, "" w
 $\SL_{m}(\mathbb{Q})$$0
 endsnippet
 
-snippet sldq,
+snippet sldq, "" w
 $\SL_{d}(\mathbb{Q})$$0
 endsnippet
 
-snippet slkq,
+snippet slkq, "" w
 $\SL_{k}(\mathbb{Q})$$0
 endsnippet
 
-snippet sl2q,
+snippet sl2q, "" w
 $\SL_{2}(\mathbb{Q})$$0
 endsnippet
 
-snippet sl3q,
+snippet sl3q, "" w
 $\SL_{3}(\mathbb{Q})$$0
 endsnippet
 
-snippet sl.q,
+snippet sl.q, "" w
 $\SL_{$1}(\mathbb{Q})$$0
 endsnippet
 
 
 
-snippet slnr,
+snippet slnr, "" w
 $\SL_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet slmr,
+snippet slmr, "" w
 $\SL_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet sldr,
+snippet sldr, "" w
 $\SL_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet slkr,
+snippet slkr, "" w
 $\SL_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet sl2r,
+snippet sl2r, "" w
 $\SL_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet sl3r,
+snippet sl3r, "" w
 $\SL_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet sl.r,
+snippet sl.r, "" w
 $\SL_{$1}(\mathbb{R})$$0
 endsnippet
 
 
 
-snippet slnc,
+snippet slnc, "" w
 $\SL_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet slmc,
+snippet slmc, "" w
 $\SL_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet sldc,
+snippet sldc, "" w
 $\SL_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet slkc,
+snippet slkc, "" w
 $\SL_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet sl2c,
+snippet sl2c, "" w
 $\SL_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet sl3c,
+snippet sl3c, "" w
 $\SL_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet sl.c,
+snippet sl.c, "" w
 $\SL_{$1}(\mathbb{C})$$0
 endsnippet
 
 
 
-snippet slnzp,
+snippet slnzp, "" w
 $\SL_{n}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet slmzp,
+snippet slmzp, "" w
 $\SL_{m}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet sldzp,
+snippet sldzp, "" w
 $\SL_{d}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet slkzp,
+snippet slkzp, "" w
 $\SL_{k}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl2zp,
+snippet sl2zp, "" w
 $\SL_{2}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl3zp,
+snippet sl3zp, "" w
 $\SL_{3}(\mathbb{Z}_p)$$0
 endsnippet
 
-snippet sl.zp,
+snippet sl.zp, "" w
 $\SL_{$1}(\mathbb{Z}_p)$$0
 endsnippet
 
 
 
-snippet slnqp,
+snippet slnqp, "" w
 $\SL_{n}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet slmqp,
+snippet slmqp, "" w
 $\SL_{m}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet sldqp,
+snippet sldqp, "" w
 $\SL_{d}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet slkqp,
+snippet slkqp, "" w
 $\SL_{k}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl2qp,
+snippet sl2qp, "" w
 $\SL_{2}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl3qp,
+snippet sl3qp, "" w
 $\SL_{3}(\mathbb{Q}_p)$$0
 endsnippet
 
-snippet sl.qp,
+snippet sl.qp, "" w
 $\SL_{$1}(\mathbb{Q}_p)$$0
 endsnippet
 
 
 
-snippet slnk,
+snippet slnk, "" w
 $\SL_{n}(\mathbb{K})$$0
 endsnippet
 
-snippet slmk,
+snippet slmk, "" w
 $\SL_{m}(\mathbb{K})$$0
 endsnippet
 
-snippet sldk,
+snippet sldk, "" w
 $\SL_{d}(\mathbb{K})$$0
 endsnippet
 
-snippet slkk,
+snippet slkk, "" w
 $\SL_{k}(\mathbb{K})$$0
 endsnippet
 
-snippet sl2k,
+snippet sl2k, "" w
 $\SL_{2}(\mathbb{K})$$0
 endsnippet
 
-snippet sl3k,
+snippet sl3k, "" w
 $\SL_{3}(\mathbb{K})$$0
 endsnippet
 
-snippet sl.k,
+snippet sl.k, "" w
 $\SL_{$1}(\mathbb{K})$$0
 endsnippet
 
 
 
-snippet slna,
+snippet slna, "" w
 $\SL_{n}(\mathbb{A})$$0
 endsnippet
 
-snippet slma,
+snippet slma, "" w
 $\SL_{m}(\mathbb{A})$$0
 endsnippet
 
-snippet slda,
+snippet slda, "" w
 $\SL_{d}(\mathbb{A})$$0
 endsnippet
 
-snippet slka,
+snippet slka, "" w
 $\SL_{k}(\mathbb{A})$$0
 endsnippet
 
-snippet sl2a,
+snippet sl2a, "" w
 $\SL_{2}(\mathbb{A})$$0
 endsnippet
 
-snippet sl3a,
+snippet sl3a, "" w
 $\SL_{3}(\mathbb{A})$$0
 endsnippet
 
-snippet sl.a,
+snippet sl.a, "" w
 $\SL_{$1}(\mathbb{A})$$0
 endsnippet
 
 
 
-snippet slnok,
+snippet slnok, "" w
 $\SL_{n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet slmok,
+snippet slmok, "" w
 $\SL_{m}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sldok,
+snippet sldok, "" w
 $\SL_{d}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet slkok,
+snippet slkok, "" w
 $\SL_{k}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl2ok,
+snippet sl2ok, "" w
 $\SL_{2}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl3ok,
+snippet sl3ok, "" w
 $\SL_{3}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl.ok,
+snippet sl.ok, "" w
 $\SL_{$1}(\mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet slnco,
+snippet slnco, "" w
 $\SL_{n}(\mathcal{O})$$0
 endsnippet
 
-snippet slmco,
+snippet slmco, "" w
 $\SL_{m}(\mathcal{O})$$0
 endsnippet
 
-snippet sldco,
+snippet sldco, "" w
 $\SL_{d}(\mathcal{O})$$0
 endsnippet
 
-snippet slkco,
+snippet slkco, "" w
 $\SL_{k}(\mathcal{O})$$0
 endsnippet
 
-snippet sl2co,
+snippet sl2co, "" w
 $\SL_{2}(\mathcal{O})$$0
 endsnippet
 
-snippet sl3co,
+snippet sl3co, "" w
 $\SL_{3}(\mathcal{O})$$0
 endsnippet
 
-snippet sl.co,
+snippet sl.co, "" w
 $\SL_{$1}(\mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet slnjk,
+snippet slnjk, "" w
 $\SL_{n}(K)$$0
 endsnippet
 
-snippet slmjk,
+snippet slmjk, "" w
 $\SL_{m}(K)$$0
 endsnippet
 
-snippet sldjk,
+snippet sldjk, "" w
 $\SL_{d}(K)$$0
 endsnippet
 
-snippet slkjk,
+snippet slkjk, "" w
 $\SL_{k}(K)$$0
 endsnippet
 
-snippet sl2jk,
+snippet sl2jk, "" w
 $\SL_{2}(K)$$0
 endsnippet
 
-snippet sl3jk,
+snippet sl3jk, "" w
 $\SL_{3}(K)$$0
 endsnippet
 
-snippet sl.jk,
+snippet sl.jk, "" w
 $\SL_{$1}(K)$$0
 endsnippet
 
 
 
-snippet slnks,
+snippet slnks, "" w
 $\SL_{n}(K_S)$$0
 endsnippet
 
-snippet slmks,
+snippet slmks, "" w
 $\SL_{m}(K_S)$$0
 endsnippet
 
-snippet sldks,
+snippet sldks, "" w
 $\SL_{d}(K_S)$$0
 endsnippet
 
-snippet slkks,
+snippet slkks, "" w
 $\SL_{k}(K_S)$$0
 endsnippet
 
-snippet sl2ks,
+snippet sl2ks, "" w
 $\SL_{2}(K_S)$$0
 endsnippet
 
-snippet sl3ks,
+snippet sl3ks, "" w
 $\SL_{3}(K_S)$$0
 endsnippet
 
-snippet sl.ks,
+snippet sl.ks, "" w
 $\SL_{$1}(K_S)$$0
 endsnippet
 
 
 
-snippet slnrz,
+snippet slnrz, "" w
 $\SL_{n}(\mathbb{R})/\SL_{n}(\mathbb{Z})$$0
 endsnippet
 
-snippet slmrz,
+snippet slmrz, "" w
 $\SL_{m}(\mathbb{R})/\SL_{m}(\mathbb{Z})$$0
 endsnippet
 
-snippet sldrz,
+snippet sldrz, "" w
 $\SL_{d}(\mathbb{R})/\SL_{d}(\mathbb{Z})$$0
 endsnippet
 
-snippet slkrz,
+snippet slkrz, "" w
 $\SL_{k}(\mathbb{R})/\SL_{k}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl2rz,
+snippet sl2rz, "" w
 $\SL_{2}(\mathbb{R})/\SL_{2}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl3rz,
+snippet sl3rz, "" w
 $\SL_{3}(\mathbb{R})/\SL_{3}(\mathbb{Z})$$0
 endsnippet
 
-snippet sl.rz,
+snippet sl.rz, "" w
 $\SL_{$1}(\mathbb{R})/\SL_{$2}(\mathbb{Z})$$0
 endsnippet
 
 
 
-snippet slnzr,
+snippet slnzr, "" w
 $\SL_{n}(\mathbb{Z}) \bs \SL_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet slmzr,
+snippet slmzr, "" w
 $\SL_{m}(\mathbb{Z}) \bs \SL_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet sldzr,
+snippet sldzr, "" w
 $\SL_{d}(\mathbb{Z}) \bs \SL_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet slkzr,
+snippet slkzr, "" w
 $\SL_{k}(\mathbb{Z}) \bs \SL_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet sl2zr,
+snippet sl2zr, "" w
 $\SL_{2}(\mathbb{Z}) \bs \SL_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet sl3zr,
+snippet sl3zr, "" w
 $\SL_{3}(\mathbb{Z}) \bs \SL_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet sl.zr,
+snippet sl.zr, "" w
 $\SL_{$1}(\mathbb{Z}) \bs \SL_{$2}(\mathbb{R})$$0
 endsnippet
 
 
 
-snippet slnksok,
+snippet slnksok, "" w
 $\SL_{n}(K_S)/\SL_{n}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet slmksok,
+snippet slmksok, "" w
 $\SL_{m}(K_S)/\SL_{m}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sldksok,
+snippet sldksok, "" w
 $\SL_{d}(K_S)/\SL_{d}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet slkksok,
+snippet slkksok, "" w
 $\SL_{k}(K_S)/\SL_{k}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl2ksok,
+snippet sl2ksok, "" w
 $\SL_{2}(K_S)/\SL_{2}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl3ksok,
+snippet sl3ksok, "" w
 $\SL_{3}(K_S)/\SL_{3}(\mathcal{O}_K)$$0
 endsnippet
 
-snippet sl.ksok,
+snippet sl.ksok, "" w
 $\SL_{$1}(K_S)/\SL_{$2}(\mathcal{O}_K)$$0
 endsnippet
 
 
 
-snippet slnokks,
+snippet slnokks, "" w
 $\SL_{n}(\mathcal{O}_K) \bs \SL_{n}(K_S)$$0
 endsnippet
 
-snippet slmokks,
+snippet slmokks, "" w
 $\SL_{m}(\mathcal{O}_K) \bs \SL_{m}(K_S)$$0
 endsnippet
 
-snippet sldokks,
+snippet sldokks, "" w
 $\SL_{d}(\mathcal{O}_K) \bs \SL_{d}(K_S)$$0
 endsnippet
 
-snippet slkokks,
+snippet slkokks, "" w
 $\SL_{k}(\mathcal{O}_K) \bs \SL_{k}(K_S)$$0
 endsnippet
 
-snippet sl2okks,
+snippet sl2okks, "" w
 $\SL_{2}(\mathcal{O}_K) \bs \SL_{2}(K_S)$$0
 endsnippet
 
-snippet sl3okks,
+snippet sl3okks, "" w
 $\SL_{3}(\mathcal{O}_K) \bs \SL_{3}(K_S)$$0
 endsnippet
 
-snippet sl.okks,
+snippet sl.okks, "" w
 $\SL_{$1}(\mathcal{O}_K) \bs \SL_{$2}(K_S)$$0
 endsnippet
 
 
 
 
-snippet slnksco,
+snippet slnksco, "" w
 $\SL_{n}(K_S)/\SL_{n}(\mathcal{O})$$0
 endsnippet
 
-snippet slmksco,
+snippet slmksco, "" w
 $\SL_{m}(K_S)/\SL_{m}(\mathcal{O})$$0
 endsnippet
 
-snippet sldksco,
+snippet sldksco, "" w
 $\SL_{d}(K_S)/\SL_{d}(\mathcal{O})$$0
 endsnippet
 
-snippet slkksco,
+snippet slkksco, "" w
 $\SL_{k}(K_S)/\SL_{k}(\mathcal{O})$$0
 endsnippet
 
-snippet sl2ksco,
+snippet sl2ksco, "" w
 $\SL_{2}(K_S)/\SL_{2}(\mathcal{O})$$0
 endsnippet
 
-snippet sl3ksco,
+snippet sl3ksco, "" w
 $\SL_{3}(K_S)/\SL_{3}(\mathcal{O})$$0
 endsnippet
 
-snippet sl.ksco,
+snippet sl.ksco, "" w
 $\SL_{$1}(K_S)/\SL_{$1}(\mathcal{O})$$0
 endsnippet
 
 
 
 
-snippet slncoks,
+snippet slncoks, "" w
 $\SL_{n}(\mathcal{O}) \bs \SL_{n}(K_S)$$0
 endsnippet
 
-snippet slmcoks,
+snippet slmcoks, "" w
 $\SL_{m}(\mathcal{O}) \bs \SL_{m}(K_S)$$0
 endsnippet
 
-snippet sldcoks,
+snippet sldcoks, "" w
 $\SL_{d}(\mathcal{O}) \bs \SL_{d}(K_S)$$0
 endsnippet
 
-snippet slkcoks,
+snippet slkcoks, "" w
 $\SL_{k}(\mathcal{O}) \bs \SL_{k}(K_S)$$0
 endsnippet
 
-snippet sl2coks,
+snippet sl2coks, "" w
 $\SL_{2}(\mathcal{O}) \bs \SL_{2}(K_S)$$0
 endsnippet
 
-snippet sl3coks,
+snippet sl3coks, "" w
 $\SL_{3}(\mathcal{O}) \bs \SL_{3}(K_S)$$0
 endsnippet
 
-snippet sl.coks,
+snippet sl.coks, "" w
 $\SL_{$1}(\mathcal{O}) \bs \SL_{$1}(K_S)$$0
 endsnippet
 
@@ -8397,35 +8397,35 @@ endsnippet
 #}}}
 # PSL{{{
 
-snippet psl-
+snippet psl- "" w
 $\PSL$$0
 endsnippet
 
-snippet psln-
+snippet psln- "" w
 $\PSL_{n}$$0
 endsnippet
 
-snippet pslm-
+snippet pslm- "" w
 $\PSL_{m}$$0
 endsnippet
 
-snippet psld-
+snippet psld- "" w
 $\PSL_{d}$$0
 endsnippet
 
-snippet pslk-
+snippet pslk- "" w
 $\PSL_{k}$$0
 endsnippet
 
-snippet psl2-
+snippet psl2- "" w
 $\PSL_{2}$$0
 endsnippet
 
-snippet psl3-
+snippet psl3- "" w
 $\PSL_{3}$$0
 endsnippet
 
-snippet psl.-
+snippet psl.- "" w
 $\PSL_{$1}$$0
 endsnippet
 
@@ -8433,35 +8433,35 @@ endsnippet
 
 # Bracketed{{{
 
-snippet psl
+snippet psl "" w
 $\PSL($1)$$0
 endsnippet
 
-snippet psln
+snippet psln "" w
 $\PSL(n,$1)$$0
 endsnippet
 
-snippet pslm
+snippet pslm "" w
 $\PSL(m,$1)$$0
 endsnippet
 
-snippet psld
+snippet psld "" w
 $\PSL(d,$1)$$0
 endsnippet
 
-snippet pslk
+snippet pslk "" w
 $\PSL(k,$1)$$0
 endsnippet
 
-snippet psl2
+snippet psl2 "" w
 $\PSL(2,$1)$$0
 endsnippet
 
-snippet psl3
+snippet psl3 "" w
 $\PSL(3,$1)$$0
 endsnippet
 
-snippet psl.
+snippet psl. "" w
 $\PSL($1,$2)$$0
 endsnippet
 
@@ -8473,31 +8473,31 @@ endsnippet
 
 
 
-snippet pslnr
+snippet pslnr "" w
 $\PSL(n, \mathbb{R})$$0
 endsnippet
 
-snippet pslmr
+snippet pslmr "" w
 $\PSL(m, \mathbb{R})$$0
 endsnippet
 
-snippet psldr
+snippet psldr "" w
 $\PSL(d, \mathbb{R})$$0
 endsnippet
 
-snippet pslkr
+snippet pslkr "" w
 $\PSL(k, \mathbb{R})$$0
 endsnippet
 
-snippet psl2r
+snippet psl2r "" w
 $\PSL(2, \mathbb{R})$$0
 endsnippet
 
-snippet psl3r
+snippet psl3r "" w
 $\PSL(3, \mathbb{R})$$0
 endsnippet
 
-snippet psl.r
+snippet psl.r "" w
 $\PSL($1, \mathbb{R})$$0
 endsnippet
 
@@ -8505,35 +8505,35 @@ endsnippet
 
 # Underscored{{{
 
-snippet psl, "PSL in _"
+snippet psl, "PSL in _" w
 $\PSL_{$1}($2)$$0
 endsnippet
 
-snippet psln,
+snippet psln, "" w
 $\PSL_{n}($1)$$0
 endsnippet
 
-snippet pslm,
+snippet pslm, "" w
 $\PSL_{m}($1)$$0
 endsnippet
 
-snippet psld,
+snippet psld, "" w
 $\PSL_{d}($1)$$0
 endsnippet
 
-snippet pslk,
+snippet pslk, "" w
 $\PSL_{k}($1)$$0
 endsnippet
 
-snippet psl2,
+snippet psl2, "" w
 $\PSL_{2}($1)$$0
 endsnippet
 
-snippet psl3,
+snippet psl3, "" w
 $\PSL_{3}($1)$$0
 endsnippet
 
-snippet psl.,
+snippet psl., "" w
 $\PSL_{$1}($2)$$0
 endsnippet
 
@@ -8545,31 +8545,31 @@ endsnippet
 
 
 
-snippet pslnr,
+snippet pslnr, "" w
 $\PSL_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet pslmr,
+snippet pslmr, "" w
 $\PSL_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet psldr,
+snippet psldr, "" w
 $\PSL_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet pslkr,
+snippet pslkr, "" w
 $\PSL_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet psl2r,
+snippet psl2r, "" w
 $\PSL_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet psl3r,
+snippet psl3r, "" w
 $\PSL_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet psl.r,
+snippet psl.r, "" w
 $\PSL_{$1}(\mathbb{R})$$0
 endsnippet
 
@@ -8578,31 +8578,31 @@ endsnippet
 #}}}
 # O{{{
 
-snippet o-
+snippet o- "" w
 $\O$$0
 endsnippet
 
-snippet on-
+snippet on- "" w
 $\O_{n}$$0
 endsnippet
 
-snippet om-
+snippet om- "" w
 $\O_{m}$$0
 endsnippet
 
-snippet od-
+snippet od- "" w
 $\O_{d}$$0
 endsnippet
 
-snippet o2-
+snippet o2- "" w
 $\O_{2}$$0
 endsnippet
 
-snippet o3-
+snippet o3- "" w
 $\O_{3}$$0
 endsnippet
 
-snippet o.-
+snippet o.- "" w
 $\O_{$1}$$0
 endsnippet
 
@@ -8610,7 +8610,7 @@ endsnippet
 
 # Bracketed{{{
 
-snippet on
+snippet on "" w
 $\O(n,$1)$$0
 endsnippet
 
@@ -8618,19 +8618,19 @@ endsnippet
 # $\O(m,$1)$$0
 # endsnippet
 
-snippet od
+snippet od "" w
 $\O(d,$1)$$0
 endsnippet
 
-snippet o2
+snippet o2 "" w
 $\O(2,$1)$$0
 endsnippet
 
-snippet o3
+snippet o3 "" w
 $\O(3,$1)$$0
 endsnippet
 
-snippet o.
+snippet o. "" w
 $\O($1,$2)$$0
 endsnippet
 
@@ -8642,31 +8642,31 @@ endsnippet
 
 
 
-snippet onr
+snippet onr "" w
 $\O(n, \mathbb{R})$$0
 endsnippet
 
-snippet omr
+snippet omr "" w
 $\O(m, \mathbb{R})$$0
 endsnippet
 
-snippet odr
+snippet odr "" w
 $\O(d, \mathbb{R})$$0
 endsnippet
 
-snippet okr
+snippet okr "" w
 $\O(k, \mathbb{R})$$0
 endsnippet
 
-snippet o2r
+snippet o2r "" w
 $\O(2, \mathbb{R})$$0
 endsnippet
 
-snippet o3r
+snippet o3r "" w
 $\O(3, \mathbb{R})$$0
 endsnippet
 
-snippet o.r
+snippet o.r "" w
 $\O($1, \mathbb{R})$$0
 endsnippet
 
@@ -8678,31 +8678,31 @@ endsnippet
 
 
 
-snippet onc
+snippet onc "" w
 $\O(n, \mathbb{C})$$0
 endsnippet
 
-snippet omc
+snippet omc "" w
 $\O(m, \mathbb{C})$$0
 endsnippet
 
-snippet odc
+snippet odc "" w
 $\O(d, \mathbb{C})$$0
 endsnippet
 
-snippet okc
+snippet okc "" w
 $\O(k, \mathbb{C})$$0
 endsnippet
 
-snippet o2c
+snippet o2c "" w
 $\O(2, \mathbb{C})$$0
 endsnippet
 
-snippet o3c
+snippet o3c "" w
 $\O(3, \mathbb{C})$$0
 endsnippet
 
-snippet o.c
+snippet o.c "" w
 $\O($1, \mathbb{C})$$0
 endsnippet
 
@@ -8710,35 +8710,35 @@ endsnippet
 
 # Underscored{{{
 
-snippet o, "O in _"
+snippet o, "O in _" w
 $\O_{$1}($2)$$0
 endsnippet
 
-snippet on,
+snippet on, "" w
 $\O_{n}($1)$$0
 endsnippet
 
-snippet om,
+snippet om, "" w
 $\O_{m}($1)$$0
 endsnippet
 
-snippet od,
+snippet od, "" w
 $\O_{d}($1)$$0
 endsnippet
 
-snippet ok,
+snippet ok, "" w
 $\O_{k}($1)$$0
 endsnippet
 
-snippet o2,
+snippet o2, "" w
 $\O_{2}($1)$$0
 endsnippet
 
-snippet o3,
+snippet o3, "" w
 $\O_{3}($1)$$0
 endsnippet
 
-snippet o.,
+snippet o., "" w
 $\O_{$1}($2)$$0
 endsnippet
 
@@ -8750,35 +8750,35 @@ endsnippet
 
 
 
-snippet onr,
+snippet onr, "" w
 $\O_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet omr,
+snippet omr, "" w
 $\O_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet odr,
+snippet odr, "" w
 $\O_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet okr,
+snippet okr, "" w
 $\O_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet o2r,
+snippet o2r, "" w
 $\O_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet o3r,
+snippet o3r, "" w
 $\O_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet o.r,
+snippet o.r, "" w
 $\O_{$1}(\mathbb{R})$$0
 endsnippet
 
-snippet o.r,
+snippet o.r, "" w
 $\O_{$1}(\mathbb{R})$$0
 endsnippet
 
@@ -8790,31 +8790,31 @@ endsnippet
 
 
 
-snippet onc,
+snippet onc, "" w
 $\O_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet omc,
+snippet omc, "" w
 $\O_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet odc,
+snippet odc, "" w
 $\O_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet okc,
+snippet okc, "" w
 $\O_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet o2c,
+snippet o2c, "" w
 $\O_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet o3c,
+snippet o3c, "" w
 $\O_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet o.c,
+snippet o.c, "" w
 $\O_{$1}(\mathbb{C})$$0
 endsnippet
 
@@ -8823,35 +8823,35 @@ endsnippet
 #}}}
 # SO{{{
 
-snippet so-
+snippet so- "" w
 $\SO$$0
 endsnippet
 
-snippet son-
+snippet son- "" w
 $\SO_{n}$$0
 endsnippet
 
-snippet som-
+snippet som- "" w
 $\SO_{m}$$0
 endsnippet
 
-snippet sod-
+snippet sod- "" w
 $\SO_{d}$$0
 endsnippet
 
-snippet sok-
+snippet sok- "" w
 $\SO_{k}$$0
 endsnippet
 
-snippet so2-
+snippet so2- "" w
 $\SO_{2}$$0
 endsnippet
 
-snippet so3-
+snippet so3- "" w
 $\SO_{3}$$0
 endsnippet
 
-snippet so.-
+snippet so.- "" w
 $\SO_{$1}$$0
 endsnippet
 
@@ -8859,35 +8859,35 @@ endsnippet
 
 # Bracketed{{{
 
-snippet so
+snippet so "" w
 $\SO($1)$$0
 endsnippet
 
-snippet son
+snippet son "" w
 $\SO(n,$1)$$0
 endsnippet
 
-snippet som
+snippet som "" w
 $\SO(m,$1)$$0
 endsnippet
 
-snippet sod
+snippet sod "" w
 $\SO(d,$1)$$0
 endsnippet
 
-snippet sok
+snippet sok "" w
 $\SO(k,$1)$$0
 endsnippet
 
-snippet so2
+snippet so2 "" w
 $\SO(2,$1)$$0
 endsnippet
 
-snippet so3
+snippet so3 "" w
 $\SO(3,$1)$$0
 endsnippet
 
-snippet so.
+snippet so. "" w
 $\SO($1,$2)$$0
 endsnippet
 
@@ -8899,31 +8899,31 @@ endsnippet
 
 
 
-snippet sonr
+snippet sonr "" w
 $\SO(n, \mathbb{R})$$0
 endsnippet
 
-snippet somr
+snippet somr "" w
 $\SO(m, \mathbb{R})$$0
 endsnippet
 
-snippet sodr
+snippet sodr "" w
 $\SO(d, \mathbb{R})$$0
 endsnippet
 
-snippet sokr
+snippet sokr "" w
 $\SO(k, \mathbb{R})$$0
 endsnippet
 
-snippet so2r
+snippet so2r "" w
 $\SO(2, \mathbb{R})$$0
 endsnippet
 
-snippet so3r
+snippet so3r "" w
 $\SO(3, \mathbb{R})$$0
 endsnippet
 
-snippet so.r
+snippet so.r "" w
 $\SO($1, \mathbb{R})$$0
 endsnippet
 
@@ -8935,31 +8935,31 @@ endsnippet
 
 
 
-snippet sonc
+snippet sonc "" w
 $\SO(n, \mathbb{C})$$0
 endsnippet
 
-snippet somc
+snippet somc "" w
 $\SO(m, \mathbb{C})$$0
 endsnippet
 
-snippet sodc
+snippet sodc "" w
 $\SO(d, \mathbb{C})$$0
 endsnippet
 
-snippet sokc
+snippet sokc "" w
 $\SO(k, \mathbb{C})$$0
 endsnippet
 
-snippet so2c
+snippet so2c "" w
 $\SO(2, \mathbb{C})$$0
 endsnippet
 
-snippet so3c
+snippet so3c "" w
 $\SO(3, \mathbb{C})$$0
 endsnippet
 
-snippet so.c
+snippet so.c "" w
 $\SO($1, \mathbb{C})$$0
 endsnippet
 
@@ -8967,35 +8967,35 @@ endsnippet
 
 # Underscored{{{
 
-snippet so, "SO in _"
+snippet so, "SO in _" w
 $\SO_{$1}($2)$$0
 endsnippet
 
-snippet son,
+snippet son, "" w
 $\SO_{n}($1)$$0
 endsnippet
 
-snippet som,
+snippet som, "" w
 $\SO_{m}($1)$$0
 endsnippet
 
-snippet sod,
+snippet sod, "" w
 $\SO_{d}($1)$$0
 endsnippet
 
-snippet sok,
+snippet sok, "" w
 $\SO_{k}($1)$$0
 endsnippet
 
-snippet so2,
+snippet so2, "" w
 $\SO_{2}($1)$$0
 endsnippet
 
-snippet so3,
+snippet so3, "" w
 $\SO_{3}($1)$$0
 endsnippet
 
-snippet so.,
+snippet so., "" w
 $\SO_{$1}($2)$$0
 endsnippet
 
@@ -9007,31 +9007,31 @@ endsnippet
 
 
 
-snippet sonr,
+snippet sonr, "" w
 $\SO_{n}(\mathbb{R})$$0
 endsnippet
 
-snippet somr,
+snippet somr, "" w
 $\SO_{m}(\mathbb{R})$$0
 endsnippet
 
-snippet sodr,
+snippet sodr, "" w
 $\SO_{d}(\mathbb{R})$$0
 endsnippet
 
-snippet sokr,
+snippet sokr, "" w
 $\SO_{k}(\mathbb{R})$$0
 endsnippet
 
-snippet so2r,
+snippet so2r, "" w
 $\SO_{2}(\mathbb{R})$$0
 endsnippet
 
-snippet so3r,
+snippet so3r, "" w
 $\SO_{3}(\mathbb{R})$$0
 endsnippet
 
-snippet so.r,
+snippet so.r, "" w
 $\SO_{$1}(\mathbb{R})$$0
 endsnippet
 
@@ -9043,31 +9043,31 @@ endsnippet
 
 
 
-snippet sonc,
+snippet sonc, "" w
 $\SO_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet somc,
+snippet somc, "" w
 $\SO_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet sodc,
+snippet sodc, "" w
 $\SO_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet sokc,
+snippet sokc, "" w
 $\SO_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet so2c,
+snippet so2c, "" w
 $\SO_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet so3c,
+snippet so3c, "" w
 $\SO_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet so.c,
+snippet so.c, "" w
 $\SO_{$1}(\mathbb{C})$$0
 endsnippet
 
@@ -9076,35 +9076,35 @@ endsnippet
 #}}}
 # U{{{
 
-snippet u-
+snippet u- "" w
 $\U$$0
 endsnippet
 
-snippet un-
+snippet un- "" w
 $\U_{n}$$0
 endsnippet
 
-snippet um-
+snippet um- "" w
 $\U_{m}$$0
 endsnippet
 
-snippet ud-
+snippet ud- "" w
 $\U_{d}$$0
 endsnippet
 
-snippet uk-
+snippet uk- "" w
 $\U_{k}$$0
 endsnippet
 
-snippet u2-
+snippet u2- "" w
 $\U_{2}$$0
 endsnippet
 
-snippet u3-
+snippet u3- "" w
 $\U_{3}$$0
 endsnippet
 
-snippet u.-
+snippet u.- "" w
 $\U_{$1}$$0
 endsnippet
 
@@ -9112,31 +9112,31 @@ endsnippet
 
 # Bracketed{{{
 
-snippet un
+snippet un "" w
 $\U(n)$$0
 endsnippet
 
-snippet um
+snippet um "" w
 $\U(m)$$0
 endsnippet
 
-snippet ud
+snippet ud "" w
 $\U(d)$$0
 endsnippet
 
-snippet uk
+snippet uk "" w
 $\U(k)$$0
 endsnippet
 
-snippet u2
+snippet u2 "" w
 $\U(2)$$0
 endsnippet
 
-snippet u3
+snippet u3 "" w
 $\U(3)$$0
 endsnippet
 
-snippet u.
+snippet u. "" w
 $\U($1)$$0
 endsnippet
 
@@ -9148,31 +9148,31 @@ endsnippet
 
 
 
-snippet unc
+snippet unc "" w
 $\U(n, \mathbb{C})$$0
 endsnippet
 
-snippet umc
+snippet umc "" w
 $\U(m, \mathbb{C})$$0
 endsnippet
 
-snippet udc
+snippet udc "" w
 $\U(d, \mathbb{C})$$0
 endsnippet
 
-snippet ukc
+snippet ukc "" w
 $\U(k, \mathbb{C})$$0
 endsnippet
 
-snippet u2c
+snippet u2c "" w
 $\U(2, \mathbb{C})$$0
 endsnippet
 
-snippet u3c
+snippet u3c "" w
 $\U(3, \mathbb{C})$$0
 endsnippet
 
-snippet u.c
+snippet u.c "" w
 $\U($1, \mathbb{C})$$0
 endsnippet
 
@@ -9180,7 +9180,7 @@ endsnippet
 
 # Underscored{{{
 
-snippet u.,
+snippet u., "" w
 $\U_{$1}($2)$$0
 endsnippet
 
@@ -9188,31 +9188,31 @@ endsnippet
 
 
 
-snippet unc,
+snippet unc, "" w
 $\U_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet umc,
+snippet umc, "" w
 $\U_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet udc,
+snippet udc, "" w
 $\U_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet ukc,
+snippet ukc, "" w
 $\U_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet u2c,
+snippet u2c, "" w
 $\U_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet u3c,
+snippet u3c, "" w
 $\U_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet u.c,
+snippet u.c, "" w
 $\U_{$1}(\mathbb{C})$$0
 endsnippet
 
@@ -9221,35 +9221,35 @@ endsnippet
 #}}}
 # SU{{{
 
-snippet su-
+snippet su- "" w
 $\SU$$0
 endsnippet
 
-snippet sun-
+snippet sun- "" w
 $\SU_{n}$$0
 endsnippet
 
-snippet sum-
+snippet sum- "" w
 $\SU_{m}$$0
 endsnippet
 
-snippet sud-
+snippet sud- "" w
 $\SU_{d}$$0
 endsnippet
 
-snippet suk-
+snippet suk- "" w
 $\SU_{k}$$0
 endsnippet
 
-snippet su2-
+snippet su2- "" w
 $\SU_{2}$$0
 endsnippet
 
-snippet su3-
+snippet su3- "" w
 $\SU_{3}$$0
 endsnippet
 
-snippet su.-
+snippet su.- "" w
 $\SU_{$1}$$0
 endsnippet
 
@@ -9257,35 +9257,35 @@ endsnippet
 
 # Bracketed{{{
 
-snippet su
+snippet su "" w
 $\SU($1)$$0
 endsnippet
 
-snippet sun
+snippet sun "" w
 $\SU(n)$$0
 endsnippet
 
-snippet sum
+snippet sum "" w
 $\SU(m)$$0
 endsnippet
 
-snippet sud
+snippet sud "" w
 $\SU(d)$$0
 endsnippet
 
-snippet suk
+snippet suk "" w
 $\SU(k)$$0
 endsnippet
 
-snippet su2
+snippet su2 "" w
 $\SU(2)$$0
 endsnippet
 
-snippet su3
+snippet su3 "" w
 $\SU(3)$$0
 endsnippet
 
-snippet su.
+snippet su. "" w
 $\SU($1)$$0
 endsnippet
 
@@ -9297,31 +9297,31 @@ endsnippet
 
 
 
-snippet sunc
+snippet sunc "" w
 $\SU(n, \mathbb{C})$$0
 endsnippet
 
-snippet sumc
+snippet sumc "" w
 $\SU(m, \mathbb{C})$$0
 endsnippet
 
-snippet sudc
+snippet sudc "" w
 $\SU(d, \mathbb{C})$$0
 endsnippet
 
-snippet sukc
+snippet sukc "" w
 $\SU(k, \mathbb{C})$$0
 endsnippet
 
-snippet su2c
+snippet su2c "" w
 $\SU(2, \mathbb{C})$$0
 endsnippet
 
-snippet su3c
+snippet su3c "" w
 $\SU(3, \mathbb{C})$$0
 endsnippet
 
-snippet su.c
+snippet su.c "" w
 $\SU($1, \mathbb{C})$$0
 endsnippet
 
@@ -9329,7 +9329,7 @@ endsnippet
 
 # Underscored{{{
 
-snippet su.,
+snippet su., "" w
 $\SU_{$1}($2)$$0
 endsnippet
 
@@ -9337,31 +9337,31 @@ endsnippet
 
 
 
-snippet sunc,
+snippet sunc, "" w
 $\SU_{n}(\mathbb{C})$$0
 endsnippet
 
-snippet sumc,
+snippet sumc, "" w
 $\SU_{m}(\mathbb{C})$$0
 endsnippet
 
-snippet sudc,
+snippet sudc, "" w
 $\SU_{d}(\mathbb{C})$$0
 endsnippet
 
-snippet sukc,
+snippet sukc, "" w
 $\SU_{k}(\mathbb{C})$$0
 endsnippet
 
-snippet su2c,
+snippet su2c, "" w
 $\SU_{2}(\mathbb{C})$$0
 endsnippet
 
-snippet su3c,
+snippet su3c, "" w
 $\SU_{3}(\mathbb{C})$$0
 endsnippet
 
-snippet su.c,
+snippet su.c, "" w
 $\SU_{$1}(\mathbb{C})$$0
 endsnippet
 
@@ -9372,24 +9372,24 @@ endsnippet
 #}}}
 # Brackets{{{
 
-snippet lrdb "left-right double square bracket"
+snippet lrdb "left-right double square bracket" w
 ${\llbracket $1 \rrbracket}$$0
 endsnippet
 
-snippet lr "Left-right angle bracket"
+snippet lr "Left-right angle bracket" w
 \left \langle $1 \right \rangle $0
 endsnippet
 
-snippet lrab "left-right angle bracket"
+snippet lrab "left-right angle bracket" w
 ${\left\langle $1 \right\rangle}$$0
 endsnippet
 
-snippet lrdab "left-right double angle bracket"
+snippet lrdab "left-right double angle bracket" w
 ${\left\llangle $1 \right\rrangle}$$0
 endsnippet
 
-snippet p "Surround with math parenthesis" w
-(${VISUAL}$1)$0
+snippet mp "Surround with math parenthesis" w
+\left(${VISUAL}$1\right)$0
 endsnippet
 
 snippet m{ "Surround with math-braces" w
@@ -9401,7 +9401,7 @@ endsnippet
 # endsnippet
 
 snippet mmb "Surround with math braces" w
-\{${VISUAL}$1\}$0
+\\{${VISUAL}$1\\}$0
 endsnippet
 
 snippet lrp "left-right math parenthesis" w
@@ -9839,22 +9839,22 @@ snippet sprob "Statement of Problem" b
 \end{problem}% F}O}L}D$0
 endsnippet
 
-snippet sm "Surround by math" b
-\[
+snippet sm "Surround by math" w
+\\[
 	${1:${VISUAL}}
-\]$0
+\\]$0
 endsnippet
 
-snippet math "Surround by math" b
-\[
+snippet math "Surround by math" w
+\\[
 	${1:${VISUAL}}
-\]$0
+\\]$0
 endsnippet
 
-snippet ma "Surround by math" b
-\[
+snippet ma "Surround by math" w
+\\[
 	${1:${VISUAL}}
-\]$0
+\\]$0
 endsnippet
 
 snippet align "Align" b
@@ -10009,9 +10009,23 @@ snippet array "Array" b
 endsnippet
 
 snippet cen "Centering" b
+% Center
 \begin{center}
 	${1:${VISUAL}}
 \end{center}$0
+endsnippet
+
+snippet vhc "Vertically and horizontally centering a text" b
+% Vertical-horizontal centering
+\clearpage
+\vspace*{\fill}
+\begin{center}
+\begin{minipage}{.8\textwidth}
+	${1:${VISUAL}}
+\end{minipage}
+\end{center}
+\vfill % equivalent to \vspace{\fill}
+\clearpage$0
 endsnippet
 
 #}}}
@@ -10124,7 +10138,7 @@ endsnippet
 
 snippet case "case"
 \begin{cases}
-	$1 \\\\
+	${1:${VISUAL}} \\\\
 	$2
 \end{cases}$0
 endsnippet
@@ -10132,15 +10146,31 @@ endsnippet
 
 snippet cases "cases"
 \begin{cases}
-	$1 \\\\
+	${1:${VISUAL}} \\\\
 	$2
 \end{cases}$0
 endsnippet
 
 
+snippet rcase "case with right bracket"
+\begin{rcases}
+	${1:${VISUAL}} \\\\
+	$2
+\end{rcases}$0
+endsnippet
+
+
+snippet rcases "cases with right bracket"
+\begin{rcases}
+	${1:${VISUAL}} \\\\
+	$2
+\end{rcases}$0
+endsnippet
+
+
 snippet dcase "dcase"
 \begin{dcases}
-	$1 & \text{$2} \\ $3 \\\\
+	${1:${VISUAL}} & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
 \end{dcases}$0
 endsnippet
@@ -10148,7 +10178,7 @@ endsnippet
 
 snippet dcases "dcases"
 \begin{dcases}
-	$1 & \text{$2} \\ $3 \\\\
+	${1:${VISUAL}} & \text{$2} \\ $3 \\\\
 	$4 & \text{$5} \\ $6
 \end{dcases}$0
 endsnippet
@@ -10158,7 +10188,7 @@ snippet casedef "case definition"
 \[
 	$1 =
 \begin{cases}
-	$2 \\\\
+	${2:${VISUAL}} \\\\
 	$3
 \end{cases}
 \]$0
@@ -10169,7 +10199,7 @@ snippet dcasedef "dcase definition"
 \[
 	$1 =
 \begin{dcases}
-	$2 & \text{$3} \\ $4 \\\\
+	${2:${VISUAL}} & \text{$3} \\ $4 \\\\
 	$5 & \text{$6} \\ $7
 \end{dcases}
 \]$0
@@ -10316,31 +10346,43 @@ snippet bib "Bibliography" b
 \bibliography{${1:bib}}
 endsnippet
 
+snippet cit "Citation" w
+\cite[$1]{$0}
+endsnippet
+
+
 #}}}
 # Other Environments (SES, Commutative Diagram etc){{{
 #-------------------------------------------------------------------
 
 snippet comd "Making commutative diagram" b
-\[
-	\xymatrix{
-		% X \ar@/_/[ddr]_{x} \ar@/^/[drr]^y \ar@{>}[dr]^z \\\\
-		% & A \ar[r]^a \ar[d]_{b} & B \ar[d]_{d}\\\\
-		$1
-		}
-\]$0
+% CommutativeDiagram
+\begin{center}
+	\[
+		\xymatrix{
+			% X \ar@/_/[ddr]_{x} \ar@/^/[drr]^y \ar@{>}[dr]^z \\\\
+			% & A \ar[r]^a \ar[d]_{b} & B \ar[d]_{d}\\\\
+			$1
+			}
+	\]$0
+\end{center}
 endsnippet
 
 snippet comdt "Making commutative diagram with tikz" b
-\begin{tikzcd}
-T
-\arrow[drr, bend left, "x"]
-\arrow[ddr, bend right, "y"]
-\arrow[dr, dotted, "{(x,y)}" description] & & \\\\
-& X \times_Z Y \arrow[r, Leftrightarrow, "p"] \arrow[d, "q"]
-& X \arrow[d, "f"] \\\\
-& Y \arrow[r, "g"]
-& Z
-\end{tikzcd}$0
+% CommutativeDiagram
+\begin{center}
+	\begin{tikzcd}
+			% \arrow[dr, dotted, "{(x,y)}" description]
+			T
+			\arrow[drr, bend left, "x"]
+			\arrow[ddr, bend right, "y"]
+			\arrow[dr, dotted, "{(x,y)}" description] & & \\
+			                                          & X \times_Z Y \arrow[r, Leftrightarrow, "p"] \arrow[d, "q"]
+			                                          & X \arrow[d, "f"] \\
+			                                          & Y \arrow[r, "g"]
+			                                          & Z
+	\end{tikzcd}$0
+\end{center}
 endsnippet
 
 snippet tikzcd
@@ -10423,6 +10465,10 @@ snippet scope
 \end{scope}
 endsnippet
 
+snippet inp "include pdf" b
+\includepdf[pages=-]{${1:${VISUAL}}\}$0
+endsnippet
+
 snippet gra "Graphics"
 % Figure
 \begin{figure}
@@ -10455,13 +10501,8 @@ endsnippet
 # SomeCommandsandStuff{{{
 #-------------------------------------------------------------------
 
-snippet \ "Backslash" w
+snippet \ "Backslash" wi
 \bs $0
-endsnippet
-
-
-snippet mac "Math color" w
-{\color{${1:red}}{$2}}$0
 endsnippet
 
 
@@ -10544,6 +10585,18 @@ endsnippet
 # `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 # endsnippet
 
+snippet href "Making url link with hyperref" w
+\href{$1}{${2:${VISUAL}}\}$0
+endsnippet
+
+snippet hr "hyperref referencing" w
+\hyperref[$1]{${2:${VISUAL}}\}$0
+endsnippet
+
+snippet shr "hyperref section referencing" w
+\hyperref[sec:$1]{${2:${VISUAL}} \S\ref{sec:$1}\}$0
+endsnippet
+
 snippet rom
 \rom{$1}$0
 endsnippet
@@ -10562,37 +10615,45 @@ snippet text "Text" w
 \text{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet te "Text"
-\ \text{${1:${VISUAL}}\} \ $0
+snippet jte "Just text" w
+\ \text{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet qte "Text with qquad spaces"
+snippet te "Text" w
+\ \text{${1:${VISUAL}}\} ${2:\\ }$0
+endsnippet
+
+snippet jqte "Just text with qquad spaces" w
+\qquad \text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet qte "Text with qquad spaces" w
 \qquad \text{${1:${VISUAL}}\} \ $0
 endsnippet
 
-snippet qteq "Text with qquad spaces both sides"
+snippet qtq "Text with qquad spaces both sides" w
 \qquad \text{${1:${VISUAL}}\} \qquad $0
 endsnippet
 
-snippet tb "Text boldfont"
+snippet tb "Text boldfont" w
 \textbf{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet ti "Text italic"
+snippet ti "Text italic" w
 \textit{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet tt "Text typewriter"
+snippet tt "Text typewriter" w
 \texttt{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet ts "Text sc"
+snippet ts "Text sc" w
 \textsc{${1:${VISUAL}}\}$0
 endsnippet
 
 # \{\} used for better-working-fold
 snippet em "Emphasize even visually selected text" w
-\emph\{${1:${VISUAL}}\}$0
+\emph{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet ul "Underline selected text" w
@@ -10600,11 +10661,11 @@ snippet ul "Underline selected text" w
 endsnippet
 
 snippet emul "Emphasize-underline selected text" w
-\uline{\emph{${1:${VISUAL}}\}\}$0
+\emph{\uline{${1:${VISUAL}}\}\}$0
 endsnippet
 
 snippet emu "Emphasize-underline selected text" w
-\uline{\emph{${1:${VISUAL}}\}\}$0
+\emph{\uline{${1:${VISUAL}}\}\}$0
 endsnippet
 
 snippet embx "Emphasize-box selected text" w
@@ -10613,6 +10674,10 @@ endsnippet
 
 snippet emb "Emphasize-box selected text" w
 \boxed{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet mac "Math color" w
+{\color{${1:red}}{${2:${VISUAL}}\}}$0
 endsnippet
 
 snippet tc "Text color" w
@@ -11074,6 +11139,220 @@ endsnippet
 
 snippet bZ "" w
 $\bm{Z}$$0
+endsnippet
+
+#}}}
+# Math Frak English Alphabets{{{
+
+
+snippet fa "" w
+$\mathfrak{a}$$0
+endsnippet
+
+snippet fb "" w
+$\mathfrak{b}$$0
+endsnippet
+
+snippet fc "" w
+$\mathfrak{c}$$0
+endsnippet
+
+snippet fd "" w
+$\mathfrak{d}$$0
+endsnippet
+
+snippet fee "" w
+$\mathfrak{e}$$0
+endsnippet
+
+snippet ff "" w
+$\mathfrak{f}$$0
+endsnippet
+
+snippet fg "" w
+$\mathfrak{g}$$0
+endsnippet
+
+snippet fh "" w
+$\mathfrak{h}$$0
+endsnippet
+
+snippet fi "" w
+$\mathfrak{i}$$0
+endsnippet
+
+snippet fj "" w
+$\mathfrak{j}$$0
+endsnippet
+
+snippet fk "" w
+$\mathfrak{k}$$0
+endsnippet
+
+snippet fl "" w
+$\mathfrak{l}$$0
+endsnippet
+
+snippet fm "" w
+$\mathfrak{m}$$0
+endsnippet
+
+snippet fn "" w
+$\mathfrak{n}$$0
+endsnippet
+
+snippet fo "" w
+$\mathfrak{o}$$0
+endsnippet
+
+snippet fp "" w
+$\mathfrak{p}$$0
+endsnippet
+
+snippet fq "" w
+$\mathfrak{q}$$0
+endsnippet
+
+snippet fr "" w
+$\mathfrak{r}$$0
+endsnippet
+
+snippet fs "" w
+$\mathfrak{s}$$0
+endsnippet
+
+snippet ft "" w
+$\mathfrak{t}$$0
+endsnippet
+
+snippet fu "" w
+$\mathfrak{u}$$0
+endsnippet
+
+snippet fv "" w
+$\mathfrak{v}$$0
+endsnippet
+
+snippet fw "" w
+$\mathfrak{w}$$0
+endsnippet
+
+snippet fx "" w
+$\mathfrak{x}$$0
+endsnippet
+
+snippet fy "" w
+$\mathfrak{y}$$0
+endsnippet
+
+snippet fz "" w
+$\mathfrak{z}$$0
+endsnippet
+
+
+
+snippet fA "" w
+$\mathfrak{A}$$0
+endsnippet
+
+snippet fB "" w
+$\mathfrak{B}$$0
+endsnippet
+
+snippet fC "" w
+$\mathfrak{C}$$0
+endsnippet
+
+snippet fD "" w
+$\mathfrak{D}$$0
+endsnippet
+
+snippet fE "" w
+$\mathfrak{E}$$0
+endsnippet
+
+snippet fF "" w
+$\mathfrak{F}$$0
+endsnippet
+
+snippet fG "" w
+$\mathfrak{G}$$0
+endsnippet
+
+snippet fH "" w
+$\mathfrak{H}$$0
+endsnippet
+
+snippet fI "" w
+$\mathfrak{I}$$0
+endsnippet
+
+snippet fJ "" w
+$\mathfrak{J}$$0
+endsnippet
+
+snippet fK "" w
+$\mathfrak{K}$$0
+endsnippet
+
+snippet fL "" w
+$\mathfrak{L}$$0
+endsnippet
+
+snippet fM "" w
+$\mathfrak{M}$$0
+endsnippet
+
+snippet fN "" w
+$\mathfrak{N}$$0
+endsnippet
+
+snippet fO "" w
+$\mathfrak{O}$$0
+endsnippet
+
+snippet fP "" w
+$\mathfrak{P}$$0
+endsnippet
+
+snippet fQ "" w
+$\mathfrak{Q}$$0
+endsnippet
+
+snippet fR "" w
+$\mathfrak{R}$$0
+endsnippet
+
+snippet fS "" w
+$\mathfrak{S}$$0
+endsnippet
+
+snippet fT "" w
+$\mathfrak{T}$$0
+endsnippet
+
+snippet fU "" w
+$\mathfrak{U}$$0
+endsnippet
+
+snippet fV "" w
+$\mathfrak{V}$$0
+endsnippet
+
+snippet fW "" w
+$\mathfrak{W}$$0
+endsnippet
+
+snippet fX "" w
+$\mathfrak{X}$$0
+endsnippet
+
+snippet fY "" w
+$\mathfrak{Y}$$0
+endsnippet
+
+snippet fZ "" w
+$\mathfrak{Z}$$0
 endsnippet
 
 #}}}

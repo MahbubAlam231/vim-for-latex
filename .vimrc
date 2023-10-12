@@ -75,13 +75,16 @@ endif
 let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
-" To get <> and write <localleader> easily
+" To get <> and write <localleader> easily, etc
 inoremap <buffer> <> <><esc>i
 inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
 inoremap <buffer> <L <><esc>ileader<esc>la
 inoremap <buffer> <localleader><localleader>ll <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
-inoremap <buffer> <localleader>bll <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>bll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>nbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>vbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+inoremap <buffer> <localleader>ibll inoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
 "}}}
 " Tabs, indentation and wrapping{{{
@@ -340,6 +343,7 @@ let g:vimtex_compiler_latexmk = {
 
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_compiler_enabled = 1
 " let g:vimtex_view_general_options_latexmk = '--unique'
 
 " let g:vimtex_view_method = 'zathura'
@@ -355,6 +359,7 @@ nmap <buffer> <leader>tc :VimtexCompile<cr>
 
 nmap <buffer> <localleader>cz :call vimtex#fzf#run('ctli')<cr>
 nmap <buffer> <localleader>tc <plug>(vimtex-toc-open)
+nmap <buffer> <localleader>cl :VimtexClean<cr>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
 
 " Folding{{{
 set foldlevelstart=0
@@ -365,6 +370,8 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 " Fixing LaTeX folds
 nnoremap <buffer> <localleader>ff mm?% F{O{L{D<cr>i <esc>zczox`m
+nnoremap <buffer> <localleader>bf mma% F{O{L{D<esc>`m
+nnoremap <buffer> <localleader>ef mma% F}O}L}D<esc>`m
 
 " Saving folds in ~/.vim/view
 function! MakeView()
@@ -471,11 +478,11 @@ augroup VimwikiMappings
 augroup end
 
 function! CreateFilenameWithDateTime(filename)
-    return a:filename . '-' . strftime("%d-%m-%y")
+    return a:filename . strftime("%d-%m-%y")
 endfunction
 
-nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
-inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime('purpose-statement')<cr>]<esc>y%%p%r($r)<esc>
+nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement-") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
+inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime("purpose-statement-")<cr>]<esc>y%%p%r($r)<esc>
 
 function! VimwikiFoldLevelCustom(lnum)
     let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
@@ -522,8 +529,8 @@ let g:vim_markdown_no_default_key_mappings = 1
 " Abolish and coercing{{{
 
 " Coercing
-vmap <buffer> <leader>cr :s/ /-/g<cr>:noh<cr>
-nmap <buffer> <leader>cr :%s/ /-/g<cr>:noh<cr>
+vmap <buffer> <localleader>cr :s/ /-/g<cr>:noh<cr>
+nmap <buffer> <localleader>cr :%s/ /-/g<cr>:noh<cr>
 nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
 
 "}}}
@@ -796,10 +803,10 @@ nnoremap <buffer> <silent> <localleader>rep :TemplateInit report<cr>
 nnoremap <buffer> <silent> <localleader>sh :TemplateInit sh<cr>
 
 " Placeholders <++>
-nnoremap <buffer> <c-j> h/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-inoremap <buffer> <c-j> <esc>h/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-nnoremap <buffer> <c-k> h?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-inoremap <buffer> <c-k> <esc>h?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+nnoremap <buffer> <silent> <c-j> B/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <silent> <c-j> <esc>B/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+nnoremap <buffer> <silent> <c-k> B?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <silent> <c-k> <esc>B?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
@@ -817,6 +824,9 @@ nmap <buffer> <localleader>tt <Plug>TitlecaseLine
 
 " <Plug>Titlecase " Titlecase the visually selected region
 vmap <buffer> <localleader>t <Plug>Titlecase
+
+" Uppercase the first letter of a word
+nnoremap <buffer> <localleader>uc viwbU
 
 "}}}
 " UltiSnips{{{
@@ -940,23 +950,26 @@ nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 nnoremap <buffer> H mh^
 nnoremap <buffer> J mjL
 nnoremap <buffer> K mkH
-nnoremap <buffer> L mlg_
+nnoremap <buffer> L ml$
 nnoremap <buffer> gH mhg^
 nnoremap <buffer> gL mlg$
+nnoremap <buffer> <localleader>e mege
 
 vnoremap <buffer> H mh^
 vnoremap <buffer> J mjL
 vnoremap <buffer> K mkH
-vnoremap <buffer> L mlg_
+vnoremap <buffer> L ml$
 vnoremap <buffer> gH mhg^
 vnoremap <buffer> gL mlg$
+nnoremap <buffer> <localleader>e mege
 
 onoremap <buffer> H ^
 onoremap <buffer> J L
 onoremap <buffer> K H
-onoremap <buffer> L g_
+onoremap <buffer> L $
 onoremap <buffer> gH g^
 onoremap <buffer> gL g$
+onoremap <buffer> <localleader>e mege
 
 " onoremap <buffer> H :<c-u>normal! mh^<cr>
 " onoremap <buffer> J :<c-u>normal! mjL<cr>
@@ -967,11 +980,13 @@ nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
 nnoremap <buffer> 'k `k
 nnoremap <buffer> 'l `l
+nnoremap <buffer> 'e `e
 
 vnoremap <buffer> 'h `h
 vnoremap <buffer> 'j `j
 vnoremap <buffer> 'k `k
 vnoremap <buffer> 'l `l
+vnoremap <buffer> 'e `e
 
 inoremap <buffer> \z <esc>zMzvzza
 inoremap <buffer> <leader>zz <esc>zza
@@ -990,12 +1005,12 @@ function! NavigationToggleInWrapMode()
         nnoremap <buffer> H mh^
         nnoremap <buffer> J mjL
         nnoremap <buffer> K mkH
-        nnoremap <buffer> L mlg_
+        nnoremap <buffer> L ml$
 
         vnoremap <buffer> H mh^
         vnoremap <buffer> J mjL
         vnoremap <buffer> K mkH
-        vnoremap <buffer> L mlg_
+        vnoremap <buffer> L ml$
         let s:navigation_toggle=0
     else
         " Using visual lines
@@ -1076,6 +1091,7 @@ nnoremap <buffer> <silent> <localleader>cal o<esc>:.!cal<cr>mm:FixWhitespace<cr>
 
 " Marking before searching
 nnoremap <buffer> / ms/
+nnoremap <buffer> ? ms?
 
 nnoremap <buffer> 's `szvzz
 
@@ -1236,16 +1252,13 @@ augroup SwedishFiles
     autocmd BufRead,BufNewFile *-sv.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
 augroup end
 
-let s:lang_toggle=0
 function! LangToggle()
-    if s:lang_toggle
+    if &spelllang=='sv'
         " Use english_US
-        let s:lang_toggle=0
         setlocal spell spelllang=en_us
         setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
-    else
+    elseif &spelllang=='en_us'
         " Use svenska
-        let s:lang_toggle=1
         setlocal spell spelllang=sv
         setlocal spellfile=~/.vim/spell/sv.utf-8.add
     endif
@@ -1254,7 +1267,7 @@ endfunction
 nnoremap <buffer> <localleader>lt :call LangToggle()<cr>
 
 function! SpellLang(lang)
-    if a:lang != 'en' && a:lang != 'sv'
+    if a:lang != 'en' && a:lang != 'sv' && a:lang != 'dl'
         let l:lang = input("Which Language: ")
     else
         let l:lang = a:lang
@@ -1270,8 +1283,14 @@ function! SpellLang(lang)
         setlocal spell spelllang=sv
         setlocal spellfile=~/.vim/spell/sv.utf-8.add
 
+        "dl
+    elseif l:lang == "dl"
+        setlocal spell spelllang=sv,en_us
+        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/sv.utf-8.add
+        echom "Svenska and English, saving new words priority to en-dict (CAREFUL)"
+
         "invalid Language
-    elseif l:lang != 'en' && l:lang != 'sv'
+    elseif l:lang != 'en' && l:lang != 'sv' && l:lang != 'dl'
         echom " <-- Not a valid Language"
     endif
 
@@ -1279,6 +1298,7 @@ endfunction
 
 nnoremap <buffer> <localleader>en :call SpellLang("en")<cr>
 nnoremap <buffer> <localleader>sv :call SpellLang("sv")<cr>
+nnoremap <buffer> <localleader>dl :call SpellLang("dl")<cr>
 
 "}}}
 
@@ -1486,6 +1506,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Gather')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% UnnumberedGather')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Center')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CommutativeDiagram')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% CaseDefinition')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
@@ -1647,8 +1668,6 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{align\*}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{subequations}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{subequations}')
-    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')
-    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{figure}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{center}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{center}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{gather}')
@@ -1659,6 +1678,8 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{gathered}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{cases}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{cases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{rcases}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{rcases}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{dcases}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{dcases}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{enumerate}')
@@ -1667,6 +1688,10 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{itemize}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{landscape}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{figure}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{tikzcd}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{tikzcd}')
 augroup end
 
 highlight ArrayMatrixEtcGroup ctermbg=174 ctermfg=Black
@@ -2016,6 +2041,7 @@ endfunction
 augroup SourceEverythingForTeX
     autocmd!
     autocmd BufNewFile,BufRead *.tex silent write
+    autocmd BufNewFile,BufRead *.tex silent VimtexCompile
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
@@ -2055,7 +2081,7 @@ nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/
 nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{O{L{D/g<cr><cr>
 
 " Editing tex in vimrc
-nnoremap <buffer> <localleader>et 2018Gzvzz
+nnoremap <buffer> <localleader>et 2030Gzvzz
 
 "}}}
 " SourceEverythingForVimwiki{{{

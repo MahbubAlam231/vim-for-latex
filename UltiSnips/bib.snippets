@@ -6,14 +6,14 @@
 #                                |___/             |_|            |___/
 
 snippet art "article bib" b
-@article{$1,
+@article {$1,
     author = {$2},
      title = "{$3}",
    journal = {$4},
   fjournal = {$5},
     volume = {$6},
-    number = {${7:must delete this line if number doesn't exist}},
-      year = {$8},
+      year = {$7},
+    number = {${8:must delete this line if number doesn't exist}},
      pages = {$9},
       issn = {$10},
    mrclass = {$11},
@@ -27,7 +27,7 @@ $0
 endsnippet
 
 snippet unpub "unpublished bib" b
-@unpublished{$1,
+@unpublished {$1,
     author = {$2},
      title = "{$3}",
       note = {$4},
@@ -37,7 +37,7 @@ $0
 endsnippet
 
 snippet book "book bib" b
-@book{$1,
+@book { $1,
     author = {$2},
      title = "{$3}",
   subtitle = "{$4}",
@@ -54,7 +54,7 @@ $0
 endsnippet
 
 snippet misc "misc bib" b
-@misc{$1,
+@misc {$1,
     author = {$2},
      title = "{$3}",
        url = {$4}
@@ -63,7 +63,7 @@ $0
 endsnippet
 
 snippet phdthesis "phdthesis bib" b
-@phdthesis{$1,
+@phdthesis {$1,
     author = {$2},
      title = "{$3}",
        url = {\url{$4}}

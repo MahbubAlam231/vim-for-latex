@@ -37,3 +37,5 @@ setxkbmap -option caps:swapescape
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+alias dt=`date +%F-%H%M`
