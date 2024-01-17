@@ -1898,6 +1898,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>gl3 \GL_{3}
         inoremap <buffer> <leader>gl. \GL_{}<left>
 
+        inoremap <buffer> <leader>gld1 \GL_{d}^{1}
+
         inoremap <buffer> <localleader>gl \GL()<left>
 
         inoremap <buffer> <localleader>gln \GL(n,)<left>
@@ -1965,6 +1967,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl2c \GL(2, \mathbb{C})
         inoremap <buffer> <localleader>gl3c \GL(3, \mathbb{C})
         inoremap <buffer> <localleader>gl.c \GL(, \mathbb{C})<esc>F,i
+
+        inoremap <buffer> <localleader>gld1c \GL^{1}(d, \mathbb{C})
 
         inoremap <buffer> <localleader>glnzp \GL(n, \mathbb{Z}_p)
         inoremap <buffer> <localleader>glmzp \GL(m, \mathbb{Z}_p)
@@ -2615,6 +2619,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>gl3 \GL_{3}
         inoremap <buffer> <leader>gl. \GL_{}<left>
 
+        inoremap <buffer> <leader>gld1 \GL_{d}^{1}
+
         inoremap <buffer> <localleader>gl \GL_{}()<esc>F}i
 
         inoremap <buffer> <localleader>gln \GL_{n}()<left>
@@ -2675,6 +2681,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <localleader>gl2c \GL_{2}(\mathbb{C})
         inoremap <buffer> <localleader>gl3c \GL_{3}(\mathbb{C})
         inoremap <buffer> <localleader>gl.c \GL_{}(\mathbb{C})<esc>F};i
+
+        inoremap <buffer> <localleader>gld1c \GL_{d}^{1}(\mathbb{C})
 
         inoremap <buffer> <localleader>glnzp \GL_{n}(\mathbb{Z}_p)
         inoremap <buffer> <localleader>glmzp \GL_{m}(\mathbb{Z}_p)
@@ -3786,7 +3794,7 @@ function! ReferencingAndCiting(code)
     elseif a:code == "jcit"
         :execute ":normal! a\\cite{\<esc>"
     elseif a:code == "rcit"
-        :execute ":normal! a\\cite[]{\<esc>hi"
+        :execute ":normal! a\\cite[]{\<esc>"
     endif
 endfunction
 
@@ -3809,6 +3817,7 @@ inoremap <buffer> <localleader>pref \autoref{prop:
 inoremap <buffer> <localleader>cref \autoref{cor:
 inoremap <buffer> <localleader>rref \autoref{rem:
 inoremap <buffer> <localleader>eqref \eqref{eq:
+inoremap <buffer> <localleader>eref \eqref{eq:
 
 inoremap <buffer> <localleader>chref   \S\ref{chap:
 inoremap <buffer> <localleader>sref   \S\ref{sec:
@@ -3883,7 +3892,7 @@ inoremap <buffer> ;fa  \mathfrak{a}
 inoremap <buffer> ;fb  \mathfrak{b}
 inoremap <buffer> ;fc  \mathfrak{c}
 inoremap <buffer> ;fd  \mathfrak{d}
-inoremap <buffer> ;fee \mathfrak{e}
+inoremap <buffer> ;fe  \mathfrak{e}
 inoremap <buffer> ;ff  \mathfrak{f}
 inoremap <buffer> ;fg  \mathfrak{g}
 inoremap <buffer> ;fh  \mathfrak{h}
@@ -3932,6 +3941,63 @@ inoremap <buffer> ;fW  \mathfrak{W}
 inoremap <buffer> ;fX  \mathfrak{X}
 inoremap <buffer> ;fY  \mathfrak{Y}
 inoremap <buffer> ;fZ  \mathfrak{Z}
+
+"}}}
+" Math caliGraphy english alphabets{{{
+
+inoremap <buffer> ;gaa \mathcal{a}
+inoremap <buffer> ;gb  \mathcal{b}
+inoremap <buffer> ;gc  \mathcal{c}
+inoremap <buffer> ;gd  \mathcal{d}
+inoremap <buffer> ;ge  \mathcal{e}
+inoremap <buffer> ;gf  \mathcal{f}
+inoremap <buffer> ;gg  \mathcal{g}
+inoremap <buffer> ;gh  \mathcal{h}
+inoremap <buffer> ;gi  \mathcal{i}
+inoremap <buffer> ;gj  \mathcal{j}
+inoremap <buffer> ;gk  \mathcal{k}
+inoremap <buffer> ;gl  \mathcal{l}
+inoremap <buffer> ;gm  \mathcal{m}
+inoremap <buffer> ;gn  \mathcal{n}
+inoremap <buffer> ;go  \mathcal{o}
+inoremap <buffer> ;gp  \mathcal{p}
+inoremap <buffer> ;gq  \mathcal{q}
+inoremap <buffer> ;gr  \mathcal{r}
+inoremap <buffer> ;gs  \mathcal{s}
+inoremap <buffer> ;gt  \mathcal{t}
+inoremap <buffer> ;gu  \mathcal{u}
+inoremap <buffer> ;gv  \mathcal{v}
+inoremap <buffer> ;gw  \mathcal{w}
+inoremap <buffer> ;gx  \mathcal{x}
+inoremap <buffer> ;gy  \mathcal{y}
+inoremap <buffer> ;gz  \mathcal{z}
+
+inoremap <buffer> ;gA  \mathcal{A}
+inoremap <buffer> ;gB  \mathcal{B}
+inoremap <buffer> ;gC  \mathcal{C}
+inoremap <buffer> ;gD  \mathcal{D}
+inoremap <buffer> ;gE  \mathcal{E}
+inoremap <buffer> ;gF  \mathcal{F}
+inoremap <buffer> ;gG  \mathcal{G}
+inoremap <buffer> ;gH  \mathcal{H}
+inoremap <buffer> ;gI  \mathcal{I}
+inoremap <buffer> ;gJ  \mathcal{J}
+inoremap <buffer> ;gK  \mathcal{K}
+inoremap <buffer> ;gL  \mathcal{L}
+inoremap <buffer> ;gM  \mathcal{M}
+inoremap <buffer> ;gN  \mathcal{N}
+inoremap <buffer> ;gO  \mathcal{O}
+inoremap <buffer> ;gP  \mathcal{P}
+inoremap <buffer> ;gQ  \mathcal{Q}
+inoremap <buffer> ;gR  \mathcal{R}
+inoremap <buffer> ;gS  \mathcal{S}
+inoremap <buffer> ;gT  \mathcal{T}
+inoremap <buffer> ;gU  \mathcal{U}
+inoremap <buffer> ;gV  \mathcal{V}
+inoremap <buffer> ;gW  \mathcal{W}
+inoremap <buffer> ;gX  \mathcal{X}
+inoremap <buffer> ;gY  \mathcal{Y}
+inoremap <buffer> ;gZ  \mathcal{Z}
 
 "}}}
 " Greek Alphabets{{{

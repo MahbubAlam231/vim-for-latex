@@ -38,8 +38,8 @@ Abolish cond{n,s,ns,d,l,ly} condition{,s,s,ed,al,ally}
 Abolish cong{e,es,t} congruen{ce,ces,t}
 Abolish conj{,s,d} conjecture{,s,d}
 Abolish cons{,t}{,s} constant{,}{,s}
-Abolish cont{,y,ies,ly,ion,n,g} continu{ous,ity,ities,ously,ation,ation,ing}
-Abolish conv{,s,d,t,ts} converge{,s,d,nt,nts}
+Abolish cont{,y,ies,ly,ion,n,g,e,d} continu{ous,ity,ities,ously,ation,ation,ing,e,ed}
+Abolish conv{,e,s,es,d,t,ts,ce} converge{,,s,s,d,nt,nts,nce}
 Abolish corr{,s,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,ing,ing,ence,ence,ence,ence,ences,ences,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
 Abolish ctbl{e,y,ty,ey} countab{le,ility,ility,ility}
@@ -60,6 +60,7 @@ Abolish dio diophantine
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
+Abolish div{e,es,d,t,ts,ce} diverge{,s,d,nt,nts,nce}
 Abolish dyn{,c,s,l} dynamic{,,s,al}
 
 "}}}
@@ -74,6 +75,7 @@ Abolish {equidistr,eqdistr,equid}{,e,es,n,ns,d} {equidistribut,equidistribut}{e,
 "F{{{
 
 Abolish fa for all
+Abolish fae for almost every
 Abolish fc{,y,ty} first-countab{le,ility,ility}
 Abolish fe for every
 Abolish fs for some
@@ -210,6 +212,17 @@ Abolish wlog without loss of generality
 "A{{{
 
 iabbr a.e. a.e.\
+iabbr ae. a.e.\\
+
+"}}}
+"E{{{
+
+iabbr eg e.g.
+
+"}}}
+"I{{{
+
+iabbr ie i.e.
 
 "}}}
 "F{{{

@@ -6418,6 +6418,10 @@ snippet gldc "" w
 $\GL(d, \mathbb{C})$$0
 endsnippet
 
+snippet gld1c "" w
+$\GL^{1}(d, \mathbb{C})$$0
+endsnippet
+
 snippet glkc "" w
 $\GL(k, \mathbb{C})$$0
 endsnippet
@@ -6931,6 +6935,10 @@ endsnippet
 
 snippet gldc, "" w
 $\GL_{d}(\mathbb{C})$$0
+endsnippet
+
+snippet gld1c, "" w
+$\GL_{d}^{1}(\mathbb{C})$$0
 endsnippet
 
 snippet glkc, "" w
@@ -9393,7 +9401,7 @@ snippet mp "Surround with math parenthesis" w
 endsnippet
 
 snippet m{ "Surround with math-braces" w
-\\\{${VISUAL}$1\\\}$0
+\\\{${VISUAL}$1\\$0
 endsnippet
 
 # snippet mb "Surround with math-braces" w
@@ -10601,6 +10609,14 @@ snippet rom
 \rom{$1}$0
 endsnippet
 
+snippet bfld "begin fold here" w
+F{O{L{D$0
+endsnippet
+
+snippet efld "end fold here" w
+F}O}L}D$0
+endsnippet
+
 snippet texroot
 % ! TEX root = <FileName>.tex
 endsnippet
@@ -10612,6 +10628,14 @@ endsnippet
 
 # \{\} used for better-working-fold
 snippet text "Text" w
+\text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet jjt "Text" w
+\text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet jjte "Text" w
 \text{${1:${VISUAL}}\}$0
 endsnippet
 
@@ -11161,7 +11185,7 @@ snippet fd "" w
 $\mathfrak{d}$$0
 endsnippet
 
-snippet fee "" w
+snippet fe "" w
 $\mathfrak{e}$$0
 endsnippet
 
@@ -11353,6 +11377,220 @@ endsnippet
 
 snippet fZ "" w
 $\mathfrak{Z}$$0
+endsnippet
+
+#}}}
+# Math caliGraphy English Alphabets{{{
+
+
+snippet ga "" w
+$\mathcal{a}$$0
+endsnippet
+
+snippet gb "" w
+$\mathcal{b}$$0
+endsnippet
+
+snippet gc "" w
+$\mathcal{c}$$0
+endsnippet
+
+snippet gd "" w
+$\mathcal{d}$$0
+endsnippet
+
+snippet ge "" w
+$\mathcal{e}$$0
+endsnippet
+
+snippet gf "" w
+$\mathcal{f}$$0
+endsnippet
+
+snippet gg "" w
+$\mathcal{g}$$0
+endsnippet
+
+snippet gh "" w
+$\mathcal{h}$$0
+endsnippet
+
+snippet gi "" w
+$\mathcal{i}$$0
+endsnippet
+
+snippet gj "" w
+$\mathcal{j}$$0
+endsnippet
+
+snippet gk "" w
+$\mathcal{k}$$0
+endsnippet
+
+snippet gl "" w
+$\mathcal{l}$$0
+endsnippet
+
+snippet gm "" w
+$\mathcal{m}$$0
+endsnippet
+
+snippet gn "" w
+$\mathcal{n}$$0
+endsnippet
+
+snippet go "" w
+$\mathcal{o}$$0
+endsnippet
+
+snippet gp "" w
+$\mathcal{p}$$0
+endsnippet
+
+snippet gq "" w
+$\mathcal{q}$$0
+endsnippet
+
+snippet gr "" w
+$\mathcal{r}$$0
+endsnippet
+
+snippet gs "" w
+$\mathcal{s}$$0
+endsnippet
+
+snippet gt "" w
+$\mathcal{t}$$0
+endsnippet
+
+snippet gu "" w
+$\mathcal{u}$$0
+endsnippet
+
+snippet gv "" w
+$\mathcal{v}$$0
+endsnippet
+
+snippet gw "" w
+$\mathcal{w}$$0
+endsnippet
+
+snippet gx "" w
+$\mathcal{x}$$0
+endsnippet
+
+snippet gy "" w
+$\mathcal{y}$$0
+endsnippet
+
+snippet gz "" w
+$\mathcal{z}$$0
+endsnippet
+
+
+
+snippet gA "" w
+$\mathcal{A}$$0
+endsnippet
+
+snippet gB "" w
+$\mathcal{B}$$0
+endsnippet
+
+snippet gC "" w
+$\mathcal{C}$$0
+endsnippet
+
+snippet gD "" w
+$\mathcal{D}$$0
+endsnippet
+
+snippet gE "" w
+$\mathcal{E}$$0
+endsnippet
+
+snippet gF "" w
+$\mathcal{F}$$0
+endsnippet
+
+snippet gG "" w
+$\mathcal{G}$$0
+endsnippet
+
+snippet gH "" w
+$\mathcal{H}$$0
+endsnippet
+
+snippet gI "" w
+$\mathcal{I}$$0
+endsnippet
+
+snippet gJ "" w
+$\mathcal{J}$$0
+endsnippet
+
+snippet gK "" w
+$\mathcal{K}$$0
+endsnippet
+
+snippet gL "" w
+$\mathcal{L}$$0
+endsnippet
+
+snippet gM "" w
+$\mathcal{M}$$0
+endsnippet
+
+snippet gN "" w
+$\mathcal{N}$$0
+endsnippet
+
+snippet gO "" w
+$\mathcal{O}$$0
+endsnippet
+
+snippet gP "" w
+$\mathcal{P}$$0
+endsnippet
+
+snippet gQ "" w
+$\mathcal{Q}$$0
+endsnippet
+
+snippet gR "" w
+$\mathcal{R}$$0
+endsnippet
+
+snippet gS "" w
+$\mathcal{S}$$0
+endsnippet
+
+snippet gT "" w
+$\mathcal{T}$$0
+endsnippet
+
+snippet gU "" w
+$\mathcal{U}$$0
+endsnippet
+
+snippet gV "" w
+$\mathcal{V}$$0
+endsnippet
+
+snippet gW "" w
+$\mathcal{W}$$0
+endsnippet
+
+snippet gX "" w
+$\mathcal{X}$$0
+endsnippet
+
+snippet gY "" w
+$\mathcal{Y}$$0
+endsnippet
+
+snippet gZ "" w
+$\mathcal{Z}$$0
 endsnippet
 
 #}}}

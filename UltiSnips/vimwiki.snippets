@@ -40,6 +40,18 @@ snippet image "Adding a image"
 ![${1:Image}](${2:pic.jpg})$0
 endsnippet
 
+snippet fi "Adding a file link"
+[[file:$1]]$0
+endsnippet
+
+snippet file "Adding a file link"
+[[file:$1]]$0
+endsnippet
+
+snippet pdf "Adding a file link"
+[[file:$1.pdf]]$0
+endsnippet
+
 snippet mps "Make purpose statement filename"
 [$1purpose-statement-`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}purpose-statement-`!v strftime("%d-%m-%y")`)
 endsnippet

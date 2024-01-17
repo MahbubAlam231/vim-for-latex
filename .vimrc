@@ -370,8 +370,8 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 " Fixing LaTeX folds
 nnoremap <buffer> <localleader>ff mm?% F{O{L{D<cr>i <esc>zczox`m
-nnoremap <buffer> <localleader>bf mma% F{O{L{D<esc>`m
-nnoremap <buffer> <localleader>ef mma% F}O}L}D<esc>`m
+nnoremap <buffer> <localleader>bf mmA% F{O{L{D<esc>`m
+nnoremap <buffer> <localleader>ef mmA% F}O}L}D<esc>`m
 
 " Saving folds in ~/.vim/view
 function! MakeView()
@@ -803,10 +803,10 @@ nnoremap <buffer> <silent> <localleader>rep :TemplateInit report<cr>
 nnoremap <buffer> <silent> <localleader>sh :TemplateInit sh<cr>
 
 " Placeholders <++>
-nnoremap <buffer> <silent> <c-j> B/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-inoremap <buffer> <silent> <c-j> <esc>B/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-nnoremap <buffer> <silent> <c-k> B?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-inoremap <buffer> <silent> <c-k> <esc>B?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+nnoremap <buffer> <silent> <c-j> /<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <silent> <c-j> <esc>/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+nnoremap <buffer> <silent> <c-k> ?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
+inoremap <buffer> <silent> <c-k> <esc>?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 
 " Correcting indent immediately after template is infected
 nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
@@ -961,7 +961,7 @@ vnoremap <buffer> K mkH
 vnoremap <buffer> L ml$
 vnoremap <buffer> gH mhg^
 vnoremap <buffer> gL mlg$
-nnoremap <buffer> <localleader>e mege
+vnoremap <buffer> <localleader>e mege
 
 onoremap <buffer> H ^
 onoremap <buffer> J L
@@ -1219,14 +1219,14 @@ nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
 vnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
 
 function! CountParagraphs()
-    normal! mpzRG
+    normal! mozRG
     while getline('.') == ''
         normal! k
     endwhile
     normal! j
     let b:virtual_last_line=line('.')
     normal! gg
-
+ 
     let b:number_of_paragraphs=0
     while line('.') != b:virtual_last_line
         normal! }
@@ -1234,7 +1234,7 @@ function! CountParagraphs()
     endwhile
 
     echom "Number of paragraphs:" b:number_of_paragraphs
-    normal! `pzMzv
+    normal! `ozMzv
 endfunction
 
 nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
@@ -1286,8 +1286,8 @@ function! SpellLang(lang)
         "dl
     elseif l:lang == "dl"
         setlocal spell spelllang=sv,en_us
-        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/sv.utf-8.add
-        echom "Svenska and English, saving new words priority to en-dict (CAREFUL)"
+        setlocal spellfile=~/.vim/spell/sv.utf-8.add
+        echom "Svenska and English, saving new words priority to sv-dict (CAREFUL)"
 
         "invalid Language
     elseif l:lang != 'en' && l:lang != 'sv' && l:lang != 'dl'
@@ -2088,8 +2088,8 @@ nnoremap <buffer> <localleader>et 2030Gzvzz
 augroup SourceEverythingForVimwiki
     autocmd!
     autocmd BufNewFile,BufRead *.md silent write
-    autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
-    autocmd BufNewFile,BufRead *.md call Abbreviations("math")
+    " autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
+    " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
