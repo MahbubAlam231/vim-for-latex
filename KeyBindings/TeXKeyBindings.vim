@@ -387,12 +387,23 @@ inoremap <buffer> <localleader>cirn C^{\infty}(\mathbb{R}^n)<left>
 
 inoremap <buffer> <localleader>l1. L^1()<left>
 inoremap <buffer> <localleader>l1x L^1(X)
+inoremap <buffer> <localleader>l1rn L^1(\mathbb{R}^{n})<left>
+inoremap <buffer> <localleader>l1rm L^1(\mathbb{R}^{m})<left>
+inoremap <buffer> <localleader>l1rd L^1(\mathbb{R}^{d})<left>
 
 inoremap <buffer> <localleader>l2. L^2()<left>
 inoremap <buffer> <localleader>l2x L^2(X)
+inoremap <buffer> <localleader>l2rn L^2(\mathbb{R}^{n})<left>
+inoremap <buffer> <localleader>l2rm L^2(\mathbb{R}^{m})<left>
+inoremap <buffer> <localleader>l2rd L^2(\mathbb{R}^{d})<left>
+
 
 inoremap <buffer> <localleader>lp. L^p()<left>
 inoremap <buffer> <localleader>lpx L^p(X)
+inoremap <buffer> <localleader>lprn L^p(\mathbb{R}^{n})<left>
+inoremap <buffer> <localleader>lprm L^p(\mathbb{R}^{m})<left>
+inoremap <buffer> <localleader>lprd L^p(\mathbb{R}^{d})<left>
+
 
 "}}}
 
@@ -2462,8 +2473,9 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>m3 \M_{3}
         inoremap <buffer> <leader>m. \M_{}<left>
 
+        inoremap <buffer> <localleader>m.. \M()<left>
+
         inoremap <buffer> <localleader>mmn \M_{m \times n}()<left>
-        inoremap <buffer> <localleader>m.. \M_{}()<esc>F}i
         inoremap <buffer> <localleader>m \M_{}()<esc>F}i
 
         inoremap <buffer> <localleader>mn \M_{n}()<left>
@@ -2619,6 +2631,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>gl3 \GL_{3}
         inoremap <buffer> <leader>gl. \GL_{}<left>
 
+        inoremap <buffer> <localleader>gl.. \GL()<left>
+
         inoremap <buffer> <leader>gld1 \GL_{d}^{1}
 
         inoremap <buffer> <localleader>gl \GL_{}()<esc>F}i
@@ -2772,6 +2786,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>sl2 \SL_{2}
         inoremap <buffer> <leader>sl3 \SL_{3}
         inoremap <buffer> <leader>sl. \SL_{}<left>
+
+        inoremap <buffer> <localleader>sl.. \SL()<left>
 
         inoremap <buffer> <localleader>sl \SL_{}()<esc>F}i
 
@@ -2963,6 +2979,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>psl3 \PSL_{3}
         inoremap <buffer> <leader>psl. \PSL_{}<left>
 
+        inoremap <buffer> <localleader>psl.. \PSL()<left>
+
         inoremap <buffer> <localleader>psl \PSL_{}()<esc>F}i
 
         inoremap <buffer> <localleader>psln \PSL_{n}()<left>
@@ -2989,6 +3007,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>o2 \O_{2}
         inoremap <buffer> <leader>o3 \O_{3}
         inoremap <buffer> <leader>o. \O_{}<left>
+
+        inoremap <buffer> <localleader>o.. \O()<left>
 
         inoremap <buffer> <localleader>o \O_{}()<esc>F}i
 
@@ -3026,6 +3046,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>so2 \SO_{2}
         inoremap <buffer> <leader>so3 \SO_{3}
         inoremap <buffer> <leader>so. \SO_{}<left>
+
+        inoremap <buffer> <localleader>so.. \SO()<left>
 
         inoremap <buffer> <localleader>so \SO_{}()<esc>F}i
 
@@ -3065,6 +3087,8 @@ function! MatrixGroupToggle()
        "inoremap <buffer> <leader>pso3 \PSO_{3}
        "inoremap <buffer> <leader>pso. \PSO_{}<left>
 
+       "inoremap <buffer> <localleader>pso.. \PSO()<left>
+
        "inoremap <buffer> <localleader>pso \PSO_{}()<esc>F}i
 
        "inoremap <buffer> <localleader>pson \PSO_{n}()<left>
@@ -3102,6 +3126,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>u3 \U_{3}
         inoremap <buffer> <leader>u. \U_{}<left>
 
+        inoremap <buffer> <localleader>u. \U()<left>
+
         inoremap <buffer> <localleader>u \U_{}()<esc>F}i
 
         inoremap <buffer> <localleader>unc \U_{n}(\mathbb{C})
@@ -3123,6 +3149,8 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>su2 \SU_{2}
         inoremap <buffer> <leader>su3 \SU_{3}
         inoremap <buffer> <leader>su. \SU_{}<left>
+
+        inoremap <buffer> <localleader>su.. \SU()<left>
 
         inoremap <buffer> <localleader>su \SU_{}()<esc>F}i
 
@@ -3503,16 +3531,21 @@ inoremap <buffer> ;< \prec
 inoremap <buffer> ;> \succ
 inoremap <buffer> ;= \neq
 inoremap <buffer> == \equiv
-inoremap <buffer> => \implies
-inoremap <buffer> +> \implies
 inoremap <buffer> <localleader>= \cong
 
 "}}}
-" Arrows and vectors"{{{
+" Implies symbol and arrows"{{{
 "-------------------------------------------------------------------
+
+inoremap <buffer> ?>< \iff
+inoremap <buffer> ?<> \iff
+inoremap <buffer> /> \implies
+inoremap <buffer> ?> \implies
 
 inoremap <buffer> ;lra \leftrightarrow
 inoremap <buffer> ;llra \longleftrightarrow
+inoremap <buffer> ;Lra \Leftrightarrow
+inoremap <buffer> ;Llra \Longleftrightarrow
 
 inoremap <buffer> <localleader>ra \rightarrow
 inoremap <buffer> <localleader>la \leftarrow
@@ -3555,8 +3588,6 @@ inoremap <buffer> <localleader>to \to
 inoremap <buffer> <localleader>lto \leadsto
 inoremap <buffer> <localleader>mto \mapsto
 inoremap <buffer> <localleader>lmto \longmapsto
-
-inoremap <buffer> <localleader>v \vv{}<left>
 
 inoremap <buffer> <localleader>act \curvearrowright
 
@@ -3636,7 +3667,7 @@ inoremap <buffer> <localleader>fdv \displaystyle\fdv{}{}<esc>F}i
 "}}}
 " Others{{{
 
-inoremap <buffer> ;l \ell
+inoremap <buffer> <localleader>v \vv{}<left>
 
 inoremap <buffer> <localleader>em \emph{}<left>
 
@@ -3827,6 +3858,8 @@ inoremap <buffer> <localleader>sssref \S\ref{sssec:
 "}}}
 
 " Alphabets{{{
+
+inoremap <buffer> ;l \ell
 
 " Bold english alphabets{{{
 
@@ -4232,11 +4265,12 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Tabular')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Figure')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
 augroup end
 
-highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
@@ -4251,7 +4285,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
 augroup end
 
-highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
@@ -4407,6 +4441,8 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{enumerate}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{itemize}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{tabular}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{tabular}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{landscape}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')

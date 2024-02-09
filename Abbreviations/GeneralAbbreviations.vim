@@ -22,8 +22,8 @@ Abolish {approx,apprx,appr,aprx,apr}{n,ns,e,te,es,ed,g,ble} {approxima,approxima
 
 Abolish bdd{,ness} bounded{,ness}
 Abolish bd{y,ies} boundar{y,ies}
-Abolish bij{n,e,ve,ity,y,vely,ely,ly} bijecti{on,ve,ve,vity,vity,vely,vely,vely}
 Abolish betn between
+Abolish bij{n,e,ve,ity,y,vely,ely,ly} bijecti{on,ve,ve,vity,vity,vely,vely,vely}
 Abolish btw by the way
 
 "}}}
@@ -42,7 +42,7 @@ Abolish cont{,y,ies,ly,ion,n,g,e,d} continu{ous,ity,ities,ously,ation,ation,ing,
 Abolish conv{,e,s,es,d,t,ts,ce} converge{,,s,s,d,nt,nts,nce}
 Abolish corr{,s,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,ing,ing,ence,ence,ence,ence,ences,ences,ences,ences,ences}
 Abolish cor{,s} corollar{y,ies}
-Abolish ctbl{e,y,ty,ey} countab{le,ility,ility,ility}
+Abolish ctbl{e,y,ty} countab{le,ly,ility}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness}
 Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{continuous ,}function{,s}
@@ -51,7 +51,7 @@ Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded
 "D{{{
 
 Abolish def{n,ns,d,g} defin{ition,itions,ed,ing}
-Abolish dep{,t,e,y,ly,g,ble,bility} depend{,ent,ence,ency,ently,ing,able,ability}
+Abolish dep{,nt,e,y,ly,g,ble,bility} depend{,ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
 Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
@@ -78,9 +78,10 @@ Abolish fa for all
 Abolish fae for almost every
 Abolish fc{,y,ty} first-countab{le,ility,ility}
 Abolish fe for every
+Abolish fm furthermore
 Abolish fs for some
-Abolish f{n,uncn}{,s,l,al,ls,als} func{,}{tion,tions,tional,tional,tionals,tionals}
 Abolish f{,unc}{trl} func{,}{torial}
+Abolish f{n,uncn}{,s,l,al,ls,als} func{,}{tion,tions,tional,tional,tionals,tionals}
 
 "}}}
 "G{{{
@@ -99,7 +100,7 @@ Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 "}}}
 "I{{{
 
-Abolish ind{ep,ept,epe,epy,ly,eply} independ{,ent,ence,ency,ently,ently}
+Abolish ind{ept,epe,epy,ly,eply} independ{ent,ence,ency,ently,ently}
 Abolish ineq{n,ns,,y,ty,ies,s} inequa{tion,tions,lity,lity,lity,lities,lities}
 Abolish inf{e,te,y,ly,mal} infini{te,te,ty,tely,simal}
 Abolish inj{,n,e,ve,ity,ty,y,ly,t,ts} inject{ion,ion,ive,ive,ivity,ivity,ivity,ily,,s}
@@ -118,6 +119,7 @@ Abolish lem{,s} lemma{,s}
 "M{{{
 
 Abolish mbl{e,ity} measurab{le,ility}
+Abolish mo moreover
 Abolish mult{e,n,ns,ve} multipl{e,ication,ications,icative}
 
 "}}}
@@ -149,7 +151,7 @@ Abolish quad{c} quadrati{c}
 "R{{{
 
 Abolish rep{n,ns,e,ve} representa{tion,tions,tive,tive}
-Abolish resp{ble,e,ve,ly} respect{able,ive,ive,ively}
+Abolish resp{ble,e,ve,ly,} resp{ectable,ective,ective,ectively,.\}
 
 "}}}
 "S{{{
@@ -244,6 +246,11 @@ iabbr Mvt Mean Value Theorem
 iabbr mvt mean value theorem
 
 "}}}
+""R{{{
+
+"iabbr resp resp.\
+
+""}}}
 "T{{{
 
 iabbr THeorem Theorem

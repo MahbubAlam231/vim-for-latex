@@ -9378,6 +9378,68 @@ endsnippet
 #}}}
 
 #}}}
+# Trig and Other Functions{{{
+#-------------------------------------------------------------------
+
+snippet sin "" w
+\sin$0
+endsnippet
+
+snippet cos "" w
+\cos$0
+endsnippet
+
+snippet tan "" w
+\tan$0
+endsnippet
+
+snippet cot "" w
+\cot$0
+endsnippet
+
+snippet sec "" w
+\sec$0
+endsnippet
+
+snippet cosec "" w
+\cosec$0
+endsnippet
+
+snippet csc "" w
+\csc$0
+endsnippet
+
+
+snippet sinh "" w
+\sinh$0
+endsnippet
+
+snippet cosh "" w
+\cosh$0
+endsnippet
+
+snippet tanh "" w
+\tanh$0
+endsnippet
+
+snippet coth "" w
+\coth$0
+endsnippet
+
+snippet sech "" w
+\sech$0
+endsnippet
+
+snippet cosech "" w
+\cosech$0
+endsnippet
+
+snippet csch "" w
+\csch$0
+endsnippet
+
+
+#}}}
 # Brackets{{{
 
 snippet lrdb "left-right double square bracket" w
@@ -9401,6 +9463,10 @@ snippet mp "Surround with math parenthesis" w
 endsnippet
 
 snippet m{ "Surround with math-braces" w
+\\\{${VISUAL}$1\\$0
+endsnippet
+
+snippet { "Surround with math-braces" w
 \\\{${VISUAL}$1\\$0
 endsnippet
 
@@ -9947,7 +10013,7 @@ snippet speq "SplitEquation"
 \]$0
 endsnippet
 
-snippet gathereq "Gathered Equation" b
+snippet gathereq "Gathered Equation" w
 % GatheredEquation
 \begin{equation}\label{eq:$1}
 	\begin{gathered}
@@ -9956,7 +10022,7 @@ snippet gathereq "Gathered Equation" b
 \end{equation}$0
 endsnippet
 
-snippet ugathereq "Unnumbered Gathered Equation" b
+snippet ugathereq "Unnumbered Gathered Equation" w
 % UnnumberedGatheredEquation
 \begin{equation*}
 	\begin{gathered}
@@ -9965,7 +10031,7 @@ snippet ugathereq "Unnumbered Gathered Equation" b
 \end{equation*}$0
 endsnippet
 
-snippet gaeq "Gathered Equation" b
+snippet gaeq "Gathered Equation" w
 % GatheredEquation
 \begin{equation}\label{eq:$1}
 	\begin{gathered}
@@ -9974,7 +10040,25 @@ snippet gaeq "Gathered Equation" b
 \end{equation}$0
 endsnippet
 
-snippet ugaeq "Unnumbered Gathered Equation" b
+snippet ugaeq "Unnumbered Gathered Equation" w
+% UnnumberedGatheredEquation
+\begin{equation*}
+	\begin{gathered}
+		${1:${VISUAL}}
+	\end{gathered}
+\end{equation*}$0
+endsnippet
+
+snippet geq "Gathered Equation" w
+% GatheredEquation
+\begin{equation}\label{eq:$1}
+	\begin{gathered}
+		${2:${VISUAL}}
+	\end{gathered}
+\end{equation}$0
+endsnippet
+
+snippet ugeq "Unnumbered Gathered Equation" w
 % UnnumberedGatheredEquation
 \begin{equation*}
 	\begin{gathered}
@@ -10001,6 +10085,20 @@ snippet gather "Gather" b
 endsnippet
 
 snippet ugather "Unnumbered Gather" b
+% UnnumberedGather
+\begin{gather*}
+	${1:${VISUAL}}
+\end{gather*}$0
+endsnippet
+
+snippet gat "Gather" b
+% Gather
+\begin{gather}
+	${1:${VISUAL}} \label{$2}
+\end{gather}$0
+endsnippet
+
+snippet ugat "Unnumbered Gather" b
 % UnnumberedGather
 \begin{gather*}
 	${1:${VISUAL}}
@@ -10058,6 +10156,30 @@ snippet bmat "Bracket matrix" w
 \begin{bmatrix}
 	$1 & $2 \\\\
 	$3 & $4
+\end{bmatrix}$0
+endsnippet
+
+snippet mat3 "Matrix 3x3" w
+\begin{matrix}
+	$1 & $2 & $3 \\\\
+	$4 & $5 & $6 \\\\
+	$7 & $8 & $9
+\end{matrix}$0
+endsnippet
+
+snippet pmat3 "Parenthesis matrix 3x3" w
+\begin{pmatrix}
+	$1 & $2 & $3 \\\\
+	$4 & $5 & $6 \\\\
+	$7 & $8 & $9
+\end{pmatrix}$0
+endsnippet
+
+snippet bmat3 "Bracket matrix 3x3" w
+\begin{bmatrix}
+	$1 & $2 & $3 \\\\
+	$4 & $5 & $6 \\\\
+	$7 & $8 & $9
 \end{bmatrix}$0
 endsnippet
 
@@ -10214,7 +10336,7 @@ snippet dcasedef "dcase definition"
 endsnippet
 
 #}}}
-# Enumeration{{{
+# Enumeration and tables{{{
 #-------------------------------------------------------------------
 
 snippet it "Writing \item" b
@@ -10226,7 +10348,7 @@ snippet itm "Writing \item" b
 endsnippet
 
 snippet ita "Writing \item<+-| alert@+>" b
-\\item<+-| alert@+> $0
+\\item<+-|alert@+> $0
 endsnippet
 
 snippet item "Itemize" b
@@ -10240,6 +10362,13 @@ snippet iitem "Itemize" b
 \end{itemize}
 % Itemize$0
 \begin{itemize}
+endsnippet
+
+snippet itema "Itemize with alert items" b
+% Itemize
+\begin{itemize}
+	\item<+-|alert@+> ${1:${VISUAL}}
+\end{itemize}$0
 endsnippet
 
 snippet items "Itemize" b
@@ -10308,6 +10437,13 @@ snippet enumb "Bare enumerate in sub-level" b
 \begin{enumerate}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
+endsnippet
+
+snippet tab "Tabular with 2 columns" w
+% Tabular
+\begin{tabular}{${1:@{}p{0.5\textwidth}p{0.5\textwidth}}\}
+	${2:${VISUAL}}$0
+\end{tabular}
 endsnippet
 
 
@@ -10514,7 +10650,7 @@ snippet \ "Backslash" wi
 endsnippet
 
 
-snippet mbx "boxed around environments" w
+snippet bae "boxed around environments" w
 \boxed{${1:${VISUAL}}\}$0
 endsnippet
 
@@ -10526,6 +10662,10 @@ endsnippet
 #}}}
 # Arrows, Limits and Function{{{
 #-------------------------------------------------------------------
+
+snippet im "implies symbol outside math-mode"
+$\implies$$0
+endsnippet
 
 snippet to
 \to$0
@@ -10541,27 +10681,54 @@ endsnippet
 
 
 snippet ra
-\rightarrow$0
+$\rightarrow$$0
 endsnippet
 
 
 snippet lea
-\leftarrow$0
+$\leftarrow$$0
 endsnippet
 
 
 snippet xra
-\xrightarrow{$1}$0
+$\xrightarrow{$1}$$0
 endsnippet
 
 snippet xlea
-\xleftarrow{$1}$0
+$\xleftarrow{$1}$$0
 endsnippet
 
 snippet hra "Hookrightarrow"
-\hookrightarrow$0
+$\hookrightarrow$$0
 endsnippet
 
+snippet Lla "Only if"
+$\Longleftarrow$$0
+endsnippet
+
+snippet Lra "If"
+$\Longrightarrow$$0
+endsnippet
+
+snippet Llra "If and Only if"
+$\Longleftrightarrow$$0
+endsnippet
+
+snippet iff "If and only if"
+$\iff$$0
+endsnippet
+
+snippet Llap "Only if with parenthesis"
+$(\Longleftarrow)$$0
+endsnippet
+
+snippet Lrap "If with parenthesis"
+$(\Longrightarrow)$$0
+endsnippet
+
+snippet Llrap "If and Only if with parenthesis"
+$(\Longleftrightarrow)$$0
+endsnippet
 
 snippet lim "\limits"
 \limits
@@ -10603,6 +10770,10 @@ endsnippet
 
 snippet shr "hyperref section referencing" w
 \hyperref[sec:$1]{${2:${VISUAL}} \S\ref{sec:$1}\}$0
+endsnippet
+
+snippet mbx "Keep things from line breaking" w
+\mbox{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet rom
@@ -10697,6 +10868,14 @@ snippet embx "Emphasize-box selected text" w
 endsnippet
 
 snippet emb "Emphasize-box selected text" w
+\boxed{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet bxem "Emphasize-box selected text" w
+\boxed{\emph{${1:${VISUAL}}\}\}$0
+endsnippet
+
+snippet bem "Emphasize-box selected text" w
 \boxed{\emph{${1:${VISUAL}}\}\}$0
 endsnippet
 

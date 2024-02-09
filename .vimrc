@@ -166,6 +166,7 @@ nnoremap <buffer> <M-d> <c-w>l
 nnoremap <buffer> <localleader>hs :split<cr>
 nnoremap <buffer> <localleader>vs :vsplit<cr>
 
+" Resize splits
 augroup ResizeSplitsWhenTheWindowIsResized
     autocmd!
     autocmd VimResized * silent exe "normal! \<C-w>="
@@ -369,7 +370,7 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 
 " Fixing LaTeX folds
-nnoremap <buffer> <localleader>ff mm?% F{O{L{D<cr>i <esc>zczox`m
+nnoremap <buffer> <localleader>ff mm:%s/F{O{L{D/F{O{L{D/g<cr>`mzvzz
 nnoremap <buffer> <localleader>bf mmA% F{O{L{D<esc>`m
 nnoremap <buffer> <localleader>ef mmA% F}O}L}D<esc>`m
 
@@ -685,6 +686,9 @@ nnoremap <buffer> <localleader>gt :GundoToggle<CR>
 " let g:indent_guides_guide_size = 1
 
 nnoremap <buffer> <localleader>i :IndentGuidesToggle<cr>
+
+" Indenting frames
+nnoremap <buffer> =f mm?{frame}<cr>=ae`m
 
 "}}}
 " Limelight{{{
@@ -1511,11 +1515,12 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% DcaseDefinition')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Enumerate')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Itemize')
+    autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Tabular')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% Figure')
     autocmd Filetype tex let m = matchadd("EquationMarkerGroup",'% diary')
 augroup end
 
-highlight ArrayMatrixEtcMarkerGroup ctermbg=210 ctermfg=black
+highlight ArrayMatrixEtcMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcMarkerGroup",'% Array')
@@ -1530,7 +1535,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Bibliography",'% Bibliography')
 augroup end
 
-highlight ImpliesMarkerGroup ctermbg=210 ctermfg=black
+highlight ImpliesMarkerGroup ctermbg=174 ctermfg=black
 
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ImpliesMarkerGroup",'(\$\\Longrightarrow\$)')
@@ -1686,6 +1691,8 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{enumerate}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{itemize}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{itemize}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{tabular}')
+    autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{tabular}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{landscape}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\end{landscape}')
     autocmd Filetype tex let m = matchadd("EquationGroup",'\\begin{figure}')
@@ -2057,9 +2064,9 @@ augroup SourceEverythingForTeX
     " Compiling tex
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
     autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
     autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>a
     autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>
+    " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
 augroup end
 
 " Sourcing everything for tex
