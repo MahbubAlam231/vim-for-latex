@@ -4,7 +4,7 @@
 "--------------------------------------------------------------------
 
 "--------------------------------------------------------------------
-" Abolish
+" Abolish (check approximate and char to see how to write it cleverly)
 "--------------------------------------------------------------------
 
 "A{{{
@@ -12,10 +12,10 @@
 Abolish adn and
 Abolish ae almost every
 Abolish aew almost everywhere
-Abolish alg{,s,ic} algebra{,s,ic}
-Abolish appl{n,ns,ble} applica{tion,tions,ble}
+Abolish alg{,c,ic}{,s} algebra{,ic,ic}{,s}
+Abolish appl{n,ble}{,s} applica{tion,ble}{,s}
 Abolish arb arbitrary
-Abolish {approx,apprx,appr,aprx,apr}{n,ns,e,te,es,ed,g,ble} {approxima,approxima,approxima,approxima,approxima}{tion,tions,te,te,tes,ted,ting,ble}
+Abolish {approx,apprx,appr,aprox,aprx,apr}{,n}{,e,te}{,d}{,ly}{,g}{,s} approxima{,,,,}{,tion}{,te,te}{,d}{,ly}{,ting}{,s}
 
 "}}}
 "B{{{
@@ -30,7 +30,7 @@ Abolish btw by the way
 "C{{{
 
 Abolish chap{,s} chapter{,s}
-Abolish char{,s,c,tic,stic,n,izatn,ization,ztn,ztion,zatn,zation,ze,zes,zed,ize,izes,ized,d,ze,zes,zed,ize,izes,ized,ed} character{,s,istic,istic,istic,ization,ization,ization,ization,ization,ization,ization,ize,izes,ized,ize,izes,ized,ized,ize,izes,ized,ize,izes,ized,ized}
+Abolish char{,c,tic}{,e,ze}{,d}{,ztn,zn,n}{,s} character{,istic,istic}{,ize,ize}{,d}{,ization,ization,ization}{,s}
 Abolish coef{,f,s,fs} coefficient{,,s,s}
 Abolish coll{n,ns,g} collecti{on,ons,ng}
 Abolish comm{e,es,ve} commut{e,es,ative}
@@ -44,16 +44,18 @@ Abolish corr{,s,g,ing,e,ce,ence,esce,es,ces,ences,esces,ences} correspond{,s,ing
 Abolish cor{,s} corollar{y,ies}
 Abolish ctbl{e,y,ty} countab{le,ly,ility}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
-Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness}
+Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness,s,ss} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness, set, sets}
+" Maybe putting space before words is better like lchsp
 Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{continuous ,}function{,s}
 
 "}}}
 "D{{{
 
 Abolish def{n,ns,d,g} defin{ition,itions,ed,ing}
-Abolish dep{,nt,e,y,ly,g,ble,bility} depend{,ent,ence,ency,ently,ing,able,ability}
+" dept should be department that's why depnt below
+Abolish dep{,nt,e,y,ly,g,ble,blty} depend{,ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
-Abolish diffeo{,s,c,cally} diffeomorphi{sm,sms,c,cally}
+Abolish {diffeo,diffm}{,s,c,cally} diffeomorphi{,}{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
 Abolish dim{n,ns,l} dimension{,s,al}
 Abolish dio diophantine
@@ -81,7 +83,7 @@ Abolish fe for every
 Abolish fm furthermore
 Abolish fs for some
 Abolish f{,unc}{trl} func{,}{torial}
-Abolish f{n,uncn}{,s,l,al,ls,als} func{,}{tion,tions,tional,tional,tionals,tionals}
+Abolish {l,lin,}f{n,uncn}{,s,l,al,ls,als} {linear ,linear ,}func{,}{tion,tions,tional,tional,tionals,tionals}
 
 "}}}
 "G{{{
@@ -112,7 +114,7 @@ Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
 "}}}
 "L{{{
 
-Abolish lc{,h}{,s}{,fc,sc}{,top}{,sp,spes,gp,gps} locally compact{, hausdorff}{, separable}{, first countable, second countable}{, topological}{, space, spaces, group, groups}
+Abolish lc{,h}{,s}{,fc,sc}{,top}{,sp,spes,gp,gps} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological}{, space, spaces, group, groups}
 Abolish lem{,s} lemma{,s}
 
 "}}}
@@ -138,9 +140,10 @@ Abolish ow otherwise
 "P{{{
 
 Abolish poly{,s} polynomial{,s}
+Abolish pov point of view
+Abolish prb{,s} problem{,s}
 Abolish proj{n,ns} projection{,s}
 Abolish prop{n,ns} proposition{,s}
-Abolish prb{,s} problem{,s}
 
 "}}}
 "Q{{{
@@ -217,9 +220,24 @@ iabbr a.e. a.e.\
 iabbr ae. a.e.\\
 
 "}}}
+"C{{{
+
+iabbr cor: cor:
+
+"}}}
+"D{{{
+
+iabbr defn: defn:
+
+"}}}
 "E{{{
 
 iabbr eg e.g.
+
+"}}}
+"H{{{
+
+iabbr haar Haar
 
 "}}}
 "I{{{
@@ -229,14 +247,16 @@ iabbr ie i.e.
 "}}}
 "F{{{
 
-iabbr fae for a.e.\
+iabbr FOr For
 iabbr Fae For a.e.\
 iabbr Fc First-countable
+iabbr fae for a.e.\
 
 "}}}
 "L{{{
 
 iabbr LEmma Lemma
+iabbr lem: lem:
 iabbr LEt Let
 
 "}}}
@@ -246,14 +266,21 @@ iabbr Mvt Mean Value Theorem
 iabbr mvt mean value theorem
 
 "}}}
-""R{{{
+"P{{{
 
-"iabbr resp resp.\
+iabbr prop: prop:
 
-""}}}
+"}}}
+"R{{{
+
+iabbr rem: rem:
+" iabbr resp resp.\
+
+"}}}
 "T{{{
 
 iabbr THeorem Theorem
+iabbr thm: thm:
 
 "}}}
 "W{{{

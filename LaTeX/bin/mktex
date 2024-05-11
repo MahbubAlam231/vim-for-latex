@@ -4,7 +4,7 @@
 # @author      : Mahbub Alam
 # @file        : mktex
 # @created     : Tuesday Sep 29, 2020 19:08:39 IST
-# @description : Create tex directory on Desktop named $@ and open in vim
+# @description : Create tex directory (on Desktop) named $@ and open in vim
 ##########################################################################
 
 if [ "$PWD" == "/home/mahbub" ]
@@ -12,28 +12,4 @@ then
     cd ~/Desktop
 fi
 
-if [ -d $@ ]
-then
-    cd $@
-else
-    mkdir $@
-    cd $@
-    ln -s ~/Dropbox/main-bib.bib bib.bib
-fi
-
-if [ -f $@.tex ]
-then
-    echo -e "$@.tex exists. Open? [Y/n] \c"
-    read response
-    if [ "$response" == "n" ]
-    then
-        echo Quitting
-        exit 1
-    else
-        vim $@.tex
-    fi
-else
-    vim $@.tex
-    gio set $@.tex metadata::pinned-to-top true
-fi
-
+maketex $@

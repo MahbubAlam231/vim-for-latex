@@ -12,7 +12,7 @@
 " Numbers, Braces, Some symbols and Spelling{{{
 "-------------------------------------------------------------------
 
-" Numbers"{{{
+" Numbers
 "-------------------------------------------------------------------
 
 inoremap <buffer> 1 <esc>A
@@ -43,7 +43,7 @@ inoremap <buffer> 00 0
 
 nnoremap <buffer> <localleader>4 o\[<cr>\]<esc>O
 
-"}}}
+
 " Braces{{{
 "-------------------------------------------------------------------
 
@@ -62,6 +62,9 @@ inoremap <buffer> \|\| \|
 
 inoremap <buffer> '' `'<left>
 inoremap <buffer> "" ``''<left><left>
+inoremap <buffer> 2" ""<left>
+inoremap <buffer> d" ""<left>
+inoremap <buffer> D" ""<left>
 
 inoremap <buffer> 2' ''
 inoremap <buffer> 3' '''
@@ -374,6 +377,7 @@ inoremap <buffer> <localleader>h. \mathbb{H}^{}<left>
 inoremap <buffer> <localleader>cc. C_c()<left>
 inoremap <buffer> <localleader>ccx C_c(X)
 inoremap <buffer> <localleader>ccg C_c(G)
+inoremap <buffer> <localleader>ccg/h C_c(G/H)
 inoremap <buffer> <localleader>ccgh C_c(G/H)
 
 inoremap <buffer> <localleader>cci C_c^{\infty}()<left>
@@ -1913,6 +1917,9 @@ function! MatrixGroupToggle()
 
         inoremap <buffer> <localleader>gl \GL()<left>
 
+        inoremap <buffer> <localleader>gld1 \GL_{d}^{1}()<left>
+        inoremap <buffer> <localleader>gld1af \GL_{d}^{1}(\mathbb{A}_F)
+
         inoremap <buffer> <localleader>gln \GL(n,)<left>
         inoremap <buffer> <localleader>glm \GL(m,)<left>
         inoremap <buffer> <localleader>gld \GL(d,)<left>
@@ -2473,10 +2480,11 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>m3 \M_{3}
         inoremap <buffer> <leader>m. \M_{}<left>
 
-        inoremap <buffer> <localleader>m.. \M()<left>
+        " inoremap <buffer> <localleader>m.. \M()<left>
 
         inoremap <buffer> <localleader>mmn \M_{m \times n}()<left>
         inoremap <buffer> <localleader>m \M_{}()<esc>F}i
+        inoremap <buffer> <localleader>m.. \M_{}()<esc>F}i
 
         inoremap <buffer> <localleader>mn \M_{n}()<left>
         inoremap <buffer> <localleader>mm \M_{m}()<left>
@@ -2631,9 +2639,12 @@ function! MatrixGroupToggle()
         inoremap <buffer> <leader>gl3 \GL_{3}
         inoremap <buffer> <leader>gl. \GL_{}<left>
 
+        inoremap <buffer> <leader>gld1 \GL_{d}^{1}
+
         inoremap <buffer> <localleader>gl.. \GL()<left>
 
-        inoremap <buffer> <leader>gld1 \GL_{d}^{1}
+        inoremap <buffer> <localleader>gld1 \GL_{d}^{1}()<left>
+        inoremap <buffer> <localleader>gld1af \GL_{d}^{1}(\mathbb{A}_F)
 
         inoremap <buffer> <localleader>gl \GL_{}()<esc>F}i
 
@@ -3226,7 +3237,7 @@ inoremap <buffer> <localleader>wh \widehat{}<left>
 inoremap <buffer> `6 \widehat{}<left>
 inoremap <buffer> <localleader>- \bar{}<left>
 inoremap <buffer> <localleader>bar \bar{}<left>
-inoremap <buffer> <localleader>ol \overline{}<left>
+inoremap <buffer> <localleader>ol \oline{}<left>
 inoremap <buffer> <localleader>ul \uline{}<left>
 inoremap <buffer> <localleader>. \dot{}<left>
 
@@ -3434,6 +3445,8 @@ inoremap <buffer> <localleader>di \displaystyle\int_{}^{}<esc>F}i
 inoremap <buffer> ;dil \displaystyle\int\limits_{}<left>
 inoremap <buffer> <localleader>dil \displaystyle\int\limits_{}^{}<esc>F}i
 
+inoremap <buffer> <localleader>ixmu \int_{} \d{\mu}<esc>2F{a
+
 inoremap <buffer> ;jd \d
 inoremap <buffer> ;d \d{}<left>
 inoremap <buffer> ;dx \d{x}
@@ -3524,7 +3537,9 @@ inoremap <buffer> <localleader>lrab {\left\langle \right\rangle}<esc>2Fela
 inoremap <buffer> <localleader>lrdab {\left\llangle \right\rrangle}<esc>2Fela
 
 inoremap <buffer> <localleader>< \leq
+inoremap <buffer> <localleader>le \leq
 inoremap <buffer> <localleader>> \geq
+inoremap <buffer> <localleader>ge \geq
 inoremap <buffer> << \ll
 inoremap <buffer> >> \gg
 inoremap <buffer> ;< \prec
@@ -3674,8 +3689,8 @@ inoremap <buffer> <localleader>em \emph{}<left>
 inoremap <buffer> <localleader>bm \bm{}<left>
 
 inoremap <buffer> <localleader>st \substack{ \\ }<esc>F{a
-inoremap <buffer> <localleader>op \operatorname{}<left>
-inoremap <buffer> <localleader>op* \operatorname*{}<left>
+inoremap <buffer> <localleader>op \op{}<left>
+inoremap <buffer> <localleader>op* \op*{}<left>
 
 inoremap <buffer> <localleader>w \wedge
 inoremap <buffer> <localleader>N \nabla
@@ -3687,6 +3702,8 @@ inoremap <buffer> ./ .\
 inoremap <buffer> /, \
 inoremap <buffer> :+ :=
 inoremap <buffer> &+ &=
+
+inoremap <buffer> <localleader>it \item<esc>==A
 
 "}}}
 
@@ -4033,6 +4050,63 @@ inoremap <buffer> ;gY  \mathcal{Y}
 inoremap <buffer> ;gZ  \mathcal{Z}
 
 "}}}
+" Tilde over english alphabets{{{
+
+inoremap <buffer> ;wa  \widetilde{a}
+inoremap <buffer> ;wb  \widetilde{b}
+inoremap <buffer> ;wc  \widetilde{c}
+inoremap <buffer> ;wd  \widetilde{d}
+inoremap <buffer> ;we  \widetilde{e}
+inoremap <buffer> ;wf  \widetilde{f}
+inoremap <buffer> ;wg  \widetilde{g}
+inoremap <buffer> ;wh  \widetilde{h}
+inoremap <buffer> ;wi  \widetilde{i}
+inoremap <buffer> ;wj  \widetilde{j}
+inoremap <buffer> ;wk  \widetilde{k}
+inoremap <buffer> ;wl  \widetilde{l}
+inoremap <buffer> ;wm  \widetilde{m}
+inoremap <buffer> ;wn  \widetilde{n}
+inoremap <buffer> ;wo  \widetilde{o}
+inoremap <buffer> ;wp  \widetilde{p}
+inoremap <buffer> ;wq  \widetilde{q}
+inoremap <buffer> ;wr  \widetilde{r}
+inoremap <buffer> ;ws  \widetilde{s}
+inoremap <buffer> ;wt  \widetilde{t}
+inoremap <buffer> ;wu  \widetilde{u}
+inoremap <buffer> ;wv  \widetilde{v}
+inoremap <buffer> ;ww  \widetilde{w}
+inoremap <buffer> ;wx  \widetilde{x}
+inoremap <buffer> ;wy  \widetilde{y}
+inoremap <buffer> ;wz  \widetilde{z}
+
+inoremap <buffer> ;wA  \widetilde{A}
+inoremap <buffer> ;wB  \widetilde{B}
+inoremap <buffer> ;wC  \widetilde{C}
+inoremap <buffer> ;wD  \widetilde{D}
+inoremap <buffer> ;wE  \widetilde{E}
+inoremap <buffer> ;wF  \widetilde{F}
+inoremap <buffer> ;wG  \widetilde{G}
+inoremap <buffer> ;wH  \widetilde{H}
+inoremap <buffer> ;wI  \widetilde{I}
+inoremap <buffer> ;wJ  \widetilde{J}
+inoremap <buffer> ;wK  \widetilde{K}
+inoremap <buffer> ;wL  \widetilde{L}
+inoremap <buffer> ;wM  \widetilde{M}
+inoremap <buffer> ;wN  \widetilde{N}
+inoremap <buffer> ;wO  \widetilde{O}
+inoremap <buffer> ;wP  \widetilde{P}
+inoremap <buffer> ;wQ  \widetilde{Q}
+inoremap <buffer> ;wR  \widetilde{R}
+inoremap <buffer> ;wS  \widetilde{S}
+inoremap <buffer> ;wT  \widetilde{T}
+inoremap <buffer> ;wU  \widetilde{U}
+inoremap <buffer> ;wV  \widetilde{V}
+inoremap <buffer> ;wW  \widetilde{W}
+inoremap <buffer> ;wX  \widetilde{X}
+inoremap <buffer> ;wY  \widetilde{Y}
+inoremap <buffer> ;wZ  \widetilde{Z}
+
+"}}}
 " Greek Alphabets{{{
 "-------------------------------------------------------------------
 
@@ -4115,17 +4189,19 @@ inoremap <buffer> ;Om \Omega
 
 " Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
-highlight Folds_brackets_comments ctermbg=174 ctermfg=black
+" FoldsGroup is inside ArrayMatrixEtcGroup
 
-augroup TeXHighlighting
-    autocmd!
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%\( \)*\(h\|c\)\( \)*')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
-augroup end
+" highlight FoldsGroup ctermbg=174 ctermfg=Black
+
+" augroup TeXHighlighting
+"     autocmd!
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%{T{E{X')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%}T}E}X')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%\( \)*\(h\|c\)\( \)*')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
+" augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
@@ -4468,6 +4544,13 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
+
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%{T{E{X')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%}T}E}X')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%\( \)*\(h\|c\)\( \)*')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
 augroup end
 
 highlight asterisk ctermbg=109 ctermfg=red

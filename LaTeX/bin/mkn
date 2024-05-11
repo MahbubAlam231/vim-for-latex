@@ -1,0 +1,12 @@
+#!/bin/bash
+
+######################################################################
+# @author      : Mahbub Alam
+# @file        : mkn
+# @created     : 10/07/2023 (Jul, Mon) 11:55:35 CEST
+# @description : creating notes
+######################################################################
+
+cd ~/Dropbox/Notes
+
+maketex $@

@@ -8,7 +8,11 @@
 snippet if "if statement"
 if [ $1 ]
 then
-	${2:${VISUAL:pass}}
+	${2:${VISUAL:}}$3
 fi$0
+endsnippet
+
+snippet echo "Echo things in bash" b
+echo -e "\\t${1:${VISUAL:text}}"$0
 endsnippet
 

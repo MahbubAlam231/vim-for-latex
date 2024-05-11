@@ -28,6 +28,7 @@
 \usepackage{dsfont}
 % \usepackage{enumerate}
 \usepackage{enumitem}
+% \usepackage{etaremune}
 \usepackage{esvect}
 % \usepackage{eufrak} % not required when have amsfonts
 \usepackage{extarrows}
@@ -35,11 +36,13 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage[T1]{fontenc} % Output font encoding for international characters
+% \usepackage[fontsize=14bp]{fontsize}
 \usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage[bookmarks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,linktoc=all]{hyperref}
 \usepackage{cleveref}
 % \usepackage{lscape}
+\usepackage{mathpazo}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 % \usepackage{pdfpages}
@@ -133,9 +136,11 @@
 \renewcommand{\d}{\dd}
 
 \newcommand{\bs}{\backslash}
+\renewcommand{\op}{\operatorname*}
+\newcommand{\oline}{\overline}
 
-\DeclareMathOperator*{\vol}{vol}
-\DeclareMathOperator*{\supp}{supp}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\diag}{diag}
 
 % Numbering of equations
@@ -165,8 +170,7 @@
     Department of Mathematics,
     Uppsala University, Sweden \\
 \url{https://sites.google.com/view/mahbubweb}}
-\email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se, mahbub@math.tifr.res.in}
-
+\email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}
 \date{}
 
 % F}O}L}D

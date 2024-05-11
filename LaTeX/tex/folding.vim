@@ -214,9 +214,9 @@ endfunction
 
 function! s:CaptionFrame(line)
     " Test simple variants first
-    let caption1 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+\ze}')
-    let caption2 = matchstr(a:line,'\\begin\*\?{.*}\[.*\]{\zs.\+\ze}')
-    let caption3 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
+    let caption1 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\{-}\ze}')
+    let caption2 = matchstr(a:line,'\\begin\*\?{.*}\[.*\]{\zs.\{-}\ze}')
+    " let caption3 = matchstr(a:line,'\\begin\*\?{.*}{\zs.\+')
 
     if len(caption1) > 0
         return caption1
@@ -458,20 +458,31 @@ function! LatexBox_FoldText()
         let labelcheck1 = matchstr(line, '\*\?\s*}\\\zs.\{-}\ze{')
         let labelcheck2 = matchstr(line, '\*\?\s*\]\\\zs.\{-}\ze{')
 
-        " Creating different environment title depending on whether it has a given name
+        " Creating different environment title depending on whether it has a given name and capturing label
         if labelcheck1 == 'label'
-            " No given name to environment, so just capture label and make it environment-title
-            let primarytitle = '  ' . matchstr(line, '\*\?\s*}\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
-
-            " Making environment-title at max 120-character
-            if len(primarytitle) > 120
-                let secondarytitle = printf('%.117s', primarytitle) . '...'
+            " No given name to environment, so just capture label and make empty environment-title
+            " Capturing label
+            let label1 = '    \ ' . matchstr(line, '\*\?\s*\\label{\zs.\{-}\ze}\(\( \)*\(%\)*\)*F{O{L{D')
+            " Making label at max 30-character
+            if len(label1) > 30
+                let label2 = printf('%.27s', label1) . '...'
             else
-                let secondarytitle = primarytitle
+                let label2 = label1
             endif
 
+            let primarytitle1 = ''
+
+            " Discarded/Commented{{{
+            " let primarytitle = '  ' . matchstr(line, '\*\?\s*}\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+            " " Making environment-title at max 120-character
+            " if len(primarytitle) > 120
+            "     let secondarytitle = printf('%.117s', primarytitle) . '...'
+            " else
+            "     let secondarytitle = primarytitle
+            " endif}}}
+
         elseif labelcheck2 == 'label'
-            " Environment has given name, empty or otherwise, together with label, so create apt title
+            " Environment has given name, empty or otherwise, together with label, so capturing them
             if envname == ''
                 let primarytitle1 = ''
             else
@@ -480,32 +491,34 @@ function! LatexBox_FoldText()
             endif
 
             " Capturing label
-            let label1 = matchstr(line, '\*\?\s*\]\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
-
-            " Environment-title should be at max 120-character
-            " Making environment-given-name at max 68-character
-            if len(primarytitle1) > 68
-                let primarytitle2 = printf('%.65s', primarytitle1) . '...'
-            else
-                let primarytitle2 = primarytitle1
-            endif
-
-            " Making label at max 50-character
-            if len(label1) > 50
-                let label2 = printf('%.46s', label1) . '...}'
+            let label1 = '    \ ' . matchstr(line, '\*\?\s*\]\\label{\zs.\{-}\ze}\(\( \)*\(%\)*\)*F{O{L{D')
+            " Making label at max 30-character
+            if len(label1) > 30
+                let label2 = printf('%.27s', label1) . '...'
             else
                 let label2 = label1
             endif
 
-            " Creating environment-title
-            let secondarytitle = primarytitle2 . '  ' . label2
+            " Discarded/Commented{{{
+            " " Environment-title should be at max 120-character
+            " " Making environment-given-name at max 68-character
+            " if len(primarytitle1) > 90
+            "     let primarytitle2 = printf('%.87s', primarytitle1) . '...'
+            " else
+            "     let aligntitle = repeat(' ', 090-len(primarytitle1))
+            "     let primarytitle2 = primarytitle1 . aligntitle
+            " endif
+            " " Creating environment-title
+            " let secondarytitle = primarytitle2 . '  ' . label2}}}
 
         elseif envname == ''
             " Environment is empty and has no label
-            let secondarytitle = ''
+            let primarytitle1 = ''
+            let label2 = '    \ '
         else
             " Environment is non-empty and has no label
-            let secondarytitle = ' - ' . envname
+            let primarytitle1 = ' - ' . envname
+            let label2 = '    \ '
         endif
 
         "}}}
@@ -520,78 +533,78 @@ function! LatexBox_FoldText()
             " Definition{{{
 
         elseif env == 'definition'
-            let title = comment . 'Definition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Definition' . endbracket . primarytitle1
 
         elseif env == 'udefinition'
-            let title = comment . 'UnnumberedDefinition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedDefinition' . endbracket . primarytitle1
 
         elseif env == 'definition*'
-            let title = comment . 'UnnumberedDefinition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedDefinition' . endbracket . primarytitle1
 
             "}}}
 
             " Notation{{{
 
         elseif env == 'notation'
-            let title = comment . 'Notation' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Notation' . endbracket . primarytitle1
 
         elseif env == 'unotation'
-            let title = comment . 'UnnumberedNotation' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedNotation' . endbracket . primarytitle1
 
         elseif env == 'notation*'
-            let title = comment . 'UnnumberedNotation' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedNotation' . endbracket . primarytitle1
 
             "}}}
 
             " Lemma{{{
 
         elseif env == 'lemma'
-            let title = comment . 'Lemma' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Lemma' . endbracket . primarytitle1
 
         elseif env == 'ulemma'
-            let title = comment . 'UnnumberedLemma' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedLemma' . endbracket . primarytitle1
 
         elseif env == 'lemma*'
-            let title = comment . 'UnnumberedLemma' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedLemma' . endbracket . primarytitle1
 
             "}}}
 
             " Proposition{{{
 
         elseif env == 'proposition'
-            let title = comment . 'Proposition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Proposition' . endbracket . primarytitle1
 
         elseif env == 'uproposition'
-            let title = comment . 'UnnumberedProposition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedProposition' . endbracket . primarytitle1
 
         elseif env == 'proposition*'
-            let title = comment . 'UnnumberedProposition' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedProposition' . endbracket . primarytitle1
 
             "}}}
 
             " Theorem{{{
 
         elseif env == 'theorem'
-            let title = comment . 'Theorem' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Theorem' . endbracket . primarytitle1
 
         elseif env == 'utheorem'
-            let title = comment . 'UnnumberedTheorem' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedTheorem' . endbracket . primarytitle1
 
         elseif env == 'theorem*'
-            let title = comment . 'UnnumberedTheorem' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedTheorem' . endbracket . primarytitle1
 
             "}}}
 
             " Corollary{{{
 
         elseif env == 'corollary'
-            let title = comment . 'Corollary' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Corollary' . endbracket . primarytitle1
 
         elseif env == 'ucorollary'
-            let title = comment . 'UnnumberedCorollary' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedCorollary' . endbracket . primarytitle1
 
         elseif env == 'corollary*'
-            let title = comment . 'UnnumberedCorollary' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedCorollary' . endbracket . primarytitle1
 
             "}}}
 
@@ -599,9 +612,9 @@ function! LatexBox_FoldText()
 
         elseif env == 'proof'
             if envname == ''
-                let title = comment . 'Proof' . endbracket
+                let primarytitle2 = comment . 'Proof' . endbracket
             else
-                let title = comment . envname . endbracket
+                let primarytitle2 = comment . envname . endbracket
             endif
 
             "}}}
@@ -609,26 +622,26 @@ function! LatexBox_FoldText()
             " Remark{{{
 
         elseif env == 'remark'
-            let title = comment . 'Remark' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Remark' . endbracket . primarytitle1
 
         elseif env == 'uremark'
-            let title = comment . 'UnnumberedRemark' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedRemark' . endbracket . primarytitle1
 
         elseif env == 'remark*'
-            let title = comment . 'UnnumberedRemark' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedRemark' . endbracket . primarytitle1
 
             "}}}
 
             " Conjecture{{{
 
         elseif env == 'conjecture'
-            let title = comment . 'Conjecture' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'Conjecture' . endbracket . primarytitle1
 
         elseif env == 'uconjecture'
-            let title = comment . 'UnnumberedConjecture' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedConjecture' . endbracket . primarytitle1
 
         elseif env == 'conjecture*'
-            let title = comment . 'UnnumberedConjecture' . endbracket . secondarytitle
+            let primarytitle2 = comment . 'UnnumberedConjecture' . endbracket . primarytitle1
 
             "}}}
 
@@ -637,28 +650,52 @@ function! LatexBox_FoldText()
         elseif env == 'frame'
             let caption = s:CaptionFrame(line)
             if line =~# '^\s*\\begin'
-                " let title = 'Frame - ' . substitute(caption, '}\s*$', '','')
-                let title = 'Frame - ' . caption
+                " let primarytitle2 = 'Frame - ' . substitute(caption, '}\s*$', '','')
+                let primarytitle2 = 'Frame - ' . caption
             elseif line =~# '^\s*%\(\( \)*\(%\)*\)*\\begin'
-                let title = '[COMMENTED Frame] - ' . caption
+                let primarytitle2 = '[COMMENTED Frame] - ' . caption
             endif
 
             "}}}
 
             " Other environments{{{
         else
-            " Capture the whole line for other environments
-            let primarytitle = matchstr(line, '^\s*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+            let primarytitle2 = comment . env . endbracket . primarytitle1
 
-            " Making environment-title at max 120-character
-            if len(primarytitle) > 120
-                let title = printf('%.117s', primarytitle) . '...'
-            else
-                let title = primarytitle
-            endif
+            " Discarded/Commented{{{
+            " " Capture the whole line for other environments
+            " let primarytitle1 = matchstr(line, '^\s*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+            " " Making environment-title at max 120-character
+            " " Making environment-given-name at max 90-character
+            " if len(primarytitle1) > 90
+            "     let primarytitle2 = printf('%.87s', primarytitle1) . '...'
+            " else
+            "     let primarytitle2 = primarytitle1
+            " endif}}}
+
         endif
 
         "}}}
+
+        " Environment-title should be at max 120-character
+        " Making environment-given-name at max 90-character
+        if env != 'frame'
+            if len(primarytitle2) > 60
+                let primarytitle3 = printf('%.57s', primarytitle2) . '...'
+            else
+                let aligntitle = repeat(' ', 60-len(primarytitle2))
+                let primarytitle3 = primarytitle2 . aligntitle
+            endif
+        else
+            if len(primarytitle2) > 90
+                let primarytitle3 = printf('%.87s', primarytitle2) . '...'
+            else
+                let aligntitle = repeat(' ', 90-len(primarytitle2))
+                let primarytitle3 = primarytitle2 . aligntitle
+            endif
+        endif
+        " Creating environment-title
+        let title = primarytitle3 . label2
 
         " Others{{{
 
@@ -706,14 +743,14 @@ function! LatexBox_FoldText()
     " Put 'h' after '%' in the commented line to get helper-folds
 
     if line =~ '\*\?\s*%\( \)*h\( \)*'
-        " Capture the whole line for helper-folds
-        let primarytitleB = matchstr(line, '^\s*\zs.\{-}\ze\( \)*%\( \)*h\(\( \)*\(%\)*\)*F{O{L{D')
+        " Capture the whole line or the given explantion for helper-folds
+        let primarytitleL = matchstr(line, '^\s*\zs.\{-}\ze\( \)*%\( \)*h\(\( \)*\(%\)*\)*F{O{L{D')
         let primarytitleE = matchstr(line, '\*\?\s*%\( \)*h\( \)*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
-        let primarytitle = primarytitleB . primarytitleE
+        let primarytitle = '[HELPER FOLD] - ' . primarytitleL . primarytitleE
 
         " Making helper-folds at max 120-character
-        if len(primarytitle) > 114
-            let title = '[HELPER FOLD] - ' . printf('%.111s', primarytitle) . '...'
+        if len(primarytitle) > 120
+            let title = printf('%.117s', primarytitle) . '...'
             " Don't mess up my preamble fold-titles
             " elseif line =~ '% Packages'
             "     let title = 'Packages'
@@ -722,7 +759,7 @@ function! LatexBox_FoldText()
             " elseif line =~ '% Newcommands'
             "     let title = 'Newcommands'
         else
-            let title = '[HELPER FOLD] - ' . primarytitle
+            let title = primarytitle
         endif
     endif
 
@@ -733,15 +770,13 @@ function! LatexBox_FoldText()
 
     if line =~ '^\s*%\( \)*c\( \)*'
         " Capture the whole line for commented-folds
-        let primarytitle = matchstr(line, '^\s*%\( \)*c\( \)*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
+        let primarytitle = '[COMMENTED] - ' . matchstr(line, '^\s*%\( \)*c\( \)*\zs.\{-}\ze\(\( \)*\(%\)*\)*F{O{L{D')
 
         " Making commented-folds at max 120-character
         if len(primarytitle) > 120
-            let title = '[COMMENTED] - ' . printf('%.121s', primarytitle) . '...'
-        elseif len(primarytitle) > 0
-            let title = '[COMMENTED] - ' . primarytitle
+            let title = printf('%.117s', primarytitle) . '...'
         else
-            let title = '[COMMENTED]'
+            let title = primarytitle
         endif
     endif
 

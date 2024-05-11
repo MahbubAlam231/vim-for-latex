@@ -33,11 +33,11 @@ endsnippet
 # [${1:${VISUAL:here}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 
 snippet im "Adding a image"
-![${1:Image}](${2:pic.jpg})$0
+![${1:${VISUAL:Image}}](${2:pic.jpg})$0
 endsnippet
 
 snippet image "Adding a image"
-![${1:Image}](${2:pic.jpg})$0
+![${1:${VISUAL:Image}}](${2:pic.jpg})$0
 endsnippet
 
 snippet fi "Adding a file link"
@@ -45,11 +45,11 @@ snippet fi "Adding a file link"
 endsnippet
 
 snippet file "Adding a file link"
-[[file:$1]]$0
+[[file:${1:${VISUAL:filename_here}}]]$0
 endsnippet
 
 snippet pdf "Adding a file link"
-[[file:$1.pdf]]$0
+[[file:${1:${VISUAL:filename_here}}.pdf]]$0
 endsnippet
 
 snippet mps "Make purpose statement filename"
@@ -58,6 +58,10 @@ endsnippet
 
 snippet mfd "Make filename with date"
 [$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
+endsnippet
+
+snippet msf "Make files for Swedish class with date"
+[`!v strftime("%Y-%m-%d")`$1-svenska](`!v strftime("%Y-%m-%d")`${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-svenska)
 endsnippet
 
 snippet mfn "Make filename"

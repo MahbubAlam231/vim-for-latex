@@ -170,7 +170,7 @@ ofd() {
     fzf --query=$@ --bind "enter:execute(xdg-open {})"
 }
 
-# Select file
+# Open file pdf dvi md tex
 of() {
     cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
 }
@@ -211,27 +211,7 @@ lala() {
 
 ##}}}
 # My custom aliases{{{
-# Opening frequent files
-alias      v='vim'
-alias     v.='vim .'
-alias     vc='vim ~/.vimrc'
-alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
-alias     ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
-alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
-alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
-alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
-alias     ps='vim ~/.vim/UltiSnips/python.snippets'
-alias      w='vim ~/vimwiki/index.md'
-alias     vz='vim `fzf`'
-alias     ss='s'
-alias     sv='savevim'
-alias    svy='savevim y'
-alias     cv='commitvim'
-alias     cw='commitwiki'
-alias     cb='commitbin'
-alias     ca='commitall'
-alias      h='happy'
-
+# Some commands
 alias      p='python3'
 alias     pr='python3 `fzf`'
 alias     pz='python3 `fzf`'
@@ -239,6 +219,8 @@ alias     pf='python3 `fzf`'
 alias    pip='pip3'
 
 alias    pmr='python ~/python-code/movie_rating.py'
+
+alias     re='resda y'
 
 # Link bibliography
 alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
@@ -262,10 +244,35 @@ alias     sa='sudo apt '
 alias     in='sudo apt install'
 alias     up='sudo apt update'
 alias     ug='sudo apt upgrade'
-alias     re='sudo apt remove'
+# alias     re='sudo apt remove'
 alias     ar='sudo apt autoremove'
 alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
 alias     dt='`date +%F-%H%M`'
+
+# Opening frequent files
+alias      v='vim'
+alias     v.='vim .'
+alias     vc='vim ~/.vimrc'
+alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+alias     te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+alias     ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
+alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
+alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
+alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
+alias     ps='vim ~/.vim/UltiSnips/python.snippets'
+alias      w='vim ~/vimwiki/index.md'
+alias     vz='vim `fzf`'
+alias     ss='s'
+alias     sv='savevim'
+alias    svy='savevim y'
+alias     cv='commitvim'
+alias     cw='commitwiki'
+alias     cb='commitbin'
+alias     ca='commitall'
+alias      h='happy'
+alias   vmsi='vms i'
+
+alias     tg='mkn topological-groups y'
 
 #}}}

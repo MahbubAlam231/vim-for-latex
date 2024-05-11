@@ -148,6 +148,7 @@ execute "set <M-a>=\ea"
 execute "set <M-s>=\es"
 execute "set <M-w>=\ew"
 execute "set <M-d>=\ed"
+
 execute "set <M-n>=\en"
 execute "set <M-p>=\ep"
 
@@ -181,7 +182,7 @@ nnoremap <buffer> <S-RIGHT> 5<c-w>>
 
 set number relativenumber
 
-nnoremap <buffer> <silent> <localleader>nt :call NumberToggle()<cr>
+nnoremap <buffer> <silent> <localleader>nb :call NumberToggle()<cr>
 
 "}}}
 " Pandoc filetype settings{{{
@@ -214,6 +215,9 @@ call plug#begin('~/.vim/plugged')
 " Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 " Plug 'tpope/vim-eunuch'
+" Plug 'mswift42/vim-themes'
+" Plug 'rafi/awesome-vim-colorschemes'
+
 Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
@@ -266,16 +270,27 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'trapd00r/vidir'
+Plug 'trapd00r/vim-syntax-vidir-ls'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/ZoomWin'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-syntastic/syntastic'
+
 Plug 'vimwiki/vimwiki'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/vim-easy-align'
+
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
+Plug 'el-iot/vim-wikipedia-browser'
+Plug 'chikamichi/mediawiki.vim'
 
 call plug#end()
 
@@ -370,9 +385,9 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 
 " Fixing LaTeX folds
-nnoremap <buffer> <localleader>ff mm:%s/F{O{L{D/F{O{L{D/g<cr>`mzvzz
-nnoremap <buffer> <localleader>bf mmA% F{O{L{D<esc>`m
-nnoremap <buffer> <localleader>ef mmA% F}O}L}D<esc>`m
+nnoremap <buffer> <localleader>ff mf:%s/F{O{L{D/F{O{L{D/g<cr>`fzvzz
+nnoremap <buffer> <localleader>bf mfA% F{O{L{D<esc>`f
+nnoremap <buffer> <localleader>ef mfA% F}O}L}D<esc>`f
 
 " Saving folds in ~/.vim/view
 function! MakeView()
@@ -396,24 +411,24 @@ augroup Loadview
 augroup end
 
 " Opening/closing folding{{{
-nnoremap <buffer> zo mozozz
-nnoremap <buffer> zc mczczz
-nnoremap <buffer> zC mczCzz
-nnoremap <buffer> zv mvzvzz
-nnoremap <buffer> zr mrzRzz
-nnoremap <buffer> zR mrzrzz
-nnoremap <buffer> zm mmzMzz
+nnoremap <buffer> zo mzzozz
+nnoremap <buffer> zc mzzczz
+nnoremap <buffer> zC mzzCzz
+nnoremap <buffer> zv mzzvzz
+nnoremap <buffer> zr mzzRzz
+nnoremap <buffer> zR mzzrzz
+nnoremap <buffer> zm mzzMzz
 nnoremap <buffer> <localleader>z zMzvzz
 nnoremap <buffer> <space> zazz
 nnoremap <buffer> <localleader><space> zazt
 nnoremap <buffer> z<space> zazb
 
-vnoremap <buffer> zo mozozz
-vnoremap <buffer> zc mczczz
-vnoremap <buffer> zC mczCzz
-vnoremap <buffer> zv mvzvzz
-vnoremap <buffer> zr mrzRzz
-vnoremap <buffer> zm mmzMzz
+vnoremap <buffer> zo mzzozz
+vnoremap <buffer> zc mzzczz
+vnoremap <buffer> zC mzzCzz
+vnoremap <buffer> zv mzzvzz
+vnoremap <buffer> zr mzzRzz
+vnoremap <buffer> zm mzzMzz
 vnoremap <buffer> <localleader>z zMzvzz
 vnoremap <buffer> <space> zazz
 vnoremap <buffer> <localleader><space> zazt
@@ -423,13 +438,15 @@ nnoremap <buffer> 'o `ozvzz
 nnoremap <buffer> 'c `czvzz
 nnoremap <buffer> 'v `vzvzz
 nnoremap <buffer> 'r `rzvzz
-nnoremap <buffer> 'm `mzvzz
+nnoremap <buffer> 'm mn`mzvzz
+nnoremap <buffer> 'z ma`zzvzz
 
 vnoremap <buffer> 'o `ozvzz
 vnoremap <buffer> 'c `czvzz
 vnoremap <buffer> 'v `vzvzz
 vnoremap <buffer> 'r `rzvzz
-vnoremap <buffer> 'm `mzvzz
+vnoremap <buffer> 'm mn`mzvzz
+vnoremap <buffer> 'z ma`zzvzz
 
 "}}}
 
@@ -457,15 +474,6 @@ let g:zettel_format = "%title-%d-%m-%y"
 " let g:vimwiki_global_ext = 0
 " let g:vimwiki_commentstring='<!--%s-->'
 
-let g:vimwiki_table_mappings=0
-augroup ChangeVimwikiTableTab
-    autocmd!
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
-    " autocmd Filetype vimwiki inoremap <silent><expr> <Tab> vimwiki#tbl#kbd_tab()
-    " autocmd Filetype vimwiki inoremap <silent><expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
-augroup end
-
 " Mappings
 augroup VimwikiMappings
     autocmd!
@@ -484,6 +492,10 @@ endfunction
 
 nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement-") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
 inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime("purpose-statement-")<cr>]<esc>y%%p%r($r)<esc>
+
+function! CreateDateFilename(filename)
+    return strftime("%d-%m-%y") . a:filename
+endfunction
 
 function! VimwikiFoldLevelCustom(lnum)
     let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
@@ -510,6 +522,40 @@ function! Backlinking()
 endfunction
 
 nnoremap <localleader>vb Vip:g/\|/exe "norm! f\|d$"<cr>Vip:g/\.md/VimwikiFollowLink<cr>
+
+function! LexinSearch(word)
+    " let searchterm=getreg('s')
+    :!firefox \"https://lexin.nada.kth.se/lexin/\#searchinfo=both,swe_swe, . word . "\" "
+endfunction
+
+nnoremap <localleader>ls "syiw:call LexinSearch("s)<cr>
+
+" Tables{{{
+
+let g:vimwiki_table_mappings=0
+augroup ChangeVimwikiTableTab
+    autocmd!
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+    " autocmd Filetype vimwiki inoremap <silent><expr> <Tab> vimwiki#tbl#kbd_tab()
+    " autocmd Filetype vimwiki inoremap <silent><expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
+augroup end
+
+" Adding horizontal line in between vimwiki table
+nnoremap <buffer> <localleader>hr yypV:s/[^\|]/-/g<cr>:noh<cr>
+inoremap <buffer> <localleader>hr <esc>yypV:s/[^\|]/-/g<cr>yypV:s/-/ /g<cr>:noh<cr>la
+
+" Vim table mode
+nnoremap <buffer> <localleader>tm :TableModeToggle<cr>
+
+" Easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"}}}
 
 "}}}
 " Pandoc{{{
@@ -688,7 +734,7 @@ nnoremap <buffer> <localleader>gt :GundoToggle<CR>
 nnoremap <buffer> <localleader>i :IndentGuidesToggle<cr>
 
 " Indenting frames
-nnoremap <buffer> =f mm?{frame}<cr>=ae`m
+nnoremap <buffer> =f mi?{frame}<cr>=ae`i
 
 "}}}
 " Limelight{{{
@@ -725,7 +771,13 @@ let g:limelight_conceal_ctermfg = 244
 "}}}
 " NERDtree{{{
 
-nnoremap <buffer> <localleader>ner :NERDTree<cr>
+let NERDTreeShowHidden=1
+nnoremap <buffer> <localleader>nt :NERDTree<cr>:set number relativenumber<cr>
+
+"}}}
+" Startify{{{
+
+nnoremap <buffer> <localleader>st :Startify<cr>
 
 "}}}
 " Supertab{{{
@@ -811,9 +863,6 @@ nnoremap <buffer> <silent> <c-j> /<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 inoremap <buffer> <silent> <c-j> <esc>/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 nnoremap <buffer> <silent> <c-k> ?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 inoremap <buffer> <silent> <c-k> <esc>?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
-
-" Correcting indent immediately after template is infected
-nnoremap <buffer> <localleader>fi mm/                    <cr>0<c-v>Gk^hd`m:noh<cr>
 
 "}}}
 " Titlecase{{{
@@ -910,11 +959,40 @@ inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
 let python_highlight_all=2
 syntax on
+" syntax sync fromstart
 
-" colorscheme wombat256i
+let g:seoul256_background=233
+let g:seoul256_light_background=256
+
+let g:seoul256_srgb=1
+
+" colorscheme seoul256-light
 colorscheme seoul256
 
-set background=dark
+" colorscheme wombat256i
+" colorscheme solarized
+" colorscheme light-kiss
+
+" set background=light
+
+let s:colorscheme_toggle=0
+function! ColorschemeToggle()
+    if s:colorscheme_toggle
+        colorscheme seoul256-light
+        let s:colorscheme_toggle=0
+    else
+        colorscheme seoul256
+        let s:colorscheme_toggle=1
+    endif
+
+    " Fix highlight issue with tex files
+    if &filetype=='tex'
+        call SourceEverythingForTeX()
+    endif
+endfunction
+
+call ColorschemeToggle()
+nnoremap <buffer> <localleader>cs :call ColorschemeToggle()<cr>
 
 "}}}
 " Command line mappings{{{
@@ -936,6 +1014,7 @@ cnoremap <buffer> <c-e> <end>
 "-------------------------------------------------------------------
 
 nnoremap <buffer> Q @q
+vnoremap <buffer> Q @q
 " Redefine macro 'q'
 nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 
@@ -951,12 +1030,14 @@ nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 
 "}}}
 " Moving on the screen{{{
+
 nnoremap <buffer> H mh^
 nnoremap <buffer> J mjL
 nnoremap <buffer> K mkH
 nnoremap <buffer> L ml$
 nnoremap <buffer> gH mhg^
 nnoremap <buffer> gL mlg$
+nnoremap <buffer> ge mege
 nnoremap <buffer> <localleader>e mege
 
 vnoremap <buffer> H mh^
@@ -965,6 +1046,7 @@ vnoremap <buffer> K mkH
 vnoremap <buffer> L ml$
 vnoremap <buffer> gH mhg^
 vnoremap <buffer> gL mlg$
+vnoremap <buffer> ge mege
 vnoremap <buffer> <localleader>e mege
 
 onoremap <buffer> H ^
@@ -973,6 +1055,7 @@ onoremap <buffer> K H
 onoremap <buffer> L $
 onoremap <buffer> gH g^
 onoremap <buffer> gL g$
+onoremap <buffer> ge mege
 onoremap <buffer> <localleader>e mege
 
 " onoremap <buffer> H :<c-u>normal! mh^<cr>
@@ -998,7 +1081,7 @@ inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
 "}}}
-" Toggle VIM lines and visual lines navigation{{{
+" Toggle VIM lines and visual lines navigation, and special use of numbers{{{
 let s:navigation_toggle=0
 
 function! NavigationToggleInWrapMode()
@@ -1015,6 +1098,18 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> J mjL
         vnoremap <buffer> K mkH
         vnoremap <buffer> L ml$
+
+        inoremap <buffer> 1  <esc>A
+        inoremap <buffer> 11 1
+        inoremap <buffer> 7 <left><left>
+        inoremap <buffer> 77 7
+        inoremap <buffer> 8 <left>
+        inoremap <buffer> 88 8
+        inoremap <buffer> 9 <right>
+        inoremap <buffer> 99 9
+        inoremap <buffer> 0 <right><right>
+        inoremap <buffer> 00 0
+
         let s:navigation_toggle=0
     else
         " Using visual lines
@@ -1031,6 +1126,18 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> J mjL
         vnoremap <buffer> K mkH
         vnoremap <buffer> L mlg$
+
+        iunmap <buffer> 1
+        iunmap <buffer> 11
+        iunmap <buffer> 7
+        iunmap <buffer> 77
+        iunmap <buffer> 8
+        iunmap <buffer> 88
+        iunmap <buffer> 9
+        iunmap <buffer> 99
+        iunmap <buffer> 0
+        iunmap <buffer> 00
+
         let s:navigation_toggle=1
     endif
 endfunction
@@ -1046,7 +1153,7 @@ nnoremap <buffer> ` '
 " Mark and then go to the beginning or end of the file
 nnoremap <buffer> gg mggg
 " nnoremap <buffer> G mgG
-nnoremap <buffer> 'g `gzvzz
+nnoremap <buffer> 'g mh`gzvzz
 nnoremap <buffer> 'j `jzvzz
 
 vnoremap <buffer> gg mggg
@@ -1088,7 +1195,7 @@ vnoremap <buffer> <silent> !! yo<esc>:.!<c-r><c-r>0<cr>0
 " inoremap <buffer> <silent> <localleader>now <cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%lxa
 
 " Calendar on next paragraph with cursor on today
-nnoremap <buffer> <silent> <localleader>cal o<esc>:.!cal<cr>mm:FixWhitespace<cr>?_<cr>2xwn2xhe:noh<cr>
+nnoremap <buffer> <silent> <localleader>cal mco<esc>:.!cal<cr>:FixWhitespace<cr>?_<cr>2xwn2xhe:noh<cr>`c
 
 "}}}
 " Searching remaps{{{
@@ -1152,7 +1259,7 @@ vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 
 " Clearing highlighted matches
 nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
-" nnoremap <buffer> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>:echo<cr>`m
+" nnoremap <buffer> <esc><esc> mh/qwqkqx\$<cr>:noh<cr>:echo<cr>`h
 
 " augroup EscapeRemap
 "     autocmd!
@@ -1172,7 +1279,7 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 
 " " Clearing highlighted matches
 " nnoremap <buffer> <silent> <esc> :noh<cr>:echo<cr>
-" nnoremap <buffer> <silent> <esc><esc> mm/qwqkqx\$<cr>:noh<cr>`m
+" nnoremap <buffer> <silent> <esc><esc> mh/qwqkqx\$<cr>:noh<cr>`h
 
 "}}}
 " Some other remaps{{{
@@ -1183,7 +1290,7 @@ noremap! <c-h> <c-w>
 " noremap! <buffer> <C-BS> vbc
 
 " Indenting whole environment in tex
-" nnoremap <buffer> =ae mm=ae`m
+" nnoremap <buffer> =ae mi=ae`i
 
 " Joining lines
 nnoremap <buffer> <localleader>j J
@@ -1194,17 +1301,17 @@ nnoremap <buffer> Y y$
 nnoremap <buffer> <leader>d 0D
 
 " Creating newline
-nnoremap <buffer> <localleader>o mmo<esc>`m
-nnoremap <buffer> <localleader>O mmO<esc>`m
+nnoremap <buffer> <localleader>o moo<esc>`o
+nnoremap <buffer> <localleader>O moO<esc>`o
 
 " " Uppercasing (move half-screen up has <c-u>)
-" nnoremap <buffer> <c-u> mmgUiw`m
-" inoremap <buffer> <c-u> <esc>mmgUiw`ma
+" nnoremap <buffer> <c-u> mugUiw`u
+" inoremap <buffer> <c-u> <esc>mugUiw`ua
 " vnoremap <buffer> <c-u> gU
 
 " Number of paragraphs in a file
 function! AlignParagraphs()
-    normal! mpzR
+    normal! kmpzR
     " Only one empty line between paragraphs
     silent! g/^$\n^$/d
     " Delete 1st line if empty
@@ -1215,7 +1322,7 @@ function! AlignParagraphs()
     if getline('$') != ''
         $put _
     endif
-    normal! `p
+    normal! `pj
     :call CountParagraphs()
 endfunction
 
@@ -1229,8 +1336,8 @@ function! CountParagraphs()
     endwhile
     normal! j
     let b:virtual_last_line=line('.')
-    normal! gg
- 
+    normal! gg}
+
     let b:number_of_paragraphs=0
     while line('.') != b:virtual_last_line
         normal! }
@@ -1365,17 +1472,19 @@ vnoremap <buffer> <localleader>S :S/
 
 " Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
-highlight Folds_brackets_comments ctermbg=174 ctermfg=black
+" FoldsGroup is inside ArrayMatrixEtcGroup
 
-augroup TeXHighlighting
-    autocmd!
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%{T{E{X')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%}T}E}X')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'%\( \)*\(h\|c\)\( \)*')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F{O{L{D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\( \)*\)*F}O}L}D')
-    autocmd Filetype tex let m = matchadd("Folds_brackets_comments",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
-augroup end
+" highlight FoldsGroup ctermbg=174 ctermfg=Black
+
+" augroup TeXHighlighting
+"     autocmd!
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%{T{E{X')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%}T}E}X')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%\( \)*\(h\|c\)\( \)*')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
+" augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
@@ -1718,6 +1827,14 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
+
+    " Folds
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%{T{E{X')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%}T}E}X')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%\( \)*\(h\|c\)\( \)*')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*(\S* end)')
 augroup end
 
 highlight asterisk ctermbg=109 ctermfg=red
@@ -1885,6 +2002,7 @@ augroup VimwikiHighlighting
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'BREAKTHROUGH')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
 
+    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'OBS')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
     autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
@@ -1972,7 +2090,7 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 "}}}
 
-" KeyBinding, Abbreviations and Stuff{{{
+" KeyBindings, Abbreviations and Stuff{{{
 "-------------------------------------------------------------------
 
 " Selecting KeyBindings{{{
@@ -2048,7 +2166,7 @@ endfunction
 augroup SourceEverythingForTeX
     autocmd!
     autocmd BufNewFile,BufRead *.tex silent write
-    autocmd BufNewFile,BufRead *.tex silent VimtexCompile
+    autocmd BufReadPost *.tex silent VimtexCompile
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
@@ -2080,15 +2198,15 @@ function! SourceEverythingForTeX()
     setlocal foldmarker=F{O{L{D,F}O}L}D
 endfunction
 
-nnoremap <buffer> <silent> <localleader>te :source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>
-inoremap <buffer> <silent> <localleader>te <esc>:source $MYVIMRC<cr>:call SourceEverythingForTeX()<cr>a
+nnoremap <buffer> <silent> <localleader>te :call SourceEverythingForTeX()<cr>
+inoremap <buffer> <silent> <localleader>te <esc>:call SourceEverythingForTeX()<cr>a
 
 " Changing and setting foldmarker for tex
 nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/g<cr><cr>
 nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{O{L{D/g<cr><cr>
 
-" Editing tex in vimrc
-nnoremap <buffer> <localleader>et 2030Gzvzz
+" Editing tex stuff in vimrc
+nnoremap <buffer> <localleader>et /SourceEverythingForTeX<cr>n:noh<cr>zvzz
 
 "}}}
 " SourceEverythingForVimwiki{{{
@@ -2099,6 +2217,9 @@ augroup SourceEverythingForVimwiki
     " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spell spelllang=en_us,sv
+    autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    " autocmd BufNewFile,BufRead *.md silent TableModeEnable
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
 
@@ -2168,51 +2289,40 @@ inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>a
 
 " Opening TeXKeyBindings "te=tex
 nnoremap <buffer> <leader>hte :new ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>vte :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>te :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>hnp :new ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
-nnoremap <buffer> <leader>vnp :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 
 " Opening PythonKeyBindings
 nnoremap <buffer> <leader>hpy :new ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
-nnoremap <buffer> <leader>vpy :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
 nnoremap <buffer> <leader>py :vnew ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
 
 " Opening GoKeyBindings
 nnoremap <buffer> <leader>hgo :new ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
-nnoremap <buffer> <leader>vgo :vnew ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
 nnoremap <buffer> <leader>go :vnew ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
 
 " Opening UnmapTeXKeyBindings
 nnoremap <buffer> <leader>hut :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
-nnoremap <buffer> <leader>vut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
 " Opening tex.snippets "u=ultisnips
 nnoremap <buffer> <leader>hts :new ~/.vim/UltiSnips/tex.snippets<cr>
-nnoremap <buffer> <leader>vts :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 nnoremap <buffer> <leader>ts :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
 " Opening py.snippets
 nnoremap <buffer> <leader>hps :new ~/.vim/UltiSnips/python.snippets<cr>
-nnoremap <buffer> <leader>vps :vnew ~/.vim/UltiSnips/python.snippets<cr>
 nnoremap <buffer> <leader>ps :vnew ~/.vim/UltiSnips/python.snippets<cr>
 
 " Opening Abbreviations
 nnoremap <buffer> <leader>ha :new ~/.vim/Abbreviations<cr>
-nnoremap <buffer> <leader>va :vnew ~/.vim/Abbreviations<cr>
 nnoremap <buffer> <leader>a :vnew ~/.vim/Abbreviations<cr>
 nnoremap <buffer> <leader>hag :new ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
-nnoremap <buffer> <leader>vag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
 nnoremap <buffer> <leader>ag :vnew ~/.vim/Abbreviations/GeneralAbbreviations.vim<cr>
 nnoremap <buffer> <leader>ham :new ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
-nnoremap <buffer> <leader>vam :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 nnoremap <buffer> <leader>am :vnew ~/.vim/Abbreviations/MathAbbreviations.vim<cr>
 
 " Opening mathspell file
 nnoremap <buffer> <leader>hms :new ~/.vim/spell/math.utf-8.add<cr>
-nnoremap <buffer> <leader>vms :vnew ~/.vim/spell/math.utf-8.add<cr>
 nnoremap <buffer> <leader>ms :vnew ~/.vim/spell/math.utf-8.add<cr>
 
 " Opening .vimrc
@@ -2229,13 +2339,13 @@ nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 " Doesn't seem to work when template is enabled
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile * silent write
+    autocmd BufNewFile *.* silent write
 augroup end
 
-nnoremap <buffer> <silent> <localleader>w mm:w!<cr>`m
-nnoremap <buffer> <silent> <localleader>ww mm:w!<cr>`m
-inoremap <buffer> <silent> ;w <esc>mm:w!<cr>`ma
-inoremap <buffer> <silent> ;ww <esc>mm:w!<cr>`ma
+nnoremap <buffer> <silent> <localleader>w mw:w!<cr>`w
+nnoremap <buffer> <silent> <localleader>ww mw:w!<cr>`w
+inoremap <buffer> <silent> ;w <esc>mw:w!<cr>`wa
+inoremap <buffer> <silent> ;ww <esc>mw:w!<cr>`wa
 
 augroup ContinuouslyWriteBuf
     autocmd!

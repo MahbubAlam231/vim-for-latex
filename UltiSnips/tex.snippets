@@ -16,6 +16,11 @@ snippet title "Title" b
 \title{$1}
 
 \author{Mahbub Alam$2}
+\address{\textbf{Mahbub Alam} \\
+    Department of Mathematics,
+    Uppsala University, Sweden \\
+\url{https://sites.google.com/view/mahbubweb}}
+\email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}
 
 \date{$3}
 
@@ -43,39 +48,39 @@ endsnippet
 
 # \math__{}{{{
 
-snippet mr
+snippet mr "" w
 $\mathrm{$1}$$0
 endsnippet
 
-snippet mb
+snippet mb "" w
 $\mathbb{$1}$$0
 endsnippet
 
-snippet mbf
+snippet mbf "" w
 $\mathbf{$1}$$0
 endsnippet
 
-snippet mc
+snippet mc "" w
 $\mathcal{$1}$$0
 endsnippet
 
-snippet mrsf
+snippet mrsf "" w
 $\mathrsf{$1}$$0
 endsnippet
 
-snippet mscr
+snippet mscr "" w
 $\mathscr{$1}$$0
 endsnippet
 
-snippet ms
+snippet ms "" w
 $\mathscr{$1}$$0
 endsnippet
 
-snippet mi
+snippet mi "" w
 $\mathit{$1}$$0
 endsnippet
 
-snippet mf
+snippet mf "" w
 $\mathfrak{$1}$$0
 endsnippet
 
@@ -704,6 +709,11 @@ endsnippet
 snippet ccg
 $C_c(G)$$0
 endsnippet
+
+snippet ccg/h
+$C_c(G/H)$$0
+endsnippet
+
 
 snippet ccgh
 $C_c(G/H)$$0
@@ -9494,6 +9504,10 @@ snippet lrm "left-right math modulus" w
 {\left\\|${VISUAL}$1\right\\|}$0
 endsnippet
 
+snippet no "surround with norm" w
+\\norm{${VISUAL}}$0
+endsnippet
+
 snippet norm "surround with norm" w
 \\norm{${VISUAL}}$0
 endsnippet
@@ -9526,11 +9540,11 @@ snippet inv "" w
 ^{-1}
 endsnippet
 
-snippet -n
+snippet -n "" w
 ^{-n}
 endsnippet
 
-snippet -m
+snippet -m "" w
 ^{-m}
 endsnippet
 
@@ -9634,6 +9648,15 @@ endsnippet
 snippet // "Fraction" iA
 \\frac\{${VISUAL}$1\}{$2}$0
 endsnippet
+
+snippet nfrac "Nested fraction with sfrac" w
+\\scalebox{1.1}{\\raisebox{.5em}{$\\sfrac{$1}{$2}$}\\Big/\\raisebox{-.5em}{$\\sfrac{$3}{$4}$}$0}
+endsnippet
+
+snippet sfrac "Scaled sfrac" w
+\scalebox{1.3}{$\sfrac{$1}{$2}$}$0
+endsnippet
+
 
 #}}}
 
@@ -10347,7 +10370,7 @@ snippet itm "Writing \item" b
 \\item $0
 endsnippet
 
-snippet ita "Writing \item<+-| alert@+>" b
+snippet ita "Writing \item<+-|alert@+>" b
 \\item<+-|alert@+> $0
 endsnippet
 
@@ -10447,13 +10470,66 @@ snippet tab "Tabular with 2 columns" w
 endsnippet
 
 
+snippet renum "Reverse Enumeration" b
+% Enumerate
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{etaremune}[label=\arabic*)]
+	\item ${1:${VISUAL}}
+\end{etaremune}$0
+endsnippet
+
+snippet renuma "Reverse Enumeration" b
+% Enumerate
+% \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{etaremune}[label=(\alph*)]
+	\item ${1:${VISUAL}}
+\end{etaremune}$0
+endsnippet
+
+snippet renumr "Reverse Enumeration" b
+% Enumerate
+% \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+\begin{etaremune}[label=(\roman*)]
+	\item ${1:${VISUAL}}
+\end{etaremune}$0
+endsnippet
+
 #}}}
 # Beamer frames and bibliography{{{
 
+snippet secf "Section in beamer" b
+% Section
+\section{$1}\label{sec:$2}% F{O{L{D
+${3:${VISUAL}}
+
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end)% F}O}L}D$0
+endsnippet
+
+snippet fsec "Section in beamer" b
+% Section
+\section{$1}\label{sec:$2}
+${3:${VISUAL}}
+
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end)$0
+endsnippet
+
+snippet secfra "Section in beamer with frame" b
+% Section
+\section{$1}\label{sec:$2}% F{O{L{D
+% Frame
+\begin{frame}{${1:Title}\}% F{O{L{D
+	$3
+\end{frame}% F}O}L}D
+
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end)% F}O}L}D$0
+endsnippet
+
 snippet fra "create frame"
 % Frame
-\begin{frame}{$1}% F{O{L{D
-	${2:${VISUAL}}
+\begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D
+	$2
 \end{frame}% F}O}L}D
 endsnippet
 
@@ -10461,14 +10537,24 @@ snippet infra "insert frame/break frame into two here"
 
 \end{frame}% F}O}L}D
 % Frame
-\begin{frame}{$1}% F{O{L{D$2
+\begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D$2
 endsnippet
 
 snippet inf "insert frame/break frame into two here"
 
 \end{frame}% F}O}L}D
 % Frame
-\begin{frame}{$1}% F{O{L{D$2
+\begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D$2
+endsnippet
+
+snippet infi "break frame and itemize into two here"
+	\end{itemize}
+
+\end{frame}% F}O}L}D
+% Frame
+\begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D$2
+	% Itemize
+	\begin{itemize}
 endsnippet
 
 snippet afb "allowframebreaks" w
@@ -10499,7 +10585,7 @@ endsnippet
 # Other Environments (SES, Commutative Diagram etc){{{
 #-------------------------------------------------------------------
 
-snippet comd "Making commutative diagram" b
+snippet comdx "Making commutative diagram with xymatrix" b
 % CommutativeDiagram
 \begin{center}
 	\[
@@ -10512,19 +10598,19 @@ snippet comd "Making commutative diagram" b
 \end{center}
 endsnippet
 
-snippet comdt "Making commutative diagram with tikz" b
+snippet comd "Making commutative diagram with tikz" b
 % CommutativeDiagram
 \begin{center}
 	\begin{tikzcd}
-			% \arrow[dr, dotted, "{(x,y)}" description]
-			T
-			\arrow[drr, bend left, "x"]
-			\arrow[ddr, bend right, "y"]
-			\arrow[dr, dotted, "{(x,y)}" description] & & \\
-			                                          & X \times_Z Y \arrow[r, Leftrightarrow, "p"] \arrow[d, "q"]
-			                                          & X \arrow[d, "f"] \\
-			                                          & Y \arrow[r, "g"]
-			                                          & Z
+			% \arrow[dr/from=uldr/to=i-j, dotted/two heads, "{(x,y)}" description]
+			% T
+			% \arrow[drr, bend left, "x"]
+			% \arrow[ddr, bend right, "y"']
+			% \arrow[dr, dotted, "{(x,y)}" description] & & \\\\
+			%                                           & X \times_Z Y \arrow[r, Leftrightarrow, "p"] \arrow[d, "q"]
+			%                                           & X \arrow[d, "f"] \\\\
+			%                                           & Y \arrow[r, "g"] & Z
+            $1
 	\end{tikzcd}$0
 \end{center}
 endsnippet
@@ -10660,8 +10746,12 @@ snippet abx "boxes around environments with align" w
 endsnippet
 
 #}}}
-# Arrows, Limits and Function{{{
+# Tilde, Arrows, Limits and Function{{{
 #-------------------------------------------------------------------
+
+snippet wt "Create widetilde" w
+\\widetilde{${1:${VISUAL}}\}$0
+endsnippet
 
 snippet im "implies symbol outside math-mode"
 $\implies$$0
@@ -10760,6 +10850,14 @@ endsnippet
 # `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 # endsnippet
 
+snippet dxy "Diophantine equation" w
+\norm{\bm{x}}_\infty^m \leq \psi(\norm{\bm{y}}_\infty^n)$0
+endsnippet
+
+snippet dpq "Diophantine equation" w
+\norm{\vartheta\bm{q} + \bm{p}}_{\infty}^m \leq \psi(\norm{\bm{q}}_{\infty}^n)$0
+endsnippet
+
 snippet href "Making url link with hyperref" w
 \href{$1}{${2:${VISUAL}}\}$0
 endsnippet
@@ -10802,31 +10900,56 @@ snippet text "Text" w
 \text{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet jjt "Text" w
-\text{${1:${VISUAL}}\}$0
+snippet qu "qquad space" w
+\\qquad$0
 endsnippet
 
-snippet jjte "Text" w
+
+snippet jt "Just text" w
 \text{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet jte "Just text" w
+\text{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet ste "Space before text" w
 \ \text{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet te "Text" w
+snippet tes "Text space after" w
+\text{${1:${VISUAL}}\} ${2:\\ }$0
+endsnippet
+
+snippet te "Text with spaces before and after" w
 \ \text{${1:${VISUAL}}\} ${2:\\ }$0
 endsnippet
 
-snippet jqte "Just text with qquad spaces" w
+snippet sts "Text with spaces before and after" w
+\ \text{${1:${VISUAL}}\} ${2:\\ }$0
+endsnippet
+
+snippet qte "qquad space - text" w
 \qquad \text{${1:${VISUAL}}\}$0
 endsnippet
 
-snippet qte "Text with qquad spaces" w
+snippet qtes "qquad space - text - space" w
 \qquad \text{${1:${VISUAL}}\} \ $0
 endsnippet
 
+snippet qts "qquad space - text - space" w
+\qquad \text{${1:${VISUAL}}\} \ $0
+endsnippet
+
+# snippet qte "qquad space - text" w
+# \qquad \text{${1:${VISUAL}}\}$0
+# endsnippet
+
 snippet qtq "Text with qquad spaces both sides" w
+\qquad \text{${1:${VISUAL}}\} \qquad $0
+endsnippet
+
+snippet qteq "Text with qquad spaces both sides" w
 \qquad \text{${1:${VISUAL}}\} \qquad $0
 endsnippet
 
@@ -11562,7 +11685,7 @@ endsnippet
 # Math caliGraphy English Alphabets{{{
 
 
-snippet ga "" w
+snippet gaa "" w
 $\mathcal{a}$$0
 endsnippet
 
@@ -11770,6 +11893,220 @@ endsnippet
 
 snippet gZ "" w
 $\mathcal{Z}$$0
+endsnippet
+
+#}}}
+# Tilde over English Alphabets{{{
+
+
+snippet wa "" w
+$\widetilde{a}$$0
+endsnippet
+
+snippet wb "" w
+$\widetilde{b}$$0
+endsnippet
+
+snippet wc "" w
+$\widetilde{c}$$0
+endsnippet
+
+snippet wd "" w
+$\widetilde{d}$$0
+endsnippet
+
+snippet we "" w
+$\widetilde{e}$$0
+endsnippet
+
+snippet wf "" w
+$\widetilde{f}$$0
+endsnippet
+
+snippet wg "" w
+$\widetilde{g}$$0
+endsnippet
+
+snippet wh "" w
+$\widetilde{h}$$0
+endsnippet
+
+snippet wi "" w
+$\widetilde{i}$$0
+endsnippet
+
+snippet wj "" w
+$\widetilde{j}$$0
+endsnippet
+
+snippet wk "" w
+$\widetilde{k}$$0
+endsnippet
+
+snippet wl "" w
+$\widetilde{l}$$0
+endsnippet
+
+snippet wm "" w
+$\widetilde{m}$$0
+endsnippet
+
+snippet wn "" w
+$\widetilde{n}$$0
+endsnippet
+
+snippet wo "" w
+$\widetilde{o}$$0
+endsnippet
+
+snippet wp "" w
+$\widetilde{p}$$0
+endsnippet
+
+snippet wq "" w
+$\widetilde{q}$$0
+endsnippet
+
+snippet wr "" w
+$\widetilde{r}$$0
+endsnippet
+
+snippet ws "" w
+$\widetilde{s}$$0
+endsnippet
+
+snippet wtt "" w
+$\widetilde{t}$$0
+endsnippet
+
+snippet wu "" w
+$\widetilde{u}$$0
+endsnippet
+
+snippet wv "" w
+$\widetilde{v}$$0
+endsnippet
+
+snippet ww "" w
+$\widetilde{w}$$0
+endsnippet
+
+snippet wx "" w
+$\widetilde{x}$$0
+endsnippet
+
+snippet wy "" w
+$\widetilde{y}$$0
+endsnippet
+
+snippet wz "" w
+$\widetilde{z}$$0
+endsnippet
+
+
+
+snippet wA "" w
+$\widetilde{A}$$0
+endsnippet
+
+snippet wB "" w
+$\widetilde{B}$$0
+endsnippet
+
+snippet wC "" w
+$\widetilde{C}$$0
+endsnippet
+
+snippet wD "" w
+$\widetilde{D}$$0
+endsnippet
+
+snippet wE "" w
+$\widetilde{E}$$0
+endsnippet
+
+snippet wF "" w
+$\widetilde{F}$$0
+endsnippet
+
+snippet wG "" w
+$\widetilde{G}$$0
+endsnippet
+
+snippet wH "" w
+$\widetilde{H}$$0
+endsnippet
+
+snippet wI "" w
+$\widetilde{I}$$0
+endsnippet
+
+snippet wJ "" w
+$\widetilde{J}$$0
+endsnippet
+
+snippet wK "" w
+$\widetilde{K}$$0
+endsnippet
+
+snippet wL "" w
+$\widetilde{L}$$0
+endsnippet
+
+snippet wM "" w
+$\widetilde{M}$$0
+endsnippet
+
+snippet wN "" w
+$\widetilde{N}$$0
+endsnippet
+
+snippet wO "" w
+$\widetilde{O}$$0
+endsnippet
+
+snippet wP "" w
+$\widetilde{P}$$0
+endsnippet
+
+snippet wQ "" w
+$\widetilde{Q}$$0
+endsnippet
+
+snippet wR "" w
+$\widetilde{R}$$0
+endsnippet
+
+snippet wS "" w
+$\widetilde{S}$$0
+endsnippet
+
+snippet wT "" w
+$\widetilde{T}$$0
+endsnippet
+
+snippet wU "" w
+$\widetilde{U}$$0
+endsnippet
+
+snippet wV "" w
+$\widetilde{V}$$0
+endsnippet
+
+snippet wW "" w
+$\widetilde{W}$$0
+endsnippet
+
+snippet wX "" w
+$\widetilde{X}$$0
+endsnippet
+
+snippet wY "" w
+$\widetilde{Y}$$0
+endsnippet
+
+snippet wZ "" w
+$\widetilde{Z}$$0
 endsnippet
 
 #}}}
