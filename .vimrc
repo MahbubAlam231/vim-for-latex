@@ -183,6 +183,7 @@ nnoremap <buffer> <S-RIGHT> 5<c-w>>
 set number relativenumber
 
 nnoremap <buffer> <silent> <localleader>nb :call NumberToggle()<cr>
+vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 
 "}}}
 " Pandoc filetype settings{{{
@@ -466,6 +467,8 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
             \'template_default': 'default',
             \'template_ext': '.tpl'}]
 " let g:vimwiki_folding = 'expr'
+
+" TODO: figure out html from markdown with vimwiki.
 
 let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
 let g:zettel_format = "%title-%d-%m-%y"
@@ -928,19 +931,29 @@ nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnip
 " Braces and stuff{{{
 "-------------------------------------------------------------------
 
-inoremap ( ()<esc>i
-inoremap (( (
-inoremap { {}<esc>i
-inoremap {{ {
-inoremap [ []<esc>i
-inoremap [[ [
+inoremap <buffer> ( ()<esc>i
+inoremap <buffer> (( (
+onoremap <buffer> p i(
+" In the same line delete inside any parenthesis
+onoremap <buffer> in( :<c-u>normal! f(vi(<cr>
+onoremap <buffer> inp :<c-u>normal! f(vi(<cr>
+onoremap <buffer> il( :<c-u>normal! F)vi(<cr>
+onoremap <buffer> ilp :<c-u>normal! F)vi(<cr>
+onoremap <buffer> iN( :<c-u>normal! F)vi(<cr>
+onoremap <buffer> iNp :<c-u>normal! F)vi(<cr>
 
-inoremap \| \|\|<esc>i
-inoremap \|\| \|
+inoremap <buffer> { {}<esc>i
+inoremap <buffer> {{ {
 
-inoremap '' ''<esc>i
-inoremap "" ""<esc>i
-inoremap `` ``<esc>i
+inoremap <buffer> [ []<esc>i
+inoremap <buffer> [[ [
+
+inoremap <buffer> \| \|\|<esc>i
+inoremap <buffer> \|\| \|
+
+inoremap <buffer> '' ''<esc>i
+inoremap <buffer> "" ""<esc>i
+inoremap <buffer> `` ``<esc>i
 
 augroup MarkdownVimwiki
     autocmd!
@@ -967,22 +980,21 @@ let g:seoul256_light_background=256
 let g:seoul256_srgb=1
 
 " colorscheme seoul256-light
-colorscheme seoul256
-
+" colorscheme seoul256
 " colorscheme wombat256i
 " colorscheme solarized
 " colorscheme light-kiss
 
 " set background=light
 
-let s:colorscheme_toggle=0
+let g:colorscheme_toggle=1
 function! ColorschemeToggle()
-    if s:colorscheme_toggle
+    if g:colorscheme_toggle
         colorscheme seoul256-light
-        let s:colorscheme_toggle=0
+        let g:colorscheme_toggle=0
     else
         colorscheme seoul256
-        let s:colorscheme_toggle=1
+        let g:colorscheme_toggle=1
     endif
 
     " Fix highlight issue with tex files
@@ -1084,6 +1096,17 @@ inoremap <buffer> <leader>zb <esc>zba
 " Toggle VIM lines and visual lines navigation, and special use of numbers{{{
 let s:navigation_toggle=0
 
+" inoremap <buffer> 1  <esc>A
+" inoremap <buffer> 11 1
+" inoremap <buffer> 7 <left><left>
+" inoremap <buffer> 77 7
+" inoremap <buffer> 8 <left>
+" inoremap <buffer> 88 8
+" inoremap <buffer> 9 <right>
+" inoremap <buffer> 99 9
+" inoremap <buffer> 0 <right><right>
+" inoremap <buffer> 00 0
+
 function! NavigationToggleInWrapMode()
     if s:navigation_toggle
         " Using VIM lines
@@ -1099,16 +1122,16 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> K mkH
         vnoremap <buffer> L ml$
 
-        inoremap <buffer> 1  <esc>A
-        inoremap <buffer> 11 1
-        inoremap <buffer> 7 <left><left>
-        inoremap <buffer> 77 7
-        inoremap <buffer> 8 <left>
-        inoremap <buffer> 88 8
-        inoremap <buffer> 9 <right>
-        inoremap <buffer> 99 9
-        inoremap <buffer> 0 <right><right>
-        inoremap <buffer> 00 0
+        " inoremap <buffer> 1  <esc>A
+        " inoremap <buffer> 11 1
+        " inoremap <buffer> 7 <left><left>
+        " inoremap <buffer> 77 7
+        " inoremap <buffer> 8 <left>
+        " inoremap <buffer> 88 8
+        " inoremap <buffer> 9 <right>
+        " inoremap <buffer> 99 9
+        " inoremap <buffer> 0 <right><right>
+        " inoremap <buffer> 00 0
 
         let s:navigation_toggle=0
     else
@@ -1127,16 +1150,16 @@ function! NavigationToggleInWrapMode()
         vnoremap <buffer> K mkH
         vnoremap <buffer> L mlg$
 
-        iunmap <buffer> 1
-        iunmap <buffer> 11
-        iunmap <buffer> 7
-        iunmap <buffer> 77
-        iunmap <buffer> 8
-        iunmap <buffer> 88
-        iunmap <buffer> 9
-        iunmap <buffer> 99
-        iunmap <buffer> 0
-        iunmap <buffer> 00
+        " iunmap <buffer> 1
+        " iunmap <buffer> 11
+        " iunmap <buffer> 7
+        " iunmap <buffer> 77
+        " iunmap <buffer> 8
+        " iunmap <buffer> 88
+        " iunmap <buffer> 9
+        " iunmap <buffer> 99
+        " iunmap <buffer> 0
+        " iunmap <buffer> 00
 
         let s:navigation_toggle=1
     endif
@@ -1311,7 +1334,10 @@ nnoremap <buffer> <localleader>O moO<esc>`o
 
 " Number of paragraphs in a file
 function! AlignParagraphs()
-    normal! kmpzR
+    let save_cursor = getcurpos()
+    normal! zR
+    " Put an empty line between paragraphs
+    silent! g/^}\n^..*$/put _
     " Only one empty line between paragraphs
     silent! g/^$\n^$/d
     " Delete 1st line if empty
@@ -1322,15 +1348,16 @@ function! AlignParagraphs()
     if getline('$') != ''
         $put _
     endif
-    normal! `pj
+    :call setpos('.', save_cursor)
     :call CountParagraphs()
 endfunction
 
-nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
-vnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>
+nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>zv
+vnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>zv
 
 function! CountParagraphs()
-    normal! mozRG
+    let save_cursor = getcurpos()
+    normal! zRG
     while getline('.') == ''
         normal! k
     endwhile
@@ -1345,11 +1372,12 @@ function! CountParagraphs()
     endwhile
 
     echom "Number of paragraphs:" b:number_of_paragraphs
-    normal! `ozMzv
+    :call setpos('.', save_cursor)
+    normal! zMzv
 endfunction
 
-nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
-vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>
+nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
+vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
 
 "}}}
 " Spelling Check{{{
@@ -1367,7 +1395,7 @@ function! LangToggle()
     if &spelllang=='sv'
         " Use english_US
         setlocal spell spelllang=en_us
-        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+        setlocal spellfile=~/.vim/spell/math.utf-8.add
     elseif &spelllang=='en_us'
         " Use svenska
         setlocal spell spelllang=sv
@@ -1387,7 +1415,7 @@ function! SpellLang(lang)
     "en
     if l:lang == "en"
         setlocal spell spelllang=en_us
-        setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+        setlocal spellfile=~/.vim/spell/math.utf-8.add
 
         "sv
     elseif l:lang == "sv"
@@ -1416,7 +1444,7 @@ nnoremap <buffer> <localleader>dl :call SpellLang("dl")<cr>
 augroup Spelling
     autocmd!
     autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/math.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
@@ -1465,6 +1493,113 @@ nnoremap <buffer> <localleader>s :%s/
 vnoremap <buffer> <localleader>s :s/
 nnoremap <buffer> <localleader>S :%S/
 vnoremap <buffer> <localleader>S :S/
+
+"}}}
+" PythonHighlighting{{{
+
+highlight PythonGroup ctermfg=3
+
+augroup PythonHighlighting
+    autocmd!
+    autocmd Filetype python let m = matchadd("PythonGroup",'{.\{-}}')
+augroup end
+
+"}}}
+" VimwikiHighlighting{{{
+
+highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
+highlight VimwikiBoldGreenGroup ctermfg=46 ctermbg=Black
+
+augroup VimwikiHighlighting
+    autocmd!
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'TIME')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'BREAKTHROUGH')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'TODO')
+
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'OBS')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQ')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQX')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'JX')
+    " autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
+augroup end
+
+"}}}
+" TerminalHighlighting{{{
+
+" hi Terminal ctermbg=238 ctermfg=188 guibg=lightgrey guifg=blue
+
+"}}}
+" Trailing White Space{{{
+"-------------------------------------------------------------------
+
+"autocmd BufWritePre *.* %s/\s\+$//e
+inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wzva
+nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`wzv
+nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
+
+"}}}
+" Word Highlight{{{
+"
+" This mini-plugin provides a few mappings for highlighting words temporarily.
+"
+" Sometimes you're looking at a hairy piece of code and would like a certain
+" word or two to stand out temporarily.  You can search for it, but that only
+" gives you one color of highlighting.  Now you can use <leader>N where N is
+" a number from 1-6 to highlight the current word in a specific color.
+
+function! HiInterestingWord(n) "{{{
+    " Save our location.
+    normal! mz
+
+    " Yank the current word into the z register.
+    normal! "zyiw
+
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
+
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
+
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction "}}}
+" Mappings{{{
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
+
+nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
+nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
+nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
+nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
+nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
+nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
+
+"}}}
+" Default Highlights{{{
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
+
+"}}}
 
 "}}}
 " TeXHighlighting{{{
@@ -1710,6 +1845,8 @@ highlight TheoremGroup ctermbg=139 ctermfg=Black
 augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{theorem}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{theorem}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{thmboxed}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{thmboxed}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{lemma}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{lemma}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{proposition}')
@@ -1834,6 +1971,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%\( \)*\(h\|c\)\( \)*')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*(\S* end)')
 augroup end
 
@@ -1981,112 +2119,6 @@ augroup end
 "}}}
 
 "}}}
-" PythonHighlighting{{{
-
-highlight PythonGroup ctermfg=3
-
-augroup PythonHighlighting
-    autocmd!
-    autocmd Filetype python let m = matchadd("PythonGroup",'{.\{-}}')
-augroup end
-
-"}}}
-" VimwikiHighlighting{{{
-
-highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
-highlight VimwikiBoldGreenGroup ctermfg=46 ctermbg=Black
-
-augroup VimwikiHighlighting
-    autocmd!
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'TIME')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'BREAKTHROUGH')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
-
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'OBS')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQ')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQX')
-    autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'JX')
-    " autocmd Filetype vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
-augroup end
-
-"}}}
-" TerminalHighlighting{{{
-
-" hi Terminal ctermbg=238 ctermfg=188 guibg=lightgrey guifg=blue
-
-"}}}
-" Trailing White Space{{{
-"-------------------------------------------------------------------
-
-"autocmd BufWritePre *.* %s/\s\+$//e
-inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wzva
-nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`wzv
-nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
-
-"}}}
-" Word Highlight{{{
-"
-" This mini-plugin provides a few mappings for highlighting words temporarily.
-"
-" Sometimes you're looking at a hairy piece of code and would like a certain
-" word or two to stand out temporarily.  You can search for it, but that only
-" gives you one color of highlighting.  Now you can use <leader>N where N is
-" a number from 1-6 to highlight the current word in a specific color.
-
-function! HiInterestingWord(n) "{{{
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
-endfunction "}}}
-" Mappings{{{
-
-nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-nnoremap <buffer> <leader>6 :call HiInterestingWord(6)<cr>
-
-nnoremap <silent> <localleader>1 :hi clear InterestingWord1<cr>
-nnoremap <silent> <localleader>2 :hi clear InterestingWord2<cr>
-nnoremap <silent> <localleader>3 :hi clear InterestingWord3<cr>
-nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
-nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
-nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
-
-"}}}
-" Default Highlights{{{
-
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-
-"}}}
-
-"}}}
 
 "}}}
 
@@ -2145,7 +2177,11 @@ function! Abbreviations(code)
 
     "gen
     if l:code == "gen"
-        source ~/.vim/Abbreviations/GeneralAbbreviations.vim
+        if &spelllang=='en_us'
+            source ~/.vim/Abbreviations/GeneralAbbreviations.vim
+        else
+            echo 'spelllang not en_us. Finishing.'
+        endif
 
         "math
     elseif l:code == "math"
@@ -2182,6 +2218,7 @@ augroup SourceEverythingForTeX
     " Compiling tex
     autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
     autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
+    autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
     autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>a
     autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>
     " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
@@ -2216,7 +2253,7 @@ augroup SourceEverythingForVimwiki
     " autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
     " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/math.utf-8.add
+    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spell spelllang=en_us,sv
     autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
     " autocmd BufNewFile,BufRead *.md silent TableModeEnable

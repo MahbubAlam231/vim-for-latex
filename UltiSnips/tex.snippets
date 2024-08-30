@@ -28,6 +28,16 @@ snippet title "Title" b
 $0
 endsnippet
 
+snippet auth "Add author name" b
+\author{${1:Mahbub Alam}}
+\address{\textbf{$1} \\
+    ${2:Department of Mathematics,
+    Uppsala University, Sweden \\
+\url{https://sites.google.com/view/mahbubweb}
+\email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}}
+$0
+endsnippet
+
 
 
 snippet abs "Abstract" b
@@ -37,6 +47,12 @@ snippet abs "Abstract" b
 \end{abstract}% F}O}L}D
 $0
 endsnippet
+
+snippet toc "Table of contents" b
+% \setcounter{tocdepth}{1}
+\tableofcontents
+endsnippet
+
 
 #}}}
 
@@ -91,348 +107,348 @@ endsnippet
 #}}}
 # Real numbers{{{
 
-snippet sr
+snippet sr "" w
 $\mathbb{R}$$0
 endsnippet
 
-snippet rge
+snippet rge "" w
 $\mathbb{R}_{\geq 0}$$0
 endsnippet
 
-snippet rle
+snippet rle "" w
 $\mathbb{R}_{\leq 0}$$0
 endsnippet
 
-snippet r>
+snippet r> "" w
 $\mathbb{R}_{>0}$$0
 endsnippet
 
-snippet r<
+snippet r< "" w
 $\mathbb{R}_{<0}$$0
 endsnippet
 
-snippet rr
+snippet rr "" w
 $\mathbb{R}^2$$0
 endsnippet
 
-snippet rn
+snippet rn "" w
 $\mathbb{R}^{n}$$0
 endsnippet
 
-snippet rm
+snippet rm "" w
 $\mathbb{R}^{m}$$0
 endsnippet
 
-snippet rd
+snippet rd "" w
 $\mathbb{R}^{d}$$0
 endsnippet
 
-snippet rk
+snippet rk "" w
 $\mathbb{R}^{k}$$0
 endsnippet
 
-snippet rnk
+snippet rnk "" w
 $\mathbb{R}^{nk}$$0
 endsnippet
 
-snippet rnl
+snippet rnl "" w
 $\mathbb{R}^{n\ell}$$0
 endsnippet
 
-snippet rmn
+snippet rmn "" w
 $\mathbb{R}^{mn}$$0
 endsnippet
 
-snippet rnm
+snippet rnm "" w
 $\mathbb{R}^{nm}$$0
 endsnippet
 
-snippet rnn
+snippet rnn "" w
 $\mathbb{R}^{n^2}$$0
 endsnippet
 
-snippet rx
+snippet rx "" w
 $\mathbb{R}^{\times}$$0
 endsnippet
 
-snippet r.
+snippet r. "" w
 $\mathbb{R}^{$1}$$0
 endsnippet
 
 #}}}
 # Natural numbers{{{
 
-snippet sn
+snippet sn "" w
 $\mathbb{N}$$0
 endsnippet
 
-snippet nn
+snippet nn "" w
 $\mathbb{N}^2$$0
 endsnippet
 
-snippet nm
+snippet nm "" w
 $\mathbb{N}^{m}$$0
 endsnippet
 
-snippet nd
+snippet nd "" w
 $\mathbb{N}^{d}$$0
 endsnippet
 
-snippet nk
+snippet nk "" w
 $\mathbb{N}^{k}$$0
 endsnippet
 
-snippet n.
+snippet n. "" w
 $\mathbb{N}^{$1}$$0
 endsnippet
 
 #}}}
 # Integers{{{
 
-snippet sz
+snippet sz "" w
 $\mathbb{Z}$$0
 endsnippet
 
-snippet zge
+snippet zge "" w
 $\mathbb{Z}_{\geq 0}$$0
 endsnippet
 
-snippet zle
+snippet zle "" w
 $\mathbb{Z}_{\leq 0}$$0
 endsnippet
 
-snippet z>
+snippet z> "" w
 $\mathbb{Z}_{>0}$$0
 endsnippet
 
-snippet z<
+snippet z< "" w
 $\mathbb{Z}_{<0}$$0
 endsnippet
 
-snippet z;=
+snippet z;= "" w
 $\mathbb{Z}_{\neq 0}$$0
 endsnippet
 
-snippet pz
+snippet pz "" w
 $\mathbb{Z}_+$$0
 endsnippet
 
-snippet mz
+snippet mz "" w
 $\mathbb{Z}_-$$0
 endsnippet
 
-snippet zz
+snippet zz "" w
 $\mathbb{Z}^2$$0
 endsnippet
 
-snippet zn
+snippet zn "" w
 $\mathbb{Z}^{n}$$0
 endsnippet
 
-snippet zm
+snippet zm "" w
 $\mathbb{Z}^{m}$$0
 endsnippet
 
-snippet zd
+snippet zd "" w
 $\mathbb{Z}^{d}$$0
 endsnippet
 
-snippet zk
+snippet zk "" w
 $\mathbb{Z}^{k}$$0
 endsnippet
 
-snippet zx
+snippet zx "" w
 $\mathbb{Z}^{\times}$$0
 endsnippet
 
-snippet z.
+snippet z. "" w
 $\mathbb{Z}^{$1}$$0
 endsnippet
 
 #}}}
 # Rationals{{{
 
-snippet sq
+snippet sq "" w
 $\mathbb{Q}$$0
 endsnippet
 
-snippet qge
+snippet qge "" w
 $\mathbb{Q}_{\geq 0}$$0
 endsnippet
 
-snippet qle
+snippet qle "" w
 $\mathbb{Q}_{\leq 0}$$0
 endsnippet
 
-snippet >
+snippet > "" w
 $\mathbb{Q}_{>0}$$0
 endsnippet
 
-snippet <
+snippet < "" w
 $\mathbb{Q}_{<0}$$0
 endsnippet
 
-snippet qq
+snippet qq "" w
 $\mathbb{Q}^2$$0
 endsnippet
 
-snippet qn
+snippet qn "" w
 $\mathbb{Q}^{n}$$0
 endsnippet
 
-snippet qm
+snippet qm "" w
 $\mathbb{Q}^{m}$$0
 endsnippet
 
-snippet qd
+snippet qd "" w
 $\mathbb{Q}^{d}$$0
 endsnippet
 
-snippet qk
+snippet qk "" w
 $\mathbb{Q}^{k}$$0
 endsnippet
 
-snippet qx
+snippet qx "" w
 $\mathbb{Q}^{\times}$$0
 endsnippet
 
-snippet q.
+snippet q. "" w
 $\mathbb{Q}^{$1}$$0
 endsnippet
 
 #}}}
 # Complex numbers{{{
 
-snippet sc
+snippet sc "" w
 $\mathbb{C}$$0
 endsnippet
 
-snippet cc
+snippet cc "" w
 $\mathbb{C}^2$$0
 endsnippet
 
-snippet cn
+snippet cn "" w
 $\mathbb{C}^{n}$$0
 endsnippet
 
-snippet cm
+snippet cm "" w
 $\mathbb{C}^{m}$$0
 endsnippet
 
-snippet cd
+snippet cd "" w
 $\mathbb{C}^{d}$$0
 endsnippet
 
-snippet ck
+snippet ck "" w
 $\mathbb{C}^{k}$$0
 endsnippet
 
-snippet cx
+snippet cx "" w
 $\mathbb{C}^{\times}$$0
 endsnippet
 
-snippet c.
+snippet c. "" w
 $\mathbb{C}^{$1}$$0
 endsnippet
 
 #}}}
 # p-adic numbers{{{
 
-snippet qp
+snippet qp "" w
 $\mathbb{Q}_p$$0
 endsnippet
 
-snippet qpp
+snippet qpp "" w
 $\mathbb{Q}_p^2$$0
 endsnippet
 
-snippet qpn
+snippet qpn "" w
 $\mathbb{Q}_p^{n}$$0
 endsnippet
 
-snippet qpm
+snippet qpm "" w
 $\mathbb{Q}_p^{m}$$0
 endsnippet
 
-snippet qpd
+snippet qpd "" w
 $\mathbb{Q}_p^{d}$$0
 endsnippet
 
-snippet qpk
+snippet qpk "" w
 $\mathbb{Q}_p^{k}$$0
 endsnippet
 
-snippet qpx
+snippet qpx "" w
 $\mathbb{Q}_p^{\times}$$0
 endsnippet
 
-snippet qp.
+snippet qp. "" w
 $\mathbb{Q}_p^{$1}$$0
 endsnippet
 
 #}}}
 # p-adic Integers{{{
 
-snippet zp
+snippet zp "" w
 $\mathbb{Z}_p$$0
 endsnippet
 
-snippet zpp
+snippet zpp "" w
 $\mathbb{Z}_p^2$$0
 endsnippet
 
-snippet zpn
+snippet zpn "" w
 $\mathbb{Z}_p^{n}$$0
 endsnippet
 
-snippet zpm
+snippet zpm "" w
 $\mathbb{Z}_p^{m}$$0
 endsnippet
 
-snippet zpd
+snippet zpd "" w
 $\mathbb{Z}_p^{d}$$0
 endsnippet
 
-snippet zpk
+snippet zpk "" w
 $\mathbb{Z}_p^{k}$$0
 endsnippet
 
-snippet zpx
+snippet zpx "" w
 $\mathbb{Z}_p^{\times}$$0
 endsnippet
 
-snippet zp.
+snippet zp. "" w
 $\mathbb{Z}_p^{$1}$$0
 endsnippet
 
 #}}}
 # Other fields{{{
 
-snippet sk
+snippet sk "" w
 $\mathbb{K}$$0
 endsnippet
 
-snippet kk
+snippet kk "" w
 $\mathbb{K}^2$$0
 endsnippet
 
-snippet kn
+snippet kn "" w
 $\mathbb{K}^{n}$$0
 endsnippet
 
-snippet km
+snippet km "" w
 $\mathbb{K}^{m}$$0
 endsnippet
 
-snippet kd
+snippet kd "" w
 $\mathbb{K}^{d}$$0
 endsnippet
 
-snippet kx
+snippet kx "" w
 $\mathbb{K}^{\times}$$0
 endsnippet
 
-snippet k.
+snippet k. "" w
 $\mathbb{K}^{$1}$$0
 endsnippet
 
@@ -444,338 +460,398 @@ endsnippet
 
 
 
-snippet ks
+snippet fi "" w
+$F_\infty$$0
+endsnippet
+
+snippet fii "" w
+$F_\infty^2$$0
+endsnippet
+
+snippet fin "" w
+$F_\infty^{n}$$0
+endsnippet
+
+snippet fim "" w
+$F_\infty^{m}$$0
+endsnippet
+
+snippet fid "" w
+$F_\infty^{d}$$0
+endsnippet
+
+snippet fik "" w
+$F_\infty^{k}$$0
+endsnippet
+
+snippet fi. "" w
+$F_\infty^{$1}$$0
+endsnippet
+
+
+
+snippet fs "" w
+$F_S$$0
+endsnippet
+
+snippet fss "" w
+$F_S^2$$0
+endsnippet
+
+snippet fsn "" w
+$F_S^{n}$$0
+endsnippet
+
+snippet fsm "" w
+$F_S^{m}$$0
+endsnippet
+
+snippet fsd "" w
+$F_S^{d}$$0
+endsnippet
+
+snippet fsk "" w
+$F_S^{k}$$0
+endsnippet
+
+snippet fs. "" w
+$F_S^{$1}$$0
+endsnippet
+
+
+
+snippet ks "" w
 $K_S$$0
 endsnippet
 
-snippet kss
+snippet kss "" w
 $K_S^2$$0
 endsnippet
 
-snippet ksn
+snippet ksn "" w
 $K_S^{n}$$0
 endsnippet
 
-snippet ksm
+snippet ksm "" w
 $K_S^{m}$$0
 endsnippet
 
-snippet ksd
+snippet ksd "" w
 $K_S^{d}$$0
 endsnippet
 
-snippet ksk
+snippet ksk "" w
 $K_S^{k}$$0
 endsnippet
 
-snippet ks.
+snippet ks. "" w
 $K_S^{$1}$$0
 endsnippet
 
 #}}}
 # Ring of integers{{{
 
-snippet co
+snippet co "" w
 $\mathcal{O}$$0
 endsnippet
 
-snippet coo
+snippet coo "" w
 $\mathcal{O}^2$$0
 endsnippet
 
-snippet con
+snippet con "" w
 $\mathcal{O}^{n}$$0
 endsnippet
 
-snippet com
+snippet com "" w
 $\mathcal{O}^{m}$$0
 endsnippet
 
-snippet cod
+snippet cod "" w
 $\mathcal{O}^{d}$$0
 endsnippet
 
-snippet cok
+snippet cok "" w
 $\mathcal{O}^{k}$$0
 endsnippet
 
-snippet cox
+snippet cox "" w
 $\mathcal{O}^{\times}$$0
 endsnippet
 
-snippet co,
+snippet co, "" w
 $\mathcal{O}_{$1}$$0
 endsnippet
 
-snippet co.
+snippet co. "" w
 $\mathcal{O}^{$1}$$0
 endsnippet
 
-snippet co,.
+snippet co,. "" w
 $\mathcal{O}_{$1}^{$2}$$0
 endsnippet
 
 
-snippet ok
+snippet ok "" w
 $\mathcal{O}_K$$0
 endsnippet
 
-snippet okk
+snippet okk "" w
 $\mathcal{O}_K^2$$0
 endsnippet
 
-snippet okn
+snippet okn "" w
 $\mathcal{O}_K^{n}$$0
 endsnippet
 
-snippet okm
+snippet okm "" w
 $\mathcal{O}_K^{m}$$0
 endsnippet
 
-snippet okd
+snippet okd "" w
 $\mathcal{O}_K^{d}$$0
 endsnippet
 
-snippet okx
+snippet okx "" w
 $\mathcal{O}_K^{\times}$$0
 endsnippet
 
-snippet ok.
+snippet ok. "" w
 $\mathcal{O}_K^{$1}$$0
 endsnippet
 
 #}}}
 # Adele{{{
 
-snippet sa
+snippet sa "" w
 $\mathbb{A}$$0
 endsnippet
 
-snippet aa
+snippet aa "" w
 $\mathbb{A}^2$$0
 endsnippet
 
-snippet an
+snippet an "" w
 $\mathbb{A}^{n}$$0
 endsnippet
 
-snippet am
+snippet am "" w
 $\mathbb{A}^{m}$$0
 endsnippet
 
-snippet ad
+snippet ad "" w
 $\mathbb{A}^{d}$$0
 endsnippet
 
-snippet ak
+snippet ak "" w
 $\mathbb{A}^{k}$$0
 endsnippet
 
-snippet a.
+snippet a. "" w
 $\mathbb{A}^{$1}$$0
 endsnippet
 
 # Adeles over Q
-snippet aq
+snippet aq "" w
 $\mathbb{A}_\mathbb{Q}$$0
 endsnippet
 
-snippet aqq
+snippet aqq "" w
 $\mathbb{A}_\mathbb{Q}^2$$0
 endsnippet
 
-snippet aqn
+snippet aqn "" w
 $\mathbb{A}_\mathbb{Q}^{n}$$0
 endsnippet
 
-snippet aqm
+snippet aqm "" w
 $\mathbb{A}_\mathbb{Q}^{m}$$0
 endsnippet
 
-snippet aqd
+snippet aqd "" w
 $\mathbb{A}_\mathbb{Q}^{d}$$0
 endsnippet
 
-snippet aqk
+snippet aqk "" w
 $\mathbb{A}_\mathbb{Q}^{k}$$0
 endsnippet
 
-snippet aq.
+snippet aq. "" w
 $\mathbb{A}_\mathbb{Q}^{$1}$$0
 endsnippet
 
 # Adeles over F
-snippet af
+snippet af "" w
 $\mathbb{A}_F$$0
 endsnippet
 
-snippet aff
+snippet aff "" w
 $\mathbb{A}_F^2$$0
 endsnippet
 
-snippet afn
+snippet afn "" w
 $\mathbb{A}_F^{n}$$0
 endsnippet
 
-snippet afm
+snippet afm "" w
 $\mathbb{A}_F^{m}$$0
 endsnippet
 
-snippet afd
+snippet afd "" w
 $\mathbb{A}_F^{d}$$0
 endsnippet
 
-snippet afk
+snippet afk "" w
 $\mathbb{A}_F^{k}$$0
 endsnippet
 
-snippet af.
+snippet af. "" w
 $\mathbb{A}_F^{$1}$$0
 endsnippet
 
 #}}}
 # Tori{{{
 
-snippet sto
+snippet sto "" w
 $\mathbb{T}$$0
 endsnippet
 
-snippet tt
+snippet tt "" w
 $\mathbb{T}^2$$0
 endsnippet
 
-snippet tn
+snippet tn "" w
 $\mathbb{T}^{n}$$0
 endsnippet
 
-snippet tm
+snippet tm "" w
 $\mathbb{T}^{m}$$0
 endsnippet
 
-snippet td
+snippet td "" w
 $\mathbb{T}^{d}$$0
 endsnippet
 
-snippet tk
+snippet tk "" w
 $\mathbb{T}^{k}$$0
 endsnippet
 
-snippet t.
+snippet t. "" w
 $\mathbb{T}^{$1}$$0
 endsnippet
 
 #}}}
 #Hyperbolic space{{{
 
-snippet sh
+snippet sh "" w
 $\mathbb{H}$$0
 endsnippet
 
-snippet hh
+snippet hh "" w
 $\mathbb{H}^2$$0
 endsnippet
 
-snippet hn
+snippet hn "" w
 $\mathbb{H}^{n}$$0
 endsnippet
 
-snippet hm
+snippet hm "" w
 $\mathbb{H}^{m}$$0
 endsnippet
 
-snippet hd
+snippet hd "" w
 $\mathbb{H}^{d}$$0
 endsnippet
 
-snippet hk
+snippet hk "" w
 $\mathbb{H}^{k}$$0
 endsnippet
 
-snippet h.
+snippet h. "" w
 $\mathbb{H}^{}<esc>i$$0
 endsnippet
 
 #}}}
 # Function spaces{{{
 
-snippet cc.
+snippet cc. "" w
 $C_c($1)$$0
 endsnippet
 
-snippet ccx
+snippet ccx "" w
 $C_c(X)$$0
 endsnippet
 
-snippet ccg
+snippet ccg "" w
 $C_c(G)$$0
 endsnippet
 
-snippet ccg/h
+snippet ccg/h "" w
 $C_c(G/H)$$0
 endsnippet
 
 
-snippet ccgh
+snippet ccgh "" w
 $C_c(G/H)$$0
 endsnippet
 
 
-snippet cci
+snippet cci "" w
 $C_c^{\infty}($1)$$0
 endsnippet
 
-snippet cci.
+snippet cci. "" w
 $C_c^{\infty}($1)$$0
 endsnippet
 
-snippet ccix
+snippet ccix "" w
 $C_c^{\infty}(X)$$0
 endsnippet
 
 
-snippet ci
+snippet ci "" w
 $C^{\infty}($1)$$0
 endsnippet
 
-snippet cir
+snippet cir "" w
 $C^{\infty}(\mathbb{R})$$0
 endsnippet
 
-snippet cirr
+snippet cirr "" w
 $C^{\infty}(\mathbb{R}^2)$$0
 endsnippet
 
-snippet cird
+snippet cird "" w
 $C^{\infty}(\mathbb{R}^d)$$0
 endsnippet
 
-snippet cirn
+snippet cirn "" w
 $C^{\infty}(\mathbb{R}^n)$$0
 endsnippet
 
 
 
-snippet l1.
+snippet l1. "" w
 $L^1($1)$$0
 endsnippet
 
-snippet l1x
+snippet l1x "" w
 $L^1(X)$$0
 endsnippet
 
-snippet l2.
+snippet l2. "" w
 $L^2($1)$$0
 endsnippet
 
-snippet l2x
+snippet l2x "" w
 $L^2(X)$$0
 endsnippet
 
-snippet lp.
+snippet lp. "" w
 $L^p($1)$$0
 endsnippet
 
-snippet lpx
+snippet lpx "" w
 $L^p(X)$$0
 endsnippet
 
@@ -5049,7 +5125,7 @@ endsnippet
 # M{{{
 
 
-snippet mmn-
+snippet mmn- "" w
 $\M_{m \times n}$$0
 endsnippet
 
@@ -6108,6 +6184,82 @@ endsnippet
 
 snippet m.jk, "" w
 $\M_{$1}(K)$$0
+endsnippet
+
+
+
+snippet mmnfi, "" w
+$\M_{m \times n}(F_\infty)$$0
+endsnippet
+
+snippet m..fi, "" w
+$\M_{$1}(F_\infty)$$0
+endsnippet
+
+snippet mnfi, "" w
+$\M_{n}(F_\infty)$$0
+endsnippet
+
+snippet mmfi, "" w
+$\M_{m}(F_\infty)$$0
+endsnippet
+
+snippet mdfi, "" w
+$\M_{d}(F_\infty)$$0
+endsnippet
+
+snippet mkfi, "" w
+$\M_{k}(F_\infty)$$0
+endsnippet
+
+snippet m2fi, "" w
+$\M_{2}(F_\infty)$$0
+endsnippet
+
+snippet m3fi, "" w
+$\M_{3}(F_\infty)$$0
+endsnippet
+
+snippet m.fi, "" w
+$\M_{$1}(F_\infty)$$0
+endsnippet
+
+
+
+snippet mmnfs, "" w
+$\M_{m \times n}(F_S)$$0
+endsnippet
+
+snippet m..fs, "" w
+$\M_{$1}(F_S)$$0
+endsnippet
+
+snippet mnfs, "" w
+$\M_{n}(F_S)$$0
+endsnippet
+
+snippet mmfs, "" w
+$\M_{m}(F_S)$$0
+endsnippet
+
+snippet mdfs, "" w
+$\M_{d}(F_S)$$0
+endsnippet
+
+snippet mkfs, "" w
+$\M_{k}(F_S)$$0
+endsnippet
+
+snippet m2fs, "" w
+$\M_{2}(F_S)$$0
+endsnippet
+
+snippet m3fs, "" w
+$\M_{3}(F_S)$$0
+endsnippet
+
+snippet m.fs, "" w
+$\M_{$1}(F_S)$$0
 endsnippet
 
 
@@ -7172,6 +7324,66 @@ endsnippet
 
 snippet gl.jk, "" w
 $\GL_{$1}(K)$$0
+endsnippet
+
+
+
+snippet glnfi, "" w
+$\GL_{n}(F_\infty)$$0
+endsnippet
+
+snippet glmfi, "" w
+$\GL_{m}(F_\infty)$$0
+endsnippet
+
+snippet gldfi, "" w
+$\GL_{d}(F_\infty)$$0
+endsnippet
+
+snippet glkfi, "" w
+$\GL_{k}(F_\infty)$$0
+endsnippet
+
+snippet gl2fi, "" w
+$\GL_{2}(F_\infty)$$0
+endsnippet
+
+snippet gl3fi, "" w
+$\GL_{3}(F_\infty)$$0
+endsnippet
+
+snippet gl.fi, "" w
+$\GL_{$1}(F_\infty)$$0
+endsnippet
+
+
+
+snippet glnfs, "" w
+$\GL_{n}(F_S)$$0
+endsnippet
+
+snippet glmfs, "" w
+$\GL_{m}(F_S)$$0
+endsnippet
+
+snippet gldfs, "" w
+$\GL_{d}(F_S)$$0
+endsnippet
+
+snippet glkfs, "" w
+$\GL_{k}(F_S)$$0
+endsnippet
+
+snippet gl2fs, "" w
+$\GL_{2}(F_S)$$0
+endsnippet
+
+snippet gl3fs, "" w
+$\GL_{3}(F_S)$$0
+endsnippet
+
+snippet gl.fs, "" w
+$\GL_{$1}(F_S)$$0
 endsnippet
 
 
@@ -9456,8 +9668,12 @@ snippet lrdb "left-right double square bracket" w
 ${\llbracket $1 \rrbracket}$$0
 endsnippet
 
-snippet lr "Left-right angle bracket" w
-\left \langle $1 \right \rangle $0
+# snippet lr "Left-right angle bracket" w
+# \left \langle $1 \right \rangle $0
+# endsnippet
+
+snippet lr "Resizing delimiters by \left and \right" w
+\\left${VISUAL}\\right$0
 endsnippet
 
 snippet lrab "left-right angle bracket" w
@@ -9477,7 +9693,11 @@ snippet m{ "Surround with math-braces" w
 endsnippet
 
 snippet { "Surround with math-braces" w
-\\\{${VISUAL}$1\\$0
+\left\\\{${VISUAL}$1\right\\$0
+endsnippet
+
+snippet } "Surround with math-braces" w
+\\\{${VISUAL}$1\\}$0
 endsnippet
 
 # snippet mb "Surround with math-braces" w
@@ -9549,7 +9769,7 @@ snippet -m "" w
 endsnippet
 
 #}}}
-# SymbolsOfDerivatives{{{
+# Derivative and Integration{{{
 #-------------------------------------------------------------------
 
 # Inside math-mode{{{
@@ -9585,6 +9805,26 @@ endsnippet
 
 snippet cdvt "Partial covariant derivative wrt t" w
 \frac{D}{\partial t}$0
+endsnippet
+
+
+
+
+
+snippet i.mu "Integration wrt mu" w
+\int_{$1} $2 \d{\mu}$0
+endsnippet
+
+snippet ixmu "Integration wrt mu" w
+\int_{X} $1 \d{\mu}$0
+endsnippet
+
+snippet i.nu "Integration wrt nu" w
+\int_{$1} $2 \d{\nu}$0
+endsnippet
+
+snippet ixnu "Integration wrt nu" w
+\int_{X} $1 \d{\nu}$0
 endsnippet
 
 #}}}
@@ -9659,6 +9899,119 @@ endsnippet
 
 
 #}}}
+# Tilde, Arrows, Limits and Function{{{
+#-------------------------------------------------------------------
+
+snippet wt "Create widetilde" w
+\\widetilde{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet im "implies symbol outside math-mode"
+$\implies$$0
+endsnippet
+
+snippet to
+\to$0
+endsnippet
+
+snippet mto
+\mapsto$0
+endsnippet
+
+snippet mt
+\mapsto$0
+endsnippet
+
+
+snippet ra
+$\rightarrow$$0
+endsnippet
+
+
+snippet lea
+$\leftarrow$$0
+endsnippet
+
+
+snippet xra
+$\xrightarrow{$1}$$0
+endsnippet
+
+snippet xlea
+$\xleftarrow{$1}$$0
+endsnippet
+
+snippet hra "Hookrightarrow"
+$\hookrightarrow$$0
+endsnippet
+
+snippet Lla "Only if"
+$\Longleftarrow$$0
+endsnippet
+
+snippet Lra "If"
+$\Longrightarrow$$0
+endsnippet
+
+snippet Llra "If and Only if"
+$\Longleftrightarrow$$0
+endsnippet
+
+snippet iff "If and only if"
+$\iff$$0
+endsnippet
+
+snippet Llap "Only if with parenthesis"
+$(\Longleftarrow)$$0
+endsnippet
+
+snippet Lrap "If with parenthesis"
+$(\Longrightarrow)$$0
+endsnippet
+
+snippet Llrap "If and Only if with parenthesis"
+$(\Longleftrightarrow)$$0
+endsnippet
+
+snippet lim "\limits"
+\limits
+endsnippet
+
+snippet fn "Function f with domain-range"
+$f: $1 \to $2$$0
+endsnippet
+
+snippet gn "Function g with domain-range"
+$g: $1 \to $2$$0
+endsnippet
+
+snippet phn "Function \phi with domain-range"
+$\phi : $1 \to $2$$0
+endsnippet
+
+snippet vphn "Function \varphi with domain-range"
+$\varphi : $1 \to $2$$0
+endsnippet
+
+#}}}
+# SomeCommandsandStuff{{{
+#-------------------------------------------------------------------
+
+snippet \ "Backslash" wi
+\bs $0
+endsnippet
+
+
+snippet bae "boxed around environments" w
+\boxed{${1:${VISUAL}}\}$0
+endsnippet
+
+
+snippet abx "boxes around environments with align" w
+\Aboxed{${1:${VISUAL}}\}$0
+endsnippet
+
+#}}}
 
 #}}}
 
@@ -9667,6 +10020,13 @@ endsnippet
 
 # Main Environments{{{
 #-------------------------------------------------------------------
+
+snippet begin "Enclose in an environment" b
+% $1
+\begin{${1:NewEnv}}
+${2:${VISUAL}}
+\end{$1}$0
+endsnippet
 
 snippet part "Part" b
 % Part
@@ -9776,7 +10136,7 @@ snippet thm "Theorem" b
 \end{theorem}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -9785,6 +10145,13 @@ snippet sthm "Statement of Theorem" b
 \begin{theorem}[$1]\label{thm:$2}% F{O{L{D
 	${3:${VISUAL}}
 \end{theorem}% F}O}L}D$0
+endsnippet
+
+snippet sthmbx "Statement of Boxed Theorem" b
+% StatementofTheorem
+\begin{thmboxed}[$1]\label{thm:$2}% F{O{L{D
+	${3:${VISUAL}}
+\end{thmboxed}% F}O}L}D$0
 endsnippet
 
 snippet uthm "Unnumbered Theorem" b
@@ -9801,7 +10168,7 @@ snippet lem "Lemma" b
 \end{lemma}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -9826,7 +10193,7 @@ snippet prop "Proposition" b
 \end{proposition}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -9851,7 +10218,7 @@ snippet cor "Corollary" b
 \end{corollary}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:<+\bfseries\textcolor{red}{Write a Proof}+>}
+	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -9872,14 +10239,14 @@ endsnippet
 snippet prf "Proof" b
 % Proof
 \begin{proof}$1% F{O{L{D
-	${2:${VISUAL:<+\bfseries\textcolor\{red\}\{Write a Proof\}+>}}
+	${2:${VISUAL:\\bfseries\{<+\\textcolor\{red\}\{Write a Proof\}\}+>}}
 \end{proof}% F}O}L}D$0
 endsnippet
 
 snippet proof "Proof" b
 % Proof
 \begin{proof}$1% F{O{L{D
-	${2:${VISUAL:<+\bfseries\textcolor\{red\}\{Write a Proof\}+>}}
+	${2:${VISUAL:\\bfseries\{<+\\textcolor\{red\}\{Write a Proof\}\}+>}}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -9925,7 +10292,7 @@ snippet prob "Problem" b
 \end{problem}% F}O}L}D
 % Solution
 \begin{solution}% F{O{L{D
-	<+\bfseries\textcolor{red}{Write a solution}+>
+	\bfseries<+\textcolor{red}{Write a solution}+>
 \end{solution}% F}O}L}D$0
 endsnippet
 
@@ -10137,7 +10504,7 @@ snippet array "Array" b
 \]$0
 endsnippet
 
-snippet cen "Centering" b
+snippet cen "Centering" w
 % Center
 \begin{center}
 	${1:${VISUAL}}
@@ -10396,28 +10763,28 @@ endsnippet
 
 snippet items "Itemize" b
 % Itemize
-\begin{itemize}[leftmargin=1.3em]
+\begin{itemize}[leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet itemz "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.3em]
+\begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item<+-| alert@+> ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet itemize "Itemize" b
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.3em]
+\begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet enum "Enumeration" b
 % Enumerate
-% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{enumerate}[label=\arabic*)]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10426,7 +10793,7 @@ endsnippet
 snippet enuma "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{enumerate}[label=(\alph*)]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10435,7 +10802,7 @@ endsnippet
 snippet enumr "Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{enumerate}[label=(\roman*)]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10443,9 +10810,9 @@ endsnippet
 
 snippet henum "Hyper-Enumeration" b
 % Change format of top-level list items
-\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.3em}
+\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.2em}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
-\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.3em}
+\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.2em}
 \setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
 
 
@@ -10462,6 +10829,12 @@ snippet enumb "Bare enumerate in sub-level" b
 \end{enumerate}$0
 endsnippet
 
+snippet inenumb "Break enumerate into two here" b
+\end{enumerate}$0
+% Enumerate
+\begin{enumerate}
+endsnippet
+
 snippet tab "Tabular with 2 columns" w
 % Tabular
 \begin{tabular}{${1:@{}p{0.5\textwidth}p{0.5\textwidth}}\}
@@ -10472,7 +10845,7 @@ endsnippet
 
 snippet renum "Reverse Enumeration" b
 % Enumerate
-% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{etaremune}[label=\arabic*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -10481,7 +10854,7 @@ endsnippet
 snippet renuma "Reverse Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{etaremune}[label=(\alph*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -10490,7 +10863,7 @@ endsnippet
 snippet renumr "Reverse Enumeration" b
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.3em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{etaremune}[label=(\roman*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -10728,120 +11101,6 @@ endsnippet
 # Others{{{
 #-------------------------------------------------------------------
 
-# SomeCommandsandStuff{{{
-#-------------------------------------------------------------------
-
-snippet \ "Backslash" wi
-\bs $0
-endsnippet
-
-
-snippet bae "boxed around environments" w
-\boxed{${1:${VISUAL}}\}$0
-endsnippet
-
-
-snippet abx "boxes around environments with align" w
-\Aboxed{${1:${VISUAL}}\}$0
-endsnippet
-
-#}}}
-# Tilde, Arrows, Limits and Function{{{
-#-------------------------------------------------------------------
-
-snippet wt "Create widetilde" w
-\\widetilde{${1:${VISUAL}}\}$0
-endsnippet
-
-snippet im "implies symbol outside math-mode"
-$\implies$$0
-endsnippet
-
-snippet to
-\to$0
-endsnippet
-
-snippet mto
-\mapsto$0
-endsnippet
-
-snippet mt
-\mapsto$0
-endsnippet
-
-
-snippet ra
-$\rightarrow$$0
-endsnippet
-
-
-snippet lea
-$\leftarrow$$0
-endsnippet
-
-
-snippet xra
-$\xrightarrow{$1}$$0
-endsnippet
-
-snippet xlea
-$\xleftarrow{$1}$$0
-endsnippet
-
-snippet hra "Hookrightarrow"
-$\hookrightarrow$$0
-endsnippet
-
-snippet Lla "Only if"
-$\Longleftarrow$$0
-endsnippet
-
-snippet Lra "If"
-$\Longrightarrow$$0
-endsnippet
-
-snippet Llra "If and Only if"
-$\Longleftrightarrow$$0
-endsnippet
-
-snippet iff "If and only if"
-$\iff$$0
-endsnippet
-
-snippet Llap "Only if with parenthesis"
-$(\Longleftarrow)$$0
-endsnippet
-
-snippet Lrap "If with parenthesis"
-$(\Longrightarrow)$$0
-endsnippet
-
-snippet Llrap "If and Only if with parenthesis"
-$(\Longleftrightarrow)$$0
-endsnippet
-
-snippet lim "\limits"
-\limits
-endsnippet
-
-snippet fn "Function f with domain-range"
-$f: $1 \to $2$$0
-endsnippet
-
-snippet gn "Function g with domain-range"
-$g: $1 \to $2$$0
-endsnippet
-
-snippet phn "Function \phi with domain-range"
-$\phi : $1 \to $2$$0
-endsnippet
-
-snippet vphn "Function \varphi with domain-range"
-$\varphi : $1 \to $2$$0
-endsnippet
-
-#}}}
-
 # snippet '([A-Za-z])(\d)' "auto subscript" wrA
 # `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 # endsnippet
@@ -10890,6 +11149,11 @@ snippet texroot
 % ! TEX root = <FileName>.tex
 endsnippet
 
+snippet cv "CV entry" b
+\cventry{${1:year--year}}{${2:Degree bold}}{${3:Institution italic}}{${4:City normalfont}}{${5:\textit{Grade}\}}{${6:Description normalfont down below}}$0
+endsnippet
+
+
 #}}}
 
 # TextInMathMode{{{
@@ -10897,137 +11161,141 @@ endsnippet
 
 # \{\} used for better-working-fold
 snippet text "Text" w
-\text{${1:${VISUAL}}\}$0
+\text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet qu "qquad space" w
-\\qquad$0
+\\qquad $2
+endsnippet
+
+snippet qqu "qquad space" w
+\\qquad$2
 endsnippet
 
 
 snippet jt "Just text" w
-\text{${1:${VISUAL}}\}$0
+\text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet jte "Just text" w
-\text{${1:${VISUAL}}\}$0
+\text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet ste "Space before text" w
-\ \text{${1:${VISUAL}}\}$0
+\ \text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet tes "Text space after" w
-\text{${1:${VISUAL}}\} ${2:\\ }$0
+\text{${1:${VISUAL}}\} \ $2
 endsnippet
 
 snippet te "Text with spaces before and after" w
-\ \text{${1:${VISUAL}}\} ${2:\\ }$0
+\ \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
 snippet sts "Text with spaces before and after" w
-\ \text{${1:${VISUAL}}\} ${2:\\ }$0
+\ \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
 snippet qte "qquad space - text" w
-\qquad \text{${1:${VISUAL}}\}$0
+\qquad \text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet qtes "qquad space - text - space" w
-\qquad \text{${1:${VISUAL}}\} \ $0
+\qquad \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
 snippet qts "qquad space - text - space" w
-\qquad \text{${1:${VISUAL}}\} \ $0
+\qquad \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
 # snippet qte "qquad space - text" w
-# \qquad \text{${1:${VISUAL}}\}$0
+# \qquad \text{${1:${VISUAL}}\}$2
 # endsnippet
 
 snippet qtq "Text with qquad spaces both sides" w
-\qquad \text{${1:${VISUAL}}\} \qquad $0
+\qquad \text{${1:${VISUAL}}\} \qquad $2
 endsnippet
 
 snippet qteq "Text with qquad spaces both sides" w
-\qquad \text{${1:${VISUAL}}\} \qquad $0
+\qquad \text{${1:${VISUAL}}\} \qquad $2
 endsnippet
 
 snippet tb "Text boldfont" w
-\textbf{${1:${VISUAL}}\}$0
+\textbf{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet ti "Text italic" w
-\textit{${1:${VISUAL}}\}$0
+\textit{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet tt "Text typewriter" w
-\texttt{${1:${VISUAL}}\}$0
+\texttt{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet ts "Text sc" w
-\textsc{${1:${VISUAL}}\}$0
+\textsc{${1:${VISUAL}}\}$2
 endsnippet
 
 # \{\} used for better-working-fold
 snippet em "Emphasize even visually selected text" w
-\emph{${1:${VISUAL}}\}$0
+\emph{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet ul "Underline selected text" w
-\uline{${1:${VISUAL}}\}$0
+\uline{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet emul "Emphasize-underline selected text" w
-\emph{\uline{${1:${VISUAL}}\}\}$0
+\emph{\uline{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet emu "Emphasize-underline selected text" w
-\emph{\uline{${1:${VISUAL}}\}\}$0
+\emph{\uline{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet embx "Emphasize-box selected text" w
-\boxed{\emph{${1:${VISUAL}}\}\}$0
+\boxed{\emph{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet emb "Emphasize-box selected text" w
-\boxed{\emph{${1:${VISUAL}}\}\}$0
+\boxed{\emph{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet bxem "Emphasize-box selected text" w
-\boxed{\emph{${1:${VISUAL}}\}\}$0
+\boxed{\emph{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet bem "Emphasize-box selected text" w
-\boxed{\emph{${1:${VISUAL}}\}\}$0
+\boxed{\emph{${1:${VISUAL}}\}\}$2
 endsnippet
 
 snippet mac "Math color" w
-{\color{${1:red}}{${2:${VISUAL}}\}}$0
+{\color{${1:red}}{${2:${VISUAL}}\}}$3
 endsnippet
 
 snippet tc "Text color" w
-\textcolor{${1:red}}\{${2:${VISUAL}}\}$0
+\textcolor{${1:red}}\{${2:${VISUAL}}\}$3
 endsnippet
 
 snippet tr "Text color red" w
-\textcolor{red}\{${2:${VISUAL}}\}$0
+\textcolor{red}\{${2:${VISUAL}}\}$3
 endsnippet
 
 snippet tbc "Text color in bold" w
-\textcolor{${1:red}}{\textbf{${2:${VISUAL}}\}}$0
+\textcolor{${1:red}}{\textbf{${2:${VISUAL}}\}}$3
 endsnippet
 
 snippet tbr "Text color red in bold" w
-\textcolor{red}{\textbf{${2:${VISUAL}}\}}$0
+\textcolor{red}{\textbf{${2:${VISUAL}}\}}$3
 endsnippet
 
 snippet quo "Single quoting visually selected text"
-\`${VISUAL}'$0
+\`${VISUAL}'$2
 endsnippet
 
 snippet qquo "Double quoting visually selected text"
-\`\`${VISUAL}''$0
+\`\`${VISUAL}''$2
 endsnippet
 
 #}}}

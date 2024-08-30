@@ -220,10 +220,13 @@ alias    pip='pip3'
 
 alias    pmr='python ~/python-code/movie_rating.py'
 
-alias     re='resda y'
+alias     re='refdfs'
+alias    rey='refdfs y'
+alias    ref='refdfs y'
+alias    red='cd ~/Downloads && refdfs'
+alias   refd='refdfs y'
 
-# Link bibliography
-alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
+alias     vv='vimv'
 
 # shell commands
 alias      c='clear'
@@ -250,6 +253,17 @@ alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
 alias     dt='`date +%F-%H%M`'
 
+alias     sv='savevim'
+alias    svy='savevim y'
+alias     cv='commitvim'
+alias     cw='commitwiki'
+alias     cb='commitbin'
+alias     ca='commitall'
+alias      h='happy'
+
+# Link bibliography
+alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
+
 # Opening frequent files
 alias      v='vim'
 alias     v.='vim .'
@@ -261,18 +275,20 @@ alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
 alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
 alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
 alias     ps='vim ~/.vim/UltiSnips/python.snippets'
-alias      w='vim ~/vimwiki/index.md'
 alias     vz='vim `fzf`'
 alias     ss='s'
-alias     sv='savevim'
-alias    svy='savevim y'
-alias     cv='commitvim'
-alias     cw='commitwiki'
-alias     cb='commitbin'
-alias     ca='commitall'
-alias      h='happy'
 alias   vmsi='vms i'
 
+# Vimwiki
+alias      w='vim ~/vimwiki/index.md'
+alias    vwb='vim ~/Dropbox/Data/vimwiki/bridge/bridge.md'
+alias   vwba='vim ~/Dropbox/Data/vimwiki/programming/bash-scripting.md'
+
 alias     tg='mkn topological-groups y'
+alias     ms='mkn metric-spaces y'
+
+# tmp
+alias     rp='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-ISI-24/research-plan-Mahbub-Alam-ISI-24.tex'
+alias    rpg='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-24/research-plan-Mahbub-Alam-24.tex'
 
 #}}}

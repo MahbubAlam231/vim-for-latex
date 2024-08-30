@@ -1,4 +1,3 @@
-
 "--------------------------------------------------------------------
 " Mahbub's GeneralAbbreviations
 "--------------------------------------------------------------------
@@ -6,6 +5,7 @@
 "--------------------------------------------------------------------
 " Abolish (check approximate and char to see how to write it cleverly)
 "--------------------------------------------------------------------
+"OBS Part of the abbreviation must be mandatory for Abolish to function
 
 "A{{{
 
@@ -46,6 +46,7 @@ Abolish ctbl{e,y,ty} countab{le,ly,ility}
 Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness,s,ss} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness, set, sets}
 " Maybe putting space before words is better like lchsp
+" Putting space before words makes the first word mandatory
 Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{continuous ,}function{,s}
 
 "}}}
@@ -55,19 +56,21 @@ Abolish def{n,ns,d,g} defin{ition,itions,ed,ing}
 " dept should be department that's why depnt below
 Abolish dep{,nt,e,y,ly,g,ble,blty} depend{,ent,ence,ency,ently,ing,able,ability}
 Abolish diag{,l,ble,bility} diagonal{,,izable,bility}
-Abolish {diffeo,diffm}{,s,c,cally} diffeomorphi{,}{sm,sms,c,cally}
 Abolish diff{ly,ble,l,tion,tn,n,tions,tns,ns,g} differentia{ly,ble,l,tion,tion,tion,tions,tions,tions,ting}
+Abolish dim{n,l,y} dimension{,al,ality}
 Abolish dim{n,ns,l} dimension{,s,al}
 Abolish dio diophantine
 Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
-Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed}
+Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed,l} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed,ional}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 Abolish div{e,es,d,t,ts,ce} diverge{,s,d,nt,nts,nce}
 Abolish dyn{,c,s,l} dynamic{,,s,al}
+Abolish {diffeo,diffm}{,s,c,cally} diffeomorphi{,}{sm,sms,c,cally}
 
 "}}}
 "E{{{
 
+Abolish eg e.g.
 Abolish el{,s,y} element{,s,ary}
 Abolish eq{n,ns,g,y,ty,ies} equat{ion,ions,ing,lity,lity,lities}
 Abolish {equi,eq}cont{,y,ly} {equicontinu,equicontinu}{ous,ity,ously}
@@ -82,8 +85,8 @@ Abolish fc{,y,ty} first-countab{le,ility,ility}
 Abolish fe for every
 Abolish fm furthermore
 Abolish fs for some
-Abolish f{,unc}{trl} func{,}{torial}
-Abolish {l,lin,}f{n,uncn}{,s,l,al,ls,als} {linear ,linear ,}func{,}{tion,tions,tional,tional,tionals,tionals}
+Abolish {f}{,unc}{tl,trl} {func}{,}{,}torial
+Abolish {l,lin,}fn{,uncn}{,s,l,al,ls,als} {linear ,linear ,}func{,}tion{,s,al,al,als,als}
 
 "}}}
 "G{{{
@@ -95,8 +98,8 @@ Abolish gp{,s,g} group{,s,ing}
 "H{{{
 
 Abolish hdf{,f,ness} hausdorff{,,ness}
-Abolish homeo{,s,c,cally} homeomorphi{sm,sms,c,cally}
-Abolish homog{,ly,y} homogene{ous,ously,ity}
+Abolish homeo{,m}{,s,c,cally} homeomorphi{,}{sm,sms,c,cally}
+Abolish {in,}homog{,ly,y} {in,}homogene{ous,ously,ity}
 Abolish homo{,s,m,ms,c,cally} homomorphi{sm,sms,sm,sms,c,cally}
 
 "}}}
@@ -114,13 +117,17 @@ Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
 "}}}
 "L{{{
 
-Abolish lc{,h}{,s}{,fc,sc}{,top}{,sp,spes,gp,gps} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological}{, space, spaces, group, groups}
+" Putting space before words makes the first word mandatory
+Abolish lc{,h}{,s}{,fc,sc}{,t,top}{,sp,spes} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological, topological}{, space, spaces}
+Abolish lc{,h}{,s}{,fc,sc}{,t,top}sp{,es} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological, topological} space{,s}
+Abolish lc{,h}{,s}{,fc,sc}{,t,top}{,gp,gps} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological, topological}{, group, groups}
+Abolish lc{,h}{,s}{,fc,sc}{,t,top}gp{,s} locally compact{, hausdorff}{, separable}{, first-countable, second-countable}{, topological, topological} group{,s}
 Abolish lem{,s} lemma{,s}
 
 "}}}
 "M{{{
 
-Abolish mbl{e,ity} measurab{le,ility}
+Abolish {,non}mb{,i}l{e,ity,ity} {,non-}measurab{le,ility,ility}
 Abolish mo moreover
 Abolish mult{e,n,ns,ve} multipl{e,ication,ications,icative}
 
@@ -141,6 +148,7 @@ Abolish ow otherwise
 
 Abolish poly{,s} polynomial{,s}
 Abolish pov point of view
+" Don't do "prob"  because of probability
 Abolish prb{,s} problem{,s}
 Abolish proj{n,ns} projection{,s}
 Abolish prop{n,ns} proposition{,s}
@@ -222,6 +230,7 @@ iabbr ae. a.e.\\
 "}}}
 "C{{{
 
+iabbr cf cf.\
 iabbr cor: cor:
 
 "}}}

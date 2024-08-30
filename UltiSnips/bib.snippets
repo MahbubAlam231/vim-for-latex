@@ -7,66 +7,73 @@
 
 snippet art "article bib" b
 @article {$1,
-    author = {$2},
-     title = "{$3}",
-   journal = {$4},
-  fjournal = {$5},
-    volume = {$6},
-      year = {$7},
-    number = {${8:must delete this line if number doesn't exist}},
-     pages = {$9},
-      issn = {$10},
-   mrclass = {$11},
-  mrnumber = {$12},
-mrreviewer = {$13},
-      note = {$14},
-       doi = {$15},
-       url = {\url{$16}}
+    AUTHOR = {$2},
+     TITLE = "{$3}",
+   JOURNAL = {$4},
+  FJOURNAL = {$5},
+    VOLUME = {$6},
+      YEAR = {$7},
+    NUMBER = {${8:must delete this line if number doesn't exist}},
+     PAGES = {$9},
+      ISSN = {$10},
+   MRCLASS = {$11},
+  MRNUMBER = {$12},
+MRREVIEWER = {$13},
+      NOTE = {$14},
+       DOI = {$15},
+       URL = {\url{$16}}
 }
 $0
 endsnippet
 
 snippet unpub "unpublished bib" b
 @unpublished {$1,
-author = {$2},
- title = "{$3}",
-  note = {$4},
-  year = {$5}
+    AUTHOR = {$2},
+     TITLE = "{$3}",
+      NOTE = {$4},
+      YEAR = {$5}
 }
 $0
 endsnippet
 
 snippet book "book bib" b
 @book {$1,
-   author = {$2},
-    title = "{$3}",
- subtitle = "{$4}",
-     year = {$5},
-publisher = {$6},
-  address = {$7},
-   series = {$8},
-     note = {$9},
-     isbn = {$10},
-      doi = {$11},
-      url = {\url{$12}}
+    AUTHOR = {$2},
+     TITLE = "{$3}",
+  SUBTITLE = "{$4}",
+ PUBLISHER = {$5},
+    SERIES = {$6},
+      YEAR = {$7},
+   ADDRESS = {$8},
+      NOTE = {$9},
+      ISBN = {$10},
+   MRCLASS = {$11},
+  MRNUMBER = {$12},
+MRREVIEWER = {$13},
+       DOI = {$14},
+       URL = {\url{$15}}
 }
 $0
 endsnippet
 
 snippet misc "misc bib" b
 @misc {$1,
-author = {$2},
- title = "{$3}",
-   url = {$4}
+    AUTHOR = {$2},
+     TITLE = "{$3}",
+      YEAR = {$4},
+       URL = {\url{$5}},
+      NOTE = {$6}
 }
 $0
 endsnippet
 
 snippet phdthesis "phdthesis bib" b
 @phdthesis {$1,
-author = {$2},
- title = "{$3}",
-   url = {\url{$4}}
+    AUTHOR = {$2},
+     TITLE = "{$3}",
+      YEAR = {$4},
+       URL = {\url{$5}},
+      NOTE = {$6}
 }
 $0
 endsnippet

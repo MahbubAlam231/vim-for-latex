@@ -33,7 +33,7 @@ endsnippet
 # [${1:${VISUAL:here}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 
 snippet im "Adding a image"
-![${1:${VISUAL:Image}}](${2:pic.jpg})$0
+![${1:${VISUAL:Image}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}.jpg)$0
 endsnippet
 
 snippet image "Adding a image"
@@ -67,3 +67,8 @@ endsnippet
 snippet mfn "Make filename"
 [$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
 endsnippet
+
+snippet lts "letter to self" w
+[Letter to self $1 purpose-statement-`!v strftime("%Y-%m-%d")`](letter-to-self-${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-purpose-statement-`!v strftime("%Y-%m-%d")`)$0
+endsnippet
+

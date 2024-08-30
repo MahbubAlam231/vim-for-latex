@@ -72,6 +72,7 @@ if !exists('g:LatexBox_folded_environments')
                 \ "uproposition",
                 \ "theorem",
                 \ "utheorem",
+                \ "thmboxed",
                 \ "corollary",
                 \ "ucorollary",
                 \ "proof",
@@ -230,12 +231,16 @@ function! s:CaptionFrame(line)
             if getline(i) =~ '^\s*\\frametitle'
                 return matchstr(getline(i),
                             \ '^\s*\(%\)*\( \)*\\frametitle\(\[.*\]\)\?{\zs.\+\ze}')
+                break
             elseif getline(i) =~ '^\s*\(%\)*\( \)*\\titlepage'
                 return 'Title page'
+                break
             elseif getline(i) =~ '^\s*\(%\)*\( \)*\\tableofcontents'
                 return 'Table of contents'
+                break
             elseif getline(i) =~ '^\s*\(%\)*\( \)*\(.\)*Thank you\s*$'
                 return 'Thank you'
+                break
             end
             let i += 1
         endwhile
@@ -245,7 +250,7 @@ function! s:CaptionFrame(line)
 endfunction
 
 " }}}
-" LatexBox_FoldText {{{
+" LatexBox_FoldText 
 
 function! LatexBox_FoldText()
     " Initialize
@@ -267,7 +272,7 @@ function! LatexBox_FoldText()
         let th = 'th'
     endif
 
-    let level = '+' . repeat('--', v:foldlevel-1) . ' ' . fln . th . ' '
+    let level = '+' . repeat('-', fln-1) . ' ' . fln . th . ' '
     " let alignlnr = repeat(' ', 10-2*(v:foldlevel)+1)
     " let lineinfo = nlines . ' lines:     '
 
@@ -277,13 +282,69 @@ function! LatexBox_FoldText()
 
     " if line =~ '\s*\\documentclass'
     if line =~ '\\documentclass'
-        let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+
+        " Checking if line spacing has been set by baselinestretch
+        " Put that line within the first 50 lines
+        let i = v:foldstart
+        let spacing = ''
+        while i < 50
+            if getline(i) =~ '^\\renewcommand{\\baselinestretch}'
+                let spacing = ', baselinestretch=' . matchstr(getline(i), '^\\renewcommand{\\baselinestretch}{\zs.\{-}\ze}')
+                break
+            endif
+            let i += 1
+        endwhile
+
+        " let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+        let title = 'Preamble' . ' | ' . matchstr(line, '\*\?\s*\[\zs.\{-}\ze\]') . spacing . ' | ' . matchstr(line, '\*\?\s*{\zs.\{-}\ze}')
+
+        " Checking if documentclass line is commented
+        if line =~ '^\s*%'
+            let title = '[COMMENTED DOCUMENTCLASS LINE]'
+        endif
+
     elseif line =~ '% Packages'
-        let title = 'Packages'
+
+        let title = '[COMMENTED Packages]'
+        let i = v:foldstart
+        let j = v:foldend
+        while i < j
+            " Checking if there are uncommented valid lines
+            if getline(i) !~ '^\( \)*%\|^\s*$'
+                let title = 'Packages'
+                break
+            endif
+            let i += 1
+        endwhile
+
     elseif line =~ '% Environments'
-        let title = 'Environments'
+
+        let title = '[COMMENTED Environments]'
+        let i = v:foldstart
+        let j = v:foldend
+        while i < j
+            " Checking if there are uncommented valid lines
+            if getline(i) !~ '^\( \)*%\|^\s*$'
+                let title = 'Environments'
+                break
+            endif
+            let i += 1
+        endwhile
+
     elseif line =~ '% Newcommands'
-        let title = 'Newcommands'
+
+        let title = '[COMMENTED Newcommands]'
+        let i = v:foldstart
+        let j = v:foldend
+        while i < j
+            " Checking if there are uncommented valid lines
+            if getline(i) !~ '^\( \)*%\|^\s*$'
+                let title = 'Newcommands'
+                break
+            endif
+            let i += 1
+        endwhile
+
     endif
 
     "}}}
@@ -301,11 +362,20 @@ function! LatexBox_FoldText()
             let primarytitle = longtitle
         endif
 
+        " Checking whether title is commented
+        if line =~ '^\\title'
+            let comment = ''
+            let endbracket = ''
+        elseif line =~'^\( \)*%'
+            let comment = '[COMMENTED '
+            let endbracket = ']'
+        endif
+
         " Making title at max 90-character
         if len(primarytitle) > 90
-            let title = 'Title - ' . printf('%.087s', primarytitle) . '...'
+            let title = comment . 'Title' . endbracket . ' - ' . printf('%.087s', primarytitle) . '...'
         else
-            let title = 'Title - ' . primarytitle
+            let title = comment . 'Title' . endbracket . ' - ' . primarytitle
         endif
 
     endif
@@ -593,6 +663,9 @@ function! LatexBox_FoldText()
         elseif env == 'theorem*'
             let primarytitle2 = comment . 'UnnumberedTheorem' . endbracket . primarytitle1
 
+        elseif env == 'thmboxed'
+            let primarytitle2 = comment . 'Boxed Theorem' . endbracket . primarytitle1
+
             "}}}
 
             " Corollary{{{
@@ -804,4 +877,4 @@ function! LatexBox_FoldText()
 
 endfunction
 
-" }}}
+" 

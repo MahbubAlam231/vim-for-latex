@@ -76,9 +76,12 @@ inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
 inoremap <buffer> ;la lambda
 
+inoremap <buffer> 2= ==
 inoremap <buffer> ;= !=
 inoremap <buffer> <localleader>> =>
 inoremap <buffer> <localleader>< <=
+
+inoremap <buffer> ++ += 1
 
 "}}}
 

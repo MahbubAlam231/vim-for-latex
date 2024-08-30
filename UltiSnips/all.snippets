@@ -5,46 +5,50 @@
 # /_/   \_\|_||_|   |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                                  |_|    |_|
 
-snippet today "Today's date"
+snippet today "Today's date" w
 `date +%d-%m-%y`
 endsnippet
 
-snippet date "Today's date"
+snippet date "Today's date" w
 `date +%d-%m-%y`
 endsnippet
 
-snippet dfn "Diary filename"
+snippet dfn "Diary filename" w
 [`date +%Y-%m-%d`](`date +%Y-%m-%d`)$0
 endsnippet
 
-snippet now "Date-month-weekday-time-zone"
+snippet datetime "Date-month-weekday-time-zone" w
 `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
 endsnippet
 
-snippet tnow "ps date-month-weekday-time-zone"
+snippet now "Date-month-weekday-time-zone" w
+`date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
+endsnippet
+
+snippet tnow "ps date-month-weekday-time-zone" w
 TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
 $0
 
 endsnippet
 
-snippet times "Time now with seconds"
+snippet times "Time now with seconds" w
 `date +%T`
 endsnippet
 
-snippet time "Time now without seconds"
+snippet time "Time now without seconds" w
 `date +%H:%M`
 endsnippet
 
-snippet dt "Today's datetime"
+snippet dt "Today's datetime" w
 `date +%d-%m-%y\ %H:%M`
 endsnippet
 
-# snippet bye "Mail signature" b
+# snippet bye "Mail signature" b w
 # Thanks. Bye. So long.
 # -- Indus Malcolm Alamogul
 # endsnippet
 
-# snippet is "Replace 'should be' by 'is'"
+# snippet is "Replace 'should be' by 'is'" w
 # ${VISUAL:inner text/should be/is/g}
 # endsnippet
 

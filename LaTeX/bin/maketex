@@ -7,6 +7,9 @@
 # @description : Make a tex directory and open file
 ######################################################################
 
+# TODO
+# make given folder names hyphenated
+
 if [ $# -eq 0 ]
 then
     echo -e "\tNo arguments passed. Quitting."
@@ -15,18 +18,18 @@ elif [ $# -gt 2 ]
 then
     echo -e "\tToo many arguments."
     exit 1
-elif [ $# -lt 2 ]
+elif [ $# -eq 1 ]
 then
+    # DOC-STRING
+    # Usually when creating new tex directory without $2.
     if [ ! -d $1 ]
     then
         mkdir $1
     fi
-# elif [ "$2" != "y" ]
-# then
-#     echo -e "\tInvalid \$2."
-#     exit 1
-elif [ ! -d $1 ]
+elif [ $# -eq 2 ] && [ ! -d $1 ]
 then
+    # DOC-STRING
+    # When trying to open a directory that does not exist.
     echo -e "\tDirectory doesn't exist. Ignoring file opening request (\$2 = '$2'). Proceed to create directory? [y/N] \c"
     read response
     if [ "$response" == "y" ]
@@ -38,10 +41,14 @@ then
     fi
 fi
 
+# DOC-STRING
+# The above made sure that the directory we are trying to open exists. Enter directory.
 cd $1
 
 if [ -f $1.tex ]
 then
+    # DOC-STRING
+    # File exists, checking $2
     if [ "$2" == "y" ]
     then
         vim $1.tex
@@ -65,6 +72,8 @@ then
         fi
     fi
 else
+    # DOC-STRING
+    # File does not exist, ignore $2. Creating and opening file. Adding bibliography to directory. Pinning file to top.
     ln -s ~/Dropbox/main-bib.bib bib.bib
     vim $1.tex
     gio set $1.tex metadata::pinned-to-top true
