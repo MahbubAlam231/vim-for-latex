@@ -26,3 +26,10 @@ endif
 $0
 endsnippet
 
+snippet au "autocommand" b
+augroup $1
+	autocmd!
+	${2:${VISUAL:text}}$3
+augroup end
+$0
+endsnippet

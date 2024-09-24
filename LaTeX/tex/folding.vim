@@ -250,7 +250,7 @@ function! s:CaptionFrame(line)
 endfunction
 
 " }}}
-" LatexBox_FoldText 
+" LatexBox_FoldText
 
 function! LatexBox_FoldText()
     " Initialize
@@ -286,8 +286,9 @@ function! LatexBox_FoldText()
         " Checking if line spacing has been set by baselinestretch
         " Put that line within the first 50 lines
         let i = v:foldstart
+        let j = v:foldend
         let spacing = ''
-        while i < 50
+        while i < j
             if getline(i) =~ '^\\renewcommand{\\baselinestretch}'
                 let spacing = ', baselinestretch=' . matchstr(getline(i), '^\\renewcommand{\\baselinestretch}{\zs.\{-}\ze}')
                 break
@@ -448,7 +449,7 @@ function! LatexBox_FoldText()
         " Label doesn't exist
         let label = '    \ '
         " Capturing section-environment title
-        let primarytitle = comment . typename . endbracket . typespace . matchstr(line, secpat1 . '\zs.\{-}\ze}\(\( \)*\(%\)*\)*F{O{L{D')
+        let primarytitle = comment . typename . endbracket . typespace . matchstr(line, secpat1 . '\zs.\{-}\ze}')
     endif
 
     " Making section-environment-title at max 90-character
@@ -877,4 +878,4 @@ function! LatexBox_FoldText()
 
 endfunction
 
-" 
+"

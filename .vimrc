@@ -1,18 +1,21 @@
+" -------------------------------------------------------------------
+" Author        : Mahbub Alam
+" Created       : ~2017
+" License       : Self
+" Description   : MYVIMRC
+" -------------------------------------------------------------------
 "          _
 "  __   __(_) _ __ ___   _ __  ___
 "  \ \ / /| || '_ ` _ \ | '__|/ __|
 "  _\ V / | || | | | | || |  | (__
 " (_)\_/  |_||_| |_| |_||_|   \___|
-
-"-------------------------------------------------------------------
-" Mahbub's .vimrc
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Preamble{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " All basic options{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 set nocompatible                      " Be iMproved, required (must be before everything)
 " filetype off                          " Required before Vundle and plugins, disables filetype detection
@@ -70,7 +73,7 @@ endif
 
 "}}}
 " Leader Mappings{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
@@ -88,7 +91,7 @@ inoremap <buffer> <localleader>ibll inoremap <><esc>ibuffer<esc>la <><esc>ilocal
 
 "}}}
 " Tabs, indentation and wrapping{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 set tabstop=4                         " Redefine tab as width of four spaces
 set softtabstop=4                     " Number of spaces in tab when editing
@@ -115,7 +118,7 @@ nnoremap <buffer> <silent> <localleader>wt :set wrap!<cr>
 
 "}}}
 " Ignored files/directories from autocomplete{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 set wildignore+=*/tmp/*
 " set wildignore+=*.so
@@ -129,7 +132,7 @@ set wildignore+=/git/*                " git projects
 
 "}}}
 " Searching{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 set ignorecase                        " Search queries intelligently set case
 set smartcase                         " Override 'ignorecase' option if search pattern contains uppercase letters
@@ -138,7 +141,7 @@ set hlsearch                          " Highlight all search patterns
 
 "}}}
 " Split{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 set splitright                        " Open new splits to the right
 set splitbelow                        " Open new splits below
@@ -197,7 +200,7 @@ vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 "}}}
 
 " Plugins{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Set the runtime path to include fzf and Vundle, and initialize
 
@@ -238,6 +241,7 @@ Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
+" Plug 'honza/vim-snippets'
 Plug 'inkarkat/vim-PatternsOnText'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -287,8 +291,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/vim-easy-align'
 
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 
 Plug 'el-iot/vim-wikipedia-browser'
 Plug 'chikamichi/mediawiki.vim'
@@ -301,7 +305,7 @@ filetype indent plugin on             " Required, enables filetype detection
 "}}}
 
 " Plugin mappings{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Vimtex and Folding{{{
 
@@ -778,6 +782,11 @@ let NERDTreeShowHidden=1
 nnoremap <buffer> <localleader>nt :NERDTree<cr>:set number relativenumber<cr>
 
 "}}}
+" Snippets{{{
+
+let g:UltiSnipsUsePythonVersion = 3
+
+"}}}
 " Startify{{{
 
 nnoremap <buffer> <localleader>st :Startify<cr>
@@ -889,7 +898,6 @@ nnoremap <buffer> <localleader>uc viwbU
 
 let g:UltiSnipsEditSplit='vertical'
 nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
-nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
 
 " function! ExpandUltiSnipsNormal(snippet)
 "     exe "normal! a" . a:snippet
@@ -897,8 +905,8 @@ nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
 "     return
 " endfunction
 
-nnoremap <buffer> <silent> <localleader>ps gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
-nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
+" nnoremap <buffer> <silent> <localleader>ps gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
+" nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
 
 
 "}}}
@@ -926,13 +934,11 @@ nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnip
 "}}}
 
 " Misc{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Braces and stuff{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
-inoremap <buffer> ( ()<esc>i
-inoremap <buffer> (( (
 onoremap <buffer> p i(
 " In the same line delete inside any parenthesis
 onoremap <buffer> in( :<c-u>normal! f(vi(<cr>
@@ -942,18 +948,19 @@ onoremap <buffer> ilp :<c-u>normal! F)vi(<cr>
 onoremap <buffer> iN( :<c-u>normal! F)vi(<cr>
 onoremap <buffer> iNp :<c-u>normal! F)vi(<cr>
 
-inoremap <buffer> { {}<esc>i
-inoremap <buffer> {{ {
-
-inoremap <buffer> [ []<esc>i
-inoremap <buffer> [[ [
+" inoremap <buffer> ( ()<esc>i
+" inoremap <buffer> (( (
+" inoremap <buffer> { {}<esc>i
+" inoremap <buffer> {{ {
+" inoremap <buffer> [ []<esc>i
+" inoremap <buffer> [[ [
 
 inoremap <buffer> \| \|\|<esc>i
 inoremap <buffer> \|\| \|
 
-inoremap <buffer> '' ''<esc>i
-inoremap <buffer> "" ""<esc>i
-inoremap <buffer> `` ``<esc>i
+" inoremap <buffer> '' ''<esc>i
+" inoremap <buffer> "" ""<esc>i
+" inoremap <buffer> `` ``<esc>i
 
 augroup MarkdownVimwiki
     autocmd!
@@ -962,13 +969,13 @@ augroup end
 
 "}}}
 " Calculator{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
 "}}}
 " Colorschemes{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 let python_highlight_all=2
 syntax on
@@ -1008,14 +1015,14 @@ nnoremap <buffer> <localleader>cs :call ColorschemeToggle()<cr>
 
 "}}}
 " Command line mappings{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 cnoremap <buffer> <c-a> <home>
 cnoremap <buffer> <c-e> <end>
 
 "}}}
 " Diagraphs{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 ""Make CTRL-K list diagraphs before each digraph entry
 "runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
@@ -1023,7 +1030,7 @@ cnoremap <buffer> <c-e> <end>
 
 "}}}
 " Macros{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 nnoremap <buffer> Q @q
 vnoremap <buffer> Q @q
@@ -1032,7 +1039,7 @@ nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 
 "}}}
 " Navigation{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Get off my lawn - helpful when learning Vim :){{{
 " nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
@@ -1190,7 +1197,7 @@ nnoremap <buffer> g, g,zvzz
 
 "}}}
 " Pasting, visual selection{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Pasting
 nnoremap <buffer> p pmp
@@ -1306,7 +1313,7 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 
 "}}}
 " Some other remaps{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Ctrl-BS in vim
 noremap! <c-h> <c-w>
@@ -1381,14 +1388,14 @@ vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
 
 "}}}
 " Spelling Check{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Toggling languages (en, sv){{{
 
 augroup SwedishFiles
     autocmd!
-    autocmd BufRead,BufNewFile *-sv.md setlocal spell spelllang=sv
-    autocmd BufRead,BufNewFile *-sv.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    autocmd BufRead,BufNewFile *-svenska.md setlocal spell spelllang=en_us,sv
+    autocmd BufRead,BufNewFile *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
 augroup end
 
 function! LangToggle()
@@ -1406,7 +1413,7 @@ endfunction
 nnoremap <buffer> <localleader>lt :call LangToggle()<cr>
 
 function! SpellLang(lang)
-    if a:lang != 'en' && a:lang != 'sv' && a:lang != 'dl'
+    if a:lang !~ 'en\|sv\|dl'
         let l:lang = input("Which Language: ")
     else
         let l:lang = a:lang
@@ -1429,7 +1436,7 @@ function! SpellLang(lang)
         echom "Svenska and English, saving new words priority to sv-dict (CAREFUL)"
 
         "invalid Language
-    elseif l:lang != 'en' && l:lang != 'sv' && l:lang != 'dl'
+    elseif l:lang !~ 'en\|sv\|dl'
         echom " <-- Not a valid Language"
     endif
 
@@ -1487,7 +1494,7 @@ nnoremap <buffer> <localleader>> :call GtLtToggle()<cr>
 
 "}}}
 " Substitute/change{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 nnoremap <buffer> <localleader>s :%s/
 vnoremap <buffer> <localleader>s :s/
@@ -1509,6 +1516,7 @@ augroup end
 
 highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
 highlight VimwikiBoldGreenGroup ctermfg=46 ctermbg=Black
+highlight BoldRedGroup ctermbg=grey ctermfg=red cterm=bold
 
 augroup VimwikiHighlighting
     autocmd!
@@ -1517,7 +1525,7 @@ augroup VimwikiHighlighting
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'TODO')
 
-    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'OBS')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'OBS')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
@@ -1534,11 +1542,19 @@ augroup end
 
 "}}}
 " Trailing White Space{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
-"autocmd BufWritePre *.* %s/\s\+$//e
+" " Delete trailing whitespace
+" augroup AutoDeleteTrailingWhitespace
+"     autocmd!
+"     autocmd BufWritePre *.* %s/\s\+$//e
+" augroup end
+
+" Fix all/double whitespaces in a line, whole file
 inoremap <buffer> <localleader>fws <esc>mwV:FixWhitespace<cr>`wzva
 nnoremap <buffer> <localleader>fws mwV:FixWhitespace<cr>`wzv
+nnoremap <buffer> <localleader>fds <esc>mwV:s/ \{2,\}/ /g<cr>`wzv
+nnoremap <buffer> <localleader>fads mw:%s/ \{2,\}/ /g<cr>`wzv
 nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
 
 "}}}
@@ -1603,7 +1619,7 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 "}}}
 " TeXHighlighting{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Part, Chapter, Section, Subsection, Subsubsection, label"{{{
 
@@ -2123,14 +2139,14 @@ augroup end
 "}}}
 
 " KeyBindings, Abbreviations and Stuff{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Selecting KeyBindings{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Select KeyBinding Scheme
-function! KeyBindings(code)
-    if a:code != 'tex' && a:code != 'np' && a:code != 'py' && a:code != 'unmaptex' && a:code != 'go'
+function! KeyBinding(code)
+    if a:code !~ 'tex\|np\|py\|unmaptex\|go\|md\|wiki'
         let l:code = input("Which KeyBindings: ")
     else
         let l:code = a:code
@@ -2156,8 +2172,12 @@ function! KeyBindings(code)
     elseif l:code == "go"
         source ~/.vim/KeyBindings/GoKeyBindings.vim
 
+        " Markdown/vimwiki
+    elseif l:code =~ 'md\|wiki'
+        source ~/.vim/KeyBindings/MarkdownKeyBindings.vim
+
         "invalid KeyBindings
-    elseif l:code != 'tex' && l:code != 'np' && l:code != 'py' && l:code != 'unmaptex'
+    elseif l:code !~ 'tex\|np\|py\|unmaptex\|go\|md\|wiki'
         echom " <-- Not a valid KeyBinding"
     endif
 
@@ -2165,11 +2185,11 @@ endfunction
 
 "}}}
 " Selecting Abbreviations{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Select Abbreviation Type
 function! Abbreviations(code)
-    if a:code != 'gen' && a:code != 'math'
+    if a:code !~ 'gen\|math'
         let l:code = input("Which Abbreviation: ")
     else
         let l:code = a:code
@@ -2188,7 +2208,7 @@ function! Abbreviations(code)
         source ~/.vim/Abbreviations/MathAbbreviations.vim
 
         "invalid Abbreviations
-    elseif l:code != 'gen' && l:code != 'math'
+    elseif l:code !~ 'gen\|math'
         echom " <-- Not a valid Abbreviation"
     endif
 
@@ -2196,16 +2216,16 @@ endfunction
 
 "}}}
 " Sourcing KeyBindings, Abbreviations and Stuff{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " SourceEverythingForTeX{{{
 augroup SourceEverythingForTeX
     autocmd!
-    autocmd BufNewFile,BufRead *.tex silent write
-    autocmd BufReadPost *.tex silent VimtexCompile
+    " autocmd BufNewFile,BufRead *.tex silent write
+    autocmd BufNewFile,BufEnter *.tex silent VimtexCompile
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
-    autocmd BufNewFile,BufRead *.tex call KeyBindings("tex")
+    autocmd BufNewFile,BufRead *.tex call KeyBinding("tex")
     " autocmd BufNewFile,BufRead *.tex call GtLtToggle()
     autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
@@ -2228,11 +2248,12 @@ augroup end
 function! SourceEverythingForTeX()
     call Abbreviations("gen")
     call Abbreviations("math")
-    call KeyBindings("tex")
+    call KeyBinding("tex")
     setlocal spell spelllang=en_us
     setlocal spellfile=~/.vim/spell/math.utf-8.add
     setlocal foldmethod=marker
     setlocal foldmarker=F{O{L{D,F}O}L}D
+    echom "Sourced everything for TeX"
 endfunction
 
 nnoremap <buffer> <silent> <localleader>te :call SourceEverythingForTeX()<cr>
@@ -2252,10 +2273,11 @@ augroup SourceEverythingForVimwiki
     autocmd BufNewFile,BufRead *.md silent write
     " autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
     " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
+    autocmd BufNewFile,BufRead *.md call KeyBinding("md")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spell spelllang=en_us,sv
-    autocmd BufNewFile,BufRead,BufReadPost *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spell spelllang=sv,en_us
+    autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
     " autocmd BufNewFile,BufRead *.md silent TableModeEnable
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
@@ -2265,7 +2287,7 @@ augroup SourceEverythingForVimwiki
     autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :Pandoc pdf -V geometry:margin=2.5cm -V fontsize=12pt<cr>
     autocmd Filetype markdown,vimwiki nnoremap <buffer> <F7>            :Pandoc pdf<cr>
     autocmd Filetype markdown,vimwiki inoremap <buffer> <F7>            <esc>:Pandoc pdf<cr>a
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/vimwiki_html/%:t:r.html<cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr>
 
     " autocmd BufNewFile,BufRead *.md execute "normal! 4zj"
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
@@ -2273,14 +2295,27 @@ augroup SourceEverythingForVimwiki
     " autocmd Filetype vimwiki setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.md setlocal foldmethod=marker
     " autocmd BufNewFile,BufRead *.md setlocal foldmarker=F{O{L{D,F}O}L}D
+
 augroup end
+
+" Sourcing everything for markdown/vimwiki
+function! SourceEverythingForMarkdown()
+    call KeyBinding("md")
+    setlocal spell spelllang=sv,en_us
+    setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    echom "Sourced everything for Markdown/Vimwiki"
+endfunction
+
+
+nnoremap <buffer> <silent> <localleader>md :call SourceEverythingForMarkdown()<cr>
+inoremap <buffer> <silent> <localleader>md <esc>:call SourceEverythingForMarkdown()<cr>a
 
 "}}}
 " SourceEverythingForPython{{{
 augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile,BufRead *.py silent write
-    autocmd BufNewFile,BufRead *.py call KeyBindings("py")
+    autocmd BufNewFile,BufRead *.py call KeyBinding("py")
     autocmd BufNewFile,BufRead *.py setlocal signcolumn=yes
     " autocmd BufNewFile,BufRead *.py set foldmethod=indent
 augroup end
@@ -2290,7 +2325,7 @@ augroup end
 augroup SourceEverythingForGo
     autocmd!
     autocmd BufNewFile,BufRead *.go silent write
-    autocmd BufNewFile,BufRead *.go call KeyBindings("go")
+    autocmd BufNewFile,BufRead *.go call KeyBinding("go")
     autocmd BufNewFile,BufRead *.go setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.go setlocal spellfile=~/.vim/spell/math.utf-8.add
 augroup end
@@ -2298,9 +2333,9 @@ augroup end
 "}}}
 " Leader mappings{{{
 "Sourcing NumbersPeacefully
-nnoremap <buffer> <localleader>np :call KeyBindings("np")<cr>
-inoremap <buffer> <localleader>np <esc>:call KeyBindings("np")<cr>a
-inoremap <buffer> <localleader>nd <esc>:call KeyBindings("tex")<cr>a
+nnoremap <buffer> <localleader>np :call KeyBinding("np")<cr>
+inoremap <buffer> <localleader>np <esc>:call KeyBinding("np")<cr>a
+inoremap <buffer> <localleader>nd <esc>:call KeyBinding("tex")<cr>a
 
 "Sourcing GeneralAbbreviations
 nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
@@ -2309,26 +2344,30 @@ nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
 nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
 
 "Sourcing PythonKeyBindings
-nnoremap <buffer> <localleader>py :call KeyBindings("py")<cr>
+nnoremap <buffer> <localleader>py :call KeyBinding("py")<cr>
 
 "Sourcing GoKeyBindings
-nnoremap <buffer> <localleader>go :call KeyBindings("go")<cr>
+nnoremap <buffer> <localleader>go :call KeyBinding("go")<cr>
 
 "Sourcing UnmapTexKeyBindings
-nnoremap <buffer> <localleader>ut :call KeyBindings("unmaptex")<cr>
-inoremap <buffer> <localleader>ut <esc>:call KeyBindings("unmaptex")<cr>a
+nnoremap <buffer> <localleader>ut :call KeyBinding("unmaptex")<cr>
+inoremap <buffer> <localleader>ut <esc>:call KeyBinding("unmaptex")<cr>a
 
 "}}}
 
 "}}}
 " Opening .vimrc, KeyBindings and Stuff{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Opening TeXKeyBindings "te=tex
 nnoremap <buffer> <leader>hte :new ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>te :vnew ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>hnp :new ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
 nnoremap <buffer> <leader>np :vnew ~/.vim/KeyBindings/NumbersPeacefully.vim<cr>
+
+" Opening MarkdownKeyBindings "md=markdown,vimwiki
+nnoremap <buffer> <leader>hmd :new ~/.vim/KeyBindings/MarkdownKeyBindings.vim<cr>
+nnoremap <buffer> <leader>md :vnew ~/.vim/KeyBindings/MarkdownKeyBindings.vim<cr>
 
 " Opening PythonKeyBindings
 nnoremap <buffer> <leader>hpy :new ~/.vim/KeyBindings/PythonKeyBindings.vim<cr>
@@ -2342,7 +2381,10 @@ nnoremap <buffer> <leader>go :vnew ~/.vim/KeyBindings/GoKeyBindings.vim<cr>
 nnoremap <buffer> <leader>hut :new ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 nnoremap <buffer> <leader>ut :vnew ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim<cr>
 
-" Opening tex.snippets "u=ultisnips
+" Opening all.snippets
+nnoremap <buffer> <leader>as :vnew ~/.vim/UltiSnips/all.snippets<cr>
+
+" Opening tex.snippets
 nnoremap <buffer> <leader>hts :new ~/.vim/UltiSnips/tex.snippets<cr>
 nnoremap <buffer> <leader>ts :vnew ~/.vim/UltiSnips/tex.snippets<cr>
 
@@ -2371,13 +2413,21 @@ nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 "}}}
 
 " Writing and quitting{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
-" Doesn't seem to work when template is enabled
+" Doesn't seem to work when template is enabled - now works with BufEnter
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile *.* silent write
+    autocmd BufNewFile,BufEnter *.*  if &modifiable | silent write | endif
+    " autocmd BufNewFile,BufEnter *.* silent write
+    " autocmd BufEnter *.tex,*.py,*.md,*-svenska.md silent write
 augroup end
+
+" " If you autowrite bibliography you'll lose mother-bib's in case of a mistake
+" augroup WriteBibliography
+"     autocmd!
+"     autocmd QuitPre main-bib.bib,bib.bib exe "norm! :!/home/mahbub/scripts/bin/savevim y\<cr>"
+" augroup end
 
 nnoremap <buffer> <silent> <localleader>w mw:w!<cr>`w
 nnoremap <buffer> <silent> <localleader>ww mw:w!<cr>`w
@@ -2386,8 +2436,9 @@ inoremap <buffer> <silent> ;ww <esc>mw:w!<cr>`wa
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged * nested if &modifiable | silent write | endif
-    autocmd TextChangedI * silent write
+    autocmd TextChanged *,*.py nested if &modifiable | silent write | endif
+    " autocmd TextChanged * nested silent write
+    autocmd TextChangedI *,*.py silent write
 augroup end
 
 nnoremap <localleader>q mqzM:q!<cr>
@@ -2398,7 +2449,7 @@ vnoremap 'q `qzvzz
 "}}}
 
 " Sourcing{{{
-"-------------------------------------------------------------------
+" -------------------------------------------------------------------
 
 " Sourcing current file
 nnoremap <buffer> <silent> <localleader>sf :w!<cr>:source %<cr>:noh<cr>

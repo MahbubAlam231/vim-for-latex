@@ -12,6 +12,10 @@
 % Packages% F{O{L{D
 % -------------------------------------------------------------------
 
+% Fonts
+\usepackage{mathpazo}
+% \usepackage{times}
+
 % \usepackage{afterpage}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -42,7 +46,6 @@
 \usepackage[bookmarks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,linktoc=all]{hyperref}
 \usepackage{cleveref}
 % \usepackage{lscape}
-\usepackage{mathpazo}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 % \usepackage{pdfpages}
@@ -55,7 +58,6 @@
 \usepackage{thmtools}
 \usepackage{tikz}
 \usetikzlibrary{cd}
-% \usepackage{times}
 % \usepackage{titlesec}
 % \usepackage{titling}
 \usepackage[normalem]{ulem}%for writing a underlined text

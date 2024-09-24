@@ -24,10 +24,18 @@ $0
 endsnippet
 
 snippet vp "Surround with a VISUAL placeholder" w
-\$\{VISUAL:${1:${VISUAL:text}}\}$0
+\$\{VISUAL:${1:${VISUAL:text}}$2\}$0
 endsnippet
 
 snippet np "Surround with a numbered placeholder" w
-\$\{$1:${2:${VISUAL:text}}\}$0
+\$\{$1:${2:${VISUAL:text}}$3\}$0
+endsnippet
+
+snippet nvp "Surround with a numbered+VISUAL placeholder" w
+\${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
+endsnippet
+
+snippet vnp "Surround with a numbered+VISUAL placeholder" w
+\${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
 endsnippet
 

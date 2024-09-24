@@ -1,15 +1,29 @@
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 % Author(s)     : {{NAME}}
 % File          : {{FILE}}.tex
 % Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
 % Description   :{{CURSOR}}
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 
-\documentclass[xcolor=dvipsnames,10pt]{beamer}% F{O{L{D
+\documentclass[xcolor=svgnames, 10pt, aspectratio=169]{beamer}% F{O{L{D
 % xcolor options: dvipsnames; svgnames for Teal color
+\renewcommand{\baselinestretch}{1.5}
+
+\usecolortheme[named=teal]{structure}
 
 % Packages% F{O{L{D
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
+
+% For use with beamer v 2.20
+%  options  [handout]
+
+%  There is a VERY rich set of possible styles of presentations and color themes.  See the beamer documentation for a full list of possibilities.
+% \usetheme{Copenhagen}  % JuanLesPins  Rochester
+%  Berkeley  Palo Alto    with sidebar and top
+% Goettingen  Marburg     with sidebar
+%  Copenhagen  Luebeck  Warsaw
+\useinnertheme{rounded}
+\useoutertheme{}
 
 % \usetheme{AnnArbor}
 % \usetheme{Antibes}
@@ -26,7 +40,7 @@
 % \usetheme{Ilmenau}
 % \usetheme{JuanLesPins}
 % \usetheme{Luebeck}
-\usetheme{Madrid}
+% \usetheme{Madrid}
 % \usetheme{Malmoe}
 % \usetheme{Marburg}
 % \usetheme{Montpellier}
@@ -34,35 +48,23 @@
 % \usetheme{Pittsburgh}
 % \usetheme{Rochester}
 % \usetheme{Singapore}
+% \usetheme{Simple}
 % \usetheme{Szeged}
 % \usetheme{Warsaw}
 % \usetheme{boxes}
-% \usetheme{default}
+\usetheme{default}
 
-% For use with beamer v 2.20
-%  options  [handout]
-
-%  There is a VERY rich set of possible
-%  styles of presentations and color themes.  See the
-%  beamer documentation for a full list of possibilities.
-% \usetheme{Copenhagen}  % JuanLesPins  Rochester
-%  Berkeley  Palo Alto    with sidebar and top
-% Goettingen  Marburg     with sidebar
-%  Copenhagen  Luebeck  Warsaw
-\useinnertheme{rounded}
-%\usecolorheme{albatross}
-\usecolortheme[named=Teal]{structure}
-% Other option RoyalBlue
-\useoutertheme{}
 %\setfootline{\insertshortinstitute, \insertshortdate, \insertframenumber/\inserttotalframenumber}
-\usefonttheme{structuresmallcapsserif}
+% \usefonttheme{structuresmallcapsserif}
+\usefonttheme{default}
 \usefonttheme[onlymath]{serif}
+% \usecolortheme{beaver}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{items}[ball]
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{footline}[page number]{}
 
-\setbeamercolor{alerted text}{fg=blue}
+\setbeamercolor{alerted text}{fg=black}
 
 
 \usepackage{afterpage}
@@ -92,48 +94,52 @@
 \usepackage{lscape}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
+% \usepackage{framed}
+% \usepackage[framed]{ntheorem}
 \usepackage[square,numbers]{natbib}
 % \usepackage[nottoc]{tocbibind}
 \usepackage{physics}
 % \usepackage{palatino}
+% \usepackage{presentation}
 \usepackage{relsize}
 \usepackage{slantsc}
 \usepackage{stmaryrd}
 \usepackage{tfrupee}
-\usepackage{tikz-cd}
 \usepackage{tikz}
+% \usepackage{tikzcd}
+\usetikzlibrary{cd}
+% \usepackage{times}
 % \usepackage{titlesec}
 % \usepackage{titling}
 \usepackage{thmtools}
 \usepackage[normalem]{ulem}%for writing a underlined text
 \usepackage{url}
 \usepackage{xcolor}
-\usepackage[cmtip]{xy}
+% \usepackage[all, cmtip]{xy}
 \usepackage{yfonts}
 
-\usepackage{pgfarrows}
-%  Don't need to load the pgf package, but it has
-%  has itself some packages you might want, such as
-%  pgfarrows,,pgfnodes,pgfautomata,pgfheaps
-%  See the pgf documentation.
+% \usepackage{pgfarrows}
+%  Don't need to load the pgf package, but it has has itself some packages you might want, such as pgfarrows,,pgfnodes,pgfautomata,pgfheaps. See the pgf documentation.
 
-\usetikzlibrary{matrix}
+% \usetikzlibrary{matrix}
+ 
+\graphicspath{{images/}}
 
 % F}O}L}D
 % Environments% F{O{L{D
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 
-% % To write names of theorems in bold
-% \makeatletter
-% \def\th@plain{%
-%     \thm@notefont{}% same as heading font
-%     \itshape% body font
-% }
-% \def\th@definition{%
-%     \thm@notefont{}% same as heading font
-%     \normalfont% body font
-% }
-% \makeatother
+% To write names of theorems in bold
+\makeatletter
+\def\th@plain{%
+    \thm@notefont{}% same as heading font
+    \itshape% body font
+}
+\def\th@definition{%
+    \thm@notefont{}% same as heading font
+    \normalfont% body font
+}
+\makeatother
 
 % \mode<presentation> { \setbeamercovered{transparent} }
 % % \mode<presentation> {%
@@ -162,6 +168,13 @@
 % \newtheorem{example}{Example}[section]
 % \newtheorem{exercise}{Exercise}[section]
 
+% \newframedtheorem{theorem}{Theorem}
+
+\declaretheorem[
+  shaded={rulecolor=black, rulewidth=1pt},
+  name=Theorem
+]{thmboxed}
+
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -170,13 +183,14 @@
 
 % F}O}L}D
 % Newcommands% F{O{L{D
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
+
 \newcounter{saveenumi}
 \newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
 \newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
 
-\newcommand{\pa}{\pause}
-\newcommand{\ps}{\pause\vspace{1em}}
+\newcommand{\pa}{}
+\newcommand{\ps}{}
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
 
@@ -210,9 +224,9 @@
 \DeclareMathOperator*{\supp}{supp}
 \DeclareMathOperator*{\diag}{diag}
 
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 % QED symbol
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
@@ -228,8 +242,6 @@
 \author[]{\Large{{{NAME}}}}
 
 \institute[]{\inst{}%
-    \large{Department of Mathematics}\\
-    \vspace{3mm}
     \large{Uppsala University}
 }
 \date{}
@@ -264,9 +276,9 @@ secf<++>
 
 \end{document}
 
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 % Comments on the document
-%-------------------------------------------------------------------
+% -------------------------------------------------------------------
 
 % foldmarker has been changed, if you open it in VIM, be careful.
 % set foldmarker=F{O{L{D,F}O}L}D

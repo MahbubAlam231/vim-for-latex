@@ -20,23 +20,23 @@ endsnippet
 
 snippet time "Importing and start_time" b
 import time
-st = time.time()$0
+ts = time.time()$0
 endsnippet
 
-snippet st "Start time of a program" b
-st = time.time()
+snippet ts "time start of a program" b
+ts = time.time()
 endsnippet
 
-snippet sst "Start time of a sub-program" b
-st0 = time.time()
+snippet tss "time start of a sub-program" b
+ts0 = time.time()
 endsnippet
 
 snippet rt "Print runtime of a program" b
-print(f"\nProgram ran for {time.time() - st:.2f} secs.")$0
+print(f"\nProgram ran for {time.time() - ts:.2f} secs.")$0
 endsnippet
 
-snippet srt "Print runtime of a sub-program" b
-print(f"\nSub-program ran for {time.time() - st0:.2f} secs.")$0
+snippet rts "Print runtime of a sub-program" b
+print(f"\nSub-program ran for {time.time() - ts0:.2f} secs.")$0
 endsnippet
 
 #}}}
@@ -60,6 +60,47 @@ ${1:${VISUAL}}$0
 endsnippet
 
 #}}}
+
+# Types{{{
+
+snippet ty "type" w
+type($1)$0
+endsnippet
+
+snippet fl "float" w
+float($1)$0
+endsnippet
+
+snippet int "int" w
+int($1)$0
+endsnippet
+
+snippet st "string" w
+str($1)$0
+endsnippet
+
+snippet dic "Dictionaries" w
+${1:${VISUAL:dicName}}Dict = {
+	${2:key} : ${3:value},
+	${4:key} : ${5:value}$6
+}
+$0
+endsnippet
+
+snippet k "key-value for dictionary" w
+${1:key} : ${2:value}$0
+endsnippet
+
+
+#}}}
+
+snippet 3' "3 single quotes" iA
+'''$1'''$2
+endsnippet
+
+snippet 3" "3 double quotes" iA
+"""$1"""$2
+endsnippet
 
 snippet pr "Print in python" b
 print(${1:${VISUAL}})$0
@@ -152,8 +193,15 @@ endsnippet
 snippet try "try block in python" b
 try:
 	${1:${VISUAL:this}}
-except:
-	${2:if can\'t, do this}
-${0:# Add finally block if needed}
+except$2:
+	# if can't, do that
+	${3:pass}
+${4:finally:
+	$0}
+endsnippet
+
+snippet ex "except block for try-except" b
+except$1:
+	$0
 endsnippet
 

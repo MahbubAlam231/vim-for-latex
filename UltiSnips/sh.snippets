@@ -5,11 +5,19 @@
 # |_.__/ \__,_|___/_| |_|   |___/_| |_|_| .__/| .__/ \___|\__|___/
 #                                       |_|   |_|
 
-snippet if "if statement"
-if [ $1 ]
+snippet if "if statement" b
+if ${1:[ $2 ]}
 then
-	${2:${VISUAL:}}$3
+	${3:${VISUAL:text}}$4
 fi$0
+endsnippet
+
+snippet ] "if condition"
+[ $1 ]$0
+endsnippet
+
+snippet ]] "if condition with regex"
+[[ $1 ]]$0
 endsnippet
 
 snippet echo "Echo things in bash" b
@@ -19,5 +27,32 @@ endsnippet
 snippet ds "Doc-string" b
 # DOC-STRING
 # ${VISUAL}$0
+endsnippet
+
+global !p
+def fix_indent(snip):
+    vim.eval(r'feedkeys("\<c-f>")')
+endglobal
+
+post_expand "fix_indent(snip)"
+snippet hd "HereDoc" b
+${1:command} << ${2:Delimiter}
+$3
+$2
+$0
+endsnippet
+
+
+snippet rr "reading response" b
+echo -e "\t$1? [Y/n] \c"
+read response
+if [ "$response" == "n" ] || [ "$response" == "N" ]
+then
+	echo -e "\t${2:${VISUAL:Quitting}}."
+	${3:do_this}
+else
+	${4:${VISUAL:do_this}}
+fi
+$0
 endsnippet
 

@@ -10729,14 +10729,22 @@ endsnippet
 # Enumeration and tables{{{
 #-------------------------------------------------------------------
 
+global !p
+def fix_indent(snip):
+    vim.eval(r'feedkeys("\<c-f>")')
+endglobal
+
+post_expand "fix_indent(snip)"
 snippet it "Writing \item" b
 \\item $0
 endsnippet
 
+post_expand "fix_indent(snip)"
 snippet itm "Writing \item" b
 \\item $0
 endsnippet
 
+post_expand "fix_indent(snip)"
 snippet ita "Writing \item<+-|alert@+>" b
 \\item<+-|alert@+> $0
 endsnippet
@@ -10949,6 +10957,31 @@ snippet bib "Bibliography" b
 \bibliography{${1:bib}}
 endsnippet
 
+snippet obib "Other bibliography manager" b
+\begin{thebibliography}{9}
+\bibitem{$1}
+${2:${VISUAL:author}} (${3:${VISUAL:1986}}) ${4:${VISUAL:book name}}, ${5:${VISUAL:publisher}}.
+
+% \bibitem{lamport94}
+% Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+% Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}
+$0
+endsnippet
+
+snippet nbib "Bibliography with new geometry" b
+\afterpage{%
+\newgeometry{top=2cm, bottom=1.5cm, left=2.5cm, right=2.5cm}
+% material for this page
+% Bibliography
+\bibliographystyle{alpha}
+\bibliography{bib}
+\clearpage
+\restoregeometry
+}
+$0
+endsnippet
+
 snippet cit "Citation" w
 \cite[$1]{$0}
 endsnippet
@@ -11150,7 +11183,7 @@ snippet texroot
 endsnippet
 
 snippet cv "CV entry" b
-\cventry{${1:year--year}}{${2:Degree bold}}{${3:Institution italic}}{${4:City normalfont}}{${5:\textit{Grade}\}}{${6:Description normalfont down below}}$0
+\cventry{${1:year--year}}{${2:Degree bold}}{${3:Institution italic}}{${4:City normalfont}}{${5:\textit{Grade}}\}{${6:Description normalfont down below}}$0
 endsnippet
 
 

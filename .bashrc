@@ -213,6 +213,7 @@ lala() {
 # My custom aliases{{{
 # Some commands
 alias      p='python3'
+alias     py='python3'
 alias     pr='python3 `fzf`'
 alias     pz='python3 `fzf`'
 alias     pf='python3 `fzf`'
@@ -223,8 +224,9 @@ alias    pmr='python ~/python-code/movie_rating.py'
 alias     re='refdfs'
 alias    rey='refdfs y'
 alias    ref='refdfs y'
-alias    red='cd ~/Downloads && refdfs'
 alias   refd='refdfs y'
+alias    red='cd ~/Downloads && refdfs'
+alias    reb='refdfs bus'
 
 alias     vv='vimv'
 
@@ -267,6 +269,7 @@ alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
 # Opening frequent files
 alias      v='vim'
 alias     v.='vim .'
+alias    vmt='vt'
 alias     vc='vim ~/.vimrc'
 alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
 alias     te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
