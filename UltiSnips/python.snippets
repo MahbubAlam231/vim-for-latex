@@ -11,9 +11,322 @@
 # |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                |_|    |_|
 
+global !p
+from my_snippets_helpers import *
+
+def fix_indent(snip):
+    vim.eval(r'feedkeys("\<c-f>")')
+
+endglobal
+
+# Numpy{{{
+
+snippet 'np(a)?r' "np.array" wAr
+np.array($1)
+endsnippet
+
+# Output : works only if there's a . in front
+snippet '(np\.)?arr' "np.arr" wAr
+np.array($1)$0
+endsnippet
+
+snippet npad "np.add" wA
+np.add(${3:a}${1:1}, ${4:a}${2:2})
+endsnippet
+
+snippet nps "np.substract" wA
+np.subtract(${3:a}${1:1}, ${4:a}${2:2})$0
+endsnippet
+
+snippet npm "np.multiply" wA
+np.multiply(${3:a}${1:1}, ${4:a}${2:2})$0
+endsnippet
+
+snippet npd "np.divide" wA
+np.divide(${3:a}${1:1}, ${4:a}${2:2})$0
+endsnippet
+
+snippet '(np\.)?dot' "np.dot" wAr
+np.dot(${3:a}${1:1}, ${4:a}${2:2})$0
+endsnippet
+
+snippet '(np\.)?res' "np.reshape" wAr
+np.reshape($1)$0
+endsnippet
+
+# }}}
+
+# mathplotlib {{{
+
+snippet pt. "plt." wA
+plt.$0
+endsnippet
+
+snippet psf "plot save figure" bA
+plt.savefig('${1:foo}.jpg')$0
+endsnippet
+
+# }}}
+
+# Pandas{{{
+
+# Output: df1 = pd.read_csv('filename.csv')
+#         A B                              .
+snippet '((\w+)?( )*=( )*)(rc|rcs|rs|rx)' "rc, rcs, rs read csv file; depends on if ' = ' precedes; captures digit before ' = '" rw
+${3:`!p
+# A
+symbols = (' ', '=')
+string, end_digit = strip_end_digits(match.group(1), symbols)
+store_snip_rv(strip_end_digits(match.group(1), symbols), 'w')
+snip.rv = "df" if string == "" else string
+`}${4:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`} = pd.read_`!p snip.rv = "excel" if match.group(5) == 'rx' else "csv"`('${1:filename}.`!p snip.rv = "xslx" if match.group(5) == 'rx' else "csv"`')$2
+endsnippet
+
+# Output: df1.to_csv('filename.csv', index=False)
+#         A B                                    .
+snippet '(^|^(\w+)?\.)(wc|ws)' "wc, ws write to csv file; depends on if . precedes; captures digit before ." rw
+${3:`!p
+# A
+symbols = ('.')
+string, end_digit = strip_end_digits(match.group(1), symbols)
+store_snip_rv(strip_end_digits(match.group(1), symbols), 'w')
+snip.rv = "df" if string == "" else string
+`}${4:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`}.to_csv('${1:filename}.csv', index=False)$2
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(pd\.)?df' "Create dataframe" rw
+pd.DataFrame(${1:dict/nested_list}`!p snip.rv = ", columns = " if t[2] else ""`$2)$0
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(?<=\.)lo' "df.loc method" rw
+loc[${1:rows_and_cols}]$0
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(?<=\.)il' "df.iloc method" rw
+iloc[${1:rows_and_cols}]$0
+endsnippet
+
+# doesn't expand when there is a non-whitespace char in front
+snippet '(?<!\S)(pd\.ser|ser)' "pd.Series" rw
+pd.Series(${1:data})
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(?<=\.)u(ni)?q' "unique elements" rw
+unique()$0
+endsnippet
+
+# snippet '(\.?)rs' "read csv" rw
+# ${1:df} = pd.read_csv('${2:filename}.csv)$0
+# endsnippet
+
+# snippet ws "Write to csv file" w
+# ${1:df${2:2}}.to_csv('${3:filename}.csv', index=False)$0
+# endsnippet
+
+# ${3:`!p snip.rv = "" if match.group(2) == "." else "df"`}.to_csv('${1:filename}.csv', index=False)$2
+
+# }}}
+
+# Files{{{
+
+snippet rf "Read file" w
+${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], ['txt', 'csv', 'py', 'xlsx'])`', 'r')$0
+endsnippet
+
+snippet wf "Write file" w
+${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], ['txt', 'csv', 'py', 'xlsx'])`', 'w')$0
+endsnippet
+
+snippet ofr "Open file to read and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'r') as f:
+	${3:data} = f.${4:read()}
+endsnippet
+
+snippet ofw "Open file to write and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+	${3:data} = f.${4:read()}
+endsnippet
+
+snippet ofa "Open file to append and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+	${3:data} = f.${4:read()}
+endsnippet
+
+snippet ofv "Open file in a 'vice' to work on it and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', '${3:a+}') as f:
+	${4:data} = f.${5:read()}
+endsnippet
+
+# snippet fr "Open file to read and auto-close" wA
+# with open('${1:filename}.${2:txt}`!p
+# snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx']) if t[2] else ""
+# `', 'r') as f:
+# 	${3:data} = f.${4:read()}
+# endsnippet
+
+snippet fw "Open file to write and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+	${3:data} = f.${4:read()}
+endsnippet
+
+snippet fa "Open file to append and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+	${3:data} = f.${4:read()}
+endsnippet
+
+snippet fv "Open file in a 'vice' to work on it and auto-close" wA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', '${3:a+}') as f:
+	${4:data} = f.${5:read()}
+endsnippet
+
+# snippet fn "File name" w
+# name$0
+# endsnippet
+
+snippet '(?<=\.)re' "Read a file" rw
+read($1)$0
+endsnippet
+
+snippet '(?<=\.)wr' "Write a file" rw
+write($1)$0
+endsnippet
+
+
+snippet '(?<=\.)rl' "Read line" rw
+readline($1)$0
+endsnippet
+
+snippet '(?<=\.)rls' "Read all lines" rw
+readlines()$0
+endsnippet
+
+
+# }}}
+
+# Classes{{{
+
+snippet class "class with docstrings" b
+class ${1:my_class}(${2:object}):
+
+	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
+
+	def __init__(self$4):
+		`!p snip.rv = triple_quotes(snip)`${5:TODO: to be defined.}`!p
+snip.rv = ""
+snip >> 2
+
+args = get_args(t[4])
+
+write_docstring_args(args, snip)
+if args:
+	snip.rv += '\n' + snip.mkline('', indent='')
+	snip += '{0}'.format(triple_quotes(snip))
+
+write_init_body(args, t[2], snip)
+`
+		$0
+endsnippet
+
+snippet cl "Create class" b
+class ${1:class_name}(${2:object}):
+	`!p snip.rv = "# Class attributes (shared by all instances)\n" if t[3] else ""`	${3:class_attribute = value}
+	def __init__(`!p snip.rv = "self, " if t[5] else ""`${5:arg1}):
+		self.$5 = ${6:$5}
+		$7
+$0
+endsnippet
+
+snippet sv "Variable inside classes" w
+self.${1:${VISUAL:var_name}} = ${2:$1}
+endsnippet
+
+snippet svi "Initialize variable inside classes" w
+self.${1:${VISUAL:var_name}} = ${2:$1}$0
+endsnippet
+
+snippet cfn "Defining functions in classes" bm
+def ${1:fun_name}(self, ${2:arg}):
+	${3:${VISUAL:# function_body}}$4
+
+	return$5
+$0
+endsnippet
+
+snippet init "Initialize a class" b
+
+	return$5
+$0
+endsnippet
+
+
+snippet fns "Defining functions in classes" bm
+def ${1:fun_name}(self, ${2:arg}):
+	${3:${VISUAL:# function_body}}$4
+
+	return$5
+$0
+endsnippet
+
+# doesn't expand when there is a word in front
+# snippet '(^|(?<=\W))\.' "self." r
+snippet '(?<=\W)\.' "self." r
+self.
+endsnippet
+
+snippet selfvar "Add 'self.' to a variable" w
+`!p
+def add_self(var):
+	# If the variable already starts with 'self.', return as is
+	if var.strip().startswith('self.'):
+		return var.strip()
+	else:
+		return 'self.' + var.strip()
+
+add_self(t[1])
+`
+endsnippet
+
+# }}}
+
 snippet em "Execute modules"
 if __name__ == "__main__":
 	${1:${VISUAL:pass}}$0
+endsnippet
+
+# Modules{{{
+
+snippet fr "from this module import that method" b
+from ${1:module} import ${2:method}
+endsnippet
+
+snippet im "import module" b
+import ${1:module}
+endsnippet
+
+snippet np "Numpy" b
+import numpy as np
+endsnippet
+
+snippet pd "pandas" b
+import pandas as pd
+endsnippet
+
+snippet iam "import all module" bA
+import numpy as np
+import pandas as pd
+import re
+import time
+ts = time.time()$0
 endsnippet
 
 # Time module{{{
@@ -32,14 +345,53 @@ ts0 = time.time()
 endsnippet
 
 snippet rt "Print runtime of a program" b
-print(f"\nProgram ran for {time.time() - ts:.2f} secs.")$0
+print(f"\nProgram ran for {time.time() - ts:.3f} secs.\n")$0
 endsnippet
 
 snippet rts "Print runtime of a sub-program" b
-print(f"\nSub-program ran for {time.time() - ts0:.2f} secs.")$0
+print(f"\nSub-program ran for {time.time() - ts0:.3f} secs.\n")$0
 endsnippet
 
-#}}}
+# }}}
+
+snippet '(s)?(ex|qu)' "Description" br
+`!p snip.rv = "sys." if match.group(1) == 's' else ""`exit()
+endsnippet
+
+# }}}
+
+# Braces and quotes{{{
+
+snippet ' "single quotes" iA
+'${1:${VISUAL}}'$0
+endsnippet
+
+snippet " "double quotes" iA
+"${1:${VISUAL}}"$0
+endsnippet
+
+snippet ` "backtick" iA
+\`${1:${VISUAL}}\`$0
+endsnippet
+
+snippet ( "parenthesis" iA
+(${1:${VISUAL}})$0
+endsnippet
+
+snippet { "curly brackets" iA
+{${1:${VISUAL}}\}$0
+endsnippet
+
+snippet [ "square brackets" iA
+[${1:${VISUAL}}]$0
+endsnippet
+
+# priority 1000
+# snippet [[ "double square brackets for pandas" iA
+# [[${1:${VISUAL}}]]$0
+# endsnippet
+
+# }}}
 
 # Title format{{{
 
@@ -53,36 +405,34 @@ snippet pt "[========== Print title like this ==========]" b
 print(f"\t\t[{10*'='} ${1:${VISUAL}} {10*'='}]\n")
 endsnippet
 
-snippet # "Commenting as doc-string" b
-"""
-${1:${VISUAL}}$0
-"""
-endsnippet
-
-#}}}
+# }}}
 
 # Types{{{
 
-snippet ty "type" w
-type($1)$0
+snippet ty "type" wA
+type(${1:${VISUAL:obj}})$0
 endsnippet
 
 snippet fl "float" w
-float($1)$0
+float(${1:${VISUAL:float-obj}})$0
 endsnippet
 
-snippet int "int" w
-int($1)$0
+snippet in "int" w
+int(${1:${VISUAL:int-obj}})$0
 endsnippet
 
 snippet st "string" w
-str($1)$0
+str(${1:${VISUAL:float-obj}})$0
+endsnippet
+
+snippet edic "Empty dictionary" w
+${1:${VISUAL:dicName}}Dict = {}$0
 endsnippet
 
 snippet dic "Dictionaries" w
 ${1:${VISUAL:dicName}}Dict = {
-	${2:key} : ${3:value},
-	${4:key} : ${5:value}$6
+	${2:${3:key} : ${4:value},
+	${5:key} : ${6:value}$7}
 }
 $0
 endsnippet
@@ -92,116 +442,206 @@ ${1:key} : ${2:value}$0
 endsnippet
 
 
-#}}}
+# }}}
 
-snippet 3' "3 single quotes" iA
-'''$1'''$2
+# Lists and strings{{{
+
+snippet '(?<=\.)app' "Append to a list/deque" wAr
+append(${1:${VISUAL:element}})$0
 endsnippet
 
-snippet 3" "3 double quotes" iA
-"""$1"""$2
+snippet '(?<=\.)apl' "Append left to deque" wAr
+appendleft(${1:${VISUAL:element}})$0
 endsnippet
 
-snippet pr "Print in python" b
-print(${1:${VISUAL}})$0
+snippet '(?<=\.)sp' "Spliting strings to make list" rw
+split(${1:at_these_chars})$0
 endsnippet
 
-snippet ra "range function"
-range($1)$0
+snippet '(?<=\.)rep' "Replace 'a' by 'b' in a string" wrA
+replace('${1:a}', '${2:b}')$0
+endsnippet
+
+# Output : format
+snippet '(?<=\.)jo(i)?' "join a list of strings" wr
+join(${1:${VISUAL:a_list}})$0
+endsnippet
+
+snippet '(?<=\.)so' "sort" rw
+sort(`!p snip.rv = "key=" if t[1] else ""`${1:sortFun})$0
+endsnippet
+
+snippet sor "sort" w
+sort(${1:iterable}`!p snip.rv = ", key=" if t[2] else ""`${2:sortFun})$0
+endsnippet
+
+# }}}
+
+snippet pri "Print in python" bA
+print(${1:${VISUAL:text}})$0
+endsnippet
+
+snippet prf "Print string" bA
+print(f"${1:${VISUAL:text}}")$0
+endsnippet
+
+snippet ra "range function" wA
+range($1)$2
 endsnippet
 
 # Function{{{
 
 snippet def "Defining functions" bm
-def ${1:foo}($2):
-	${3:${VISUAL}}$4
+def ${1:fun_name}(${2:arg}):
+	${3:${VISUAL:# function_body}}$4
 
-    return$5
+	return$5
 $0
 endsnippet
 
 snippet fn "Defining functions" bm
-def ${1:foo}($2):
-	${3:${VISUAL}}$4
-
-    return$5
+def ${1:fun_name}(`!p snip.rv = "self, " if snip.indent else ""`${2:arg}):
+	${3:${VISUAL:# function_body}}$4`!p
+snip.rv = "\n" if t[3] else ""`
+	return$5
 $0
 endsnippet
 
-snippet fns "Defining functions in classes" bm
-def ${1:foo}(self, $2):
-	${3:${VISUAL}}$4
-
-    return$5
-$0
+snippet fnd "function with docstrings" b
+def ${1:fun_name}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}`!p
+write_function_docstring(t, snip)`
+	${5:${VISUAL:pass}}
 endsnippet
 
-#}}}
+snippet fnr "Create function and run" bmA
+def ${1:fun_name}(`!p snip.rv = "self, " if snip.indent else ""`${2:arg}):
+	${3:${VISUAL:# function_body}}$4`!p
+snip.rv = "\n" if t[3] else ""
+`
+	return$5
 
-snippet if "if statement" bm
+print($1(${6:$2}))$0
+endsnippet
+
+snippet '(ds|#)' "Commenting as doc-string" br
+"""
+${1:${VISUAL}}
+"""
+endsnippet
+
+# }}}
+
+snippet if "if statement" b
 if ${1:BOOLEAN}:
 	${2:${VISUAL:pass}}$3
-$0
 endsnippet
+
+post_expand "fix_indent(snip)"
+snippet 'e(l)?i(f)?' "elif statement" br
+elif ${1:BOOLEAN}:
+	${2:${VISUAL:pass}}$0
+endsnippet
+
+post_expand "fix_indent(snip)"
+snippet 'el(s(e)?)?' "else statement" br
+else:
+	${0:${VISUAL:pass}}
+endsnippet
+
 
 # Loops{{{
 
 snippet for "for loop" bm
 for ${1:ITERABLE}:
 	${2:${VISUAL:pass}}$3
-$0
 endsnippet
 
-snippet wh "while loop" bm
+snippet 'wh(i(l(e)?)?)?' "while loop" brm
 ${1:# Initialize while loop}
 while ${2:BOOLEAN}:
 	${3:${VISUAL:break}}$4
-
-    ${5:# Re-initialize while loop}
-$0
+	${5:# Re-initialize while loop}$0
 endsnippet
 
-snippet whi "while loop" bm
-${1:# Initialize while loop}
-while ${2:BOOLEAN}:
-	${3:${VISUAL:break}}$4
-
-    ${5:# Re-initialize while loop}
-$0
-endsnippet
-
-snippet whil "while loop" bm
-${1:# Initialize while loop}
-while ${2:BOOLEAN}:
-	${3:${VISUAL:break}}$4
-
-    ${5:# Re-initialize while loop}
-$0
-endsnippet
-
-snippet while "while loop" bm
-${1:# Initialize while loop}
-while ${2:BOOLEAN}:
-	${3:${VISUAL:break}}$4
-
-    ${5:# Re-initialize while loop}
-$0
-endsnippet
-
-#}}}
+# }}}
 
 snippet try "try block in python" b
 try:
 	${1:${VISUAL:this}}
 except$2:
-	# if can't, do that
+	# if can't, do this
 	${3:pass}
 ${4:finally:
 	$0}
 endsnippet
 
-snippet ex "except block for try-except" b
+# snippet tr "Try / Except" b
+# try:
+# 	${1:${VISUAL:pass}}
+# ${2:except}`!p snip.rv = " " if t[2] and t[3] else ""`${3:`!p snip.rv = "Exception" if t[2] else ""`}`!p snip.rv = " as " if t[2] and t[3] else ""`${4:`!p snip.rv = "e" if t[2] and t[3] else ""`}`!p snip.rv = ":\n" if t[2] else""`	${5:`!p snip.rv = "raise " if t[2] else ""`$4}$0
+# endsnippet
+
+snippet e "except block for try-except" b
 except$1:
 	$0
+endsnippet
+
+snippet trye "try else block in python" b
+try:
+	${1:${VISUAL:this}}
+except$2:
+	# if can't, do this
+	${3:pass}
+else:
+	$4
+${5:finally:
+	$0}
+endsnippet
+
+snippet enum "Enumerate in python" wA
+enumerate(${1:${VISUAL:iterable}})$0
+endsnippet
+
+# Sets{{{
+
+snippet set "Creating a set" w
+set(${1:${VISUAL:list of elements}})$0
+endsnippet
+
+snippet '(?<=\.)uu' "Union" wrA
+union(${1:${VISUAL:set2}})$0
+endsnippet
+
+snippet iuu "Union with 2 placeholders" wA
+${1:${VISUAL:set1}}.union(${2:${VISUAL:set2}})$0
+endsnippet
+
+snippet '(?<=\.)nn' "Intersection" wrA
+intersection(${1:${VISUAL:set2}})$0
+endsnippet
+
+snippet inn "Intersection with 2 placeholders" wA
+${1:${VISUAL:set1}}.intersection(${2:${VISUAL:set2}})$0
+endsnippet
+
+# }}}
+
+priority 1000
+snippet 3' "3 single quotes" iA
+'''$1'''$2
+endsnippet
+
+# priority 1000
+snippet 3" "3 double quotes" iA
+"""$1"""$2
+endsnippet
+
+# priority 1000
+snippet prs "Print formatted string in python" bA
+print(f"${1:${VISUAL}}")$0
 endsnippet
 

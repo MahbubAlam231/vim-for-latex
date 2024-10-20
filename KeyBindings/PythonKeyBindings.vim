@@ -11,9 +11,46 @@
 "              |_|\_\___|\__, |____/|_|_| |_|\__,_|_|_| |_|\__, |___/
 "                        |___/                             |___/
 
-" -------------------------------------------------------------------
+" -------------------------------------------------------------
 " Mahbub's PythonKeyBindings
-" -------------------------------------------------------------------
+" -------------------------------------------------------------
+
+" Python symbols{{{
+
+inoremap <buffer> <localleader>in int()<esc>i
+inoremap <buffer> <localleader>fl float()<esc>i
+inoremap <buffer> <localleader>cx complex()<esc>i
+inoremap <buffer> <localleader>la lambda
+
+inoremap <buffer> ; _
+inoremap <buffer> ;<space> _
+
+inoremap <buffer> 2= ==
+inoremap <buffer> ;= !=
+inoremap <buffer> <localleader>> >=
+inoremap <buffer> <localleader>< <=
+
+inoremap <buffer> ++ +=
+
+inoremap <buffer> <localleader>e in
+
+inoremap <buffer> 3<ctrl-j> <ctrl-j><ctrl-j><ctrl-j>
+
+"}}}
+
+" Compilation and Stuff{{{
+"-------------------------------------------------------------------
+
+let PythonBin = 'python 3'
+
+nnoremap <silent> <buffer> <F9> :w!<cr>:!python3 %:p<cr>
+nnoremap <silent> <buffer> <localleader><cr> :w!<cr>:term ++noclose ++cols=90 python3 %:p<cr>
+inoremap <silent> <buffer> <localleader><cr> <esc>:w!<cr>:term ++noclose ++cols=90 python3 %:p<cr>
+nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python3' shellescape(@%, 1)<cr>
+
+inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python3 %:p<cr>
+
+"}}}
 
 " Numbers"{{{
 "-------------------------------------------------------------------
@@ -44,18 +81,18 @@
 " Braces{{{
 "-------------------------------------------------------------------
 
-inoremap <buffer> ( ()<esc>i
-inoremap <buffer> (( (
-inoremap <buffer> { {}<esc>i
-inoremap <buffer> {{ {
-inoremap <buffer> [ []<left>
-inoremap <buffer> [[ [
+" inoremap <buffer> ( ()<esc>i
+" inoremap <buffer> (( (
+" inoremap <buffer> { {}<esc>i
+" inoremap <buffer> {{ {
+" inoremap <buffer> [ []<left>
+" inoremap <buffer> [[ [
 
 "}}}
 " Basic symbols{{{
 
-inoremap <buffer> \| \|\|<esc>i
-inoremap <buffer> \|\| \|
+" inoremap <buffer> \| \|\|<esc>i
+" inoremap <buffer> \|\| \|
 
 " inoremap <buffer> ' ''<esc>i
 " inoremap <buffer> 3' ''''''<esc>hhi
@@ -71,38 +108,5 @@ inoremap <buffer> \|\| \|
 
 " inoremap <buffer> - _
 " inoremap <buffer> _ -
-
-"}}}
-
-" Python symbols{{{
-
-inoremap <buffer> <localleader>int int()<esc>i
-inoremap <buffer> <localleader>fl float()<esc>i
-inoremap <buffer> <localleader>cx complex()<esc>i
-inoremap <buffer> ;la lambda
-
-inoremap <buffer> 2= ==
-inoremap <buffer> ;= !=
-inoremap <buffer> <localleader>> =>
-inoremap <buffer> <localleader>< <=
-
-inoremap <buffer> ++ += 1
-
-inoremap <buffer> <localleader>e in
-
-inoremap <buffer> <localleader><ctrl-j> <ctrl-j><ctrl-j><ctrl-j>
-
-"}}}
-
-" Compilation and Stuff{{{
-"-------------------------------------------------------------------
-
-let PythonBin = 'python 3'
-
-nnoremap <silent> <buffer> <F9> :w!<cr>:!python3 %:p<cr>
-nnoremap <silent> <buffer> <localleader><cr> :term ++noclose ++cols=86 python3 %:p<cr>
-nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python3' shellescape(@%, 1)<cr>
-
-inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python3 %:p<cr>
 
 "}}}

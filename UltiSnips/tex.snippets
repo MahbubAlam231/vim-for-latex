@@ -9,6 +9,10 @@
 # Mahbub's TeX snippets
 #-------------------------------------------------------------------
 
+global !p
+from my_snippets_helpers import *
+endglobal
+
 # TheBeginning{{{
 #-------------------------------------------------------------------
 
@@ -9725,11 +9729,11 @@ snippet lrm "left-right math modulus" w
 endsnippet
 
 snippet no "surround with norm" w
-\\norm{${VISUAL}}$0
+\\norm{${1:${VISUAL}}\}$0
 endsnippet
 
 snippet norm "surround with norm" w
-\\norm{${VISUAL}}$0
+\\norm{${1:${VISUAL}}\}$0
 endsnippet
 
 #}}}
@@ -10021,85 +10025,216 @@ endsnippet
 # Main Environments{{{
 #-------------------------------------------------------------------
 
-snippet begin "Enclose in an environment" b
-% $1
-\begin{${1:NewEnv}}
-${2:${VISUAL}}
-\end{$1}$0
+# global{{{
+
+global !p
+completesDict = {
+    'thm'  : 'theorem',
+    'defn' : 'definition',
+    'notn' : 'notation'
+}
+envs = ['definition', 'notation', 'lemma', 'proposition', 'theorem', 'corollary', 'remark', 'proof', 'conjecture', 'samepage']
+
+def thm_prefix(env, beginswith, caveat = ['sam']):
+    """TODO: Docstring for thm_prefix.
+
+    :env: string - prefixed env name
+    :returns: (un)numbered/statement only, env beginning
+
+    """
+    b, env_beg = '', env
+    for x in beginswith:
+        if env.startswith(x):
+            b = x
+            env_beg = env[len(x):]
+            break
+    for y in caveat:
+        if env.startswith(y):
+            b = ''
+            env_beg = env
+            break
+
+    prefix = ''
+    if b == 'u':
+        prefix = 'Unnumbered'
+    if b == 's':
+        prefix = 'Statementof'
+
+    # env_beg = complete()
+    return b, prefix, env_beg
+
+endglobal
+
+# }}}
+
+# # Output : theorem environments 1{{{
+# # % ${1/\w+/\u$0/}
+# snippet 'beg(i(n)?)?' "Enclose in an environment" br
+# % `!p
+# ns, short_env = "", t[1]
+
+# if not t[1].startswith('sa'):
+#     ns = {t[1].startswith('s'): "Statementof",  t[1].startswith('u') : "Unnumbered"}.get(True, "")
+#     short_env = t[1].strip('us')
+
+# end_env = complete(t[1], envs, ['s', 'u'])
+# short_env = short_env.capitalize()
+
+# snip.rv = ns + short_env + end_env
+# `
+# \begin{${1:NewEnv}`!p
+# snip.rv = complete(t[1], envs, ['s', 'u'])`}% F{O{L{D
+# ${2:${VISUAL}}
+# \end{$1`!p
+# snip.rv = complete(t[1], envs, ['s', 'u'])`}% F}O}L}D`!p
+# try:
+#     b = t[1][0]
+# except:
+#     b = ""
+# snip.rv = "\n% Proof\n\\begin{proof}% F{O{L{D\n\t" if b not in ['s', 'u'] and not t[1].startswith('proo') else ""`${3:`!p
+# try:
+#     b = t[1][0]
+# except:
+#     b = ""
+# snip.rv = "\\bfseries<+\\textcolor{red}{Write a Proof}+>" if b not in ['s', 'u'] and not t[1].startswith('proo') else ""`}`!p
+# try:
+#     b = t[1][0]
+# except:
+#     b = ""
+# snip.rv = "\n\\end{proof}% F}O}L}D" if b not in ['s', 'u'] and not t[1].startswith('proo') else ""`$0
+# endsnippet
+
+# # }}}
+
+# Output : theorem environments 2{{{
+snippet 'beg(i(n)?)?' "Theorem environments" rb
+% `!p
+b, prefix, env_beg = thm_prefix(t[1], ['s', 'u'], ['sam', 'sa'])
+env_end = complete(env_beg, envs)
+env_name = env_beg + env_end
+store_snip_rv([b, env_name], 'w')
+
+snip.rv = prefix + env_name.capitalize()`
+\begin{$1`!p
+b, prefix, env_beg = thm_prefix(t[1], ['s', 'u'], ['sam', 'sa'])
+env_end = complete(env_beg, envs)
+
+snip.rv = '(' + '|'.join(['s', 'u']) + ')' + env_end if t[1] == "" else env_end`}[$2]`!p
+snip.rv = "" if t[1].startswith(('s', 'u')) else "\\label{"``!p
+snip.rv = "" if t[1].startswith(('s', 'u')) else t[1] + ':'`$3`!p
+snip.rv = "" if t[1].startswith(('s', 'u')) else "}"`% F{O{L{D
+	${4:${VISUAL}}
+\end{`!p
+snip.rv = "".join(retrieve_snip_rv())
+`}% F}O}L}D$0
 endsnippet
 
-snippet part "Part" b
-% Part
-\part{$1}\label{part:$2}% F{O{L{D
+# snip.rv = env_end`}[$2]\label{thm:$3}% F{O{L{D
+# }}}
+
+# # Output : theorem environments 3{{{
+# snippet '.*' "description" br
+# new
+# endsnippet
+
+# # }}}
+
+# Output : Section|Part|Chapter - quite unreadable, but works{{{
+snippet '(u?)(s*)(sec|part|cha(p?))' "Section|Part|Chapter" br
+% `!p
+num = "unnumbered" if match.group(1) == "u" else ""
+mark = "*" if match.group(1) == "u" else ""
+heading = match.group(3) + complete(match.group(3), ['section', 'chapter'])
+for s in match.group(2):
+    heading = 'sub' + heading
+store_snip_rv([num, heading], 'w')
+snip.rv = num.capitalize() + heading.capitalize() + "\n\\" + heading + mark`{$1}`!p
+snip.rv = "\\label{" + match.group(2) + match.group(3) + complete(match.group(3), ['sec', 'chap']) + ":" if match.group(1) == "" else ""`$2`!p snip.rv = "}" if match.group(1) == "" else ""`% F{O{L{D
 ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (part end) F}O}L}D$0
+% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (`!p
+snip.rv = " ".join(retrieve_snip_rv()).lstrip()
+` end) F}O}L}D$0
 endsnippet
 
+# }}}
 
-snippet chap "Chapter" b
-% Chapter
-\chapter{$1}\label{chap:$2}% F{O{L{D
-${3:${VISUAL}}
+# # Old Section|Part|Chapter{{{
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (chapter end) F}O}L}D$0
-endsnippet
+# snippet part "Part" b
+# % Part
+# \part{$1}\label{part:$2}% F{O{L{D
+# ${3:${VISUAL}}
 
-snippet uchap "Unnumbered Chapter" b
-% UnnumberedChapter
-\chapter*{$1}% F{O{L{D
-${2:${VISUAL}}
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (part end) F}O}L}D$0
+# endsnippet
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered chapter end) F}O}L}D$0
-endsnippet
 
-snippet sec "Section" b
-% Section
-\section{$1}\label{sec:$2}% F{O{L{D
-${3:${VISUAL}}
+# snippet chap "Chapter" b
+# % Chapter
+# \chapter{$1}\label{chap:$2}% F{O{L{D
+# ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (chapter end) F}O}L}D$0
+# endsnippet
 
-snippet usec "Unnumbered Section" b
-% UnnumberedSection
-\section*{$1}% F{O{L{D
-${2:${VISUAL}}
+# snippet uchap "Unnumbered Chapter" b
+# % UnnumberedChapter
+# \chapter*{$1}% F{O{L{D
+# ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered section end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered chapter end) F}O}L}D$0
+# endsnippet
 
-snippet ssec "Subsection" b
-% Subsection
-\subsection{$1}\label{ssec:$2}% F{O{L{D
-${3:${VISUAL}}
+# snippet sec "Section" b
+# % Section
+# \section{$1}\label{sec:$2}% F{O{L{D
+# ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsection end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end) F}O}L}D$0
+# endsnippet
 
-snippet ussec "Unnumbered Subsection" b
-% UnnumberedSubsection
-\subsection*{$1}% F{O{L{D
-${2:${VISUAL}}
+# snippet usec "Unnumbered Section" b
+# % UnnumberedSection
+# \section*{$1}% F{O{L{D
+# ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsection end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered section end) F}O}L}D$0
+# endsnippet
 
-snippet sssec "Subsubsection" b
-% Subsubsection
-\subsubsection{$1}\label{sssec:$2}% F{O{L{D
-${3:${VISUAL}}
+# snippet ssec "Subsection" b
+# % Subsection
+# \subsection{$1}\label{ssec:$2}% F{O{L{D
+# ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsubsection end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsection end) F}O}L}D$0
+# endsnippet
 
-snippet usssec "Unnumbered Subsubsection" b
-% UnnumberedSubsubsection
-\subsubsection*{$1}% F{O{L{D
-${2:${VISUAL}}
+# snippet ussec "Unnumbered Subsection" b
+# % UnnumberedSubsection
+# \subsection*{$1}% F{O{L{D
+# ${2:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsubsection end) F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsection end) F}O}L}D$0
+# endsnippet
+
+# snippet sssec "Subsubsection" b
+# % Subsubsection
+# \subsubsection{$1}\label{sssec:$2}% F{O{L{D
+# ${3:${VISUAL}}
+
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (subsubsection end) F}O}L}D$0
+# endsnippet
+
+# snippet usssec "Unnumbered Subsubsection" b
+# % UnnumberedSubsubsection
+# \subsubsection*{$1}% F{O{L{D
+# ${2:${VISUAL}}
+
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (unnumbered subsubsection end) F}O}L}D$0
+# endsnippet
+
+# # }}}
 
 snippet not "Notation" b
 % Notation
@@ -10321,18 +10456,18 @@ snippet ma "Surround by math" w
 \\]$0
 endsnippet
 
-snippet align "Align" b
-% Align
-\begin{align}\label{$1}
-	${2:${VISUAL}}
-\end{align}$0
-endsnippet
+# snippet 'al(i(g(n)?)?)?' "Align" br
+# % Align
+# \begin{align}\label{$1}
+# 	${2:${VISUAL}}
+# \end{align}$0
+# endsnippet
 
-snippet ualign "Unnumbered Align" b
+snippet '(u)?al(((i)?g)?n)?' "Unnumbered Align" br
 % UnnumberedAlign
-\begin{align*}
+\begin{align`!p snip.rv = "*" if match.group(1) == "u" else ""`}
 	${1:${VISUAL}}
-\end{align*}$0
+\end{align`!p snip.rv = "*" if match.group(1) == "u" else ""`}$0
 endsnippet
 
 snippet eq "Equation" b
@@ -10349,41 +10484,41 @@ snippet ueq "Unnumbered Equation" b
 \end{equation*}$0
 endsnippet
 
-snippet aligneq "Aligned Equation" b
+snippet '(u)?al(i(g(n)?)?)?eq' "Aligned Equation" br
 % AlignedEquation
-\begin{equation}\label{eq:$1}
+\begin{equation`!p snip.rv = "*" if match.group(1) == "u" else ""`}\label{eq:$1}
 	\begin{split}
 		${2:${VISUAL}}
 	\end{split}
-\end{equation}$0
+\end{equation`!p snip.rv = "*" if match.group(1) == "u" else ""`}$0
 endsnippet
 
-snippet ualigneq "Unnumbered Aligned Equation" b
-% UnnumberedAlignedEquation
-\begin{equation*}
-	\begin{split}
-		${1:${VISUAL}}
-	\end{split}
-\end{equation*}$0
-endsnippet
+# snippet ualigneq "Unnumbered Aligned Equation" b
+# % UnnumberedAlignedEquation
+# \begin{equation*}
+# 	\begin{split}
+# 		${1:${VISUAL}}
+# 	\end{split}
+# \end{equation*}$0
+# endsnippet
 
-snippet aleq "Aligned Equation" b
-% AlignedEquation
-\begin{equation}\label{eq:$1}
-	\begin{split}
-		${2:${VISUAL}}
-	\end{split}
-\end{equation}$0
-endsnippet
+# snippet aleq "Aligned Equation" b
+# % AlignedEquation
+# \begin{equation}\label{eq:$1}
+# 	\begin{split}
+# 		${2:${VISUAL}}
+# 	\end{split}
+# \end{equation}$0
+# endsnippet
 
-snippet ualeq "Unnumbered Aligned Equation" b
-% UnnumberedAlignedEquation
-\begin{equation*}
-	\begin{split}
-		${1:${VISUAL}}
-	\end{split}
-\end{equation*}$0
-endsnippet
+# snippet ualeq "Unnumbered Aligned Equation" b
+# % UnnumberedAlignedEquation
+# \begin{equation*}
+# 	\begin{split}
+# 		${1:${VISUAL}}
+# 	\end{split}
+# \end{equation*}$0
+# endsnippet
 
 snippet spliteq "SplitEquation"
 % SplitEquation
@@ -10403,59 +10538,59 @@ snippet speq "SplitEquation"
 \]$0
 endsnippet
 
-snippet gathereq "Gathered Equation" w
-% GatheredEquation
-\begin{equation}\label{eq:$1}
-	\begin{gathered}
-		${2:${VISUAL}}
-	\end{gathered}
-\end{equation}$0
-endsnippet
+# snippet gathereq "Gathered Equation" w
+# % GatheredEquation
+# \begin{equation}\label{eq:$1}
+# 	\begin{gathered}
+# 		${2:${VISUAL}}
+# 	\end{gathered}
+# \end{equation}$0
+# endsnippet
 
-snippet ugathereq "Unnumbered Gathered Equation" w
+snippet '(u)?ga(t(h(e(r)?)?)?)?eq' "Unnumbered Gathered Equation" wr
 % UnnumberedGatheredEquation
-\begin{equation*}
+\begin{equation`!p snip.rv = "*" if match.group(1) == "u" else ""`}
 	\begin{gathered}
 		${1:${VISUAL}}
 	\end{gathered}
-\end{equation*}$0
+\end{equation`!p snip.rv = "*" if match.group(1) == "u" else ""`}$0
 endsnippet
 
-snippet gaeq "Gathered Equation" w
-% GatheredEquation
-\begin{equation}\label{eq:$1}
-	\begin{gathered}
-		${2:${VISUAL}}
-	\end{gathered}
-\end{equation}$0
-endsnippet
+# snippet gaeq "Gathered Equation" w
+# % GatheredEquation
+# \begin{equation}\label{eq:$1}
+# 	\begin{gathered}
+# 		${2:${VISUAL}}
+# 	\end{gathered}
+# \end{equation}$0
+# endsnippet
 
-snippet ugaeq "Unnumbered Gathered Equation" w
-% UnnumberedGatheredEquation
-\begin{equation*}
-	\begin{gathered}
-		${1:${VISUAL}}
-	\end{gathered}
-\end{equation*}$0
-endsnippet
+# snippet ugaeq "Unnumbered Gathered Equation" w
+# % UnnumberedGatheredEquation
+# \begin{equation*}
+# 	\begin{gathered}
+# 		${1:${VISUAL}}
+# 	\end{gathered}
+# \end{equation*}$0
+# endsnippet
 
-snippet geq "Gathered Equation" w
-% GatheredEquation
-\begin{equation}\label{eq:$1}
-	\begin{gathered}
-		${2:${VISUAL}}
-	\end{gathered}
-\end{equation}$0
-endsnippet
+# snippet geq "Gathered Equation" w
+# % GatheredEquation
+# \begin{equation}\label{eq:$1}
+# 	\begin{gathered}
+# 		${2:${VISUAL}}
+# 	\end{gathered}
+# \end{equation}$0
+# endsnippet
 
-snippet ugeq "Unnumbered Gathered Equation" w
-% UnnumberedGatheredEquation
-\begin{equation*}
-	\begin{gathered}
-		${1:${VISUAL}}
-	\end{gathered}
-\end{equation*}$0
-endsnippet
+# snippet ugeq "Unnumbered Gathered Equation" w
+# % UnnumberedGatheredEquation
+# \begin{equation*}
+# 	\begin{gathered}
+# 		${1:${VISUAL}}
+# 	\end{gathered}
+# \end{equation*}$0
+# endsnippet
 
 snippet subeq "Sub Equations" b
 % Subequations
@@ -10756,34 +10891,34 @@ snippet item "Itemize" b
 \end{itemize}$0
 endsnippet
 
-snippet iitem "Itemize" b
+snippet iitem "Itemize" bA
 \end{itemize}
 % Itemize$0
 \begin{itemize}
 endsnippet
 
-snippet itema "Itemize with alert items" b
+snippet itema "Itemize with alert items" bA
 % Itemize
 \begin{itemize}
 	\item<+-|alert@+> ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
-snippet items "Itemize" b
+snippet items "Itemize" bA
 % Itemize
 \begin{itemize}[leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
-snippet itemz "Itemize" b
+snippet itemz "Itemize" bA
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item<+-| alert@+> ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
-snippet itemize "Itemize" b
+snippet itemize "Itemize" bA
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
@@ -10793,12 +10928,12 @@ endsnippet
 snippet enum "Enumeration" b
 % Enumerate
 % [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
-\begin{enumerate}[label=\arabic*)]
+\begin{enumerate}[label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
 endsnippet
 
-snippet enuma "Enumeration" b
+snippet enuma "Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
 % [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
@@ -10807,7 +10942,7 @@ snippet enuma "Enumeration" b
 \end{enumerate}$0
 endsnippet
 
-snippet enumr "Enumeration" b
+snippet enumr "Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 % [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
@@ -10816,7 +10951,7 @@ snippet enumr "Enumeration" b
 \end{enumerate}$0
 endsnippet
 
-snippet henum "Hyper-Enumeration" b
+snippet henum "Hyper-Enumeration" bA
 % Change format of top-level list items
 \setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.2em}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
@@ -10825,19 +10960,20 @@ snippet henum "Hyper-Enumeration" b
 
 
 % Enumerate
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
 \begin{enumerate}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
 endsnippet
 
-snippet enumb "Bare enumerate in sub-level" b
+snippet enumb "Bare enumerate in sub-level" bA
 % Enumerate
 \begin{enumerate}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
 endsnippet
 
-snippet inenumb "Break enumerate into two here" b
+snippet inenumb "Break enumerate into two here" bA
 \end{enumerate}$0
 % Enumerate
 \begin{enumerate}
@@ -10859,7 +10995,7 @@ snippet renum "Reverse Enumeration" b
 \end{etaremune}$0
 endsnippet
 
-snippet renuma "Reverse Enumeration" b
+snippet renuma "Reverse Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
 % [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
@@ -10868,7 +11004,7 @@ snippet renuma "Reverse Enumeration" b
 \end{etaremune}$0
 endsnippet
 
-snippet renumr "Reverse Enumeration" b
+snippet renumr "Reverse Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
 % [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
@@ -10880,13 +11016,13 @@ endsnippet
 #}}}
 # Beamer frames and bibliography{{{
 
-snippet secf "Section in beamer" b
-% Section
-\section{$1}\label{sec:$2}% F{O{L{D
-${3:${VISUAL}}
+# snippet secf "Section in beamer" b
+# % Section
+# \section{$1}\label{sec:$2}% F{O{L{D
+# ${3:${VISUAL}}
 
-% ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end)% F}O}L}D$0
-endsnippet
+# % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (section end) F}O}L}D$0
+# endsnippet
 
 snippet fsec "Section in beamer" b
 % Section
@@ -10957,7 +11093,7 @@ snippet bib "Bibliography" b
 \bibliography{${1:bib}}
 endsnippet
 
-snippet obib "Other bibliography manager" b
+snippet obib "Other bibliography manager" bA
 \begin{thebibliography}{9}
 \bibitem{$1}
 ${2:${VISUAL:author}} (${3:${VISUAL:1986}}) ${4:${VISUAL:book name}}, ${5:${VISUAL:publisher}}.
@@ -10969,13 +11105,13 @@ ${2:${VISUAL:author}} (${3:${VISUAL:1986}}) ${4:${VISUAL:book name}}, ${5:${VISU
 $0
 endsnippet
 
-snippet nbib "Bibliography with new geometry" b
+snippet nbib "Bibliography with new geometry" bA
 \afterpage{%
 \newgeometry{top=2cm, bottom=1.5cm, left=2.5cm, right=2.5cm}
 % material for this page
-% Bibliography
+${VISUAL:% Bibliography
 \bibliographystyle{alpha}
-\bibliography{bib}
+\bibliography{bib}}
 \clearpage
 \restoregeometry
 }
@@ -12622,7 +12758,15 @@ snippet Ps "" w
 $\Psi$$0
 endsnippet
 
+snippet PS "" w
+$\Psi$$0
+endsnippet
+
 snippet Om "" w
+$\Omega$$0
+endsnippet
+
+snippet OM "" w
 $\Omega$$0
 endsnippet
 

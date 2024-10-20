@@ -2,7 +2,7 @@
 # Author(s)   : {{NAME}}
 # File        : {{FILE}}.py
 # Created     : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
-# Description : {{CURSOR}}
+# Description : x{{CURSOR}}
 # -------------------------------------------------------------------
 
 # print("==================================================================\n")

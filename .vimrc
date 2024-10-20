@@ -1,9 +1,9 @@
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 " Author        : Mahbub Alam
 " Created       : ~2017
 " License       : Self
 " Description   : MYVIMRC
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 "          _
 "  __   __(_) _ __ ___   _ __  ___
 "  \ \ / /| || '_ ` _ \ | '__|/ __|
@@ -46,10 +46,11 @@ set modeline                          " In Debian and Ubuntu, for example, the m
 " set encoding=latin1                   " Default is utf-8
 " set cursorcolumn                      " Highlighting the column containing the cursor
 set mouse=a                           " Mouse could work on vim too
+" set noesckeys
 " set laststatus=2                      " Always display statusline
 " set statusline=%f\ %y\ %l,%c          " Customizing statusline; don't need it, got airline
 
-"}}}
+" }}}
 " Backups{{{
 
 set backup                            " Enable backups
@@ -71,7 +72,7 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-"}}}
+" }}}
 " Leader Mappings{{{
 " -------------------------------------------------------------------
 
@@ -89,7 +90,7 @@ inoremap <buffer> <localleader>nbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocal
 inoremap <buffer> <localleader>vbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 inoremap <buffer> <localleader>ibll inoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
 
-"}}}
+" }}}
 " Tabs, indentation and wrapping{{{
 " -------------------------------------------------------------------
 
@@ -101,9 +102,9 @@ set smarttab                          " Insert spaces or go to next indent
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
 
-""Make the 71th column stand out
-"highlight ColorColumn ctermbg=magenta
-"call matchadd('ColorColumn', '\%72v', 100)
+" "Make the 71th column stand out
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%72v', 100)
 
 set listchars=extends:>
 set listchars+=precedes:<
@@ -116,10 +117,11 @@ set wrap                              " Wrap longlines by default
 " Wrap toggle
 nnoremap <buffer> <silent> <localleader>wt :set wrap!<cr>
 
-"}}}
+" }}}
 " Ignored files/directories from autocomplete{{{
 " -------------------------------------------------------------------
 
+set wildignore+=*/texlive/* " texlile folder
 set wildignore+=*/tmp/*
 " set wildignore+=*.so
 set wildignore+=*.aux,*.out,*.toc     " LaTeX intermediate files
@@ -127,10 +129,11 @@ set wildignore+=*.jpg,*.jpeg,*.png,*.gif " Images
 set wildignore+=*.zip                 " zip files
 set wildignore+=*/.git/*              " .git directories
 set wildignore+=/git/*                " git projects
+set wildignore+=*.sty
 " set wildignore+=*/vendor/bundle/*
 " set wildignore+=*/node_modules/
 
-"}}}
+" }}}
 " Searching{{{
 " -------------------------------------------------------------------
 
@@ -139,7 +142,7 @@ set smartcase                         " Override 'ignorecase' option if search p
 set incsearch                         " Show search results as you type
 set hlsearch                          " Highlight all search patterns
 
-"}}}
+" }}}
 " Split{{{
 " -------------------------------------------------------------------
 
@@ -154,6 +157,11 @@ execute "set <M-d>=\ed"
 
 execute "set <M-n>=\en"
 execute "set <M-p>=\ep"
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+
+execute "set <M-m>=\em"
+execute "set <M-;>=\e;"
 
 nnoremap <buffer> <M-a> <c-w>h
 nnoremap <buffer> <M-s> <c-w>j
@@ -180,7 +188,7 @@ augroup end
 nnoremap <buffer> <S-LEFT>  5<c-w><
 nnoremap <buffer> <S-RIGHT> 5<c-w>>
 
-"}}}
+" }}}
 " Line number{{{
 
 set number relativenumber
@@ -188,16 +196,9 @@ set number relativenumber
 nnoremap <buffer> <silent> <localleader>nb :call NumberToggle()<cr>
 vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 
-"}}}
-" Pandoc filetype settings{{{
+" }}}
 
-" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
-" let g:pandoc#filetypes#pandoc_markdown=0
-" let g:pandoc#keyboard#display_motions = 0
-
-"}}}
-
-"}}}
+" }}}
 
 " Plugins{{{
 " -------------------------------------------------------------------
@@ -211,10 +212,14 @@ vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 
 call plug#begin('~/.vim/plugged')
 
-" Plug 'Valloric/YouCompleteMe'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-python/python-syntax'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'ycm-core/YouCompleteMe'
 " Plug 'VundleVim/Vundle.vim'
 " Plug 'chrisbra/changesPlugin'
-" Plug 'jason6/vimwiki_md2html'
+Plug 'jason6/vimwiki_md2html'
 " Plug 'masukomi/vim-markdown-folding'
 " Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
@@ -222,42 +227,45 @@ call plug#begin('~/.vim/plugged')
 " Plug 'mswift42/vim-themes'
 " Plug 'rafi/awesome-vim-colorschemes'
 
-Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
 Plug 'MahbubAlam231/searching-with-blinking'
 Plug 'MahbubAlam231/vim-system-copy'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
-Plug 'bps/vim-textobj-python'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-quicklink'
 Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-titlecase'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
-" Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 Plug 'inkarkat/vim-PatternsOnText'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-after-object'
 Plug 'justinmk/vim-sneak'
+Plug 'bps/vim-textobj-python'
+Plug 'Julian/vim-textobj-brace'
 Plug 'kana/vim-textobj-datetime'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-lastpat'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-Plug 'lervag/vimtex'
 Plug 'mattn/vim-textobj-url'
+Plug 'somini/vim-textobj-fold'
+Plug 'thinca/vim-textobj-between'
+Plug 'lervag/vimtex'
+Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-startify'
 Plug 'michal-h21/vim-zettel'
@@ -265,8 +273,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
-Plug 'somini/vim-textobj-fold'
-Plug 'thinca/vim-textobj-between'
 Plug 'tibabit/vim-templates'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
@@ -275,6 +281,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'trapd00r/vidir'
 Plug 'trapd00r/vim-syntax-vidir-ls'
 
@@ -283,16 +290,16 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/ZoomWin'
-Plug 'vim-scripts/indentpython.vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-syntastic/syntastic'
 
 Plug 'vimwiki/vimwiki'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/vim-easy-align'
 
-" Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'dhruvasagar/vim-table-mode'
 
 Plug 'el-iot/vim-wikipedia-browser'
 Plug 'chikamichi/mediawiki.vim'
@@ -302,12 +309,36 @@ call plug#end()
 " call vundle#end()                     " Required
 filetype indent plugin on             " Required, enables filetype detection
 
-"}}}
+" }}}
 
 " Plugin mappings{{{
 " -------------------------------------------------------------------
 
 " Vimtex and Folding{{{
+
+call textobj#user#plugin('tex', {
+\   'paren-math': {
+\     'pattern': ['\\left(', '\\right)'],
+\     'select-a': ['<buffer> av'],
+\     'select-i': ['<buffer> iv'],
+\   },
+\   'brace-math': {
+\     'pattern': ['\\left\\{', '\\right\\}'],
+\     'select-a': ['<buffer> ab'],
+\     'select-i': ['<buffer> ib'],
+\   },
+\   'sq-brace-math': {
+\     'pattern': ['\\left[', '\\right]'],
+\     'select-a': ['<buffer> as'],
+\     'select-i': ['<buffer> is'],
+\   },
+\ })
+
+" \   'paren-math0': {
+" \     'pattern': ['{\\left(', '\\right)}'],
+" \     'select-a': ['a)'],
+" \     'select-i': ['i)'],
+" \   },
 
 xmap <buffer> am  <plug>(vimtex-a$)
 xmap <buffer> im  <plug>(vimtex-i$)
@@ -367,6 +398,12 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_compiler_enabled = 1
 " let g:vimtex_view_general_options_latexmk = '--unique'
 
+" Disable vimtex completion if you want to manage it manually
+let g:vimtex_complete_enabled = 1
+let g:vimtex_syntax_enabled = 0
+" let g:vimtex_complete_bib = 1
+let g:vimtex_complete_ignore = ['.*/usr/local/texlive/.*']  " Add any directories to ignore here
+
 " let g:vimtex_view_method = 'zathura'
 " let g:vimtex_view_general_viewer = 'zathura'
 " let g:vimtex_compiler_progname = 'vim'
@@ -404,7 +441,7 @@ nnoremap <buffer> 'f `fzvzz
 vnoremap <buffer> 'f `fzvzz
 
 function! FoldingTeXPreamble()
-    execute "normal! :setlocal foldmethod=marker\<cr>mfggzR/Usepackages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
+    execute "normal! :setlocal foldmethod=marker\<cr>mfggzR/Packages\<cr>0ma/Environments\<cr>0mb/Newcommands\<cr>0mc/begin{document}\<cr>k0md`azf`b`bzf`c`czf`d?documentclass\<cr>zf`d:delm a-d\<cr>zMgg`fzvzz"
 
 endfunction
 
@@ -453,29 +490,37 @@ vnoremap <buffer> 'r `rzvzz
 vnoremap <buffer> 'm mn`mzvzz
 vnoremap <buffer> 'z ma`zzvzz
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 " Vimwiki{{{
 
+" let g:vimwiki_custom_wiki2html = '/home/mahbub/.vim/plugged/vimwiki_md2html/misaka_md2html.py'
+let g:vimwiki_custom_wiki2html = '/home/mahbub/.vim/plugged/vimwiki/autoload/vimwiki/customwiki2html.sh'
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
             \'syntax': 'markdown',
-            \'ext': '.md',
+            \'ext': 'md',
             \'path_html': '~/Dropbox/Data/vimwiki_html/',
-            \'custom_wiki2html': 'vimwiki_markdown',
+            \'custom_wiki2html': '~/.vim/plugged/vimwiki/autoload/vimwiki/customwiki2html.sh',
             \'html_filename_parametrization': 1,
             \'template_path': '~/Dropbox/Data/vimwiki/templates/',
             \'template_default': 'default',
             \'template_ext': '.tpl'}]
+" \'custom_wiki2html': 'vimwiki_markdown',
+            " \'custom_wiki2html': '~/.vim/plugged/vimwiki_md2html/misaka_md2html.py',
+            " \'python_path': '/home/mahbub/.local/share/pipx/venvs/misaka/bin/python',
+            " \'python_path': '~/vimwiki_env/bin/python',
+
 " let g:vimwiki_folding = 'expr'
 
-" TODO: figure out html from markdown with vimwiki.
+" TODO: figure out html from markdown with vimwiki. Look at Nihar's solution
 
 let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
-let g:zettel_format = "%title-%d-%m-%y"
+let g:zettel_format = "%title-%Y-%m-%d"
+inoremap <buffer> <localleader>[ <esc><Plug>ZettelSearchmap
 
 " Disabling wiki creation on the fly
 " let g:vimwiki_global_ext = 0
@@ -490,32 +535,22 @@ augroup VimwikiMappings
     autocmd Filetype vimwiki nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
     " Make current line a filename
     autocmd Filetype vimwiki nnoremap <buffer> <localleader>ml ^y$I[<esc>A]()<esc>P
+    autocmd Filetype vimwiki nnoremap <buffer> <localleader>lv :!xdg-open %:t:r.pdf<cr><cr>
 
 augroup end
 
-function! CreateFilenameWithDateTime(filename)
-    return a:filename . strftime("%d-%m-%y")
-endfunction
-
-nnoremap <buffer> <localleader>mps :let @n=CreateFilenameWithDateTime("purpose-statement-") \| execute "normal! a[<c-r>n](<c-r>n)"<cr>
-inoremap <buffer> <localleader>mps [<c-r>=CreateFilenameWithDateTime("purpose-statement-")<cr>]<esc>y%%p%r($r)<esc>
-
-function! CreateDateFilename(filename)
-    return strftime("%d-%m-%y") . a:filename
-endfunction
-
-function! VimwikiFoldLevelCustom(lnum)
-    let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
-    if (pounds)
-        return '>' . pounds  " start a fold level
-    endif
-    if getline(a:lnum) =~? '\v^\s*$'
-        if (strlen(matchstr(getline(a:lnum + 1), '^#\+')))
-            return '-1' " don't fold last blank line before header
-        endif
-    endif
-    return '=' " return previous fold level
-endfunction
+" function! VimwikiFoldLevelCustom(lnum)
+"     let pounds = strlen(matchstr(getline(a:lnum), '^#\+'))
+"     if (pounds)
+"         return '>' . pounds  " start a fold level
+"     endif
+"     if getline(a:lnum) =~? '\v^\s*$'
+"         if (strlen(matchstr(getline(a:lnum + 1), '^#\+')))
+"             return '-1' " don't fold last blank line before header
+"         endif
+"     endif
+"     return '=' " return previous fold level
+" endfunction
 
 augroup VimwikiAuGroup
     autocmd!
@@ -539,20 +574,30 @@ nnoremap <localleader>ls "syiw:call LexinSearch("s)<cr>
 
 " Tables{{{
 
-let g:vimwiki_table_mappings=0
-augroup ChangeVimwikiTableTab
-    autocmd!
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
-    " autocmd Filetype vimwiki inoremap <silent><expr> <Tab> vimwiki#tbl#kbd_tab()
-    " autocmd Filetype vimwiki inoremap <silent><expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
-augroup end
+" let g:vimwiki_table_mappings=0
+" let g:vimwiki_table_auto_fmt=0
+
+" augroup ChangeVimwikiTableTab
+"     autocmd!
+"     autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
+"     autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+"     " autocmd Filetype vimwiki inoremap <silent><expr> <Tab> vimwiki#tbl#kbd_tab()
+"     " autocmd Filetype vimwiki inoremap <silent><expr> <S-Tab> vimwiki#tbl#kbd_shift_tab()
+" augroup end
 
 " Adding horizontal line in between vimwiki table
 nnoremap <buffer> <localleader>hr yypV:s/[^\|]/-/g<cr>:noh<cr>
 inoremap <buffer> <localleader>hr <esc>yypV:s/[^\|]/-/g<cr>yypV:s/-/ /g<cr>:noh<cr>la
+nnoremap <buffer> <localleader>br yypV:s/[^\|]/ /g<cr>:noh<cr>
+inoremap <buffer> <localleader>br <esc>mmyypV:s/[^\|]/ /g<cr>:noh<cr>yyp`m2ji
+
+" pipe_tables to grid_tables
+vnoremap <buffer> <localleader>tg :!python3 /home/mahbub/scripts/bin/pipe_to_grid.py<cr>
 
 " Vim table mode
+" let b:table_mode_corner='+'
+" let b:table_mode_corner_corner = '+'
+" let b:table_mode_header_fillchar = '='
 nnoremap <buffer> <localleader>tm :TableModeToggle<cr>
 
 " Easy align
@@ -562,15 +607,120 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"}}}
+" }}}
+
+" }}}
+" Python{{{
+
+let g:python_highlight_all = 1
+
+let g:textobj_python_no_default_key_mappings = 1
+
+call textobj#user#map('python', {
+      \   'class': {
+      \     'select-a': '<buffer>ac',
+      \     'select-i': '<buffer>ic',
+      \     'move-n': '<buffer>]pc',
+      \     'move-p': '<buffer>[pc',
+      \   },
+      \   'function': {
+      \     'select-a': '<buffer>af',
+      \     'select-i': '<buffer>if',
+      \     'move-n': '<buffer>]pf',
+      \     'move-p': '<buffer>[pf',
+      \   }
+      \ })
+
+" }}}
+" Coc{{{
+
+" Remap keys for navigating diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> gh :call CocActionAsync('doHover')<CR>
+
+inoremap <silent><expr> <M-n>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<M-n>" :
+      \ coc#refresh()
+inoremap <silent><expr> <M-p> coc#pum#visible() ? coc#pum#prev(1) : "\<M-p>"
+
+inoremap <silent><expr> <M-j>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<M-n>" :
+      \ coc#refresh()
+inoremap <silent><expr> <M-k> coc#pum#visible() ? coc#pum#prev(1) : "\<M-p>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <M-;> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+" " Function to check for backspace, used in tab completion{{{
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" " Use <tab> for trigger completion and navigate through completions
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" :
+"       \ CheckBackspace() ? "\<TAB>" :
+"       \ coc#refresh()
+
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" " Automatically fix issues on save
+" autocmd BufWritePre * :CocCommand eslint.executeAutofix
+
+" " Check if the character before the cursor is a whitespace
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" " Use tab for trigger completion and navigate through snippets
+" " Tab key for snippet expansion
+" inoremap <silent> <C-Space> coc#refresh() " Complete with coc.nvim
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-r>=snipmate#expand_or_jump(1)" . "\<C-g>u" 
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-r>=snipmate#jump(-1)" . "\<C-g>u"
+" " inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" : CheckBackspace() ? "\<TAB>" : coc#refresh()
+" " inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" " Use <c-j> to jump to the next snippet placeholder
+" imap <silent><expr> <C-j> coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" : "\<C-j>"
+
+" " Use <c-k> to jump back in UltiSnips
+" imap <expr> <C-k> UltiSnips#CanJumpBackwards() ? '<C-R>=UltiSnips#JumpBackwards()<CR>' : '<C-k>'
 
 "}}}
+
+" }}}
 " Pandoc{{{
 
 let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#keyboard#display_motions = 0
 let g:vim_markdown_no_default_key_mappings = 1
+" let g:pandoc#command#custom_filters = ['/home/mahbub/python-code/my-modules/pipe_to_grid_filter.py']
 
 " augroup SetFiletypeMarkdown
 "     autocmd!
@@ -578,7 +728,7 @@ let g:vim_markdown_no_default_key_mappings = 1
 "     autocmd BufNewFile,BufRead *.md setlocal commentstring=<!--%s-->
 " augroup end
 
-"}}}
+" }}}
 
 " Abolish and coercing{{{
 
@@ -587,7 +737,7 @@ vmap <buffer> <localleader>cr :s/ /-/g<cr>:noh<cr>
 nmap <buffer> <localleader>cr :%s/ /-/g<cr>:noh<cr>
 nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
 
-"}}}
+" }}}
 " After object{{{
 
 " augroup AfterObject
@@ -595,12 +745,12 @@ nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
 "     autocmd VimEnter * call after_object#enable(':', '+', '-', '#', ' ', '.', ',', ';', '$', '&', '=', '\')
 " augroup end
 
-"}}}
+" }}}
 " Airline{{{
 
 let g:airline_theme = 'simple'
 
-"}}}
+" }}}
 " GitGutter{{{
 
 " let g:gitgutter_set_sign_backgrounds = 1
@@ -617,11 +767,11 @@ let g:airline_theme = 'simple'
 
 " let g:gitgutter_enabled = 1
 
-"}}}
+" }}}
 " Asterisk{{{
 
-map <buffer> *   <Plug>(asterisk-*)
-map <buffer> #   <Plug>(asterisk-#)
+map <buffer> *   <Plug>(asterisk-*)<c-o>
+map <buffer> #   <Plug>(asterisk-#)<c-o>
 " map <buffer> g*  <Plug>(asterisk-g*)zz
 " map <buffer> g#  <Plug>(asterisk-g#)zz
 " map <buffer> z*  <Plug>(asterisk-z*)
@@ -635,7 +785,7 @@ map <buffer> g#  <Plug>(asterisk-z#)
 
 let g:asterisk#keeppos = 1
 
-"}}}
+" }}}
 " Commentary{{{
 
 augroup CommentString
@@ -643,12 +793,12 @@ augroup CommentString
     autocmd FileType vimwiki setlocal commentstring=<!--%s-->
 augroup end
 
-"}}}
+" }}}
 " Conceal{{{
 
 let g:tex_conceal='abdgm'
 
-"}}}
+" }}}
 " Dragvisuals{{{
 
 " Dragging visual blocks
@@ -661,7 +811,7 @@ vmap <buffer> <expr> D         DVB_Duplicate()
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
-"}}}
+" }}}
 " Easymotion and Sneak{{{
 
 let g:EasyMotion_do_mapping = 0
@@ -697,25 +847,25 @@ nnoremap <buffer> 't `tzvzz
 nnoremap <buffer> \ ,
 
 nmap <buffer> , <Plug>Sneak_,
-omap <buffer> , <Plug>Sneak_,
-xmap <buffer> , <Plug>Sneak_,
+    omap <buffer> , <Plug>Sneak_,
+    xmap <buffer> , <Plug>Sneak_,
 
-nmap <buffer> \ <Plug>Sneak_,
-omap <buffer> \ <Plug>Sneak_,
-xmap <buffer> \ <Plug>Sneak_,
+    nmap <buffer> \ <Plug>Sneak_,
+    omap <buffer> \ <Plug>Sneak_,
+    xmap <buffer> \ <Plug>Sneak_,
 
-"}}}
+    "}}}
 " Eunuch"{{{
 
 " Don't use :Delete from vim-eunuch, it is equvalent to 'rm' in linux, file forever gone
 " cnoremap <buffer> df .!trash %<cr>:Delete<cr>
 
-"}}}
+" }}}
 " Fugitive{{{
 
 nnoremap <buffer> <localleader>gp :Gw<cr>:Gcommit -m "Add updated files"<cr><cr>:Gpush origin master<cr>
 
-"}}}
+" }}}
 " FuzzyFinder{{{
 
 " Show dot files and ignore .git files
@@ -726,13 +876,14 @@ let g:fzf_preview_window = 'right:60%'
 " nnoremap <buffer> <localleader>fzf :FZF ~/
 nnoremap <buffer> <localleader>fzd :Files<cr>
 nnoremap <buffer> <localleader>fzf :FZF ~<cr>
+nnoremap <buffer> <localleader>fzp :FZF ~/python-code<cr>
 
-"}}}
+" }}}
 " Gundo{{{
 
 nnoremap <buffer> <localleader>gt :GundoToggle<CR>
 
-"}}}
+" }}}
 " Indent Guides{{{
 
 " let g:indent_guides_start_level = 2
@@ -743,7 +894,7 @@ nnoremap <buffer> <localleader>i :IndentGuidesToggle<cr>
 " Indenting frames
 nnoremap <buffer> =f mi?{frame}<cr>=ae`i
 
-"}}}
+" }}}
 " Limelight{{{
 
 " nmap <buffer> <localleader>l <Plug>(Limelight)
@@ -775,30 +926,28 @@ let g:limelight_conceal_ctermfg = 244
 " " Number of preceding/following paragraphs to include (default: 0)
 " let g:limelight_paragraph_span = 1
 
-"}}}
+" }}}
 " NERDtree{{{
 
 let NERDTreeShowHidden=1
 nnoremap <buffer> <localleader>nt :NERDTree<cr>:set number relativenumber<cr>
 
-"}}}
-" Snippets{{{
-
-let g:UltiSnipsUsePythonVersion = 3
-
-"}}}
+" }}}
 " Startify{{{
 
 nnoremap <buffer> <localleader>st :Startify<cr>
 
-"}}}
-" Supertab{{{
+" }}}
+" " Supertab{{{
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" set completeopt-=menuone
+" set completeopt-=preview
+" set wildmode=longest:full,full
 
-"}}}
-"Templates and Selecting Template{{{
+" " }}}
+" Templates and Selecting Template{{{
 
 " In "~/.vim/plugged/vim-templates/plugin/templates.vim" add autocmd for writing BufNewFile event
 
@@ -808,8 +957,8 @@ let g:tmpl_license='Self'
 let g:template_list = ["amsart", "article", "beamer", "c", "CMakeLists.txt", "cpp", "go", "h", "hpp", "html", "java", "js", "jsx", "letter", "main.c", "main.cpp", "Makefile", "md", "mock", "py", "report", "sh", "tex", "vim"]
 
 " Selecting template
-"function! Template(code)"{{{
-"" include all templates{{{
+" function! Template(code)"{{{
+" " include all templates{{{
 "    " let item = a:code
 "    " if (item in g:template_list)
 "    "     echo "yes"
@@ -832,7 +981,7 @@ let g:template_list = ["amsart", "article", "beamer", "c", "CMakeLists.txt", "cp
 "    " "     TemplateInit amsart
 "    " " endtry
 
-""}}}
+" "}}}
 
 "    if a:code != 'art' && a:code != 'ams' && a:code != 'rep' && a:code != 'sh'
 "        let l:code = input("Which Template: ")
@@ -861,7 +1010,7 @@ let g:template_list = ["amsart", "article", "beamer", "c", "CMakeLists.txt", "cp
 "        echom " <-- Not a valid template"
 "    endif
 
-"endfunction"}}}
+" endfunction"}}}
 
 nnoremap <buffer> <silent> <localleader>tem :TemplateAutoInit<cr>
 
@@ -876,7 +1025,7 @@ inoremap <buffer> <silent> <c-j> <esc>/<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 nnoremap <buffer> <silent> <c-k> ?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 inoremap <buffer> <silent> <c-k> <esc>?<+\(.\)*+><cr>zMzvzz:noh<cr>cf>
 
-"}}}
+" }}}
 " Titlecase{{{
 
 let g:titlecase_map_keys = 0
@@ -893,11 +1042,28 @@ vmap <buffer> <localleader>t <Plug>Titlecase
 " Uppercase the first letter of a word
 nnoremap <buffer> <localleader>uc viwbU
 
-"}}}
+" }}}
 " UltiSnips{{{
+
+let g:UltiSnipsUsePythonVersion = 3
 
 let g:UltiSnipsEditSplit='vertical'
 nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
+
+augroup Snippets
+    autocmd!
+    autocmd FileType snippets setlocal foldmethod=marker
+    autocmd FileType snippets setlocal foldlevel=0
+augroup end
+
+" Set the key to expand a snippet
+" let g:UltiSnipsExpandTrigger = "<c-j>"
+
+" " Set the key to jump forward in the snippet
+" let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+
+" " Set the key to jump backward in the snippet
+" let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 " function! ExpandUltiSnipsNormal(snippet)
 "     exe "normal! a" . a:snippet
@@ -909,7 +1075,19 @@ nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 " nnoremap <buffer> <silent> <localleader>rl gg/##<cr>:noh<cr>jotnow<c-r>=UltiSnips#Anon('TIME: `date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`', 'tnow')<cr><cr><esc>O
 
 
-"}}}
+" }}}
+" " Unimpaired{{{
+
+" if &filetype != 'python'
+"     nmap < [
+"     nmap > ]
+"     omap < [
+"     omap > ]
+"     xmap < [
+"     xmap > ]
+" endif
+
+" " }}}
 " Plugin test{{{
 
 " Vim instant markdown
@@ -923,15 +1101,103 @@ nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 " Pandoc
 " let g:pandoc#keyboard#display_motions=0
 
-"}}}
-" YouCompleteMe{{{
+" }}}
+" " YouCompleteMe{{{
 
 " let g:ycm_autoclose_preview_window_after_completion=1
 " map <buffer> <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"}}}
+" " Use <Tab> for both UltiSnips expansion and YCM completion
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-"}}}
+" imap <expr> <Tab>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<Tab>" :
+"       \ UltiSnips#CanExpandSnippet() ? "\<C-R>=UltiSnips#ExpandSnippet()<CR>" :
+"       \ "\<Tab>"
+
+" imap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" " " Use <Tab> for both UltiSnips expansion and YCM completion
+" " function! s:check_back_space() abort
+" "   let col = col('.') - 1
+" "   return !col || getline('.')[col - 1]  =~# '\s'
+" " endfunction
+
+" " " Tab key behavior for YCM and UltiSnips
+" " imap <expr> <Tab>
+" "       \ pumvisible() ? "\<C-n>" :
+" "       \ <SID>check_back_space() ? "\<Tab>" :
+" "       \ UltiSnips#CanExpandSnippet() ? "\<C-R>=UltiSnips#ExpandSnippet()<CR>" :
+" "       \ "\<Tab>"
+
+" " " Shift-Tab behavior for backward navigation in YCM
+" " imap <expr> <S-Tab>
+" "       \ pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" " Jump forward in snippets with <C-j> and backward with <C-k>
+" imap <C-j> <C-R>=UltiSnips#JumpForwards()<CR>
+" imap <C-k> <C-R>=UltiSnips#JumpBackwards()<CR>
+
+" " python with virtualenv support
+" python3 << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
+
+" " " Use Tab for UltiSnips or YCM autocompletion
+" " function! s:check_back_space() abort
+" "   let col = col('.') - 1
+" "   return !col || getline('.')[col - 1]  =~# '\s'
+" " endfunction
+
+" " inoremap <silent><expr> <TAB>
+" "       \ pumvisible() ? "\<C-n>" :
+" "       \ UltiSnips#CanExpandSnippet() ? "\<C-R>=UltiSnips#ExpandSnippet()<CR>" :
+" "       \ UltiSnips#CanJumpForwards() ? "\<C-R>=UltiSnips#JumpForwards()<CR>" :
+" "       \ <SID>check_back_space() ? "\<Tab>" :
+" "       \ "\<C-x>\<C-o>"
+
+" " inoremap <silent><expr> <S-TAB>
+" "       \ pumvisible() ? "\<C-p>" :
+" "       \ UltiSnips#CanJumpBackwards() ? "\<C-R>=UltiSnips#JumpBackwards()<CR>" :
+" "       \ "\<C-h>"
+
+
+
+" " function! g:UltiSnips_Complete()
+" "     call UltiSnips#ExpandSnippet()
+" "     if g:ulti_expand_res == 0
+" "         if pumvisible()
+" "             return "\<C-n>"
+" "         else
+" "             call UltiSnips#JumpForwards()
+" "             if g:ulti_jump_forwards_res == 0
+" "                return "\<TAB>"
+" "             endif
+" "         endif
+" "     endif
+" "     return ""
+" " endfunction
+
+" " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" " let g:UltiSnipsJumpForwardTrigger="<tab>"
+" " let g:UltiSnipsListSnippets="<c-e>"
+" " " this mapping Enter key to <C-y> to chose the current highlight item 
+" " " and close the selection list, same as other IDEs.
+" " " CONFLICT with some plugins like tpope/Endwise
+" " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" " }}}
+
+" }}}
 
 " Misc{{{
 " -------------------------------------------------------------------
@@ -939,41 +1205,50 @@ nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 " Braces and stuff{{{
 " -------------------------------------------------------------------
 
-onoremap <buffer> p i(
+" Fix it to delete inside larger parenthesis
+onoremap <buffer> p i)
 " In the same line delete inside any parenthesis
-onoremap <buffer> in( :<c-u>normal! f(vi(<cr>
-onoremap <buffer> inp :<c-u>normal! f(vi(<cr>
-onoremap <buffer> il( :<c-u>normal! F)vi(<cr>
-onoremap <buffer> ilp :<c-u>normal! F)vi(<cr>
-onoremap <buffer> iN( :<c-u>normal! F)vi(<cr>
-onoremap <buffer> iNp :<c-u>normal! F)vi(<cr>
+onoremap <buffer> in( :<c-u>normal! f(vi)<cr>
+onoremap <buffer> inp :<c-u>normal! f(vi)<cr>
+onoremap <buffer> il( :<c-u>normal! F)vi)<cr>
+onoremap <buffer> ilp :<c-u>normal! F)vi)<cr>
+onoremap <buffer> iN( :<c-u>normal! F)vi)<cr>
+onoremap <buffer> iNp :<c-u>normal! F)vi)<cr>
 
-" inoremap <buffer> ( ()<esc>i
-" inoremap <buffer> (( (
-" inoremap <buffer> { {}<esc>i
-" inoremap <buffer> {{ {
-" inoremap <buffer> [ []<esc>i
-" inoremap <buffer> [[ [
+if &filetype != 'python'
+    inoremap <buffer> ( ()<esc>i
+    inoremap <buffer> (( (
+    inoremap <buffer> { {}<esc>i
+    inoremap <buffer> {{ {
+    inoremap <buffer> [ []<esc>i
+    inoremap <buffer> [[ [
 
-inoremap <buffer> \| \|\|<esc>i
-inoremap <buffer> \|\| \|
+    inoremap <buffer> \| \|\|<esc>i
+    inoremap <buffer> \|\| \|
 
-" inoremap <buffer> '' ''<esc>i
-" inoremap <buffer> "" ""<esc>i
-" inoremap <buffer> `` ``<esc>i
+    inoremap <buffer> '' ''<esc>i
+    inoremap <buffer> "" ""<esc>i
+    inoremap <buffer> `` ``<esc>i
+endif
 
 augroup MarkdownVimwiki
     autocmd!
     autocmd FileType markdown,vimwiki inoremap <buffer> ** **<left>
+    " autocmd FileType markdown,vimwiki iunmap <buffer> \|
+    " autocmd FileType markdown,vimwiki iunmap <buffer> \|\|
 augroup end
 
-"}}}
+" }}}
 " Calculator{{{
 " -------------------------------------------------------------------
 
 inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
-"}}}
+" " Adding or substracting numbers in normal mode is <ctrl-a> or <ctrl-x>
+" nnoremap <buffer> <c-b> viwo<esc>maA+1<esc>v`aygvc<c-r>=<c-r>0<cr><esc>
+" nnoremap <buffer> <c-s> viwo<esc>maea-1<esc>v`aygvc<c-r>=<c-r>0<cr><esc>
+
+" }}}
 " Colorschemes{{{
 " -------------------------------------------------------------------
 
@@ -991,44 +1266,58 @@ let g:seoul256_srgb=1
 " colorscheme wombat256i
 " colorscheme solarized
 " colorscheme light-kiss
+" colorscheme simple_dark
 
-" set background=light
-
-let g:colorscheme_toggle=1
-function! ColorschemeToggle()
-    if g:colorscheme_toggle
+let g:my_colorscheme_mode=1
+function! ColorToggle()
+    if g:my_colorscheme_mode
         colorscheme seoul256-light
-        let g:colorscheme_toggle=0
+        let g:my_colorscheme_mode=0
     else
         colorscheme seoul256
-        let g:colorscheme_toggle=1
+        " colorscheme badwolf
+        let g:my_colorscheme_mode=1
     endif
 
-    " Fix highlight issue with tex files
-    if &filetype=='tex'
-        call SourceEverythingForTeX()
+    " " Fix highlight issue with tex files
+    " if &filetype=='tex'
+    "     call SourceEverythingForTeX()
+    " endif
+
+endfunction
+
+call ColorToggle()
+nnoremap <buffer> <localleader>ct :call ColorToggle()<cr>
+
+function! ColorschemeToggle()
+    if g:my_colorscheme_mode
+        silent !sed -i 's/^let g:my_colorscheme_mode=0/let g:my_colorscheme_mode=1/' /home/mahbub/Dropbox/Data/.vimrc
+    else
+        silent !sed -i 's/^let g:my_colorscheme_mode=1/let g:my_colorscheme_mode=0/' /home/mahbub/Dropbox/Data/.vimrc
     endif
 endfunction
 
-call ColorschemeToggle()
-nnoremap <buffer> <localleader>cs :call ColorschemeToggle()<cr>
+nnoremap <buffer> <localleader>cs mmgg:call ColorschemeToggle()<cr>:source $MYVIMRC<cr>:noh<cr>`mzz
 
-"}}}
+" Editing colorscheme in vimrc
+nnoremap <buffer> <localleader>ec /Colorschemes<cr>:noh<cr>zvzt
+
+" }}}
 " Command line mappings{{{
 " -------------------------------------------------------------------
 
 cnoremap <buffer> <c-a> <home>
 cnoremap <buffer> <c-e> <end>
 
-"}}}
+" }}}
 " Diagraphs{{{
 " -------------------------------------------------------------------
 
-""Make CTRL-K list diagraphs before each digraph entry
-"runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
-"inoremap <buffer> <expr> <C-K> BDG_GetDigraph()
+" "Make CTRL-K list diagraphs before each digraph entry
+" runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
+" inoremap <buffer> <expr> <C-K> BDG_GetDigraph()
 
-"}}}
+" }}}
 " Macros{{{
 " -------------------------------------------------------------------
 
@@ -1037,7 +1326,7 @@ vnoremap <buffer> Q @q
 " Redefine macro 'q'
 nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 
-"}}}
+" }}}
 " Navigation{{{
 " -------------------------------------------------------------------
 
@@ -1047,7 +1336,7 @@ nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 " nnoremap <buffer> <Up>    :echoe "Use 'k'. Navigate smartly!"<cr>
 " nnoremap <buffer> <Right> :echoe "Use 'l'. Navigate smartly!"<cr>
 
-"}}}
+" }}}
 " Moving on the screen{{{
 
 nnoremap <buffer> H mh^
@@ -1099,7 +1388,7 @@ inoremap <buffer> <leader>zz <esc>zza
 inoremap <buffer> <leader>zt <esc>zta
 inoremap <buffer> <leader>zb <esc>zba
 
-"}}}
+" }}}
 " Toggle VIM lines and visual lines navigation, and special use of numbers{{{
 let s:navigation_toggle=0
 
@@ -1174,7 +1463,7 @@ endfunction
 
 nnoremap <buffer> <localleader>nv :call NavigationToggleInWrapMode()<cr>
 
-"}}}
+" }}}
 
 " Marking remaps
 nnoremap <buffer> ' `
@@ -1188,6 +1477,7 @@ nnoremap <buffer> 'j `jzvzz
 
 vnoremap <buffer> gg mggg
 " vnoremap <buffer> G mgG
+" onoremap <buffer> G mgG
 vnoremap <buffer> 'g `gzvzz
 vnoremap <buffer> 'j `jzvzz
 
@@ -1195,7 +1485,7 @@ vnoremap <buffer> 'j `jzvzz
 nnoremap <buffer> g; g;zvzz
 nnoremap <buffer> g, g,zvzz
 
-"}}}
+" }}}
 " Pasting, visual selection{{{
 " -------------------------------------------------------------------
 
@@ -1213,7 +1503,7 @@ nnoremap <buffer> gV `[v`]
 " Visually select current line excluding indentation and white space
 nnoremap <buffer> vv ^vg_
 
-"}}}
+" }}}
 " Running command in shell and pasting in buffer{{{
 
 " Run in shell and paste in line below
@@ -1227,7 +1517,7 @@ vnoremap <buffer> <silent> !! yo<esc>:.!<c-r><c-r>0<cr>0
 " Calendar on next paragraph with cursor on today
 nnoremap <buffer> <silent> <localleader>cal mco<esc>:.!cal<cr>:FixWhitespace<cr>?_<cr>2xwn2xhe:noh<cr>`c
 
-"}}}
+" }}}
 " Searching remaps{{{
 
 " Marking before searching
@@ -1241,23 +1531,23 @@ vnoremap <buffer> ;/ <esc>ms/\%V
 
 vnoremap <buffer> 's `szvzz
 
-" Don't move on after */#
-nnoremap <buffer> * ms*<c-o>
-nnoremap <buffer> # ms#<c-o>
+" " Don't move on after */# (taken care of at vim-asterisk)
+" nnoremap <buffer> * ms*<c-o>
+" nnoremap <buffer> # ms#<c-o>
 
 " Search the visually selected using */# (from Scrooloose){{{
-" Shorter mapping, although z* from vim-asterisk even keeps cursor the first time
+" Shorter mapping, although z* from vim-asterisk even retains cursor position
 function! s:VSerSearch()
-    let temp = @@
-    norm! gvy
-    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-    let @@ = temp
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+    let @s = temp
 endfunction
 
 vnoremap <buffer> * :<c-u>call <SID>VSerSearch()<cr>ms//<cr><c-o>zz
 vnoremap <buffer> # :<c-u>call <SID>VSerSearch()<cr>ms??<cr><c-o>zz
 
-"}}}
+" }}}
 
 " Highlighting next match
 nnoremap <buffer> <silent> n nzvzz:call HLNext(0.05)<cr>
@@ -1277,6 +1567,11 @@ nnoremap <buffer> <localleader>? ms:%s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>/ ms:s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>? ms:s///gn<left><left><left><left>
 
+if &filetype == 'snippets'
+    nnoremap <buffer> <? ms/snippet /e<left><left>
+    nnoremap <buffer> >? ms?snippet ?e<left><left>
+endif
+
 " Number of matches for the word under cursor
 nnoremap <buffer> <localleader>* ms*:%s///gn<cr>
 nnoremap <buffer> <localleader># ms#:%s///gn<cr>
@@ -1285,7 +1580,7 @@ nnoremap <buffer> <localleader># ms#:%s///gn<cr>
 vnoremap <buffer> <localleader>* yms:%s/<c-r>0//gn<cr>
 vnoremap <buffer> <localleader># yms:%s/<c-r>0//gn<cr>
 
-"}}}
+" }}}
 
 " Clearing highlighted matches
 nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
@@ -1311,7 +1606,16 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 " nnoremap <buffer> <silent> <esc> :noh<cr>:echo<cr>
 " nnoremap <buffer> <silent> <esc><esc> mh/qwqkqx\$<cr>:noh<cr>`h
 
-"}}}
+" }}}
+" Shell KeyBindings{{{
+
+augroup ShellKeyBindings
+    autocmd!
+    autocmd FileType sh inoremap <buffer> ; _
+    autocmd FileType sh inoremap <buffer> ;<space> _
+augroup end
+
+" }}}
 " Some other remaps{{{
 " -------------------------------------------------------------------
 
@@ -1386,7 +1690,7 @@ endfunction
 nnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
 vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
 
-"}}}
+" }}}
 " Spelling Check{{{
 " -------------------------------------------------------------------
 
@@ -1446,7 +1750,7 @@ nnoremap <buffer> <localleader>en :call SpellLang("en")<cr>
 nnoremap <buffer> <localleader>sv :call SpellLang("sv")<cr>
 nnoremap <buffer> <localleader>dl :call SpellLang("dl")<cr>
 
-"}}}
+" }}}
 
 augroup Spelling
     autocmd!
@@ -1492,7 +1796,7 @@ endfunction
 nnoremap <buffer> <localleader>< :call GtLtToggle()<cr>
 nnoremap <buffer> <localleader>> :call GtLtToggle()<cr>
 
-"}}}
+" }}}
 " Substitute/change{{{
 " -------------------------------------------------------------------
 
@@ -1501,17 +1805,20 @@ vnoremap <buffer> <localleader>s :s/
 nnoremap <buffer> <localleader>S :%S/
 vnoremap <buffer> <localleader>S :S/
 
-"}}}
+" }}}
 " PythonHighlighting{{{
 
-highlight PythonGroup ctermfg=3
+" highlight PythonFormattedVarGroup ctermfg=3
+highlight PythonFormattedVarGroup ctermfg=256 cterm=bold
+highlight PythonBoldGreenGroup ctermfg=46 ctermbg=Black cterm=bold
 
 augroup PythonHighlighting
     autocmd!
-    autocmd Filetype python let m = matchadd("PythonGroup",'{.\{-}}')
+    autocmd Filetype python let m = matchadd("PythonFormattedVarGroup",'.{\zs.\{-}\ze}.')
+    autocmd Filetype python let m = matchadd("PythonBoldGreenGroup",'TODO')
 augroup end
 
-"}}}
+" }}}
 " VimwikiHighlighting{{{
 
 highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
@@ -1535,12 +1842,12 @@ augroup VimwikiHighlighting
     " autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
 augroup end
 
-"}}}
+" }}}
 " TerminalHighlighting{{{
 
 " hi Terminal ctermbg=238 ctermfg=188 guibg=lightgrey guifg=blue
 
-"}}}
+" }}}
 " Trailing White Space{{{
 " -------------------------------------------------------------------
 
@@ -1557,7 +1864,7 @@ nnoremap <buffer> <localleader>fds <esc>mwV:s/ \{2,\}/ /g<cr>`wzv
 nnoremap <buffer> <localleader>fads mw:%s/ \{2,\}/ /g<cr>`wzv
 nnoremap <buffer> <localleader>faw mw:FixWhitespace<cr>`wzv
 
-"}}}
+" }}}
 " Word Highlight{{{
 "
 " This mini-plugin provides a few mappings for highlighting words temporarily.
@@ -1605,7 +1912,7 @@ nnoremap <silent> <localleader>4 :hi clear InterestingWord4<cr>
 nnoremap <silent> <localleader>5 :hi clear InterestingWord5<cr>
 nnoremap <silent> <localleader>6 :hi clear InterestingWord6<cr>
 
-"}}}
+" }}}
 " Default Highlights{{{
 
 hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
@@ -1615,9 +1922,9 @@ hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
 hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
 hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 " TeXHighlighting{{{
 " -------------------------------------------------------------------
 
@@ -1713,7 +2020,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("Label",'\\label{.\{-}}')
 augroup end
 
-"}}}
+" }}}
 " MarkerGroup, BoldGroup"{{{
 
 highlight TitleAbstract ctermbg=92 ctermfg=149
@@ -1823,7 +2130,7 @@ highlight SpaceGroup ctermbg=red
 "     autocmd Filetype tex let m = matchadd("SpaceGroup",'  *')
 " augroup end
 
-"}}}
+" }}}
 " Abstract, Theorem, Equation"{{{
 
 highlight Abstract ctermbg=92 ctermfg=149
@@ -2132,11 +2439,11 @@ augroup TeXHighlighting
     " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right|}')
 augroup end
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 
 " KeyBindings, Abbreviations and Stuff{{{
 " -------------------------------------------------------------------
@@ -2172,7 +2479,7 @@ function! KeyBinding(code)
     elseif l:code == "go"
         source ~/.vim/KeyBindings/GoKeyBindings.vim
 
-        " Markdown/vimwiki
+    " Markdown/vimwiki
     elseif l:code =~ 'md\|wiki'
         source ~/.vim/KeyBindings/MarkdownKeyBindings.vim
 
@@ -2183,7 +2490,7 @@ function! KeyBinding(code)
 
 endfunction
 
-"}}}
+" }}}
 " Selecting Abbreviations{{{
 " -------------------------------------------------------------------
 
@@ -2214,7 +2521,7 @@ function! Abbreviations(code)
 
 endfunction
 
-"}}}
+" }}}
 " Sourcing KeyBindings, Abbreviations and Stuff{{{
 " -------------------------------------------------------------------
 
@@ -2222,7 +2529,7 @@ endfunction
 augroup SourceEverythingForTeX
     autocmd!
     " autocmd BufNewFile,BufRead *.tex silent write
-    autocmd BufNewFile,BufEnter *.tex silent VimtexCompile
+    autocmd BufEnter *.tex silent VimtexCompile
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBinding("tex")
@@ -2266,10 +2573,11 @@ nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{
 " Editing tex stuff in vimrc
 nnoremap <buffer> <localleader>et /SourceEverythingForTeX<cr>n:noh<cr>zvzz
 
-"}}}
+" }}}
 " SourceEverythingForVimwiki{{{
 augroup SourceEverythingForVimwiki
     autocmd!
+    " autocmd FileType vimwiki set filetype=markdown
     autocmd BufNewFile,BufRead *.md silent write
     " autocmd BufNewFile,BufRead *.md call Abbreviations("gen")
     " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
@@ -2278,18 +2586,29 @@ augroup SourceEverythingForVimwiki
     autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
     autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spell spelllang=sv,en_us
     autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
-    " autocmd BufNewFile,BufRead *.md silent TableModeEnable
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
 
     " Compiling
     autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :Pandoc pdf -V geometry:margin=2.5cm -V fontsize=12pt<cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <F7>            :Pandoc pdf<cr>
-    autocmd Filetype markdown,vimwiki inoremap <buffer> <F7>            <esc>:Pandoc pdf<cr>a
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :Pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pd :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>p2 :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <F9>            :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+    autocmd Filetype markdown,vimwiki inoremap <buffer> <F9>            <esc>:!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :!pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr><cr>
 
-    " autocmd BufNewFile,BufRead *.md execute "normal! 4zj"
+    " autocmd BufNewFile,BufRead *.md TableModeEnable
+    " autocmd Filetype markdown,vimwiki TableModeEnable
+
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb :!pandoc beamer<cr>
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :Pandoc pdf -V geometry:margin=3cm -V fontsize=12pt<cr>
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pd :Pandoc pdf -V geometry:margin=2cm -V fontsize=12pt<cr>
+    " " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :Pandoc pdf -V geometry:margin=3cm -V fontsize=12pt --from=markdown+pipe_tables<cr>
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <F9>            :Pandoc pdf<cr>
+    " autocmd Filetype markdown,vimwiki inoremap <buffer> <F9>            <esc>:Pandoc pdf<cr>a
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :Pandoc html -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr>
+
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <CR> <C-]><Esc>:VimwikiReturn 3 5<CR>
     " autocmd BufNewFile,BufRead *.md inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
     " autocmd Filetype vimwiki setlocal foldmethod=marker
@@ -2298,11 +2617,15 @@ augroup SourceEverythingForVimwiki
 
 augroup end
 
+" Fancy write markdown to PDF for dissemination
+" nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex --to=pdf -o ~/%:t:r.pdf<left><left><left><left>
+nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex -o ~/%:t:r.pdf<cr><cr>
+
 " Sourcing everything for markdown/vimwiki
 function! SourceEverythingForMarkdown()
     call KeyBinding("md")
-    setlocal spell spelllang=sv,en_us
-    setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    setlocal spell spelllang=en_us
+    setlocal spellfile=~/.vim/spell/en.utf-8.add
     echom "Sourced everything for Markdown/Vimwiki"
 endfunction
 
@@ -2310,17 +2633,18 @@ endfunction
 nnoremap <buffer> <silent> <localleader>md :call SourceEverythingForMarkdown()<cr>
 inoremap <buffer> <silent> <localleader>md <esc>:call SourceEverythingForMarkdown()<cr>a
 
-"}}}
+" }}}
 " SourceEverythingForPython{{{
 augroup SourceEverythingForPython
     autocmd!
     autocmd BufNewFile,BufRead *.py silent write
     autocmd BufNewFile,BufRead *.py call KeyBinding("py")
     autocmd BufNewFile,BufRead *.py setlocal signcolumn=yes
+    autocmd QuitPre,ExitPre,VimLeave *.py FixWhitespace
     " autocmd BufNewFile,BufRead *.py set foldmethod=indent
 augroup end
 
-"}}}
+" }}}
 " SourceEverythingForGo{{{
 augroup SourceEverythingForGo
     autocmd!
@@ -2330,32 +2654,32 @@ augroup SourceEverythingForGo
     autocmd BufNewFile,BufRead *.go setlocal spellfile=~/.vim/spell/math.utf-8.add
 augroup end
 
-"}}}
+" }}}
 " Leader mappings{{{
-"Sourcing NumbersPeacefully
+" Sourcing NumbersPeacefully
 nnoremap <buffer> <localleader>np :call KeyBinding("np")<cr>
 inoremap <buffer> <localleader>np <esc>:call KeyBinding("np")<cr>a
 inoremap <buffer> <localleader>nd <esc>:call KeyBinding("tex")<cr>a
 
-"Sourcing GeneralAbbreviations
+" Sourcing GeneralAbbreviations
 nnoremap <buffer> <localleader>ag :call Abbreviations("gen")<cr>
 
 " Sourcing MathAbbreviations
 nnoremap <buffer> <localleader>am :call Abbreviations("math")<cr>
 
-"Sourcing PythonKeyBindings
+" Sourcing PythonKeyBindings
 nnoremap <buffer> <localleader>py :call KeyBinding("py")<cr>
 
-"Sourcing GoKeyBindings
+" Sourcing GoKeyBindings
 nnoremap <buffer> <localleader>go :call KeyBinding("go")<cr>
 
-"Sourcing UnmapTexKeyBindings
+" Sourcing UnmapTexKeyBindings
 nnoremap <buffer> <localleader>ut :call KeyBinding("unmaptex")<cr>
 inoremap <buffer> <localleader>ut <esc>:call KeyBinding("unmaptex")<cr>a
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 " Opening .vimrc, KeyBindings and Stuff{{{
 " -------------------------------------------------------------------
 
@@ -2408,9 +2732,9 @@ nnoremap <buffer> <leader>ms :vnew ~/.vim/spell/math.utf-8.add<cr>
 nnoremap <buffer> <leader>hvc :split $MYVIMRC<cr>
 nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 
-"}}}
+" }}}
 
-"}}}
+" }}}
 
 " Writing and quitting{{{
 " -------------------------------------------------------------------
@@ -2418,7 +2742,7 @@ nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 " Doesn't seem to work when template is enabled - now works with BufEnter
 augroup WriteNewBuf
     autocmd!
-    autocmd BufNewFile,BufEnter *.*  if &modifiable | silent write | endif
+    autocmd BufNewFile,BufEnter *.* if &modifiable | silent write | endif
     " autocmd BufNewFile,BufEnter *.* silent write
     " autocmd BufEnter *.tex,*.py,*.md,*-svenska.md silent write
 augroup end
@@ -2431,14 +2755,14 @@ augroup end
 
 nnoremap <buffer> <silent> <localleader>w mw:w!<cr>`w
 nnoremap <buffer> <silent> <localleader>ww mw:w!<cr>`w
-inoremap <buffer> <silent> ;w <esc>mw:w!<cr>`wa
-inoremap <buffer> <silent> ;ww <esc>mw:w!<cr>`wa
+" inoremap <buffer> <silent> ;w <esc>mw:w!<cr>`wa
+" inoremap <buffer> <silent> ;ww <esc>mw:w!<cr>`wa
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged *,*.py nested if &modifiable | silent write | endif
+    autocmd TextChanged * nested if &modifiable | silent write | endif
     " autocmd TextChanged * nested silent write
-    autocmd TextChangedI *,*.py silent write
+    autocmd TextChangedI * silent write
 augroup end
 
 nnoremap <localleader>q mqzM:q!<cr>
@@ -2446,19 +2770,19 @@ nnoremap <localleader>wq mqzM:wq!<cr>
 nnoremap 'q `qzvzz
 vnoremap 'q `qzvzz
 
-"}}}
+" }}}
 
 " Sourcing{{{
 " -------------------------------------------------------------------
 
-" Sourcing current file
-nnoremap <buffer> <silent> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
-nnoremap <buffer> <silent> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>
+" " Sourcing current file
+" nnoremap <buffer> <silent> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
+" nnoremap <buffer> <silent> <localleader>msf :call MakeView()<cr>:source %<cr>:noh<cr>
 
 augroup ForAllBuf
     autocmd!
-    " autocmd BufNewfile,BufRead,BufEnter * source $MYVIMRC
-    autocmd BufNewfile,BufRead * source $MYVIMRC
+    autocmd BufNewfile,BufRead,BufEnter * source $MYVIMRC
+    " autocmd BufNewfile,BufRead * source $MYVIMRC
     " autocmd BufNewfile,BufRead *.tex let s:gtlt_toggle=0
     " autocmd BufNewFile,BufRead * call Abbreviations("gen")
     autocmd FocusGained,FocusLost,BufEnter * checktime
@@ -2472,4 +2796,4 @@ nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 " Sourcing .vimrc
 nnoremap <buffer> <localleader>vc :source $MYVIMRC<cr>:noh<cr>
 
-"}}}
+" }}}

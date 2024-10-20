@@ -5,9 +5,9 @@
 % Description   :<++>
 % -------------------------------------------------------------------
 
-\documentclass[11pt, reqno]{amsart}% F{O{L{D
+\documentclass[12pt, reqno]{amsart}% F{O{L{D
 
-% \renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.2}
 
 % Packages% F{O{L{D
 % -------------------------------------------------------------------
@@ -30,7 +30,7 @@
 % \usepackage{contour}%for writing sc bf
 \usepackage{datetime}
 \usepackage{dsfont}
-% \usepackage{enumerate}
+\usepackage{enumerate}
 \usepackage{enumitem}
 % \usepackage{etaremune}
 \usepackage{esvect}

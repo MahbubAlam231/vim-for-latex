@@ -1,41 +1,55 @@
-#  ____        _                  _
-# / ___| _ __ (_)_ __  _ __   ___| |_ ___
-# \___ \| '_ \| | '_ \| '_ \ / _ \ __/ __|
-#  ___) | | | | | |_) | |_) |  __/ |_\__ \
-# |____/|_| |_|_| .__/| .__/ \___|\__|___/
-#               |_|   |_|
-#            __                        _                  _
-#           / _| ___  _ __   ___ _ __ (_)_ __  _ __   ___| |_ ___
-#          | |_ / _ \| '__| / __| '_ \| | '_ \| '_ \ / _ \ __/ __|
-#          |  _| (_) | |    \__ \ | | | | |_) | |_) |  __/ |_\__ \
-#          |_|  \___/|_|    |___/_| |_|_| .__/| .__/ \___|\__|___/
-#                                       |_|   |_|
+#            _                  _
+#  ___ _ __ (_)_ __  _ __   ___| |_ ___
+# / __| '_ \| | '_ \| '_ \ / _ \ __/ __|
+# \__ \ | | | | |_) | |_) |  __/ |_\__ \
+# |___/_| |_|_| .__/| .__/ \___|\__|___/
+#             |_|   |_|
+#                      ___ _ __ (_)_ __  _ __   ___| |_ ___
+#                     / __| '_ \| | '_ \| '_ \ / _ \ __/ __|
+#                    _\__ \ | | | | |_) | |_) |  __/ |_\__ \
+#                   (_)___/_| |_|_| .__/| .__/ \___|\__|___/
+#                                 |_|   |_|
 
-#-------------------------------------------------------------------
-# A snippet for snippets
-#-------------------------------------------------------------------
+# priority -30
 
-snippet sni
-# snippet ${1:trigger} "${2:Description}" ${3:b}
+# snippet sni "create snippets" bA
+# `!p snip.rv = "# Output : " if t[5] or t[1] == 'trigger' else ""`$5`!p
+# snip.rv = "\n" if t[5] or t[1] == 'trigger' else ""
+# ``!p snip.rv = "snippet"` ${1:trigger} "${2:description}" ${3:b}
 # ${4:${VISUAL}}
 # \$0
+# `!p snip.rv = "endsnippet"`
+# $0
 # endsnippet
-$0
-endsnippet
 
-snippet vp "Surround with a VISUAL placeholder" w
-\$\{VISUAL:${1:${VISUAL:text}}$2\}$0
-endsnippet
+# snippet rv "snip.rv" wA
+# \`!p snip.rv = "${1:${VISUAL:text}}"$2\`$0
+# endsnippet
 
-snippet np "Surround with a numbered placeholder" w
-\$\{$1:${2:${VISUAL:text}}$3\}$0
-endsnippet
+# snippet 'svp' "Surround description/text with a VISUAL placeholder" rwA
+# \$\{VISUAL:${1:${VISUAL:text}}$2\}$0
+# endsnippet
 
-snippet nvp "Surround with a numbered+VISUAL placeholder" w
-\${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
-endsnippet
+# snippet 'snp' "Surround description/text with a numbered placeholder" rwA
+# \$\{$1:${2:${VISUAL:text}}$3\}$0
+# endsnippet
 
-snippet vnp "Surround with a numbered+VISUAL placeholder" w
-\${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
-endsnippet
+# snippet '(s)?nvp' "Surround description/text with a numbered+VISUAL placeholder" rwA
+# \${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
+# endsnippet
 
+# snippet '(s)?vnp' "Surround description/text with a numbered+VISUAL placeholder" rwA
+# \${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
+# endsnippet
+
+# snippet 'vinp' "Add visual placeholder inside numbered placeholder" rwA
+# \{${VISUAL}:\${VISUAL:${1:text}}\}$2
+# endsnippet
+
+# snippet 'dinp' "Add description inside numbered placeholder" rwA
+# \{${VISUAL}:${1:description}\}$2
+# endsnippet
+
+# # snippet np "Add description around numbered placeholder" w
+# # \{${VISUAL}:${1:description}\}$0
+# # endsnippet

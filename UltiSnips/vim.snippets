@@ -7,29 +7,31 @@
 
 snippet fn "writing a function in vim" b
 function! ${1:Name}($2)
-	$3
-endfunction
-$0
+	${3:${VISUAL:code_block}}
+endfunction$0
 endsnippet
 
 snippet while "while loop" b
 while $1
-	$2
-endwhile
-$0
+	${2:${VISUAL:code_block}}
+endwhile$0
 endsnippet
 
 snippet if "if in vim script" b
 if $1
-	$2
-endif
-$0
+	${2:${VISUAL:code_block}}
+endif$0
+endsnippet
+
+snippet try "try bracket in vim" b
+try
+	${VISUAL:code_block}
+endtry$0
 endsnippet
 
 snippet au "autocommand" b
 augroup $1
 	autocmd!
-	${2:${VISUAL:text}}$3
-augroup end
-$0
+	${2:${VISUAL:autocmd }}$3
+augroup end$0
 endsnippet

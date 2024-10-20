@@ -124,6 +124,13 @@ setxkbmap -option caps:swapescape
 # Default editor{{{
 # export EDITOR=vim
 #}}}
+# Path (+ own scripts){{{
+export PATH=$PATH:/root/.local/bin:/home/mahbub/scripts/bin:/home/mahbub/python-code/advent-of-code
+
+# # Texlive path
+# export PATH=$PATH:/usr/local/texlive/2021/bin/x86_64-linux
+
+#}}}
 # Go Path{{{
 export PATH=$PATH:/usr/local/go/bin
 
@@ -136,13 +143,6 @@ export GOPATH=$GOPATH:/home/mahbub/go-code
 # Python Path{{{
 export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code
 export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code/my-modules
-
-#}}}
-# Other Path (own scripts){{{
-export PATH=$PATH:/home/mahbub/scripts/bin
-
-# # Texlive path
-# export PATH=$PATH:/usr/local/texlive/2021/bin/x86_64-linux
 
 #}}}
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.{{{
@@ -176,7 +176,7 @@ of() {
 }
 
 sf() {
-    cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
+    cd $HOME && find . \( -path ./git-directory -o -path ./golib -o -path ./vimwiki -o -path ./vimwiki_html \) -prune -o -type f \( -iname \*.pdf -o -iname \*.djvu -o -iname \*.dvi -o -iname \*.tex -o -iname \*.md -o -iname \*.epub -o -iname \*.mobi \) | fzf --query="$@" --bind "enter:execute-silent(xdg-open ./{})" --exit-0
 }
 
 # Select pdf
@@ -220,9 +220,17 @@ alias     pf='python3 `fzf`'
 alias    pip='pip3'
 
 alias    pmr='python ~/python-code/movie_rating.py'
+alias    cdp='cd ~/python-code/'
+
+alias     ta='txt ~/python-code/advent-of-code/ input-advent '
+
+alias    vpc='vp coursera'
+alias    vpa='vp advent-of-code'
+alias    vpf='vp finanal'
 
 alias     re='refdfs'
 alias    rey='refdfs y'
+alias    rep='refdfs p'
 alias    ref='refdfs y'
 alias   refd='refdfs y'
 alias    red='cd ~/Downloads && refdfs'
@@ -281,6 +289,7 @@ alias     ps='vim ~/.vim/UltiSnips/python.snippets'
 alias     vz='vim `fzf`'
 alias     ss='s'
 alias   vmsi='vms i'
+alias    svo='vim ~/Dropbox/svenska-for-akademiker/2024-09-15-ord-svenska.md'
 
 # Vimwiki
 alias      w='vim ~/vimwiki/index.md'

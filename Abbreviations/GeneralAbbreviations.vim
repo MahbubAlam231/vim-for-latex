@@ -64,7 +64,7 @@ Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed,l} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed,ional}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 Abolish div{e,es,d,t,ts,ce} diverge{,s,d,nt,nts,nce}
-Abolish dyn{,c,s,l} dynamic{,,s,al}
+Abolish dyn{,c}{,s,l} dynamic{,}{,s,al}
 Abolish {diffeo,diffm}{,s,c,cally} diffeomorphi{,}{sm,sms,c,cally}
 
 "}}}
@@ -112,6 +112,7 @@ Abolish inj{,n,e,ve,ity,ty,y,ly,t,ts} inject{ion,ion,ive,ive,ivity,ivity,ivity,i
 Abolish insuff{,ly} insufficient{,ly}
 Abolish int{,s,n,ns,l,ls,e,te,ble,bility,y,ing} integ{er,ers,ration,rations,ral,rals,rate,rate,rable,rability,rability,rating}
 Abolish irred{,y} irreducib{le,ility}
+Abolish {ir,}{rat,r}{nl,l}{,s}{,y,ty,ies} {ir,}rational{,}{,}{,s}{,ity,ity,ities}
 Abolish iso{,s,m,ms,c,cally} isomorphi{sm,sms,sm,sms,c,cally}
 
 "}}}

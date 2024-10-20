@@ -5,72 +5,98 @@
 # /_/   \_\|_||_|   |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                                  |_|    |_|
 
+priority -45
 # snippets.snippets{{{
 
-snippet sni "create snippets" b
-# snippet ${1:trigger} "${2:Description}" ${3:b}
-# ${4:${VISUAL}}
-# \$0
-# endsnippet
-$0
+snippet sni "create snippets" bA
+`!p snip.rv = "# Output : " if t[5] or t[1] == 'trigger' else ""`$5`!p
+snip.rv = "\n" if t[5] or t[1] == 'trigger' else ""
+``!p snip.rv = "snippet"` ${1:trigger} "${2:description}" ${3:b}
+${4:${VISUAL}}
+\$0
+`!p snip.rv = "endsnippet"`$0
 endsnippet
 
-snippet vp "Surround with a VISUAL placeholder" w
+snippet rv "snip.rv" wA
+\`!p snip.rv = "${1:${VISUAL:text}}"$2\`$0
+endsnippet
+
+snippet 's(d)?vp' "Surround description/text with a VISUAL placeholder" rwA
 \$\{VISUAL:${1:${VISUAL:text}}$2\}$0
 endsnippet
 
-snippet np "Surround with a numbered placeholder" w
+snippet 's(d)?np' "Surround description/text with a numbered placeholder" rwA
 \$\{$1:${2:${VISUAL:text}}$3\}$0
 endsnippet
 
-snippet nvp "Surround with a numbered+VISUAL placeholder" w
+snippet '(s)?nvp' "Surround description/text with a numbered+VISUAL placeholder" rwA
 \${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
 endsnippet
 
-snippet vnp "Surround with a numbered+VISUAL placeholder" w
+snippet '(s)?vnp' "Surround description/text with a numbered+VISUAL placeholder" rwA
 \${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
 endsnippet
 
-snippet nv "Add visual placeholder around numbered placeholder" w
-\{${VISUAL}:\${VISUAL:text}$2\}$0
+snippet 'vinp' "Add visual placeholder inside numbered placeholder" rwA
+\{${VISUAL}:\${VISUAL:${1:text}}\}$2
 endsnippet
 
-
-#}}}
-# Braces and quotes{{{
-
-snippet ' "single quotes" iA
-'$1${2:${VISUAL}}$3'$0
+snippet '(a)?dinp' "Add description inside numbered placeholder" rwA
+\{${VISUAL}:${1:description}\}$2
 endsnippet
 
-snippet " "double quotes" iA
-"$1${2:${VISUAL}}$3"$0
+# snippet np "Add description around numbered placeholder" w
+# \{${VISUAL}:${1:description}\}$0
+# endsnippet
+
+snippet mg "match.group in snippets PyIntp" wA
+match.group($1)$2
 endsnippet
 
-snippet ` "backtick" iA
-`$1${2:${VISUAL}}$3`$0
+# }}}
+
+# # Braces and quotes{{{
+
+# snippet ' "single quotes" iA
+# '${1:${VISUAL}}'$0
+# endsnippet
+
+# snippet " "double quotes" iA
+# "${1:${VISUAL}}"$0
+# endsnippet
+
+# snippet ` "backtick" iA
+# \`${1:${VISUAL}}\`$0
+# endsnippet
+
+# snippet ( "parenthesis" iA
+# (${1:${VISUAL}})$0
+# endsnippet
+
+# snippet { "curly brackets" iA
+# {${1:${VISUAL}}\}$0
+# endsnippet
+
+# snippet [ "square brackets" iA
+# [${1:${VISUAL}}]$0
+# endsnippet
+
+# # }}}
+
+snippet mfd "Make filename with date"
+[$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
 endsnippet
 
-snippet ( "parenthesis" iA
-($1${2:${VISUAL}}$3)$0
+snippet mfn "Make filename"
+[$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
 endsnippet
 
-snippet { "curly brackets" iA
-{$1${2:${VISUAL}}$3}$0
+snippet today "YYYY-MM-DD" w
+`date +%Y-%m-%d`
 endsnippet
 
-snippet [ "square brackets" iA
-[$1${2:${VISUAL}}$3]$0
-endsnippet
-
-#}}}
-
-snippet today "Today's date" w
-`date +%d-%m-%y`
-endsnippet
-
-snippet date "Today's date" w
-`date +%d-%m-%y`
+snippet date "YYYY-MM-DD" w
+`date +%Y-%m-%d`
 endsnippet
 
 snippet dfn "Diary filename" w
@@ -78,11 +104,11 @@ snippet dfn "Diary filename" w
 endsnippet
 
 snippet datetime "Date-month-weekday-time-zone" w
-`date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
+`date +%Y-%m-%d\ \(%b,\ %a\)\ %H:%M\ %Z`
 endsnippet
 
 snippet now "Date-month-weekday-time-zone" w
-`date +%d-%m-%y\ \(%b,\ %a\)\ %H:%M\ %Z`
+`date +%Y-%m-%d\ \(%b,\ %a\)\ %H:%M\ %Z`
 endsnippet
 
 snippet tnow "ps date-month-weekday-time-zone" w
@@ -95,18 +121,20 @@ snippet times "Time now with seconds" w
 `date +%T`
 endsnippet
 
-snippet time "Time now without seconds" w
-`date +%H:%M`
-endsnippet
+# snippet time "Time now without seconds" w
+# `date +%H:%M`
+# endsnippet
 
 snippet dt "Today's datetime" w
 `date +%d-%m-%y\ %H:%M`
 endsnippet
 
-snippet test "Description" b
-${1:${VISUAL:testing}}$0
+snippet lorem "Lorem ipsum text" b
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.$0
 endsnippet
-
 
 # snippet bye "Mail signature" b w
 # Thanks. Bye. So long.

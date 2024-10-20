@@ -1,8 +1,8 @@
-<!-- --- -->
-<!-- title: {{FILE}} -->
-<!-- author: {{NAME}} -->
-<!-- created: {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}} -->
-<!-- --- -->
+---
+title: {{FILE}}
+author: {{NAME}}
+created: {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
+---
 
 [purpose-statement-index](../purpose-statements/purpose-statement-index)
 [project-gutenberg-index](../project-gutenberg/project-gutenberg-index)

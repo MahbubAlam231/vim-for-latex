@@ -56,17 +56,19 @@ snippet mps "Make purpose statement filename"
 [$1purpose-statement-`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}purpose-statement-`!v strftime("%d-%m-%y")`)
 endsnippet
 
-snippet mfd "Make filename with date"
-[$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
-endsnippet
+# Exists in all.snippets
+# snippet mfd "Make filename with date"
+# [$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
+# endsnippet
 
 snippet msf "Make files for Swedish class with date"
 [`!v strftime("%Y-%m-%d")`$1-svenska](`!v strftime("%Y-%m-%d")`${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-svenska)
 endsnippet
 
-snippet mfn "Make filename"
-[$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
-endsnippet
+# Exists in all.snippets
+# snippet mfn "Make filename"
+# [$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
+# endsnippet
 
 snippet lts "letter to self" w
 [Letter to self $1 purpose-statement-`!v strftime("%Y-%m-%d")`](letter-to-self-${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-purpose-statement-`!v strftime("%Y-%m-%d")`)$0
