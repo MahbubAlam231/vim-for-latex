@@ -74,3 +74,13 @@ snippet lts "letter to self" w
 [Letter to self $1 purpose-statement-`!v strftime("%Y-%m-%d")`](letter-to-self-${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-purpose-statement-`!v strftime("%Y-%m-%d")`)$0
 endsnippet
 
+snippet ` "backtick" iA
+\`${1:${VISUAL}}\`$0
+endsnippet
+
+snippet 3` "3 backticks" iA
+\`\`\`
+${1:${VISUAL}}
+\`\`\`$0
+endsnippet
+
