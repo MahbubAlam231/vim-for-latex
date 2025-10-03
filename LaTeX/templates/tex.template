@@ -1,20 +1,20 @@
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 % Author(s)     : {{NAME}}{{CURSOR}}
 % File          : {{FILE}}.tex
 % Created       : {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
 % Description   :<++>
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
-\documentclass[12pt, reqno]{amsart}% F{O{L{D
+\documentclass[a4paper, 12pt, reqno]{amsart}% F{O{L{D
 
 \renewcommand{\baselinestretch}{1.2}
 
-% Packages% F{O{L{D
-% -------------------------------------------------------------------
-
 % Fonts
-\usepackage{mathpazo}
-% \usepackage{times}
+\usepackage{times}
+% \usepackage{mathpazo}
+
+% Packages% F{O{L{D
+% ----------------------------------------------------------------
 
 % \usepackage{afterpage}
 \usepackage{amsfonts}
@@ -41,9 +41,22 @@
 \usepackage{float}
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 % \usepackage[fontsize=14bp]{fontsize}
-\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[top=3 cm,
+            bottom=2.5 cm,
+            left=2.5 cm,
+            right=2.5 cm]{geometry}
 \usepackage{graphicx}
-\usepackage[bookmarks,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,menucolor=blue,linktoc=all]{hyperref}
+\usepackage[bookmarks,
+            pdfauthor={{{NAME}}},
+            pdftitle={{{FILE}}},
+            pdfsubject={},
+            pdfkeywords={},
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue,
+            menucolor=blue,
+            linktoc=all]{hyperref}
 \usepackage{cleveref}
 % \usepackage{lscape}
 \usepackage{mathrsfs}
@@ -72,7 +85,7 @@
 
 % F}O}L}D
 % Environments% F{O{L{D
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
 % To write names of theorems in bold
 \makeatletter
@@ -89,7 +102,7 @@
 
 
 % Numbered Environments
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -97,14 +110,14 @@
 \newtheorem{conjecture}{Conjecture}[section]
 
 % Unnumbered Environments
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 \newtheorem*{utheorem}{Theorem}
 \newtheorem*{ulemma}{Lemma}
 \newtheorem*{uproposition}{Proposition}
 \newtheorem*{ucorollary}{Corollary}
 
 % Numbered Environments
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}{Example}[section]
@@ -114,12 +127,12 @@
 \newtheorem{remark}[theorem]{Remark}
 
 % Unnumbered Environments
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 \newtheorem*{uremark}{Remark}
 
 % F}O}L}D
 % Newcommands% F{O{L{D
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
 \newcommand{\mychi}{\raisebox{2pt}{$\chi$}}
 
@@ -147,12 +160,12 @@
 \DeclareMathOperator{\diag}{diag}
 
 % Numbering of equations
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
 \numberwithin{equation}{section}
 
 % QED symbol
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
@@ -162,18 +175,17 @@
 
 \begin{document}
 
-% \pagestyle{plain} % to remove header and footer
-
 % Title
 \title[<++>]{<++>}% F{O{L{D
 
 \author{{{NAME}}}
 
 \address{\textbf{{{NAME}}} \\
-    Department of Mathematics,
-    Uppsala University, Sweden \\
+Department of Mathematics,
+Uppsala University, Sweden \\
 \url{https://sites.google.com/view/mahbubweb}}
 \email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}
+
 \date{}
 
 % F}O}L}D
@@ -185,8 +197,12 @@
 
 \maketitle
 
+% \pagestyle{plain} % to remove header and footer
+
 <++>
 
+
+\vspace{1 cm}
 
 % Bibliography
 \bibliographystyle{alpha}
@@ -194,9 +210,9 @@
 
 \end{document}
 
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 % Comments on the document
-% -------------------------------------------------------------------
+% ----------------------------------------------------------------
 
 % foldmarker has been changed, if you open it in VIM, be careful.
 % set foldmarker=F{O{L{D,F}O}L}D

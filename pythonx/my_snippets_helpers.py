@@ -1,15 +1,18 @@
-# -------------------------------------------------------------------
+# ----------------------------------------------------------------
 # Author(s)   : Mahbub Alam
 # File        : my_snippets_helpers.py
 # Created     : 10/10/2024 (Oct, Thu) 17:42:56 CEST
 # Description :
-# -------------------------------------------------------------------
+# ----------------------------------------------------------------
 
 # Common functions, from honza/vim-snippets (python.snippets){{{
 
 # The smart def and smart class snippets use a global option called
 # "g:ultisnips_python_style" which, if set to "doxygen" will use doxygen
 # style comments in docstrings.
+
+# import vim
+import re
 
 NORMAL  = 0x1
 DOXYGEN = 0x2
@@ -259,13 +262,25 @@ def strip_end_digits(string, symbols):# {{{
     Then the digits from right
     Return the remaining string and the digits
     """
-    try:
-        while string[-1] in symbols:
-            string = string[:-1]
-    except:
-        pass
+
+    if not string.strip():
+        #   string  end_digit
+        string = string[:4*(len(string)//4)]
+        # return string, "", len(string)
+        return string, ""
+
+    string = string.rstrip("".join(symbols) + " ")
+
+    # # Need try block since string[-1] could be empty
+    # try:
+    #     while string[-1] in symbols:
+    #         string = string[:-1]
+    # except:
+    #     pass
 
     end_digit = ''
+
+    # Need try block since string[-1] could be empty
     try:
         # When string is non-empty
         while string[-1].isdigit():
@@ -275,28 +290,56 @@ def strip_end_digits(string, symbols):# {{{
         pass
 
     return string, end_digit
+
 # }}}
 
-# A dictionary of the extensions separated at the first character
-extDict = {
-    't' : 'xt', # txt
-    'c' : 'sv', # csv
-    'p' : 'y'   # py
-}
+def strip_remove(text, rem_left=None, rem_right=None, strip_left="", strip_right=True, strip_lit_esc=False):# {{{
+    """
+    Stripping and removing from text: from left and right
 
-def return_ext(ext_initial):
-    try:
-        return extDict[ext_initial]
-    except:
-        return ""
+    :text: selected text, snip.v.text
+    :rem_left: list of 'words' to remove from left; order MATTERS!!!
+    :rem_right: list of 'words' to remove from right; order MATTERS!!!
+    :strip_left: string to strip from left
+    :strip_right: bool, if True this is equal to strip_left, or string to strip from right
+    :strip_lit_esc: boolean; to strip literal \n, \t
 
-# completesDict = {
-#     'thm' : 'theorem'
-# }
+    :returns: formatted text
+
+    """
+    if text is None:
+        text = ""
+    if rem_left is None: rem_left = []
+    if rem_right is None: rem_right = []
+
+    # Initialize strip_right
+    if type(strip_right) == bool:
+        if strip_right:
+            strip_right = strip_left
+        else:
+            strip_right = ""
+
+    text = text.strip()
+    for word in rem_left:
+        text = text.removeprefix(word).strip()
+    for word in rem_right:
+        text = text.removesuffix(word).strip()
+
+    # text = text.strip()
+    text = text.lstrip(strip_left)
+    text = text.rstrip(strip_right)
+
+    if strip_lit_esc:
+        text = re.sub(r'^(?:\\[nt])+', '', text)
+        text = re.sub(r'(?:\\[nt])+$', '', text)
+
+    return text.strip()
+
+# }}}
 
 def complete(t, opts, beginswith=[]):# {{{
     """
-    t is a string
+    t is a string at tabstop
     opts is a list of strings
     beginswith is a list of strings
     """
@@ -308,30 +351,36 @@ def complete(t, opts, beginswith=[]):# {{{
             break
 
     if b or u:
-        opts = [m[len(u):] for m in opts if m.startswith(u)]
+        opts = [m.removeprefix(u) for m in opts if m.startswith(u)]
     if len(opts) == 1:
         return opts[0]
     if opts == []:
         return ""
-    return '(' + '|'.join(opts) + ')'
+    cads = "|".join(opts[:5])
+    if len(opts) > 5:
+        cads += "|..."
+    return '(' + cads + ')'
 
     # if b:
     #     return '(' + '|'.join(opts) + ')'
     # if not b and not u:
     #     return '(' + '|'.join(beginswith) + ')' + '(' + '|'.join(opts) + ')'
+
 # }}}
 
-def store_snip_rv(arg1, arg2):# {{{
+def store_snip_rv(arg1, arg2="w"):# {{{
     """
     arg1: iterable to write
-    arg2: fileopen mode
+    arg2: fileopen mode, default write
     """
     with open('/home/mahbub/snip_rv', arg2) as f:
-        for arg in arg1:
-            if type(arg) == str:
-                f.write(arg + '\n')
-            else:
+        if type(arg1) == str or type(arg1) == int:
+            f.write(str(arg1) + '\n')
+        elif type(arg1) == list or type(arg1) == tuple:
+            for arg in arg1:
                 f.write(str(arg) + '\n')
+    return 1
+
 # }}}
 
 def retrieve_snip_rv(line_nums=[]):# {{{
@@ -345,15 +394,21 @@ def retrieve_snip_rv(line_nums=[]):# {{{
     with open('/home/mahbub/snip_rv', 'r') as f:
         data = f.readlines()
 
+    # if len(line_nums) == 1:
+    #     return data[line_nums[0]].strip()
     if line_nums:
-        lines = []
-        for i in line_nums:
-            lines.append(data[i].strip())
+        lines = [data[i].strip() for i in line_nums]
     else:
         lines = [line.strip() for line in data]
-
     if len(lines) == 1:
-        return lines[0]
+        lines = lines[0]
+
     return lines
 
 # }}}
+
+if __name__ == '__main__':
+    print(strip_end_digits(8*' ', ('=',)))
+    print(strip_end_digits('    df_1 = ', ('=',)))
+    print(strip_end_digits('    df1              = ', ('=',)))
+

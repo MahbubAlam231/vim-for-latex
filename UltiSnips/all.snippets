@@ -5,10 +5,11 @@
 # /_/   \_\|_||_|   |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                                  |_|    |_|
 
-priority -45
+priority -500
+
 # snippets.snippets{{{
 
-snippet sni "create snippets" bA
+snippet sni "create snippets" b
 `!p snip.rv = "# Output : " if t[5] or t[1] == 'trigger' else ""`$5`!p
 snip.rv = "\n" if t[5] or t[1] == 'trigger' else ""
 ``!p snip.rv = "snippet"` ${1:trigger} "${2:description}" ${3:b}
@@ -17,16 +18,66 @@ ${4:${VISUAL}}
 `!p snip.rv = "endsnippet"`$0
 endsnippet
 
-snippet rv "snip.rv" wA
-\`!p snip.rv = "${1:${VISUAL:text}}"$2\`$0
+snippet psni "snippet if something precedes" bA
+`!p snip.rv = "# Output : " if t[6] or t[2] == 'trigger' else ""`$6`!p
+snip.rv = "\n" if t[6] or t[2] == 'trigger' else ""
+``!p snip.rv = "snippet"` '(?<=${1:\\.})${2:trigger}' "${3:description}" r${4:w}
+${5:${VISUAL}}
+\$0
+`!p snip.rv = "endsnippet"`$0
+endsnippet
+
+snippet rsni "create regex snippets" bA
+`!p snip.rv = "# Output : " if t[5] or t[1] == 'trigger' else ""`$5`!p
+snip.rv = "\n" if t[5] or t[1] == 'trigger' else ""
+``!p snip.rv = "snippet"` '`!p snip.rv = "\\b" if 'w' in t[3] else ""`${1:trigger}' "${2:description}" r${3:w}
+${4:${VISUAL}}
+\$0
+`!p snip.rv = "endsnippet"`$0
+endsnippet
+
+# Output : snip.rv with if else conditions that vanish automatically
+# Unreadable, but works
+snippet irv "interpolate and snip.rv" iA
+\`!p snip.rv = ${1:"${2:${VISUAL:return_value_1}}"}`!p
+snip.rv = " if " if t[1] and t[3] else ""`${3:`!p snip.rv = "condition_1" if t[1] else ""`}`!p
+snip.rv = " else " if t[1] and t[3] else ""`${7:`!p snip.rv = "\"" if t[3] else ""`}`!p
+`${4:`!p snip.rv = "return_value" if t[3] else ""``!p snip.rv = "_2" if t[1] and t[3] else ""`}$7\`$6
+endsnippet
+
+snippet 'ijr(v|a)' "interpolate and snip.rv without if" riA
+\`!p snip.rv = ${1:"${VISUAL:return_value}"}\`$0
+endsnippet
+
+snippet rv "snip.rv only" b
+snip.rv = ${1:"${2:${VISUAL:return_value_1}}"}`!p
+snip.rv = " if " if t[1] and t[3] else ""`${3:`!p snip.rv = "condition_1" if t[1] else ""`}`!p
+snip.rv = " else " if t[1] and t[3] else ""`${7:`!p snip.rv = "\"" if t[3] else ""`}`!p
+`${4:`!p snip.rv = "return_value" if t[3] else ""``!p snip.rv = "_2" if t[1] and t[3] else ""`}$7$0
+endsnippet
+
+snippet jrv "snip.rv without if" b
+snip.rv = ${1:var_names}$0
+endsnippet
+
+snippet '\bpy(i|)' "python interpolation" ri
+\`!p`!p snip.rv = " " if t[1] else ""`${1:code}\`$0
 endsnippet
 
 snippet 's(d)?vp' "Surround description/text with a VISUAL placeholder" rwA
 \$\{VISUAL:${1:${VISUAL:text}}$2\}$0
 endsnippet
 
-snippet 's(d)?np' "Surround description/text with a numbered placeholder" rwA
+snippet 'vpw?d' "VISUAL placeholder with description" rwA
+\$\{VISUAL:${1:${VISUAL:text}}$2\}$0
+endsnippet
+
+snippet 'sd?np' "Surround description/text with a numbered placeholder" rwA
 \$\{$1:${2:${VISUAL:text}}$3\}$0
+endsnippet
+
+snippet 'npw?(d|h)' "Numbered placeholder with/without description" rwA
+\$\{$1:${2:${VISUAL:text}}\}$0
 endsnippet
 
 snippet '(s)?nvp' "Surround description/text with a numbered+VISUAL placeholder" rwA
@@ -37,11 +88,11 @@ snippet '(s)?vnp' "Surround description/text with a numbered+VISUAL placeholder"
 \${$1:\$\{VISUAL:${2:${VISUAL:text}}$3\}}$0
 endsnippet
 
-snippet 'vinp' "Add visual placeholder inside numbered placeholder" rwA
+snippet '(a)?vinp' "Add visual placeholder inside numbered placeholder" rwA
 \{${VISUAL}:\${VISUAL:${1:text}}\}$2
 endsnippet
 
-snippet '(a)?dinp' "Add description inside numbered placeholder" rwA
+snippet '(a)?di?np' "Add description inside numbered placeholder" rwA
 \{${VISUAL}:${1:description}\}$2
 endsnippet
 
@@ -55,39 +106,48 @@ endsnippet
 
 # }}}
 
-# # Braces and quotes{{{
+# Braces and quotes{{{
 
-# snippet ' "single quotes" iA
-# '${1:${VISUAL}}'$0
-# endsnippet
-
-# snippet " "double quotes" iA
-# "${1:${VISUAL}}"$0
-# endsnippet
-
-# snippet ` "backtick" iA
-# \`${1:${VISUAL}}\`$0
-# endsnippet
-
-# snippet ( "parenthesis" iA
-# (${1:${VISUAL}})$0
-# endsnippet
-
-# snippet { "curly brackets" iA
-# {${1:${VISUAL}}\}$0
-# endsnippet
-
-# snippet [ "square brackets" iA
-# [${1:${VISUAL}}]$0
-# endsnippet
-
-# # }}}
-
-snippet mfd "Make filename with date"
-[$1`!v strftime("%d-%m-%y")`](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}`!v strftime("%d-%m-%y")`)
+priority -100
+snippet '' "single quotes" iA
+'${1:${VISUAL:text}}'$0
 endsnippet
 
-snippet mfn "Make filename"
+snippet " "double quotes" iA
+"${1:${VISUAL:text}}"$0
+endsnippet
+
+snippet ` "backtick" iA
+\`${1:${VISUAL:text}}\`$0
+endsnippet
+
+snippet ( "parenthesis" iA
+(${1:${VISUAL:text}})$0
+endsnippet
+
+snippet { "curly brackets" iA
+{${1:${VISUAL:text}}\}$0
+endsnippet
+
+snippet [ "square brackets" iA
+[${1:${VISUAL:text}}]$0
+endsnippet
+
+# snippet 2[ "double square brackets" iA
+# [[${1:${VISUAL:text}}]$0
+# endsnippet
+
+snippet <> "angle brackets" iA
+<${1:${VISUAL:text}}>$0
+endsnippet
+
+# }}}
+
+snippet mfd "Make filename with date"
+[`!v strftime("%Y-%m-%d")`$1](`!v strftime("%Y-%m-%d")`${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
+endsnippet
+
+snippet mfn "Make filename" w
 [$1](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})
 endsnippet
 
@@ -144,4 +204,3 @@ endsnippet
 # snippet is "Replace 'should be' by 'is'" w
 # ${VISUAL:inner text/should be/is/g}
 # endsnippet
-

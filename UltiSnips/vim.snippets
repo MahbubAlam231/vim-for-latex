@@ -35,3 +35,11 @@ augroup $1
 	${2:${VISUAL:autocmd }}$3
 augroup end$0
 endsnippet
+
+snippet acf "autocommand filename" bA
+autocmd Filetype ${1:vimwiki} ${2:${VISUAL:nmap <buffer> }}$3
+endsnippet
+
+snippet ac "autocommand event" b
+autocmd ${1:BufNewFile,BufRead} ${2:*-svenska.md} ${3:${VISUAL:keybinding or command}}$4
+endsnippet

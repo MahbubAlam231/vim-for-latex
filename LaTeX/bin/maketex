@@ -1,81 +1,202 @@
 #!/bin/bash
 
 ######################################################################
-# @author      : Mahbub Alam
+# @author      : Mahbub Alam, ChatGPT
 # @file        : maketex
 # @created     : 17/03/2024 (Mar, Sun) 12:19:00 CET
 # @description : Make a tex directory and open file
 ######################################################################
 
-# TODO
-# make given folder names hyphenated
+set -o nounset
+set -o pipefail
 
-if [ $# -eq 0 ]
-then
-    echo -e "\tNo arguments passed. Quitting."
-    exit 1
-elif [ $# -gt 2 ]
-then
-    echo -e "\tToo many arguments."
-    exit 1
-elif [ $# -eq 1 ]
-then
-    # DOC-STRING
-    # Usually when creating new tex directory without $2.
-    if [ ! -d $1 ]
-    then
-        mkdir $1
+# =====================
+# Default configuration
+# =====================
+open_file=true
+explicit_flag=false
+show_help=false
+positional_args=()
+
+# =====================
+# Flag parsing function
+# =====================
+parse_flags() {
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -y|-yes|--yes|--yes-open)
+                open_file=true
+                explicit_flag=true
+                shift
+                ;;
+            -n|-no|--no|--no-open)
+                open_file=false
+                explicit_flag=true
+                shift
+                ;;
+            -h|--help)
+                show_help=true
+                shift
+                ;;
+            -*)
+                echo -e "\t❌ Unknown option: $1"
+                exit 1
+                ;;
+            *)
+                positional_args+=("$1")
+                shift
+                ;;
+        esac
+    done
+}
+
+# =====================
+# Main functionality
+# =====================
+main() {
+    parse_flags "$@"
+
+    if $show_help; then
+        echo -e "Usage: $(basename "$0") [-y|-yes|--yes|--yes-open] [-n|-no|--no|--no-open] <directory>"
+        exit 0
     fi
-elif [ $# -eq 2 ] && [ ! -d $1 ]
-then
-    # DOC-STRING
-    # When trying to open a directory that does not exist.
-    echo -e "\tDirectory doesn't exist. Ignoring file opening request (\$2 = '$2'). Proceed to create directory? [y/N] \c"
-    read response
-    if [ "$response" == "y" ] || [ "$response" == "Y" ]
-    then
-        mkdir $1
-    else
-        echo -e "\tQuitting without creating directory and file."
+
+    if [[ ${#positional_args[@]} -eq 0 ]]; then
+        echo -e "\t❌ No directory provided."
         exit 1
     fi
-fi
 
-# DOC-STRING
-# The above made sure that the directory we are trying to open exists. Enter directory.
-cd $1
+    dir=$(IFS='-'; echo "${positional_args[*]}")
+    # dir="$positional_args"
+    if [[ "$(basename -- "$PWD")" == "$dir" ]]
+    then
+        cd ..
+    fi
 
-if [ -f $1.tex ]
-then
-    # DOC-STRING
-    # File exists, checking $2
-    if [ "$2" == "y" ] || [ "$response" == "Y" ]
+    if [[ ! -d "$dir" ]]
     then
-        vim $1.tex
-    elif [ "$2" == "n" ] || [ "$response" == "N" ]
-    then
-        echo -e "\t$1.tex exists. Quitting without opening."
-        exit 1
-    else
-        if [ "$2" != "" ]
+        if $open_file && $explicit_flag
         then
-            echo -e "\tInvalid file opening request (\$2)."
-        fi
-        echo -e "\t$1.tex exists. Open? [Y/n] \c"
-        read response
-        if [ "$response" == "n" ] || [ "$response" == "N" ]
+            read -p $'\t'"Directory doesn't exist. Ignoring file opening request (open_file = \"$open_file\"). Proceed to create directory \"$dir\"? [y/N] " response
+            # read -p "$(printf '\t''Directory does not exist. Ignoring file opening request (open_file = "%s"). Proceed to create directory "%s"? [y/N] ' "$open_file" "$dir")" response
+            if [[ "${response,,}" =~ ^(y|ye|yes)$ ]]
+            then
+                mkdir -p "$dir"
+            else
+                open_file=false
+                printf '\t'"Quitting.\n"
+                exit 0
+            fi
+        elif $open_file
         then
-            echo -e "\t$1.tex exists. Quitting without opening."
-            exit 1
+            mkdir -p "$dir"
         else
-            vim $1.tex
+            printf '\t'"Directory doesn't exist. Quitting.\n"
+            exit 1
         fi
     fi
-else
-    # DOC-STRING
-    # File does not exist, ignore $2. Creating and opening file. Adding bibliography to directory. Pinning file to top.
-    ln -s ~/Dropbox/main-bib.bib bib.bib
-    vim $1.tex
-    gio set $1.tex metadata::pinned-to-top true
-fi
 
+    cd "$dir" || exit 1
+
+    texfile="$dir.tex"
+
+    if [[ -f "$texfile" ]]; then
+        if $open_file; then
+            vim "$texfile"
+        else
+            echo -e "\t$texfile exists. Skipping (use -y to open)."
+            exit 0
+        fi
+    else
+        ln -s ~/Dropbox/main-bib.bib bib.bib
+        vim "$texfile"
+        gio set "$texfile" metadata::pinned-to-top true
+    fi
+}
+
+# =====================
+# Run the main function
+# =====================
+main "$@"
+
+
+
+# # Old=================================================={{{
+
+# # TODO
+# # make given folder names hyphenated
+# # change cases when no of input is 1/2
+
+# if [ $# -eq 0 ]
+# then
+#     echo -e "\tNo arguments passed. Quitting."
+#     exit 1
+# elif [ $# -gt 2 ]
+# then
+#     echo -e "\tToo many arguments."
+#     exit 1
+# elif [ $# -eq 1 ]
+# then
+#     # DOC-STRING
+#     # Usually when creating new tex directory without $2.
+#     # if [ ! -d $1 ]
+#     # then
+#     #     mkdir $1
+#     # fi
+#     mkdir -p $1
+# elif [ $# -eq 2 ] && [ ! -d $1 ]
+# then
+#     # DOC-STRING
+#     # When trying to open a directory that does not exist.
+#     echo -e "\tDirectory doesn't exist. Ignoring file opening request (\$2 = '$2'). Proceed to create directory? [y/N] \c"
+#     read response
+#     if [[ "${response,,}" =~ ^(y|ye|yes)$ ]]
+#     then
+#         mkdir $1
+#     else
+#         echo -e "\tQuitting without creating directory and file."
+#         exit 1
+#     fi
+# fi
+
+# # DOC-STRING
+# # The above made sure that the directory we are trying to open exists. Enter directory.
+# cd $1
+
+# if [ -f $1.tex ]
+# then
+#     # DOC-STRING
+#     # File exists, checking $2
+#     # if [ "$2" == "y" ] || [ "$response" == "Y" ]
+#     if [[ "${2,,}" =~ ^(y|ye|yes)$ ]]
+#     then
+#         vim $1.tex
+#     # elif [ "$2" == "n" ] || [ "$response" == "N" ]
+#     elif [[ "${2,,}" =~ ^(n|no)$ ]]
+#     then
+#         echo -e "\t$1.tex exists. Quitting without opening."
+#         exit 1
+#     else
+#         if [ "$2" != "" ]
+#         then
+#             echo -e "\tInvalid file opening request (\$2)."
+#         fi
+#         echo -e "\t$1.tex exists. Open? [Y/n] \c"
+#         read response
+#         if [ "$response" == "n" ] || [ "$response" == "N" ]
+#         then
+#             echo -e "\t$1.tex exists. Quitting without opening."
+#             exit 1
+#         else
+#             vim $1.tex
+#         fi
+#     fi
+# else
+#     # DOC-STRING
+#     # File does not exist, ignore $2. Creating and opening file. Adding bibliography to directory. Pinning file to top.
+#     ln -s ~/Dropbox/main-bib.bib bib.bib
+#     vim $1.tex
+#     gio set $1.tex metadata::pinned-to-top true
+# fi
+
+# }}}

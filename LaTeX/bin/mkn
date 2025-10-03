@@ -9,4 +9,4 @@
 
 cd ~/Dropbox/Notes
 
-maketex $@
+maketex "$@"

@@ -58,18 +58,5 @@ iabbr lds \ldots
 iabbr vd \vdot
 iabbr vds \vdots
 
-iabbr II \int
-iabbr SS \sum
-iabbr PP \prod
-iabbr CPP \coprod
-iabbr dII \displaystyle\int
-iabbr dSS \displaystyle\sum
-iabbr dPP \displaystyle\prod
-iabbr dCPP \displaystyle\coprod
-iabbr DII \displaystyle\int
-iabbr DSS \displaystyle\sum
-iabbr DPP \displaystyle\prod
-iabbr DCPP \displaystyle\coprod
-
 "}}}
 

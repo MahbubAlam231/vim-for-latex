@@ -34,8 +34,11 @@ inoremap <buffer> <localleader>tb <esc>:VimwikiTable
 nnoremap <buffer> <localleader>tb2 :VimwikiTable 2<cr>jla
 inoremap <buffer> <localleader>tb2 <esc>:VimwikiTable 2<cr>jla
 
-nnoremap <buffer> <localleader>tb3 :VimwikiTable 3<cr>
-inoremap <buffer> <localleader>tb3 <esc>:VimwikiTable 3<cr>
+nnoremap <buffer> <localleader>tb3 :VimwikiTable 3<cr>jla
+inoremap <buffer> <localleader>tb3 <esc>:VimwikiTable 3<cr>jla
+
+nnoremap <buffer> <localleader>tb4 :VimwikiTable 4<cr>jla
+inoremap <buffer> <localleader>tb4 <esc>:VimwikiTable 4<cr>jla
 
 " Adding horizontal line in between vimwiki table
 nnoremap <buffer> <localleader>hr yypV:s/[^\|]/-/g<cr>:noh<cr>
@@ -49,6 +52,7 @@ inoremap <buffer> þ t
 inoremap <buffer> á ä
 inoremap <buffer> ó ö
 inoremap <buffer> ß s
+inoremap <buffer> ð d
 
 " Pandoc markdown
 
@@ -61,9 +65,9 @@ inoremap <buffer> ß s
 " nnoremap <buffer> <localleader>ph :Pandoc html -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr>
 
 
-" nnoremap <buffer> <localleader>pb :!pandoc beamer<cr>
-nnoremap <buffer> <localleader>pp :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
-nnoremap <buffer> <localleader>p2 :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
-nnoremap <buffer> <F9>            :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
-inoremap <buffer> <F9>            <esc>:!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
-nnoremap <buffer> <localleader>ph :!pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr><cr>
+" " nnoremap <buffer> <localleader>pb :!pandoc beamer<cr>
+" nnoremap <buffer> <localleader>pp :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+" nnoremap <buffer> <localleader>p2 :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
+" nnoremap <buffer> <F9>            :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+" inoremap <buffer> <F9>            <esc>:!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+" nnoremap <buffer> <localleader>ph :!pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr><cr>

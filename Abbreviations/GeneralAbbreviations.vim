@@ -15,7 +15,8 @@ Abolish aew almost everywhere
 Abolish alg{,c,ic}{,s} algebra{,ic,ic}{,s}
 Abolish appl{n,ble}{,s} applica{tion,ble}{,s}
 Abolish arb arbitrary
-Abolish {approx,apprx,appr,aprox,aprx,apr}{,n}{,e,te}{,d}{,ly}{,g}{,s} approxima{,,,,}{,tion}{,te,te}{,d}{,ly}{,ting}{,s}
+Abolish {apprch,aprch,aprc}{,s,es}{,d,ed}{,g,ing} approach{,,}{,es,es}{,ed,ed}{,ing,ing}
+Abolish {approx,apprx,appr,aprox,aprx,apr}{,n}{,e,te}{,d}{,ly}{,g}{,ble}{,s} approxima{,,,,}{,tion}{,te,te}{,d}{,tely}{,ting}{,ble}{,s}
 
 "}}}
 "B{{{
@@ -47,7 +48,7 @@ Abolish cx{,n,ns,ty,ties} complex{,ification,ifications,ity,ities}
 Abolish {com,c}pt{,fication,ficatn,fy,g,fyg,ly,ness,s,ss} {,}compact{,ification,ification,ify,ifying,ifying,ly,ness, set, sets}
 " Maybe putting space before words is better like lchsp
 " Putting space before words makes the first word mandatory
-Abolish {cpt,c,}{s,}{b,}{c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{continuous ,}function{,s}
+Abolish {cpt,c,}{s,}{b,}{semic,c,}fn{,s} {compactly ,compactly ,}{supported ,}{bounded ,}{semi-continuous ,continuous ,}function{,s}
 
 "}}}
 "D{{{
@@ -64,7 +65,7 @@ Abolish discont{,y,ies,ly,n} discontinu{ous,ity,ities,ously,ation}
 Abolish distr{n,ns,e,es,d,ed,n,ns,e,es,ed,l} distribut{ion,ions,e,es,ed,ed,ion,ions,e,es,ed,ional}
 Abolish dist{,e,ed,g,ing} distanc{e,e,ed,ing,ing}
 Abolish div{e,es,d,t,ts,ce} diverge{,s,d,nt,nts,nce}
-Abolish dyn{,c}{,s,l} dynamic{,}{,s,al}
+Abolish dyn{,c}{,s,l,al} dynamic{,}{,s,al,al}
 Abolish {diffeo,diffm}{,s,c,cally} diffeomorphi{,}{sm,sms,c,cally}
 
 "}}}
@@ -84,6 +85,7 @@ Abolish fae for almost every
 Abolish fc{,y,ty} first-countab{le,ility,ility}
 Abolish fe for every
 Abolish fm furthermore
+Abolish fld{,s,g,ing} field{,s,ing,ing}
 Abolish fs for some
 Abolish {f}{,unc}{tl,trl} {func}{,}{,}torial
 Abolish {l,lin,}fn{,uncn}{,s,l,al,ls,als} {linear ,linear ,}func{,}tion{,s,al,al,als,als}
@@ -137,6 +139,7 @@ Abolish mult{e,n,ns,ve} multipl{e,ication,ications,icative}
 
 Abolish nbd{,s} neighborhood{,s}
 Abolish num{,s} number{,s}
+Abolish nf{,s} number field{,s}
 
 "}}}
 "O{{{
@@ -151,6 +154,7 @@ Abolish poly{,s} polynomial{,s}
 Abolish pov point of view
 " Don't do "prob"  because of probability
 Abolish prb{,s} problem{,s}
+Abolish prob{e,y,ty,s} probab{le,ility,ility,ilities}
 Abolish proj{n,ns} projection{,s}
 Abolish prop{n,ns} proposition{,s}
 
@@ -178,13 +182,13 @@ Abolish suff{,ly} sufficient{,ly}
 Abolish surj{,n,e,ve,ity,ty,y,ly,t,ts} surject{ion,ion,ive,ive,ivity,ivity,ivity,ily,,s}
 Abolish s{,ep}bl{e,y,ty} separab{,}{le,ility,ility}
 Abolish {,sub,s}sp{,es} {,sub,sub}space{,s}
-Abolish {sub,s}alg{,s,ic} subalgebra{,s,ic}
-Abolish {sub,s}coll{ection,n,ns} sub-collection{,,ns}
-Abolish {sub,s}gph{,s} subgraph{,s}
-Abolish {sub,s}gp{,s} subgroup{,s}
-Abolish {sub,s}sec{n,ns} subsection{,s}
-Abolish {sub,s}seq{,s,l,ly} subsequen{ce,ces,tial,tially}
-Abolish {subsub,ss}sec{n,ns} subsubsection{,s}
+Abolish {sub,s}alg{,c,ic}{,s} {,}subalgebra{,ic,ic}{,s}
+Abolish {sub,s}coll{ection,n,ns} {,}sub-collection{,,ns}
+Abolish {sub,s}gph{,s} {,}subgraph{,s}
+Abolish {sub,s}gp{,s} {,}subgroup{,s}
+Abolish {sub,s}sec{n,ns} {,}subsection{,s}
+Abolish {sub,s}seq{,s,l,ly} {,}subsequen{ce,ces,tial,tially}
+Abolish {subsub,ss}sec{n,ns} {,}subsubsection{,s}
 
 "}}}
 "T{{{

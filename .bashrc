@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+
 # Initial{{{
 # If not running interactively, don't do anything
 case $- in
@@ -116,21 +118,21 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-#}}}
+# }}}
 
 # Swap caps and escape key{{{
 setxkbmap -option caps:swapescape
-#}}}
+# }}}
 # Default editor{{{
 # export EDITOR=vim
-#}}}
+# }}}
 # Path (+ own scripts){{{
-export PATH=$PATH:/root/.local/bin:/home/mahbub/scripts/bin:/home/mahbub/python-code/advent-of-code
+export PATH=$PATH:/root/.local/bin:/home/mahbub/scripts/bin
 
 # # Texlive path
 # export PATH=$PATH:/usr/local/texlive/2021/bin/x86_64-linux
 
-#}}}
+# }}}
 # Go Path{{{
 export PATH=$PATH:/usr/local/go/bin
 
@@ -139,21 +141,83 @@ export PATH=$PATH:$GOPATH/bin
 
 export GOPATH=$GOPATH:/home/mahbub/go-code
 
-#}}}
-# Python Path{{{
-export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code
-export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code/my-modules
+# }}}
+# Python Path and Virtual env{{{
+# export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code
+# export PYTHONPATH=$PYTHONPATH:/home/mahbub/python-code/my-modules
 
-#}}}
+# Virtual python environment
+
+vea() {
+    save=0
+    source /home/mahbub/vpe/bin/activate
+
+    if [[ "$1" == "-s" ]]
+    then
+        save=1
+        shift
+    fi
+
+    if [[ "${1,,}" =~ ^(-u|-ug|--upgrade|-r|--restore)$ ]]
+    then
+        shift
+        if [[ $# -eq 0 ]]
+        then
+            if [[ -f ~/python-code/.python_package_backups/vpe_packages_python ]]; then
+                pip install -U -r ~/python-code/.python_package_backups/vpe_packages_python
+            else
+                echo "No saved package list found."
+            fi
+        else
+            echo "$@"
+            pip install -U "$@"
+        fi
+        return 0
+    fi
+
+    if [[ "${1,,}" =~ ^(-sh|-sho|-show) ]]
+    then
+        shift
+        pip show "$@"
+        return 0
+    fi
+
+    if [ $# -gt 0 ]; then
+        pip install "$@"
+        save=1
+    else
+        printf '\t'"Activated vpe environment. No packages installed.\n"
+    fi
+
+    if [[ $save -eq 1 ]]
+    then
+        # /usr/bin/python3 -m pip freeze > /home/mahbub/python-code/.python_package_backups/system_packages_python
+        pip freeze | cut -d '=' -f 1 > /home/mahbub/python-code/.python_package_backups/vpe_packages_python
+
+        cat /home/mahbub/python-code/.python_package_backups/system_packages_python > /home/mahbub/python-code/.python_package_backups/all_packages_python
+        cat /home/mahbub/python-code/.python_package_backups/vpe_packages_python >> /home/mahbub/python-code/.python_package_backups/all_packages_python
+
+        cp -ru /home/mahbub/python-code/.python_package_backups /home/mahbub/Dropbox
+
+        printf "\n\t""Package list saved in ~/python-code/.python_package_backups and ~/Dropbox""\n"
+    fi
+}
+
+# }}}
+# Make TensorFlow quieter{{{
+
+export TF_CPP_MIN_LOG_LEVEL="3"
+
+# }}}
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.{{{
 export PATH="$PATH:$HOME/.rvm/bin"
-#}}}
+# }}}
 # fzf configurations{{{
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore ~/.vim/tmp/ --ignore .git -g ""'
 # export FZF_DEFAULT_OPTS='-m --cycle --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ -d {} ]; then echo ""{} is a directory.""; else bat --style=numbers --wrap --color=always {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 # export FZF_DEFAULT_OPTS='-m  --no-mouse --layout=reverse --inline-info --border=rounded --preview="if [ file {} | awk ""{ print $2 }"" -eq "PDF" ]; then less {}; fi" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy)"'
-export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap --color=always {}" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-y:execute-silent(echo {+} | pbcopy)"'
+export FZF_DEFAULT_OPTS='-m --no-mouse --layout=reverse --inline-info --border=rounded --preview="bat --style=numbers --wrap auto --color=always {}" --bind="f9:toggle-preview,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-d:preview-down,ctrl-u:preview-up,ctrl-y:execute-silent(echo {+} | pbcopy)"'
 
 # Select directory or file and open with xdg-open
 od() {
@@ -202,105 +266,153 @@ lala() {
     cd $HOME && fgrep | head -1 | xargs xdg-open
 }
 
-#}}}
-## fasd enabling{{{
+# }}}
+# Some functions{{{
 
-#set -x
-#eval "$(fasd --init auto)"
-#set +x
+# ds(){
+#     deepl_translate_to_sv & disown
+# }
 
-##}}}
-# My custom aliases{{{
-# Some commands
-alias      p='python3'
-alias     py='python3'
-alias     pr='python3 `fzf`'
-alias     pz='python3 `fzf`'
-alias     pf='python3 `fzf`'
-alias    pip='pip3'
+# }}}
+# # fasd enabling{{{
 
-alias    pmr='python ~/python-code/movie_rating.py'
-alias    cdp='cd ~/python-code/'
+# set -x
+# eval "$(fasd --init auto)"
+# set +x
 
-alias     ta='txt ~/python-code/advent-of-code/ input-advent '
+# # }}}
+# # My custom aliases{{{
+# # Some commands
+# alias      p='python3'
+# alias     py='python3'
+# alias     pr='python3 `fzf`'
+# alias     pz='python3 `fzf`'
+# alias     pf='python3 `fzf`'
+# alias    pip='pip3'
 
-alias    vpc='vp coursera'
-alias    vpa='vp advent-of-code'
-alias    vpf='vp finanal'
+# alias    pmr='python ~/python-code/movie_rating.py'
+# alias    cdp='cd ~/python-code/'
 
-alias     re='refdfs'
-alias    rey='refdfs y'
-alias    rep='refdfs p'
-alias    ref='refdfs y'
-alias   refd='refdfs y'
-alias    red='cd ~/Downloads && refdfs'
-alias    reb='refdfs bus'
+# alias    ta3='txt ~/python-code/2023-advent-of-code/ input-advent'
+# alias     ta='txt ~/python-code/2024-advent-of-code/ input-advent'
 
-alias     vv='vimv'
+# # alias    vea='source /home/mahbub/vpe/bin/activate'
+# alias    sve='source ~/vpe/bin/activate'
+# alias   veas='vea -s'
+# alias     tj='py_to_ipynb'
 
-# shell commands
-alias      c='clear'
-alias      q='exit'
-alias     ,q='exit'
-alias    ,wq='exit'
-alias     dl='trash'
-alias    tra='trash'
-alias    tre='trash-restore'
-alias     tl='trash-list'
+# # alias     vp='create_python_scripts_with_vim'
+# alias    vpe='vp -d exercises -f'
+# alias    vpc='vp -d coursera -f'
+# alias   vpa3='vp -d 2023-advent-of-code -f'
+# alias    vpa='vp -d 2024-advent-of-code -f'
+# alias    vpl='vp -d leetcode -f'
+# alias    vpm='vp -d leetcode/math-leetcode -f'
+# alias    vph='vp -d leetcode/hash-table-leetcode -f'
+# alias    vpf='vp -d finanal -f'
+# alias   vpda='vp -d coursera/ data analysis with python -f'
+# alias  vpaml='vp -d coursera/ applied machine learning with python -f'
+# # alias   vpml='vp -d coursera/ machine learning with python -f'
 
-alias     ob='vim ~/.bashrc'
-alias     sb='source ~/.bashrc'
-alias     op='vim ~/.profile'
-# alias     sp='source ~/.profile'
+# alias     re='refdfs'
+# alias    rey='refdfs y'
+# alias    rep='refdfs py'
+# alias    ref='refdfs y'
+# alias   refd='refdfs y'
+# alias    red='cd ~/Downloads && refdfs'
+# alias    reb='refdfs bus'
 
-alias     sa='sudo apt '
-alias     in='sudo apt install'
-alias     up='sudo apt update'
-alias     ug='sudo apt upgrade'
-# alias     re='sudo apt remove'
-alias     ar='sudo apt autoremove'
-alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
+# alias     vv='vimv'
 
-alias     dt='`date +%F-%H%M`'
+# alias     sv='savevim'
+# alias    svy='savevim y'
+# alias     cv='commit_vim'
+# alias     cw='commit_wiki'
+# alias     cb='commit_bin'
+# alias    cpy='commit_python'
+# alias     ci='commit_industry_files'
+# alias    cmi='commit_industry_files'
+# alias     ca='commit_all'
+# alias      h='happy'
 
-alias     sv='savevim'
-alias    svy='savevim y'
-alias     cv='commitvim'
-alias     cw='commitwiki'
-alias     cb='commitbin'
-alias     ca='commitall'
-alias      h='happy'
+# alias     ds='deepl_translate_to_sv'
+# alias     de='deepl_translate_to_en'
 
-# Link bibliography
-alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
+# # alias     ds='setsid deepl_translate_to_sv >/dev/null 2>&1 < dev/null &'
+# alias    den='setsid deepl_translate_to_en >/dev/null 2>&1 &'
 
-# Opening frequent files
-alias      v='vim'
-alias     v.='vim .'
-alias    vmt='vt'
-alias     vc='vim ~/.vimrc'
-alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
-alias     te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
-alias     ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
-alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
-alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
-alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
-alias     ps='vim ~/.vim/UltiSnips/python.snippets'
-alias     vz='vim `fzf`'
-alias     ss='s'
-alias   vmsi='vms i'
-alias    svo='vim ~/Dropbox/svenska-for-akademiker/2024-09-15-ord-svenska.md'
+# # shell commands
+# alias      c='clear'
+# alias      q='exit'
+# alias     ,q='exit'
+# alias    ,wq='exit'
+# alias     dl='trash'
+# alias    tra='trash'
+# alias    tre='trash-restore'
+# alias     tl='trash-list'
 
-# Vimwiki
-alias      w='vim ~/vimwiki/index.md'
-alias    vwb='vim ~/Dropbox/Data/vimwiki/bridge/bridge.md'
-alias   vwba='vim ~/Dropbox/Data/vimwiki/programming/bash-scripting.md'
+# alias     oa='vim ~/.bash_aliases'
+# alias     ob='vim ~/.bashrc'
+# alias     sb='source ~/.bashrc'
+# alias     op='vim ~/.profile'
+# # alias     sp='source ~/.profile'
 
-alias     tg='mkn topological-groups y'
-alias     ms='mkn metric-spaces y'
+# # own scripts
+# alias    vsh='create_bash_scripts_with_vim'
+# # alias     vm='create_markdown_with_vim'
+# # alias     vm='create_txt_files_with_vim'
 
-# tmp
-alias     rp='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-ISI-24/research-plan-Mahbub-Alam-ISI-24.tex'
-alias    rpg='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-24/research-plan-Mahbub-Alam-24.tex'
+# alias     sa='sudo apt '
+# alias     in='sudo apt install'
+# alias     up='sudo apt update'
+# alias     ug='sudo apt upgrade'
+# # alias     re='sudo apt remove'
+# alias     ar='sudo apt autoremove'
+# alias  vpnui='/opt/cisco/anyconnect/bin/vpnui'
 
-#}}}
+# alias     dt='`date +%F-%H%M`'
+
+# # Link bibliography
+# alias  lnbib='ln -s ~/Dropbox/main-bib.bib bib.bib'
+
+# # Opening frequent files
+# alias      v='vim'
+# alias     v.='vim .'
+# alias    vmt='vt'
+# alias    vma='vim ~/Dropbox/job-search/applied-jobs.md'
+# alias     vc='vim ~/.vimrc'
+# alias     tb='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+# alias     te='vim ~/.vim/KeyBindings/TeXKeyBindings.vim'
+# alias     ub='vim ~/.vim/KeyBindings/UnmapTeXKeyBindings.vim'
+# alias     pb='vim ~/.vim/KeyBindings/PythonKeyBindings.vim'
+# alias     gb='vim ~/.vim/KeyBindings/GoKeyBindings.vim'
+# alias     ts='vim ~/.vim/UltiSnips/tex.snippets'
+# alias     ps='vim ~/.vim/UltiSnips/python.snippets'
+# alias     vz='vim `fzf`'
+# alias     ss='s'
+# alias   vmsi='vmsv i'
+# alias   vmbi='vmsv i'
+# alias    svo='vim ~/Dropbox/svenska-for-akademiker/2024-09-15-lär-sig-ord-svenska.md'
+
+# # Vimwiki
+# alias      w='vim ~/vimwiki/index.md'
+# alias    vwb='vim ~/Dropbox/Data/vimwiki/bridge/bridge.md'
+# alias   vwba='vim ~/Dropbox/Data/vimwiki/programming/bash-scripting.md'
+
+# # Cover letter
+# alias    cls='clt sv'
+# alias    cle='clt en'
+
+# # Others
+# alias     tg='mkn topological-groups y'
+# alias     ms='mkn metric-spaces y'
+
+# # tmp
+# alias     rp='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-ISI-24/research-plan-Mahbub-Alam-ISI-24.tex'
+# alias    rpg='vim /home/mahbub/Dropbox/24-application/JOBS-24/research-plan-Mahbub-Alam-24/research-plan-Mahbub-Alam-24.tex'
+
+# # }}}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

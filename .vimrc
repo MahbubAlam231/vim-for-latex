@@ -9,13 +9,13 @@
 "  \ \ / /| || '_ ` _ \ | '__|/ __|
 "  _\ V / | || | | | | || |  | (__
 " (_)\_/  |_||_| |_| |_||_|   \___|
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Preamble{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " All basic options{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 set nocompatible                      " Be iMproved, required (must be before everything)
 " filetype off                          " Required before Vundle and plugins, disables filetype detection
@@ -36,7 +36,7 @@ set history=1000                      " Command line history for vim
 set timeoutlen=1500 ttimeoutlen=0     " Remove timeout when hitting escape
 set showcmd                           " Show partial commands in the line of the screen
 " set complete=.,w,b,u,t,i,kspell       " Complete using Ctrl-p (relevant without Ctrl-p?)
-set textwidth=1000                    " Line length in vim
+set textwidth=5000                    " Line length in vim
 set cursorline                        " Highlighting the line containing the cursor
 set updatetime=100                    " For gitgutter
 set showmatch                         " Briefly jump to the match if a bracket is inserted, :h 'matchtime'
@@ -74,25 +74,30 @@ endif
 
 " }}}
 " Leader Mappings{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 let mapleader="-" "Use leader expressly in normal mode
 let maplocalleader=","
 
 " To get <> and write <localleader> easily, etc
-inoremap <buffer> <> <><esc>i
-inoremap <buffer> <localleader>bu <><esc>ibuffer<esc>la
-inoremap <buffer> <L <><esc>ileader<esc>la
-inoremap <buffer> <localleader><localleader>ll <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>bl <><esc>ibuffer<esc>la <><esc>ileader<esc>la
-inoremap <buffer> <localleader>bll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>nbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>vbll nnoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
-inoremap <buffer> <localleader>ibll inoremap <><esc>ibuffer<esc>la <><esc>ilocalleader<esc>la
+" in all.snippets
+augroup LocalleaderStuff
+    autocmd!
+    " inoremap <buffer> <> <><left> " handled by all.snippets
+    autocmd Filetype vim inoremap <buffer> <localleader>bu <buffer>
+    autocmd Filetype vim inoremap <buffer> <localleader>ib inoremap <buffer>
+    autocmd Filetype vim inoremap <buffer> <L <leader>
+    autocmd Filetype vim inoremap <buffer> <localleader><localleader>ll <localleader>
+    autocmd Filetype vim inoremap <buffer> <localleader>bl <buffer> <leader>
+    autocmd Filetype vim inoremap <buffer> <localleader>bll nnoremap <buffer> <localleader>
+    autocmd Filetype vim inoremap <buffer> <localleader>nbll nnoremap <buffer> <localleader>
+    autocmd Filetype vim inoremap <buffer> <localleader>vbll vnoremap <buffer> <localleader>
+    autocmd Filetype vim inoremap <buffer> <localleader>ibll inoremap <buffer> <localleader>
+augroup end
 
 " }}}
 " Tabs, indentation and wrapping{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 set tabstop=4                         " Redefine tab as width of four spaces
 set softtabstop=4                     " Number of spaces in tab when editing
@@ -119,7 +124,7 @@ nnoremap <buffer> <silent> <localleader>wt :set wrap!<cr>
 
 " }}}
 " Ignored files/directories from autocomplete{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 set wildignore+=*/texlive/* " texlile folder
 set wildignore+=*/tmp/*
@@ -135,7 +140,7 @@ set wildignore+=*.sty
 
 " }}}
 " Searching{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 set ignorecase                        " Search queries intelligently set case
 set smartcase                         " Override 'ignorecase' option if search pattern contains uppercase letters
@@ -144,7 +149,7 @@ set hlsearch                          " Highlight all search patterns
 
 " }}}
 " Split{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 set splitright                        " Open new splits to the right
 set splitbelow                        " Open new splits below
@@ -157,10 +162,10 @@ execute "set <M-d>=\ed"
 
 execute "set <M-n>=\en"
 execute "set <M-p>=\ep"
+execute "set <M-m>=\em"
 execute "set <M-j>=\ej"
 execute "set <M-k>=\ek"
 
-execute "set <M-m>=\em"
 execute "set <M-;>=\e;"
 
 nnoremap <buffer> <M-a> <c-w>h
@@ -198,10 +203,14 @@ vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 
 " }}}
 
+" if empty(v:servername) && exists('*remote_startserver')
+"   call remote_startserver('VIMTEX')
+" endif
+
 " }}}
 
 " Plugins{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Set the runtime path to include fzf and Vundle, and initialize
 
@@ -227,6 +236,7 @@ Plug 'jason6/vimwiki_md2html'
 " Plug 'mswift42/vim-themes'
 " Plug 'rafi/awesome-vim-colorschemes'
 
+Plug 'alok/notational-fzf-vim'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
 Plug 'MahbubAlam231/searching-with-blinking'
@@ -239,7 +249,7 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-titlecase'
 Plug 'danro/rename.vim'
 Plug 'easymotion/vim-easymotion'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'fatih/vim-go'
 Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
@@ -312,7 +322,7 @@ filetype indent plugin on             " Required, enables filetype detection
 " }}}
 
 " Plugin mappings{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Vimtex and Folding{{{
 
@@ -331,35 +341,54 @@ call textobj#user#plugin('tex', {
 \     'pattern': ['\\left[', '\\right]'],
 \     'select-a': ['<buffer> as'],
 \     'select-i': ['<buffer> is'],
-\   },
+\   }
 \ })
 
+" \   'math': {
+" \     'pattern': ['\$', '\$'],
+" \     'select-a': ['<buffer> am'],
+" \     'select-i': ['<buffer> im'],
+" \   },
 " \   'paren-math0': {
 " \     'pattern': ['{\\left(', '\\right)}'],
 " \     'select-a': ['a)'],
 " \     'select-i': ['i)'],
 " \   },
 
-xmap <buffer> am  <plug>(vimtex-a$)
-xmap <buffer> im  <plug>(vimtex-i$)
+" let g:vimtex_env_toggle_math_map = {
+"       \ '$': '\[',
+"       \ '\[': 'equation',
+"       \ '$$': '\[',
+"       \ '\(': '$',
+"       \}
 
-omap <buffer> am  <plug>(vimtex-a$)
-omap <buffer> im  <plug>(vimtex-i$)
+" let g:vimtex_text_obj_linewise_operators = ['d', 'y', 'm', 't']
 
-nmap <buffer> dsm <plug>(vimtex-env-delete-math)
-nmap <buffer> csm <plug>(vimtex-env-change-math)
-nmap <buffer> tsm <plug>(vimtex-env-toggle-math)
+if &filetype == 'tex'
+    xmap <buffer> am  <plug>(vimtex-a$)
+    xmap <buffer> im  <plug>(vimtex-i$)
 
-xmap <buffer> at  <plug>(vimtex-am)
-xmap <buffer> it  <plug>(vimtex-im)
+    omap <buffer> am  <plug>(vimtex-a$)
+    omap <buffer> im  <plug>(vimtex-i$)
 
-omap <buffer> at  <plug>(vimtex-am)
-omap <buffer> it  <plug>(vimtex-im)
+    " vmap <buffer> am  <plug>(vimtex-a$)
+    " vmap <buffer> im  <plug>(vimtex-i$)
+
+    nmap <buffer> dsm <plug>(vimtex-env-delete-math)
+    nmap <buffer> csm <plug>(vimtex-env-change-math)
+    nmap <buffer> tsm <plug>(vimtex-env-toggle-math)
+
+    xmap <buffer> at  <plug>(vimtex-am)
+    xmap <buffer> it  <plug>(vimtex-im)
+
+    omap <buffer> at  <plug>(vimtex-am)
+    omap <buffer> it  <plug>(vimtex-im)
+endif
 
 " nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
 
 " To get ae/ie from vimtex (this might not (idk) let own mappings work :-()
-let g:vimtex_mappings_override_existing = 1
+" let g:vimtex_mappings_override_existing = 1
 
 " augroup UseVimtex_ae/ie_InTeX
 "     autocmd!
@@ -378,6 +407,21 @@ augroup FindMath
 augroup end
 
 let g:tex_flavor = 'latex'
+
+" let g:vimtex_compiler_latexmk = {
+"       \ 'backend' : 'process',
+"       \ 'background' : 1,
+"       \ 'out_dir' : '',
+"       \ 'callback' : 0,
+"       \ 'continuous' : 1,
+"       \ 'executable' : 'latexmk',
+"       \ 'hooks' : [],
+"       \ 'options' : [
+"       \   '-lualatex',
+"       \   '-silent',
+"       \   '-file-line-error',
+"       \   '-synctex=1',
+"       \   '-interaction=nonstopmode']}
 
 let g:vimtex_compiler_latexmk = {
             \ 'backend' : 'process',
@@ -400,7 +444,7 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 
 " Disable vimtex completion if you want to manage it manually
 let g:vimtex_complete_enabled = 1
-let g:vimtex_syntax_enabled = 0
+let g:vimtex_syntax_enabled = 1
 " let g:vimtex_complete_bib = 1
 let g:vimtex_complete_ignore = ['.*/usr/local/texlive/.*']  " Add any directories to ignore here
 
@@ -427,9 +471,12 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 
 
 " Fixing LaTeX folds
-nnoremap <buffer> <localleader>ff mf:%s/F{O{L{D/F{O{L{D/g<cr>`fzvzz
-nnoremap <buffer> <localleader>bf mfA% F{O{L{D<esc>`f
-nnoremap <buffer> <localleader>ef mfA% F}O}L}D<esc>`f
+augroup TeXFolds
+    autocmd!
+    autocmd Filetype tex nnoremap <buffer> <localleader>ff mf:%s/F{O{L{D/F{O{L{D/g<cr>`fzvzz
+    autocmd Filetype tex,snippets nnoremap <buffer> <localleader>bf mfA% F{O{L{D<esc>`f
+    autocmd Filetype tex,snippets nnoremap <buffer> <localleader>ef mfA% F}O}L}D<esc>`f
+augroup end
 
 " Saving folds in ~/.vim/view
 function! MakeView()
@@ -509,6 +556,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
             \'template_path': '~/Dropbox/Data/vimwiki/templates/',
             \'template_default': 'default',
             \'template_ext': '.tpl'}]
+
 " \'custom_wiki2html': 'vimwiki_markdown',
             " \'custom_wiki2html': '~/.vim/plugged/vimwiki_md2html/misaka_md2html.py',
             " \'python_path': '/home/mahbub/.local/share/pipx/venvs/misaka/bin/python',
@@ -516,11 +564,22 @@ let g:vimwiki_list = [{'path': '~/Dropbox/Data/vimwiki/',
 
 " let g:vimwiki_folding = 'expr'
 
+let g:vimwiki_key_mappings = {
+      \ 'return': 0
+      \ }
+
 " TODO: figure out html from markdown with vimwiki. Look at Nihar's solution
 
-let g:nv_search_paths = ['~/Dropbox/Data/vimwiki/']
-let g:zettel_format = "%title-%Y-%m-%d"
-inoremap <buffer> <localleader>[ <esc><Plug>ZettelSearchmap
+" Notational-fzf
+let g:nv_search_paths = ['/home/mahbub/Dropbox/Data/svenska-for-akademiker']
+nnoremap <silent> <c-s> :NV<cr>
+
+" Zettel
+let g:zettel_format = "%Y-%m-%d-%title"
+" let g:zettel_fzf_command = "fzf --column --line-number --ignore-case --no-heading --color=always "
+let g:zettel_fzf_command = "fzf"
+inoremap <buffer> <localleader>[ <cr><esc>:ZettelSearch<cr>
+nnoremap <buffer> <localleader>[ :ZettelSearch<cr>
 
 " Disabling wiki creation on the fly
 " let g:vimwiki_global_ext = 0
@@ -533,9 +592,32 @@ augroup VimwikiMappings
     autocmd Filetype vimwiki nmap <buffer> <leader><cr> <Plug>VimwikiSplitLink
     autocmd Filetype vimwiki nmap <buffer> <localleader><cr> <Plug>VimwikiVSplitLink
     autocmd Filetype vimwiki nmap <buffer> <silent> <leader>wv :vsplit<cr>:VimwikiIndex<cr>
+
+    " autocmd Filetype vimwiki if maparg('gl', 'n') != "" | nunmap <buffer> gl | endif
+    " autocmd Filetype vimwiki if maparg('gl', 'n') != "" | echo "yes" | endif
+    autocmd Filetype vimwiki nmap <buffer> gl<space> <Plug>VimwikiRemoveSingleCB
+    autocmd Filetype vimwiki nmap <buffer> gL<space> <Plug>VimwikiRemoveCBInList
+    autocmd Filetype vimwiki nmap <buffer> gLl <Plug>VimwikiIncreaseLvlWholeItem
+    autocmd Filetype vimwiki nmap <buffer> gLL <Plug>VimwikiIncreaseLvlWholeItem
+    autocmd Filetype vimwiki nmap <buffer> gLh <Plug>VimwikiDecreaseLvlWholeItem
+    autocmd Filetype vimwiki nmap <buffer> gLH <Plug>VimwikiDecreaseLvlWholeItem
+
+    autocmd Filetype vimwiki nmap <buffer> gl# :VimwikiChangeSymbolTo #<cr>
+    autocmd Filetype vimwiki nmap <buffer> gL# :VimwikiChangeSymbolInListTo #<cr>
+    autocmd Filetype vimwiki nmap <buffer> gla :VimwikiChangeSymbolTo a)<cr>
+    autocmd Filetype vimwiki nmap <buffer> gLa :VimwikiChangeSymbolInListTo a)<cr>
+    autocmd Filetype vimwiki nmap <buffer> glA :VimwikiChangeSymbolTo A)<cr>
+    autocmd Filetype vimwiki nmap <buffer> gLA :VimwikiChangeSymbolInListTo A)<cr>
+    autocmd Filetype vimwiki nmap <buffer> gli :VimwikiChangeSymbolTo i)<cr>
+    autocmd Filetype vimwiki nmap <buffer> gLi :VimwikiChangeSymbolInListTo i)<cr>
+    autocmd Filetype vimwiki nmap <buffer> glI :VimwikiChangeSymbolTo I)<cr>
+    autocmd Filetype vimwiki nmap <buffer> gLI :VimwikiChangeSymbolInListTo I)<cr>
+
+    autocmd Filetype vimwiki nmap <buffer> glx <Plug>VimwikiToggleRejectedListItem
+    autocmd Filetype vimwiki nmap <buffer> <c-space> <Plug>VimwikiToggleListItem
+
     " Make current line a filename
     autocmd Filetype vimwiki nnoremap <buffer> <localleader>ml ^y$I[<esc>A]()<esc>P
-    autocmd Filetype vimwiki nnoremap <buffer> <localleader>lv :!xdg-open %:t:r.pdf<cr><cr>
 
 augroup end
 
@@ -565,12 +647,174 @@ endfunction
 
 nnoremap <localleader>vb Vip:g/\|/exe "norm! f\|d$"<cr>Vip:g/\.md/VimwikiFollowLink<cr>
 
-function! LexinSearch(word)
-    " let searchterm=getreg('s')
-    :!firefox \"https://lexin.nada.kth.se/lexin/\#searchinfo=both,swe_swe, . word . "\" "
+" Search Websites{{{
+
+" Search online
+function! SearchWebsiteForRegister(website, register)
+    let l:selected_text = getreg(a:register) " Get visually selected text
+
+    " Change newline character, or it doesn't work
+    let l:selected_text = substitute(l:selected_text, '\n', "%0a", 'g')
+
+    " URL encode the selected text to handle spaces and special characters
+    let l:selected_text = escape(l:selected_text, "%")
+    let l:selected_text = escape(l:selected_text, "/")
+
+    " Manually URL encode characters for URL safety
+    let l:selected_text = substitute(l:selected_text, '`', '%60', 'g')      " Replace backtick with %60
+
+    " Construct the URL based on the website
+    if a:website ==# 'google'
+        let l:url = 'https://www.google.com/search?q=' . l:selected_text
+    elseif a:website ==# 'google define'
+        let l:url = 'https://www.google.com/search?q=define+' . l:selected_text
+    elseif a:website ==# 'thesaurus'
+        let l:url = 'https://www.google.com/search?client=firefox-b-lm&q=thesaurus+' . l:selected_text
+    elseif a:website ==# 'duckduckgo'
+        let l:url = 'https://duckduckgo.com/?q=' . l:selected_text
+    elseif a:website ==# 'wikipedia'
+        let l:url = 'https://en.wikipedia.org/wiki/' . substitute(l:selected_text, ' ', '_', 'g')
+    elseif a:website ==# 'lexin sv'
+        let l:url = 'https://lexin.nada.kth.se/lexin/\#searchinfo=both,swe_swe,' . l:selected_text
+    elseif a:website ==# 'lexin eng to sv'
+        let l:url = 'https://folkets-lexikon.csc.kth.se/folkets/folkets.html\#lookup&' . l:selected_text . '&2'
+    elseif a:website ==# 'SAOL'
+        let l:url = 'https://svenska.se/tre/?sok=' . l:selected_text . '&pz=1'
+    elseif a:website ==# 'deepl sv to eng'
+        let l:url = 'https://www.deepl.com/sv/translator\#sv/en/' . l:selected_text
+    elseif a:website ==# 'deepl eng to sv'
+        let l:url = 'https://www.deepl.com/sv/translator\#en/sv/' . l:selected_text
+    else
+        echom "Unsupported website/add website to MYVIMRC"
+        return
+    endif
+
+    " Open the URL in the default browser
+    execute "silent! !xdg-open " . shellescape(l:url) . " &"
 endfunction
 
-nnoremap <localleader>ls "syiw:call LexinSearch("s)<cr>
+" Search word on different websites
+nnoremap <buffer> <silent> <localleader>gs  ms"syiw:call SearchWebsiteForRegister('google', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>df  ms"syiw:call SearchWebsiteForRegister('google define', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>th  ms"syiw:call SearchWebsiteForRegister('thesaurus', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>gd  ms"syiw:call SearchWebsiteForRegister('duckduckgo', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>gw  ms"syiw:call SearchWebsiteForRegister('wikipedia', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>ls  ms"syiw:call SearchWebsiteForRegister('lexin sv', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>lsv ms"syiw:call SearchWebsiteForRegister('lexin sv', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>le  ms"syiw:call SearchWebsiteForRegister('lexin eng to sv', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>vw  ms"syiw:call SearchWebsiteForRegister('SAOL', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>ss  ms"syiw:call SearchWebsiteForRegister('SAOL', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>ds  ms"syiw:call SearchWebsiteForRegister('deepl eng to sv', 's')<CR>:redraw!<cr>`s
+nnoremap <buffer> <silent> <localleader>de  ms"syiw:call SearchWebsiteForRegister('deepl sv to eng', 's')<CR>:redraw!<cr>`s
+
+" Search visual (block) selection on different websites
+vnoremap <buffer> <silent> <localleader>gs  "ty:call SearchWebsiteForRegister('google', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>df  "ty:call SearchWebsiteForRegister('google define', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>th  "ty:call SearchWebsiteForRegister('thesaurus', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>gd  "ty:call SearchWebsiteForRegister('duckduckgo', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>gw  "ty:call SearchWebsiteForRegister('wikipedia', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>ls  "ty:call SearchWebsiteForRegister('lexin sv', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>lsv "ty:call SearchWebsiteForRegister('lexin sv', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>le  "ty:call SearchWebsiteForRegister('lexin eng to sv', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>vw  "ty:call SearchWebsiteForRegister('SAOL', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>ss  "ty:call SearchWebsiteForRegister('SAOL', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>ds  "ty:call SearchWebsiteForRegister('deepl eng to sv', 't')<CR>:redraw!<cr>
+vnoremap <buffer> <silent> <localleader>de  "ty:call SearchWebsiteForRegister('deepl sv to eng', 't')<CR>:redraw!<cr>
+
+" " Function not used anymore{{{
+
+" function! CopyVisualSelection()
+"     python3 << EOF
+" import vim
+" import pyperclip
+
+" # Get the visually selected text in Vim
+" selection = vim.eval("get(g:, 'visual_selection', '')")
+
+" # Copy it to the clipboard using pyperclip
+" pyperclip.copy(selection)
+" EOF
+" endfunction
+
+" xnoremap <silent> <leader>y :<C-u>call CopyVisualSelection()<CR>
+
+" " Search visual selection online
+" function! SearchWebsite(website)
+"     " Get the visual selection as a string
+"     let l:start = getpos("'<")
+"     let l:end = getpos("'>")
+
+"     " Check if the selection is a visual block (Ctrl+V)
+"     if mode() !=# "<c-v>"
+"         " Get the lines in the selection range
+"         let l:selected_lines = getline(l:start[1], l:end[1])
+
+"         " Process first and last lines to only get the selected part
+"         let l:selected_lines[0] = l:selected_lines[0][l:start[2]-1:]
+"         let l:selected_lines[-1] = l:selected_lines[-1][:l:end[2]-1]
+"     else
+"         " Initialize an empty list to hold selected text
+"         let l:selected_lines = []
+
+"         " Loop through each line in the selection range
+"         for l:line_num in range(l:start[1], l:end[1])
+"             " Extract text within the selected columns for each line
+"             let l:line_text = getline(l:line_num)
+
+"             " Extract only the block-selected part from the line using start and end positions
+"             let l:selected_part = l:line_text[l:start[2]-1 : l:end[2]-2]
+"             " let l:selected_part = strpart(l:line_text, l:start[2]-1, l:end[2]-l:start[2] - 1)
+
+"             " Append the selected part of the line to the list
+"             call add(l:selected_lines, l:selected_part)
+"         endfor
+"     endif
+
+"     " Join all selected lines into a single string with spaces
+"     let l:selected_text = join(l:selected_lines, "%0a")
+
+"     " URL encode the selected text to handle spaces and special characters
+"     let l:selected_text = escape(l:selected_text, '/%')
+
+"     " Create the URL based on the selected website
+"     if a:website ==# 'google'
+"         let l:url = 'https://www.google.com/search?q=' . l:selected_text
+"     elseif a:website ==# 'duckduckgo'
+"         let l:url = 'https://duckduckgo.com/?q=' . l:selected_text
+"     elseif a:website ==# 'wikipedia'
+"         let l:url = 'https://en.wikipedia.org/wiki/' . substitute(l:selected_text, ' ', '_', 'g')
+"     elseif a:website ==# 'lexin sv'
+"         let l:url = 'https://lexin.nada.kth.se/lexin/\#searchinfo=both,swe_swe,' . l:selected_text
+"     elseif a:website ==# 'lexin eng to sv'
+"         let l:url = 'https://folkets-lexikon.csc.kth.se/folkets/folkets.html\#lookup&' . l:selected_text . '&2'
+"     elseif a:website ==# 'SAOL'
+"         let l:url = 'https://svenska.se/tre/?sok=' . l:selected_text . '&pz=1'
+"     elseif a:website ==# 'deepl sv to eng'
+"         let l:url = 'https://www.deepl.com/sv/translator\#sv/en/' . l:selected_text
+"     elseif a:website ==# 'deepl eng to sv'
+"         let l:url = 'https://www.deepl.com/sv/translator\#en/sv/' . l:selected_text
+"     else
+"         echom "Unsupported website/add website to MYVIMRC"
+"         return
+"     endif
+
+"     " Open the search URL in the default browser
+"     echom "Searching with URL: " . l:url
+"     execute "silent! !xdg-open " . shellescape(l:url) . " &"
+" endfunction
+
+" " Map the function to search on different websites
+" vnoremap <silent> <localleader>gs :<C-u>call SearchWebsite("google")<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>gw :<C-u>call SearchWebsite("wikipedia")<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>ls :<C-u>call SearchWebsite('lexin sv')<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>le :<C-u>call SearchWebsite('lexin eng to sv')<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>vw :<C-u>call SearchWebsite('SAOL')<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>ds :<C-u>call SearchWebsite('deepl eng to sv')<CR>:redraw!<cr>
+" vnoremap <silent> <localleader>de :<C-u>call SearchWebsite('deepl sv to eng')<CR>:redraw!<cr>
+
+" " }}}
+
+" }}}
 
 " Tables{{{
 
@@ -592,13 +836,16 @@ nnoremap <buffer> <localleader>br yypV:s/[^\|]/ /g<cr>:noh<cr>
 inoremap <buffer> <localleader>br <esc>mmyypV:s/[^\|]/ /g<cr>:noh<cr>yyp`m2ji
 
 " pipe_tables to grid_tables
-vnoremap <buffer> <localleader>tg :!python3 /home/mahbub/scripts/bin/pipe_to_grid.py<cr>
+vnoremap <buffer> <localleader>tg :!python3 /home/mahbub/scripts/bin/pipe_to_n_fro_grid '=' '+'<cr><cr>
+
+" grid_tables to pipe_tables
+vnoremap <buffer> <localleader>tp :!python3 /home/mahbub/scripts/bin/pipe_to_n_fro_grid '-' '\|'<cr><cr>
 
 " Vim table mode
 " let b:table_mode_corner='+'
 " let b:table_mode_corner_corner = '+'
 " let b:table_mode_header_fillchar = '='
-nnoremap <buffer> <localleader>tm :TableModeToggle<cr>
+" nnoremap <buffer> <localleader>tm :TableModeToggle<cr>
 
 " Easy align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -647,25 +894,61 @@ nmap <silent> gi <Plug>(coc-implementation)
 " Use K to show documentation in preview window
 nnoremap <silent> gh :call CocActionAsync('doHover')<CR>
 
+inoremap <expr> <C-Space> coc#refresh()
+
+" " Don't understand, works though: Expand or jump snippet with Tab{{{
+
+" imap <expr> <Tab> pumvisible() ? "\<C-n>" : coc#pum#visible() ? coc#pum#next(1) :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ "\<Tab>"
+
+" smap <expr> <Tab> coc#jumpable() ? "\<C-r>=coc#rpc#request('snippetNext', [])\<CR>" : "\<Tab>"
+" imap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" smap <expr> <S-Tab> coc#jumpable(-1) ? "\<C-r>=coc#rpc#request('snippetPrev', [])\<CR>" : "\<S-Tab>"
+
+" " }}}
+
 inoremap <silent><expr> <M-n>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<M-n>" :
       \ coc#refresh()
-inoremap <silent><expr> <M-p> coc#pum#visible() ? coc#pum#prev(1) : "\<M-p>"
+inoremap <silent><expr> <M-m> coc#pum#visible() ? coc#pum#prev(1) : "\<M-m>"
+inoremap <silent><expr> <c-m> coc#pum#visible() ? coc#pum#prev(1) : "\<c-m>"
 
-inoremap <silent><expr> <M-j>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<M-n>" :
-      \ coc#refresh()
-inoremap <silent><expr> <M-k> coc#pum#visible() ? coc#pum#prev(1) : "\<M-p>"
+" inoremap <silent><expr> <M-j>
+"       \ coc#pum#visible() ? coc#pum#next(1) :
+"       \ CheckBackspace() ? "\<M-j>" :
+"       \ coc#refresh()
+" inoremap <silent><expr> <M-k> coc#pum#visible() ? coc#pum#prev(1) : "\<M-k>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <M-;> coc#pum#visible() ? coc#pum#confirm()
+
+" ACCEPTING COC SUGGESTIONS (<cr> is bad at the end of a sentence)
+" inoremap <silent><expr> <M-;> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <c-c> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <Tab>
+            \ UltiSnips#CanExpandSnippet() ? "\<C-R>=UltiSnips#ExpandSnippet()\<CR>" :
+            \ coc#pum#visible() ? coc#pum#confirm() :
+            \ "\<Tab>"
+
+            " \ UltiSnips#CanJumpForwards() ? "\<C-R>=UltiSnips#JumpForwards()\<CR>" :
+" inoremap <silent><expr> <S-Tab>
+"             \ UltiSnips#CanJumpBackwards() ? "\<C-R>=UltiSnips#JumpBackwards()\<CR>" :
+"             \ "\<S-Tab>"
+
+" inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
 "                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+
+inoremap <silent><buffer> <c-space> <space>
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -700,7 +983,7 @@ endfunction
 " " Use tab for trigger completion and navigate through snippets
 " " Tab key for snippet expansion
 " inoremap <silent> <C-Space> coc#refresh() " Complete with coc.nvim
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-r>=snipmate#expand_or_jump(1)" . "\<C-g>u" 
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-r>=snipmate#expand_or_jump(1)" . "\<C-g>u"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-r>=snipmate#jump(-1)" . "\<C-g>u"
 " " inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])<CR>" : CheckBackspace() ? "\<TAB>" : coc#refresh()
 " " inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -711,7 +994,7 @@ endfunction
 " " Use <c-k> to jump back in UltiSnips
 " imap <expr> <C-k> UltiSnips#CanJumpBackwards() ? '<C-R>=UltiSnips#JumpBackwards()<CR>' : '<C-k>'
 
-"}}}
+" }}}
 
 " }}}
 " Pandoc{{{
@@ -733,25 +1016,32 @@ let g:vim_markdown_no_default_key_mappings = 1
 " Abolish and coercing{{{
 
 " Coercing
-vmap <buffer> <localleader>cr :s/ /-/g<cr>:noh<cr>
-nmap <buffer> <localleader>cr :%s/ /-/g<cr>:noh<cr>
-nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
+vmap <buffer> <localleader>crd :s/ /-/g<cr>:noh<cr>
+nmap <buffer> <localleader>crd V:s/ /-/g<cr>:noh<cr>
+" nmap <buffer> crr V:s/ /-/g<cr>:noh<cr>
+nmap <buffer> crd V:s/ /-/g<cr>:noh<cr>
+
+vmap <buffer> <localleader>crs :s/-/_/g<cr>:noh<cr>
+nmap <buffer> <localleader>crs V:s/-/_/g<cr>:noh<cr>
+vmap <buffer> <localleader>cr<space> :s/-/ /g<cr>:noh<cr>
+nmap <buffer> <localleader>cr<space> V:s/-/ /g<cr>:noh<cr>
+nmap <buffer> cr<space> V:s/-/ /g<cr>:noh<cr>
 
 " }}}
-" After object{{{
+" " After object{{{
 
 " augroup AfterObject
 "     autocmd!
 "     autocmd VimEnter * call after_object#enable(':', '+', '-', '#', ' ', '.', ',', ';', '$', '&', '=', '\')
 " augroup end
 
-" }}}
+" " }}}
 " Airline{{{
 
 let g:airline_theme = 'simple'
 
 " }}}
-" GitGutter{{{
+" " GitGutter{{{
 
 " let g:gitgutter_set_sign_backgrounds = 1
 
@@ -767,7 +1057,7 @@ let g:airline_theme = 'simple'
 
 " let g:gitgutter_enabled = 1
 
-" }}}
+" " }}}
 " Asterisk{{{
 
 map <buffer> *   <Plug>(asterisk-*)<c-o>
@@ -949,7 +1239,18 @@ nnoremap <buffer> <localleader>st :Startify<cr>
 " " }}}
 " Templates and Selecting Template{{{
 
-" In "~/.vim/plugged/vim-templates/plugin/templates.vim" add autocmd for writing BufNewFile event
+" Add to "~/.vim/plugged/vim-templates/plugin/templates.vim"
+" Templates
+" TIMESTAMP:    DAY, DAY_FULL, DATE, MONTH, MONTH_SHORT, MONTH_FULL,
+"               YEAR, TODAY, SWEDISH_TODAY, TIME, TIME_12, TIMESTAMP
+
+" Add to function <SID>ExpandTimestampTemplates()
+"     let l:swedish_today     = strftime('%Y-%m-%d')
+"     call <SID>ExpandTemplate('SWEDISH_TODAY', l:swedish_today)
+
+" " In "~/.vim/plugged/vim-templates/plugin/templates.vim" add autocmd for writing BufNewFile event
+" " Autogroup commands
+" au BufNewFile * TemplateAutoInit
 
 let g:tmpl_auto_initialize=1
 let g:tmpl_author_name='Mahbub Alam'
@@ -1047,6 +1348,8 @@ nnoremap <buffer> <localleader>uc viwbU
 
 let g:UltiSnipsUsePythonVersion = 3
 
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips']
+
 let g:UltiSnipsEditSplit='vertical'
 nnoremap <buffer> <leader>ue :UltiSnipsEdit<cr>
 
@@ -1054,7 +1357,13 @@ augroup Snippets
     autocmd!
     autocmd FileType snippets setlocal foldmethod=marker
     autocmd FileType snippets setlocal foldlevel=0
+    autocmd FileType snippets nnoremap <buffer> <? ms/snippet /e<left><left>
+    autocmd FileType snippets nnoremap <buffer> >? ms?snippet ?e<left><left>
 augroup end
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 " Set the key to expand a snippet
 " let g:UltiSnipsExpandTrigger = "<c-j>"
@@ -1190,7 +1499,7 @@ augroup end
 " " au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 " " let g:UltiSnipsJumpForwardTrigger="<tab>"
 " " let g:UltiSnipsListSnippets="<c-e>"
-" " " this mapping Enter key to <C-y> to chose the current highlight item 
+" " " this mapping Enter key to <C-y> to chose the current highlight item
 " " " and close the selection list, same as other IDEs.
 " " " CONFLICT with some plugins like tpope/Endwise
 " " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -1200,10 +1509,10 @@ augroup end
 " }}}
 
 " Misc{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Braces and stuff{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Fix it to delete inside larger parenthesis
 onoremap <buffer> p i)
@@ -1214,6 +1523,12 @@ onoremap <buffer> il( :<c-u>normal! F)vi)<cr>
 onoremap <buffer> ilp :<c-u>normal! F)vi)<cr>
 onoremap <buffer> iN( :<c-u>normal! F)vi)<cr>
 onoremap <buffer> iNp :<c-u>normal! F)vi)<cr>
+
+" In the same line delete inside any brace
+onoremap <buffer> inb :<c-u>normal! f{vi}<cr>
+onoremap <buffer> inb :<c-u>normal! f{vi}<cr>
+onoremap <buffer> ilb :<c-u>normal! F}vi}<cr>
+onoremap <buffer> ilb :<c-u>normal! F}vi}<cr>
 
 if &filetype != 'python'
     inoremap <buffer> ( ()<esc>i
@@ -1231,6 +1546,48 @@ if &filetype != 'python'
     inoremap <buffer> `` ``<esc>i
 endif
 
+" Unmapping above for specific filetypes{{{
+
+if &filetype == 'tex'
+    iunmap <buffer> ''
+    iunmap <buffer> ""
+    iunmap <buffer> ``
+endif
+
+if &filetype == 'vimwiki'
+    iunmap <buffer> (
+    iunmap <buffer> ((
+    iunmap <buffer> {
+    iunmap <buffer> {{
+    iunmap <buffer> [
+    iunmap <buffer> [[
+    iunmap <buffer> ''
+    iunmap <buffer> ""
+    iunmap <buffer> ``
+endif
+
+if &filetype == 'sh'
+    iunmap <buffer> (
+    iunmap <buffer> ((
+    iunmap <buffer> {
+    iunmap <buffer> {{
+    iunmap <buffer> [
+    iunmap <buffer> [[
+    iunmap <buffer> ''
+    iunmap <buffer> ""
+    iunmap <buffer> ``
+endif
+
+if &filetype == 'snippets'
+    iunmap <buffer> [
+    iunmap <buffer> [[
+    iunmap <buffer> ''
+    iunmap <buffer> ""
+    iunmap <buffer> ``
+endif
+
+" }}}
+
 augroup MarkdownVimwiki
     autocmd!
     autocmd FileType markdown,vimwiki inoremap <buffer> ** **<left>
@@ -1240,7 +1597,7 @@ augroup end
 
 " }}}
 " Calculator{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
@@ -1250,7 +1607,7 @@ inoremap <buffer> <c-b> <c-o>yiW<end> = <c-r>=<c-r>0<cr>
 
 " }}}
 " Colorschemes{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 let python_highlight_all=2
 syntax on
@@ -1292,26 +1649,29 @@ nnoremap <buffer> <localleader>ct :call ColorToggle()<cr>
 function! ColorschemeToggle()
     if g:my_colorscheme_mode
         silent !sed -i 's/^let g:my_colorscheme_mode=0/let g:my_colorscheme_mode=1/' /home/mahbub/Dropbox/Data/.vimrc
+        silent !sed -i 's/^highlight PythonUnderscoreGroup ctermbg=242 ctermfg=15/highlight PythonUnderscoreGroup ctermbg=250 ctermfg=0/' /home/mahbub/Dropbox/Data/.vimrc
     else
         silent !sed -i 's/^let g:my_colorscheme_mode=1/let g:my_colorscheme_mode=0/' /home/mahbub/Dropbox/Data/.vimrc
+        silent !sed -i 's/^highlight PythonUnderscoreGroup ctermbg=250 ctermfg=0/highlight PythonUnderscoreGroup ctermbg=242 ctermfg=15/' /home/mahbub/Dropbox/Data/.vimrc
     endif
 endfunction
 
-nnoremap <buffer> <localleader>cs mmgg:call ColorschemeToggle()<cr>:source $MYVIMRC<cr>:noh<cr>`mzz
+" nnoremap <buffer> <localleader>cs mm:call ColorschemeToggle()<cr>:redraw!<cr>`mzv
+nnoremap <buffer> <localleader>cs mm:call ColorschemeToggle()<cr>:source $MYVIMRC<cr>:noh<cr>`mzz
 
 " Editing colorscheme in vimrc
-nnoremap <buffer> <localleader>ec /Colorschemes<cr>:noh<cr>zvzt
+nnoremap <buffer> <localleader>ec gg/my_colorscheme_mode<cr>:noh<cr>zvzz
 
 " }}}
 " Command line mappings{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 cnoremap <buffer> <c-a> <home>
 cnoremap <buffer> <c-e> <end>
 
 " }}}
 " Diagraphs{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " "Make CTRL-K list diagraphs before each digraph entry
 " runtime bundle/betterdigraphs/plugin/betterdigraphs.vim
@@ -1319,7 +1679,7 @@ cnoremap <buffer> <c-e> <end>
 
 " }}}
 " Macros{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 nnoremap <buffer> Q @q
 vnoremap <buffer> Q @q
@@ -1328,7 +1688,7 @@ nnoremap <buffer> <localleader>rq :let @q='<c-r>q'<left>
 
 " }}}
 " Navigation{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Get off my lawn - helpful when learning Vim :){{{
 " nnoremap <buffer> <Left>  :echoe "Use 'h'. Navigate smartly!"<cr>
@@ -1344,7 +1704,9 @@ nnoremap <buffer> J mjL
 nnoremap <buffer> K mkH
 nnoremap <buffer> L ml$
 nnoremap <buffer> gH mhg^
-nnoremap <buffer> gL mlg$
+if &filetype != 'vimwiki'
+    nnoremap <buffer> gL mlg$
+endif
 nnoremap <buffer> ge mege
 nnoremap <buffer> <localleader>e mege
 
@@ -1370,6 +1732,10 @@ onoremap <buffer> <localleader>e mege
 " onoremap <buffer> J :<c-u>normal! mjL<cr>
 " onoremap <buffer> K :<c-u>normal! mkH<cr>
 " onoremap <buffer> L :<c-u>normal! mlg_<cr>
+
+" Insert mode
+inoremap <buffer> <c-e> <esc>A
+inoremap <buffer> <c-a> <esc>I
 
 nnoremap <buffer> 'h `h
 nnoremap <buffer> 'j `j
@@ -1487,7 +1853,7 @@ nnoremap <buffer> g, g,zvzz
 
 " }}}
 " Pasting, visual selection{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Pasting
 nnoremap <buffer> p pmp
@@ -1515,7 +1881,7 @@ vnoremap <buffer> <silent> !! yo<esc>:.!<c-r><c-r>0<cr>0
 " inoremap <buffer> <silent> <localleader>now <cr><cr><esc>k:.!date '+\%b \%d \%Y \%H:\%M \%Z (\%a)'<cr>kV2j:j<cr>:echo<cr>/IST<cr>:noh<cr>w%lxa
 
 " Calendar on next paragraph with cursor on today
-nnoremap <buffer> <silent> <localleader>cal mco<esc>:.!cal<cr>:FixWhitespace<cr>?_<cr>2xwn2xhe:noh<cr>`c
+nnoremap <buffer> <silent> <localleader>cal mco<esc>:.!cal<cr>:FixWhitespace<cr>`c
 
 " }}}
 " Searching remaps{{{
@@ -1567,11 +1933,6 @@ nnoremap <buffer> <localleader>? ms:%s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>/ ms:s///gn<left><left><left><left>
 vnoremap <buffer> <localleader>? ms:s///gn<left><left><left><left>
 
-if &filetype == 'snippets'
-    nnoremap <buffer> <? ms/snippet /e<left><left>
-    nnoremap <buffer> >? ms?snippet ?e<left><left>
-endif
-
 " Number of matches for the word under cursor
 nnoremap <buffer> <localleader>* ms*:%s///gn<cr>
 nnoremap <buffer> <localleader># ms#:%s///gn<cr>
@@ -1612,12 +1973,13 @@ nnoremap <buffer> <c-c> :noh<cr>:echo<cr>
 augroup ShellKeyBindings
     autocmd!
     autocmd FileType sh inoremap <buffer> ; _
-    autocmd FileType sh inoremap <buffer> ;<space> _
+    " autocmd FileType sh inoremap <buffer> ;<space> _
+    autocmd FileType sh inoremap <buffer> ;; ;
 augroup end
 
 " }}}
 " Some other remaps{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Ctrl-BS in vim
 noremap! <c-h> <c-w>
@@ -1628,6 +1990,7 @@ noremap! <c-h> <c-w>
 
 " Joining lines
 nnoremap <buffer> <localleader>j J
+nnoremap <buffer> <localleader>k kJ
 vnoremap <buffer> <localleader>j J
 
 " Yank till the end of the line and clearing a line
@@ -1659,8 +2022,8 @@ function! AlignParagraphs()
     if getline('$') != ''
         $put _
     endif
-    :call setpos('.', save_cursor)
-    :call CountParagraphs()
+    call setpos('.', save_cursor)
+    call CountParagraphs()
 endfunction
 
 nnoremap <buffer> <localleader>ap :call AlignParagraphs()<cr>zv
@@ -1683,7 +2046,7 @@ function! CountParagraphs()
     endwhile
 
     echom "Number of paragraphs:" b:number_of_paragraphs
-    :call setpos('.', save_cursor)
+    call setpos('.', save_cursor)
     normal! zMzv
 endfunction
 
@@ -1692,14 +2055,14 @@ vnoremap <buffer> <localleader>cp :call CountParagraphs()<cr>zv
 
 " }}}
 " Spelling Check{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Toggling languages (en, sv){{{
 
 augroup SwedishFiles
     autocmd!
-    autocmd BufRead,BufNewFile *-svenska.md setlocal spell spelllang=en_us,sv
-    autocmd BufRead,BufNewFile *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    autocmd BufRead,BufNewFile *-svenska.md,*-sv.md,*-svenska.tex setlocal spell spelllang=sv,en_us
+    autocmd BufRead,BufNewFile *-svenska.md,*-sv.md,*-svenska.tex setlocal spellfile=~/.vim/spell/sv.utf-8.add
 augroup end
 
 function! LangToggle()
@@ -1755,7 +2118,7 @@ nnoremap <buffer> <localleader>dl :call SpellLang("dl")<cr>
 augroup Spelling
     autocmd!
     autocmd FileType tex,text,markdown,vimwiki,bib setlocal spell spelllang=en_us
-    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd FileType tex,text,markdown,vimwiki,bib setlocal spellfile=~/.vim/spell/math.utf-8.add,~/.vim/spell/en.utf-8.add
     " Adding new words to dictionary
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgN zg[szz
     autocmd FileType tex,text,markdown,vimwiki,bib nnoremap <buffer> zgn zg]szz
@@ -1798,7 +2161,7 @@ nnoremap <buffer> <localleader>> :call GtLtToggle()<cr>
 
 " }}}
 " Substitute/change{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 nnoremap <buffer> <localleader>s :%s/
 vnoremap <buffer> <localleader>s :s/
@@ -1811,15 +2174,38 @@ vnoremap <buffer> <localleader>S :S/
 " highlight PythonFormattedVarGroup ctermfg=3
 highlight PythonFormattedVarGroup ctermfg=256 cterm=bold
 highlight PythonBoldGreenGroup ctermfg=46 ctermbg=Black cterm=bold
+" highlight PythonUnderscoreGroup ctermbg=red ctermfg=black
+" highlight PythonUnderscoreGroup ctermbg=250 ctermfg=39
+highlight PythonUnderscoreGroup ctermbg=250 ctermfg=0
 
 augroup PythonHighlighting
     autocmd!
     autocmd Filetype python let m = matchadd("PythonFormattedVarGroup",'.{\zs.\{-}\ze}.')
     autocmd Filetype python let m = matchadd("PythonBoldGreenGroup",'TODO')
+    autocmd Filetype python let m = matchadd("PythonBoldGreenGroup",'Lesson')
+    autocmd FileType python,vimwiki let m1 = matchadd("PythonUnderscoreGroup", '\(^\|\W\)\zs_\+')
+    autocmd FileType python,vimwiki let m2 = matchadd("PythonUnderscoreGroup", '_\+\ze\($\|\W\)')
+    " autocmd FileType python,vimwiki let m1 = matchadd("PythonUnderscoreGroup", '\<_\+')
+    " autocmd FileType python,vimwiki let m2 = matchadd("PythonUnderscoreGroup", '_\+\>')
+    " autocmd FileType python,vim let m = matchadd("PythonUnderscoreGroup", '\(^\|\s\)\zs_\+\ze\(\s\|$\)')
 augroup end
 
 " }}}
-" VimwikiHighlighting{{{
+" BashHighlighting{{{
+
+" highlight BashFormattedVarGroup ctermfg=3
+highlight BashFormattedVarGroup ctermfg=256 cterm=bold
+highlight BashBoldGreenGroup ctermfg=46 ctermbg=Black cterm=bold
+
+augroup BashHighlighting
+    autocmd!
+    autocmd Filetype sh let m = matchadd("BashFormattedVarGroup",'.{\zs.\{-}\ze}.')
+    autocmd Filetype sh let m = matchadd("BashBoldGreenGroup",'TODO')
+    autocmd Filetype sh let m = matchadd("BashBoldGreenGroup",'NEEDS MODIFYING')
+augroup end
+
+" }}}
+" Vim, VimwikiHighlighting{{{
 
 highlight VimwikiBoldBlueGroup ctermfg=39 ctermbg=Black
 highlight VimwikiBoldGreenGroup ctermfg=46 ctermbg=Black
@@ -1831,8 +2217,10 @@ augroup VimwikiHighlighting
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'BREAKTHROUGH')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'READ-ME')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'TODO')
-
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'OBS')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'PDF')
+    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldGreenGroup",'FILE')
+
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
@@ -1849,7 +2237,7 @@ augroup end
 
 " }}}
 " Trailing White Space{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " " Delete trailing whitespace
 " augroup AutoDeleteTrailingWhitespace
@@ -1926,27 +2314,14 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 " }}}
 " TeXHighlighting{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Part, Chapter, Section, Subsection, Subsubsection, label"{{{
-
-" FoldsGroup is inside ArrayMatrixEtcGroup
-
-" highlight FoldsGroup ctermbg=174 ctermfg=Black
-
-" augroup TeXHighlighting
-"     autocmd!
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%{T{E{X')
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%}T}E}X')
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'%\( \)*\(h\|c\)\( \)*')
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
-"     autocmd Filetype tex let m = matchadd("FoldsGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
-" augroup end
 
 highlight PartMarkerGroup ctermbg=092 ctermfg=149
 
 augroup TeXHighlighting
+    autocmd!
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% Part')
     autocmd Filetype tex let m = matchadd("PartMarkerGroup",'% UnnumberedPart')
 augroup end
@@ -2058,6 +2433,7 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Example')
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Exercise')
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Frame')
+    autocmd Filetype tex let m = matchadd("MarkerGroup",'% Columns')
     autocmd Filetype tex let m = matchadd("MarkerGroup",'% Claim')
 augroup end
 
@@ -2130,6 +2506,16 @@ highlight SpaceGroup ctermbg=red
 "     autocmd Filetype tex let m = matchadd("SpaceGroup",'  *')
 " augroup end
 
+" " highlight TeXUnderscoreGroup ctermbg=red ctermfg=black
+" " highlight TeXUnderscoreGroup ctermbg=250 ctermfg=39
+" highlight TeXUnderscoreGroup ctermbg=250 ctermfg=black
+
+" augroup TeXHighlighting
+"     autocmd FileType tex let m = matchadd("TeXUnderscoreGroup", '_\+')
+"     " autocmd FileType tex let m = matchadd("TeXUnderscoreGroup", '\<_\+')
+"     " autocmd FileType tex let m = matchadd("TeXUnderscoreGroup", '_\+\>')
+" augroup end
+
 " }}}
 " Abstract, Theorem, Equation"{{{
 
@@ -2192,6 +2578,10 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{diary}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{frame}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{frame}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{columns}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{columns}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{column}')
+    autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{column}')
 
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\begin{thmbox}')
     autocmd Filetype tex let m = matchadd("TheoremGroup",'\\end{thmbox}')
@@ -2281,21 +2671,22 @@ augroup TeXHighlighting
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{bmatrix}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{pmatrix}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{pmatrix}')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\item')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\item\ze\s')
+    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibitem\ze\s')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliographystyle{.\{}}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\bibliography{.\{}}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\begin{thebibliography}')
     autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\\end{thebibliography}')
 
-    " Folds
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%{T{E{X')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%}T}E}X')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%\( \)*\(h\|c\)\( \)*')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
-    autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*(\S* end)')
+    " " Folds
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%{T{E{X')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'%}T}E}X')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'^\( \)*%\( \)*\(h\|c\) \( \)*')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F{O{L{D')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\( \)*\)*F}O}L}D')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*end) F}O}L}D')
+    " autocmd Filetype tex let m = matchadd("ArrayMatrixEtcGroup",'\(\(%\)*\(.\)*\)*(\S* end)')
+
 augroup end
 
 highlight asterisk ctermbg=109 ctermfg=red
@@ -2307,136 +2698,136 @@ augroup end
 highlight ParenthesisGroup ctermbg=247 ctermfg=black
 
 augroup TeXHighlighting
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right')
 
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big({')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big)}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big({')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big)}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg({')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg)}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg({')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left(')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left({')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right)}')
+    autocmd FileType tex let m = matchadd('ParenthesisGroup', '\v[{]?\\(big|Big|bigg|Bigg|left|right)(\(|\)|\[|\]|\\[{}]|\|)[}]?')
 
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big\\}}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right\\}}')
+    " " Commented brackets (old){{{
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big)}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big({')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big)}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big({')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg)}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg({')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg)}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg({')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg)}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left(')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right)}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left({')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right)}')
 
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big]}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big]}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg]}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big\\}}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big\\{{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big\\}}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big\\{{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg\\}}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg\\{{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg\\}}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg\\{{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg\\}}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right\\}}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left\\{{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right\\}}')
 
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big|}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big|}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg|}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|')
-    autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|}')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|{')
-    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big]}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big[{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big]}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big[{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg]}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg[{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg]}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg[{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg]}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right]}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left[{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right]}')
+
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\big|}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\big|{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Big|}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Big|{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Big|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\bigg|}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\bigg|{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\Bigg|}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\Bigg|{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\Bigg|}')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\left|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|')
+    " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'\\right|}')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'{\\left|{')
+    " " autocmd Filetype tex let m = matchadd("ParenthesisGroup",'}\\right|}')
+
+"}}}
+
 augroup end
 
 " }}}
@@ -2446,10 +2837,10 @@ augroup end
 " }}}
 
 " KeyBindings, Abbreviations and Stuff{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Selecting KeyBindings{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Select KeyBinding Scheme
 function! KeyBinding(code)
@@ -2492,7 +2883,7 @@ endfunction
 
 " }}}
 " Selecting Abbreviations{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Select Abbreviation Type
 function! Abbreviations(code)
@@ -2523,13 +2914,15 @@ endfunction
 
 " }}}
 " Sourcing KeyBindings, Abbreviations and Stuff{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " SourceEverythingForTeX{{{
 augroup SourceEverythingForTeX
     autocmd!
     " autocmd BufNewFile,BufRead *.tex silent write
-    autocmd BufEnter *.tex silent VimtexCompile
+    autocmd VimEnter,BufRead *.tex silent VimtexCompile
+    autocmd BufNewFile,BufReadPost *.tex VimtexCompile
+    " autocmd BufWritePost *.tex VimtexCompile
     autocmd BufNewFile,BufRead *.tex call Abbreviations("gen")
     autocmd BufNewFile,BufRead *.tex call Abbreviations("math")
     autocmd BufNewFile,BufRead *.tex call KeyBinding("tex")
@@ -2537,17 +2930,26 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex nnoremap <buffer> <localleader><cr> <plug>(vimtex-context-menu)
     autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_us
     autocmd BufNewFile,BufRead *.tex setlocal spellfile=~/.vim/spell/math.utf-8.add
+    autocmd BufRead,BufNewFile *-svenska.tex setlocal spell spelllang=sv,en_us
+    autocmd BufRead,BufNewFile *-svenska.tex setlocal spellfile=~/.vim/spell/sv.utf-8.add
     autocmd BufNewFile,BufRead *.tex setlocal foldmethod=marker
     autocmd BufNewFile,BufRead *.tex setlocal foldmarker=F{O{L{D,F}O}L}D
     autocmd BufNewFile,BufRead *.tex setlocal signcolumn=no
-    autocmd BufNewFile,BufRead *.tex execute "normal! 4zj"
+    autocmd BufNewFile,BufRead *.tex execute "normal! 3zj"
 
-    " Compiling tex
-    autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
-    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
-    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>a
-    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>
+    " Compiling tex with lualatex
+    autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zza
+    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zz
+    autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zz
+    autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -lualatex %:p<CR><CR>zz:VimtexView<cr><cr>a
+    autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -lualatex %:p<CR><CR>zz:VimtexView<cr><cr>
+
+    " " Compiling tex with pdflatex
+    " autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zza
+    " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
+    " autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
+    " autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>a
+    " autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -pdf %:p<CR><CR>zz:VimtexView<cr><cr>
     " autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
 augroup end
 
@@ -2571,7 +2973,7 @@ nnoremap <buffer> <localleader>cfm :%s/}T}E}X/ F}O}L}D/g \| :%s/{T{E{X/ F{O{L{D/
 nnoremap <buffer> <localleader>rfm :%s/%F}O}L}D/% F}O}L}D/g \| :%s/%F{O{L{D/% F{O{L{D/g<cr><cr>
 
 " Editing tex stuff in vimrc
-nnoremap <buffer> <localleader>et /SourceEverythingForTeX<cr>n:noh<cr>zvzz
+nnoremap <buffer> <localleader>et gg/SourceEverythingForTeX<cr>n:noh<cr>zvzz
 
 " }}}
 " SourceEverythingForVimwiki{{{
@@ -2583,19 +2985,29 @@ augroup SourceEverythingForVimwiki
     " autocmd BufNewFile,BufRead *.md call Abbreviations("math")
     autocmd BufNewFile,BufRead *.md call KeyBinding("md")
     autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
-    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add
-    autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spell spelllang=sv,en_us
-    autocmd BufNewFile,BufRead,BufEnter *-svenska.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
+    autocmd BufNewFile,BufRead *.md setlocal spellfile=~/.vim/spell/math.utf-8.add,~/.vim/spell/en.utf-8.add
+    autocmd BufNewFile,BufRead,BufEnter *-svenska.md,*-sv.md setlocal spell spelllang=sv,en_us
+    autocmd BufNewFile,BufRead,BufEnter *-svenska.md,*-sv.md setlocal spellfile=~/.vim/spell/sv.utf-8.add
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u1 yypVr=
     autocmd BufNewFile,BufRead *.md nnoremap <buffer> <localleader>u2 yypVr-
 
+    " Editing tex stuff in vimrc
+    autocmd BufNewFile,BufRead *-svenska.md,-sv.md nnoremap <buffer> <localleader>ew gg/##########$<cr>:noh<cr>zvzz3kA
+    autocmd BufNewFile,BufRead *-svenska.md,-sv.md nnoremap <buffer> <localleader>ef gg/########$<cr>:noh<cr>zvzz3kA
+
     " Compiling
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb :Pandoc beamer<cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pd :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>p2 :!pandoc % -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>
-    autocmd Filetype markdown,vimwiki nnoremap <buffer> <F9>            :!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
-    autocmd Filetype markdown,vimwiki inoremap <buffer> <F9>            <esc>:!pandoc % -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb       :w!<cr>:Pandoc beamer<cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pb       :w!<cr>:silent! !pandoc --to=beamer --pdf-engine=xelatex -o %:t:r.pdf %<cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pp       :w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>pd       :w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>p2       :w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V geometry:margin=2cm -V fontsize=12pt<cr><cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <F9>                  :w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki inoremap <buffer> <F9>             <esc>:w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V geometry:margin=3cm -V fontsize=12pt<cr><cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    autocmd Filetype markdown,vimwiki nnoremap <buffer> <leader>pp            :w!<cr>:silent! !pandoc % --pdf-engine=xelatex -o %:t:r.pdf -V mainfont="DejaVu Sans" -V geometry:margin=3cm -V fontsize=12pt<cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+    " autocmd Filetype markdown,vimwiki nnoremap <buffer> <F9>                  :w!<cr>:Pandoc pdf -V geometry:margin=3cm -V fontsize=12pt<cr>
+    " Open corresponding pdf file
+    autocmd Filetype vimwiki nnoremap <buffer> <localleader>lv :!xdg-open %:t:r.pdf<cr><cr>
+
     autocmd Filetype markdown,vimwiki nnoremap <buffer> <localleader>ph :!pandoc -s -c style.css -o ~/Dropbox/Data/vimwiki_html/%:t:r.html<cr><cr>
 
     " autocmd BufNewFile,BufRead *.md TableModeEnable
@@ -2619,13 +3031,15 @@ augroup end
 
 " Fancy write markdown to PDF for dissemination
 " nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex --to=pdf -o ~/%:t:r.pdf<left><left><left><left>
-nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex -o ~/%:t:r.pdf<cr><cr>
+" nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex -o ~/%:t:r.pdf<cr><cr>
+" nnoremap <leader>pp :silent! !pandoc % -o %:t:r.pdf --pdf-engine=xelatex -V mainfont="DejaVu Sans" -V geometry:margin=3cm -V fontsize=12pt<cr>:redraw!<cr>:!xdg-open %:t:r.pdf<cr><cr>
+" nnoremap <leader>pp :!pandoc %:p --pdf-engine=xelatex -V mainfont="Symbola" -o ~/%:t:r.pdf<cr><cr>
 
 " Sourcing everything for markdown/vimwiki
 function! SourceEverythingForMarkdown()
     call KeyBinding("md")
-    setlocal spell spelllang=en_us
-    setlocal spellfile=~/.vim/spell/en.utf-8.add
+    setlocal spell spelllang=sv,en_us
+    setlocal spellfile=~/.vim/spell/math.utf-8.add,~/.vim/spell/en.utf-8.add
     echom "Sourced everything for Markdown/Vimwiki"
 endfunction
 
@@ -2681,7 +3095,7 @@ inoremap <buffer> <localleader>ut <esc>:call KeyBinding("unmaptex")<cr>a
 
 " }}}
 " Opening .vimrc, KeyBindings and Stuff{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Opening TeXKeyBindings "te=tex
 nnoremap <buffer> <leader>hte :new ~/.vim/KeyBindings/TeXKeyBindings.vim<cr>
@@ -2737,14 +3151,14 @@ nnoremap <buffer> <leader>vc :vsplit $MYVIMRC<cr>
 " }}}
 
 " Writing and quitting{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " Doesn't seem to work when template is enabled - now works with BufEnter
 augroup WriteNewBuf
     autocmd!
     autocmd BufNewFile,BufEnter *.* if &modifiable | silent write | endif
     " autocmd BufNewFile,BufEnter *.* silent write
-    " autocmd BufEnter *.tex,*.py,*.md,*-svenska.md silent write
+    " autocmd BufEnter *.tex,*.py,*.md,*-svenska.md,*-sv.md silent write
 augroup end
 
 " " If you autowrite bibliography you'll lose mother-bib's in case of a mistake
@@ -2760,7 +3174,7 @@ nnoremap <buffer> <silent> <localleader>ww mw:w!<cr>`w
 
 augroup ContinuouslyWriteBuf
     autocmd!
-    autocmd TextChanged * nested if &modifiable | silent write | endif
+    autocmd TextChanged,TextChangedP * nested if &modifiable | silent write | endif
     " autocmd TextChanged * nested silent write
     autocmd TextChangedI * silent write
 augroup end
@@ -2773,7 +3187,7 @@ vnoremap 'q `qzvzz
 " }}}
 
 " Sourcing{{{
-" -------------------------------------------------------------------
+" ------------------------------------------------------------
 
 " " Sourcing current file
 " nnoremap <buffer> <silent> <localleader>sf :w!<cr>:source %<cr>:noh<cr>
@@ -2794,6 +3208,17 @@ vnoremap <buffer> <localleader>E y:execute @@<cr>
 nnoremap <buffer> <localleader>E ^vg_y:execute @@<cr>
 
 " Sourcing .vimrc
-nnoremap <buffer> <localleader>vc :source $MYVIMRC<cr>:noh<cr>
+nnoremap <buffer> <localleader>vc :w<cr>:source $MYVIMRC<cr>:noh<cr>
+
+" }}}
+
+" Notes{{{
+
+" TIME: 17-02-25 (Feb, Mon) 00:51 CET
+" Added both math and en spellfiles for markdown
+
+" TIME: 16-05-25 (May, Fri) 12:51 CEST
+" Adding lualatex for vimtex
+
 
 " }}}

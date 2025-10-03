@@ -5,6 +5,15 @@
 # |_.__/ \__,_|___/_| |_|   |___/_| |_|_| .__/| .__/ \___|\__|___/
 #                                       |_|   |_|
 
+global !p
+import re
+from my_snippets_helpers import *
+
+def fix_indent(snip):
+    vim.eval(r'feedkeys("\<c-f>")')
+    # vim.command("normal! ==")
+endglobal
+
 snippet if "if statement" b
 if ${1:[[ ${2:condition} ]]}
 then
@@ -12,33 +21,108 @@ then
 fi$0
 endsnippet
 
-snippet elif "elif statement" b
+# post_expand "fix_indent(snip)"
+# snippet 'el(s(e)?)?' "else statement" br
+# else
+# 	$1
+# endsnippet
+
+post_expand "fix_indent(snip)"
+snippet 'e(l)?i(f)?' "elif statement" br
 elif ${1:[[ ${2:condition} ]]}
 then
 	${3:${VISUAL:code_block}}$0
 endsnippet
 
-snippet ] "condition in if (regex works too)"
-[[ $1 ]]$0
+snippet ] "condition in if (regex works too)" w
+[[ ${1:condition} ]]$0
 endsnippet
 
-# snippet ]] "condition in if with regex"
+snippet ) "condition in if with numeric values" w
+(( ${1:condition} ))
+endsnippet
+
+# # Need ]] for normal use
+# snippet ]] "condition in if with regex" w
 # [[ $1 ]]$0
 # endsnippet
 
-snippet echo "Echo things in bash" b
-echo -e "\\t${1:${VISUAL:text}}"$0
+snippet case "case ... esac block" b
+case "${1}" in
+	${2:pattern1})
+		${3:# code for case `!p snip.rv = t[2]`}
+		;;
+	${4:pattern2})
+		${5:# code for case `!p snip.rv = t[3]`}
+		;;
+	*)
+		${6:# default case}
+		;;
+esac
+endsnippet
+
+post_expand "fix_indent(snip)"
+snippet 'ca?b' "new case block" br
+${1:pattern})
+	${2:# code for `!p snip.rv = t[1]`}
+	;;$0
+endsnippet
+
+snippet 'wh(i(l(e)?)?)?' "while loop" br
+while [[ ${1:condition} ]]
+do
+	${2:# body}
+done$0
+endsnippet
+
+# # Output: printf '\\t'"Text here\\n"$0
+# snippet echo "Echo things in bash" bA
+# printf '\\t'"${1:${VISUAL:text}}\\n"$0
+# endsnippet
+
+# # Output: printf '\\t'"Text here\\n"$0
+# snippet '(,|_)pr' "printf in bash" brA
+# printf "\\t""${1:`!p
+# text = snip.v.text.strip()
+# # text = text.lstrip("echo -m printf").strip('"\'')
+# text = re.sub(r'^\s*(?:echo\s+-m|echo|printf)\s+', '', text)
+# text = text.strip('\"\'')
+# text = re.sub(r'^(?:\\[nt])+', '', text)
+# text = re.sub(r'(?:\\[nt])+$', '', text)
+# text = text.strip('\"\'')
+# text = re.sub(r'^(?:\\[nt])+', '', text)
+# text = re.sub(r'(?:\\[nt])+$', '', text)
+# text = text.strip()
+# if not text:
+# 	snip.rv = "text"
+# else:
+# 	snip.rv = text
+# `}""\\n"$0
+# endsnippet
+
+# Output: printf '\\t'"Text here\\n"$0
+snippet '(,|_)pr' "printf in bash" brA
+printf "\\t""${1:`!p
+text = snip.v.text
+text = strip_remove(text, ["echo", "-m", "printf", "--"], [], '\"\'', '\"\'', strip_lit_esc=True)
+text = strip_remove(text, [], [], '\"\'', '\"\'', True)
+if not text:
+	snip.rv = "text"
+else:
+	snip.rv = text
+`}""\\n"$0
+endsnippet
+
+snippet fn "function" b
+${1:fun_name}(){
+	${2:${VISUAL:code_block}}
+}$0
 endsnippet
 
 snippet ds "Doc-string" b
 # DOC-STRING
 # ${VISUAL}$0
 endsnippet
-
-global !p
-def fix_indent(snip):
-    vim.eval(r'feedkeys("\<c-f>")')
-endglobal
 
 post_expand "fix_indent(snip)"
 snippet hd "HereDoc" b
@@ -48,17 +132,27 @@ $2
 $0
 endsnippet
 
-
-snippet rr "reading response" b
-echo -e "\t$1? [Y/n] \c"
-read response
-if [ "$response" == "${2:n}" ] || [ "$response" == "${3:N}" ]
+# read -p $'\t'"${1:`!p snip.rv = snip.v.text.strip().lstrip("echo -m printf read").strip('\"\'').lstrip('\\t').rstrip('\\n').strip('\"\'').lstrip('\\t').rstrip('\\n')`}.""Do you want to ${2:...}? [Y/n] " ${3:response}
+snippet rry "reading response, default 'y'" b
+read -p $'\t'"Do you want to ${1:...}? [Y/n] " ${2:response}
+if [[ "${$2,,}" =~ ^(n|no)$ ]]
 then
-	echo -e "\t${4:${VISUAL:Quitting}}."
-	${5:do_this}
+	${4:${VISUAL:do_this}}
 else
-	${6:${VISUAL:do_this}}
-fi
-$0
+	printf "\t""${5:Quitting}.""\n"$6
+fi$7
 endsnippet
 
+snippet rrn "reading response, default 'n'" b
+read -p $'\t'"Do you want to ${1:...}? [y/N] " ${2:response}
+if [[ "${$2,,}" =~ ^(y|ye|yes)$ ]]
+then
+	${4:${VISUAL:do_this}}
+else
+	printf "\t""${5:Quitting}.""\n"$6
+fi$7
+endsnippet
+
+snippet yn "yes|no check" b
+$1if [[ "\${$2,,}" =~ ^($3`!p snip.rv = "|ye|yes" if t[3] =='y' else ""``!p snip.rv = "|no" if t[3] == 'n' else ""`)$ ]]$5
+endsnippet

@@ -1,7 +1,7 @@
 ---
 title: {{FILE}}
 author: {{NAME}}
-created: {{TODAY}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
+created: {{YEAR}}-{{MONTH}}-{{DATE}} ({{MONTH_SHORT}}, {{DAY}}) {{TIME}}
 ---
 
 [purpose-statement-index](../purpose-statements/purpose-statement-index)

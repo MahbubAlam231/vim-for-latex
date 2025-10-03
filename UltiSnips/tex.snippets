@@ -5,24 +5,32 @@
 #   |_| \___|/_/\_\ |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                                  |_|    |_|
 
-#-------------------------------------------------------------------
+# ----------------------------------------------------------------
 # Mahbub's TeX snippets
-#-------------------------------------------------------------------
+# ----------------------------------------------------------------
 
 global !p
 from my_snippets_helpers import *
+import re
+
+def fix_indent(snip):
+    vim.eval(r'feedkeys("\<c-f>")')
 endglobal
 
 # TheBeginning{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
+
+snippet upa "Adding a package" b
+\\usepackage`!p snip.rv = "[" if t[2] else ""`${2}`!p snip.rv = "]" if t[2] else ""`{${1:package}}${0}
+endsnippet
 
 snippet title "Title" b
 \title{$1}
 
 \author{Mahbub Alam$2}
 \address{\textbf{Mahbub Alam} \\
-    Department of Mathematics,
-    Uppsala University, Sweden \\
+Department of Mathematics,
+Uppsala University, Sweden \\
 \url{https://sites.google.com/view/mahbubweb}}
 \email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}
 
@@ -35,8 +43,8 @@ endsnippet
 snippet auth "Add author name" b
 \author{${1:Mahbub Alam}}
 \address{\textbf{$1} \\
-    ${2:Department of Mathematics,
-    Uppsala University, Sweden \\
+${2:Department of Mathematics,
+Uppsala University, Sweden \\
 \url{https://sites.google.com/view/mahbubweb}
 \email{mahbub.dta@gmail.com, mahbub.alam@math.uu.se}}
 $0
@@ -61,10 +69,10 @@ endsnippet
 #}}}
 
 # Math Symbols{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # Math set symbols{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # \math__{}{{{
 
@@ -863,7 +871,7 @@ endsnippet
 
 #}}}
 ## MatrixGroups{{{
-##-------------------------------------------------------------------
+## -----------------------------------------------------------------
 
 ## M{{{
 
@@ -5124,7 +5132,7 @@ endsnippet
 
 ##}}}
 # MacroMatrixGroups{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # M{{{
 
@@ -9605,7 +9613,7 @@ endsnippet
 
 #}}}
 # Trig and Other Functions{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet sin "" w
 \sin$0
@@ -9738,7 +9746,7 @@ endsnippet
 
 #}}}
 # SomeOtherShortcuts{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet qed "QED symbol in math" w
 \\qed$0
@@ -9774,10 +9782,10 @@ endsnippet
 
 #}}}
 # Derivative and Integration{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # Inside math-mode{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet pd "Partial symbol" w
 \partial$0
@@ -9833,7 +9841,7 @@ endsnippet
 
 #}}}
 # Outside math-mode{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet dv "Derivative" w
 $\dv{$1}{$2}$$0
@@ -9867,7 +9875,7 @@ endsnippet
 
 #}}}
 # Fractions{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 priority 1000
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wr
@@ -9904,7 +9912,7 @@ endsnippet
 
 #}}}
 # Tilde, Arrows, Limits and Function{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet wt "Create widetilde" w
 \\widetilde{${1:${VISUAL}}\}$0
@@ -9961,7 +9969,7 @@ snippet Llra "If and Only if"
 $\Longleftrightarrow$$0
 endsnippet
 
-snippet iff "If and only if"
+snippet iff "If and only if" w
 $\iff$$0
 endsnippet
 
@@ -9999,7 +10007,19 @@ endsnippet
 
 #}}}
 # SomeCommandsandStuff{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
+
+snippet '\bverb?' "verbatim latex" wr
+\$\verb!${1:${VISUAL:latex_code}}!\$$2
+endsnippet
+
+snippet cmd "surround with command" w
+\\$1\{${2:${VISUAL:text}}\}$3
+endsnippet
+
+snippet $$ "inline math equation" w
+\$${1:${VISUAL:math_eq}}\$$2
+endsnippet
 
 snippet \ "Backslash" wi
 \bs $0
@@ -10020,10 +10040,10 @@ endsnippet
 #}}}
 
 # Environments{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # Main Environments{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # global{{{
 
@@ -10031,9 +10051,10 @@ global !p
 completesDict = {
     'thm'  : 'theorem',
     'defn' : 'definition',
-    'notn' : 'notation'
+    'notn' : 'notation',
+    'cols' : 'columns'
 }
-envs = ['definition', 'notation', 'lemma', 'proposition', 'theorem', 'corollary', 'remark', 'proof', 'conjecture', 'samepage']
+envs = ['definition', 'notation', 'lemma', 'proposition', 'theorem', 'corollary', 'remark', 'proof', 'conjecture', 'samepage', 'columns', 'column']
 
 def thm_prefix(env, beginswith, caveat = ['sam']):
     """TODO: Docstring for thm_prefix.
@@ -10048,6 +10069,7 @@ def thm_prefix(env, beginswith, caveat = ['sam']):
             b = x
             env_beg = env[len(x):]
             break
+
     for y in caveat:
         if env.startswith(y):
             b = ''
@@ -10140,16 +10162,18 @@ endsnippet
 # # }}}
 
 # Output : Section|Part|Chapter - quite unreadable, but works{{{
-snippet '(u?)(s*)(sec|part|cha(p?))' "Section|Part|Chapter" br
+snippet '(u?)(s*)(se?c|part|cha(p?))' "Section|Part|Chapter" br
 % `!p
 num = "unnumbered" if match.group(1) == "u" else ""
 mark = "*" if match.group(1) == "u" else ""
-heading = match.group(3) + complete(match.group(3), ['section', 'chapter'])
+heading_0 = "sec" if match.group(3) == 'sc' else match.group(3)
+heading = heading_0 + complete(heading_0, ['section', 'chapter'])
 for s in match.group(2):
     heading = 'sub' + heading
 store_snip_rv([num, heading], 'w')
 snip.rv = num.capitalize() + heading.capitalize() + "\n\\" + heading + mark`{$1}`!p
-snip.rv = "\\label{" + match.group(2) + match.group(3) + complete(match.group(3), ['sec', 'chap']) + ":" if match.group(1) == "" else ""`$2`!p snip.rv = "}" if match.group(1) == "" else ""`% F{O{L{D
+heading_0 = "sec" if match.group(3) == 'sc' else match.group(3)
+snip.rv = "\\label{" + match.group(2) + heading_0 + complete(heading_0, ['sec', 'chap']) + ":" if match.group(1) == "" else ""`$2`!p snip.rv = "}" if match.group(1) == "" else ""`% F{O{L{D
 ${3:${VISUAL}}
 
 % ${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:$1$2$3)/g} (`!p
@@ -10661,30 +10685,30 @@ endsnippet
 
 #}}}
 # Matrices{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
-snippet mat "Matrix" w
+snippet mat "Matrix" ws
 \begin{matrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{matrix}$0
 endsnippet
 
-snippet pmat "Parenthesis matrix" w
+snippet pmat "Parenthesis matrix" ws
 \begin{pmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{pmatrix}$0
 endsnippet
 
-snippet bmat "Bracket matrix" w
+snippet bmat "Bracket matrix" ws
 \begin{bmatrix}
 	$1 & $2 \\\\
 	$3 & $4
 \end{bmatrix}$0
 endsnippet
 
-snippet mat3 "Matrix 3x3" w
+snippet mat3 "Matrix 3x3" ws
 \begin{matrix}
 	$1 & $2 & $3 \\\\
 	$4 & $5 & $6 \\\\
@@ -10692,7 +10716,7 @@ snippet mat3 "Matrix 3x3" w
 \end{matrix}$0
 endsnippet
 
-snippet pmat3 "Parenthesis matrix 3x3" w
+snippet pmat3 "Parenthesis matrix 3x3" ws
 \begin{pmatrix}
 	$1 & $2 & $3 \\\\
 	$4 & $5 & $6 \\\\
@@ -10700,7 +10724,7 @@ snippet pmat3 "Parenthesis matrix 3x3" w
 \end{pmatrix}$0
 endsnippet
 
-snippet bmat3 "Bracket matrix 3x3" w
+snippet bmat3 "Bracket matrix 3x3" ws
 \begin{bmatrix}
 	$1 & $2 & $3 \\\\
 	$4 & $5 & $6 \\\\
@@ -10708,7 +10732,7 @@ snippet bmat3 "Bracket matrix 3x3" w
 \end{bmatrix}$0
 endsnippet
 
-snippet matn "Matrix m x n" w
+snippet matn "Matrix m x n" ws
 % Matrix
 \renewcommand\arraystretch{1}
 \begin{matrix}
@@ -10719,7 +10743,7 @@ snippet matn "Matrix m x n" w
 \end{matrix}$0
 endsnippet
 
-snippet pmatn "Parenthesis matrix m x n" w
+snippet pmatn "Parenthesis matrix m x n" ws
 % Pmatrix
 \renewcommand\arraystretch{1}
 \begin{pmatrix}
@@ -10730,7 +10754,7 @@ snippet pmatn "Parenthesis matrix m x n" w
 \end{pmatrix}$0
 endsnippet
 
-snippet bmatn "Bracket matrix m x n" w
+snippet bmatn "Bracket matrix m x n" ws
 % Bmatrix
 \renewcommand\arraystretch{1}
 \begin{bmatrix}
@@ -10789,7 +10813,7 @@ endsnippet
 
 #}}}
 # Math tools needed for case-defn{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet case "case"
 \begin{cases}
@@ -10862,26 +10886,27 @@ endsnippet
 
 #}}}
 # Enumeration and tables{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
-global !p
-def fix_indent(snip):
-    vim.eval(r'feedkeys("\<c-f>")')
-endglobal
+# post_expand "fix_indent(snip)"
+# snippet it "Writing \item" b
+# \\item $0
+# endsnippet
 
 post_expand "fix_indent(snip)"
-snippet it "Writing \item" b
+snippet 'it(e)?' "Writing \item" br
 \\item $0
 endsnippet
 
 post_expand "fix_indent(snip)"
-snippet itm "Writing \item" b
-\\item $0
-endsnippet
-
-post_expand "fix_indent(snip)"
-snippet ita "Writing \item<+-|alert@+>" b
+snippet 'it(e(m)?)?a' "Writing \item<+-|alert@+>" br
 \\item<+-|alert@+> $0
+endsnippet
+
+post_expand "fix_indent(snip)"
+snippet 'ri(p|t)' "review/referee item with page and line number" brA
+\\item page $1 `!p
+snip.rv = "line " if t[2] else ""`${2:line_number}: ${3:comment}
 endsnippet
 
 snippet item "Itemize" b
@@ -10904,31 +10929,39 @@ snippet itema "Itemize with alert items" bA
 \end{itemize}$0
 endsnippet
 
-snippet items "Itemize" bA
+snippet items "Itemize with leftmargin" bA
 % Itemize
-\begin{itemize}[leftmargin=1.2em]
+\begin{itemize}[leftmargin=0.5cm]
+	\item ${1:${VISUAL}}
+\end{itemize}$0
+endsnippet
+
+snippet itemn "Itemize without bullets" bA
+% Itemize
+\begin{itemize}[label=]
 	\item ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet itemz "Itemize" bA
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.2em]
+\begin{itemize}[label=\bullet,leftmargin=0.5cm]
 	\item<+-| alert@+> ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet itemize "Itemize" bA
 % Itemize
-\begin{itemize}[label=\bullet,leftmargin=1.2em]
+\begin{itemize}[label=\bullet,leftmargin=0.5cm]
 	\item ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
 snippet enum "Enumeration" b
 % Enumerate
-% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
-\begin{enumerate}[label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
+\begin{enumerate}[label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
+	% \setcounter{enumi}{2}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
 endsnippet
@@ -10936,7 +10969,7 @@ endsnippet
 snippet enuma "Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{enumerate}[label=(\alph*)]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10945,7 +10978,7 @@ endsnippet
 snippet enumr "Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{enumerate}[label=(\roman*)]
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10953,14 +10986,14 @@ endsnippet
 
 snippet henum "Hyper-Enumeration" bA
 % Change format of top-level list items
-\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=1.2em}
+\setlist[enumerate,1]{label*=\Roman*,font=\bfseries,before=\bfseries,leftmargin=0.5cm}
 % Reset formatting for subsequent levels; label type makes 1.1, legal-style labels
-\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=1.2em}
+\setlist[enumerate,2]{label=\arabic*,font=\normalfont,before=\normalfont,leftmargin=0.5cm}
 \setlist[enumerate,3]{label*=.\arabic*,font=\normalfont,before=\normalfont}
 
 
 % Enumerate
-% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{enumerate}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
@@ -10969,6 +11002,7 @@ endsnippet
 snippet enumb "Bare enumerate in sub-level" bA
 % Enumerate
 \begin{enumerate}
+	% \setcounter{enumi}{2}
 	\item ${1:${VISUAL}}
 \end{enumerate}$0
 endsnippet
@@ -10989,7 +11023,7 @@ endsnippet
 
 snippet renum "Reverse Enumeration" b
 % Enumerate
-% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=\arabic*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{etaremune}[label=\arabic*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -10998,7 +11032,7 @@ endsnippet
 snippet renuma "Reverse Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\arabic{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{etaremune}[label=(\alph*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -11007,7 +11041,7 @@ endsnippet
 snippet renumr "Reverse Enumeration" bA
 % Enumerate
 % \renewcommand{\labelenumi}{\emph{\Roman{enumi}.}}
-% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=1.2em]
+% [label=(\alph*),font=\normalfont,before=\normalfont,leftmargin=0.5cm]
 \begin{etaremune}[label=(\roman*)]
 	\item ${1:${VISUAL}}
 \end{etaremune}$0
@@ -11045,8 +11079,8 @@ endsnippet
 
 snippet fra "create frame"
 % Frame
-\begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D
-	$2
+\begin{frame}{${1:Title}\}% F{O{L{D
+	${2:${VISUAL:text}}
 \end{frame}% F}O}L}D
 endsnippet
 
@@ -11062,6 +11096,18 @@ snippet inf "insert frame/break frame into two here"
 \end{frame}% F}O}L}D
 % Frame
 \begin{frame}{${1:${VISUAL:Title}}\}% F{O{L{D$2
+endsnippet
+
+snippet cols "Create columns in beamer" b
+% Columns
+\begin{columns}
+	\begin{column}{0.${1:5}\textwidth}
+		${2:${VISUAL:text}}
+	\end{column}
+	\begin{column}{0.${3:5}\textwidth}
+		${4:more_text}
+	\end{column}
+\end{columns}$0
 endsnippet
 
 snippet infi "break frame and itemize into two here"
@@ -11096,7 +11142,7 @@ endsnippet
 snippet obib "Other bibliography manager" bA
 \begin{thebibliography}{9}
 \bibitem{$1}
-${2:${VISUAL:author}} (${3:${VISUAL:1986}}) ${4:${VISUAL:book name}}, ${5:${VISUAL:publisher}}.
+${3:author} (${4:1986}) ${5:book name}, ${6:publisher}.
 
 % \bibitem{lamport94}
 % Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
@@ -11109,23 +11155,41 @@ snippet nbib "Bibliography with new geometry" bA
 \afterpage{%
 \newgeometry{top=2cm, bottom=1.5cm, left=2.5cm, right=2.5cm}
 % material for this page
+\renewcommand{\baselinestretch}{0}
 ${VISUAL:% Bibliography
-\bibliographystyle{alpha}
-\bibliography{bib}}
-\clearpage
-\restoregeometry
-}
-$0
+\\bibliographystyle{alpha\}
+\\bibliography{bib\}}
+\\clearpage
+\\restoregeometry
+}$0
 endsnippet
 
 snippet cit "Citation" w
-\cite[$1]{$0}
+\cite`!p snip.rv = "[" if t[0] else ""`$0`!p snip.rv = "]" if t[0] else ""`{$1}$2
 endsnippet
 
 
 #}}}
 # Other Environments (SES, Commutative Diagram etc){{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
+
+post_expand "fix_indent(snip)"
+snippet cmt "Put within a fold, easy to comment" b
+% $1 % F{O{L{D
+${2:${VISUAL:text}}
+% F}O}L}D
+$0
+endsnippet
+
+snippet env "create simple environments" b
+% `!p text = strip_remove(t[1], [], [], "", "*")
+number = "Unnumbered" if t[1].endswith("*") else ""
+env = text.capitalize()
+snip.rv = number + env`
+\\begin{${1:env_name}}$2% F{O{L{D
+	${3:${VISUAL:text}}
+\\end{$1}% F}O}L}D$0
+endsnippet
 
 snippet comdx "Making commutative diagram with xymatrix" b
 % CommutativeDiagram
@@ -11144,7 +11208,7 @@ snippet comd "Making commutative diagram with tikz" b
 % CommutativeDiagram
 \begin{center}
 	\begin{tikzcd}
-			% \arrow[dr/from=uldr/to=i-j, dotted/two heads, "{(x,y)}" description]
+			% \arrow[dr/from=uldr/to=i-j, dotted/two heads/sloped/bend left, "\phi"'/"{(x,y)}" description]
 			% T
 			% \arrow[drr, bend left, "x"]
 			% \arrow[ddr, bend right, "y"']
@@ -11152,9 +11216,13 @@ snippet comd "Making commutative diagram with tikz" b
 			%                                           & X \times_Z Y \arrow[r, Leftrightarrow, "p"] \arrow[d, "q"]
 			%                                           & X \arrow[d, "f"] \\\\
 			%                                           & Y \arrow[r, "g"] & Z
-            $1
+			$1
 	\end{tikzcd}$0
 \end{center}
+endsnippet
+
+snippet ar "arrows in tikzcd" w
+\ar[${1:dr/from=uldr/to=i-j}, ${2:dotted/two heads/sloped/bend left}, ${3:"func_name"'/"{(x,y)}" description}]$4
 endsnippet
 
 snippet tikzcd
@@ -11237,9 +11305,10 @@ snippet scope
 \end{scope}
 endsnippet
 
-snippet inp "include pdf" b
-\includepdf[pages=-]{${1:${VISUAL}}\}$0
+snippet inp "include pdf" bA
+\includepdf[pages=-, scale=1.00]{${1:${VISUAL}}\}$0
 endsnippet
+# \includepdf[pages=-, offset=0.7cm -1.3cm, scale=1.00]{${1:${VISUAL}}\}$0
 
 snippet gra "Graphics"
 % Figure
@@ -11268,7 +11337,20 @@ endsnippet
 #}}}
 
 # Others{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
+
+# snippet jkjk "vspace" bA
+# `!p snip.rv = "\\vspace{0." + snip.tabstop(1, "1") + "cm}" `
+# $0
+# endsnippet
+
+snippet vsp "vspace" bA
+\\vspace\{${1:1}cm\}$0
+endsnippet
+
+snippet hsp "hspace" wA
+\\hspace\{0.${1:1}cm\}$0
+endsnippet
 
 # snippet '([A-Za-z])(\d)' "auto subscript" wrA
 # `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
@@ -11318,15 +11400,27 @@ snippet texroot
 % ! TEX root = <FileName>.tex
 endsnippet
 
-snippet cv "CV entry" b
-\cventry{${1:year--year}}{${2:Degree bold}}{${3:Institution italic}}{${4:City normalfont}}{${5:\textit{Grade}}\}{${6:Description normalfont down below}}$0
+snippet pacif "package for if condition" bA
+\usepackage{ifthen}
+\newcommand{\\${1:var_name}}{1} % Set this to 0/2 or 1 $0
 endsnippet
 
+snippet if "if statement" w
+\{\\ifthenelse{\\equal{\\${1:var_name}}{1}\} \{${2:${VISUAL:this if var_name == 1}}\} {${3:else that}}\}$0
+endsnippet
+
+snippet ifl "if statement linewise" b
+\{
+	\\ifthenelse{\\equal{\\${1:var_name}}{1}\}
+	\{${2:${VISUAL:this if var_name == 1}}\}
+	{${3:else that}}
+\}$0
+endsnippet
 
 #}}}
 
 # TextInMathMode{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # \{\} used for better-working-fold
 snippet text "Text" w
@@ -11451,29 +11545,49 @@ snippet tr "Text color red" w
 \textcolor{red}\{${2:${VISUAL}}\}$3
 endsnippet
 
+snippet tg "Text color green" w
+\textcolor{green}\{${2:${VISUAL}}\}$3
+endsnippet
+
 snippet tbc "Text color in bold" w
 \textcolor{${1:red}}{\textbf{${2:${VISUAL}}\}}$3
 endsnippet
 
-snippet tbr "Text color red in bold" w
+snippet '\b(?:tbr|trb)' "Text color red in bold" rwA
 \textcolor{red}{\textbf{${2:${VISUAL}}\}}$3
 endsnippet
 
-snippet quo "Single quoting visually selected text"
-\`${VISUAL}'$2
+snippet quo "Single quoting visually selected text" w
+\`${1:${VISUAL:text}}'$2
 endsnippet
 
-snippet qquo "Double quoting visually selected text"
-\`\`${VISUAL}''$2
+snippet qquo "Double quoting visually selected text" w
+\`\`${1:${VISUAL:text}}''$2
+endsnippet
+
+snippet '' "Single quoting visually selected text" iA
+\`${1:${VISUAL:text}}'$2
+endsnippet
+
+snippet "" "Double quoting visually selected text" wA
+\`\`${1:${VISUAL:text}}''$2
+endsnippet
+
+snippet 2' "normal single quote" wA
+'${1:${VISUAL:text}}'$2
+endsnippet
+
+snippet 2" "normal double quote" wA
+"${1:${VISUAL:text}}"$2
 endsnippet
 
 #}}}
 
 # Alphabets#{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 # English Alphabets{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet a "" w
 $a$$0
@@ -12548,7 +12662,7 @@ endsnippet
 
 #}}}
 # Greek Alphabets{{{
-#-------------------------------------------------------------------
+# -----------------------------------------------------------------
 
 snippet al "" w
 $\alpha$$0
@@ -12771,5 +12885,42 @@ $\Omega$$0
 endsnippet
 
 #}}}
+
+#}}}
+
+# CV{{{
+
+snippet incv "include CV in cover letter" bA
+\thispagestyle{empty}
+\includepdf[pages=-, offset=0.7cm -1.3cm, scale=1.00]{../fortyCV/CV-Mahbub-Alam-$1`!p snip.rv = complete(t[1], ['english', 'svenska'])`.pdf}
+$0
+endsnippet
+
+snippet cv "CV entry (moderncv)" b
+\cventry`!p
+snip.rv = "[" if t[9] else ""`$9`!p snip.rv = "]" if t[9] else ""
+`{${1:year--year/heading}}{${2:Degree bold}}{${3:Institution italic}}{${4:City normalfont}}{${5:\textit{Grade}}\}{${6:Description normalfont down below}}$7
+endsnippet
+
+snippet cvi "CV item with fortyCV" b
+\cvitem{${1:${VISUAL:job, institution}}\}{${2:short-description}}{${3:description}}{${4:year--year}}$0
+endsnippet
+
+snippet twi "CV entry with twentysecondcv" bA
+\twentyitem{${1:<dates/heading>}}{${2:<title>}}{${3:<location>}}{${4:<description>}}
+endsnippet
+
+snippet 'tw(s)?' "begin twentyshort (twentysecondcv)" br
+\begin{${1:`!p snip.rv = "twentyshort" if match.group(1) else "twenty"`}}
+	\twentyitem{${2:<dates/heading>}}{${3:<title>}}{${4:<location>}}{${5:<description>}}
+\end{$1}$0
+endsnippet
+
+snippet ame "about me section" b
+% ${1:Company name}% F{O{L{D
+${2:${VISUAL:about me text}}
+
+% F}O}L}D$0
+endsnippet
 
 #}}}

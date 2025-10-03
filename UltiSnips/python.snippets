@@ -11,23 +11,199 @@
 # |___/|_| |_||_|| .__/ | .__/  \___| \__||___/
 #                |_|    |_|
 
+# global{{{
 global !p
 from my_snippets_helpers import *
+import re
+
+# Use file_extensions in the complete function
+file_extensions = ['txt', 'py', 'csv', 'json', 'xlsx', 'sql']
+df_filetype = ["csv", "sql", "excel", "json", "table"]
+df_file_ext = ["csv", "sql", "xlsx", "json", "txt"]
 
 def fix_indent(snip):
     vim.eval(r'feedkeys("\<c-f>")')
 
 endglobal
+# }}}
+
+# Modules{{{
+
+snippet 'f(r|i)' "from this module import that method" br
+from ${1:${VISUAL:module}} import ${2:method}
+endsnippet
+
+snippet im "import module" b
+import ${1:module}
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(?<=\.)sq' "math.sqrt" wr
+sqrt(${1:${VISUAL:expression}})$0
+endsnippet
+
+snippet '\b(mat?h?\.?)sq' "math.sqrt" wAr
+math.sqrt(${1:${VISUAL:expression}})$0
+endsnippet
+
+snippet '\b(d|D)ec' "Decimal method" rw
+Decimal('${1:${VISUAL:num}}')$0
+endsnippet
+
+snippet np "import Numpy" b
+import numpy as np
+np.set_printoptions(precision=2)
+endsnippet
+
+snippet impt "import plot" bA
+import matplotlib.pyplot as plt
+endsnippet
+
+snippet pd "pandas" b
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy
+$0
+endsnippet
+
+snippet 'mp(l|t)' "matplotlib.pyplot as plt" rb
+import matplotlib.pyplot as plt
+endsnippet
+
+snippet 'iam|ima' "import all module" brA
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # suppress INFO, WARNING, ERROR logs
+
+import numpy as np
+np.set_printoptions(precision=3)
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy
+import re
+endsnippet
+
+# Time module{{{
+
+snippet 'ti(m(e)?)?' "Importing and start_time" br
+import time
+t_0 = time.time()$0
+endsnippet
+
+snippet tz "time start of a program" b
+t_0 = time.time()
+endsnippet
+
+snippet 'tz(s|z)' "time start of a sub-program" rb
+t_1 = time.time()
+endsnippet
+
+snippet rt "Print runtime of a program" b
+print(f"\nProgram ran for {time.time() - t_0:.3f} secs.\n")$0
+endsnippet
+
+snippet 'rt(s|z)' "Print runtime of a sub-program" rb
+print(f"\nSub-program ran for {time.time() - t_1:.3f} secs.\n")$0
+endsnippet
+
+snippet 'rtt(z|s|a)' "rtts, rttz, rtta: Print runtime and start new time" brA
+print(f"\nProgram ran for {time.time() - t_0:.3f} secs.\n")
+t_0 = time.time()$0
+endsnippet
+
+# }}}
+
+snippet '(s)?(ex|qu)' "exit() or sys.exit()" br
+`!p snip.rv = "sys." if match.group(1) == 's' else ""`exit()
+endsnippet
+
+snippet 'em|ifmain' "Execute modules" brA
+if __name__ == "__main__":
+	${1:${VISUAL:main()}}$0
+endsnippet
+
+# }}}
+
+# TensorFlow Keras{{{
+
+snippet tf "Import TensorFlow stuff" b
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # suppress INFO, WARNING, ERROR logs
+
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+# Limit to 4 threads for parallel ops
+tf.config.threading.set_intra_op_parallelism_threads(4)
+tf.config.threading.set_inter_op_parallelism_threads(4)
+import keras
+from tensorflow.keras.layers import Dense, Input, Normalization
+from tensorflow.keras import Sequential
+from tensorflow.keras.losses import MeanSquaredError, BinaryCrossentropy
+from tensorflow.keras.activations import sigmoid
+$0
+endsnippet
+
+snippet '(?:S|s)eq' "Sequential" brA
+${1:model} = Sequential([
+	$2
+])$0
+endsnippet
+
+snippet '(?:D|d)en' "Dense layer" brA
+Dense(units=${1:1}, activation="${2:sigmoid}")$0
+endsnippet
+
+snippet '\b(?<=\.)comp' "model compile" rw
+compile()$0
+endsnippet
+
+snippet '\b(?<=\.)fit' "model fitting" rwA
+fit(${1:X_train}, ${2:y_train})$0
+endsnippet
+
+snippet '\b(?<=\.)pred' "model predict" rw
+predict()$0
+endsnippet
+
+# }}}
+
+# sklearn{{{
+
+snippet 'tts' "train_test_split" rw
+X_train, X_test, y_train, y_test = train_test_split(X_${1:<dataset>}, y_${2:$1}, random_state=0, stratify=y)
+$0
+endsnippet
+
+snippet 'fr?sk' "import from sklearn" rbA
+from sklearn`!p snip.rv = "." if t[1] else ""`${1:model_selection} import ${2:train_test_split}$0
+endsnippet
+
+snippet sklr "import LinearRegression" bA
+from sklearn import LinearRegression$0
+endsnippet
+
+snippet skrr "import RidgeRegression" bA
+from sklearn import RidgeRegression$0
+endsnippet
+
+snippet sklg "import LogisticRegression" bA
+from sklearn import LogisticRegression$0
+endsnippet
+
+# }}}
 
 # Numpy{{{
 
-snippet 'np(a)?r' "np.array" wAr
-np.array($1)
+snippet '\bnp(a)?r' "np.array" wAr
+np.array(${1:${VISUAL:np_array}})
 endsnippet
 
-# Output : works only if there's a . in front
-snippet '(np\.)?arr' "np.arr" wAr
-np.array($1)$0
+# Output : works only if there's 'np.' in front
+snippet '\b(?<=np\.)arr(ay)?' "np.arr" wAr
+array(${1:${VISUAL:np_array}})$0
 endsnippet
 
 snippet npad "np.add" wA
@@ -46,63 +222,233 @@ snippet npd "np.divide" wA
 np.divide(${3:a}${1:1}, ${4:a}${2:2})$0
 endsnippet
 
+# Needs fixing?
 snippet '(np\.)?dot' "np.dot" wAr
-np.dot(${3:a}${1:1}, ${4:a}${2:2})$0
+np.dot(${1:a}, ${2:b})$0
 endsnippet
 
-snippet '(np\.)?res' "np.reshape" wAr
-np.reshape($1)$0
+# Triggers only if there is a "." in front
+snippet '(?<=\.)res' "np.reshape" wAr
+reshape(${1:${VISUAL:-1}}, ${2:${VISUAL:-1}})$0
+endsnippet
+
+snippet tres "tf.reshape" wA
+${1:Tensor} = tf.reshape($1, (${2:${VISUAL:-1}}, ${3:${VISUAL:-1}}))$0
+endsnippet
+
+snippet '^seed' "np.random.seed(1)" rbA
+np.random.seed(${1:1})
+$0
+endsnippet
+
+snippet '\b(min|max)' "min and max in numpy" rw
+`!p snip.rv = match.group(1)`(`!p snip.rv = "axis=" if t[1] else ""`${1:0})$0
+endsnippet
+
+snippet ras "random_state = 42" w
+random_state = ${1:42}$0
+endsnippet
+
+snippet rng "Creating a random number generator" b
+rng = np.random.default_rng(${1:50})
+$0
 endsnippet
 
 # }}}
 
-# mathplotlib {{{
+# matplotlib {{{
 
 snippet pt. "plt." wA
 plt.$0
 endsnippet
 
+snippet '(?:gra|pl?ot)' "plot functions" rbA
+plt.plot(${1:x-coor}, ${2:y-coor}`!p snip.rv = ', label="' if t[3] else ""`$3`!p snip.rv = '"'` if t[3] else "")$0
+endsnippet
+
+snippet '(?:plt\.)?xla' "xlabel for plots" rbA
+plt.xlabel("${1:xlabel}")$0
+endsnippet
+
+snippet '(?:plt\.)?yla' "ylabel for plots" rbA
+plt.ylabel("${1:ylabel}")$0
+endsnippet
+
+snippet '(?<=\.)sex' "set_xlabel" wr
+set_xlabel($1)$0
+endsnippet
+
+snippet '(?<=\.)sey' "set_ylabel" wr
+set_ylabel($1)$0
+endsnippet
+
+snippet '((plt\.)|(pt?))cl((os?)e?)?' "plt.close()" rwA
+plt.close(`!p snip.rv = "block=" if t[1] else ""`$1)$0
+endsnippet
+
+snippet '((plt\.)|(pt?))sh(ow?)?' "plt.show()" rwA
+plt.show(`!p snip.rv = "block=" if t[1] else ""`$1)$0
+endsnippet
+# if 1:
+# 	plt.show(`!p snip.rv = "block=" if t[1] else ""`$1)
+# else:
+# 	plt.close()
+
 snippet psf "plot save figure" bA
-plt.savefig('${1:foo}.jpg')$0
+plt.savefig(`!p snip.rv = "f" if '{' in t[1] and '}' in t[1] else ""`'${1:\{${2:file_name}\}}.jpg')$0
+endsnippet
+
+snippet 'pfi' "plot figure" brA
+file_name='${1:file_name}'
+plt.figure(file_name)$0
+endsnippet
+
+snippet '([a-zA-Z_0-9,\s]*\s*=\s*)?(?:sps|plt\.sps)' "subplots with plt" rbA
+`!p var_names = match.group(1)
+var_names = strip_remove(var_names, strip_right = "=")
+snip.rv = var_names if var_names else "_, ax"
+` = plt.subplots(${1:1}, ${2:3}, figsize=(12, 3)`!p snip.rv = ", sharey=" if t[4] else ""`${4:True}`!p snip.rv = complete(t[4], ["True", "False"]) if t[4] else ""`)$0
+endsnippet
+
+# snippet '^([a-zA-Z_0-9]*(\[)*[a-zA-Z_0-9]*(\])*)?(sca|plt\.sca)' "plot scatter" rbA
+# `!p snip.rv = match.group(1) if match.group(1) else "plt"`.scatter(${1:x_axis}, ${2:y_axis})$0
+# endsnippet
+
+snippet '((?:[A-Za-z_]\w*(?:\[[^\]]+\])?)\.)?scat' "plot scatter" rbA
+`!p snip.rv = (match.group(1)[:-1].strip() if match.group(1) else "plt")`.scatter(${1:x_axis}, ${2:y_axis})$0
+endsnippet
+
+# snippet '\b(.*)\.(hist?|bar|scat(t?)?)' "plot (hist/bar/scatter)" rwA
+snippet '\b(.*)\.(pl?t)' "plot (hist/bar/scatter)" rwA
+file_name = '${1:file_name}'
+plt.figure(file_name)
+`!p snip.rv = match.group(1)`.${2|hist,bar,scatter|}(${3:x, y or bins}${4:, edgecolor='${5:black}'})
+# Axis labels and title
+plt.xlabel("${6:x-label}")
+plt.ylabel("${7:y-label}")
+plt.title("${8:title}")
+plt.savefig(f"{file_name}.jpg")
+if 0:
+	plt.show()
+else:
+	plt.close()$0
+endsnippet
+
+# # Not well written; any sca creates output
+# # Output: create a histogram or bar graph from pd.Series
+# snippet '(^|\.)(hist?|bar|sca(tt?)?)' "create histogram or bar" rwA
+# file_name='${1:file_name}'
+# plt.figure(file_name)
+# `!p snip.rv = match.group(1)`.${2:`!p snip.rv = match.group(3)`}`!p snip.rv = complete(t[2], ['hist', 'bar', 'scatter'])`(${3:<no_of_bins or x,y>}`!p
+# is_hist = t[2] + complete(t[2], ['hist', 'bar'])
+# snip.rv = ", " if is_hist == 'hist' and t[3] else ""``!p
+# is_hist = t[2] + complete(t[2], ['hist', 'bar'])
+# snip.rv = "edgecolor=" if is_hist == 'hist' and t[4] else ""`${5:`!p snip.rv = "\'" if t[4] else ""`}${4:`!p
+# is_hist = t[2] + complete(t[2], ['hist', 'bar'])
+# snip.rv = "black" if is_hist == 'hist' else ""`}$5)
+# # x/y coordinate labels
+# plt.xlabel("${6:x-coor}")
+# plt.ylabel("${7:y-coor}")
+# plt.title("${8:title}")
+# plt.savefig(f'{${9:file_name}}.jpg')
+# if 0:
+# 	plt.show()
+# else:
+# 	plt.close()$0
+# endsnippet
+
+# snippet '(^|\.)(sca(tt?)?|pt|pl?ot?)' "scatter plot, or x-y plot" rb
+# file_name='${1:file_name}'
+# plt.figure(file_name)
+# x=${2:Series/array/linspace/range}
+# y=${3:Series/array/function}
+# plt.${4:`!p snip.rv = match.group(2)[0]`}`!p snip.rv = complete(t[4], ['scatter', 'plot'])`(${5:x, y})
+# # x/y coordinate labels
+# plt.xlabel("${6:x-coor}")
+# plt.ylabel("${7:y-coor}")
+# plt.title("${8:`!p snip.rv = t[4].upper() + complete(t[4].upper(), ['Scatter plot', 'Plot'])` of $7 and $6}")
+# plt.legend()
+# plt.grid(True)
+# plt.savefig(f'{${9:file_name}}.jpg')
+# if 0:
+# 	plt.show()
+# else:
+# 	plt.close()$0
+# endsnippet
+
+snippet pla "plot labels for x/y coordinates" bA
+plt.$1label("${2:xyz-coord}")$0
+endsnippet
+
+snippet pti "plot title" bA
+plt.title("${1:title}")$0
 endsnippet
 
 # }}}
 
 # Pandas{{{
 
-# Output: df1 = pd.read_csv('filename.csv')
-#         A B                              .
-snippet '((\w+)?( )*=( )*)(rc|rcs|rs|rx)' "rc, rcs, rs read csv file; depends on if ' = ' precedes; captures digit before ' = '" rw
-${3:`!p
-# A
-symbols = (' ', '=')
-string, end_digit = strip_end_digits(match.group(1), symbols)
-store_snip_rv(strip_end_digits(match.group(1), symbols), 'w')
-snip.rv = "df" if string == "" else string
-`}${4:`!p
-# B
-snip.rv = retrieve_snip_rv((1,))
-`} = pd.read_`!p snip.rv = "excel" if match.group(5) == 'rx' else "csv"`('${1:filename}.`!p snip.rv = "xslx" if match.group(5) == 'rx' else "csv"`')$2
+# Output: to_list etc
+snippet '(?<=\.)t(o|x)' "to_(list|dict|etc)" rw
+to_${1:l}`!p snip.rv = complete(t[1], ['list', 'dict', 'numpy'])`()$0
 endsnippet
 
-# Output: df1.to_csv('filename.csv', index=False)
-#         A B                                    .
-snippet '(^|^(\w+)?\.)(wc|ws)' "wc, ws write to csv file; depends on if . precedes; captures digit before ." rw
-${3:`!p
-# A
-symbols = ('.')
-string, end_digit = strip_end_digits(match.group(1), symbols)
-store_snip_rv(strip_end_digits(match.group(1), symbols), 'w')
-snip.rv = "df" if string == "" else string
-`}${4:`!p
-# B
-snip.rv = retrieve_snip_rv((1,))
-`}.to_csv('${1:filename}.csv', index=False)$2
+# Output : df.groupby($1, as_index=False)
+snippet '(?<=\.)g(b|y|by)' "groupby method" r
+groupby([${1:column names}], as_index=False)
+$0
+endsnippet
+
+# Output : reset_index(drop=True)
+snippet '(?<=\.)rsi' "reset_index() in a dataframe" rwA
+reset_index(`!p snip.rv = "drop=" if t[1] else ""`${1:True})$0
+endsnippet
+
+snippet '(?<=pd\.)cut' "creating bins in pandas" rw
+cut(${1:Pandas.Series/1-dim-array}, ${2:bins}`!p snip.rv = ", labels=" if t[3] else ""`${3:group_names}`!p snip.rv = ", include_lowest=" if t[4] else ""`${4:True})$0
+endsnippet
+
+# Output: df.rename($1,2:dict, axis=$3:0, inplace=$4:True)
+snippet '(?<=\.)ren' "pandas rename columns" rw
+rename(${1:\{${2:dict/map/function}\}}, axis=${3:1}`!p snip.rv = ", inplace=" if t[4] else ""`${4:True})$0
+endsnippet
+
+snippet '\b(?<=\.)prep?' "pandas replace function" rw
+replace(${1:old_value}, ${2:new_value}`!p snip.rv = ", inplace=" if t[3] else ""`${3:True})$0
+endsnippet
+
+snippet inp "inplace replacement" w
+inplace=${1:True}$0
+endsnippet
+
+snippet '(?<=\.)in(fo?)?' "pandas info function" rw
+info()$0
+endsnippet
+
+snippet '(?<=\.)des' "pandas description function" rw
+describe(`!p snip.rv = "include=\"" if t[1] else ""`${1:${VISUAL:}}`!p snip.rv = "\"" if t[1] else ""`)$0
+endsnippet
+
+snippet '(?<=\.)dty' "pandas data-type" rwA
+dtype$0
+endsnippet
+
+snippet '(?<=\.)dts' "pandas data-type" rwA
+dtypes$0
+endsnippet
+
+snippet '(?<=\.)ast' "dataframe column astype" rwA
+astype(${1:int})$0
 endsnippet
 
 # Triggers only if there is a "." in front
-snippet '(pd\.)?df' "Create dataframe" rw
-pd.DataFrame(${1:dict/nested_list}`!p snip.rv = ", columns = " if t[2] else ""`$2)$0
+snippet '(?<=\.)hea?' "df.head method, 5 rows by default" rw
+head($1)$0
+endsnippet
+
+# Triggers only if there is a "." in front
+snippet '(?<=\.)tai?' "df.tai method, 5 rows by default" rw
+tail($1)$0
 endsnippet
 
 # Triggers only if there is a "." in front
@@ -125,6 +471,174 @@ snippet '(?<=\.)u(ni)?q' "unique elements" rw
 unique()$0
 endsnippet
 
+snippet '(?<=\.)apy' "apply in DF: make changes col(s), takes a function" rwA
+apply(${1:fun_name})$0
+endsnippet
+
+# Output: pd.DataFrame(dict, columns=headers)
+snippet '\b(pd\.)?DF' "Creating dataframe without assigning" rwA
+pd.DataFrame(${1:dict/nested_list}`!p snip.rv = ", columns = " if t[2] else ""`${2:headers})$0
+endsnippet
+
+# Output: pd.DataFrame(dict, columns=headers)
+snippet '\bpdf' "Creating dataframe without assigning" rw
+pd.DataFrame(${1:dict/nested_list}`!p snip.rv = ", columns = " if t[2] else ""`${2:headers})$0
+endsnippet
+
+# Creating DataFrame
+# Output: df1 = pd.DataFrame(<dict_obj>)
+#         A B                              .
+# df1 is last tabstop
+snippet '(^|^(\w+)?\s*=?\s*)(?:pd\.)?df' "Creating dataframe in python; doesn't depend on if ' = ' precedes; captures digits at the end of match.group(2) = \w+" rw
+${4:`!p
+# A
+# symbols = (' ', '=')
+symbols = ()
+string, end_digit = strip_end_digits(match.group(2), symbols)
+store_snip_rv([string, end_digit])
+
+snip.rv = "df" if not string.rstrip("_") else string.rstrip("_")
+# df is last tabstop
+`}`!p
+string = retrieve_snip_rv((0,))
+snip.rv = "_" if string.endswith("_") else ""`${3:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`} = pd.DataFrame(${1:${VISUAL:<dict_obj>}})$2
+endsnippet
+
+# Reading csv files
+# Output: df1 = pd.read_csv('filename.csv')
+#         A B                              .
+# Output: df_1 = pd.read_csv('filename.csv')
+#         A CB                              .
+# df1 is last tabstop
+snippet '(^|^(\w*)\s*=?\s*)(pd\.)?(rc|rcs|rs|rx)' "rc, rcs, rs, rx read csv/excel file; doesn't depend on if ' = ' precedes; captures digits at the end of match.group(2) = \w+" rw
+${5:`!p
+# A: df_name_string
+# symbols = (' ', '=')
+symbols = ()
+string, end_digit = strip_end_digits(match.group(2), symbols)
+store_snip_rv([string, end_digit])
+
+snip.rv = "df" if not string.rstrip("_") else string.rstrip("_")
+# df is last tabstop
+`}`!p
+# C: underscore
+string = retrieve_snip_rv((0,))
+snip.rv = "_" if string.endswith("_") else ""`${4:`!p
+# B: number
+snip.rv = retrieve_snip_rv((1,))
+`} = pd.read_`!p snip.rv = "excel" if match.group(4) == 'rx' else "csv"`('${1:`!p
+# filename
+snip.rv = "filename" if not retrieve_snip_rv((0,)).rstrip("_") else match.group(2)
+`}.`!p snip.rv = "xlsx" if match.group(4) == 'rx' else "csv"`'`!p snip.rv = ", header=" if t[2] else ""`${2:None})$3
+endsnippet
+
+# Reading dataframes from (csv|sql|excel|json) files
+# Output: df1 = pd.read_csv('filename.csv')
+#         A B                              .
+# df1 is last tabstop
+# snippet '(^|([a-zA-Z\_]*)(\d*)\s*=?\s*)(pd\.)?r(p|df)' "Read pandas dataframe/read_csv/json etc" rw
+snippet '(^\s*|\w+\s*=?)\s*(?:pd\.)?\br(p|df)' "Read pandas dataframe/read_csv/json etc" rwA
+`!p
+symbols = ('=',)
+string, end_digit = strip_end_digits(match.group(1), symbols)
+store_snip_rv([string, end_digit])
+
+snip.rv = string.rstrip("_") if not string.lstrip().rstrip("_") else ""
+`${6:`!p
+# A
+string = retrieve_snip_rv((0,))
+snip.rv = "df" if not string.lstrip().rstrip("_") else string.rstrip("_")
+# df is last tabstop
+`}`!p
+string = retrieve_snip_rv((0,))
+snip.rv = "_" if string.endswith("_") else ""`${5:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`} = pd.read_${1:csv}`!p snip.rv = complete(t[1], df_filetype) if t[1] else "csv"`('${2:`!p
+# filename
+snip.rv = "filename" if not retrieve_snip_rv((0,)).rstrip("_") else "".join(retrieve_snip_rv())
+`}${3:`!p
+filetype = t[1] + complete(t[1], df_filetype)
+ext_map = dict(excel = "xlsx", table='txt')
+final_ext = ext_map.get(filetype, filetype)
+snip.rv = "" if t[2].endswith("." + final_ext) else "." + final_ext
+`}'${8:`!p
+if t[2].endswith('.json') or t[3].lstrip(".") == "json":
+    snip.rv = ""
+else:
+    snip.rv = ", header=" if t[4] else ""`}${4:`!p
+if t[2].endswith('.json') or t[3].lstrip(".") == "json":
+    snip.rv = ""
+# elif t[2].endswith('.csv') or t[3].lstrip(".") == "csv":
+#     snip.rv = ""
+else:
+    snip.rv = "None"
+`}) # delete header=None if file has header$0
+endsnippet
+
+# Fix later
+# Writing dataframes from (csv|sql|excel|json) files
+# Output: df1 = pd.read_csv('filename.csv')
+#         A B                              .
+# df1 is last tabstop
+# snippet '\b(^|([a-zA-Z\_]*)(\d*)\s*=?\s*)(pd\.)?w(p|df)' "Write pandas dataframe/to_csv/json etc" rw
+# snippet '(^\s*|\w+\s*=?)\s*(?:pd\.)?\br(p|df)'
+snippet '(^\s*|\w+)(\.)?\bw(p|df)' "Write pandas dataframe/read_csv/json etc" rwA
+`!p
+symbols = ('.',)
+string, end_digit = strip_end_digits(match.group(1), symbols)
+store_snip_rv([string, end_digit])
+
+snip.rv = string.rstrip("_") if not string.lstrip().rstrip("_") else ""
+`${8:`!p
+# A
+string = retrieve_snip_rv((0,))
+snip.rv = "df" if not string.lstrip().rstrip("_") else string.rstrip("_")
+# df is last tabstop
+`}`!p
+string = retrieve_snip_rv((0,))
+snip.rv = "_" if string.endswith("_") else ""`${7:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`}.to_${1:csv}`!p snip.rv = complete(t[1], df_filetype)`('${2:filename}.${3:`!p
+filetype = t[1] + complete(t[1], df_filetype)
+ext_map = dict(excel = "xlsx", table="txt")
+snip.rv = ext_map.get(filetype, filetype)
+`}'`!p snip.rv = ", index=" if t[4] else ""`${4:False}`!p snip.rv = ", header=" if t[5] else ""`${5:None})$6
+endsnippet
+
+# Writing csv files
+# Output: df1.to_csv('filename.csv', index=False)
+#         A B                                    .
+# df1 is last tabstop
+# snippet '((\)|\w+)\.)?(ts|wc|ws)' "wc, ws write to csv file; depends on if . precedes; captures digit before ." rb
+snippet '((?:.+)\.)?(?:ts|wc|ws)' "wc, ws write to csv file; depends on if . precedes; captures digit before ." rb
+${3:`!p
+# A
+symbols = ('.',)
+string, end_digit = strip_end_digits(match.group(1), symbols)
+store_snip_rv([string, end_digit])
+
+snip.rv = "df" if not string.rstrip("_") else string.rstrip("_")
+
+# if not string or (string == "_" and not end_digit):
+#     snip.rv = "df"
+# elif string == "_" and end_digit:
+#     snip.rv = "df_"
+# else:
+#     snip.rv = string
+# df is last tabstop
+`}`!p
+string = retrieve_snip_rv((0,))
+snip.rv = "_" if string.endswith("_") else ""`${4:`!p
+# B
+snip.rv = retrieve_snip_rv((1,))
+`}.to_csv('${1:filename}.csv', index=False)$2
+endsnippet
+
 # snippet '(\.?)rs' "read csv" rw
 # ${1:df} = pd.read_csv('${2:filename}.csv)$0
 # endsnippet
@@ -140,54 +654,54 @@ endsnippet
 # Files{{{
 
 snippet rf "Read file" w
-${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], ['txt', 'csv', 'py', 'xlsx'])`', 'r')$0
+${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], file_extensions)`', 'r')$0
 endsnippet
 
 snippet wf "Write file" w
-${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], ['txt', 'csv', 'py', 'xlsx'])`', 'w')$0
+${1:file${2:1}}=open('${3:filename}.${4:txt}`!p snip.rv = complete(t[4], file_extensions)`', 'w')$0
 endsnippet
 
-snippet ofr "Open file to read and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'r') as f:
+snippet 'ofr' "Open file to read and auto-close" rwA
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', 'r') as f:
 	${3:data} = f.${4:read()}
 endsnippet
 
 snippet ofw "Open file to write and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', 'w') as f:
 	${3:data} = f.${4:read()}
 endsnippet
 
 snippet ofa "Open file to append and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', 'a') as f:
 	${3:data} = f.${4:read()}
 endsnippet
 
 snippet ofv "Open file in a 'vice' to work on it and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', '${3:a+}') as f:
+with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', '${3:a+}') as f:
 	${4:data} = f.${5:read()}
 endsnippet
 
 # snippet fr "Open file to read and auto-close" wA
 # with open('${1:filename}.${2:txt}`!p
-# snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx']) if t[2] else ""
+# snip.rv = complete(t[2], file_extensions) if t[2] else ""
 # `', 'r') as f:
 # 	${3:data} = f.${4:read()}
 # endsnippet
 
-snippet fw "Open file to write and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
-	${3:data} = f.${4:read()}
-endsnippet
+# snippet fw "Open file to write and auto-close" wA
+# with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', 'w') as f:
+# 	${3:data} = f.${4:read()}
+# endsnippet
 
-snippet fa "Open file to append and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', 'w') as f:
-	${3:data} = f.${4:read()}
-endsnippet
+# snippet fa "Open file to append and auto-close" wA
+# with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', 'w') as f:
+# 	${3:data} = f.${4:read()}
+# endsnippet
 
-snippet fv "Open file in a 'vice' to work on it and auto-close" wA
-with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], ['txt', 'csv', 'py', 'xlsx'])`', '${3:a+}') as f:
-	${4:data} = f.${5:read()}
-endsnippet
+# snippet fv "Open file in a 'vice' to work on it and auto-close" wA
+# with open('${1:filename}.${2:txt}`!p snip.rv = complete(t[2], file_extensions)`', '${3:a+}') as f:
+# 	${4:data} = f.${5:read()}
+# endsnippet
 
 # snippet fn "File name" w
 # name$0
@@ -206,7 +720,7 @@ snippet '(?<=\.)rl' "Read line" rw
 readline($1)$0
 endsnippet
 
-snippet '(?<=\.)rls' "Read all lines" rw
+snippet '(?<=\.)rls' "Read all lines" wAr
 readlines()$0
 endsnippet
 
@@ -215,17 +729,18 @@ endsnippet
 
 # Classes{{{
 
+# `!p snip.rv = "# Class attributes (shared by all instances)\n" if t[4] else ""`	${4:class_attribute = value}`!p snip.rv = "\n\t" if t[4] else ""`
 snippet class "class with docstrings" b
-class ${1:my_class}(${2:object}):
+class ${1:MyClass}(${2:object}):
 
 	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
 
-	def __init__(self$4):
-		`!p snip.rv = triple_quotes(snip)`${5:TODO: to be defined.}`!p
+	def __init__(`!p snip.rv = "self, " if t[5] else ""`${5:arg1}):
+		`!p snip.rv = triple_quotes(snip)`${6:TODO: to be defined.}`!p
 snip.rv = ""
 snip >> 2
 
-args = get_args(t[4])
+args = get_args(t[5])
 
 write_docstring_args(args, snip)
 if args:
@@ -238,9 +753,9 @@ write_init_body(args, t[2], snip)
 endsnippet
 
 snippet cl "Create class" b
-class ${1:class_name}(${2:object}):
-	`!p snip.rv = "# Class attributes (shared by all instances)\n" if t[3] else ""`	${3:class_attribute = value}
-	def __init__(`!p snip.rv = "self, " if t[5] else ""`${5:arg1}):
+class ${1:MyClass}(${2:object}):
+	`!p snip.rv = "# Class attributes (shared by all instances)\n" if t[3] else ""`	${3:class_attribute = value}`!p snip.rv = "\n\t" if t[3] else ""`
+    def __init__(`!p snip.rv = "self, " if t[5] else ""`${5:arg1}):
 		self.$5 = ${6:$5}
 		$7
 $0
@@ -254,11 +769,9 @@ snippet svi "Initialize variable inside classes" w
 self.${1:${VISUAL:var_name}} = ${2:$1}$0
 endsnippet
 
-snippet cfn "Defining functions in classes" bm
+snippet cfn "Defining functions in classes" b
 def ${1:fun_name}(self, ${2:arg}):
 	${3:${VISUAL:# function_body}}$4
-
-	return$5
 $0
 endsnippet
 
@@ -269,11 +782,9 @@ $0
 endsnippet
 
 
-snippet fns "Defining functions in classes" bm
-def ${1:fun_name}(self, ${2:arg}):
+snippet fns "Defining functions in classes" b
+def ${1:fun_name}(self`!p snip.rv = ", " if t[2] else ""`${2:arg}):
 	${3:${VISUAL:# function_body}}$4
-
-	return$5
 $0
 endsnippet
 
@@ -298,80 +809,19 @@ endsnippet
 
 # }}}
 
-snippet em "Execute modules"
-if __name__ == "__main__":
-	${1:${VISUAL:pass}}$0
-endsnippet
+# Braces, quotes, delimiters{{{
 
-# Modules{{{
-
-snippet fr "from this module import that method" b
-from ${1:module} import ${2:method}
-endsnippet
-
-snippet im "import module" b
-import ${1:module}
-endsnippet
-
-snippet np "Numpy" b
-import numpy as np
-endsnippet
-
-snippet pd "pandas" b
-import pandas as pd
-endsnippet
-
-snippet iam "import all module" bA
-import numpy as np
-import pandas as pd
-import re
-import time
-ts = time.time()$0
-endsnippet
-
-# Time module{{{
-
-snippet time "Importing and start_time" b
-import time
-ts = time.time()$0
-endsnippet
-
-snippet ts "time start of a program" b
-ts = time.time()
-endsnippet
-
-snippet tss "time start of a sub-program" b
-ts0 = time.time()
-endsnippet
-
-snippet rt "Print runtime of a program" b
-print(f"\nProgram ran for {time.time() - ts:.3f} secs.\n")$0
-endsnippet
-
-snippet rts "Print runtime of a sub-program" b
-print(f"\nSub-program ran for {time.time() - ts0:.3f} secs.\n")$0
-endsnippet
-
-# }}}
-
-snippet '(s)?(ex|qu)' "Description" br
-`!p snip.rv = "sys." if match.group(1) == 's' else ""`exit()
-endsnippet
-
-# }}}
-
-# Braces and quotes{{{
-
-snippet ' "single quotes" iA
-'${1:${VISUAL}}'$0
+priority 100
+snippet '' "single quotes" iA
+'${1:${VISUAL:text}}'$0
 endsnippet
 
 snippet " "double quotes" iA
-"${1:${VISUAL}}"$0
+"${1:${VISUAL:text}}"$0
 endsnippet
 
 snippet ` "backtick" iA
-\`${1:${VISUAL}}\`$0
+\`${1:${VISUAL:code}}\`$0
 endsnippet
 
 snippet ( "parenthesis" iA
@@ -379,11 +829,23 @@ snippet ( "parenthesis" iA
 endsnippet
 
 snippet { "curly brackets" iA
-{${1:${VISUAL}}\}$0
+{${1:${VISUAL:code}}\}$0
 endsnippet
 
 snippet [ "square brackets" iA
 [${1:${VISUAL}}]$0
+endsnippet
+
+# snippet j[ "for dataframes" iA
+# ["${1:column}"]$ 0
+# endsnippet
+
+snippet __ "__object__" w
+__${1:${VISUAL:object}}__$0
+endsnippet
+
+snippet 2* "markdown blod" wA
+**${1:${VISUAL:text_to_bolden}}**$0
 endsnippet
 
 # priority 1000
@@ -395,15 +857,64 @@ endsnippet
 
 # Title format{{{
 
-snippet wt "21 = symbols[[ Write title like this ]]21 = symbols" b
-# =====================[[ ${1:${VISUAL}} ]]=====================
-$0
+snippet 'wti|sec' "max 18 = symbols[[ Write title like this ]]max 18 = symbols" rbA
+# ===`!p
+no_of_eq = 21
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq, 'w')
+snip.rv = no_of_eq * '='
+`[[ $1 ]]`!p
+snip.rv = int(retrieve_snip_rv()) * '='
+`===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
+print(f"")
+print(68*"=")
+print(f"==={`!p
+no_of_eq = 28
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq)
+snip.rv = no_of_eq
+`*'='}[[ ${1:Title} ]]{`!p snip.rv = int(retrieve_snip_rv())`*'='}==`!p snip.rv = "=" if not len(t[1])%2 else ""`\n")
+# ==========================================================
+
+${2:${VISUAL:text_or_code}}
+
+# }}\}
 endsnippet
 
-snippet pt "[========== Print title like this ==========]" b
-# [========== Print title like this ==========]
-print(f"\t\t[{10*'='} ${1:${VISUAL}} {10*'='}]\n")
+snippet 'j(?:wti|sec)' "max 21 = symbols[[ Write title like this ]]max 21 = symbols" rbA
+# ===`!p
+no_of_eq = 21
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq, 'w')
+snip.rv = no_of_eq * '='
+`[[ ${1:Title} ]]`!p
+snip.rv = int(retrieve_snip_rv()) * '='
+`===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
+
+${2:${VISUAL:text_or_code}}
+
+# }}\}
 endsnippet
+
+snippet 'pds|out|opt' "printf to output title string" brA
+# ===============[[ Output title like this ]]===============
+print(f"")
+print(68*"=")
+print(f"==={`!p
+no_of_eq = 28
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq)
+snip.rv = no_of_eq
+`*'='}[[ ${1:Title} ]]{`!p snip.rv = int(retrieve_snip_rv())`*'='}==`!p snip.rv = "=" if not len(t[1])%2 else ""`\n")
+# ==========================================================
+
+${0:${VISUAL:text_or_code}}
+endsnippet
+
+# snippet pds "print ='s to separate output" bA
+# print("")
+# print(40*"=", '\n')$0
+# endsnippet
 
 # }}}
 
@@ -429,12 +940,17 @@ snippet edic "Empty dictionary" w
 ${1:${VISUAL:dicName}}Dict = {}$0
 endsnippet
 
-snippet dic "Dictionaries" w
-${1:${VISUAL:dicName}}Dict = {
+snippet '(.*)dic' "Dictionaries" rb
+${1:`!p
+snip.rv = match.group(1).rstrip('= ') if match.group(1).rstrip().endswith('=') else "dic_name"
+`} = {
 	${2:${3:key} : ${4:value},
 	${5:key} : ${6:value}$7}
-}
-$0
+}$0
+endsnippet
+
+snippet dict "Dictionary constructor" w
+dict(${1:${VISUAL:key_value_pairs}})$0
 endsnippet
 
 snippet k "key-value for dictionary" w
@@ -446,12 +962,24 @@ endsnippet
 
 # Lists and strings{{{
 
+snippet '(c)?dq' "Create deque" rw
+`!p snip.rv = "collections." if match.group(1) else ""`deque(${1:${VISUAL:iterable, dict or string}})$0
+endsnippet
+
 snippet '(?<=\.)app' "Append to a list/deque" wAr
 append(${1:${VISUAL:element}})$0
 endsnippet
 
 snippet '(?<=\.)apl' "Append left to deque" wAr
 appendleft(${1:${VISUAL:element}})$0
+endsnippet
+
+snippet '(?<=\.)ext' "Extend a list/deque" wAr
+extend(${1:${VISUAL:list or deque}})$0
+endsnippet
+
+snippet '(?<=\.)exl' "Extend left a list/deque" wAr
+extendleft(${1:${VISUAL:list or deque}})$0
 endsnippet
 
 snippet '(?<=\.)sp' "Spliting strings to make list" rw
@@ -467,44 +995,72 @@ snippet '(?<=\.)jo(i)?' "join a list of strings" wr
 join(${1:${VISUAL:a_list}})$0
 endsnippet
 
-snippet '(?<=\.)so' "sort" rw
-sort(`!p snip.rv = "key=" if t[1] else ""`${1:sortFun})$0
+snippet '(?<=\.)sor?' "sort method" rw
+sort(`!p snip.rv = "key=" if t[1] else ""`${1:sort_fun})$0
 endsnippet
 
-snippet sor "sort" w
-sort(${1:iterable}`!p snip.rv = ", key=" if t[2] else ""`${2:sortFun})$0
+snippet '(?<!\.)sor?' "sorted function" rw
+sorted(${1:iterable}`!p snip.rv = ", key=" if t[2] else ""`${2:sort_fun})$0
 endsnippet
 
 # }}}
 
-snippet pri "Print in python" bA
-print(${1:${VISUAL:text}})$0
+# should 'f' and '\"' etc be stripped, since it's print code
+# text = strip_remove(text, ["print", "(", "f"], [")"], "\"\'", True, True)
+snippet '(,|_)pr' "Print in python" brA
+print(${1:`!p
+text = snip.v.text.strip()
+snip.rv = text
+`})$0
 endsnippet
 
-snippet prf "Print string" bA
-print(f"${1:${VISUAL:text}}")$0
+# snippet pri "Print in python" bA
+# print(`!p snip.rv = "f" if t[1].startswith('"') else ""`${1:${VISUAL:text}})$2
+# endsnippet
+
+snippet '(,|_)p(f|a)' "Print formatted string" rbA
+print(f"${1:`!p
+text = snip.v.text
+text = strip_remove(text, ["print", "(", "f"], [")"], '\"\'', '\"\'', True)
+# text = re.sub(r'^\s*print\s*\(?f?[\'"]?|[\'"]?\)?$', '', text)
+# text = re.sub(r'^(?:\\[nt])+', '', text)
+# text = re.sub(r'(?:\\[nt])+$', '', text)
+# text = text.strip()
+snip.rv = text
+`}")$0
 endsnippet
 
-snippet ra "range function" wA
-range($1)$2
+snippet '\b(,|_)jd' "print formatted dictionary" rwA
+json.dumps(${1:${VISUAL:dict-like}}, indent=4)$0
+endsnippet
+
+snippet '\s*(,|_)pb' "A print block with blank lines" rbA
+`!p snip.rv = snip.mkline('', indent=None)`
+print(f"")
+$0
+endsnippet
+
+snippet '\b(,|_)ra' "range function" wrA
+range(${1:${VISUAL:num}})$0
+endsnippet
+
+snippet '\b(,|_)rl' "range len function" wrA
+range(len(${1:${VISUAL:array}}))$0
 endsnippet
 
 # Function{{{
 
-snippet def "Defining functions" bm
+snippet def "Defining functions" b
 def ${1:fun_name}(${2:arg}):
 	${3:${VISUAL:# function_body}}$4
-
-	return$5
 $0
 endsnippet
 
 snippet fn "Defining functions" bm
-def ${1:fun_name}(`!p snip.rv = "self, " if snip.indent else ""`${2:arg}):
+def ${1:fun_name}(${2:arg}):
 	${3:${VISUAL:# function_body}}$4`!p
-snip.rv = "\n" if t[3] else ""`
-	return$5
-$0
+snip.rv = snip.mkline("\n", indent=None)
+`$0
 endsnippet
 
 snippet fnd "function with docstrings" b
@@ -517,12 +1073,11 @@ write_function_docstring(t, snip)`
 	${5:${VISUAL:pass}}
 endsnippet
 
-snippet fnr "Create function and run" bmA
+snippet fnr "Create function and run" bA
 def ${1:fun_name}(`!p snip.rv = "self, " if snip.indent else ""`${2:arg}):
 	${3:${VISUAL:# function_body}}$4`!p
 snip.rv = "\n" if t[3] else ""
 `
-	return$5
 
 print($1(${6:$2}))$0
 endsnippet
@@ -531,11 +1086,16 @@ snippet '(ds|#)' "Commenting as doc-string" br
 """
 ${1:${VISUAL}}
 """
+$0
+endsnippet
+
+snippet '\b(,|_)la' "lambda function" wrA
+lambda ${1:x} : ${2:${VISUAL:x[0]}}$0
 endsnippet
 
 # }}}
 
-snippet if "if statement" b
+snippet if "if statement" bm
 if ${1:BOOLEAN}:
 	${2:${VISUAL:pass}}$3
 endsnippet
@@ -546,28 +1106,52 @@ elif ${1:BOOLEAN}:
 	${2:${VISUAL:pass}}$0
 endsnippet
 
-post_expand "fix_indent(snip)"
-snippet 'el(s(e)?)?' "else statement" br
-else:
-	${0:${VISUAL:pass}}
-endsnippet
+# pre_expand "fix_indent(snip)"
+# snippet 'el(s(e)?)?' "else statement" br
+# else:
+# 	${0:${VISUAL:pass}}
+# endsnippet
 
 
 # Loops{{{
 
-snippet for "for loop" bm
-for ${1:ITERABLE}:
-	${2:${VISUAL:pass}}$3
+snippet for "for loop" b
+for ${1:ITEM} in ${2:ITERABLE}:
+	${3:${VISUAL:pass}}$4
 endsnippet
 
-snippet 'wh(i(l(e)?)?)?' "while loop" brm
-${1:# Initialize while loop}
+snippet 'wh(i(l(e)?)?)?' "while loop" br
 while ${2:BOOLEAN}:
-	${3:${VISUAL:break}}$4
-	${5:# Re-initialize while loop}$0
+	${3:${VISUAL:break}}
 endsnippet
+# ${1:# Initialize while loop}
+# 	${5:# Re-initialize while loop}$0
 
 # }}}
+
+# Misc{{{
+
+snippet map "map object" w
+map(${1:key}, ${2:${VISUAL:iterable}})$3
+endsnippet
+
+snippet aa "printing advent of code part answers" bA
+print(f"Part_${1:1} answer : {part_$1(${2:${VISUAL:arg}})$3}")$0
+endsnippet
+
+snippet ++ "+= 1 in python" iA
++= ${1:1}$0
+endsnippet
+
+snippet -- ".= 1 in python" iA
+-= ${1:1}$0
+endsnippet
+
+snippet ;/ "/= 1 in python" iA
+/= ${1:1}$0
+endsnippet
+
+#}}}
 
 snippet try "try block in python" b
 try:
@@ -630,18 +1214,39 @@ endsnippet
 
 # }}}
 
+# Output : # Output: $0
+snippet op "write commented output next to a code" w
+# Output: $0
+endsnippet
+
 priority 1000
 snippet 3' "3 single quotes" iA
-'''$1'''$2
+'''# {\{{
+${1:${VISUAL:text}}
+'''# }\}}
+$0
 endsnippet
 
 # priority 1000
 snippet 3" "3 double quotes" iA
-"""$1"""$2
+"""# {\{{
+${1:${VISUAL:text}}
+"""# }\}}
+$0
 endsnippet
 
 # priority 1000
-snippet prs "Print formatted string in python" bA
-print(f"${1:${VISUAL}}")$0
+snippet ds "3 double quotes" bA
+"""# {\{{
+
+${1:${VISUAL:text}}
+
+"""# }\}}
+$0
 endsnippet
+
+# # priority 1000
+# snippet prs "Print formatted string in python" bA
+# print(f"${1:${VISUAL}}")$0
+# endsnippet
 

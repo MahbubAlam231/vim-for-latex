@@ -23,33 +23,33 @@ snippet is "Replace 'should be' by 'is'"
 ${VISUAL:inner text/should be/is/g}
 endsnippet
 
-snippet li "Add a link link"
+snippet li "Add a link_address VISUAL name=address"
 [${1:${VISUAL:here}}]($2${3:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 endsnippet
 
-snippet link "Add a link name"
-[${1:${VISUAL:here}}](${2:$1})$0
+snippet link "Add a link_name VISUAL link_address"
+[$1${2:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}](${3:${VISUAL:link_address}})$0
 endsnippet
 # [${1:${VISUAL:here}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 
-snippet im "Adding a image"
+snippet im "Adding a image" w
 ![${1:${VISUAL:Image}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}.jpg)$0
 endsnippet
 
-snippet image "Adding a image"
-![${1:${VISUAL:Image}}](${2:pic.jpg})$0
+snippet '\bima(g(e)?)?' "making link to image filename" rw
+![${1:image_name}](${2:${VISUAL:pic.jpg}})$0
 endsnippet
 
-snippet fi "Adding a file link" w
-[[file:$1]]$0
+snippet '\b(a)?f(i|l)' "Adding a file link" wr
+FILE: [${1:${VISUAL:filename_here}}](file:${2:filelink_here})$0
 endsnippet
 
-snippet file "Adding a file link" w
-[[file:${1:${VISUAL:filename_here}}]]$0
+snippet '\b(a)?f(ile|n)' "Adding a file name" wr
+FILE: [${1:filename_here}](file:${2:${VISUAL:filelink_here}}$3)$0
 endsnippet
 
-snippet pdf "Adding a file link" w
-[[file:${1:${VISUAL:filename_here}}.pdf]]$0
+snippet pdf "Adding a pdf link" w
+PDF: [${1:${VISUAL:filename_here}}](file:${2:filelink_here})$0
 endsnippet
 
 snippet mps "Make purpose statement filename"
@@ -74,7 +74,33 @@ snippet lts "letter to self" w
 [Letter to self $1 purpose-statement-`!v strftime("%Y-%m-%d")`](letter-to-self-${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}-purpose-statement-`!v strftime("%Y-%m-%d")`)$0
 endsnippet
 
-snippet ` "backtick" iA
-\`${1:${VISUAL}}\`$0
+# snippet ` "backtick" iA
+# \`${1:${VISUAL:text}}\`$0
+# endsnippet
+
+# snippet " "double quotes" iA
+# ''${1:${VISUAL:text}}"$2
+# endsnippet
+
+snippet svh "Add to header to make svenska PDF files (after author entry)" bA
+lang: sv
+csquotes: true
+header-includes:
+	- \usepackage{setspace}
+	- \onehalfspacing$0
 endsnippet
 
+# Doesn't work, becomes: *${1:text}***
+# snippet ** "markdown underscore" wA
+# *${1:text}*$0
+# endsnippet
+
+snippet sta "City name in applied-jobs.md" w
+**${1:Stockholm}**$0
+endsnippet
+
+snippet 3` "code block, 3 backticks" bA
+\`\`\`
+${1:${VISUAL:text}}
+\`\`\`$0
+endsnippet
