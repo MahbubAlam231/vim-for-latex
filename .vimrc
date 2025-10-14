@@ -107,6 +107,8 @@ set smarttab                          " Insert spaces or go to next indent
 set autoindent                        " Auto indent
 set smartindent                       " Does the right thing (mostly) in programs
 
+nnoremap <buffer> <silent> <localleader>yml :setlocal tabstop=2 shiftwidth=2 softtabstop=2<CR>
+
 " "Make the 71th column stand out
 " highlight ColorColumn ctermbg=magenta
 " call matchadd('ColorColumn', '\%72v', 100)

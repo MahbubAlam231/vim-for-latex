@@ -376,7 +376,7 @@ endsnippet
 # 	plt.close()$0
 # endsnippet
 
-snippet pla "plot labels for x/y coordinates" bA
+snippet pla "plot labels for x/y coordinates" b
 plt.$1label("${2:xyz-coord}")$0
 endsnippet
 
@@ -881,19 +881,24 @@ ${2:${VISUAL:text_or_code}}
 # }}\}
 endsnippet
 
-snippet 'j(?:wti|sec)' "max 21 = symbols[[ Write title like this ]]max 21 = symbols" rbA
+snippet 'j(?:wti|sec)' "max 18 = symbols[[ Write title like this ]]max 18 = symbols" rbA
 # ===`!p
 no_of_eq = 21
 no_of_eq -= min((len(t[1]))//2, no_of_eq)
 store_snip_rv(no_of_eq, 'w')
 snip.rv = no_of_eq * '='
-`[[ ${1:Title} ]]`!p
+`[[ $1 ]]`!p
 snip.rv = int(retrieve_snip_rv()) * '='
 `===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
-
-${2:${VISUAL:text_or_code}}
-
-# }}\}
+print(f"")
+print(68*"=")
+print(f"==={`!p
+no_of_eq = 28
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq)
+snip.rv = no_of_eq
+`*'='}[[ ${1:Title} ]]{`!p snip.rv = int(retrieve_snip_rv())`*'='}==`!p snip.rv = "=" if not len(t[1])%2 else ""`\n")
+# ==========================================================
 endsnippet
 
 snippet 'pds|out|opt' "printf to output title string" brA
@@ -910,6 +915,30 @@ snip.rv = no_of_eq
 
 ${0:${VISUAL:text_or_code}}
 endsnippet
+
+snippet 'j(?:pds|out|opt)' "printf to output title string" brA
+print(f"==={`!p
+no_of_eq = 28
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq)
+snip.rv = no_of_eq
+`*'='}[[ ${1:Title} ]]{`!p snip.rv = int(retrieve_snip_rv())`*'='}==`!p snip.rv = "=" if not len(t[1])%2 else ""`\n")
+endsnippet
+
+# snippet 'j(?:wti|sec)' "max 21 = symbols[[ Write title like this ]]max 21 = symbols" rbA
+# # ===`!p
+# no_of_eq = 21
+# no_of_eq -= min((len(t[1]))//2, no_of_eq)
+# store_snip_rv(no_of_eq, 'w')
+# snip.rv = no_of_eq * '='
+# `[[ ${1:Title} ]]`!p
+# snip.rv = int(retrieve_snip_rv()) * '='
+# `===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
+
+# ${2:${VISUAL:text_or_code}}
+
+# # }}\}
+# endsnippet
 
 # snippet pds "print ='s to separate output" bA
 # print("")

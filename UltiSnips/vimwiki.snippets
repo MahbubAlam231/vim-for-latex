@@ -24,11 +24,11 @@ ${VISUAL:inner text/should be/is/g}
 endsnippet
 
 snippet li "Add a link_address VISUAL name=address"
-[${1:${VISUAL:here}}]($2${3:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
+[${1:${VISUAL:here}}]($3${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 endsnippet
 
 snippet link "Add a link_name VISUAL link_address"
-[$1${2:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}](${3:${VISUAL:link_address}})$0
+[$2${1:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}}](${3:${VISUAL:link_address}})$0
 endsnippet
 # [${1:${VISUAL:here}}](${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:-:\L$1$2$3\E)/g}})$0
 
@@ -49,7 +49,7 @@ FILE: [${1:filename_here}](file:${2:${VISUAL:filelink_here}}$3)$0
 endsnippet
 
 snippet pdf "Adding a pdf link" w
-PDF: [${1:${VISUAL:filename_here}}](file:${2:filelink_here})$0
+PDF: [${1:${VISUAL:filename_here}}](file:${2:filelink_here}.pdf)$0
 endsnippet
 
 snippet mps "Make purpose statement filename"
