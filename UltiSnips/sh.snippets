@@ -102,15 +102,30 @@ endsnippet
 
 # Output: printf '\\t'"Text here\\n"$0
 snippet '(,|_)pr' "printf in bash" brA
-printf "\\t""${1:`!p
+printf "\\${2:t}""${1:`!p
 text = snip.v.text
-text = strip_remove(text, ["echo", "-m", "printf", "--"], [], '\"\'', '\"\'', strip_lit_esc=True)
+text = strip_remove(text, ["echo", "-m", "-e", "printf", "--"], [], '\"\'', '\"\'', strip_lit_esc=True)
 text = strip_remove(text, [], [], '\"\'', '\"\'', True)
 if not text:
 	snip.rv = "text"
 else:
 	snip.rv = text
 `}""\\n"$0
+endsnippet
+
+snippet 'wti|sec' "max 18 = symbols[[ Write title like this ]]max 18 = symbols" rbA
+printf "\\n"\\
+"`!p snip.rv = '='*68`"
+printf "\\n""===`!p
+no_of_eq = 28
+no_of_eq -= min((len(t[1]))//2, no_of_eq)
+store_snip_rv(no_of_eq)
+snip.rv = '='*no_of_eq
+`[[ ${1:Title} ]]`!p
+snip.rv = '='*int(retrieve_snip_rv())
+`==`!p snip.rv = "=" if not len(t[1])%2 else ""`""\\n\\n"
+
+${2:${VISUAL:text_or_code}}
 endsnippet
 
 snippet fn "function" b

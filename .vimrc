@@ -214,6 +214,8 @@ vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 " Plugins{{{
 " ------------------------------------------------------------
 
+" let g:polyglot_disabled = ['quarto', 'rmd', 'qmd']
+
 " Set the runtime path to include fzf and Vundle, and initialize
 
 " set rtp+=~/.fzf
@@ -223,28 +225,26 @@ vnoremap <buffer> <silent> <localleader>nb <esc>:call NumberToggle()<cr>gv
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-python/python-syntax'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'VundleVim/Vundle.vim'
 " Plug 'chrisbra/changesPlugin'
-Plug 'jason6/vimwiki_md2html'
 " Plug 'masukomi/vim-markdown-folding'
 " Plug 'mhinz/vim-signify'
 " Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 " Plug 'tpope/vim-eunuch'
 " Plug 'mswift42/vim-themes'
 " Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'sheerun/vim-polyglot'
 
-Plug 'alok/notational-fzf-vim'
+Plug 'Julian/vim-textobj-brace'
 Plug 'MahbubAlam231/dragvisuals'
 Plug 'MahbubAlam231/hybrid-line-numbers'
 Plug 'MahbubAlam231/searching-with-blinking'
 Plug 'MahbubAlam231/vim-system-copy'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'alok/notational-fzf-vim'
+Plug 'bps/vim-textobj-python'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'christoomey/vim-quicklink'
 Plug 'christoomey/vim-sort-motion'
@@ -258,6 +258,7 @@ Plug 'godlygeek/tabular'
 Plug 'haya14busa/vim-asterisk'
 Plug 'honza/vim-snippets'
 Plug 'inkarkat/vim-PatternsOnText'
+Plug 'jason6/vimwiki_md2html'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -265,26 +266,26 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-after-object'
 Plug 'justinmk/vim-sneak'
-Plug 'bps/vim-textobj-python'
-Plug 'Julian/vim-textobj-brace'
 Plug 'kana/vim-textobj-datetime'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-lastpat'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
-Plug 'mattn/vim-textobj-url'
-Plug 'somini/vim-textobj-fold'
-Plug 'thinca/vim-textobj-between'
 Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
+Plug 'mattn/vim-textobj-url'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-startify'
 Plug 'michal-h21/vim-zettel'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'plasticboy/vim-markdown'
+Plug 'quarto-dev/quarto-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
+Plug 'somini/vim-textobj-fold'
+Plug 'thinca/vim-textobj-between'
 Plug 'tibabit/vim-templates'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tommcdo/vim-exchange'
@@ -296,6 +297,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'trapd00r/vidir'
 Plug 'trapd00r/vim-syntax-vidir-ls'
+Plug 'vim-python/python-syntax'
+Plug 'vim-scripts/indentpython.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -1663,6 +1666,8 @@ nnoremap <buffer> <localleader>cs mm:call ColorschemeToggle()<cr>:source $MYVIMR
 
 " Editing colorscheme in vimrc
 nnoremap <buffer> <localleader>ec gg/my_colorscheme_mode<cr>:noh<cr>zvzz
+
+" let g:vim_markdown_fenced_languages = ['python=python', 'javascript=javascript', 'bash=sh', 'r=r']
 
 " }}}
 " Command line mappings{{{

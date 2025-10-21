@@ -147,13 +147,18 @@ $0
 endsnippet
 
 snippet '(?:S|s)eq' "Sequential" brA
-${1:model} = Sequential([
-	$2
-])$0
+${1:model} = Sequential(
+	[
+		keras.Input(shape=(${2:shape_})),
+		$3
+	]
+)$0
 endsnippet
 
-snippet '(?:D|d)en' "Dense layer" brA
-Dense(units=${1:1}, activation="${2:sigmoid}")$0
+snippet '(?:D|d)en(r|l|s)' "Dense layer" brA
+Dense(units=${1:1}, activation="${2:`!p
+snip.rv = match.group(1)
+`}`!p snip.rv = complete(t[2], ["relu", "linear", "sigmoid"]) if t[2] else "relu"`")$0
 endsnippet
 
 snippet '\b(?<=\.)comp' "model compile" rw
@@ -866,8 +871,7 @@ snip.rv = no_of_eq * '='
 `[[ $1 ]]`!p
 snip.rv = int(retrieve_snip_rv()) * '='
 `===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
-print(f"")
-print(68*"=")
+print(f"\n{68*'='}")
 print(f"==={`!p
 no_of_eq = 28
 no_of_eq -= min((len(t[1]))//2, no_of_eq)
@@ -890,8 +894,7 @@ snip.rv = no_of_eq * '='
 `[[ $1 ]]`!p
 snip.rv = int(retrieve_snip_rv()) * '='
 `===`!p snip.rv = "=" if not len(t[1])%2 else ""`{{\{
-print(f"")
-print(68*"=")
+print(f"\n{68*'='}")
 print(f"==={`!p
 no_of_eq = 28
 no_of_eq -= min((len(t[1]))//2, no_of_eq)
@@ -903,8 +906,7 @@ endsnippet
 
 snippet 'pds|out|opt' "printf to output title string" brA
 # ===============[[ Output title like this ]]===============
-print(f"")
-print(68*"=")
+print(f"\n{68*'='}")
 print(f"==={`!p
 no_of_eq = 28
 no_of_eq -= min((len(t[1]))//2, no_of_eq)
