@@ -469,6 +469,7 @@ nmap <buffer> <localleader>tc <plug>(vimtex-toc-open)
 nmap <buffer> <localleader>cl :VimtexClean<cr>:w!<CR>:!latexmk -cd -f -silent -pdf -bibtex -pdf %:p<CR><CR>:!latexmk -silent -cd -f -pdf %:p<CR><CR>zz
 
 " Folding{{{
+
 set foldlevelstart=0
 set foldmethod=marker
 nnoremap <buffer> <localleader>mn :setlocal foldmethod=manual<cr>
@@ -478,7 +479,7 @@ nnoremap <buffer> <localleader>mr :setlocal foldmethod=marker<cr>
 " Fixing LaTeX folds
 augroup TeXFolds
     autocmd!
-    autocmd Filetype tex nnoremap <buffer> <localleader>ff mf:%s/F{O{L{D/F{O{L{D/g<cr>`fzvzz
+    autocmd Filetype tex nnoremap <buffer> <localleader>ff mf:%s/F{O{L{D/F{O{L{D/g<cr>:noh<cr>`fzvzz
     autocmd Filetype tex,snippets nnoremap <buffer> <localleader>bf mfA% F{O{L{D<esc>`f
     autocmd Filetype tex,snippets nnoremap <buffer> <localleader>ef mfA% F}O}L}D<esc>`f
 augroup end
@@ -1630,7 +1631,7 @@ let g:seoul256_srgb=1
 " colorscheme light-kiss
 " colorscheme simple_dark
 
-let g:my_colorscheme_mode=1
+let g:my_colorscheme_mode=0
 function! ColorToggle()
     if g:my_colorscheme_mode
         colorscheme seoul256-light
@@ -2183,7 +2184,7 @@ highlight PythonFormattedVarGroup ctermfg=256 cterm=bold
 highlight PythonBoldGreenGroup ctermfg=46 ctermbg=Black cterm=bold
 " highlight PythonUnderscoreGroup ctermbg=red ctermfg=black
 " highlight PythonUnderscoreGroup ctermbg=250 ctermfg=39
-highlight PythonUnderscoreGroup ctermbg=250 ctermfg=0
+highlight PythonUnderscoreGroup ctermbg=242 ctermfg=15
 
 augroup PythonHighlighting
     autocmd!
@@ -2231,7 +2232,7 @@ augroup VimwikiHighlighting
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE ENTRY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'NO DIARY')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'LATE DIARY')
-    autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQ')
+    " autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQ')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'SQX')
     autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldBlueGroup",'JX')
     " autocmd Filetype vim,vimwiki,markdown let m = matchadd("VimwikiBoldRedGroup",'X ')
@@ -2945,8 +2946,8 @@ augroup SourceEverythingForTeX
     autocmd BufNewFile,BufRead *.tex execute "normal! 3zj"
 
     " Compiling tex with lualatex
-    autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zza
-    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zz
+    autocmd Filetype tex inoremap <buffer> <F5> <esc>:w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zza
+    autocmd Filetype tex nnoremap <buffer> <F5> :w!<CR>:!latexmk -cd -f -lualatex -bibtex %:p<CR><CR>zz
     autocmd Filetype tex nnoremap <buffer> <F9> :w!<CR>:!latexmk -cd -f -silent -lualatex -bibtex -lualatex %:p<CR><CR>:!latexmk -silent -cd -f -lualatex %:p<CR><CR>zz
     autocmd Filetype tex inoremap <buffer> <F7> <esc>:w!<CR>:!latexmk -cd -f -silent -lualatex %:p<CR><CR>zz:VimtexView<cr><cr>a
     autocmd Filetype tex nnoremap <buffer> <F7> :w!<CR>:!latexmk -cd -f -silent -lualatex %:p<CR><CR>zz:VimtexView<cr><cr>

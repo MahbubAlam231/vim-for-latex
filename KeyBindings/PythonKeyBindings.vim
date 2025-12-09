@@ -22,14 +22,15 @@ inoremap <buffer> <localleader>fl float()<esc>i
 inoremap <buffer> <localleader>cx complex()<esc>i
 " inoremap <buffer> <localleader>la lambda
 
+inoremap <buffer> ^ **
 inoremap <buffer> ; _
 inoremap <buffer> <localleader>; ;
 " inoremap <buffer> ;; ;
 " inoremap <buffer> ;<space> _
 " inoremap <buffer> <space>; ;
 
-inoremap <buffer> 2= ==<space>
-inoremap <buffer> ;= !=
+" inoremap <buffer> 2= ==<space>
+" inoremap <buffer> ;= !=
 inoremap <buffer> <localleader>> >=
 inoremap <buffer> <localleader>< <=
 
@@ -60,14 +61,11 @@ inoremap <silent> <buffer> <F9> <esc>:w!<cr>:!python3 %:p<cr>
 " nnoremap <silent> <buffer> <localleader><cr> :w!<cr>:term ++noclose ++cols=90 python3 %:p<cr>
 " inoremap <silent> <buffer> <localleader><cr> <esc>:w!<cr>:term ++noclose ++cols=90 python3 %:p<cr>
 
-nnoremap <silent> <buffer> ;<cr> :w!<cr>:term ++noclose ++cols=90 /home/mahbub/vpe/bin/python %:p<cr>
-inoremap <silent> <buffer> ;<cr> <esc>:w!<cr>:term ++noclose ++cols=90 /home/mahbub/vpe/bin/python %:p<cr>
+nnoremap <silent> <buffer> ;<cr>      :w!<cr>:term ++noclose ++cols=200 /home/mahbub/vpe/bin/python %:p<cr>
+inoremap <silent> <buffer> ;<cr> <esc>:w!<cr>:term ++noclose ++cols=200 /home/mahbub/vpe/bin/python %:p<cr>
 tnoremap <F1> <C-\><C-N>
 
 nnoremap <silent> <buffer> <F5> :w!<cr>:exec '!python3' shellescape(@%, 1)<cr>
-
-" nnoremap <silent> <buffer> ;<cr> :w!<cr>:! source ~/vpe/bin/activate && python3 %:p<cr>
-nnoremap <silent> <buffer> ;<cr> :w!<cr>:term ++noclose ++cols=90 /home/mahbub/vpe/bin/python %:p<cr>
 
 nnoremap <buffer> <localleader>jp :w!<cr>:!/home/mahbub/vpe/bin/python /home/mahbub/scripts/bin/py2ipynb %:t:r %:t:r<cr><cr>
 nnoremap <buffer> <localleader>jb :w!<cr>:!/home/mahbub/vpe/bin/python /home/mahbub/scripts/bin/py2ipynb %:t:r %:t:r<cr><cr>
@@ -75,6 +73,11 @@ nnoremap <buffer> <localleader>jb :w!<cr>:!/home/mahbub/vpe/bin/python /home/mah
 
 inoremap <buffer> <c-e> <esc>A
 inoremap <buffer> <c-a> <esc>I
+
+augroup PythonFold
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <localleader>ff mf:%s/{{{/{{{/g<cr>:noh<cr>`fzvzz
+augroup end
 
 " Commented{{{
 

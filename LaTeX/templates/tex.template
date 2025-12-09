@@ -34,6 +34,7 @@
 \usepackage{enumitem}
 % \usepackage{etaremune}
 \usepackage{esvect}
+\usepackage{eurosym}
 % \usepackage{eufrak} % not required when have amsfonts
 \usepackage{extarrows}
 % \usepackage[utf8]{inputenc} % Required for inputting international characters

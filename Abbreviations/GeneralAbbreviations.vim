@@ -16,7 +16,7 @@ Abolish alg{,c,ic}{,s} algebra{,ic,ic}{,s}
 Abolish appl{n,ble}{,s} applica{tion,ble}{,s}
 Abolish arb arbitrary
 Abolish {apprch,aprch,aprc}{,s,es}{,d,ed}{,g,ing} approach{,,}{,es,es}{,ed,ed}{,ing,ing}
-Abolish {approx,apprx,appr,aprox,aprx,apr}{,n}{,e,te}{,d}{,ly}{,g}{,ble}{,s} approxima{,,,,}{,tion}{,te,te}{,d}{,tely}{,ting}{,ble}{,s}
+Abolish {approx,apprx,appr,aprox,aprx,apr}{,n}{,e,te}{,d}{,ly}{,g}{,ble}{,s} approx{,,,,}{,imation}{,imate,imate}{,d}{,imately}{,imating}{,imable}{,s}
 
 "}}}
 "B{{{

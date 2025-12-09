@@ -3731,6 +3731,7 @@ inoremap <buffer> >> \gg
 inoremap <buffer> ;< \prec
 inoremap <buffer> ;> \succ
 inoremap <buffer> ;= \neq
+inoremap <buffer> ;a= \approx
 inoremap <buffer> == \equiv
 inoremap <buffer> <localleader>= \cong
 

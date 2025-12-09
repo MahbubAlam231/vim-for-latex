@@ -10295,7 +10295,7 @@ snippet thm "Theorem" b
 \end{theorem}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
+	${4:<+\bfseries{\textcolor{red}{Write a Proof}}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -10327,7 +10327,7 @@ snippet lem "Lemma" b
 \end{lemma}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
+	${4:<+\bfseries{\textcolor{red}{Write a Proof}}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -10352,7 +10352,7 @@ snippet prop "Proposition" b
 \end{proposition}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
+	${4:<+\bfseries{\textcolor{red}{Write a Proof}}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -10377,7 +10377,7 @@ snippet cor "Corollary" b
 \end{corollary}% F}O}L}D
 % Proof
 \begin{proof}% F{O{L{D
-	${4:\bfseries<+\textcolor{red}{Write a Proof}+>}
+	${4:<+\bfseries{\textcolor{red}{Write a Proof}}+>}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -10398,14 +10398,14 @@ endsnippet
 snippet prf "Proof" b
 % Proof
 \begin{proof}$1% F{O{L{D
-	${2:${VISUAL:\\bfseries\{<+\\textcolor\{red\}\{Write a Proof\}\}+>}}
+	${2:${VISUAL:<+\\bfseries\{\\textcolor\{red\}\{Write a Proof\}\}+>}}
 \end{proof}% F}O}L}D$0
 endsnippet
 
 snippet proof "Proof" b
 % Proof
 \begin{proof}$1% F{O{L{D
-	${2:${VISUAL:\\bfseries\{<+\\textcolor\{red\}\{Write a Proof\}\}+>}}
+	${2:${VISUAL:<+\\bfseries\{\\textcolor\{red\}\{Write a Proof\}\}+>}}
 \end{proof}% F}O}L}D$0
 endsnippet
 
@@ -10899,8 +10899,8 @@ snippet 'it(e)?' "Writing \item" br
 endsnippet
 
 post_expand "fix_indent(snip)"
-snippet 'it(e(m)?)?a' "Writing \item<+-|alert@+>" br
-\\item<+-|alert@+> $0
+snippet '(\\)?it(e(m)?)?a' "Writing \item<+-|alert@+>" brA
+\\item<+-|alert@+>`!p snip.rv = "" if match.group(1) else " " `$0
 endsnippet
 
 post_expand "fix_indent(snip)"
@@ -10946,7 +10946,7 @@ endsnippet
 snippet itemz "Itemize" bA
 % Itemize
 \begin{itemize}[label=\bullet,leftmargin=0.5cm]
-	\item<+-| alert@+> ${1:${VISUAL}}
+	\item<+-|alert@+> ${1:${VISUAL}}
 \end{itemize}$0
 endsnippet
 
@@ -11436,15 +11436,27 @@ snippet qqu "qquad space" w
 endsnippet
 
 
-snippet jt "Just text" w
+snippet jtj "Just text" wA
 \text{${1:${VISUAL}}\}$2
 endsnippet
 
-snippet jte "Just text" w
+# snippet '(?:;|\)te' "Just text" rw
+# \text{${1:${VISUAL}}\}$2
+# endsnippet
+
+snippet jtej "Just text" wA
 \text{${1:${VISUAL}}\}$2
 endsnippet
 
 snippet ste "Space before text" w
+\ \text{${1:${VISUAL}}\}$2
+endsnippet
+
+snippet jte "Space after text" w
+\text{${1:${VISUAL}}\} \\$2
+endsnippet
+
+snippet tej "Space before text" w
 \ \text{${1:${VISUAL}}\}$2
 endsnippet
 
@@ -11460,17 +11472,17 @@ snippet sts "Text with spaces before and after" w
 \ \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
-snippet qte "qquad space - text" w
+snippet 'qtej?' "qquad space - text" rw
 \qquad \text{${1:${VISUAL}}\}$2
 endsnippet
 
-snippet qtes "qquad space - text - space" w
+snippet 'qtes?' "qquad space - text - space" rw
 \qquad \text{${1:${VISUAL}}\} \ $2
 endsnippet
 
-snippet qts "qquad space - text - space" w
-\qquad \text{${1:${VISUAL}}\} \ $2
-endsnippet
+# snippet qts "qquad space - text - space" w
+# \qquad \text{${1:${VISUAL}}\} \ $2
+# endsnippet
 
 # snippet qte "qquad space - text" w
 # \qquad \text{${1:${VISUAL}}\}$2
@@ -12664,6 +12676,8 @@ endsnippet
 # Greek Alphabets{{{
 # -----------------------------------------------------------------
 
+# Lowercase{{{
+
 snippet al "" w
 $\alpha$$0
 endsnippet
@@ -12784,7 +12798,8 @@ snippet om "" w
 $\omega$$0
 endsnippet
 
-
+#}}}
+# Uppercase{{{
 
 snippet GA "" w
 $\Gamma$$0
@@ -12872,17 +12887,11 @@ snippet Ps "" w
 $\Psi$$0
 endsnippet
 
-snippet PS "" w
-$\Psi$$0
-endsnippet
-
 snippet Om "" w
 $\Omega$$0
 endsnippet
 
-snippet OM "" w
-$\Omega$$0
-endsnippet
+#}}}
 
 #}}}
 
