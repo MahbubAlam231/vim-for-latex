@@ -1,0 +1,14 @@
+{
+    "snippets.ultisnips.enable": true,
+    "snippets.ultisnips.directories": ["/home/mahbub/.vim/UltiSnips"],
+    "suggest.snippetIndicator": "⚡",
+    "coc.preferences.snippetSupport": true,
+    "suggest.enablePreview": false,
+    "suggest.snippetSupport": true,
+    "signature.enable": false,
+    "inlayHint.enable": false,
+    "inlayHint.chainingHints": false,
+    "inlayHint.typeHints": false,
+    "coc.source.buffer.ignore": ["/usr/local/texlive/*"],
+    "coc.source.file.ignore": ["/usr/local/texlive/*"]
+}
